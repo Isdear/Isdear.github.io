@@ -47,13 +47,13 @@
   };
 </script>
 
-  <meta name="description" content="Shows project statistic. This plugin shows files sorted by their extension along with size, line count LOC etc. User can select (Project&#x2F;Module&#x2F;Package&#x2F;File) scope using the ‘Refresh on selection’ bu">
+  <meta name="description" content="Statistic是IDEA用来统计代码行数的插件">
 <meta name="keywords" content="IDEA">
 <meta property="og:type" content="article">
 <meta property="og:title" content="IDEA代码行数统计插件-Statistic">
 <meta property="og:url" content="http:&#x2F;&#x2F;isdear.github.io&#x2F;2020&#x2F;01&#x2F;13&#x2F;IDEA%E4%BB%A3%E7%A0%81%E8%A1%8C%E6%95%B0%E7%BB%9F%E8%AE%A1%E6%8F%92%E4%BB%B6-Statistic&#x2F;index.html">
 <meta property="og:site_name" content="Welcome to my Hexo">
-<meta property="og:description" content="Shows project statistic. This plugin shows files sorted by their extension along with size, line count LOC etc. User can select (Project&#x2F;Module&#x2F;Package&#x2F;File) scope using the ‘Refresh on selection’ bu">
+<meta property="og:description" content="Statistic是IDEA用来统计代码行数的插件">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http:&#x2F;&#x2F;isdear.github.io&#x2F;2020&#x2F;01&#x2F;13&#x2F;IDEA%E4%BB%A3%E7%A0%81%E8%A1%8C%E6%95%B0%E7%BB%9F%E8%AE%A1%E6%8F%92%E4%BB%B6-Statistic&#x2F;s1.jpg">
 <meta property="og:image" content="http:&#x2F;&#x2F;isdear.github.io&#x2F;2020&#x2F;01&#x2F;13&#x2F;IDEA%E4%BB%A3%E7%A0%81%E8%A1%8C%E6%95%B0%E7%BB%9F%E8%AE%A1%E6%8F%92%E4%BB%B6-Statistic&#x2F;s2.jpg">
@@ -211,9 +211,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <blockquote>
+        <p>Statistic是IDEA用来统计代码行数的插件<a id="more"></a></p>
 <p>Shows project statistic. This plugin shows files sorted by their extension along with size, line count LOC etc. User can select (Project/Module/Package/File) scope using the ‘Refresh on selection’ button. (This plugin requires Java 1.8)</p>
-</blockquote>
 <p>&emsp;&emsp;显示项目统计数量。这个插件显示的是按照文件扩展名排序的文件，以及大小、行数、LOC等。使用者能够选择（项目/模块/包/文件）范围使用”Refresh”按钮。（该插件需要java1.8）</p>
 <h5 id="Statistic安装"><a href="#Statistic安装" class="headerlink" title="Statistic安装"></a>Statistic安装</h5><p>&emsp;&emsp;进入IDEA插件File-&gt;Settings-&gt;Plugins，点击上方的Marketplace，搜索Statistic，点击Install。下载安装完之后重启IDEA。<img src="/2020/01/13/IDEA%E4%BB%A3%E7%A0%81%E8%A1%8C%E6%95%B0%E7%BB%9F%E8%AE%A1%E6%8F%92%E4%BB%B6-Statistic/s1.jpg" alt="install"></p>
 <h5 id="项目统计"><a href="#项目统计" class="headerlink" title="项目统计"></a>项目统计</h5><p>&emsp;&emsp;打开任意一个项目开始进行统计。在顶部的菜单栏找到插件，View-&gt;Tool Windows-&gt;Statistic。也可以查看IDEA底部的功能栏，点击Statistic，点击Refresh开始统计项目的代码行数。Overview是统计所有文件的数量count和行数lines，以及不同文件类型行数的和大小的最大值、最小值和平均值。可以选择右边查看需要的后缀名文件代码行数。具体某种文件类型（如：java），可以统计总行数Total Lines，有效代码行数Source Code Lines，注释行数Comment Lines，以及有效代码比重。<img src="/2020/01/13/IDEA%E4%BB%A3%E7%A0%81%E8%A1%8C%E6%95%B0%E7%BB%9F%E8%AE%A1%E6%8F%92%E4%BB%B6-Statistic/s2.jpg" alt="result"></p>
