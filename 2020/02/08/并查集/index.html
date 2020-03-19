@@ -211,21 +211,44 @@
 
       
         <p>建立迷宫时有所涉及，用来处理格子之间的相连问题。<a id="more"></a></p>
-<h5 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h5><p>并查集，在一些有N个元素的集合应用问题中，我们通常是在开始时让每个元素构成一个单元素的集合，然后按一定顺序将属于同一组的元素所在的集合合并，其间要反复查找一个元素在哪个集合中。这一类问题近几年来反复出现在信息学的国际国内赛题中，其特点是看似并不复杂，但数据量极大，若用正常的数据结构来描述的话，往往在空间上过大，计算机无法承受；即使在空间上勉强通过，运行的时间复杂度也极高，根本就不可能在比赛规定的运行时间（1～3秒）内计算出试题需要的结果，只能用并查集来描述。</p>
-<p>并查集是一种树型的数据结构，用于处理一些不相交集合（Disjoint Sets）的合并及查询问题。常常在使用中以森林来表示。</p>
+<h5 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h5><p>&emsp;&emsp;并查集，在一些有N个元素的集合应用问题中，我们通常是在开始时让每个元素构成一个单元素的集合，然后按一定顺序将属于同一组的元素所在的集合合并，其间要反复查找一个元素在哪个集合中。这一类问题近几年来反复出现在信息学的国际国内赛题中，其特点是看似并不复杂，但数据量极大，若用正常的数据结构来描述的话，往往在空间上过大，计算机无法承受；即使在空间上勉强通过，运行的时间复杂度也极高，根本就不可能在比赛规定的运行时间（1～3秒）内计算出试题需要的结果，只能用并查集来描述。</p>
+<p>&emsp;&emsp;并查集是一种树型的数据结构，用于处理一些不相交集合（Disjoint Sets）的合并及查询问题。常常在使用中以森林来表示。</p>
 <h5 id="主要操作"><a href="#主要操作" class="headerlink" title="主要操作"></a>主要操作</h5><ul>
 <li>初始化<br>每个元素都将自己作为一个集合，时间复杂度为O(n)。</li>
 <li>查找<br>查找元素所在的集合，即根节点。</li>
 <li>合并<br>将两个元素所在的集合合并为一个集合。通常，首先判断两个元素是否在同一个集合，通过上步的查找来判断。</li>
 </ul>
-<h5 id="举例分析"><a href="#举例分析" class="headerlink" title="举例分析"></a>举例分析</h5><h6 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h6><p>若某个家族人员过于庞大，要判断两个是否是亲戚，确实不容易，给出某个亲戚关系图，求任意给出的两个人是否具有亲戚关系。</p>
+<h5 id="举例分析"><a href="#举例分析" class="headerlink" title="举例分析"></a>举例分析</h5><h6 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h6><p>&emsp;&emsp;若某个家族人员过于庞大，要判断两个是否是亲戚，确实不容易，给出某个亲戚关系图，求任意给出的两个人是否具有亲戚关系。</p>
 <p>规定：x和y是亲戚，y和z是亲戚，那么x和z也是亲戚。如果x,y是亲戚，那么x的亲戚都是y的亲戚，y的亲戚也都是x的亲戚。</p>
-<h6 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h6><p>第一行：三个整数n,m,p，（n&lt;=5000,m&lt;=5000,p&lt;=5000）</p>
-<p>分别表示有n个人，m个亲戚关系，询问p对新奇关系。</p>
-<p>以下m行：每行两个数Mi，Mj，1&lt;=Mi，Mj&lt;=n，表示Mi和Mj具有亲戚关系。</p>
-<p>接下来p行：每行两个数Pi，Pj，询问Pi和Pj是否具有亲戚关系。</p>
-<h6 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h6><p>共p行，每行一个“Yes”或“No”，表示第Pi个询问的答案为“有”或“没有”亲戚关系。</p>
-<h6 id="分析问题"><a href="#分析问题" class="headerlink" title="分析问题"></a>分析问题</h6><p><img src="/2020/02/08/%E5%B9%B6%E6%9F%A5%E9%9B%86/1.jpg" alt></p>
+<h6 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h6><p>&emsp;&emsp;第一行：三个整数n,m,p，（n&lt;=5000,m&lt;=5000,p&lt;=5000）</p>
+<p>&emsp;&emsp;分别表示有n个人，m个亲戚关系，询问p对新奇关系。</p>
+<p>&emsp;&emsp;以下m行：每行两个数Mi，Mj，1&lt;=Mi，Mj&lt;=n，表示Mi和Mj具有亲戚关系。</p>
+<p>&emsp;&emsp;接下来p行：每行两个数Pi，Pj，询问Pi和Pj是否具有亲戚关系。</p>
+<h6 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h6><p>&emsp;&emsp;共p行，每行一个“Yes”或“No”，表示第Pi个询问的答案为“有”或“没有”亲戚关系。</p>
+<h6 id="分析问题"><a href="#分析问题" class="headerlink" title="分析问题"></a>分析问题</h6><p>&emsp;&emsp;本题是一个图论中判断两个点是否在同一连通子图的问题。对于题目中的样例，将人作为点，亲戚关系作为边，建立无向图如下：</p>
+<p><img src="/2020/02/08/%E5%B9%B6%E6%9F%A5%E9%9B%86/1.jpg" alt></p>
+<p>&emsp;&emsp;比如判断3和4是否为亲戚时，我们检查3和4是否在同一个连通子图中，结果是在，于是他们是亲戚。又如7和10不在同一个连通子图中，所以他们不是亲戚。</p>
+<p>&emsp;&emsp; 例如样例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">9 7 1</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">2 4</span><br><span class="line">5 7</span><br><span class="line">1 3</span><br><span class="line">8 9</span><br><span class="line">1 2</span><br><span class="line">5 6</span><br><span class="line">2 3</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 9</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;我们可以给每个人建立一个集合，集合的元素值有它自己，表示最开始时它不知道任何人是它的亲戚。以后每次给出一个亲戚关系a, b，则a和它的亲戚与b和它的亲戚就互为亲戚了，将a所在集合与b所在集合合并。对于样例数据的操作全过程如下：</p>
+<p>&emsp;&emsp;初始状态：{1} {2} {3} {4} {5} {6} {7} {8} {9}</p>
+<p>&emsp;&emsp;输入关系 分离集合</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">(2,4) &#123;2,4&#125;&#123;1&#125; &#123;3&#125; &#123;5&#125; &#123;6&#125; &#123;7&#125; &#123;8&#125; &#123;9&#125;</span><br><span class="line"></span><br><span class="line">(5,7) &#123;2,4&#125; &#123;5,7&#125; &#123;1&#125; &#123;3&#125; &#123;6&#125; &#123;8&#125; &#123;9&#125;</span><br><span class="line"></span><br><span class="line">(1,3) &#123;1,3&#125; &#123;2,4&#125; &#123;5,7&#125;&#123;6&#125; &#123;8&#125; &#123;9&#125;</span><br><span class="line"></span><br><span class="line">(8,9) &#123;1,3&#125; &#123;2,4&#125; &#123;5,7&#125; &#123;8,9&#125;&#123;6&#125;</span><br><span class="line"></span><br><span class="line">(1,2) &#123;1,2,3,4&#125; &#123;5,7&#125; &#123;8,9&#125;&#123;6&#125;</span><br><span class="line"></span><br><span class="line">(5,6) &#123;1,2,3,4&#125; &#123;5,6,7&#125; &#123;8,9&#125;</span><br><span class="line"></span><br><span class="line">(2,3) &#123;1,2,3,4&#125; &#123;5,6,7&#125; &#123;8,9&#125;</span><br></pre></td></tr></table></figure>
+
+<p>判断亲戚关系</p>
+<p>(1,9)，因为1,9不在同一集合内，所以输出”NO”。</p>
+<p>&emsp;&emsp;最后我们得到3个集合{1,2,3,4}、{5,6,7}、{8,9}，于是判断两个人是否亲戚的问题就变成判断两个数是否在同一个集合中的问题。</p>
+<p>&emsp;&emsp;算法需要以下几个子过程：</p>
+<ol>
+<li>开始时，为每个人建立一个集合；</li>
+<li>得到一个关系，合并相应的集合；</li>
+<li>在合并集合时先要判断是否两个人在同一集合。合并完之后还要判断是否为亲戚；</li>
+</ol>
 
     </div>
 
@@ -250,6 +273,9 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
+                <a href="/2020/03/13/hello-world/" rel="prev" title="Hello World">
+                  Hello World <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
       </footer>
