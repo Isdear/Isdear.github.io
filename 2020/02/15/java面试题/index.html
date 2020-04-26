@@ -47,13 +47,13 @@
   };
 </script>
 
-  <meta name="description" content="下面哪个说法正确的( D )  1ConcurrentHashMap使用synchronized关键字保证线程安全  1HashMap实现了Collction接口  1Array.asList方法返回java.util.ArrayList对象  1SimpleDateFormat是线程不安全的  解析：A选项中，ConcurrentHashMap 使用segment来分段和管理锁，segment">
+  <meta name="description" content="Java面试理论题目">
 <meta name="keywords" content="java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java面试题">
 <meta property="og:url" content="http:&#x2F;&#x2F;isdear.github.io&#x2F;2020&#x2F;02&#x2F;15&#x2F;java%E9%9D%A2%E8%AF%95%E9%A2%98&#x2F;index.html">
 <meta property="og:site_name" content="Welcome to my Hexo">
-<meta property="og:description" content="下面哪个说法正确的( D )  1ConcurrentHashMap使用synchronized关键字保证线程安全  1HashMap实现了Collction接口  1Array.asList方法返回java.util.ArrayList对象  1SimpleDateFormat是线程不安全的  解析：A选项中，ConcurrentHashMap 使用segment来分段和管理锁，segment">
+<meta property="og:description" content="Java面试理论题目">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http:&#x2F;&#x2F;isdear.github.io&#x2F;2020&#x2F;02&#x2F;15&#x2F;java%E9%9D%A2%E8%AF%95%E9%A2%98&#x2F;JavaMemory.png">
 <meta property="og:updated_time" content="2020-02-15T15:31:25.000Z">
@@ -210,7 +210,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <ol>
+        <p>Java面试理论题目<a id="more"></a></p>
+<ol>
 <li>下面哪个说法正确的( <strong>D</strong> )</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ConcurrentHashMap使用synchronized关键字保证线程安全</span><br></pre></td></tr></table></figure>
@@ -273,7 +274,34 @@
 <ol>
 <li>又叫静态区，跟堆一样，被所有的线程共享。它用于存储已经被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据。</li>
 </ol>
-<p>4.</p>
+<p>4.类Person里面有个方法sleep()，如果直接用Person.sleep()，则方法sleep前面必须用的关键词是？  ( B )</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class</span><br><span class="line"></span><br><span class="line">static</span><br><span class="line"></span><br><span class="line">public</span><br><span class="line"></span><br><span class="line">final</span><br></pre></td></tr></table></figure>
+
+<p>解析：sleep方法能被类直接调用，说明是静态的，随着类的加载而加载s。</p>
+<p>tatic关键字：针对多个对象共有的成员变量值时所提出的。</p>
+<p>特点：1、随着类的加载而加载；  2、优先于对象存在；  3、被类的所有对象共享；    4、可以通过类名直接调用。</p>
+<p>注意事项：1.在静态方法中是没有this关键字的；    2.静态方法只能访问静态的成员变量和静态的成员方法。</p>
+<p>5.列表(List)和集合(Set)下面说法正确的是？  ( A )</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Set中至多只能有一个空元素</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List中至多只能有一个空元素</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List和Set都可以包含重复元素的有序集合</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List和Set都是有序集合</span><br></pre></td></tr></table></figure>
+
+<p>解析：Set 不能有重复的元素，且是无序的，要有空值也就只能有一个。因为它不允许重复。 L ist 可以有重复元素，且是有序的，要有空值也可以有多个，因为它可重复。</p>
+<p>6.在JAVA中，假设A有构造方法A(int a)，则在类A的其他构造方法中调用该构造方法和语句格式应该为（ B ）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.A(X)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this(X)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">super(X)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A(X)</span><br></pre></td></tr></table></figure>
+
+<p>解析：this的作用其中一个就是在一个构造方法中调用另一个构造方法，格式为this(参数)；</p>
+<p>super是调用父类的方法；A(a)这种形式是在new一个类时使用。</p>
 
     </div>
 
