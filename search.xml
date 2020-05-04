@@ -1,74 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>CSS3滤镜filter</title>
-    <url>/2020/02/10/CSS3%E6%BB%A4%E9%95%9Cfilter/</url>
-    <content><![CDATA[<p>网页图片的色彩处理<a id="more"></a></p>
-<h6 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h6><table>
-<thead>
-<tr>
-<th align="center">none</th>
-<th>默认值，没有效果。</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">blur(<em>px</em>)</td>
-<td>给图像设置高斯模糊。”radius”一值设定高斯函数的标准差，或者是屏幕上以多少像素融在一起， 所以值越大越模糊；  如果没有设定值，则默认是0；这个参数可设置css长度值，但不接受百分比值。</td>
-</tr>
-<tr>
-<td align="center">brightness(<em>%</em>)</td>
-<td>给图片应用一种线性乘法，使其看起来更亮或更暗。如果值是0%，图像会全黑。值是100%，则图像无变化。其他的值对应线性乘数效果。值超过100%也是可以的，图像会比原来更亮。如果没有设定值，默认是1。</td>
-</tr>
-<tr>
-<td align="center">contrast(<em>%</em>)</td>
-<td>调整图像的对比度。值是0%的话，图像会全黑。值是100%，图像不变。值可以超过100%，意味着会运用更低的对比。若没有设置值，默认是1。</td>
-</tr>
-<tr>
-<td align="center">drop-shadow(<em>h-shadow v-shadow blur spread color</em>)</td>
-<td>给图像设置一个阴影效果。阴影是合成在图像下面，可以有模糊度的，可以以特定颜色画出的遮罩图的偏移版本。 函数接受<shadow>(在CSS3背景中定义)类型的值，除了”inset”关键字是不允许的。该函数与已有的box-shadow box-shadow属性很相似；不同之处在于，通过滤镜，一些浏览器为了更好的性能会提供硬件加速。参数如下：<offset-x><offset-y>(必须)这是设置阴影偏移量的两个 值. <offset-x> 设定水平方向距离. 负值会使阴影出现在元素左边. <offset-y>设定垂直距离.负值会使阴影出现在元素上方。查看<length>可能的单位.<strong>如果两个值都是0</strong>, 则阴影出现在元素正后面 (如果设置了 and/or ，会有模糊效果).<blur-radius> (可选)这是第三个code&gt;值. 值越大，越模糊，则阴影会变得更大更淡.不允许负值 若未设定，默认是0 (则阴影的边界很锐利).<spread-radius>(可选)这是第四个 值. 正值会使阴影扩张和变大，负值会是阴影缩小.若未设定，默认是0 (阴影会与元素一样大小). 注意: Webkit, 以及一些其他浏览器 不支持第四个长度，如果加了也不会渲染。 <color> (可选)查看 该值可能的关键字和标记。若未设定，颜色值基于浏览器。在Gecko (Firefox), Presto (Opera)和Trident (Internet Explorer)中， 会应用color<strong>color</strong>属性的值。另外, 如果颜色值省略，WebKit中阴影是透明的。</color></spread-radius></blur-radius></length></offset-y></offset-x></offset-y></offset-x></shadow></td>
-</tr>
-<tr>
-<td align="center">grayscale(<em>%</em>)</td>
-<td>将图像转换为灰度图像。值定义转换的比例。值为100%则完全转为灰度图像，值为0%图像无变化。值在0%到100%之间，则是效果的线性乘子。若未设置，值默认是0；</td>
-</tr>
-<tr>
-<td align="center">hue-rotate(<em>deg</em>)</td>
-<td>给图像应用色相旋转。”angle”一值设定图像会被调整的色环角度值。值为0deg，则图像无变化。若值未设置，默认值是0deg。该值虽然没有最大值，超过360deg的值相当于又绕一圈。</td>
-</tr>
-<tr>
-<td align="center">invert(<em>%</em>)</td>
-<td>反转输入图像。值定义转换的比例。100%的价值是完全反转。值为0%则图像无变化。值在0%和100%之间，则是效果的线性乘子。 若值未设置，值默认是0。</td>
-</tr>
-<tr>
-<td align="center">opacity(<em>%</em>)</td>
-<td>转化图像的透明程度。值定义转换的比例。值为0%则是完全透明，值为100%则图像无变化。值在0%和100%之间，则是效果的线性乘子，也相当于图像样本乘以数量。 若值未设置，值默认是1。该函数与已有的opacity属性很相似，不同之处在于通过filter，一些浏览器为了提升性能会提供硬件加速。</td>
-</tr>
-<tr>
-<td align="center">saturate(<em>%</em>)</td>
-<td>转换图像饱和度。值定义转换的比例。值为0%则是完全不饱和，值为100%则图像无变化。其他值，则是效果的线性乘子。超过100%的值是允许的，则有更高的饱和度。 若值未设置，值默认是1。</td>
-</tr>
-<tr>
-<td align="center">sepia(<em>%</em>)</td>
-<td>将图像转换为深褐色。值定义转换的比例。值为100%则完全是深褐色的，值为0%图像无变化。值在0%到100%之间，则是效果的线性乘子。若未设置，值默认是0；</td>
-</tr>
-<tr>
-<td align="center">url()</td>
-<td>URL函数接受一个XML文件，该文件设置了 一个SVG滤镜，且可以包含一个锚点来指定一个具体的滤镜元素。例如：<code>filter: url(svg-url#element-id)</code></td>
-</tr>
-<tr>
-<td align="center">initial</td>
-<td>设置属性为默认值</td>
-</tr>
-<tr>
-<td align="center">inherit</td>
-<td>从父元素继承该属性</td>
-</tr>
-</tbody></table>
-<h6 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h6><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">img &#123;</span><br><span class="line">    width: 33%;</span><br><span class="line">    height: auto;</span><br><span class="line">    float: left; </span><br><span class="line">&#125;</span><br><span class="line"><span class="css"><span class="comment">/*模糊*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.blur</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">blur</span>(4px);<span class="attribute">filter</span>: <span class="built_in">blur</span>(4px);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*亮度*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.brightness</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">brightness</span>(0.30);<span class="attribute">filter</span>: <span class="built_in">brightness</span>(0.30);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*对比度*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.contrast</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">contrast</span>(180%);<span class="attribute">filter</span>: <span class="built_in">contrast</span>(180%);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*灰度*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.grayscale</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">grayscale</span>(100%);<span class="attribute">filter</span>: <span class="built_in">grayscale</span>(100%);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*色相旋转*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.huerotate</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">hue-rotate</span>(180deg);<span class="attribute">filter</span>: <span class="built_in">hue-rotate</span>(180deg);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*反色*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.invert</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">invert</span>(100%);<span class="attribute">filter</span>: <span class="built_in">invert</span>(100%);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*透明度*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.opacity</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">opacity</span>(50%);<span class="attribute">filter</span>: <span class="built_in">opacity</span>(50%);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*饱和度*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.saturate</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">saturate</span>(7); <span class="attribute">filter</span>: <span class="built_in">saturate</span>(7);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*深褐色*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.sepia</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">sepia</span>(100%);<span class="attribute">filter</span>: <span class="built_in">sepia</span>(100%);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*阴影*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.shadow</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">drop-shadow</span>(8px 8px 10px green);<span class="attribute">filter</span>: <span class="built_in">drop-shadow</span>(8px 8px 10px green);&#125;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">strong</span>&gt;</span>注意：<span class="tag">&lt;/<span class="name">strong</span>&gt;</span> Internet Explorer 不支持 filter 属性。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"blur"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"brightness"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"contrast"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"grayscale"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"huerotate"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"invert"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"opacity"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"saturate"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"sepia"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"shadow"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
+    <title>IDEA代码行数统计插件-Statistic</title>
+    <url>/2020/01/13/IDEA%E4%BB%A3%E7%A0%81%E8%A1%8C%E6%95%B0%E7%BB%9F%E8%AE%A1%E6%8F%92%E4%BB%B6-Statistic/</url>
+    <content><![CDATA[<p>Statistic是IDEA用来统计代码行数的插件<a id="more"></a></p>
+<blockquote>
+<p>Shows project statistic. This plugin shows files sorted by their extension along with size, line count LOC etc. User can select (Project/Module/Package/File) scope using the ‘Refresh on selection’ button. (This plugin requires Java 1.8)</p>
+</blockquote>
+<p>&emsp;&emsp;显示项目统计数量。这个插件显示的是按照文件扩展名排序的文件，以及大小、行数、LOC等。使用者能够选择（项目/模块/包/文件）范围使用”Refresh”按钮。（该插件需要java1.8）</p>
+<h5 id="Statistic安装"><a href="#Statistic安装" class="headerlink" title="Statistic安装"></a>Statistic安装</h5><p>&emsp;&emsp;进入IDEA插件File-&gt;Settings-&gt;Plugins，点击上方的Marketplace，搜索Statistic，点击Install。下载安装完之后重启IDEA。<img src="/2020/01/13/IDEA%E4%BB%A3%E7%A0%81%E8%A1%8C%E6%95%B0%E7%BB%9F%E8%AE%A1%E6%8F%92%E4%BB%B6-Statistic/s1.jpg" alt="install"></p>
+<h5 id="项目统计"><a href="#项目统计" class="headerlink" title="项目统计"></a>项目统计</h5><p>&emsp;&emsp;打开任意一个项目开始进行统计。在顶部的菜单栏找到插件，View-&gt;Tool Windows-&gt;Statistic。也可以查看IDEA底部的功能栏，点击Statistic，点击Refresh开始统计项目的代码行数。Overview是统计所有文件的数量count和行数lines，以及不同文件类型行数的和大小的最大值、最小值和平均值。可以选择右边查看需要的后缀名文件代码行数。具体某种文件类型（如：java），可以统计总行数Total Lines，有效代码行数Source Code Lines，注释行数Comment Lines，以及有效代码比重。<img src="/2020/01/13/IDEA%E4%BB%A3%E7%A0%81%E8%A1%8C%E6%95%B0%E7%BB%9F%E8%AE%A1%E6%8F%92%E4%BB%B6-Statistic/s2.jpg" alt="result"></p>
 ]]></content>
       <tags>
-        <tag>CSS</tag>
+        <tag>IDEA</tag>
       </tags>
   </entry>
   <entry>
@@ -159,47 +103,438 @@
       </tags>
   </entry>
   <entry>
-    <title>IDEA代码行数统计插件-Statistic</title>
-    <url>/2020/01/13/IDEA%E4%BB%A3%E7%A0%81%E8%A1%8C%E6%95%B0%E7%BB%9F%E8%AE%A1%E6%8F%92%E4%BB%B6-Statistic/</url>
-    <content><![CDATA[<p>Statistic是IDEA用来统计代码行数的插件<a id="more"></a></p>
-<blockquote>
-<p>Shows project statistic. This plugin shows files sorted by their extension along with size, line count LOC etc. User can select (Project/Module/Package/File) scope using the ‘Refresh on selection’ button. (This plugin requires Java 1.8)</p>
-</blockquote>
-<p>&emsp;&emsp;显示项目统计数量。这个插件显示的是按照文件扩展名排序的文件，以及大小、行数、LOC等。使用者能够选择（项目/模块/包/文件）范围使用”Refresh”按钮。（该插件需要java1.8）</p>
-<h5 id="Statistic安装"><a href="#Statistic安装" class="headerlink" title="Statistic安装"></a>Statistic安装</h5><p>&emsp;&emsp;进入IDEA插件File-&gt;Settings-&gt;Plugins，点击上方的Marketplace，搜索Statistic，点击Install。下载安装完之后重启IDEA。<img src="/2020/01/13/IDEA%E4%BB%A3%E7%A0%81%E8%A1%8C%E6%95%B0%E7%BB%9F%E8%AE%A1%E6%8F%92%E4%BB%B6-Statistic/s1.jpg" alt="install"></p>
-<h5 id="项目统计"><a href="#项目统计" class="headerlink" title="项目统计"></a>项目统计</h5><p>&emsp;&emsp;打开任意一个项目开始进行统计。在顶部的菜单栏找到插件，View-&gt;Tool Windows-&gt;Statistic。也可以查看IDEA底部的功能栏，点击Statistic，点击Refresh开始统计项目的代码行数。Overview是统计所有文件的数量count和行数lines，以及不同文件类型行数的和大小的最大值、最小值和平均值。可以选择右边查看需要的后缀名文件代码行数。具体某种文件类型（如：java），可以统计总行数Total Lines，有效代码行数Source Code Lines，注释行数Comment Lines，以及有效代码比重。<img src="/2020/01/13/IDEA%E4%BB%A3%E7%A0%81%E8%A1%8C%E6%95%B0%E7%BB%9F%E8%AE%A1%E6%8F%92%E4%BB%B6-Statistic/s2.jpg" alt="result"></p>
+    <title>CSS3滤镜filter</title>
+    <url>/2020/02/10/CSS3%E6%BB%A4%E9%95%9Cfilter/</url>
+    <content><![CDATA[<p>网页图片的色彩处理<a id="more"></a></p>
+<h6 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h6><table>
+<thead>
+<tr>
+<th align="center">none</th>
+<th>默认值，没有效果。</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">blur(<em>px</em>)</td>
+<td>给图像设置高斯模糊。”radius”一值设定高斯函数的标准差，或者是屏幕上以多少像素融在一起， 所以值越大越模糊；  如果没有设定值，则默认是0；这个参数可设置css长度值，但不接受百分比值。</td>
+</tr>
+<tr>
+<td align="center">brightness(<em>%</em>)</td>
+<td>给图片应用一种线性乘法，使其看起来更亮或更暗。如果值是0%，图像会全黑。值是100%，则图像无变化。其他的值对应线性乘数效果。值超过100%也是可以的，图像会比原来更亮。如果没有设定值，默认是1。</td>
+</tr>
+<tr>
+<td align="center">contrast(<em>%</em>)</td>
+<td>调整图像的对比度。值是0%的话，图像会全黑。值是100%，图像不变。值可以超过100%，意味着会运用更低的对比。若没有设置值，默认是1。</td>
+</tr>
+<tr>
+<td align="center">drop-shadow(<em>h-shadow v-shadow blur spread color</em>)</td>
+<td>给图像设置一个阴影效果。阴影是合成在图像下面，可以有模糊度的，可以以特定颜色画出的遮罩图的偏移版本。 函数接受<shadow>(在CSS3背景中定义)类型的值，除了”inset”关键字是不允许的。该函数与已有的box-shadow box-shadow属性很相似；不同之处在于，通过滤镜，一些浏览器为了更好的性能会提供硬件加速。参数如下：<offset-x><offset-y>(必须)这是设置阴影偏移量的两个 值. <offset-x> 设定水平方向距离. 负值会使阴影出现在元素左边. <offset-y>设定垂直距离.负值会使阴影出现在元素上方。查看<length>可能的单位.<strong>如果两个值都是0</strong>, 则阴影出现在元素正后面 (如果设置了 and/or ，会有模糊效果).<blur-radius> (可选)这是第三个code&gt;值. 值越大，越模糊，则阴影会变得更大更淡.不允许负值 若未设定，默认是0 (则阴影的边界很锐利).<spread-radius>(可选)这是第四个 值. 正值会使阴影扩张和变大，负值会是阴影缩小.若未设定，默认是0 (阴影会与元素一样大小). 注意: Webkit, 以及一些其他浏览器 不支持第四个长度，如果加了也不会渲染。 <color> (可选)查看 该值可能的关键字和标记。若未设定，颜色值基于浏览器。在Gecko (Firefox), Presto (Opera)和Trident (Internet Explorer)中， 会应用color<strong>color</strong>属性的值。另外, 如果颜色值省略，WebKit中阴影是透明的。</color></spread-radius></blur-radius></length></offset-y></offset-x></offset-y></offset-x></shadow></td>
+</tr>
+<tr>
+<td align="center">grayscale(<em>%</em>)</td>
+<td>将图像转换为灰度图像。值定义转换的比例。值为100%则完全转为灰度图像，值为0%图像无变化。值在0%到100%之间，则是效果的线性乘子。若未设置，值默认是0；</td>
+</tr>
+<tr>
+<td align="center">hue-rotate(<em>deg</em>)</td>
+<td>给图像应用色相旋转。”angle”一值设定图像会被调整的色环角度值。值为0deg，则图像无变化。若值未设置，默认值是0deg。该值虽然没有最大值，超过360deg的值相当于又绕一圈。</td>
+</tr>
+<tr>
+<td align="center">invert(<em>%</em>)</td>
+<td>反转输入图像。值定义转换的比例。100%的价值是完全反转。值为0%则图像无变化。值在0%和100%之间，则是效果的线性乘子。 若值未设置，值默认是0。</td>
+</tr>
+<tr>
+<td align="center">opacity(<em>%</em>)</td>
+<td>转化图像的透明程度。值定义转换的比例。值为0%则是完全透明，值为100%则图像无变化。值在0%和100%之间，则是效果的线性乘子，也相当于图像样本乘以数量。 若值未设置，值默认是1。该函数与已有的opacity属性很相似，不同之处在于通过filter，一些浏览器为了提升性能会提供硬件加速。</td>
+</tr>
+<tr>
+<td align="center">saturate(<em>%</em>)</td>
+<td>转换图像饱和度。值定义转换的比例。值为0%则是完全不饱和，值为100%则图像无变化。其他值，则是效果的线性乘子。超过100%的值是允许的，则有更高的饱和度。 若值未设置，值默认是1。</td>
+</tr>
+<tr>
+<td align="center">sepia(<em>%</em>)</td>
+<td>将图像转换为深褐色。值定义转换的比例。值为100%则完全是深褐色的，值为0%图像无变化。值在0%到100%之间，则是效果的线性乘子。若未设置，值默认是0；</td>
+</tr>
+<tr>
+<td align="center">url()</td>
+<td>URL函数接受一个XML文件，该文件设置了 一个SVG滤镜，且可以包含一个锚点来指定一个具体的滤镜元素。例如：<code>filter: url(svg-url#element-id)</code></td>
+</tr>
+<tr>
+<td align="center">initial</td>
+<td>设置属性为默认值</td>
+</tr>
+<tr>
+<td align="center">inherit</td>
+<td>从父元素继承该属性</td>
+</tr>
+</tbody></table>
+<h6 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h6><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">img &#123;</span><br><span class="line">    width: 33%;</span><br><span class="line">    height: auto;</span><br><span class="line">    float: left; </span><br><span class="line">&#125;</span><br><span class="line"><span class="css"><span class="comment">/*模糊*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.blur</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">blur</span>(4px);<span class="attribute">filter</span>: <span class="built_in">blur</span>(4px);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*亮度*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.brightness</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">brightness</span>(0.30);<span class="attribute">filter</span>: <span class="built_in">brightness</span>(0.30);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*对比度*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.contrast</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">contrast</span>(180%);<span class="attribute">filter</span>: <span class="built_in">contrast</span>(180%);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*灰度*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.grayscale</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">grayscale</span>(100%);<span class="attribute">filter</span>: <span class="built_in">grayscale</span>(100%);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*色相旋转*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.huerotate</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">hue-rotate</span>(180deg);<span class="attribute">filter</span>: <span class="built_in">hue-rotate</span>(180deg);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*反色*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.invert</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">invert</span>(100%);<span class="attribute">filter</span>: <span class="built_in">invert</span>(100%);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*透明度*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.opacity</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">opacity</span>(50%);<span class="attribute">filter</span>: <span class="built_in">opacity</span>(50%);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*饱和度*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.saturate</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">saturate</span>(7); <span class="attribute">filter</span>: <span class="built_in">saturate</span>(7);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*深褐色*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.sepia</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">sepia</span>(100%);<span class="attribute">filter</span>: <span class="built_in">sepia</span>(100%);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*阴影*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.shadow</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">drop-shadow</span>(8px 8px 10px green);<span class="attribute">filter</span>: <span class="built_in">drop-shadow</span>(8px 8px 10px green);&#125;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">strong</span>&gt;</span>注意：<span class="tag">&lt;/<span class="name">strong</span>&gt;</span> Internet Explorer 不支持 filter 属性。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"blur"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"brightness"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"contrast"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"grayscale"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"huerotate"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"invert"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"opacity"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"saturate"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"sepia"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"shadow"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
 ]]></content>
       <tags>
-        <tag>IDEA</tag>
+        <tag>CSS</tag>
       </tags>
   </entry>
   <entry>
-    <title>Linux程序自启动</title>
-    <url>/2019/11/22/Linux%E7%A8%8B%E5%BA%8F%E8%87%AA%E5%90%AF%E5%8A%A8/</url>
-    <content><![CDATA[<p>在Linux系统如何让程序开机时自动启动<a id="more"></a></p>
-<p><img src="/2019/11/22/Linux%E7%A8%8B%E5%BA%8F%E8%87%AA%E5%90%AF%E5%8A%A8/linuxicon.jpg" alt></p>
-<h5 id="修改启动配置文件"><a href="#修改启动配置文件" class="headerlink" title="修改启动配置文件"></a>修改启动配置文件</h5><p>新建一个sh后缀的脚本文件（例如:stratup.sh），把你所要启动的命令编写进去。然后再编辑“<strong>/etc/rc.local</strong>”启动配置文件，把<strong>脚本文件所在位置的全路径</strong>输入进去即可。</p>
-<h5 id="计划定时启动"><a href="#计划定时启动" class="headerlink" title="计划定时启动"></a>计划定时启动</h5><p>通过crontab可以设定程序的执行时间表， 例如让程序在每天的9点，或者每个星期一的9点执行一次。 </p>
-<p>crontab -l 列出时间表；<br>crontab -e编辑时间表；<br>crontab -d删除时间表；</p>
-<p>“-l”查看时间表；<br>“-e”是编辑（其实就是用vim编辑一个特定文件）；<br>“-d”删除，把该用户所有的时间表都删除，一般都是用“-e”编辑把不要了的时间表逐行删除；</p>
-<p>crontab文件的格式是：M H D m d CMD。<br>一个6个字段，其中最后一个CMD就是所要执行的程序，如haha.sh。<br>M：分钟（0-59）<br>H：小时（0-23）<br>D：日期（1-31）<br>m：月份（1-12）<br>d：一个星期中的某天（0-6，0代表周日）</p>
-<p>这5个时间字段用空格隔开，其值可以是一个数字，也可以用逗号隔开的多个数字（或其他） ，如果不需设置，则默认为“*”。</p>
-<p>例如，每天的9点0分执行startup.sh，就是“0 9 * * * /home/programs/./startup.sh”。</p>
-<h5 id="注册系统服务"><a href="#注册系统服务" class="headerlink" title="注册系统服务"></a>注册系统服务</h5><p>操作系统自带的服务，如ssh，ftp等等，开机都是自动启动的，我们也可以通过这种方式让自己开发的程序伪装成系统服务。</p>
-<p>比如我想把某个程序添加为系统服务，可以执行以下命令：</p>
-<p>chkconfig –add 程序名称(首先，添加为系统服务，<strong>注意add前面是两个横杠</strong>)</p>
-<p>chkconfig -leve 启动级别 服务名 on     </p>
-<p>（说明，3级别代表在命令行模式启动，5级别代表在图形界面启动，on表示开启）</p>
-<p>chkconfig -leve 启动级别 服务名 off（说明，off表示关闭自启动）</p>
-<p>例如：chkconfig -level 3 mysql on  (说明：让mysql服务在命令行模式，随系统启动)</p>
-<p>也可以使用  chkconfig –del 服务名称  来删除系统服务</p>
-<p>如果要查看哪些服务被添加为系统服务可以使用命令 ：</p>
-<p>  ntsysv 或者chkconfig –list</p>
-<p>如果要查看哪些程序被添加为自启动，可以使用命令 ：</p>
-<p>cat  /etc/rc.local（查看这个文件中添加了哪些程序路径）</p>
+    <title>Linux系统下MongoDB的安装与配置</title>
+    <url>/2019/11/29/Linux%E7%B3%BB%E7%BB%9F%E4%B8%8BMongoDB%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<p>最简便的安装教程<a id="more"></a></p>
+<h5 id="一键安装MongoDB数据库"><a href="#一键安装MongoDB数据库" class="headerlink" title="一键安装MongoDB数据库"></a>一键安装MongoDB数据库</h5><p>使用wget命令在线一键安装MongoDB数据库，并配置密码123456。</p>
+<p><code>注意：不要在 / 目录下运行</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wget -c http://mirrors.linuxeye.com/oneinstack-full.tar.gz &amp;&amp; tar xzf oneinstack-full.tar.gz &amp;&amp; ./oneinstack/install.sh --db_option 15 --dbinstallmethod 1 --dbrootpwd 123456 --reboot</span><br></pre></td></tr></table></figure>
+
+<p>安装时间较长，请耐心等待。</p>
+<p>如果没有找到wget命令，就使用下列命令安装wget:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum -y install wget</span><br></pre></td></tr></table></figure>
+
+<h5 id="验证超级管理员账户"><a href="#验证超级管理员账户" class="headerlink" title="验证超级管理员账户"></a>验证超级管理员账户</h5><p>重新进入服务器后，在窗口中输入 <em>mongo</em> ，进入数据库。</p>
+<p>输入 <em>db</em> ，默认是在test数据库下，输入 <em>use admin</em> ，进入 <em>admin</em> 数据库。然后再输入<em>db.auth(‘root’,’123456’)</em>，返回1表示验证成功。注意：这个账户密码就是刚刚安装数据库时设置的。</p>
+<h5 id="创建新数据库并配置"><a href="#创建新数据库并配置" class="headerlink" title="创建新数据库并配置"></a>创建新数据库并配置</h5><p>输入<em>use newDatabase</em>，进入新的数据库，然后输入</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">db.createUser(&#123;user: &quot;username&quot;, pwd: &quot;password&quot;, roles: [&#123; role: &quot;dbOwner&quot;, db: &quot;newDatabase&quot; &#125;]&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>username和password分别对应自己设定的账户和密码，db后的集合名一定要和use的名称一致。每创建一个数据库都要进行授权，否则无法访问。</p>
+<h5 id="MongoDB参数配置"><a href="#MongoDB参数配置" class="headerlink" title="MongoDB参数配置"></a>MongoDB参数配置</h5><p>进入到/usr/local/mongodb文件夹，创建data、log目录和mongo.conf文件，用来存储数据及日志文件，其中log目录下创建mongodb.log文件。mongodb.conf文件内用vim写入下列命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">port=27017 #端口</span><br><span class="line">dbpath= /programs/mongodb/data #数据库存文件存放目录</span><br><span class="line">logpath= /programs/mongodb/log/mongodb.log #日志文件存放路径</span><br><span class="line">logappend=true #使用追加的方式写日志</span><br><span class="line">fork=true #以守护进程的方式运行，创建服务器进程</span><br><span class="line">maxConns=100 #最大同时连接数</span><br><span class="line">auth=true #启用验证</span><br><span class="line">journal=true #每次写入会记录一条操作日志（通过journal可以重新构造出写入的数据）。</span><br><span class="line">#即使宕机，启动时wiredtiger会先将数据恢复到最近一次的checkpoint点，然后重放后续的journal日志来恢复。</span><br><span class="line">storageEngine=wiredTiger  #存储引擎有mmapv1、wiretiger、mongorocks</span><br><span class="line">bind_ip = 0.0.0.0  #这样就可外部访问了，例如从win10中去连虚拟机中的MongoDB</span><br></pre></td></tr></table></figure>
+
+<h5 id="开机自启动"><a href="#开机自启动" class="headerlink" title="开机自启动"></a>开机自启动</h5><p>输入下列命令便可以直接在/etc/rc.local文件中写入mongodb services用于开机自启动：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">echo &quot;/usr/local/mongodb/bin/mongod --dbpath=/usr/local/mongodb/data -logpath=/usr/local/mongodb/log -logappend --auth --port=27017&quot; &gt;&gt; /etc/rc.local</span><br></pre></td></tr></table></figure>
+
+<p>配置参数含义</p>
+<table>
+<thead>
+<tr>
+<th>–quiet</th>
+<th align="left">安静输出</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>–port arg</td>
+<td align="left">指定服务端口号，默认端口27017</td>
+</tr>
+<tr>
+<td>–bind_ip arg</td>
+<td align="left">绑定服务IP，若绑定127.0.0.1，则只能本机访问，不指定默认本地所有IP</td>
+</tr>
+<tr>
+<td>–logpath arg</td>
+<td align="left">指定MongoDB日志文件，注意是指定文件不是目录</td>
+</tr>
+<tr>
+<td>–logappend</td>
+<td align="left">使用追加的方式写日志</td>
+</tr>
+<tr>
+<td>–pidfilepath arg</td>
+<td align="left">PID File 的完整路径，如果没有设置，则没有PID文件</td>
+</tr>
+<tr>
+<td>–keyFile arg</td>
+<td align="left">集群的私钥的完整路径，只对于Replica Set 架构有效</td>
+</tr>
+<tr>
+<td>–unixSocketPrefix arg</td>
+<td align="left">UNIX域套接字替代目录,(默认为 /tmp)</td>
+</tr>
+<tr>
+<td>–fork</td>
+<td align="left">以守护进程的方式运行MongoDB，创建服务器进程</td>
+</tr>
+<tr>
+<td>–auth</td>
+<td align="left">启用验证</td>
+</tr>
+<tr>
+<td>–cpu</td>
+<td align="left">定期显示CPU的CPU利用率和iowait</td>
+</tr>
+<tr>
+<td>–dbpath arg</td>
+<td align="left">指定数据库路径</td>
+</tr>
+<tr>
+<td>–diaglog arg</td>
+<td align="left">diaglog选项 0=off 1=W 2=R 3=both 7=W+some reads</td>
+</tr>
+<tr>
+<td>–directoryperdb</td>
+<td align="left">设置每个数据库将被保存在一个单独的目录</td>
+</tr>
+<tr>
+<td>–journal</td>
+<td align="left">启用日志选项，MongoDB的数据操作将会写入到journal文件夹的文件里</td>
+</tr>
+<tr>
+<td>–journalOptions arg</td>
+<td align="left">启用日志诊断选项</td>
+</tr>
+<tr>
+<td>–ipv6</td>
+<td align="left">启用IPv6选项</td>
+</tr>
+<tr>
+<td>–jsonp</td>
+<td align="left">允许JSONP形式通过HTTP访问（有安全影响）</td>
+</tr>
+<tr>
+<td>–maxConns arg</td>
+<td align="left">最大同时连接数 默认2000</td>
+</tr>
+<tr>
+<td>–noauth</td>
+<td align="left">不启用验证</td>
+</tr>
+<tr>
+<td>–nohttpinterface</td>
+<td align="left">关闭http接口，默认关闭27018端口访问</td>
+</tr>
+<tr>
+<td>–noprealloc</td>
+<td align="left">禁用数据文件预分配(往往影响性能)</td>
+</tr>
+<tr>
+<td>–noscripting</td>
+<td align="left">禁用脚本引擎</td>
+</tr>
+<tr>
+<td>–notablescan</td>
+<td align="left">不允许表扫描</td>
+</tr>
+<tr>
+<td>–nounixsocket</td>
+<td align="left">禁用Unix套接字监听</td>
+</tr>
+<tr>
+<td>–nssize arg (=16)</td>
+<td align="left">设置信数据库.ns文件大小(MB)</td>
+</tr>
+<tr>
+<td>–objcheck</td>
+<td align="left">在收到客户数据,检查的有效性，</td>
+</tr>
+<tr>
+<td>–profile arg</td>
+<td align="left">档案参数 0=off 1=slow, 2=all</td>
+</tr>
+<tr>
+<td>–quota</td>
+<td align="left">限制每个数据库的文件数，设置默认为8</td>
+</tr>
+<tr>
+<td>–quotaFiles arg</td>
+<td align="left">number of files allower per db, requires –quota</td>
+</tr>
+<tr>
+<td>–rest</td>
+<td align="left">开启简单的rest API</td>
+</tr>
+<tr>
+<td>–repair</td>
+<td align="left">修复所有数据库run repair on all dbs</td>
+</tr>
+<tr>
+<td>–repairpath arg</td>
+<td align="left">修复库生成的文件的目录,默认为目录名称dbpath</td>
+</tr>
+<tr>
+<td>–slowms arg (=100)</td>
+<td align="left">value of slow for profile and console log</td>
+</tr>
+<tr>
+<td>–smallfiles</td>
+<td align="left">使用较小的默认文件</td>
+</tr>
+<tr>
+<td>–syncdelay arg (=60)</td>
+<td align="left">数据写入磁盘的时间秒数(0=never,不推荐)</td>
+</tr>
+<tr>
+<td>–sysinfo</td>
+<td align="left">打印一些诊断系统信息</td>
+</tr>
+<tr>
+<td>–upgrade</td>
+<td align="left">如果需要升级数据库</td>
+</tr>
+</tbody></table>
 ]]></content>
       <tags>
         <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java小知识</title>
+    <url>/2020/04/26/Java%E5%B0%8F%E7%9F%A5%E8%AF%86/</url>
+    <content><![CDATA[<p>java面试题中的一些知识点<a id="more"></a></p>
+<ol>
+<li><p>方法重载，参数列表不相同，返回值类型可以不同；方法重写，遵循两同-两小-一大规则。两同：方法名和参数列表相同；两小：子类返回值类型小于等于父类的，异常抛出小于等于父类；一大：访问权限修饰符大于等于父类。</p>
+</li>
+<li><p>HashMap可以用null值和空字符串作为K,不过只能有一个。</p>
+</li>
+<li><p>字面量”+”拼接是在编译期间进行的，拼接后的字符串存放在字符串池中；而字符串引用的”+”拼接运算实在运行时进行的，新创建的字符串存放在堆中。</p>
+</li>
+<li><p>数组是一种引用数据类型，长度固定。那么它肯定是继承Object类的，所以里面有equals() 方法。但是没有被重写过，所以它并不是比较数组内的内容，Arrays.equals()才是比较两个数组中的内容。</p>
+</li>
+<li><p>Integer，Float，Double等都继承自Number类。</p>
+</li>
+<li><p>处理异常常用的两种方式：<br> 1、try…catch(捕获处理机制)；<br> 2、throws(冒泡处理机制).<br> 注意细节：使用try…catch块捕获时可以没有catch块,但当没有catch块的时候必须得有finally块。</p>
+</li>
+<li><p>构造方法是一种特殊的方法，具有以下特点。</p>
+<p> （1）构造方法的方法名必须与类名相同。</p>
+<p> （2）构造方法没有返回类型，也不能定义为void，在方法名前面不声明方法类型。</p>
+<p> （3）构造方法的主要作用是完成对象的初始化工作，它能够把定义对象时的参数传给对象的域。</p>
+<p> （4）一个类可以定义多个构造方法，如果在定义类时没有定义构造方法，则编译系统会自动插入一个无参数的默认构造器，这个构造器不执行任何代码。</p>
+<p> （5）构造方法可以重载，以参数的个数，类型，顺序。</p>
+</li>
+<li><table>
+<thead>
+<tr>
+<th align="center"><strong>修饰符</strong></th>
+<th align="center"><strong>类</strong></th>
+<th align="center"><strong>成员访求</strong></th>
+<th align="center"><strong>构造方法</strong></th>
+<th align="center"><strong>成员变量</strong></th>
+<th align="center"><strong>局部变量</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">abstract（抽象的）</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">－</td>
+<td align="center">－</td>
+<td align="center">－</td>
+</tr>
+<tr>
+<td align="center">static （静态的）</td>
+<td align="center">－</td>
+<td align="center">√</td>
+<td align="center">－</td>
+<td align="center">√</td>
+<td align="center">－</td>
+</tr>
+<tr>
+<td align="center">public（公共的）</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">－</td>
+</tr>
+<tr>
+<td align="center">protected（受保护的）</td>
+<td align="center"></td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">－</td>
+</tr>
+<tr>
+<td align="center">private（私有的）</td>
+<td align="center">－</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">－</td>
+</tr>
+<tr>
+<td align="center">synchronized（同步的）</td>
+<td align="center">－</td>
+<td align="center">√</td>
+<td align="center">－</td>
+<td align="center">－</td>
+<td align="center">－</td>
+</tr>
+<tr>
+<td align="center">native（本地的）</td>
+<td align="center">－</td>
+<td align="center">√</td>
+<td align="center">－</td>
+<td align="center">－</td>
+<td align="center">－</td>
+</tr>
+<tr>
+<td align="center">transient（暂时的）</td>
+<td align="center">－</td>
+<td align="center">－</td>
+<td align="center">－</td>
+<td align="center">√</td>
+<td align="center">－</td>
+</tr>
+<tr>
+<td align="center">volatie（易失的）</td>
+<td align="center">－</td>
+<td align="center">－</td>
+<td align="center">－</td>
+<td align="center">√</td>
+<td align="center">－</td>
+</tr>
+<tr>
+<td align="center">final（不要改变的）</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">－</td>
+<td align="center">√</td>
+<td align="center">√</td>
+</tr>
+</tbody></table>
+</li>
+<li><p><img src="/2020/04/26/Java%E5%B0%8F%E7%9F%A5%E8%AF%86/modifer.png" alt></p>
+</li>
+<li><p>接口与抽象类的区别：</p>
+<ul>
+<li><p>抽象类可以有构造方法，接口中不能有构造方法。 </p>
+</li>
+<li><p>抽象类中可以有普通成员变量，接口中没有普通成员变量 </p>
+</li>
+<li><p>抽象类中可以包含非抽象的普通方法，接口中的所有方法必须都是抽象的，不能有非抽象的普通方法。 </p>
+</li>
+<li><p>抽象类中的抽象方法的访问类型可以是public，protected和（默认类型,虽然<br>  eclipse下不报错，但应该也不行），但接口中的抽象方法只能是public类型的，并且默认即为public abstract类型。 </p>
+</li>
+<li><p>抽象类中可以包含静态方法，接口中不能包含静态方法 </p>
+</li>
+<li><p>抽象类和接口中都可以包含静态成员变量，抽象类中的静态成员变量的访问类型可以任意，但接口中定义的变量只能是public static final类型，并且默认即为public static final类型。 </p>
+</li>
+<li><p>一个类可以实现多个接口，但只能继承一个抽象类。 </p>
+</li>
+</ul>
+</li>
+<li><p>线程安全(Thread-safe)的集合对象：</p>
+<ul>
+<li>Vector 线程安全</li>
+<li>HashTable 线程安全</li>
+<li>StringBuffer 线程安全</li>
+</ul>
+<p>非线程安全的集合对象：</p>
+<ul>
+<li>ArrayList </li>
+<li>LinkedList</li>
+<li>HashMap</li>
+<li>HashSet</li>
+<li>TreeMap</li>
+<li>TreeSet</li>
+<li>StringBulider</li>
+</ul>
+</li>
+<li><p>Java有5种方式来创建对象：</p>
+<ol>
+<li><p>使用 new 关键字（最常用）： <code>ObjectName obj = new ObjectName();</code></p>
+</li>
+<li><p>使用反射的Class类的newInstance()方法：</p>
+<p><code>ObjectName obj = ObjectName.class.newInstance();</code></p>
+</li>
+<li><p>使用反射的Constructor类的newInstance()方法： </p>
+<p><code>ObjectName obj = ObjectName.class.getConstructor.newInstance();</code></p>
+</li>
+<li><p>使用对象克隆clone()方法： <code>ObjectName obj = obj.clone();</code></p>
+</li>
+<li><p>使用反序列化（ObjectInputStream）的readObject()方法： </p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span> (ObjectInputStream ois = <span class="keyword">new</span> ObjectInputStream(<span class="keyword">new</span> FileInputStream(FILE_NAME))) &#123; </span><br><span class="line">	ObjectName obj = ois.readObject(); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>java</tag>
       </tags>
   </entry>
   <entry>
@@ -426,364 +761,29 @@
       </tags>
   </entry>
   <entry>
-    <title>Java小知识</title>
-    <url>/2020/04/26/Java%E5%B0%8F%E7%9F%A5%E8%AF%86/</url>
-    <content><![CDATA[<p>java面试题中的一些知识点<a id="more"></a></p>
-<ol>
-<li><p>方法重载，参数列表不相同，返回值类型可以不同；方法重写，遵循两同-两小-一大规则。两同：方法名和参数列表相同；两小：子类返回值类型小于等于父类的，异常抛出小于等于父类；一大：访问权限修饰符大于等于父类。</p>
-</li>
-<li><p>HashMap可以用null值和空字符串作为K,不过只能有一个。</p>
-</li>
-<li><p>字面量”+”拼接是在编译期间进行的，拼接后的字符串存放在字符串池中；而字符串引用的”+”拼接运算实在运行时进行的，新创建的字符串存放在堆中。</p>
-</li>
-<li><p>数组是一种引用数据类型，长度固定。那么它肯定是继承Object类的，所以里面有equals() 方法。但是没有被重写过，所以它并不是比较数组内的内容，Arrays.equals()才是比较两个数组中的内容。</p>
-</li>
-<li><p>Integer，Float，Double等都继承自Number类。</p>
-</li>
-<li><p>处理异常常用的两种方式：<br> 1、try…catch(捕获处理机制)；<br> 2、throws(冒泡处理机制).<br> 注意细节：使用try…catch块捕获时可以没有catch块,但当没有catch块的时候必须得有finally块。</p>
-</li>
-<li><p>构造方法是一种特殊的方法，具有以下特点。</p>
-<p> （1）构造方法的方法名必须与类名相同。</p>
-<p> （2）构造方法没有返回类型，也不能定义为void，在方法名前面不声明方法类型。</p>
-<p> （3）构造方法的主要作用是完成对象的初始化工作，它能够把定义对象时的参数传给对象的域。</p>
-<p> （4）一个类可以定义多个构造方法，如果在定义类时没有定义构造方法，则编译系统会自动插入一个无参数的默认构造器，这个构造器不执行任何代码。</p>
-<p> （5）构造方法可以重载，以参数的个数，类型，顺序。</p>
-</li>
-<li><table>
-<thead>
-<tr>
-<th align="center"><strong>修饰符</strong></th>
-<th align="center"><strong>类</strong></th>
-<th align="center"><strong>成员访求</strong></th>
-<th align="center"><strong>构造方法</strong></th>
-<th align="center"><strong>成员变量</strong></th>
-<th align="center"><strong>局部变量</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">abstract（抽象的）</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">－</td>
-<td align="center">－</td>
-<td align="center">－</td>
-</tr>
-<tr>
-<td align="center">static （静态的）</td>
-<td align="center">－</td>
-<td align="center">√</td>
-<td align="center">－</td>
-<td align="center">√</td>
-<td align="center">－</td>
-</tr>
-<tr>
-<td align="center">public（公共的）</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">－</td>
-</tr>
-<tr>
-<td align="center">protected（受保护的）</td>
-<td align="center"></td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">－</td>
-</tr>
-<tr>
-<td align="center">private（私有的）</td>
-<td align="center">－</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">－</td>
-</tr>
-<tr>
-<td align="center">synchronized（同步的）</td>
-<td align="center">－</td>
-<td align="center">√</td>
-<td align="center">－</td>
-<td align="center">－</td>
-<td align="center">－</td>
-</tr>
-<tr>
-<td align="center">native（本地的）</td>
-<td align="center">－</td>
-<td align="center">√</td>
-<td align="center">－</td>
-<td align="center">－</td>
-<td align="center">－</td>
-</tr>
-<tr>
-<td align="center">transient（暂时的）</td>
-<td align="center">－</td>
-<td align="center">－</td>
-<td align="center">－</td>
-<td align="center">√</td>
-<td align="center">－</td>
-</tr>
-<tr>
-<td align="center">volatie（易失的）</td>
-<td align="center">－</td>
-<td align="center">－</td>
-<td align="center">－</td>
-<td align="center">√</td>
-<td align="center">－</td>
-</tr>
-<tr>
-<td align="center">final（不要改变的）</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">－</td>
-<td align="center">√</td>
-<td align="center">√</td>
-</tr>
-</tbody></table>
-</li>
-<li><p><img src="/2020/04/26/Java%E5%B0%8F%E7%9F%A5%E8%AF%86/modifer.png" alt></p>
-</li>
-<li><p>接口与抽象类的区别：</p>
-<ul>
-<li><p>抽象类可以有构造方法，接口中不能有构造方法。 </p>
-</li>
-<li><p>抽象类中可以有普通成员变量，接口中没有普通成员变量 </p>
-</li>
-<li><p>抽象类中可以包含非抽象的普通方法，接口中的所有方法必须都是抽象的，不能有非抽象的普通方法。 </p>
-</li>
-<li><p>抽象类中的抽象方法的访问类型可以是public，protected和（默认类型,虽然<br>  eclipse下不报错，但应该也不行），但接口中的抽象方法只能是public类型的，并且默认即为public abstract类型。 </p>
-</li>
-<li><p>抽象类中可以包含静态方法，接口中不能包含静态方法 </p>
-</li>
-<li><p>抽象类和接口中都可以包含静态成员变量，抽象类中的静态成员变量的访问类型可以任意，但接口中定义的变量只能是public static final类型，并且默认即为public static final类型。 </p>
-</li>
-<li><p>一个类可以实现多个接口，但只能继承一个抽象类。 </p>
-</li>
-</ul>
-</li>
-<li><p>线程安全(Thread-safe)的集合对象：</p>
-<ul>
-<li>Vector 线程安全</li>
-<li>HashTable 线程安全</li>
-<li>StringBuffer 线程安全</li>
-</ul>
-<p>非线程安全的集合对象：</p>
-<ul>
-<li>ArrayList </li>
-<li>LinkedList</li>
-<li>HashMap</li>
-<li>HashSet</li>
-<li>TreeMap</li>
-<li>TreeSet</li>
-<li>StringBulider</li>
-</ul>
-</li>
-<li><p>Java有5种方式来创建对象：</p>
-<ol>
-<li><p>使用 new 关键字（最常用）： <code>ObjectName obj = new ObjectName();</code></p>
-</li>
-<li><p>使用反射的Class类的newInstance()方法：</p>
-<p><code>ObjectName obj = ObjectName.class.newInstance();</code></p>
-</li>
-<li><p>使用反射的Constructor类的newInstance()方法： </p>
-<p><code>ObjectName obj = ObjectName.class.getConstructor.newInstance();</code></p>
-</li>
-<li><p>使用对象克隆clone()方法： <code>ObjectName obj = obj.clone();</code></p>
-</li>
-<li><p>使用反序列化（ObjectInputStream）的readObject()方法： </p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span> (ObjectInputStream ois = <span class="keyword">new</span> ObjectInputStream(<span class="keyword">new</span> FileInputStream(FILE_NAME))) &#123; </span><br><span class="line">	ObjectName obj = ois.readObject(); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-</li>
-</ol>
-]]></content>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux系统下MongoDB的安装与配置</title>
-    <url>/2019/11/29/Linux%E7%B3%BB%E7%BB%9F%E4%B8%8BMongoDB%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<p>最简便的安装教程<a id="more"></a></p>
-<h5 id="一键安装MongoDB数据库"><a href="#一键安装MongoDB数据库" class="headerlink" title="一键安装MongoDB数据库"></a>一键安装MongoDB数据库</h5><p>使用wget命令在线一键安装MongoDB数据库，并配置密码123456。</p>
-<p><code>注意：不要在 / 目录下运行</code></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wget -c http://mirrors.linuxeye.com/oneinstack-full.tar.gz &amp;&amp; tar xzf oneinstack-full.tar.gz &amp;&amp; ./oneinstack/install.sh --db_option 15 --dbinstallmethod 1 --dbrootpwd 123456 --reboot</span><br></pre></td></tr></table></figure>
-
-<p>安装时间较长，请耐心等待。</p>
-<p>如果没有找到wget命令，就使用下列命令安装wget:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum -y install wget</span><br></pre></td></tr></table></figure>
-
-<h5 id="验证超级管理员账户"><a href="#验证超级管理员账户" class="headerlink" title="验证超级管理员账户"></a>验证超级管理员账户</h5><p>重新进入服务器后，在窗口中输入 <em>mongo</em> ，进入数据库。</p>
-<p>输入 <em>db</em> ，默认是在test数据库下，输入 <em>use admin</em> ，进入 <em>admin</em> 数据库。然后再输入<em>db.auth(‘root’,’123456’)</em>，返回1表示验证成功。注意：这个账户密码就是刚刚安装数据库时设置的。</p>
-<h5 id="创建新数据库并配置"><a href="#创建新数据库并配置" class="headerlink" title="创建新数据库并配置"></a>创建新数据库并配置</h5><p>输入<em>use newDatabase</em>，进入新的数据库，然后输入</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">db.createUser(&#123;user: &quot;username&quot;, pwd: &quot;password&quot;, roles: [&#123; role: &quot;dbOwner&quot;, db: &quot;newDatabase&quot; &#125;]&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>username和password分别对应自己设定的账户和密码，db后的集合名一定要和use的名称一致。每创建一个数据库都要进行授权，否则无法访问。</p>
-<h5 id="MongoDB参数配置"><a href="#MongoDB参数配置" class="headerlink" title="MongoDB参数配置"></a>MongoDB参数配置</h5><p>进入到/usr/local/mongodb文件夹，创建data、log目录和mongo.conf文件，用来存储数据及日志文件，其中log目录下创建mongodb.log文件。mongodb.conf文件内用vim写入下列命令：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">port=27017 #端口</span><br><span class="line">dbpath= /programs/mongodb/data #数据库存文件存放目录</span><br><span class="line">logpath= /programs/mongodb/log/mongodb.log #日志文件存放路径</span><br><span class="line">logappend=true #使用追加的方式写日志</span><br><span class="line">fork=true #以守护进程的方式运行，创建服务器进程</span><br><span class="line">maxConns=100 #最大同时连接数</span><br><span class="line">auth=true #启用验证</span><br><span class="line">journal=true #每次写入会记录一条操作日志（通过journal可以重新构造出写入的数据）。</span><br><span class="line">#即使宕机，启动时wiredtiger会先将数据恢复到最近一次的checkpoint点，然后重放后续的journal日志来恢复。</span><br><span class="line">storageEngine=wiredTiger  #存储引擎有mmapv1、wiretiger、mongorocks</span><br><span class="line">bind_ip = 0.0.0.0  #这样就可外部访问了，例如从win10中去连虚拟机中的MongoDB</span><br></pre></td></tr></table></figure>
-
-<h5 id="开机自启动"><a href="#开机自启动" class="headerlink" title="开机自启动"></a>开机自启动</h5><p>输入下列命令便可以直接在/etc/rc.local文件中写入mongodb services用于开机自启动：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">echo &quot;/usr/local/mongodb/bin/mongod --dbpath=/usr/local/mongodb/data -logpath=/usr/local/mongodb/log -logappend --auth --port=27017&quot; &gt;&gt; /etc/rc.local</span><br></pre></td></tr></table></figure>
-
-<p>配置参数含义</p>
-<table>
-<thead>
-<tr>
-<th>–quiet</th>
-<th align="left">安静输出</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>–port arg</td>
-<td align="left">指定服务端口号，默认端口27017</td>
-</tr>
-<tr>
-<td>–bind_ip arg</td>
-<td align="left">绑定服务IP，若绑定127.0.0.1，则只能本机访问，不指定默认本地所有IP</td>
-</tr>
-<tr>
-<td>–logpath arg</td>
-<td align="left">指定MongoDB日志文件，注意是指定文件不是目录</td>
-</tr>
-<tr>
-<td>–logappend</td>
-<td align="left">使用追加的方式写日志</td>
-</tr>
-<tr>
-<td>–pidfilepath arg</td>
-<td align="left">PID File 的完整路径，如果没有设置，则没有PID文件</td>
-</tr>
-<tr>
-<td>–keyFile arg</td>
-<td align="left">集群的私钥的完整路径，只对于Replica Set 架构有效</td>
-</tr>
-<tr>
-<td>–unixSocketPrefix arg</td>
-<td align="left">UNIX域套接字替代目录,(默认为 /tmp)</td>
-</tr>
-<tr>
-<td>–fork</td>
-<td align="left">以守护进程的方式运行MongoDB，创建服务器进程</td>
-</tr>
-<tr>
-<td>–auth</td>
-<td align="left">启用验证</td>
-</tr>
-<tr>
-<td>–cpu</td>
-<td align="left">定期显示CPU的CPU利用率和iowait</td>
-</tr>
-<tr>
-<td>–dbpath arg</td>
-<td align="left">指定数据库路径</td>
-</tr>
-<tr>
-<td>–diaglog arg</td>
-<td align="left">diaglog选项 0=off 1=W 2=R 3=both 7=W+some reads</td>
-</tr>
-<tr>
-<td>–directoryperdb</td>
-<td align="left">设置每个数据库将被保存在一个单独的目录</td>
-</tr>
-<tr>
-<td>–journal</td>
-<td align="left">启用日志选项，MongoDB的数据操作将会写入到journal文件夹的文件里</td>
-</tr>
-<tr>
-<td>–journalOptions arg</td>
-<td align="left">启用日志诊断选项</td>
-</tr>
-<tr>
-<td>–ipv6</td>
-<td align="left">启用IPv6选项</td>
-</tr>
-<tr>
-<td>–jsonp</td>
-<td align="left">允许JSONP形式通过HTTP访问（有安全影响）</td>
-</tr>
-<tr>
-<td>–maxConns arg</td>
-<td align="left">最大同时连接数 默认2000</td>
-</tr>
-<tr>
-<td>–noauth</td>
-<td align="left">不启用验证</td>
-</tr>
-<tr>
-<td>–nohttpinterface</td>
-<td align="left">关闭http接口，默认关闭27018端口访问</td>
-</tr>
-<tr>
-<td>–noprealloc</td>
-<td align="left">禁用数据文件预分配(往往影响性能)</td>
-</tr>
-<tr>
-<td>–noscripting</td>
-<td align="left">禁用脚本引擎</td>
-</tr>
-<tr>
-<td>–notablescan</td>
-<td align="left">不允许表扫描</td>
-</tr>
-<tr>
-<td>–nounixsocket</td>
-<td align="left">禁用Unix套接字监听</td>
-</tr>
-<tr>
-<td>–nssize arg (=16)</td>
-<td align="left">设置信数据库.ns文件大小(MB)</td>
-</tr>
-<tr>
-<td>–objcheck</td>
-<td align="left">在收到客户数据,检查的有效性，</td>
-</tr>
-<tr>
-<td>–profile arg</td>
-<td align="left">档案参数 0=off 1=slow, 2=all</td>
-</tr>
-<tr>
-<td>–quota</td>
-<td align="left">限制每个数据库的文件数，设置默认为8</td>
-</tr>
-<tr>
-<td>–quotaFiles arg</td>
-<td align="left">number of files allower per db, requires –quota</td>
-</tr>
-<tr>
-<td>–rest</td>
-<td align="left">开启简单的rest API</td>
-</tr>
-<tr>
-<td>–repair</td>
-<td align="left">修复所有数据库run repair on all dbs</td>
-</tr>
-<tr>
-<td>–repairpath arg</td>
-<td align="left">修复库生成的文件的目录,默认为目录名称dbpath</td>
-</tr>
-<tr>
-<td>–slowms arg (=100)</td>
-<td align="left">value of slow for profile and console log</td>
-</tr>
-<tr>
-<td>–smallfiles</td>
-<td align="left">使用较小的默认文件</td>
-</tr>
-<tr>
-<td>–syncdelay arg (=60)</td>
-<td align="left">数据写入磁盘的时间秒数(0=never,不推荐)</td>
-</tr>
-<tr>
-<td>–sysinfo</td>
-<td align="left">打印一些诊断系统信息</td>
-</tr>
-<tr>
-<td>–upgrade</td>
-<td align="left">如果需要升级数据库</td>
-</tr>
-</tbody></table>
+    <title>Linux程序自启动</title>
+    <url>/2019/11/22/Linux%E7%A8%8B%E5%BA%8F%E8%87%AA%E5%90%AF%E5%8A%A8/</url>
+    <content><![CDATA[<p>在Linux系统如何让程序开机时自动启动<a id="more"></a></p>
+<p><img src="/2019/11/22/Linux%E7%A8%8B%E5%BA%8F%E8%87%AA%E5%90%AF%E5%8A%A8/linuxicon.jpg" alt></p>
+<h5 id="修改启动配置文件"><a href="#修改启动配置文件" class="headerlink" title="修改启动配置文件"></a>修改启动配置文件</h5><p>新建一个sh后缀的脚本文件（例如:stratup.sh），把你所要启动的命令编写进去。然后再编辑“<strong>/etc/rc.local</strong>”启动配置文件，把<strong>脚本文件所在位置的全路径</strong>输入进去即可。</p>
+<h5 id="计划定时启动"><a href="#计划定时启动" class="headerlink" title="计划定时启动"></a>计划定时启动</h5><p>通过crontab可以设定程序的执行时间表， 例如让程序在每天的9点，或者每个星期一的9点执行一次。 </p>
+<p>crontab -l 列出时间表；<br>crontab -e编辑时间表；<br>crontab -d删除时间表；</p>
+<p>“-l”查看时间表；<br>“-e”是编辑（其实就是用vim编辑一个特定文件）；<br>“-d”删除，把该用户所有的时间表都删除，一般都是用“-e”编辑把不要了的时间表逐行删除；</p>
+<p>crontab文件的格式是：M H D m d CMD。<br>一个6个字段，其中最后一个CMD就是所要执行的程序，如haha.sh。<br>M：分钟（0-59）<br>H：小时（0-23）<br>D：日期（1-31）<br>m：月份（1-12）<br>d：一个星期中的某天（0-6，0代表周日）</p>
+<p>这5个时间字段用空格隔开，其值可以是一个数字，也可以用逗号隔开的多个数字（或其他） ，如果不需设置，则默认为“*”。</p>
+<p>例如，每天的9点0分执行startup.sh，就是“0 9 * * * /home/programs/./startup.sh”。</p>
+<h5 id="注册系统服务"><a href="#注册系统服务" class="headerlink" title="注册系统服务"></a>注册系统服务</h5><p>操作系统自带的服务，如ssh，ftp等等，开机都是自动启动的，我们也可以通过这种方式让自己开发的程序伪装成系统服务。</p>
+<p>比如我想把某个程序添加为系统服务，可以执行以下命令：</p>
+<p>chkconfig –add 程序名称(首先，添加为系统服务，<strong>注意add前面是两个横杠</strong>)</p>
+<p>chkconfig -leve 启动级别 服务名 on     </p>
+<p>（说明，3级别代表在命令行模式启动，5级别代表在图形界面启动，on表示开启）</p>
+<p>chkconfig -leve 启动级别 服务名 off（说明，off表示关闭自启动）</p>
+<p>例如：chkconfig -level 3 mysql on  (说明：让mysql服务在命令行模式，随系统启动)</p>
+<p>也可以使用  chkconfig –del 服务名称  来删除系统服务</p>
+<p>如果要查看哪些服务被添加为系统服务可以使用命令 ：</p>
+<p>  ntsysv 或者chkconfig –list</p>
+<p>如果要查看哪些程序被添加为自启动，可以使用命令 ：</p>
+<p>cat  /etc/rc.local（查看这个文件中添加了哪些程序路径）</p>
 ]]></content>
       <tags>
         <tag>Linux</tag>
@@ -852,6 +852,347 @@
       </tags>
   </entry>
   <entry>
+    <title>Python3的正则表达式</title>
+    <url>/2020/02/13/Python3%E7%9A%84%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</url>
+    <content><![CDATA[<p>主要介绍 Python 中常用的正则表达式处理函数。<a id="more"></a></p>
+<h6 id="正则表达式模式"><a href="#正则表达式模式" class="headerlink" title="正则表达式模式"></a>正则表达式模式</h6><p>&emsp;&emsp;字母和数字代表它们自身，标点符号只有被转义时才匹配自身，反斜杠本身需要使用反斜杠转义。</p>
+<table>
+<thead>
+<tr>
+<th align="center">模式</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">^</td>
+<td align="center">匹配字符串的开头。</td>
+</tr>
+<tr>
+<td align="center">$</td>
+<td align="center">匹配字符串的末尾。</td>
+</tr>
+<tr>
+<td align="center">.</td>
+<td align="center">匹配任意字符，除了换行符。</td>
+</tr>
+<tr>
+<td align="center">[…]</td>
+<td align="center">用来表示一组字符,单独列出：[amk] 匹配 ‘a’，’m’或’k’</td>
+</tr>
+<tr>
+<td align="center">[^…]</td>
+<td align="center">不在[]中的字符：[^abc] 匹配除了a,b,c之外的字符。</td>
+</tr>
+<tr>
+<td align="center">re*</td>
+<td align="center">匹配0个或多个的表达式。</td>
+</tr>
+<tr>
+<td align="center">re+</td>
+<td align="center">匹配1个或多个的表达式。</td>
+</tr>
+<tr>
+<td align="center">re?</td>
+<td align="center">匹配0个或1个由前面的正则表达式定义的片段，非贪婪方式</td>
+</tr>
+<tr>
+<td align="center">re{ n}</td>
+<td align="center">匹配n个前面表达式。例如，”o{2}”不能匹配”Bob”中的”o”，但是能匹配”food”中的两个o。</td>
+</tr>
+<tr>
+<td align="center">re{ n,}</td>
+<td align="center">精确匹配n个前面表达式。例如，”o{2,}”不能匹配”Bob”中的”o”，但能匹配”foooood”中的所有o。”o{1,}”等价于”o+”。”o{0,}”则等价于”o*”。</td>
+</tr>
+<tr>
+<td align="center">re{ n, m}</td>
+<td align="center">匹配 n 到 m 次由前面的正则表达式定义的片段，贪婪方式。</td>
+</tr>
+<tr>
+<td align="center">a | b</td>
+<td align="center">匹配a或b。</td>
+</tr>
+<tr>
+<td align="center">(re)</td>
+<td align="center">匹配括号内的表达式，也表示一个组。</td>
+</tr>
+<tr>
+<td align="center">(?imx)</td>
+<td align="center">正则表达式包含三种可选标志：i, m, 或 x 。只影响括号中的区域。</td>
+</tr>
+<tr>
+<td align="center">(?-imx)</td>
+<td align="center">正则表达式关闭 i, m, 或 x 可选标志。只影响括号中的区域。</td>
+</tr>
+<tr>
+<td align="center">(?: re)</td>
+<td align="center">类似 (…), 但是不表示一个组。</td>
+</tr>
+<tr>
+<td align="center">(?imx: re)</td>
+<td align="center">在括号中使用i, m, 或 x 可选标志。</td>
+</tr>
+<tr>
+<td align="center">(?-imx: re)</td>
+<td align="center">在括号中不使用i, m, 或 x 可选标志。</td>
+</tr>
+<tr>
+<td align="center">(?#…)</td>
+<td align="center">注释。</td>
+</tr>
+<tr>
+<td align="center">(?= re)</td>
+<td align="center">前向肯定界定符。如果所含正则表达式，以 … 表示，在当前位置成功匹配时成功，否则失败。但一旦所含表达式已经尝试，匹配引擎根本没有提高；模式的剩余部分还要尝试界定符的右边。</td>
+</tr>
+<tr>
+<td align="center">(?! re)</td>
+<td align="center">前向否定界定符。与肯定界定符相反；当所含表达式不能在字符串当前位置匹配时成功。</td>
+</tr>
+<tr>
+<td align="center">(?&gt; re)</td>
+<td align="center">匹配的独立模式，省去回溯。</td>
+</tr>
+<tr>
+<td align="center">\w</td>
+<td align="center">匹配数字字母下划线。</td>
+</tr>
+<tr>
+<td align="center">\W</td>
+<td align="center">匹配非数字字母下划线。等价于 [ ^A-Za-z0-9_ ]。</td>
+</tr>
+<tr>
+<td align="center">\s</td>
+<td align="center">匹配任意空白字符，等价于 [\t\n\r\f]。</td>
+</tr>
+<tr>
+<td align="center">\S</td>
+<td align="center">匹配任意非空字符。等价于 [ ^ \f\n\r\t\v ]。</td>
+</tr>
+<tr>
+<td align="center">\d</td>
+<td align="center">匹配任意数字，等价于 [0-9]。</td>
+</tr>
+<tr>
+<td align="center">\D</td>
+<td align="center">匹配任意非数字。等价于 [ ^0-9 ]。</td>
+</tr>
+<tr>
+<td align="center">\A</td>
+<td align="center">匹配字符串开始。</td>
+</tr>
+<tr>
+<td align="center">\Z</td>
+<td align="center">匹配字符串结束，如果是存在换行，只匹配到换行前的结束字符串。</td>
+</tr>
+<tr>
+<td align="center">\z</td>
+<td align="center">匹配字符串结束。</td>
+</tr>
+<tr>
+<td align="center">\G</td>
+<td align="center">匹配最后匹配完成的位置。</td>
+</tr>
+<tr>
+<td align="center">\b</td>
+<td align="center">匹配一个单词边界，也就是指单词和空格间的位置。例如， ‘er\b’ 可以匹配”never” 中的 ‘er’，但不能匹配 “verb” 中的 ‘er’。</td>
+</tr>
+<tr>
+<td align="center">\B</td>
+<td align="center">匹配非单词边界。’er\B’ 能匹配 “verb” 中的 ‘er’，但不能匹配 “never” 中的 ‘er’。</td>
+</tr>
+<tr>
+<td align="center">\n, \t, 等。</td>
+<td align="center">匹配一个换行符。匹配一个制表符, 等。</td>
+</tr>
+<tr>
+<td align="center">\1…\9</td>
+<td align="center">匹配第n个分组的内容。</td>
+</tr>
+<tr>
+<td align="center">\10</td>
+<td align="center">匹配第n个分组的内容，如果它经匹配。否则指的是八进制字符码的表达式。</td>
+</tr>
+</tbody></table>
+<h6 id="正则表达式修饰符-可选标志"><a href="#正则表达式修饰符-可选标志" class="headerlink" title="正则表达式修饰符-可选标志"></a>正则表达式修饰符-可选标志</h6><p>多个标志可以用|来指定。</p>
+<table>
+<thead>
+<tr>
+<th align="center">修饰符</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">re.I</td>
+<td align="center">使匹配对大小写不敏感</td>
+</tr>
+<tr>
+<td align="center">re.L</td>
+<td align="center">做本地化识别（locale-aware）匹配</td>
+</tr>
+<tr>
+<td align="center">re.M</td>
+<td align="center">多行匹配，影响 ^ 和 $</td>
+</tr>
+<tr>
+<td align="center">re.S</td>
+<td align="center">使 . 匹配包括换行在内的所有字符</td>
+</tr>
+<tr>
+<td align="center">re.U</td>
+<td align="center">根据Unicode字符集解析字符。这个标志影响 \w, \W, \b, \B.</td>
+</tr>
+<tr>
+<td align="center">re.X</td>
+<td align="center">该标志通过给予你更灵活的格式以便你将正则表达式写得更易于理解。</td>
+</tr>
+</tbody></table>
+<h6 id="正则表达式对象"><a href="#正则表达式对象" class="headerlink" title="正则表达式对象"></a>正则表达式对象</h6><ol>
+<li><p>re.RegexObject</p>
+<p>re.compile()返回RegexObject对象。</p>
+</li>
+<li><p>re.MatchObject</p>
+<p>group()返回被RE匹配的字符串</p>
+<ul>
+<li>start()返回匹配开始的位置</li>
+<li>end()返回匹配结束的位置</li>
+<li>span()返回一个元组包含匹配(开始，结束)的位置</li>
+</ul>
+</li>
+</ol>
+<h6 id="re-match函数"><a href="#re-match函数" class="headerlink" title="re.match函数"></a>re.match函数</h6><p>&emsp;&emsp;re.match尝试从字符串的起始位置匹配一个模式，如果不是起始位置匹配成功的话，match()就返回none。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">re.match(pattern, string, flag=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="center">参数</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">pattern</td>
+<td align="center">匹配的正则表达式</td>
+</tr>
+<tr>
+<td align="center">string</td>
+<td align="center">要匹配的字符串。</td>
+</tr>
+<tr>
+<td align="center">flags</td>
+<td align="center">标志位，用于控制正则表达式的匹配方式，如：是否区分大小写，多行匹配等等</td>
+</tr>
+</tbody></table>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">print(re.match(<span class="string">'www'</span>, <span class="string">'www.runoob.com'</span>).span())  <span class="comment"># 在起始位置匹配</span></span><br><span class="line">print(re.match(<span class="string">'com'</span>, <span class="string">'www.runoob.com'</span>))         <span class="comment"># 不在起始位置匹配</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(0,3)</span><br><span class="line">None</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;使用group(num) 或 groups()可以匹配对象函数来获取匹配表达式</p>
+<table>
+<thead>
+<tr>
+<th align="center">匹配对象方法</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">group(num=0)</td>
+<td align="center">匹配的整个表达式的字符串，group() 可以一次输入多个组号，在这种情况下它将返回一个包含那些组所对应值的元组。</td>
+</tr>
+<tr>
+<td align="center">groups()</td>
+<td align="center">返回一个包含所有小组字符串的元组，从 1 到 所含的小组号。</td>
+</tr>
+</tbody></table>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"> </span><br><span class="line">line = <span class="string">"Cats are smarter than dogs"</span></span><br><span class="line"><span class="comment"># .* 表示任意匹配除换行符（\n、\r）之外的任何单个或多个字符</span></span><br><span class="line">matchObj = re.match( <span class="string">r'(.*) are (.*?) .*'</span>, line, re.M|re.I)</span><br><span class="line"> </span><br><span class="line"><span class="keyword">if</span> matchObj:</span><br><span class="line">   <span class="keyword">print</span> (<span class="string">"matchObj.group() : "</span>, matchObj.group())</span><br><span class="line">   <span class="keyword">print</span> (<span class="string">"matchObj.group(1) : "</span>, matchObj.group(<span class="number">1</span>))</span><br><span class="line">   <span class="keyword">print</span> (<span class="string">"matchObj.group(2) : "</span>, matchObj.group(<span class="number">2</span>))</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">   <span class="keyword">print</span> (<span class="string">"No match!!"</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">matchObj.group() :  Cats are smarter than dogs</span><br><span class="line">matchObj.group(<span class="number">1</span>) :  Cats</span><br><span class="line">matchObj.group(<span class="number">2</span>) :  smarter</span><br></pre></td></tr></table></figure>
+
+<h6 id="re-search方法"><a href="#re-search方法" class="headerlink" title="re.search方法"></a>re.search方法</h6><p>&emsp;&emsp;re.search扫描整个字符串并返回第一个成功的匹配，否则返回None。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">re.search(pattern, string, flags=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"> </span><br><span class="line">print(re.search(<span class="string">'www'</span>, <span class="string">'www.runoob.com'</span>).span())  <span class="comment"># 在起始位置匹配</span></span><br><span class="line">print(re.search(<span class="string">'com'</span>, <span class="string">'www.runoob.com'</span>).span())         <span class="comment"># 不在起始位置匹配</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(0, 3)</span><br><span class="line">(11, 14)</span><br></pre></td></tr></table></figure>
+
+<h6 id="re-match与re-search的区别"><a href="#re-match与re-search的区别" class="headerlink" title="re.match与re.search的区别"></a>re.match与re.search的区别</h6><p>&emsp;&emsp;re.match 只匹配字符串的开始，如果字符串开始不符合正则表达式，则匹配失败，函数返回 None，而 re.search 匹配整个字符串，直到找到一个匹配。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"> </span><br><span class="line">line = <span class="string">"Cats are smarter than dogs"</span></span><br><span class="line"> </span><br><span class="line">matchObj = re.match( <span class="string">r'dogs'</span>, line, re.M|re.I)</span><br><span class="line"><span class="keyword">if</span> matchObj:</span><br><span class="line">   <span class="keyword">print</span> (<span class="string">"match --&gt; matchObj.group() : "</span>, matchObj.group())</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">   <span class="keyword">print</span> (<span class="string">"No match!!"</span>)</span><br><span class="line"> </span><br><span class="line">matchObj = re.search( <span class="string">r'dogs'</span>, line, re.M|re.I)</span><br><span class="line"><span class="keyword">if</span> matchObj:</span><br><span class="line">   <span class="keyword">print</span> (<span class="string">"search --&gt; matchObj.group() : "</span>, matchObj.group())</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">   <span class="keyword">print</span> (<span class="string">"No match!!"</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">No match!!</span><br><span class="line">search --&gt; matchObj.group() :  dogs</span><br></pre></td></tr></table></figure>
+
+<h6 id="re-sub函数"><a href="#re-sub函数" class="headerlink" title="re.sub函数"></a>re.sub函数</h6><p>&emsp;&emsp;re.sub用于替换字符串中匹配项。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">re.sub(pattern, repl, string, count=0, flags=0)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>pattern : 正则中的模式字符串。</li>
+<li>repl : 替换的字符串，也可为一个函数。</li>
+<li>string : 要被查找替换的原始字符串。</li>
+<li>count : 模式匹配后替换的最大次数，默认 0 表示替换所有的匹配。</li>
+<li>flags : 编译时用的匹配模式，数字形式。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"> </span><br><span class="line">phone = <span class="string">"2004-959-559 # 这是一个电话号码"</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># 删除注释</span></span><br><span class="line">num = re.sub(<span class="string">r'#.*$'</span>, <span class="string">""</span>, phone)</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"电话号码 : "</span>, num)</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 移除非数字的内容</span></span><br><span class="line">num = re.sub(<span class="string">r'\D'</span>, <span class="string">""</span>, phone)</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"电话号码 : "</span>, num)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">电话号码 :  2004-959-559 </span><br><span class="line">电话号码 :  2004959559</span><br></pre></td></tr></table></figure>
+
+<p>repl参数也可以是一个函数</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 将匹配的数字乘于 2</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">double</span><span class="params">(matched)</span>:</span></span><br><span class="line">    value = int(matched.group(<span class="string">'value'</span>))</span><br><span class="line">    <span class="keyword">return</span> str(value * <span class="number">2</span>)</span><br><span class="line"> </span><br><span class="line">s = <span class="string">'A23G4HFD567'</span></span><br><span class="line"><span class="comment"># ?P&lt;value&gt;的意思是命名一个名字为value的组，匹配规则符合后面的/d+</span></span><br><span class="line">print(re.sub(<span class="string">'(?P&lt;value&gt;\d+)'</span>, double, s))</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">A46G8HFD1134</span><br></pre></td></tr></table></figure>
+
+<h6 id="complie函数"><a href="#complie函数" class="headerlink" title="complie函数"></a>complie函数</h6><p>&emsp;&emsp;compile 函数用于编译正则表达式，生成一个正则表达式 (Pattern) 对象，供 match() 和 search() 这两个函数使用。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">re.compile(pattern, flags)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>pattern : 一个字符串形式的正则表达式</p>
+</li>
+<li><p>flags 可选，表示匹配模式，比如忽略大小写，多行模式等，具体参数为：</p>
+</li>
+<li><ul>
+<li><p>re.I 忽略大小写</p>
+</li>
+<li><p>re.L 表示特殊字符集 \w, \W, \b, \B, \s, \S 依赖于当前环境</p>
+</li>
+<li><p>re.M 多行模式</p>
+</li>
+<li><p>re.S 即为’ . ‘并且包括换行符在内的任意字符（’ . ‘不包括换行符）</p>
+</li>
+<li><p>re.U 表示特殊字符集 \w, \W, \b, \B, \d, \D, \s, \S 依赖于 Unicode 字符属性数据库</p>
+</li>
+<li><p>re.X 为了增加可读性，忽略空格和’ # ‘后面的注释</p>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt;<span class="keyword">import</span> re</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>pattern = re.compile(<span class="string">r'\d+'</span>)                    <span class="comment"># 用于匹配至少一个数字</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m = pattern.match(<span class="string">'one12twothree34four'</span>)        <span class="comment"># 查找头部，没有匹配</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print( m )</span><br><span class="line"><span class="literal">None</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m = pattern.match(<span class="string">'one12twothree34four'</span>, <span class="number">2</span>, <span class="number">10</span>) <span class="comment"># 从'e'的位置开始匹配，没有匹配</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print( m )</span><br><span class="line"><span class="literal">None</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m = pattern.match(<span class="string">'one12twothree34four'</span>, <span class="number">3</span>, <span class="number">10</span>) <span class="comment"># 从'1'的位置开始匹配，正好匹配</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print( m )                                        <span class="comment"># 返回一个 Match 对象</span></span><br><span class="line">&lt;_sre.SRE_Match object at <span class="number">0x10a42aac0</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m.group(<span class="number">0</span>)   <span class="comment"># 可省略 0</span></span><br><span class="line"><span class="string">'12'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m.start(<span class="number">0</span>)   <span class="comment"># 可省略 0</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m.end(<span class="number">0</span>)     <span class="comment"># 可省略 0</span></span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m.span(<span class="number">0</span>)    <span class="comment"># 可省略 0</span></span><br><span class="line">(<span class="number">3</span>, <span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+
+<h6 id="re-findall"><a href="#re-findall" class="headerlink" title="re.findall"></a>re.findall</h6><p>&emsp;&emsp;在字符串中找到正则表达式所匹配的所有子串，并返回一个列表，如果没有找到匹配的，则返回空列表。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">re.findall(string, pos, endpos)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>string</strong> 待匹配的字符串。</li>
+<li><strong>pos</strong> 可选参数，指定字符串的起始位置，默认为 0。</li>
+<li><strong>endpos</strong> 可选参数，指定字符串的结束位置，默认为字符串的长度。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"> </span><br><span class="line">pattern = re.compile(<span class="string">r'\d+'</span>)   <span class="comment"># 查找数字</span></span><br><span class="line">result1 = pattern.findall(<span class="string">'runoob 123 google 456'</span>)</span><br><span class="line">result2 = pattern.findall(<span class="string">'run88oob123google456'</span>, <span class="number">0</span>, <span class="number">10</span>)</span><br><span class="line"> </span><br><span class="line">print(result1)</span><br><span class="line">print(result2)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[&apos;123&apos;, &apos;456&apos;]</span><br><span class="line">[&apos;88&apos;, &apos;12&apos;]</span><br></pre></td></tr></table></figure>
+
+<h6 id="re-finditer"><a href="#re-finditer" class="headerlink" title="re.finditer"></a>re.finditer</h6><p>&emsp;&emsp;和 findall 类似，在字符串中找到正则表达式所匹配的所有子串，并把它们作为一个迭代器返回。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">re.finditer(pattern, string, flags=0)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"> </span><br><span class="line">it = re.finditer(<span class="string">r"\d+"</span>,<span class="string">"12a32bc43jf3"</span>) </span><br><span class="line"><span class="keyword">for</span> match <span class="keyword">in</span> it: </span><br><span class="line">    <span class="keyword">print</span> (match.group() )</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">12 </span><br><span class="line">32 </span><br><span class="line">43 </span><br><span class="line">3</span><br></pre></td></tr></table></figure>
+
+<h6 id="re-split"><a href="#re-split" class="headerlink" title="re.split"></a>re.split</h6><p>&emsp;&emsp;split 方法按照能够匹配的子串将字符串分割后返回列表。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">re.split(pattern, string, maxsplit=0, flags=0)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt;<span class="keyword">import</span> re</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>re.split(<span class="string">'\W+'</span>, <span class="string">'runoob, runoob, runoob.'</span>)</span><br><span class="line">[<span class="string">'runoob'</span>, <span class="string">'runoob'</span>, <span class="string">'runoob'</span>, <span class="string">''</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>re.split(<span class="string">'(\W+)'</span>, <span class="string">' runoob, runoob, runoob.'</span>) </span><br><span class="line">[<span class="string">''</span>, <span class="string">' '</span>, <span class="string">'runoob'</span>, <span class="string">', '</span>, <span class="string">'runoob'</span>, <span class="string">', '</span>, <span class="string">'runoob'</span>, <span class="string">'.'</span>, <span class="string">''</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>re.split(<span class="string">'\W+'</span>, <span class="string">' runoob, runoob, runoob.'</span>, <span class="number">1</span>) </span><br><span class="line">[<span class="string">''</span>, <span class="string">'runoob, runoob, runoob.'</span>]</span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>re.split(<span class="string">'a*'</span>, <span class="string">'hello world'</span>)   <span class="comment"># 对于一个找不到匹配的字符串而言，split 不会对其作出分割</span></span><br><span class="line">[<span class="string">'hello world'</span>]</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>MQTT的回调类</title>
     <url>/2019/11/21/MQTT%E7%9A%84%E5%9B%9E%E8%B0%83%E7%B1%BB/</url>
     <content><![CDATA[<p>关于MQTT的回调类的实现<a id="more"></a></p>
@@ -883,6 +1224,17 @@
 ]]></content>
       <tags>
         <tag>MQTT</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python爬取电影天堂新片精品</title>
+    <url>/2020/02/12/Python%E7%88%AC%E5%8F%96%E7%94%B5%E5%BD%B1%E5%A4%A9%E5%A0%82%E6%96%B0%E7%89%87%E7%B2%BE%E5%93%81/</url>
+    <content><![CDATA[<p>爬取最新电影，内容包括标题、年代、产地、类别、评分、片场、导演、主演、下载链接。<a id="more"></a></p>
+<h6 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h6><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">base_domain = <span class="string">"https://www.dytt8.net"</span></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">"User-Agent"</span>: <span class="string">"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "</span></span><br><span class="line">                  <span class="string">"(KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36 Edg/80.0.361.111"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_detail_url</span><span class="params">(url)</span>:</span></span><br><span class="line">    resp = requests.get(url, headers=headers)</span><br><span class="line">    <span class="comment"># 解码出现"illegal multibyte sequence"，其他编码无法解决，使用ignore</span></span><br><span class="line">    <span class="comment"># text = resp.content.decode("gbk", errors="ignore")</span></span><br><span class="line">    text = resp.text</span><br><span class="line">    html = etree.HTML(text)</span><br><span class="line">    detail_urls = html.xpath(<span class="string">"//table[@class='tbspan']//a/@href"</span>)</span><br><span class="line">    detail_urls = map(<span class="keyword">lambda</span> url: base_domain + url, detail_urls)</span><br><span class="line">    <span class="keyword">return</span> detail_urls</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_html</span><span class="params">(url)</span>:</span></span><br><span class="line">    resp = requests.get(url, headers=headers)</span><br><span class="line">    text = resp.content.decode(<span class="string">"gbk"</span>, errors=<span class="string">"ignore"</span>)</span><br><span class="line">    html = etree.HTML(text)</span><br><span class="line">    <span class="keyword">return</span> html</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">parse_info</span><span class="params">(info, rule)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> info.replace(rule, <span class="string">""</span>).strip()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">parse_detail_page</span><span class="params">(url)</span>:</span></span><br><span class="line">    movie = &#123;&#125;</span><br><span class="line">    html = get_html(url)</span><br><span class="line">    title = html.xpath(<span class="string">"//div[@class='title_all']//font[@color='#07519a']/text()"</span>)[<span class="number">0</span>]</span><br><span class="line">    movie[<span class="string">"title"</span>] = title</span><br><span class="line">    zooms = html.xpath(<span class="string">"//div[@id='Zoom']"</span>)[<span class="number">0</span>]</span><br><span class="line">    poster = zooms.xpath(<span class="string">".//img/@src"</span>)</span><br><span class="line">    movie[<span class="string">"poster"</span>] = poster</span><br><span class="line"></span><br><span class="line">    infos = zooms.xpath(<span class="string">".//text()"</span>)</span><br><span class="line">    <span class="keyword">for</span> index, info <span class="keyword">in</span> enumerate(infos):</span><br><span class="line">        <span class="keyword">if</span> info.startswith(<span class="string">"◎年　　代"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎年　　代"</span>)</span><br><span class="line">            movie[<span class="string">"year"</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎产　　地"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎产　　地"</span>)</span><br><span class="line">            movie[<span class="string">"country"</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎类　　别"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎类　　别"</span>)</span><br><span class="line">            movie[<span class="string">"category"</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎豆瓣评分"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎豆瓣评分"</span>)</span><br><span class="line">            movie[<span class="string">"score"</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎片　　长"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎片　　长"</span>)</span><br><span class="line">            movie[<span class="string">"timelength"</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎导　　演"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎导　　演"</span>)</span><br><span class="line">            movie[<span class="string">"director"</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎主　　演"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎主　　演"</span>)</span><br><span class="line">            actors = [info]</span><br><span class="line">            <span class="keyword">for</span> x <span class="keyword">in</span> range(index + <span class="number">1</span>, len(infos)):</span><br><span class="line">                actor = infos[x].strip()</span><br><span class="line">                <span class="keyword">if</span> actor.startswith(<span class="string">"◎"</span>):</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                actors.append(actor)</span><br><span class="line">            movie[<span class="string">"actors"</span>] = actors</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎简　　介"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎简　　介"</span>)</span><br><span class="line">            <span class="keyword">for</span> x <span class="keyword">in</span> range(index + <span class="number">1</span>, len(infos)):</span><br><span class="line">                profile = infos[x].strip()</span><br><span class="line">                <span class="keyword">if</span> profile.startswith(<span class="string">"【"</span>):</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">            movie[<span class="string">"profile"</span>] = profile</span><br><span class="line"></span><br><span class="line">    down_url = zooms.xpath(<span class="string">".//table//a/@href"</span>)</span><br><span class="line">    movie[<span class="string">"down_url"</span>] = down_url</span><br><span class="line">    <span class="keyword">return</span> movie</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">spider</span><span class="params">()</span>:</span></span><br><span class="line">    index_url = <span class="string">"https://www.dytt8.net/html/gndy/dyzz/index.html"</span></span><br><span class="line">    base_url = <span class="string">"https://www.dytt8.net/html/gndy/dyzz/list_23_&#123;&#125;.html"</span></span><br><span class="line">    html = get_html(index_url)</span><br><span class="line">    pages = html.xpath(<span class="string">"//select[@name='sldd']/option"</span>)</span><br><span class="line">    movies = []</span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">1</span>, len(pages) + <span class="number">1</span>):</span><br><span class="line">        url = base_url.format(x)</span><br><span class="line">        detail_urls = get_detail_url(url)</span><br><span class="line">        <span class="keyword">for</span> detail_url <span class="keyword">in</span> detail_urls:</span><br><span class="line">            <span class="comment"># 遍历每一页中的所有电影</span></span><br><span class="line">            movie = parse_detail_page(detail_url)</span><br><span class="line">            movies.append(movie)</span><br><span class="line">            print(movie)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    spider()</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
@@ -1475,358 +1827,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Python爬取电影天堂新片精品</title>
-    <url>/2020/02/12/Python%E7%88%AC%E5%8F%96%E7%94%B5%E5%BD%B1%E5%A4%A9%E5%A0%82%E6%96%B0%E7%89%87%E7%B2%BE%E5%93%81/</url>
-    <content><![CDATA[<p>爬取最新电影，内容包括标题、年代、产地、类别、评分、片场、导演、主演、下载链接。<a id="more"></a></p>
-<h6 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h6><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">base_domain = <span class="string">"https://www.dytt8.net"</span></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">"User-Agent"</span>: <span class="string">"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "</span></span><br><span class="line">                  <span class="string">"(KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36 Edg/80.0.361.111"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_detail_url</span><span class="params">(url)</span>:</span></span><br><span class="line">    resp = requests.get(url, headers=headers)</span><br><span class="line">    <span class="comment"># 解码出现"illegal multibyte sequence"，其他编码无法解决，使用ignore</span></span><br><span class="line">    <span class="comment"># text = resp.content.decode("gbk", errors="ignore")</span></span><br><span class="line">    text = resp.text</span><br><span class="line">    html = etree.HTML(text)</span><br><span class="line">    detail_urls = html.xpath(<span class="string">"//table[@class='tbspan']//a/@href"</span>)</span><br><span class="line">    detail_urls = map(<span class="keyword">lambda</span> url: base_domain + url, detail_urls)</span><br><span class="line">    <span class="keyword">return</span> detail_urls</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_html</span><span class="params">(url)</span>:</span></span><br><span class="line">    resp = requests.get(url, headers=headers)</span><br><span class="line">    text = resp.content.decode(<span class="string">"gbk"</span>, errors=<span class="string">"ignore"</span>)</span><br><span class="line">    html = etree.HTML(text)</span><br><span class="line">    <span class="keyword">return</span> html</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">parse_info</span><span class="params">(info, rule)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> info.replace(rule, <span class="string">""</span>).strip()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">parse_detail_page</span><span class="params">(url)</span>:</span></span><br><span class="line">    movie = &#123;&#125;</span><br><span class="line">    html = get_html(url)</span><br><span class="line">    title = html.xpath(<span class="string">"//div[@class='title_all']//font[@color='#07519a']/text()"</span>)[<span class="number">0</span>]</span><br><span class="line">    movie[<span class="string">"title"</span>] = title</span><br><span class="line">    zooms = html.xpath(<span class="string">"//div[@id='Zoom']"</span>)[<span class="number">0</span>]</span><br><span class="line">    poster = zooms.xpath(<span class="string">".//img/@src"</span>)</span><br><span class="line">    movie[<span class="string">"poster"</span>] = poster</span><br><span class="line"></span><br><span class="line">    infos = zooms.xpath(<span class="string">".//text()"</span>)</span><br><span class="line">    <span class="keyword">for</span> index, info <span class="keyword">in</span> enumerate(infos):</span><br><span class="line">        <span class="keyword">if</span> info.startswith(<span class="string">"◎年　　代"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎年　　代"</span>)</span><br><span class="line">            movie[<span class="string">"year"</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎产　　地"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎产　　地"</span>)</span><br><span class="line">            movie[<span class="string">"country"</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎类　　别"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎类　　别"</span>)</span><br><span class="line">            movie[<span class="string">"category"</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎豆瓣评分"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎豆瓣评分"</span>)</span><br><span class="line">            movie[<span class="string">"score"</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎片　　长"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎片　　长"</span>)</span><br><span class="line">            movie[<span class="string">"timelength"</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎导　　演"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎导　　演"</span>)</span><br><span class="line">            movie[<span class="string">"director"</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎主　　演"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎主　　演"</span>)</span><br><span class="line">            actors = [info]</span><br><span class="line">            <span class="keyword">for</span> x <span class="keyword">in</span> range(index + <span class="number">1</span>, len(infos)):</span><br><span class="line">                actor = infos[x].strip()</span><br><span class="line">                <span class="keyword">if</span> actor.startswith(<span class="string">"◎"</span>):</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                actors.append(actor)</span><br><span class="line">            movie[<span class="string">"actors"</span>] = actors</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎简　　介"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎简　　介"</span>)</span><br><span class="line">            <span class="keyword">for</span> x <span class="keyword">in</span> range(index + <span class="number">1</span>, len(infos)):</span><br><span class="line">                profile = infos[x].strip()</span><br><span class="line">                <span class="keyword">if</span> profile.startswith(<span class="string">"【"</span>):</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">            movie[<span class="string">"profile"</span>] = profile</span><br><span class="line"></span><br><span class="line">    down_url = zooms.xpath(<span class="string">".//table//a/@href"</span>)</span><br><span class="line">    movie[<span class="string">"down_url"</span>] = down_url</span><br><span class="line">    <span class="keyword">return</span> movie</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">spider</span><span class="params">()</span>:</span></span><br><span class="line">    index_url = <span class="string">"https://www.dytt8.net/html/gndy/dyzz/index.html"</span></span><br><span class="line">    base_url = <span class="string">"https://www.dytt8.net/html/gndy/dyzz/list_23_&#123;&#125;.html"</span></span><br><span class="line">    html = get_html(index_url)</span><br><span class="line">    pages = html.xpath(<span class="string">"//select[@name='sldd']/option"</span>)</span><br><span class="line">    movies = []</span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">1</span>, len(pages) + <span class="number">1</span>):</span><br><span class="line">        url = base_url.format(x)</span><br><span class="line">        detail_urls = get_detail_url(url)</span><br><span class="line">        <span class="keyword">for</span> detail_url <span class="keyword">in</span> detail_urls:</span><br><span class="line">            <span class="comment"># 遍历每一页中的所有电影</span></span><br><span class="line">            movie = parse_detail_page(detail_url)</span><br><span class="line">            movies.append(movie)</span><br><span class="line">            print(movie)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    spider()</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python3的正则表达式</title>
-    <url>/2020/02/13/Python3%E7%9A%84%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</url>
-    <content><![CDATA[<p>主要介绍 Python 中常用的正则表达式处理函数。<a id="more"></a></p>
-<h6 id="正则表达式模式"><a href="#正则表达式模式" class="headerlink" title="正则表达式模式"></a>正则表达式模式</h6><p>&emsp;&emsp;字母和数字代表它们自身，标点符号只有被转义时才匹配自身，反斜杠本身需要使用反斜杠转义。</p>
-<table>
-<thead>
-<tr>
-<th align="center">模式</th>
-<th align="center">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">^</td>
-<td align="center">匹配字符串的开头。</td>
-</tr>
-<tr>
-<td align="center">$</td>
-<td align="center">匹配字符串的末尾。</td>
-</tr>
-<tr>
-<td align="center">.</td>
-<td align="center">匹配任意字符，除了换行符。</td>
-</tr>
-<tr>
-<td align="center">[…]</td>
-<td align="center">用来表示一组字符,单独列出：[amk] 匹配 ‘a’，’m’或’k’</td>
-</tr>
-<tr>
-<td align="center">[^…]</td>
-<td align="center">不在[]中的字符：[^abc] 匹配除了a,b,c之外的字符。</td>
-</tr>
-<tr>
-<td align="center">re*</td>
-<td align="center">匹配0个或多个的表达式。</td>
-</tr>
-<tr>
-<td align="center">re+</td>
-<td align="center">匹配1个或多个的表达式。</td>
-</tr>
-<tr>
-<td align="center">re?</td>
-<td align="center">匹配0个或1个由前面的正则表达式定义的片段，非贪婪方式</td>
-</tr>
-<tr>
-<td align="center">re{ n}</td>
-<td align="center">匹配n个前面表达式。例如，”o{2}”不能匹配”Bob”中的”o”，但是能匹配”food”中的两个o。</td>
-</tr>
-<tr>
-<td align="center">re{ n,}</td>
-<td align="center">精确匹配n个前面表达式。例如，”o{2,}”不能匹配”Bob”中的”o”，但能匹配”foooood”中的所有o。”o{1,}”等价于”o+”。”o{0,}”则等价于”o*”。</td>
-</tr>
-<tr>
-<td align="center">re{ n, m}</td>
-<td align="center">匹配 n 到 m 次由前面的正则表达式定义的片段，贪婪方式。</td>
-</tr>
-<tr>
-<td align="center">a | b</td>
-<td align="center">匹配a或b。</td>
-</tr>
-<tr>
-<td align="center">(re)</td>
-<td align="center">匹配括号内的表达式，也表示一个组。</td>
-</tr>
-<tr>
-<td align="center">(?imx)</td>
-<td align="center">正则表达式包含三种可选标志：i, m, 或 x 。只影响括号中的区域。</td>
-</tr>
-<tr>
-<td align="center">(?-imx)</td>
-<td align="center">正则表达式关闭 i, m, 或 x 可选标志。只影响括号中的区域。</td>
-</tr>
-<tr>
-<td align="center">(?: re)</td>
-<td align="center">类似 (…), 但是不表示一个组。</td>
-</tr>
-<tr>
-<td align="center">(?imx: re)</td>
-<td align="center">在括号中使用i, m, 或 x 可选标志。</td>
-</tr>
-<tr>
-<td align="center">(?-imx: re)</td>
-<td align="center">在括号中不使用i, m, 或 x 可选标志。</td>
-</tr>
-<tr>
-<td align="center">(?#…)</td>
-<td align="center">注释。</td>
-</tr>
-<tr>
-<td align="center">(?= re)</td>
-<td align="center">前向肯定界定符。如果所含正则表达式，以 … 表示，在当前位置成功匹配时成功，否则失败。但一旦所含表达式已经尝试，匹配引擎根本没有提高；模式的剩余部分还要尝试界定符的右边。</td>
-</tr>
-<tr>
-<td align="center">(?! re)</td>
-<td align="center">前向否定界定符。与肯定界定符相反；当所含表达式不能在字符串当前位置匹配时成功。</td>
-</tr>
-<tr>
-<td align="center">(?&gt; re)</td>
-<td align="center">匹配的独立模式，省去回溯。</td>
-</tr>
-<tr>
-<td align="center">\w</td>
-<td align="center">匹配数字字母下划线。</td>
-</tr>
-<tr>
-<td align="center">\W</td>
-<td align="center">匹配非数字字母下划线。等价于 [ ^A-Za-z0-9_ ]。</td>
-</tr>
-<tr>
-<td align="center">\s</td>
-<td align="center">匹配任意空白字符，等价于 [\t\n\r\f]。</td>
-</tr>
-<tr>
-<td align="center">\S</td>
-<td align="center">匹配任意非空字符。等价于 [ ^ \f\n\r\t\v ]。</td>
-</tr>
-<tr>
-<td align="center">\d</td>
-<td align="center">匹配任意数字，等价于 [0-9]。</td>
-</tr>
-<tr>
-<td align="center">\D</td>
-<td align="center">匹配任意非数字。等价于 [ ^0-9 ]。</td>
-</tr>
-<tr>
-<td align="center">\A</td>
-<td align="center">匹配字符串开始。</td>
-</tr>
-<tr>
-<td align="center">\Z</td>
-<td align="center">匹配字符串结束，如果是存在换行，只匹配到换行前的结束字符串。</td>
-</tr>
-<tr>
-<td align="center">\z</td>
-<td align="center">匹配字符串结束。</td>
-</tr>
-<tr>
-<td align="center">\G</td>
-<td align="center">匹配最后匹配完成的位置。</td>
-</tr>
-<tr>
-<td align="center">\b</td>
-<td align="center">匹配一个单词边界，也就是指单词和空格间的位置。例如， ‘er\b’ 可以匹配”never” 中的 ‘er’，但不能匹配 “verb” 中的 ‘er’。</td>
-</tr>
-<tr>
-<td align="center">\B</td>
-<td align="center">匹配非单词边界。’er\B’ 能匹配 “verb” 中的 ‘er’，但不能匹配 “never” 中的 ‘er’。</td>
-</tr>
-<tr>
-<td align="center">\n, \t, 等。</td>
-<td align="center">匹配一个换行符。匹配一个制表符, 等。</td>
-</tr>
-<tr>
-<td align="center">\1…\9</td>
-<td align="center">匹配第n个分组的内容。</td>
-</tr>
-<tr>
-<td align="center">\10</td>
-<td align="center">匹配第n个分组的内容，如果它经匹配。否则指的是八进制字符码的表达式。</td>
-</tr>
-</tbody></table>
-<h6 id="正则表达式修饰符-可选标志"><a href="#正则表达式修饰符-可选标志" class="headerlink" title="正则表达式修饰符-可选标志"></a>正则表达式修饰符-可选标志</h6><p>多个标志可以用|来指定。</p>
-<table>
-<thead>
-<tr>
-<th align="center">修饰符</th>
-<th align="center">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">re.I</td>
-<td align="center">使匹配对大小写不敏感</td>
-</tr>
-<tr>
-<td align="center">re.L</td>
-<td align="center">做本地化识别（locale-aware）匹配</td>
-</tr>
-<tr>
-<td align="center">re.M</td>
-<td align="center">多行匹配，影响 ^ 和 $</td>
-</tr>
-<tr>
-<td align="center">re.S</td>
-<td align="center">使 . 匹配包括换行在内的所有字符</td>
-</tr>
-<tr>
-<td align="center">re.U</td>
-<td align="center">根据Unicode字符集解析字符。这个标志影响 \w, \W, \b, \B.</td>
-</tr>
-<tr>
-<td align="center">re.X</td>
-<td align="center">该标志通过给予你更灵活的格式以便你将正则表达式写得更易于理解。</td>
-</tr>
-</tbody></table>
-<h6 id="正则表达式对象"><a href="#正则表达式对象" class="headerlink" title="正则表达式对象"></a>正则表达式对象</h6><ol>
-<li><p>re.RegexObject</p>
-<p>re.compile()返回RegexObject对象。</p>
-</li>
-<li><p>re.MatchObject</p>
-<p>group()返回被RE匹配的字符串</p>
-<ul>
-<li>start()返回匹配开始的位置</li>
-<li>end()返回匹配结束的位置</li>
-<li>span()返回一个元组包含匹配(开始，结束)的位置</li>
-</ul>
-</li>
-</ol>
-<h6 id="re-match函数"><a href="#re-match函数" class="headerlink" title="re.match函数"></a>re.match函数</h6><p>&emsp;&emsp;re.match尝试从字符串的起始位置匹配一个模式，如果不是起始位置匹配成功的话，match()就返回none。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">re.match(pattern, string, flag=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th align="center">参数</th>
-<th align="center">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">pattern</td>
-<td align="center">匹配的正则表达式</td>
-</tr>
-<tr>
-<td align="center">string</td>
-<td align="center">要匹配的字符串。</td>
-</tr>
-<tr>
-<td align="center">flags</td>
-<td align="center">标志位，用于控制正则表达式的匹配方式，如：是否区分大小写，多行匹配等等</td>
-</tr>
-</tbody></table>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">print(re.match(<span class="string">'www'</span>, <span class="string">'www.runoob.com'</span>).span())  <span class="comment"># 在起始位置匹配</span></span><br><span class="line">print(re.match(<span class="string">'com'</span>, <span class="string">'www.runoob.com'</span>))         <span class="comment"># 不在起始位置匹配</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(0,3)</span><br><span class="line">None</span><br></pre></td></tr></table></figure>
-
-<p>&emsp;&emsp;使用group(num) 或 groups()可以匹配对象函数来获取匹配表达式</p>
-<table>
-<thead>
-<tr>
-<th align="center">匹配对象方法</th>
-<th align="center">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">group(num=0)</td>
-<td align="center">匹配的整个表达式的字符串，group() 可以一次输入多个组号，在这种情况下它将返回一个包含那些组所对应值的元组。</td>
-</tr>
-<tr>
-<td align="center">groups()</td>
-<td align="center">返回一个包含所有小组字符串的元组，从 1 到 所含的小组号。</td>
-</tr>
-</tbody></table>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"> </span><br><span class="line">line = <span class="string">"Cats are smarter than dogs"</span></span><br><span class="line"><span class="comment"># .* 表示任意匹配除换行符（\n、\r）之外的任何单个或多个字符</span></span><br><span class="line">matchObj = re.match( <span class="string">r'(.*) are (.*?) .*'</span>, line, re.M|re.I)</span><br><span class="line"> </span><br><span class="line"><span class="keyword">if</span> matchObj:</span><br><span class="line">   <span class="keyword">print</span> (<span class="string">"matchObj.group() : "</span>, matchObj.group())</span><br><span class="line">   <span class="keyword">print</span> (<span class="string">"matchObj.group(1) : "</span>, matchObj.group(<span class="number">1</span>))</span><br><span class="line">   <span class="keyword">print</span> (<span class="string">"matchObj.group(2) : "</span>, matchObj.group(<span class="number">2</span>))</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">   <span class="keyword">print</span> (<span class="string">"No match!!"</span>)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">matchObj.group() :  Cats are smarter than dogs</span><br><span class="line">matchObj.group(<span class="number">1</span>) :  Cats</span><br><span class="line">matchObj.group(<span class="number">2</span>) :  smarter</span><br></pre></td></tr></table></figure>
-
-<h6 id="re-search方法"><a href="#re-search方法" class="headerlink" title="re.search方法"></a>re.search方法</h6><p>&emsp;&emsp;re.search扫描整个字符串并返回第一个成功的匹配，否则返回None。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">re.search(pattern, string, flags=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"> </span><br><span class="line">print(re.search(<span class="string">'www'</span>, <span class="string">'www.runoob.com'</span>).span())  <span class="comment"># 在起始位置匹配</span></span><br><span class="line">print(re.search(<span class="string">'com'</span>, <span class="string">'www.runoob.com'</span>).span())         <span class="comment"># 不在起始位置匹配</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(0, 3)</span><br><span class="line">(11, 14)</span><br></pre></td></tr></table></figure>
-
-<h6 id="re-match与re-search的区别"><a href="#re-match与re-search的区别" class="headerlink" title="re.match与re.search的区别"></a>re.match与re.search的区别</h6><p>&emsp;&emsp;re.match 只匹配字符串的开始，如果字符串开始不符合正则表达式，则匹配失败，函数返回 None，而 re.search 匹配整个字符串，直到找到一个匹配。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"> </span><br><span class="line">line = <span class="string">"Cats are smarter than dogs"</span></span><br><span class="line"> </span><br><span class="line">matchObj = re.match( <span class="string">r'dogs'</span>, line, re.M|re.I)</span><br><span class="line"><span class="keyword">if</span> matchObj:</span><br><span class="line">   <span class="keyword">print</span> (<span class="string">"match --&gt; matchObj.group() : "</span>, matchObj.group())</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">   <span class="keyword">print</span> (<span class="string">"No match!!"</span>)</span><br><span class="line"> </span><br><span class="line">matchObj = re.search( <span class="string">r'dogs'</span>, line, re.M|re.I)</span><br><span class="line"><span class="keyword">if</span> matchObj:</span><br><span class="line">   <span class="keyword">print</span> (<span class="string">"search --&gt; matchObj.group() : "</span>, matchObj.group())</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">   <span class="keyword">print</span> (<span class="string">"No match!!"</span>)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">No match!!</span><br><span class="line">search --&gt; matchObj.group() :  dogs</span><br></pre></td></tr></table></figure>
-
-<h6 id="re-sub函数"><a href="#re-sub函数" class="headerlink" title="re.sub函数"></a>re.sub函数</h6><p>&emsp;&emsp;re.sub用于替换字符串中匹配项。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">re.sub(pattern, repl, string, count=0, flags=0)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>pattern : 正则中的模式字符串。</li>
-<li>repl : 替换的字符串，也可为一个函数。</li>
-<li>string : 要被查找替换的原始字符串。</li>
-<li>count : 模式匹配后替换的最大次数，默认 0 表示替换所有的匹配。</li>
-<li>flags : 编译时用的匹配模式，数字形式。</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"> </span><br><span class="line">phone = <span class="string">"2004-959-559 # 这是一个电话号码"</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># 删除注释</span></span><br><span class="line">num = re.sub(<span class="string">r'#.*$'</span>, <span class="string">""</span>, phone)</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"电话号码 : "</span>, num)</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 移除非数字的内容</span></span><br><span class="line">num = re.sub(<span class="string">r'\D'</span>, <span class="string">""</span>, phone)</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"电话号码 : "</span>, num)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">电话号码 :  2004-959-559 </span><br><span class="line">电话号码 :  2004959559</span><br></pre></td></tr></table></figure>
-
-<p>repl参数也可以是一个函数</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 将匹配的数字乘于 2</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">double</span><span class="params">(matched)</span>:</span></span><br><span class="line">    value = int(matched.group(<span class="string">'value'</span>))</span><br><span class="line">    <span class="keyword">return</span> str(value * <span class="number">2</span>)</span><br><span class="line"> </span><br><span class="line">s = <span class="string">'A23G4HFD567'</span></span><br><span class="line"><span class="comment"># ?P&lt;value&gt;的意思是命名一个名字为value的组，匹配规则符合后面的/d+</span></span><br><span class="line">print(re.sub(<span class="string">'(?P&lt;value&gt;\d+)'</span>, double, s))</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">A46G8HFD1134</span><br></pre></td></tr></table></figure>
-
-<h6 id="complie函数"><a href="#complie函数" class="headerlink" title="complie函数"></a>complie函数</h6><p>&emsp;&emsp;compile 函数用于编译正则表达式，生成一个正则表达式 (Pattern) 对象，供 match() 和 search() 这两个函数使用。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">re.compile(pattern, flags)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>pattern : 一个字符串形式的正则表达式</p>
-</li>
-<li><p>flags 可选，表示匹配模式，比如忽略大小写，多行模式等，具体参数为：</p>
-</li>
-<li><ul>
-<li><p>re.I 忽略大小写</p>
-</li>
-<li><p>re.L 表示特殊字符集 \w, \W, \b, \B, \s, \S 依赖于当前环境</p>
-</li>
-<li><p>re.M 多行模式</p>
-</li>
-<li><p>re.S 即为’ . ‘并且包括换行符在内的任意字符（’ . ‘不包括换行符）</p>
-</li>
-<li><p>re.U 表示特殊字符集 \w, \W, \b, \B, \d, \D, \s, \S 依赖于 Unicode 字符属性数据库</p>
-</li>
-<li><p>re.X 为了增加可读性，忽略空格和’ # ‘后面的注释</p>
-</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt;<span class="keyword">import</span> re</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>pattern = re.compile(<span class="string">r'\d+'</span>)                    <span class="comment"># 用于匹配至少一个数字</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m = pattern.match(<span class="string">'one12twothree34four'</span>)        <span class="comment"># 查找头部，没有匹配</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print( m )</span><br><span class="line"><span class="literal">None</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m = pattern.match(<span class="string">'one12twothree34four'</span>, <span class="number">2</span>, <span class="number">10</span>) <span class="comment"># 从'e'的位置开始匹配，没有匹配</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print( m )</span><br><span class="line"><span class="literal">None</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m = pattern.match(<span class="string">'one12twothree34four'</span>, <span class="number">3</span>, <span class="number">10</span>) <span class="comment"># 从'1'的位置开始匹配，正好匹配</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print( m )                                        <span class="comment"># 返回一个 Match 对象</span></span><br><span class="line">&lt;_sre.SRE_Match object at <span class="number">0x10a42aac0</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m.group(<span class="number">0</span>)   <span class="comment"># 可省略 0</span></span><br><span class="line"><span class="string">'12'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m.start(<span class="number">0</span>)   <span class="comment"># 可省略 0</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m.end(<span class="number">0</span>)     <span class="comment"># 可省略 0</span></span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m.span(<span class="number">0</span>)    <span class="comment"># 可省略 0</span></span><br><span class="line">(<span class="number">3</span>, <span class="number">5</span>)</span><br></pre></td></tr></table></figure>
-
-<h6 id="re-findall"><a href="#re-findall" class="headerlink" title="re.findall"></a>re.findall</h6><p>&emsp;&emsp;在字符串中找到正则表达式所匹配的所有子串，并返回一个列表，如果没有找到匹配的，则返回空列表。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">re.findall(string, pos, endpos)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><strong>string</strong> 待匹配的字符串。</li>
-<li><strong>pos</strong> 可选参数，指定字符串的起始位置，默认为 0。</li>
-<li><strong>endpos</strong> 可选参数，指定字符串的结束位置，默认为字符串的长度。</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"> </span><br><span class="line">pattern = re.compile(<span class="string">r'\d+'</span>)   <span class="comment"># 查找数字</span></span><br><span class="line">result1 = pattern.findall(<span class="string">'runoob 123 google 456'</span>)</span><br><span class="line">result2 = pattern.findall(<span class="string">'run88oob123google456'</span>, <span class="number">0</span>, <span class="number">10</span>)</span><br><span class="line"> </span><br><span class="line">print(result1)</span><br><span class="line">print(result2)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[&apos;123&apos;, &apos;456&apos;]</span><br><span class="line">[&apos;88&apos;, &apos;12&apos;]</span><br></pre></td></tr></table></figure>
-
-<h6 id="re-finditer"><a href="#re-finditer" class="headerlink" title="re.finditer"></a>re.finditer</h6><p>&emsp;&emsp;和 findall 类似，在字符串中找到正则表达式所匹配的所有子串，并把它们作为一个迭代器返回。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">re.finditer(pattern, string, flags=0)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"> </span><br><span class="line">it = re.finditer(<span class="string">r"\d+"</span>,<span class="string">"12a32bc43jf3"</span>) </span><br><span class="line"><span class="keyword">for</span> match <span class="keyword">in</span> it: </span><br><span class="line">    <span class="keyword">print</span> (match.group() )</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">12 </span><br><span class="line">32 </span><br><span class="line">43 </span><br><span class="line">3</span><br></pre></td></tr></table></figure>
-
-<h6 id="re-split"><a href="#re-split" class="headerlink" title="re.split"></a>re.split</h6><p>&emsp;&emsp;split 方法按照能够匹配的子串将字符串分割后返回列表。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">re.split(pattern, string, maxsplit=0, flags=0)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt;<span class="keyword">import</span> re</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>re.split(<span class="string">'\W+'</span>, <span class="string">'runoob, runoob, runoob.'</span>)</span><br><span class="line">[<span class="string">'runoob'</span>, <span class="string">'runoob'</span>, <span class="string">'runoob'</span>, <span class="string">''</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>re.split(<span class="string">'(\W+)'</span>, <span class="string">' runoob, runoob, runoob.'</span>) </span><br><span class="line">[<span class="string">''</span>, <span class="string">' '</span>, <span class="string">'runoob'</span>, <span class="string">', '</span>, <span class="string">'runoob'</span>, <span class="string">', '</span>, <span class="string">'runoob'</span>, <span class="string">'.'</span>, <span class="string">''</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>re.split(<span class="string">'\W+'</span>, <span class="string">' runoob, runoob, runoob.'</span>, <span class="number">1</span>) </span><br><span class="line">[<span class="string">''</span>, <span class="string">'runoob, runoob, runoob.'</span>]</span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>re.split(<span class="string">'a*'</span>, <span class="string">'hello world'</span>)   <span class="comment"># 对于一个找不到匹配的字符串而言，split 不会对其作出分割</span></span><br><span class="line">[<span class="string">'hello world'</span>]</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>StreamTokenizer使用</title>
     <url>/2020/02/09/StreamTokenizer%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<p>StreamTokenizer的用法<a id="more"></a></p>
@@ -2075,6 +2075,133 @@
       </tags>
   </entry>
   <entry>
+    <title>java获取操作系统信息</title>
+    <url>/2019/11/26/java%E8%8E%B7%E5%8F%96%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%BF%A1%E6%81%AF/</url>
+    <content><![CDATA[<p>常用操作系统信息获取<a id="more"></a></p>
+<h6 id="获取本机的IP地址"><a href="#获取本机的IP地址" class="headerlink" title="获取本机的IP地址:"></a>获取本机的IP地址:</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">getIpAddress</span><span class="params">()</span> <span class="keyword">throws</span> UnknownHostException </span>&#123; </span><br><span class="line">    InetAddress address = InetAddress.getLocalHost(); </span><br><span class="line">    <span class="keyword">return</span> address.getHostAddress(); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="获取网卡地址"><a href="#获取网卡地址" class="headerlink" title="获取网卡地址:"></a>获取网卡地址:</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getMACAddress</span><span class="params">()</span></span>&#123;</span><br><span class="line">    String address = <span class="string">""</span>;</span><br><span class="line">    String os = System.getProperty(<span class="string">"os.name"</span>);</span><br><span class="line">    String osUser = System.getProperty(<span class="string">"user.name"</span>);</span><br><span class="line">    <span class="keyword">if</span>(os != <span class="keyword">null</span> &amp;&amp; os.startsWith(<span class="string">"Windows"</span>))&#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            String command = <span class="string">"cmd.exe /c ipconfig /all"</span>;</span><br><span class="line">            Process  p = Runtime.getRuntime().exec(command);</span><br><span class="line">            BufferedReader buffer = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(p.getInputStream()));</span><br><span class="line">            String line;</span><br><span class="line">            <span class="keyword">while</span>((line = buffer.readLine()) != <span class="keyword">null</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(line.indexOf(<span class="string">"Physical Address"</span>) &gt; <span class="number">0</span>)&#123;</span><br><span class="line">                    <span class="keyword">int</span> index = line.indexOf(<span class="string">":"</span>);</span><br><span class="line">                    index += <span class="number">2</span>;</span><br><span class="line">                    address = line.substring(index);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            buffer.close();</span><br><span class="line">            <span class="keyword">return</span> address.trim();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span>(IOException e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> address;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="获取操作系统账号"><a href="#获取操作系统账号" class="headerlink" title="获取操作系统账号"></a>获取操作系统账号</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">String osUser = System.getProperty(&quot;user.name&quot;);</span><br></pre></td></tr></table></figure>
+
+<h6 id="获取操作系统版本"><a href="#获取操作系统版本" class="headerlink" title="获取操作系统版本:"></a>获取操作系统版本:</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Properties; </span><br><span class="line"></span><br><span class="line">Properties props=System.getProperties(); <span class="comment">//获得系统属性集    </span></span><br><span class="line">String osName = props.getProperty(<span class="string">"os.name"</span>); <span class="comment">//操作系统名称    </span></span><br><span class="line">String osArch = props.getProperty(<span class="string">"os.arch"</span>); <span class="comment">//操作系统构架    </span></span><br><span class="line">String osVersion = props.getProperty(<span class="string">"os.version"</span>); <span class="comment">//操作系统版本</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="一些常用信息获得"><a href="#一些常用信息获得" class="headerlink" title="一些常用信息获得"></a>一些常用信息获得</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getProperty</span><span class="params">(String key)</span></span></span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>键</th>
+<th>相关值的描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>java.version</td>
+<td>Java 运行时环境版本</td>
+</tr>
+<tr>
+<td>java.vendor</td>
+<td>Java 运行时环境供应商</td>
+</tr>
+<tr>
+<td>java.vendor.url</td>
+<td>Java 供应商的 URL</td>
+</tr>
+<tr>
+<td>java.home</td>
+<td>Java 安装目录</td>
+</tr>
+<tr>
+<td>java.vm.specification.version</td>
+<td>Java 虚拟机规范版本</td>
+</tr>
+<tr>
+<td>java.vm.specification.vendor</td>
+<td>Java 虚拟机规范供应商</td>
+</tr>
+<tr>
+<td>java.vm.specification.name</td>
+<td>Java 虚拟机规范名称</td>
+</tr>
+<tr>
+<td>java.vm.version</td>
+<td>Java 虚拟机实现版本</td>
+</tr>
+<tr>
+<td>java.vm.vendor</td>
+<td>Java 虚拟机实现供应商</td>
+</tr>
+<tr>
+<td>java.vm.name</td>
+<td>Java 虚拟机实现名称</td>
+</tr>
+<tr>
+<td>java.specification.version</td>
+<td>Java 运行时环境规范版本</td>
+</tr>
+<tr>
+<td>java.specification.vendor</td>
+<td>Java 运行时环境规范供应商</td>
+</tr>
+<tr>
+<td>java.specification.name</td>
+<td>Java 运行时环境规范名称</td>
+</tr>
+<tr>
+<td>java.<strong>class</strong>.version</td>
+<td>Java 类格式版本号</td>
+</tr>
+<tr>
+<td>java.<strong>class</strong>.path</td>
+<td>Java 类路径</td>
+</tr>
+<tr>
+<td>java.library.path</td>
+<td>加载库时搜索的路径列表</td>
+</tr>
+<tr>
+<td>java.io.tmpdir</td>
+<td>默认的临时文件路径</td>
+</tr>
+<tr>
+<td>java.compiler</td>
+<td>要使用的 JIT 编译器的名称</td>
+</tr>
+<tr>
+<td>java.ext.dirs</td>
+<td>一个或多个扩展目录的路径</td>
+</tr>
+<tr>
+<td>file.separator</td>
+<td>文件分隔符（在 UNIX 系统中是“/”）</td>
+</tr>
+<tr>
+<td>path.separator</td>
+<td>路径分隔符（在 UNIX 系统中是“:”）</td>
+</tr>
+<tr>
+<td>line.separator</td>
+<td>行分隔符（在 UNIX 系统中是“/n”）</td>
+</tr>
+<tr>
+<td>user.name</td>
+<td>用户的账户名称</td>
+</tr>
+<tr>
+<td>user.home</td>
+<td>用户的主目录</td>
+</tr>
+<tr>
+<td>user.dir</td>
+<td>用户的当前工作目录</td>
+</tr>
+</tbody></table>
+]]></content>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>java面试题</title>
     <url>/2020/04/25/java%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
     <content><![CDATA[<p>Java面试理论题目<a id="more"></a></p>
@@ -2304,133 +2431,6 @@
       </tags>
   </entry>
   <entry>
-    <title>java获取操作系统信息</title>
-    <url>/2019/11/26/java%E8%8E%B7%E5%8F%96%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%BF%A1%E6%81%AF/</url>
-    <content><![CDATA[<p>常用操作系统信息获取<a id="more"></a></p>
-<h6 id="获取本机的IP地址"><a href="#获取本机的IP地址" class="headerlink" title="获取本机的IP地址:"></a>获取本机的IP地址:</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">getIpAddress</span><span class="params">()</span> <span class="keyword">throws</span> UnknownHostException </span>&#123; </span><br><span class="line">    InetAddress address = InetAddress.getLocalHost(); </span><br><span class="line">    <span class="keyword">return</span> address.getHostAddress(); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h6 id="获取网卡地址"><a href="#获取网卡地址" class="headerlink" title="获取网卡地址:"></a>获取网卡地址:</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getMACAddress</span><span class="params">()</span></span>&#123;</span><br><span class="line">    String address = <span class="string">""</span>;</span><br><span class="line">    String os = System.getProperty(<span class="string">"os.name"</span>);</span><br><span class="line">    String osUser = System.getProperty(<span class="string">"user.name"</span>);</span><br><span class="line">    <span class="keyword">if</span>(os != <span class="keyword">null</span> &amp;&amp; os.startsWith(<span class="string">"Windows"</span>))&#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            String command = <span class="string">"cmd.exe /c ipconfig /all"</span>;</span><br><span class="line">            Process  p = Runtime.getRuntime().exec(command);</span><br><span class="line">            BufferedReader buffer = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(p.getInputStream()));</span><br><span class="line">            String line;</span><br><span class="line">            <span class="keyword">while</span>((line = buffer.readLine()) != <span class="keyword">null</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(line.indexOf(<span class="string">"Physical Address"</span>) &gt; <span class="number">0</span>)&#123;</span><br><span class="line">                    <span class="keyword">int</span> index = line.indexOf(<span class="string">":"</span>);</span><br><span class="line">                    index += <span class="number">2</span>;</span><br><span class="line">                    address = line.substring(index);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            buffer.close();</span><br><span class="line">            <span class="keyword">return</span> address.trim();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span>(IOException e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> address;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h6 id="获取操作系统账号"><a href="#获取操作系统账号" class="headerlink" title="获取操作系统账号"></a>获取操作系统账号</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">String osUser = System.getProperty(&quot;user.name&quot;);</span><br></pre></td></tr></table></figure>
-
-<h6 id="获取操作系统版本"><a href="#获取操作系统版本" class="headerlink" title="获取操作系统版本:"></a>获取操作系统版本:</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Properties; </span><br><span class="line"></span><br><span class="line">Properties props=System.getProperties(); <span class="comment">//获得系统属性集    </span></span><br><span class="line">String osName = props.getProperty(<span class="string">"os.name"</span>); <span class="comment">//操作系统名称    </span></span><br><span class="line">String osArch = props.getProperty(<span class="string">"os.arch"</span>); <span class="comment">//操作系统构架    </span></span><br><span class="line">String osVersion = props.getProperty(<span class="string">"os.version"</span>); <span class="comment">//操作系统版本</span></span><br></pre></td></tr></table></figure>
-
-<h6 id="一些常用信息获得"><a href="#一些常用信息获得" class="headerlink" title="一些常用信息获得"></a>一些常用信息获得</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getProperty</span><span class="params">(String key)</span></span></span><br></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th>键</th>
-<th>相关值的描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>java.version</td>
-<td>Java 运行时环境版本</td>
-</tr>
-<tr>
-<td>java.vendor</td>
-<td>Java 运行时环境供应商</td>
-</tr>
-<tr>
-<td>java.vendor.url</td>
-<td>Java 供应商的 URL</td>
-</tr>
-<tr>
-<td>java.home</td>
-<td>Java 安装目录</td>
-</tr>
-<tr>
-<td>java.vm.specification.version</td>
-<td>Java 虚拟机规范版本</td>
-</tr>
-<tr>
-<td>java.vm.specification.vendor</td>
-<td>Java 虚拟机规范供应商</td>
-</tr>
-<tr>
-<td>java.vm.specification.name</td>
-<td>Java 虚拟机规范名称</td>
-</tr>
-<tr>
-<td>java.vm.version</td>
-<td>Java 虚拟机实现版本</td>
-</tr>
-<tr>
-<td>java.vm.vendor</td>
-<td>Java 虚拟机实现供应商</td>
-</tr>
-<tr>
-<td>java.vm.name</td>
-<td>Java 虚拟机实现名称</td>
-</tr>
-<tr>
-<td>java.specification.version</td>
-<td>Java 运行时环境规范版本</td>
-</tr>
-<tr>
-<td>java.specification.vendor</td>
-<td>Java 运行时环境规范供应商</td>
-</tr>
-<tr>
-<td>java.specification.name</td>
-<td>Java 运行时环境规范名称</td>
-</tr>
-<tr>
-<td>java.<strong>class</strong>.version</td>
-<td>Java 类格式版本号</td>
-</tr>
-<tr>
-<td>java.<strong>class</strong>.path</td>
-<td>Java 类路径</td>
-</tr>
-<tr>
-<td>java.library.path</td>
-<td>加载库时搜索的路径列表</td>
-</tr>
-<tr>
-<td>java.io.tmpdir</td>
-<td>默认的临时文件路径</td>
-</tr>
-<tr>
-<td>java.compiler</td>
-<td>要使用的 JIT 编译器的名称</td>
-</tr>
-<tr>
-<td>java.ext.dirs</td>
-<td>一个或多个扩展目录的路径</td>
-</tr>
-<tr>
-<td>file.separator</td>
-<td>文件分隔符（在 UNIX 系统中是“/”）</td>
-</tr>
-<tr>
-<td>path.separator</td>
-<td>路径分隔符（在 UNIX 系统中是“:”）</td>
-</tr>
-<tr>
-<td>line.separator</td>
-<td>行分隔符（在 UNIX 系统中是“/n”）</td>
-</tr>
-<tr>
-<td>user.name</td>
-<td>用户的账户名称</td>
-</tr>
-<tr>
-<td>user.home</td>
-<td>用户的主目录</td>
-</tr>
-<tr>
-<td>user.dir</td>
-<td>用户的当前工作目录</td>
-</tr>
-</tbody></table>
-]]></content>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>常见浏览器的用户代理</title>
     <url>/2020/01/13/%E5%B8%B8%E8%A7%81%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E7%94%A8%E6%88%B7%E4%BB%A3%E7%90%86/</url>
     <content><![CDATA[<p>常用浏览器用户代理总结。<a id="more"></a></p>
@@ -2466,83 +2466,6 @@
 ]]></content>
       <tags>
         <tag>浏览器</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>并查集</title>
-    <url>/2020/02/08/%E5%B9%B6%E6%9F%A5%E9%9B%86/</url>
-    <content><![CDATA[<p>建立迷宫时有所涉及，用来处理格子之间的相连问题。<a id="more"></a></p>
-<h5 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h5><p>&emsp;&emsp;并查集，在一些有N个元素的集合应用问题中，我们通常是在开始时让每个元素构成一个单元素的集合，然后按一定顺序将属于同一组的元素所在的集合合并，其间要反复查找一个元素在哪个集合中。这一类问题近几年来反复出现在信息学的国际国内赛题中，其特点是看似并不复杂，但数据量极大，若用正常的数据结构来描述的话，往往在空间上过大，计算机无法承受；即使在空间上勉强通过，运行的时间复杂度也极高，根本就不可能在比赛规定的运行时间（1～3秒）内计算出试题需要的结果，只能用并查集来描述。</p>
-<p>&emsp;&emsp;并查集是一种树型的数据结构，用于处理一些不相交集合（Disjoint Sets）的合并及查询问题。常常在使用中以森林来表示。</p>
-<h5 id="主要操作"><a href="#主要操作" class="headerlink" title="主要操作"></a>主要操作</h5><ul>
-<li>初始化<br>每个元素都将自己作为一个集合，时间复杂度为O(n)。</li>
-<li>查找<br>查找元素所在的集合，即根节点。</li>
-<li>合并<br>将两个元素所在的集合合并为一个集合。通常，首先判断两个元素是否在同一个集合，通过上步的查找来判断。</li>
-</ul>
-<h5 id="举例分析"><a href="#举例分析" class="headerlink" title="举例分析"></a>举例分析</h5><h6 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h6><p>&emsp;&emsp;若某个家族人员过于庞大，要判断两个是否是亲戚，确实不容易，给出某个亲戚关系图，求任意给出的两个人是否具有亲戚关系。</p>
-<p>规定：x和y是亲戚，y和z是亲戚，那么x和z也是亲戚。如果x,y是亲戚，那么x的亲戚都是y的亲戚，y的亲戚也都是x的亲戚。</p>
-<h6 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h6><p>&emsp;&emsp;第一行：三个整数n,m,p，（n&lt;=5000,m&lt;=5000,p&lt;=5000）</p>
-<p>&emsp;&emsp;分别表示有n个人，m个亲戚关系，询问p对新奇关系。</p>
-<p>&emsp;&emsp;以下m行：每行两个数Mi，Mj，1&lt;=Mi，Mj&lt;=n，表示Mi和Mj具有亲戚关系。</p>
-<p>&emsp;&emsp;接下来p行：每行两个数Pi，Pj，询问Pi和Pj是否具有亲戚关系。</p>
-<h6 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h6><p>&emsp;&emsp;共p行，每行一个“Yes”或“No”，表示第Pi个询问的答案为“有”或“没有”亲戚关系。</p>
-<h6 id="分析问题"><a href="#分析问题" class="headerlink" title="分析问题"></a>分析问题</h6><p>&emsp;&emsp;本题是一个图论中判断两个点是否在同一连通子图的问题。对于题目中的样例，将人作为点，亲戚关系作为边，建立无向图如下：</p>
-<p><img src="/2020/02/08/%E5%B9%B6%E6%9F%A5%E9%9B%86/1.jpg" alt></p>
-<p>&emsp;&emsp;比如判断3和4是否为亲戚时，我们检查3和4是否在同一个连通子图中，结果是在，于是他们是亲戚。又如7和10不在同一个连通子图中，所以他们不是亲戚。</p>
-<p>&emsp;&emsp; 例如样例：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="number">9</span> <span class="number">7</span> <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="number">2</span> <span class="number">4</span></span><br><span class="line"><span class="number">5</span> <span class="number">7</span></span><br><span class="line"><span class="number">1</span> <span class="number">3</span></span><br><span class="line"><span class="number">8</span> <span class="number">9</span></span><br><span class="line"><span class="number">1</span> <span class="number">2</span></span><br><span class="line"><span class="number">5</span> <span class="number">6</span></span><br><span class="line"><span class="number">2</span> <span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="number">1</span> <span class="number">9</span></span><br></pre></td></tr></table></figure>
-
-<p>&emsp;&emsp;我们可以给每个人建立一个集合，集合的元素值有它自己，表示最开始时它不知道任何人是它的亲戚。以后每次给出一个亲戚关系a, b，则a和它的亲戚与b和它的亲戚就互为亲戚了，将a所在集合与b所在集合合并。对于样例数据的操作全过程如下：</p>
-<p>&emsp;&emsp;初始状态：{1} {2} {3} {4} {5} {6} {7} {8} {9}</p>
-<p>&emsp;&emsp;输入关系 分离集合</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(2,4) &#123;2,4&#125;&#123;1&#125; &#123;3&#125; &#123;5&#125; &#123;6&#125; &#123;7&#125; &#123;8&#125; &#123;9&#125;</span><br><span class="line"></span><br><span class="line">(5,7) &#123;2,4&#125; &#123;5,7&#125; &#123;1&#125; &#123;3&#125; &#123;6&#125; &#123;8&#125; &#123;9&#125;</span><br><span class="line"></span><br><span class="line">(1,3) &#123;1,3&#125; &#123;2,4&#125; &#123;5,7&#125;&#123;6&#125; &#123;8&#125; &#123;9&#125;</span><br><span class="line"></span><br><span class="line">(8,9) &#123;1,3&#125; &#123;2,4&#125; &#123;5,7&#125; &#123;8,9&#125;&#123;6&#125;</span><br><span class="line"></span><br><span class="line">(1,2) &#123;1,2,3,4&#125; &#123;5,7&#125; &#123;8,9&#125;&#123;6&#125;</span><br><span class="line"></span><br><span class="line">(5,6) &#123;1,2,3,4&#125; &#123;5,6,7&#125; &#123;8,9&#125;</span><br><span class="line"></span><br><span class="line">(2,3) &#123;1,2,3,4&#125; &#123;5,6,7&#125; &#123;8,9&#125;</span><br></pre></td></tr></table></figure>
-
-<p>判断亲戚关系</p>
-<p>(1,9)，因为1,9不在同一集合内，所以输出”NO”。</p>
-<p>&emsp;&emsp;最后我们得到3个集合{1,2,3,4}、{5,6,7}、{8,9}，于是判断两个人是否亲戚的问题就变成判断两个数是否在同一个集合中的问题。</p>
-<p>&emsp;&emsp;算法需要以下几个子过程：</p>
-<ol>
-<li>开始时，为每个人建立一个集合；</li>
-<li>得到一个关系，合并相应的集合；</li>
-<li>在合并集合时先要判断是否两个人在同一集合。合并完之后还要判断是否为亲戚；</li>
-</ol>
-<h6 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.BufferedReader;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStreamReader;</span><br><span class="line"><span class="keyword">import</span> java.io.StreamTokenizer;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MergeSet</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> father[];</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		<span class="comment">//获取输入流</span></span><br><span class="line">		StreamTokenizer st = <span class="keyword">new</span> StreamTokenizer(<span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(System.in)));</span><br><span class="line">		<span class="keyword">while</span>(st.nextToken() != StreamTokenizer.TT_EOF) &#123;</span><br><span class="line">			<span class="comment">//n为亲戚总数</span></span><br><span class="line">			<span class="keyword">int</span> n = (<span class="keyword">int</span>)st.nval;</span><br><span class="line">			father = <span class="keyword">new</span> <span class="keyword">int</span>[n+<span class="number">1</span>];</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++) &#123;</span><br><span class="line">				father[i] = i;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">//m个亲戚关系</span></span><br><span class="line">			st.nextToken();</span><br><span class="line">			<span class="keyword">int</span> m = (<span class="keyword">int</span>)st.nval;</span><br><span class="line">			<span class="comment">//询问p对亲戚关系</span></span><br><span class="line">			st.nextToken();</span><br><span class="line">			<span class="keyword">int</span> p = (<span class="keyword">int</span>)st.nval;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">				st.nextToken();</span><br><span class="line">				<span class="keyword">int</span> a = (<span class="keyword">int</span>)st.nval;</span><br><span class="line">				st.nextToken();</span><br><span class="line">				<span class="keyword">int</span> b = (<span class="keyword">int</span>)st.nval;</span><br><span class="line">				union(a,b);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; p; i++) &#123;</span><br><span class="line">				st.nextToken();</span><br><span class="line">				<span class="keyword">int</span> a = (<span class="keyword">int</span>)st.nval;</span><br><span class="line">				st.nextToken();</span><br><span class="line">				<span class="keyword">int</span> b = (<span class="keyword">int</span>)st.nval;</span><br><span class="line">				a = findParent(a);</span><br><span class="line">				b = findParent(b);</span><br><span class="line">				System.out.println(a == b ? <span class="string">"Yes"</span> : <span class="string">"No"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="comment">//亲戚关系连接</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">union</span><span class="params">(<span class="keyword">int</span> f, <span class="keyword">int</span> t)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> a = findParent(f);</span><br><span class="line">		<span class="keyword">int</span> b = findParent(t);</span><br><span class="line">        <span class="keyword">if</span>(a==b)<span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">if</span>(a&gt;b)&#123;</span><br><span class="line">            father[a] = b;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            father[b] = a;</span><br><span class="line">        &#125; </span><br><span class="line">	&#125;</span><br><span class="line">    <span class="comment">//判断是否具有亲戚关系</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">findParent</span><span class="params">(<span class="keyword">int</span> f)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">while</span>(father[f] != f)&#123;</span><br><span class="line">            f = father[f];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> f;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <tags>
-        <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>时间与时间戳相互转换</title>
-    <url>/2020/01/14/%E6%97%B6%E9%97%B4%E4%B8%8E%E6%97%B6%E9%97%B4%E6%88%B3%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/</url>
-    <content><![CDATA[<p>java时间与时间戳相互转换<a id="more"></a></p>
-<h6 id="时间转换成时间戳"><a href="#时间转换成时间戳" class="headerlink" title="时间转换成时间戳"></a>时间转换成时间戳</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">dateToStamp</span><span class="params">(String s)</span> <span class="keyword">throws</span> ParaseException</span>&#123;</span><br><span class="line">    String res;</span><br><span class="line">    SimpleDateFormat simpleDateFormat = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);</span><br><span class="line">    Date date = simpleDateFormat.parse(s);</span><br><span class="line">    <span class="keyword">long</span> ts = date.getTime();</span><br><span class="line">    res = String.valueOf(ts);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h6 id="时间戳转换成时间"><a href="#时间戳转换成时间" class="headerlink" title="时间戳转换成时间"></a>时间戳转换成时间</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">dateToStamp</span><span class="params">(String s)</span></span>&#123;</span><br><span class="line">    String res;</span><br><span class="line">    SimpleDateFormat simpleDateFormat = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);</span><br><span class="line">    <span class="keyword">long</span> lt = <span class="keyword">new</span> Long(s);</span><br><span class="line">    Date date = <span class="keyword">new</span> Date(lt);</span><br><span class="line">    res = simpleDateFormat.format(date);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>比较java中Array类的两个方法：equals和deepEquals</title>
-    <url>/2020/01/14/%E6%AF%94%E8%BE%83java%E4%B8%ADArray%E7%B1%BB%E7%9A%84%E4%B8%A4%E4%B8%AA%E6%96%B9%E6%B3%95%EF%BC%9Aequals%E5%92%8CdeepEquals/</url>
-    <content><![CDATA[<p>举例分析equals和deepEquals的区别。<a id="more"></a></p>
-<h5 id="例一"><a href="#例一" class="headerlink" title="例一"></a>例一</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        String[][] name1 = &#123;&#123; <span class="string">"G"</span>,<span class="string">"a"</span>,<span class="string">"o"</span>&#125;,&#123;<span class="string">"H"</span>,<span class="string">"u"</span>,<span class="string">"a"</span>,<span class="string">"n"</span>&#125;,&#123;<span class="string">"j"</span>,<span class="string">"i"</span>,<span class="string">"e"</span>&#125;&#125;;</span><br><span class="line">        String[][] name2 =  &#123;&#123; <span class="string">"G"</span>,<span class="string">"a"</span>,<span class="string">"o"</span>&#125;,&#123;<span class="string">"H"</span>,<span class="string">"u"</span>,<span class="string">"a"</span>,<span class="string">"n"</span>&#125;,&#123;<span class="string">"j"</span>,<span class="string">"i"</span>,<span class="string">"e"</span>&#125;&#125;;</span><br><span class="line">      System.out.println(Arrays.equals(name1,name2));<span class="comment">//false  </span></span><br><span class="line">      System.out.println(Arrays.deepEquals(name1,name2));<span class="comment">//true  </span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="例二"><a href="#例二" class="headerlink" title="例二"></a>例二</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        String[] name1 = &#123;&#123; <span class="string">"G"</span>,<span class="string">"a"</span>,<span class="string">"o"</span>&#125;,&#123;<span class="string">"H"</span>,<span class="string">"u"</span>,<span class="string">"a"</span>,<span class="string">"n"</span>&#125;,&#123;<span class="string">"j"</span>,<span class="string">"i"</span>,<span class="string">"e"</span>&#125;&#125;;</span><br><span class="line">        String[] name2 =  &#123;&#123; <span class="string">"G"</span>,<span class="string">"a"</span>,<span class="string">"o"</span>&#125;,&#123;<span class="string">"H"</span>,<span class="string">"u"</span>,<span class="string">"a"</span>,<span class="string">"n"</span>&#125;,&#123;<span class="string">"j"</span>,<span class="string">"i"</span>,<span class="string">"e"</span>&#125;&#125;;</span><br><span class="line">      System.out.println(Arrays.equals(name1,name2));<span class="comment">//false  </span></span><br><span class="line">      System.out.println(Arrays.deepEquals(name1,name2));<span class="comment">//true  </span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><ol>
-<li>deepEquals用于判定两个指定数组彼此是否深层相等，此方法适用于任意深度的嵌套数组。</li>
-<li>equals用于判定两个数组是否相等，如果两个数组以相同顺序包含相同元素，则返回true，否则返回false。</li>
-<li>通过比对“例一”和“例二”我们可以得出这样一个结论：如果两个数组使用equals返回true，则使用deepEquals也返回true，也就是说在比较的两个数组均为一维数组的前提下，equals和deepEquals的比较结果没有差别。</li>
-</ol>
-<p>​    4、如果要比较多为数组，则需要使用deepEquals方法。</p>
-]]></content>
-      <tags>
-        <tag>java</tag>
       </tags>
   </entry>
   <entry>
@@ -2964,16 +2887,76 @@
       </tags>
   </entry>
   <entry>
-    <title>时间格式化DateTimeFormatter</title>
-    <url>/2020/02/14/%E6%97%B6%E9%97%B4%E6%A0%BC%E5%BC%8F%E5%8C%96DateTimeFormatter/</url>
-    <content><![CDATA[<p>DateTimeFormatter类提供了三种时间格式化方法。<a id="more"></a></p>
-<h6 id="默认格式"><a href="#默认格式" class="headerlink" title="默认格式"></a>默认格式</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 1.新建一个DateTimeFormatter对象</span></span><br><span class="line">        DateTimeFormatter isoDate = DateTimeFormatter.ISO_DATE;</span><br><span class="line">        </span><br><span class="line">        LocalDateTime ldt1 = LocalDateTime.now();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 2.调用该对象的format方法，参数是需要格式化的LocalDateTime对象。</span></span><br><span class="line">        String format = isoDate.format(ldt1);</span><br><span class="line">        </span><br><span class="line">        System.out.println(<span class="string">"时间是："</span> + format);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+    <title>并查集</title>
+    <url>/2020/02/08/%E5%B9%B6%E6%9F%A5%E9%9B%86/</url>
+    <content><![CDATA[<p>建立迷宫时有所涉及，用来处理格子之间的相连问题。<a id="more"></a></p>
+<h5 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h5><p>&emsp;&emsp;并查集，在一些有N个元素的集合应用问题中，我们通常是在开始时让每个元素构成一个单元素的集合，然后按一定顺序将属于同一组的元素所在的集合合并，其间要反复查找一个元素在哪个集合中。这一类问题近几年来反复出现在信息学的国际国内赛题中，其特点是看似并不复杂，但数据量极大，若用正常的数据结构来描述的话，往往在空间上过大，计算机无法承受；即使在空间上勉强通过，运行的时间复杂度也极高，根本就不可能在比赛规定的运行时间（1～3秒）内计算出试题需要的结果，只能用并查集来描述。</p>
+<p>&emsp;&emsp;并查集是一种树型的数据结构，用于处理一些不相交集合（Disjoint Sets）的合并及查询问题。常常在使用中以森林来表示。</p>
+<h5 id="主要操作"><a href="#主要操作" class="headerlink" title="主要操作"></a>主要操作</h5><ul>
+<li>初始化<br>每个元素都将自己作为一个集合，时间复杂度为O(n)。</li>
+<li>查找<br>查找元素所在的集合，即根节点。</li>
+<li>合并<br>将两个元素所在的集合合并为一个集合。通常，首先判断两个元素是否在同一个集合，通过上步的查找来判断。</li>
+</ul>
+<h5 id="举例分析"><a href="#举例分析" class="headerlink" title="举例分析"></a>举例分析</h5><h6 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h6><p>&emsp;&emsp;若某个家族人员过于庞大，要判断两个是否是亲戚，确实不容易，给出某个亲戚关系图，求任意给出的两个人是否具有亲戚关系。</p>
+<p>规定：x和y是亲戚，y和z是亲戚，那么x和z也是亲戚。如果x,y是亲戚，那么x的亲戚都是y的亲戚，y的亲戚也都是x的亲戚。</p>
+<h6 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h6><p>&emsp;&emsp;第一行：三个整数n,m,p，（n&lt;=5000,m&lt;=5000,p&lt;=5000）</p>
+<p>&emsp;&emsp;分别表示有n个人，m个亲戚关系，询问p对新奇关系。</p>
+<p>&emsp;&emsp;以下m行：每行两个数Mi，Mj，1&lt;=Mi，Mj&lt;=n，表示Mi和Mj具有亲戚关系。</p>
+<p>&emsp;&emsp;接下来p行：每行两个数Pi，Pj，询问Pi和Pj是否具有亲戚关系。</p>
+<h6 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h6><p>&emsp;&emsp;共p行，每行一个“Yes”或“No”，表示第Pi个询问的答案为“有”或“没有”亲戚关系。</p>
+<h6 id="分析问题"><a href="#分析问题" class="headerlink" title="分析问题"></a>分析问题</h6><p>&emsp;&emsp;本题是一个图论中判断两个点是否在同一连通子图的问题。对于题目中的样例，将人作为点，亲戚关系作为边，建立无向图如下：</p>
+<p><img src="/2020/02/08/%E5%B9%B6%E6%9F%A5%E9%9B%86/1.jpg" alt></p>
+<p>&emsp;&emsp;比如判断3和4是否为亲戚时，我们检查3和4是否在同一个连通子图中，结果是在，于是他们是亲戚。又如7和10不在同一个连通子图中，所以他们不是亲戚。</p>
+<p>&emsp;&emsp; 例如样例：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="number">9</span> <span class="number">7</span> <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="number">2</span> <span class="number">4</span></span><br><span class="line"><span class="number">5</span> <span class="number">7</span></span><br><span class="line"><span class="number">1</span> <span class="number">3</span></span><br><span class="line"><span class="number">8</span> <span class="number">9</span></span><br><span class="line"><span class="number">1</span> <span class="number">2</span></span><br><span class="line"><span class="number">5</span> <span class="number">6</span></span><br><span class="line"><span class="number">2</span> <span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="number">1</span> <span class="number">9</span></span><br></pre></td></tr></table></figure>
 
-<h6 id="自定义格式"><a href="#自定义格式" class="headerlink" title="自定义格式"></a>自定义格式</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 1.新建一个DateTimeFormatter对象，调用ofPattern方法。</span></span><br><span class="line">        DateTimeFormatter pattern = DateTimeFormatter.ofPattern(<span class="string">"yyyy年MM月dd日 HH时mm分ss秒"</span>, Locale.CHINA);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 2.调用该对象的format方法，参数是需要格式化的LocalDateTime对象。</span></span><br><span class="line">        String format = pattern.format(LocalDateTime.now());</span><br><span class="line">        </span><br><span class="line">        System.out.println(<span class="string">"时间是："</span> + format);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;我们可以给每个人建立一个集合，集合的元素值有它自己，表示最开始时它不知道任何人是它的亲戚。以后每次给出一个亲戚关系a, b，则a和它的亲戚与b和它的亲戚就互为亲戚了，将a所在集合与b所在集合合并。对于样例数据的操作全过程如下：</p>
+<p>&emsp;&emsp;初始状态：{1} {2} {3} {4} {5} {6} {7} {8} {9}</p>
+<p>&emsp;&emsp;输入关系 分离集合</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(2,4) &#123;2,4&#125;&#123;1&#125; &#123;3&#125; &#123;5&#125; &#123;6&#125; &#123;7&#125; &#123;8&#125; &#123;9&#125;</span><br><span class="line"></span><br><span class="line">(5,7) &#123;2,4&#125; &#123;5,7&#125; &#123;1&#125; &#123;3&#125; &#123;6&#125; &#123;8&#125; &#123;9&#125;</span><br><span class="line"></span><br><span class="line">(1,3) &#123;1,3&#125; &#123;2,4&#125; &#123;5,7&#125;&#123;6&#125; &#123;8&#125; &#123;9&#125;</span><br><span class="line"></span><br><span class="line">(8,9) &#123;1,3&#125; &#123;2,4&#125; &#123;5,7&#125; &#123;8,9&#125;&#123;6&#125;</span><br><span class="line"></span><br><span class="line">(1,2) &#123;1,2,3,4&#125; &#123;5,7&#125; &#123;8,9&#125;&#123;6&#125;</span><br><span class="line"></span><br><span class="line">(5,6) &#123;1,2,3,4&#125; &#123;5,6,7&#125; &#123;8,9&#125;</span><br><span class="line"></span><br><span class="line">(2,3) &#123;1,2,3,4&#125; &#123;5,6,7&#125; &#123;8,9&#125;</span><br></pre></td></tr></table></figure>
 
-<h6 id="自定义格式时间解析"><a href="#自定义格式时间解析" class="headerlink" title="自定义格式时间解析"></a>自定义格式时间解析</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test3</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 1.新建一个时间的字符串对象。</span></span><br><span class="line">        String dateTime = <span class="string">"2020年02月12日 22点22分22秒"</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 2.新建一个DateTimeFormatter对象，调用ofPattern方法。</span></span><br><span class="line">        DateTimeFormatter pattern = DateTimeFormatter.ofPattern(<span class="string">"yyyy年MM月dd日 HH点mm分ss秒"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 3.调用DateTimeFormatter对象的parse方法，进行解析，返回一个TemporalAccessor对象。</span></span><br><span class="line">        TemporalAccessor parse = pattern.parse(dateTime);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 4.调用LocalDateTime的静态方法form，将TemporalAccessor转换成LocalDateTime对象。</span></span><br><span class="line">        LocalDateTime ldt1 = LocalDateTime.from(parse);</span><br><span class="line">        </span><br><span class="line">        System.out.println(<span class="string">"LocalDateTime："</span> + ldt1);</span><br><span class="line">        System.out.println(<span class="string">"LocalDateTime："</span> + LocalDateTime.now());</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>判断亲戚关系</p>
+<p>(1,9)，因为1,9不在同一集合内，所以输出”NO”。</p>
+<p>&emsp;&emsp;最后我们得到3个集合{1,2,3,4}、{5,6,7}、{8,9}，于是判断两个人是否亲戚的问题就变成判断两个数是否在同一个集合中的问题。</p>
+<p>&emsp;&emsp;算法需要以下几个子过程：</p>
+<ol>
+<li>开始时，为每个人建立一个集合；</li>
+<li>得到一个关系，合并相应的集合；</li>
+<li>在合并集合时先要判断是否两个人在同一集合。合并完之后还要判断是否为亲戚；</li>
+</ol>
+<h6 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.BufferedReader;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStreamReader;</span><br><span class="line"><span class="keyword">import</span> java.io.StreamTokenizer;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MergeSet</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> father[];</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		<span class="comment">//获取输入流</span></span><br><span class="line">		StreamTokenizer st = <span class="keyword">new</span> StreamTokenizer(<span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(System.in)));</span><br><span class="line">		<span class="keyword">while</span>(st.nextToken() != StreamTokenizer.TT_EOF) &#123;</span><br><span class="line">			<span class="comment">//n为亲戚总数</span></span><br><span class="line">			<span class="keyword">int</span> n = (<span class="keyword">int</span>)st.nval;</span><br><span class="line">			father = <span class="keyword">new</span> <span class="keyword">int</span>[n+<span class="number">1</span>];</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++) &#123;</span><br><span class="line">				father[i] = i;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">//m个亲戚关系</span></span><br><span class="line">			st.nextToken();</span><br><span class="line">			<span class="keyword">int</span> m = (<span class="keyword">int</span>)st.nval;</span><br><span class="line">			<span class="comment">//询问p对亲戚关系</span></span><br><span class="line">			st.nextToken();</span><br><span class="line">			<span class="keyword">int</span> p = (<span class="keyword">int</span>)st.nval;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">				st.nextToken();</span><br><span class="line">				<span class="keyword">int</span> a = (<span class="keyword">int</span>)st.nval;</span><br><span class="line">				st.nextToken();</span><br><span class="line">				<span class="keyword">int</span> b = (<span class="keyword">int</span>)st.nval;</span><br><span class="line">				union(a,b);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; p; i++) &#123;</span><br><span class="line">				st.nextToken();</span><br><span class="line">				<span class="keyword">int</span> a = (<span class="keyword">int</span>)st.nval;</span><br><span class="line">				st.nextToken();</span><br><span class="line">				<span class="keyword">int</span> b = (<span class="keyword">int</span>)st.nval;</span><br><span class="line">				a = findParent(a);</span><br><span class="line">				b = findParent(b);</span><br><span class="line">				System.out.println(a == b ? <span class="string">"Yes"</span> : <span class="string">"No"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="comment">//亲戚关系连接</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">union</span><span class="params">(<span class="keyword">int</span> f, <span class="keyword">int</span> t)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> a = findParent(f);</span><br><span class="line">		<span class="keyword">int</span> b = findParent(t);</span><br><span class="line">        <span class="keyword">if</span>(a==b)<span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">if</span>(a&gt;b)&#123;</span><br><span class="line">            father[a] = b;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            father[b] = a;</span><br><span class="line">        &#125; </span><br><span class="line">	&#125;</span><br><span class="line">    <span class="comment">//判断是否具有亲戚关系</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">findParent</span><span class="params">(<span class="keyword">int</span> f)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">while</span>(father[f] != f)&#123;</span><br><span class="line">            f = father[f];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> f;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h6 id="输出结果"><a href="#输出结果" class="headerlink" title="输出结果"></a>输出结果</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">时间是：2020-02-14</span><br><span class="line">时间是：2020年02月14日 16时30分55秒</span><br><span class="line">LocalDateTime：2020-02-12T22:22:22</span><br><span class="line">LocalDateTime：2020-02-14T16:30:55.544</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>比较java中Array类的两个方法：equals和deepEquals</title>
+    <url>/2020/01/14/%E6%AF%94%E8%BE%83java%E4%B8%ADArray%E7%B1%BB%E7%9A%84%E4%B8%A4%E4%B8%AA%E6%96%B9%E6%B3%95%EF%BC%9Aequals%E5%92%8CdeepEquals/</url>
+    <content><![CDATA[<p>举例分析equals和deepEquals的区别。<a id="more"></a></p>
+<h5 id="例一"><a href="#例一" class="headerlink" title="例一"></a>例一</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        String[][] name1 = &#123;&#123; <span class="string">"G"</span>,<span class="string">"a"</span>,<span class="string">"o"</span>&#125;,&#123;<span class="string">"H"</span>,<span class="string">"u"</span>,<span class="string">"a"</span>,<span class="string">"n"</span>&#125;,&#123;<span class="string">"j"</span>,<span class="string">"i"</span>,<span class="string">"e"</span>&#125;&#125;;</span><br><span class="line">        String[][] name2 =  &#123;&#123; <span class="string">"G"</span>,<span class="string">"a"</span>,<span class="string">"o"</span>&#125;,&#123;<span class="string">"H"</span>,<span class="string">"u"</span>,<span class="string">"a"</span>,<span class="string">"n"</span>&#125;,&#123;<span class="string">"j"</span>,<span class="string">"i"</span>,<span class="string">"e"</span>&#125;&#125;;</span><br><span class="line">      System.out.println(Arrays.equals(name1,name2));<span class="comment">//false  </span></span><br><span class="line">      System.out.println(Arrays.deepEquals(name1,name2));<span class="comment">//true  </span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="例二"><a href="#例二" class="headerlink" title="例二"></a>例二</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        String[] name1 = &#123;&#123; <span class="string">"G"</span>,<span class="string">"a"</span>,<span class="string">"o"</span>&#125;,&#123;<span class="string">"H"</span>,<span class="string">"u"</span>,<span class="string">"a"</span>,<span class="string">"n"</span>&#125;,&#123;<span class="string">"j"</span>,<span class="string">"i"</span>,<span class="string">"e"</span>&#125;&#125;;</span><br><span class="line">        String[] name2 =  &#123;&#123; <span class="string">"G"</span>,<span class="string">"a"</span>,<span class="string">"o"</span>&#125;,&#123;<span class="string">"H"</span>,<span class="string">"u"</span>,<span class="string">"a"</span>,<span class="string">"n"</span>&#125;,&#123;<span class="string">"j"</span>,<span class="string">"i"</span>,<span class="string">"e"</span>&#125;&#125;;</span><br><span class="line">      System.out.println(Arrays.equals(name1,name2));<span class="comment">//false  </span></span><br><span class="line">      System.out.println(Arrays.deepEquals(name1,name2));<span class="comment">//true  </span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><ol>
+<li>deepEquals用于判定两个指定数组彼此是否深层相等，此方法适用于任意深度的嵌套数组。</li>
+<li>equals用于判定两个数组是否相等，如果两个数组以相同顺序包含相同元素，则返回true，否则返回false。</li>
+<li>通过比对“例一”和“例二”我们可以得出这样一个结论：如果两个数组使用equals返回true，则使用deepEquals也返回true，也就是说在比较的两个数组均为一维数组的前提下，equals和deepEquals的比较结果没有差别。</li>
+</ol>
+<p>​    4、如果要比较多为数组，则需要使用deepEquals方法。</p>
+]]></content>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>时间与时间戳相互转换</title>
+    <url>/2020/01/14/%E6%97%B6%E9%97%B4%E4%B8%8E%E6%97%B6%E9%97%B4%E6%88%B3%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/</url>
+    <content><![CDATA[<p>java时间与时间戳相互转换<a id="more"></a></p>
+<h6 id="时间转换成时间戳"><a href="#时间转换成时间戳" class="headerlink" title="时间转换成时间戳"></a>时间转换成时间戳</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">dateToStamp</span><span class="params">(String s)</span> <span class="keyword">throws</span> ParaseException</span>&#123;</span><br><span class="line">    String res;</span><br><span class="line">    SimpleDateFormat simpleDateFormat = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);</span><br><span class="line">    Date date = simpleDateFormat.parse(s);</span><br><span class="line">    <span class="keyword">long</span> ts = date.getTime();</span><br><span class="line">    res = String.valueOf(ts);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="时间戳转换成时间"><a href="#时间戳转换成时间" class="headerlink" title="时间戳转换成时间"></a>时间戳转换成时间</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">dateToStamp</span><span class="params">(String s)</span></span>&#123;</span><br><span class="line">    String res;</span><br><span class="line">    SimpleDateFormat simpleDateFormat = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);</span><br><span class="line">    <span class="keyword">long</span> lt = <span class="keyword">new</span> Long(s);</span><br><span class="line">    Date date = <span class="keyword">new</span> Date(lt);</span><br><span class="line">    res = simpleDateFormat.format(date);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <tags>
@@ -3002,6 +2985,23 @@
       </categories>
       <tags>
         <tag>Math</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>时间格式化DateTimeFormatter</title>
+    <url>/2020/02/14/%E6%97%B6%E9%97%B4%E6%A0%BC%E5%BC%8F%E5%8C%96DateTimeFormatter/</url>
+    <content><![CDATA[<p>DateTimeFormatter类提供了三种时间格式化方法。<a id="more"></a></p>
+<h6 id="默认格式"><a href="#默认格式" class="headerlink" title="默认格式"></a>默认格式</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 1.新建一个DateTimeFormatter对象</span></span><br><span class="line">        DateTimeFormatter isoDate = DateTimeFormatter.ISO_DATE;</span><br><span class="line">        </span><br><span class="line">        LocalDateTime ldt1 = LocalDateTime.now();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 2.调用该对象的format方法，参数是需要格式化的LocalDateTime对象。</span></span><br><span class="line">        String format = isoDate.format(ldt1);</span><br><span class="line">        </span><br><span class="line">        System.out.println(<span class="string">"时间是："</span> + format);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="自定义格式"><a href="#自定义格式" class="headerlink" title="自定义格式"></a>自定义格式</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 1.新建一个DateTimeFormatter对象，调用ofPattern方法。</span></span><br><span class="line">        DateTimeFormatter pattern = DateTimeFormatter.ofPattern(<span class="string">"yyyy年MM月dd日 HH时mm分ss秒"</span>, Locale.CHINA);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 2.调用该对象的format方法，参数是需要格式化的LocalDateTime对象。</span></span><br><span class="line">        String format = pattern.format(LocalDateTime.now());</span><br><span class="line">        </span><br><span class="line">        System.out.println(<span class="string">"时间是："</span> + format);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="自定义格式时间解析"><a href="#自定义格式时间解析" class="headerlink" title="自定义格式时间解析"></a>自定义格式时间解析</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test3</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 1.新建一个时间的字符串对象。</span></span><br><span class="line">        String dateTime = <span class="string">"2020年02月12日 22点22分22秒"</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 2.新建一个DateTimeFormatter对象，调用ofPattern方法。</span></span><br><span class="line">        DateTimeFormatter pattern = DateTimeFormatter.ofPattern(<span class="string">"yyyy年MM月dd日 HH点mm分ss秒"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 3.调用DateTimeFormatter对象的parse方法，进行解析，返回一个TemporalAccessor对象。</span></span><br><span class="line">        TemporalAccessor parse = pattern.parse(dateTime);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 4.调用LocalDateTime的静态方法form，将TemporalAccessor转换成LocalDateTime对象。</span></span><br><span class="line">        LocalDateTime ldt1 = LocalDateTime.from(parse);</span><br><span class="line">        </span><br><span class="line">        System.out.println(<span class="string">"LocalDateTime："</span> + ldt1);</span><br><span class="line">        System.out.println(<span class="string">"LocalDateTime："</span> + LocalDateTime.now());</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="输出结果"><a href="#输出结果" class="headerlink" title="输出结果"></a>输出结果</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">时间是：2020-02-14</span><br><span class="line">时间是：2020年02月14日 16时30分55秒</span><br><span class="line">LocalDateTime：2020-02-12T22:22:22</span><br><span class="line">LocalDateTime：2020-02-14T16:30:55.544</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>java</tag>
       </tags>
   </entry>
 </search>
