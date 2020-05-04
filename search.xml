@@ -1,77 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>CSS3滤镜filter</title>
-    <url>/2020/02/10/CSS3%E6%BB%A4%E9%95%9Cfilter/</url>
-    <content><![CDATA[<p>网页图片的色彩处理<a id="more"></a></p>
-<h6 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h6><table>
-<thead>
-<tr>
-<th align="center">none</th>
-<th>默认值，没有效果。</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">blur(<em>px</em>)</td>
-<td>给图像设置高斯模糊。”radius”一值设定高斯函数的标准差，或者是屏幕上以多少像素融在一起， 所以值越大越模糊；  如果没有设定值，则默认是0；这个参数可设置css长度值，但不接受百分比值。</td>
-</tr>
-<tr>
-<td align="center">brightness(<em>%</em>)</td>
-<td>给图片应用一种线性乘法，使其看起来更亮或更暗。如果值是0%，图像会全黑。值是100%，则图像无变化。其他的值对应线性乘数效果。值超过100%也是可以的，图像会比原来更亮。如果没有设定值，默认是1。</td>
-</tr>
-<tr>
-<td align="center">contrast(<em>%</em>)</td>
-<td>调整图像的对比度。值是0%的话，图像会全黑。值是100%，图像不变。值可以超过100%，意味着会运用更低的对比。若没有设置值，默认是1。</td>
-</tr>
-<tr>
-<td align="center">drop-shadow(<em>h-shadow v-shadow blur spread color</em>)</td>
-<td>给图像设置一个阴影效果。阴影是合成在图像下面，可以有模糊度的，可以以特定颜色画出的遮罩图的偏移版本。 函数接受<shadow>(在CSS3背景中定义)类型的值，除了”inset”关键字是不允许的。该函数与已有的box-shadow box-shadow属性很相似；不同之处在于，通过滤镜，一些浏览器为了更好的性能会提供硬件加速。参数如下：<offset-x><offset-y>(必须)这是设置阴影偏移量的两个 值. <offset-x> 设定水平方向距离. 负值会使阴影出现在元素左边. <offset-y>设定垂直距离.负值会使阴影出现在元素上方。查看<length>可能的单位.<strong>如果两个值都是0</strong>, 则阴影出现在元素正后面 (如果设置了 and/or ，会有模糊效果).<blur-radius> (可选)这是第三个code&gt;值. 值越大，越模糊，则阴影会变得更大更淡.不允许负值 若未设定，默认是0 (则阴影的边界很锐利).<spread-radius>(可选)这是第四个 值. 正值会使阴影扩张和变大，负值会是阴影缩小.若未设定，默认是0 (阴影会与元素一样大小). 注意: Webkit, 以及一些其他浏览器 不支持第四个长度，如果加了也不会渲染。 <color> (可选)查看 该值可能的关键字和标记。若未设定，颜色值基于浏览器。在Gecko (Firefox), Presto (Opera)和Trident (Internet Explorer)中， 会应用color<strong>color</strong>属性的值。另外, 如果颜色值省略，WebKit中阴影是透明的。</color></spread-radius></blur-radius></length></offset-y></offset-x></offset-y></offset-x></shadow></td>
-</tr>
-<tr>
-<td align="center">grayscale(<em>%</em>)</td>
-<td>将图像转换为灰度图像。值定义转换的比例。值为100%则完全转为灰度图像，值为0%图像无变化。值在0%到100%之间，则是效果的线性乘子。若未设置，值默认是0；</td>
-</tr>
-<tr>
-<td align="center">hue-rotate(<em>deg</em>)</td>
-<td>给图像应用色相旋转。”angle”一值设定图像会被调整的色环角度值。值为0deg，则图像无变化。若值未设置，默认值是0deg。该值虽然没有最大值，超过360deg的值相当于又绕一圈。</td>
-</tr>
-<tr>
-<td align="center">invert(<em>%</em>)</td>
-<td>反转输入图像。值定义转换的比例。100%的价值是完全反转。值为0%则图像无变化。值在0%和100%之间，则是效果的线性乘子。 若值未设置，值默认是0。</td>
-</tr>
-<tr>
-<td align="center">opacity(<em>%</em>)</td>
-<td>转化图像的透明程度。值定义转换的比例。值为0%则是完全透明，值为100%则图像无变化。值在0%和100%之间，则是效果的线性乘子，也相当于图像样本乘以数量。 若值未设置，值默认是1。该函数与已有的opacity属性很相似，不同之处在于通过filter，一些浏览器为了提升性能会提供硬件加速。</td>
-</tr>
-<tr>
-<td align="center">saturate(<em>%</em>)</td>
-<td>转换图像饱和度。值定义转换的比例。值为0%则是完全不饱和，值为100%则图像无变化。其他值，则是效果的线性乘子。超过100%的值是允许的，则有更高的饱和度。 若值未设置，值默认是1。</td>
-</tr>
-<tr>
-<td align="center">sepia(<em>%</em>)</td>
-<td>将图像转换为深褐色。值定义转换的比例。值为100%则完全是深褐色的，值为0%图像无变化。值在0%到100%之间，则是效果的线性乘子。若未设置，值默认是0；</td>
-</tr>
-<tr>
-<td align="center">url()</td>
-<td>URL函数接受一个XML文件，该文件设置了 一个SVG滤镜，且可以包含一个锚点来指定一个具体的滤镜元素。例如：<code>filter: url(svg-url#element-id)</code></td>
-</tr>
-<tr>
-<td align="center">initial</td>
-<td>设置属性为默认值</td>
-</tr>
-<tr>
-<td align="center">inherit</td>
-<td>从父元素继承该属性</td>
-</tr>
-</tbody></table>
-<h6 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h6><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">img &#123;</span><br><span class="line">    width: 33%;</span><br><span class="line">    height: auto;</span><br><span class="line">    float: left; </span><br><span class="line">&#125;</span><br><span class="line"><span class="css"><span class="comment">/*模糊*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.blur</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">blur</span>(4px);<span class="attribute">filter</span>: <span class="built_in">blur</span>(4px);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*亮度*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.brightness</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">brightness</span>(0.30);<span class="attribute">filter</span>: <span class="built_in">brightness</span>(0.30);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*对比度*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.contrast</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">contrast</span>(180%);<span class="attribute">filter</span>: <span class="built_in">contrast</span>(180%);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*灰度*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.grayscale</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">grayscale</span>(100%);<span class="attribute">filter</span>: <span class="built_in">grayscale</span>(100%);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*色相旋转*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.huerotate</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">hue-rotate</span>(180deg);<span class="attribute">filter</span>: <span class="built_in">hue-rotate</span>(180deg);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*反色*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.invert</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">invert</span>(100%);<span class="attribute">filter</span>: <span class="built_in">invert</span>(100%);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*透明度*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.opacity</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">opacity</span>(50%);<span class="attribute">filter</span>: <span class="built_in">opacity</span>(50%);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*饱和度*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.saturate</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">saturate</span>(7); <span class="attribute">filter</span>: <span class="built_in">saturate</span>(7);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*深褐色*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.sepia</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">sepia</span>(100%);<span class="attribute">filter</span>: <span class="built_in">sepia</span>(100%);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*阴影*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.shadow</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">drop-shadow</span>(8px 8px 10px green);<span class="attribute">filter</span>: <span class="built_in">drop-shadow</span>(8px 8px 10px green);&#125;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">strong</span>&gt;</span>注意：<span class="tag">&lt;/<span class="name">strong</span>&gt;</span> Internet Explorer 不支持 filter 属性。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"blur"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"brightness"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"contrast"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"grayscale"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"huerotate"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"invert"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"opacity"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"saturate"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"sepia"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"shadow"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <tags>
-        <tag>CSS</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hexo搭建博客</title>
     <url>/2019/11/22/Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<p> Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 <a href="http://daringfireball.net/projects/markdown/" target="_blank" rel="noopener">Markdown</a>（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。 </p>
@@ -156,6 +85,255 @@
 ]]></content>
       <tags>
         <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CSS3滤镜filter</title>
+    <url>/2020/02/10/CSS3%E6%BB%A4%E9%95%9Cfilter/</url>
+    <content><![CDATA[<p>网页图片的色彩处理<a id="more"></a></p>
+<h6 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h6><table>
+<thead>
+<tr>
+<th align="center">none</th>
+<th>默认值，没有效果。</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">blur(<em>px</em>)</td>
+<td>给图像设置高斯模糊。”radius”一值设定高斯函数的标准差，或者是屏幕上以多少像素融在一起， 所以值越大越模糊；  如果没有设定值，则默认是0；这个参数可设置css长度值，但不接受百分比值。</td>
+</tr>
+<tr>
+<td align="center">brightness(<em>%</em>)</td>
+<td>给图片应用一种线性乘法，使其看起来更亮或更暗。如果值是0%，图像会全黑。值是100%，则图像无变化。其他的值对应线性乘数效果。值超过100%也是可以的，图像会比原来更亮。如果没有设定值，默认是1。</td>
+</tr>
+<tr>
+<td align="center">contrast(<em>%</em>)</td>
+<td>调整图像的对比度。值是0%的话，图像会全黑。值是100%，图像不变。值可以超过100%，意味着会运用更低的对比。若没有设置值，默认是1。</td>
+</tr>
+<tr>
+<td align="center">drop-shadow(<em>h-shadow v-shadow blur spread color</em>)</td>
+<td>给图像设置一个阴影效果。阴影是合成在图像下面，可以有模糊度的，可以以特定颜色画出的遮罩图的偏移版本。 函数接受<shadow>(在CSS3背景中定义)类型的值，除了”inset”关键字是不允许的。该函数与已有的box-shadow box-shadow属性很相似；不同之处在于，通过滤镜，一些浏览器为了更好的性能会提供硬件加速。参数如下：<offset-x><offset-y>(必须)这是设置阴影偏移量的两个 值. <offset-x> 设定水平方向距离. 负值会使阴影出现在元素左边. <offset-y>设定垂直距离.负值会使阴影出现在元素上方。查看<length>可能的单位.<strong>如果两个值都是0</strong>, 则阴影出现在元素正后面 (如果设置了 and/or ，会有模糊效果).<blur-radius> (可选)这是第三个code&gt;值. 值越大，越模糊，则阴影会变得更大更淡.不允许负值 若未设定，默认是0 (则阴影的边界很锐利).<spread-radius>(可选)这是第四个 值. 正值会使阴影扩张和变大，负值会是阴影缩小.若未设定，默认是0 (阴影会与元素一样大小). 注意: Webkit, 以及一些其他浏览器 不支持第四个长度，如果加了也不会渲染。 <color> (可选)查看 该值可能的关键字和标记。若未设定，颜色值基于浏览器。在Gecko (Firefox), Presto (Opera)和Trident (Internet Explorer)中， 会应用color<strong>color</strong>属性的值。另外, 如果颜色值省略，WebKit中阴影是透明的。</color></spread-radius></blur-radius></length></offset-y></offset-x></offset-y></offset-x></shadow></td>
+</tr>
+<tr>
+<td align="center">grayscale(<em>%</em>)</td>
+<td>将图像转换为灰度图像。值定义转换的比例。值为100%则完全转为灰度图像，值为0%图像无变化。值在0%到100%之间，则是效果的线性乘子。若未设置，值默认是0；</td>
+</tr>
+<tr>
+<td align="center">hue-rotate(<em>deg</em>)</td>
+<td>给图像应用色相旋转。”angle”一值设定图像会被调整的色环角度值。值为0deg，则图像无变化。若值未设置，默认值是0deg。该值虽然没有最大值，超过360deg的值相当于又绕一圈。</td>
+</tr>
+<tr>
+<td align="center">invert(<em>%</em>)</td>
+<td>反转输入图像。值定义转换的比例。100%的价值是完全反转。值为0%则图像无变化。值在0%和100%之间，则是效果的线性乘子。 若值未设置，值默认是0。</td>
+</tr>
+<tr>
+<td align="center">opacity(<em>%</em>)</td>
+<td>转化图像的透明程度。值定义转换的比例。值为0%则是完全透明，值为100%则图像无变化。值在0%和100%之间，则是效果的线性乘子，也相当于图像样本乘以数量。 若值未设置，值默认是1。该函数与已有的opacity属性很相似，不同之处在于通过filter，一些浏览器为了提升性能会提供硬件加速。</td>
+</tr>
+<tr>
+<td align="center">saturate(<em>%</em>)</td>
+<td>转换图像饱和度。值定义转换的比例。值为0%则是完全不饱和，值为100%则图像无变化。其他值，则是效果的线性乘子。超过100%的值是允许的，则有更高的饱和度。 若值未设置，值默认是1。</td>
+</tr>
+<tr>
+<td align="center">sepia(<em>%</em>)</td>
+<td>将图像转换为深褐色。值定义转换的比例。值为100%则完全是深褐色的，值为0%图像无变化。值在0%到100%之间，则是效果的线性乘子。若未设置，值默认是0；</td>
+</tr>
+<tr>
+<td align="center">url()</td>
+<td>URL函数接受一个XML文件，该文件设置了 一个SVG滤镜，且可以包含一个锚点来指定一个具体的滤镜元素。例如：<code>filter: url(svg-url#element-id)</code></td>
+</tr>
+<tr>
+<td align="center">initial</td>
+<td>设置属性为默认值</td>
+</tr>
+<tr>
+<td align="center">inherit</td>
+<td>从父元素继承该属性</td>
+</tr>
+</tbody></table>
+<h6 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h6><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">img &#123;</span><br><span class="line">    width: 33%;</span><br><span class="line">    height: auto;</span><br><span class="line">    float: left; </span><br><span class="line">&#125;</span><br><span class="line"><span class="css"><span class="comment">/*模糊*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.blur</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">blur</span>(4px);<span class="attribute">filter</span>: <span class="built_in">blur</span>(4px);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*亮度*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.brightness</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">brightness</span>(0.30);<span class="attribute">filter</span>: <span class="built_in">brightness</span>(0.30);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*对比度*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.contrast</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">contrast</span>(180%);<span class="attribute">filter</span>: <span class="built_in">contrast</span>(180%);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*灰度*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.grayscale</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">grayscale</span>(100%);<span class="attribute">filter</span>: <span class="built_in">grayscale</span>(100%);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*色相旋转*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.huerotate</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">hue-rotate</span>(180deg);<span class="attribute">filter</span>: <span class="built_in">hue-rotate</span>(180deg);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*反色*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.invert</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">invert</span>(100%);<span class="attribute">filter</span>: <span class="built_in">invert</span>(100%);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*透明度*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.opacity</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">opacity</span>(50%);<span class="attribute">filter</span>: <span class="built_in">opacity</span>(50%);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*饱和度*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.saturate</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">saturate</span>(7); <span class="attribute">filter</span>: <span class="built_in">saturate</span>(7);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*深褐色*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.sepia</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">sepia</span>(100%);<span class="attribute">filter</span>: <span class="built_in">sepia</span>(100%);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*阴影*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.shadow</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">drop-shadow</span>(8px 8px 10px green);<span class="attribute">filter</span>: <span class="built_in">drop-shadow</span>(8px 8px 10px green);&#125;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">strong</span>&gt;</span>注意：<span class="tag">&lt;/<span class="name">strong</span>&gt;</span> Internet Explorer 不支持 filter 属性。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"blur"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"brightness"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"contrast"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"grayscale"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"huerotate"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"invert"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"opacity"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"saturate"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"sepia"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"shadow"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>CSS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java小知识</title>
+    <url>/2020/04/26/Java%E5%B0%8F%E7%9F%A5%E8%AF%86/</url>
+    <content><![CDATA[<p>java面试题中的一些知识点<a id="more"></a></p>
+<ol>
+<li><p>方法重载，参数列表不相同，返回值类型可以不同；方法重写，遵循两同-两小-一大规则。两同：方法名和参数列表相同；两小：子类返回值类型小于等于父类的，异常抛出小于等于父类；一大：访问权限修饰符大于等于父类。</p>
+</li>
+<li><p>HashMap可以用null值和空字符串作为K,不过只能有一个。</p>
+</li>
+<li><p>字面量”+”拼接是在编译期间进行的，拼接后的字符串存放在字符串池中；而字符串引用的”+”拼接运算实在运行时进行的，新创建的字符串存放在堆中。</p>
+</li>
+<li><p>数组是一种引用数据类型，长度固定。那么它肯定是继承Object类的，所以里面有equals() 方法。但是没有被重写过，所以它并不是比较数组内的内容，Arrays.equals()才是比较两个数组中的内容。</p>
+</li>
+<li><p>Integer，Float，Double等都继承自Number类。</p>
+</li>
+<li><p>处理异常常用的两种方式：<br> 1、try…catch(捕获处理机制)；<br> 2、throws(冒泡处理机制).<br> 注意细节：使用try…catch块捕获时可以没有catch块,但当没有catch块的时候必须得有finally块。</p>
+</li>
+<li><p>构造方法是一种特殊的方法，具有以下特点。</p>
+<p> （1）构造方法的方法名必须与类名相同。</p>
+<p> （2）构造方法没有返回类型，也不能定义为void，在方法名前面不声明方法类型。</p>
+<p> （3）构造方法的主要作用是完成对象的初始化工作，它能够把定义对象时的参数传给对象的域。</p>
+<p> （4）一个类可以定义多个构造方法，如果在定义类时没有定义构造方法，则编译系统会自动插入一个无参数的默认构造器，这个构造器不执行任何代码。</p>
+<p> （5）构造方法可以重载，以参数的个数，类型，顺序。</p>
+</li>
+<li><table>
+<thead>
+<tr>
+<th align="center"><strong>修饰符</strong></th>
+<th align="center"><strong>类</strong></th>
+<th align="center"><strong>成员访求</strong></th>
+<th align="center"><strong>构造方法</strong></th>
+<th align="center"><strong>成员变量</strong></th>
+<th align="center"><strong>局部变量</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">abstract（抽象的）</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">－</td>
+<td align="center">－</td>
+<td align="center">－</td>
+</tr>
+<tr>
+<td align="center">static （静态的）</td>
+<td align="center">－</td>
+<td align="center">√</td>
+<td align="center">－</td>
+<td align="center">√</td>
+<td align="center">－</td>
+</tr>
+<tr>
+<td align="center">public（公共的）</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">－</td>
+</tr>
+<tr>
+<td align="center">protected（受保护的）</td>
+<td align="center"></td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">－</td>
+</tr>
+<tr>
+<td align="center">private（私有的）</td>
+<td align="center">－</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">－</td>
+</tr>
+<tr>
+<td align="center">synchronized（同步的）</td>
+<td align="center">－</td>
+<td align="center">√</td>
+<td align="center">－</td>
+<td align="center">－</td>
+<td align="center">－</td>
+</tr>
+<tr>
+<td align="center">native（本地的）</td>
+<td align="center">－</td>
+<td align="center">√</td>
+<td align="center">－</td>
+<td align="center">－</td>
+<td align="center">－</td>
+</tr>
+<tr>
+<td align="center">transient（暂时的）</td>
+<td align="center">－</td>
+<td align="center">－</td>
+<td align="center">－</td>
+<td align="center">√</td>
+<td align="center">－</td>
+</tr>
+<tr>
+<td align="center">volatie（易失的）</td>
+<td align="center">－</td>
+<td align="center">－</td>
+<td align="center">－</td>
+<td align="center">√</td>
+<td align="center">－</td>
+</tr>
+<tr>
+<td align="center">final（不要改变的）</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">－</td>
+<td align="center">√</td>
+<td align="center">√</td>
+</tr>
+</tbody></table>
+</li>
+<li><p><img src="/2020/04/26/Java%E5%B0%8F%E7%9F%A5%E8%AF%86/modifer.png" alt></p>
+</li>
+<li><p>接口与抽象类的区别：</p>
+<ul>
+<li><p>抽象类可以有构造方法，接口中不能有构造方法。 </p>
+</li>
+<li><p>抽象类中可以有普通成员变量，接口中没有普通成员变量 </p>
+</li>
+<li><p>抽象类中可以包含非抽象的普通方法，接口中的所有方法必须都是抽象的，不能有非抽象的普通方法。 </p>
+</li>
+<li><p>抽象类中的抽象方法的访问类型可以是public，protected和（默认类型,虽然<br>  eclipse下不报错，但应该也不行），但接口中的抽象方法只能是public类型的，并且默认即为public abstract类型。 </p>
+</li>
+<li><p>抽象类中可以包含静态方法，接口中不能包含静态方法 </p>
+</li>
+<li><p>抽象类和接口中都可以包含静态成员变量，抽象类中的静态成员变量的访问类型可以任意，但接口中定义的变量只能是public static final类型，并且默认即为public static final类型。 </p>
+</li>
+<li><p>一个类可以实现多个接口，但只能继承一个抽象类。 </p>
+</li>
+</ul>
+</li>
+<li><p>线程安全(Thread-safe)的集合对象：</p>
+<ul>
+<li>Vector 线程安全</li>
+<li>HashTable 线程安全</li>
+<li>StringBuffer 线程安全</li>
+</ul>
+<p>非线程安全的集合对象：</p>
+<ul>
+<li>ArrayList </li>
+<li>LinkedList</li>
+<li>HashMap</li>
+<li>HashSet</li>
+<li>TreeMap</li>
+<li>TreeSet</li>
+<li>StringBulider</li>
+</ul>
+</li>
+<li><p>Java有5种方式来创建对象：</p>
+<ol>
+<li><p>使用 new 关键字（最常用）： <code>ObjectName obj = new ObjectName();</code></p>
+</li>
+<li><p>使用反射的Class类的newInstance()方法：</p>
+<p><code>ObjectName obj = ObjectName.class.newInstance();</code></p>
+</li>
+<li><p>使用反射的Constructor类的newInstance()方法： </p>
+<p><code>ObjectName obj = ObjectName.class.getConstructor.newInstance();</code></p>
+</li>
+<li><p>使用对象克隆clone()方法： <code>ObjectName obj = obj.clone();</code></p>
+</li>
+<li><p>使用反序列化（ObjectInputStream）的readObject()方法： </p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span> (ObjectInputStream ois = <span class="keyword">new</span> ObjectInputStream(<span class="keyword">new</span> FileInputStream(FILE_NAME))) &#123; </span><br><span class="line">	ObjectName obj = ois.readObject(); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>java</tag>
       </tags>
   </entry>
   <entry>
@@ -382,181 +560,47 @@
       </tags>
   </entry>
   <entry>
-    <title>Java小知识</title>
-    <url>/2020/04/26/Java%E5%B0%8F%E7%9F%A5%E8%AF%86/</url>
-    <content><![CDATA[<p>java面试题中的一些知识点<a id="more"></a></p>
-<ol>
-<li><p>方法重载，参数列表不相同，返回值类型可以不同；方法重写，遵循两同-两小-一大规则。两同：方法名和参数列表相同；两小：子类返回值类型小于等于父类的，异常抛出小于等于父类；一大：访问权限修饰符大于等于父类。</p>
-</li>
-<li><p>HashMap可以用null值和空字符串作为K,不过只能有一个。</p>
-</li>
-<li><p>字面量”+”拼接是在编译期间进行的，拼接后的字符串存放在字符串池中；而字符串引用的”+”拼接运算实在运行时进行的，新创建的字符串存放在堆中。</p>
-</li>
-<li><p>数组是一种引用数据类型，长度固定。那么它肯定是继承Object类的，所以里面有equals() 方法。但是没有被重写过，所以它并不是比较数组内的内容，Arrays.equals()才是比较两个数组中的内容。</p>
-</li>
-<li><p>Integer，Float，Double等都继承自Number类。</p>
-</li>
-<li><p>处理异常常用的两种方式：<br> 1、try…catch(捕获处理机制)；<br> 2、throws(冒泡处理机制).<br> 注意细节：使用try…catch块捕获时可以没有catch块,但当没有catch块的时候必须得有finally块。</p>
-</li>
-<li><p>构造方法是一种特殊的方法，具有以下特点。</p>
-<p> （1）构造方法的方法名必须与类名相同。</p>
-<p> （2）构造方法没有返回类型，也不能定义为void，在方法名前面不声明方法类型。</p>
-<p> （3）构造方法的主要作用是完成对象的初始化工作，它能够把定义对象时的参数传给对象的域。</p>
-<p> （4）一个类可以定义多个构造方法，如果在定义类时没有定义构造方法，则编译系统会自动插入一个无参数的默认构造器，这个构造器不执行任何代码。</p>
-<p> （5）构造方法可以重载，以参数的个数，类型，顺序。</p>
-</li>
-<li><table>
-<thead>
-<tr>
-<th align="center"><strong>修饰符</strong></th>
-<th align="center"><strong>类</strong></th>
-<th align="center"><strong>成员访求</strong></th>
-<th align="center"><strong>构造方法</strong></th>
-<th align="center"><strong>成员变量</strong></th>
-<th align="center"><strong>局部变量</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">abstract（抽象的）</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">－</td>
-<td align="center">－</td>
-<td align="center">－</td>
-</tr>
-<tr>
-<td align="center">static （静态的）</td>
-<td align="center">－</td>
-<td align="center">√</td>
-<td align="center">－</td>
-<td align="center">√</td>
-<td align="center">－</td>
-</tr>
-<tr>
-<td align="center">public（公共的）</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">－</td>
-</tr>
-<tr>
-<td align="center">protected（受保护的）</td>
-<td align="center"></td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">－</td>
-</tr>
-<tr>
-<td align="center">private（私有的）</td>
-<td align="center">－</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">－</td>
-</tr>
-<tr>
-<td align="center">synchronized（同步的）</td>
-<td align="center">－</td>
-<td align="center">√</td>
-<td align="center">－</td>
-<td align="center">－</td>
-<td align="center">－</td>
-</tr>
-<tr>
-<td align="center">native（本地的）</td>
-<td align="center">－</td>
-<td align="center">√</td>
-<td align="center">－</td>
-<td align="center">－</td>
-<td align="center">－</td>
-</tr>
-<tr>
-<td align="center">transient（暂时的）</td>
-<td align="center">－</td>
-<td align="center">－</td>
-<td align="center">－</td>
-<td align="center">√</td>
-<td align="center">－</td>
-</tr>
-<tr>
-<td align="center">volatie（易失的）</td>
-<td align="center">－</td>
-<td align="center">－</td>
-<td align="center">－</td>
-<td align="center">√</td>
-<td align="center">－</td>
-</tr>
-<tr>
-<td align="center">final（不要改变的）</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">－</td>
-<td align="center">√</td>
-<td align="center">√</td>
-</tr>
-</tbody></table>
-</li>
-<li><p><img src="/2020/04/26/Java%E5%B0%8F%E7%9F%A5%E8%AF%86/modifer.png" alt></p>
-</li>
-<li><p>接口与抽象类的区别：</p>
-<ul>
-<li><p>抽象类可以有构造方法，接口中不能有构造方法。 </p>
-</li>
-<li><p>抽象类中可以有普通成员变量，接口中没有普通成员变量 </p>
-</li>
-<li><p>抽象类中可以包含非抽象的普通方法，接口中的所有方法必须都是抽象的，不能有非抽象的普通方法。 </p>
-</li>
-<li><p>抽象类中的抽象方法的访问类型可以是public，protected和（默认类型,虽然<br>  eclipse下不报错，但应该也不行），但接口中的抽象方法只能是public类型的，并且默认即为public abstract类型。 </p>
-</li>
-<li><p>抽象类中可以包含静态方法，接口中不能包含静态方法 </p>
-</li>
-<li><p>抽象类和接口中都可以包含静态成员变量，抽象类中的静态成员变量的访问类型可以任意，但接口中定义的变量只能是public static final类型，并且默认即为public static final类型。 </p>
-</li>
-<li><p>一个类可以实现多个接口，但只能继承一个抽象类。 </p>
-</li>
-</ul>
-</li>
-<li><p>线程安全(Thread-safe)的集合对象：</p>
-<ul>
-<li>Vector 线程安全</li>
-<li>HashTable 线程安全</li>
-<li>StringBuffer 线程安全</li>
-</ul>
-<p>非线程安全的集合对象：</p>
-<ul>
-<li>ArrayList </li>
-<li>LinkedList</li>
-<li>HashMap</li>
-<li>HashSet</li>
-<li>TreeMap</li>
-<li>TreeSet</li>
-<li>StringBulider</li>
-</ul>
-</li>
-<li><p>Java有5种方式来创建对象：</p>
-<ol>
-<li><p>使用 new 关键字（最常用）： <code>ObjectName obj = new ObjectName();</code></p>
-</li>
-<li><p>使用反射的Class类的newInstance()方法：</p>
-<p><code>ObjectName obj = ObjectName.class.newInstance();</code></p>
-</li>
-<li><p>使用反射的Constructor类的newInstance()方法： </p>
-<p><code>ObjectName obj = ObjectName.class.getConstructor.newInstance();</code></p>
-</li>
-<li><p>使用对象克隆clone()方法： <code>ObjectName obj = obj.clone();</code></p>
-</li>
-<li><p>使用反序列化（ObjectInputStream）的readObject()方法： </p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span> (ObjectInputStream ois = <span class="keyword">new</span> ObjectInputStream(<span class="keyword">new</span> FileInputStream(FILE_NAME))) &#123; </span><br><span class="line">	ObjectName obj = ois.readObject(); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-</li>
-</ol>
+    <title>Linux程序自启动</title>
+    <url>/2019/11/22/Linux%E7%A8%8B%E5%BA%8F%E8%87%AA%E5%90%AF%E5%8A%A8/</url>
+    <content><![CDATA[<p>在Linux系统如何让程序开机时自动启动<a id="more"></a></p>
+<p><img src="/2019/11/22/Linux%E7%A8%8B%E5%BA%8F%E8%87%AA%E5%90%AF%E5%8A%A8/linuxicon.jpg" alt></p>
+<h5 id="修改启动配置文件"><a href="#修改启动配置文件" class="headerlink" title="修改启动配置文件"></a>修改启动配置文件</h5><p>新建一个sh后缀的脚本文件（例如:stratup.sh），把你所要启动的命令编写进去。然后再编辑“<strong>/etc/rc.local</strong>”启动配置文件，把<strong>脚本文件所在位置的全路径</strong>输入进去即可。</p>
+<h5 id="计划定时启动"><a href="#计划定时启动" class="headerlink" title="计划定时启动"></a>计划定时启动</h5><p>通过crontab可以设定程序的执行时间表， 例如让程序在每天的9点，或者每个星期一的9点执行一次。 </p>
+<p>crontab -l 列出时间表；<br>crontab -e编辑时间表；<br>crontab -d删除时间表；</p>
+<p>“-l”查看时间表；<br>“-e”是编辑（其实就是用vim编辑一个特定文件）；<br>“-d”删除，把该用户所有的时间表都删除，一般都是用“-e”编辑把不要了的时间表逐行删除；</p>
+<p>crontab文件的格式是：M H D m d CMD。<br>一个6个字段，其中最后一个CMD就是所要执行的程序，如haha.sh。<br>M：分钟（0-59）<br>H：小时（0-23）<br>D：日期（1-31）<br>m：月份（1-12）<br>d：一个星期中的某天（0-6，0代表周日）</p>
+<p>这5个时间字段用空格隔开，其值可以是一个数字，也可以用逗号隔开的多个数字（或其他） ，如果不需设置，则默认为“*”。</p>
+<p>例如，每天的9点0分执行startup.sh，就是“0 9 * * * /home/programs/./startup.sh”。</p>
+<h5 id="注册系统服务"><a href="#注册系统服务" class="headerlink" title="注册系统服务"></a>注册系统服务</h5><p>操作系统自带的服务，如ssh，ftp等等，开机都是自动启动的，我们也可以通过这种方式让自己开发的程序伪装成系统服务。</p>
+<p>比如我想把某个程序添加为系统服务，可以执行以下命令：</p>
+<p>chkconfig –add 程序名称(首先，添加为系统服务，<strong>注意add前面是两个横杠</strong>)</p>
+<p>chkconfig -leve 启动级别 服务名 on     </p>
+<p>（说明，3级别代表在命令行模式启动，5级别代表在图形界面启动，on表示开启）</p>
+<p>chkconfig -leve 启动级别 服务名 off（说明，off表示关闭自启动）</p>
+<p>例如：chkconfig -level 3 mysql on  (说明：让mysql服务在命令行模式，随系统启动)</p>
+<p>也可以使用  chkconfig –del 服务名称  来删除系统服务</p>
+<p>如果要查看哪些服务被添加为系统服务可以使用命令 ：</p>
+<p>  ntsysv 或者chkconfig –list</p>
+<p>如果要查看哪些程序被添加为自启动，可以使用命令 ：</p>
+<p>cat  /etc/rc.local（查看这个文件中添加了哪些程序路径）</p>
 ]]></content>
       <tags>
-        <tag>java</tag>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>IDEA代码行数统计插件-Statistic</title>
+    <url>/2020/01/13/IDEA%E4%BB%A3%E7%A0%81%E8%A1%8C%E6%95%B0%E7%BB%9F%E8%AE%A1%E6%8F%92%E4%BB%B6-Statistic/</url>
+    <content><![CDATA[<p>Statistic是IDEA用来统计代码行数的插件<a id="more"></a></p>
+<blockquote>
+<p>Shows project statistic. This plugin shows files sorted by their extension along with size, line count LOC etc. User can select (Project/Module/Package/File) scope using the ‘Refresh on selection’ button. (This plugin requires Java 1.8)</p>
+</blockquote>
+<p>&emsp;&emsp;显示项目统计数量。这个插件显示的是按照文件扩展名排序的文件，以及大小、行数、LOC等。使用者能够选择（项目/模块/包/文件）范围使用”Refresh”按钮。（该插件需要java1.8）</p>
+<h5 id="Statistic安装"><a href="#Statistic安装" class="headerlink" title="Statistic安装"></a>Statistic安装</h5><p>&emsp;&emsp;进入IDEA插件File-&gt;Settings-&gt;Plugins，点击上方的Marketplace，搜索Statistic，点击Install。下载安装完之后重启IDEA。<img src="/2020/01/13/IDEA%E4%BB%A3%E7%A0%81%E8%A1%8C%E6%95%B0%E7%BB%9F%E8%AE%A1%E6%8F%92%E4%BB%B6-Statistic/s1.jpg" alt="install"></p>
+<h5 id="项目统计"><a href="#项目统计" class="headerlink" title="项目统计"></a>项目统计</h5><p>&emsp;&emsp;打开任意一个项目开始进行统计。在顶部的菜单栏找到插件，View-&gt;Tool Windows-&gt;Statistic。也可以查看IDEA底部的功能栏，点击Statistic，点击Refresh开始统计项目的代码行数。Overview是统计所有文件的数量count和行数lines，以及不同文件类型行数的和大小的最大值、最小值和平均值。可以选择右边查看需要的后缀名文件代码行数。具体某种文件类型（如：java），可以统计总行数Total Lines，有效代码行数Source Code Lines，注释行数Comment Lines，以及有效代码比重。<img src="/2020/01/13/IDEA%E4%BB%A3%E7%A0%81%E8%A1%8C%E6%95%B0%E7%BB%9F%E8%AE%A1%E6%8F%92%E4%BB%B6-Statistic/s2.jpg" alt="result"></p>
+]]></content>
+      <tags>
+        <tag>IDEA</tag>
       </tags>
   </entry>
   <entry>
@@ -740,50 +784,6 @@
 <td align="left">如果需要升级数据库</td>
 </tr>
 </tbody></table>
-]]></content>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>IDEA代码行数统计插件-Statistic</title>
-    <url>/2020/01/13/IDEA%E4%BB%A3%E7%A0%81%E8%A1%8C%E6%95%B0%E7%BB%9F%E8%AE%A1%E6%8F%92%E4%BB%B6-Statistic/</url>
-    <content><![CDATA[<p>Statistic是IDEA用来统计代码行数的插件<a id="more"></a></p>
-<blockquote>
-<p>Shows project statistic. This plugin shows files sorted by their extension along with size, line count LOC etc. User can select (Project/Module/Package/File) scope using the ‘Refresh on selection’ button. (This plugin requires Java 1.8)</p>
-</blockquote>
-<p>&emsp;&emsp;显示项目统计数量。这个插件显示的是按照文件扩展名排序的文件，以及大小、行数、LOC等。使用者能够选择（项目/模块/包/文件）范围使用”Refresh”按钮。（该插件需要java1.8）</p>
-<h5 id="Statistic安装"><a href="#Statistic安装" class="headerlink" title="Statistic安装"></a>Statistic安装</h5><p>&emsp;&emsp;进入IDEA插件File-&gt;Settings-&gt;Plugins，点击上方的Marketplace，搜索Statistic，点击Install。下载安装完之后重启IDEA。<img src="/2020/01/13/IDEA%E4%BB%A3%E7%A0%81%E8%A1%8C%E6%95%B0%E7%BB%9F%E8%AE%A1%E6%8F%92%E4%BB%B6-Statistic/s1.jpg" alt="install"></p>
-<h5 id="项目统计"><a href="#项目统计" class="headerlink" title="项目统计"></a>项目统计</h5><p>&emsp;&emsp;打开任意一个项目开始进行统计。在顶部的菜单栏找到插件，View-&gt;Tool Windows-&gt;Statistic。也可以查看IDEA底部的功能栏，点击Statistic，点击Refresh开始统计项目的代码行数。Overview是统计所有文件的数量count和行数lines，以及不同文件类型行数的和大小的最大值、最小值和平均值。可以选择右边查看需要的后缀名文件代码行数。具体某种文件类型（如：java），可以统计总行数Total Lines，有效代码行数Source Code Lines，注释行数Comment Lines，以及有效代码比重。<img src="/2020/01/13/IDEA%E4%BB%A3%E7%A0%81%E8%A1%8C%E6%95%B0%E7%BB%9F%E8%AE%A1%E6%8F%92%E4%BB%B6-Statistic/s2.jpg" alt="result"></p>
-]]></content>
-      <tags>
-        <tag>IDEA</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux程序自启动</title>
-    <url>/2019/11/22/Linux%E7%A8%8B%E5%BA%8F%E8%87%AA%E5%90%AF%E5%8A%A8/</url>
-    <content><![CDATA[<p>在Linux系统如何让程序开机时自动启动<a id="more"></a></p>
-<p><img src="/2019/11/22/Linux%E7%A8%8B%E5%BA%8F%E8%87%AA%E5%90%AF%E5%8A%A8/linuxicon.jpg" alt></p>
-<h5 id="修改启动配置文件"><a href="#修改启动配置文件" class="headerlink" title="修改启动配置文件"></a>修改启动配置文件</h5><p>新建一个sh后缀的脚本文件（例如:stratup.sh），把你所要启动的命令编写进去。然后再编辑“<strong>/etc/rc.local</strong>”启动配置文件，把<strong>脚本文件所在位置的全路径</strong>输入进去即可。</p>
-<h5 id="计划定时启动"><a href="#计划定时启动" class="headerlink" title="计划定时启动"></a>计划定时启动</h5><p>通过crontab可以设定程序的执行时间表， 例如让程序在每天的9点，或者每个星期一的9点执行一次。 </p>
-<p>crontab -l 列出时间表；<br>crontab -e编辑时间表；<br>crontab -d删除时间表；</p>
-<p>“-l”查看时间表；<br>“-e”是编辑（其实就是用vim编辑一个特定文件）；<br>“-d”删除，把该用户所有的时间表都删除，一般都是用“-e”编辑把不要了的时间表逐行删除；</p>
-<p>crontab文件的格式是：M H D m d CMD。<br>一个6个字段，其中最后一个CMD就是所要执行的程序，如haha.sh。<br>M：分钟（0-59）<br>H：小时（0-23）<br>D：日期（1-31）<br>m：月份（1-12）<br>d：一个星期中的某天（0-6，0代表周日）</p>
-<p>这5个时间字段用空格隔开，其值可以是一个数字，也可以用逗号隔开的多个数字（或其他） ，如果不需设置，则默认为“*”。</p>
-<p>例如，每天的9点0分执行startup.sh，就是“0 9 * * * /home/programs/./startup.sh”。</p>
-<h5 id="注册系统服务"><a href="#注册系统服务" class="headerlink" title="注册系统服务"></a>注册系统服务</h5><p>操作系统自带的服务，如ssh，ftp等等，开机都是自动启动的，我们也可以通过这种方式让自己开发的程序伪装成系统服务。</p>
-<p>比如我想把某个程序添加为系统服务，可以执行以下命令：</p>
-<p>chkconfig –add 程序名称(首先，添加为系统服务，<strong>注意add前面是两个横杠</strong>)</p>
-<p>chkconfig -leve 启动级别 服务名 on     </p>
-<p>（说明，3级别代表在命令行模式启动，5级别代表在图形界面启动，on表示开启）</p>
-<p>chkconfig -leve 启动级别 服务名 off（说明，off表示关闭自启动）</p>
-<p>例如：chkconfig -level 3 mysql on  (说明：让mysql服务在命令行模式，随系统启动)</p>
-<p>也可以使用  chkconfig –del 服务名称  来删除系统服务</p>
-<p>如果要查看哪些服务被添加为系统服务可以使用命令 ：</p>
-<p>  ntsysv 或者chkconfig –list</p>
-<p>如果要查看哪些程序被添加为自启动，可以使用命令 ：</p>
-<p>cat  /etc/rc.local（查看这个文件中添加了哪些程序路径）</p>
 ]]></content>
       <tags>
         <tag>Linux</tag>
@@ -2431,6 +2431,44 @@
       </tags>
   </entry>
   <entry>
+    <title>常见浏览器的用户代理</title>
+    <url>/2020/01/13/%E5%B8%B8%E8%A7%81%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E7%94%A8%E6%88%B7%E4%BB%A3%E7%90%86/</url>
+    <content><![CDATA[<p>常用浏览器用户代理总结。<a id="more"></a></p>
+<p>&emsp;&emsp;所谓 用户代理（User Agent ），最初是指浏览器告知网站管理员，本浏览器支持的类型和框架，让网站管理员以支持的模式结构向浏览器发送页面，呈现给用户浏览。演变到今天，网站管理员为了给用户带呈现最佳的页面效果，为了使不同浏览器展现同样的网站页面，通过浏览器获取用户的系统信息，包括硬件平台、系统软件、应用软件和用户个人偏好，然后通过服务器解析后以适合用户的页面类型发送到浏览器。</p>
+<p>&emsp;&emsp;目前 UA 分析监测可补全的系统：Windows 7、Windows 10、Mac OS X Lion、Ubuntu 14.04；浏览器：所有品牌和系列。</p>
+<h5 id="Windows10-64位"><a href="#Windows10-64位" class="headerlink" title="Windows10 64位"></a>Windows10 64位</h5><p>微软Chrome内核 Edge 浏览器</p>
+<p>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36 Edg/80.0.361.69</p>
+<p>360极速浏览器</p>
+<p>Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36 QIHU 360EE</p>
+<h5 id="Windows-7-64位"><a href="#Windows-7-64位" class="headerlink" title="Windows 7 64位"></a>Windows 7 64位</h5><p>[^]: Internet Explorer 10 浏览器和 Internet Explorer 11 浏览器以及微软 Edge 浏览器为 Windows 10 64 位。</p>
+<p>Chrome｜谷歌浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.87 Safari/537.36</p>
+<p>Firefox｜火狐浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64; rv:46.0) Gecko/20100101 Firefox/46.0</p>
+<p>Opera｜欧朋浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.87 Safari/537.36 OPR/37.0.2178.32</p>
+<p>Safari｜苹果浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/534.57.2 (KHTML, like Gecko) Version/5.1.7 Safari/534.57.2</p>
+<p>360极速浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36</p>
+<p>360安全浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36</p>
+<p>微软 Edge 浏览器<br>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2486.0 Safari/537.36 Edge/13.10586</p>
+<p>Internet Explorer 11 浏览器<br>Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko</p>
+<p>Internet Explorer 10 浏览器<br>Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; WOW64; Trident/6.0)</p>
+<p>Internet Explorer 9 浏览器<br>Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)</p>
+<p>Internet Explorer 8 浏览器<br>Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0)</p>
+<p>百度浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 BIDUBrowser/8.3 Safari/537.36</p>
+<p>遨游浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Maxthon/4.9.2.1000 Chrome/39.0.2146.0 Safari/537.36</p>
+<p>QQ浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.80 Safari/537.36 Core/1.47.277.400 QQBrowser/9.4.7658.400</p>
+<p>UC浏览器电脑版<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 UBrowser/5.6.12150.8 Safari/537.36</p>
+<p>搜狗浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.122 Safari/537.36 SE 2.X MetaSr 1.0</p>
+<p>猎豹浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.154 Safari/537.36 LBBROWSER </p>
+<p>世界之窗浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36 TheWorld 7</p>
+<p>安卓版QQ浏览器<br>Mozilla/5.0 (Linux; Android 5.0; SM-N9100 Build/LRX21V) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/37.0.0.0 Mobile Safari/537.36 V1_AND_SQ_5.3.1_196_YYB_D QQ/5.3.1.2335 NetType/WIFI</p>
+<p>安卓版微信浏览器<br>Mozilla/5.0 (Linux; Android 5.0; SM-N9100 Build/LRX21V) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/37.0.0.0 Mobile Safari/537.36 MicroMessenger/6.0.2.56_r958800.520 NetType/WIFI</p>
+<p>IOS版QQ浏览器<br>Mozilla/5.0 (iPhone; CPU iPhone OS 7_1_2 like Mac OS X) AppleWebKit/537.51.2 (KHTML, like Gecko) Mobile/11D257 QQ/5.2.1.302 NetType/WIFI Mem/28</p>
+<p>IOS版微信浏览器<br>Mozilla/5.0 (iPhone; CPU iPhone OS 7_1_2 like Mac OS X) AppleWebKit/537.51.2 (KHTML, like Gecko) Mobile/11D257 MicroMessenger/6.0.1 NetType/WIFI</p>
+]]></content>
+      <tags>
+        <tag>浏览器</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用信念-愿望-意图模型在室内社交机器人中增加主动性的案例研究</title>
     <url>/2019/12/24/%E4%BD%BF%E7%94%A8%E4%BF%A1%E5%BF%B5-%E6%84%BF%E6%9C%9B-%E6%84%8F%E5%9B%BE%E6%A8%A1%E5%9E%8B%E5%9C%A8%E5%AE%A4%E5%86%85%E7%A4%BE%E4%BA%A4%E6%9C%BA%E5%99%A8%E4%BA%BA%E4%B8%AD%E5%A2%9E%E5%8A%A0%E4%B8%BB%E5%8A%A8%E6%80%A7%E7%9A%84%E6%A1%88%E4%BE%8B%E7%A0%94%E7%A9%B6/</url>
     <content><![CDATA[<p>&emsp;&emsp;<strong>摘要</strong>：事实证明，机器人和机器人技术的兴起在不同方面都对人类有益。机器人技术从一个简单的按钮进化而来，多年来得到了大规模的发展。因此，它已经成为人类生活的一个组成部分，因为机器人被广泛应用，从室内使用到行星际任务。<a id="more"></a>最近，在商业室内空间使用社交机器人提供帮助或与人进行社交互动已经相当流行。因此，考虑到越来越多的社交机器人的使用，人们已经实施了许多工作来开发机器人，使他们能够像人类一样行动。这一发展背后的理念是，需要机器人在没有被要求的情况下提供服务。社交机器人应该更像人类那样思考，通过分析他们所处的环境，提出可能的、适合的行动建议。信念-愿望-意图是开发基于人类如何基于环境中获得的信息而行动的理性代理的最流行的模型之一。因此，这项工作定义于一个基础框架，将BDI集成到一个社交机器人中以添加主动行为的“像人一样”功能。该工作通过在由机器人操作系统(ROS)操纵的室内社交机器人Waldo中使用PROFETA BDI框架开发基于视觉的主动行动，从而验证了所提议的体系结构。</p>
@@ -2849,57 +2887,6 @@
       </tags>
   </entry>
   <entry>
-    <title>常见浏览器的用户代理</title>
-    <url>/2020/01/13/%E5%B8%B8%E8%A7%81%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E7%94%A8%E6%88%B7%E4%BB%A3%E7%90%86/</url>
-    <content><![CDATA[<p>常用浏览器用户代理总结。<a id="more"></a></p>
-<p>&emsp;&emsp;所谓 用户代理（User Agent ），最初是指浏览器告知网站管理员，本浏览器支持的类型和框架，让网站管理员以支持的模式结构向浏览器发送页面，呈现给用户浏览。演变到今天，网站管理员为了给用户带呈现最佳的页面效果，为了使不同浏览器展现同样的网站页面，通过浏览器获取用户的系统信息，包括硬件平台、系统软件、应用软件和用户个人偏好，然后通过服务器解析后以适合用户的页面类型发送到浏览器。</p>
-<p>&emsp;&emsp;目前 UA 分析监测可补全的系统：Windows 7、Windows 10、Mac OS X Lion、Ubuntu 14.04；浏览器：所有品牌和系列。</p>
-<h5 id="Windows10-64位"><a href="#Windows10-64位" class="headerlink" title="Windows10 64位"></a>Windows10 64位</h5><p>微软Chrome内核 Edge 浏览器</p>
-<p>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36 Edg/80.0.361.69</p>
-<p>360极速浏览器</p>
-<p>Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36 QIHU 360EE</p>
-<h5 id="Windows-7-64位"><a href="#Windows-7-64位" class="headerlink" title="Windows 7 64位"></a>Windows 7 64位</h5><p>[^]: Internet Explorer 10 浏览器和 Internet Explorer 11 浏览器以及微软 Edge 浏览器为 Windows 10 64 位。</p>
-<p>Chrome｜谷歌浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.87 Safari/537.36</p>
-<p>Firefox｜火狐浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64; rv:46.0) Gecko/20100101 Firefox/46.0</p>
-<p>Opera｜欧朋浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.87 Safari/537.36 OPR/37.0.2178.32</p>
-<p>Safari｜苹果浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/534.57.2 (KHTML, like Gecko) Version/5.1.7 Safari/534.57.2</p>
-<p>360极速浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36</p>
-<p>360安全浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36</p>
-<p>微软 Edge 浏览器<br>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2486.0 Safari/537.36 Edge/13.10586</p>
-<p>Internet Explorer 11 浏览器<br>Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko</p>
-<p>Internet Explorer 10 浏览器<br>Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; WOW64; Trident/6.0)</p>
-<p>Internet Explorer 9 浏览器<br>Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)</p>
-<p>Internet Explorer 8 浏览器<br>Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0)</p>
-<p>百度浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 BIDUBrowser/8.3 Safari/537.36</p>
-<p>遨游浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Maxthon/4.9.2.1000 Chrome/39.0.2146.0 Safari/537.36</p>
-<p>QQ浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.80 Safari/537.36 Core/1.47.277.400 QQBrowser/9.4.7658.400</p>
-<p>UC浏览器电脑版<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 UBrowser/5.6.12150.8 Safari/537.36</p>
-<p>搜狗浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.122 Safari/537.36 SE 2.X MetaSr 1.0</p>
-<p>猎豹浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.154 Safari/537.36 LBBROWSER </p>
-<p>世界之窗浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36 TheWorld 7</p>
-<p>安卓版QQ浏览器<br>Mozilla/5.0 (Linux; Android 5.0; SM-N9100 Build/LRX21V) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/37.0.0.0 Mobile Safari/537.36 V1_AND_SQ_5.3.1_196_YYB_D QQ/5.3.1.2335 NetType/WIFI</p>
-<p>安卓版微信浏览器<br>Mozilla/5.0 (Linux; Android 5.0; SM-N9100 Build/LRX21V) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/37.0.0.0 Mobile Safari/537.36 MicroMessenger/6.0.2.56_r958800.520 NetType/WIFI</p>
-<p>IOS版QQ浏览器<br>Mozilla/5.0 (iPhone; CPU iPhone OS 7_1_2 like Mac OS X) AppleWebKit/537.51.2 (KHTML, like Gecko) Mobile/11D257 QQ/5.2.1.302 NetType/WIFI Mem/28</p>
-<p>IOS版微信浏览器<br>Mozilla/5.0 (iPhone; CPU iPhone OS 7_1_2 like Mac OS X) AppleWebKit/537.51.2 (KHTML, like Gecko) Mobile/11D257 MicroMessenger/6.0.1 NetType/WIFI</p>
-]]></content>
-      <tags>
-        <tag>浏览器</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>时间与时间戳相互转换</title>
-    <url>/2020/01/14/%E6%97%B6%E9%97%B4%E4%B8%8E%E6%97%B6%E9%97%B4%E6%88%B3%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/</url>
-    <content><![CDATA[<p>java时间与时间戳相互转换<a id="more"></a></p>
-<h6 id="时间转换成时间戳"><a href="#时间转换成时间戳" class="headerlink" title="时间转换成时间戳"></a>时间转换成时间戳</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">dateToStamp</span><span class="params">(String s)</span> <span class="keyword">throws</span> ParaseException</span>&#123;</span><br><span class="line">    String res;</span><br><span class="line">    SimpleDateFormat simpleDateFormat = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);</span><br><span class="line">    Date date = simpleDateFormat.parse(s);</span><br><span class="line">    <span class="keyword">long</span> ts = date.getTime();</span><br><span class="line">    res = String.valueOf(ts);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h6 id="时间戳转换成时间"><a href="#时间戳转换成时间" class="headerlink" title="时间戳转换成时间"></a>时间戳转换成时间</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">dateToStamp</span><span class="params">(String s)</span></span>&#123;</span><br><span class="line">    String res;</span><br><span class="line">    SimpleDateFormat simpleDateFormat = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);</span><br><span class="line">    <span class="keyword">long</span> lt = <span class="keyword">new</span> Long(s);</span><br><span class="line">    Date date = <span class="keyword">new</span> Date(lt);</span><br><span class="line">    res = simpleDateFormat.format(date);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>并查集</title>
     <url>/2020/02/08/%E5%B9%B6%E6%9F%A5%E9%9B%86/</url>
     <content><![CDATA[<p>建立迷宫时有所涉及，用来处理格子之间的相连问题。<a id="more"></a></p>
@@ -2962,19 +2949,13 @@
       </tags>
   </entry>
   <entry>
-    <title>比较java中Array类的两个方法：equals和deepEquals</title>
-    <url>/2020/01/14/%E6%AF%94%E8%BE%83java%E4%B8%ADArray%E7%B1%BB%E7%9A%84%E4%B8%A4%E4%B8%AA%E6%96%B9%E6%B3%95%EF%BC%9Aequals%E5%92%8CdeepEquals/</url>
-    <content><![CDATA[<p>举例分析equals和deepEquals的区别。<a id="more"></a></p>
-<h5 id="例一"><a href="#例一" class="headerlink" title="例一"></a>例一</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        String[][] name1 = &#123;&#123; <span class="string">"G"</span>,<span class="string">"a"</span>,<span class="string">"o"</span>&#125;,&#123;<span class="string">"H"</span>,<span class="string">"u"</span>,<span class="string">"a"</span>,<span class="string">"n"</span>&#125;,&#123;<span class="string">"j"</span>,<span class="string">"i"</span>,<span class="string">"e"</span>&#125;&#125;;</span><br><span class="line">        String[][] name2 =  &#123;&#123; <span class="string">"G"</span>,<span class="string">"a"</span>,<span class="string">"o"</span>&#125;,&#123;<span class="string">"H"</span>,<span class="string">"u"</span>,<span class="string">"a"</span>,<span class="string">"n"</span>&#125;,&#123;<span class="string">"j"</span>,<span class="string">"i"</span>,<span class="string">"e"</span>&#125;&#125;;</span><br><span class="line">      System.out.println(Arrays.equals(name1,name2));<span class="comment">//false  </span></span><br><span class="line">      System.out.println(Arrays.deepEquals(name1,name2));<span class="comment">//true  </span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <title>时间与时间戳相互转换</title>
+    <url>/2020/01/14/%E6%97%B6%E9%97%B4%E4%B8%8E%E6%97%B6%E9%97%B4%E6%88%B3%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/</url>
+    <content><![CDATA[<p>java时间与时间戳相互转换<a id="more"></a></p>
+<h6 id="时间转换成时间戳"><a href="#时间转换成时间戳" class="headerlink" title="时间转换成时间戳"></a>时间转换成时间戳</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">dateToStamp</span><span class="params">(String s)</span> <span class="keyword">throws</span> ParaseException</span>&#123;</span><br><span class="line">    String res;</span><br><span class="line">    SimpleDateFormat simpleDateFormat = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);</span><br><span class="line">    Date date = simpleDateFormat.parse(s);</span><br><span class="line">    <span class="keyword">long</span> ts = date.getTime();</span><br><span class="line">    res = String.valueOf(ts);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h5 id="例二"><a href="#例二" class="headerlink" title="例二"></a>例二</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        String[] name1 = &#123;&#123; <span class="string">"G"</span>,<span class="string">"a"</span>,<span class="string">"o"</span>&#125;,&#123;<span class="string">"H"</span>,<span class="string">"u"</span>,<span class="string">"a"</span>,<span class="string">"n"</span>&#125;,&#123;<span class="string">"j"</span>,<span class="string">"i"</span>,<span class="string">"e"</span>&#125;&#125;;</span><br><span class="line">        String[] name2 =  &#123;&#123; <span class="string">"G"</span>,<span class="string">"a"</span>,<span class="string">"o"</span>&#125;,&#123;<span class="string">"H"</span>,<span class="string">"u"</span>,<span class="string">"a"</span>,<span class="string">"n"</span>&#125;,&#123;<span class="string">"j"</span>,<span class="string">"i"</span>,<span class="string">"e"</span>&#125;&#125;;</span><br><span class="line">      System.out.println(Arrays.equals(name1,name2));<span class="comment">//false  </span></span><br><span class="line">      System.out.println(Arrays.deepEquals(name1,name2));<span class="comment">//true  </span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="时间戳转换成时间"><a href="#时间戳转换成时间" class="headerlink" title="时间戳转换成时间"></a>时间戳转换成时间</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">dateToStamp</span><span class="params">(String s)</span></span>&#123;</span><br><span class="line">    String res;</span><br><span class="line">    SimpleDateFormat simpleDateFormat = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);</span><br><span class="line">    <span class="keyword">long</span> lt = <span class="keyword">new</span> Long(s);</span><br><span class="line">    Date date = <span class="keyword">new</span> Date(lt);</span><br><span class="line">    res = simpleDateFormat.format(date);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><ol>
-<li>deepEquals用于判定两个指定数组彼此是否深层相等，此方法适用于任意深度的嵌套数组。</li>
-<li>equals用于判定两个数组是否相等，如果两个数组以相同顺序包含相同元素，则返回true，否则返回false。</li>
-<li>通过比对“例一”和“例二”我们可以得出这样一个结论：如果两个数组使用equals返回true，则使用deepEquals也返回true，也就是说在比较的两个数组均为一维数组的前提下，equals和deepEquals的比较结果没有差别。</li>
-</ol>
-<p>​    4、如果要比较多为数组，则需要使用deepEquals方法。</p>
 ]]></content>
       <tags>
         <tag>java</tag>
@@ -3002,6 +2983,25 @@
       </categories>
       <tags>
         <tag>Math</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>比较java中Array类的两个方法：equals和deepEquals</title>
+    <url>/2020/01/14/%E6%AF%94%E8%BE%83java%E4%B8%ADArray%E7%B1%BB%E7%9A%84%E4%B8%A4%E4%B8%AA%E6%96%B9%E6%B3%95%EF%BC%9Aequals%E5%92%8CdeepEquals/</url>
+    <content><![CDATA[<p>举例分析equals和deepEquals的区别。<a id="more"></a></p>
+<h5 id="例一"><a href="#例一" class="headerlink" title="例一"></a>例一</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        String[][] name1 = &#123;&#123; <span class="string">"G"</span>,<span class="string">"a"</span>,<span class="string">"o"</span>&#125;,&#123;<span class="string">"H"</span>,<span class="string">"u"</span>,<span class="string">"a"</span>,<span class="string">"n"</span>&#125;,&#123;<span class="string">"j"</span>,<span class="string">"i"</span>,<span class="string">"e"</span>&#125;&#125;;</span><br><span class="line">        String[][] name2 =  &#123;&#123; <span class="string">"G"</span>,<span class="string">"a"</span>,<span class="string">"o"</span>&#125;,&#123;<span class="string">"H"</span>,<span class="string">"u"</span>,<span class="string">"a"</span>,<span class="string">"n"</span>&#125;,&#123;<span class="string">"j"</span>,<span class="string">"i"</span>,<span class="string">"e"</span>&#125;&#125;;</span><br><span class="line">      System.out.println(Arrays.equals(name1,name2));<span class="comment">//false  </span></span><br><span class="line">      System.out.println(Arrays.deepEquals(name1,name2));<span class="comment">//true  </span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="例二"><a href="#例二" class="headerlink" title="例二"></a>例二</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        String[] name1 = &#123;&#123; <span class="string">"G"</span>,<span class="string">"a"</span>,<span class="string">"o"</span>&#125;,&#123;<span class="string">"H"</span>,<span class="string">"u"</span>,<span class="string">"a"</span>,<span class="string">"n"</span>&#125;,&#123;<span class="string">"j"</span>,<span class="string">"i"</span>,<span class="string">"e"</span>&#125;&#125;;</span><br><span class="line">        String[] name2 =  &#123;&#123; <span class="string">"G"</span>,<span class="string">"a"</span>,<span class="string">"o"</span>&#125;,&#123;<span class="string">"H"</span>,<span class="string">"u"</span>,<span class="string">"a"</span>,<span class="string">"n"</span>&#125;,&#123;<span class="string">"j"</span>,<span class="string">"i"</span>,<span class="string">"e"</span>&#125;&#125;;</span><br><span class="line">      System.out.println(Arrays.equals(name1,name2));<span class="comment">//false  </span></span><br><span class="line">      System.out.println(Arrays.deepEquals(name1,name2));<span class="comment">//true  </span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><ol>
+<li>deepEquals用于判定两个指定数组彼此是否深层相等，此方法适用于任意深度的嵌套数组。</li>
+<li>equals用于判定两个数组是否相等，如果两个数组以相同顺序包含相同元素，则返回true，否则返回false。</li>
+<li>通过比对“例一”和“例二”我们可以得出这样一个结论：如果两个数组使用equals返回true，则使用deepEquals也返回true，也就是说在比较的两个数组均为一维数组的前提下，equals和deepEquals的比较结果没有差别。</li>
+</ol>
+<p>​    4、如果要比较多为数组，则需要使用deepEquals方法。</p>
+]]></content>
+      <tags>
+        <tag>java</tag>
       </tags>
   </entry>
 </search>
