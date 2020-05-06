@@ -46,15 +46,15 @@
   };
 </script>
 
-  <meta name="description" content="DateTimeFormatter类提供了三种时间格式化方法。">
+  <meta name="description" content="Java面试总结三">
 <meta name="keywords" content="java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="时间格式化DateTimeFormatter">
-<meta property="og:url" content="http:&#x2F;&#x2F;isdear.github.io&#x2F;2020&#x2F;02&#x2F;14&#x2F;%E6%97%B6%E9%97%B4%E6%A0%BC%E5%BC%8F%E5%8C%96DateTimeFormatter&#x2F;index.html">
+<meta property="og:title" content="Java面经三">
+<meta property="og:url" content="http:&#x2F;&#x2F;isdear.github.io&#x2F;2020&#x2F;05&#x2F;01&#x2F;Java%E9%9D%A2%E7%BB%8F%E4%B8%89&#x2F;index.html">
 <meta property="og:site_name" content="Welcome to my Hexo">
-<meta property="og:description" content="DateTimeFormatter类提供了三种时间格式化方法。">
+<meta property="og:description" content="Java面试总结三">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-02-14T08:43:38.000Z">
+<meta property="og:updated_time" content="2020-05-01T08:35:01.000Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -71,7 +71,7 @@
   };
 </script>
 
-  <title>时间格式化DateTimeFormatter | Welcome to my Hexo</title>
+  <title>Java面经三 | Welcome to my Hexo</title>
   
 
 
@@ -197,7 +197,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://Isdear.github.io/2020/02/14/%E6%97%B6%E9%97%B4%E6%A0%BC%E5%BC%8F%E5%8C%96DateTimeFormatter/">
+    <link itemprop="mainEntityOfPage" href="http://Isdear.github.io/2020/05/01/Java%E9%9D%A2%E7%BB%8F%E4%B8%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/kenan.jpg">
@@ -210,7 +210,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          时间格式化DateTimeFormatter
+          Java面经三
         </h1>
 
         <div class="post-meta">
@@ -220,7 +220,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-02-14 16:43:38" itemprop="dateCreated datePublished" datetime="2020-02-14T16:43:38+08:00">2020-02-14</time>
+              <time title="创建时间：2020-05-01 16:35:01" itemprop="dateCreated datePublished" datetime="2020-05-01T16:35:01+08:00">2020-05-01</time>
             </span>
 
           
@@ -241,15 +241,18 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>DateTimeFormatter类提供了三种时间格式化方法。<a id="more"></a></p>
-<h6 id="默认格式"><a href="#默认格式" class="headerlink" title="默认格式"></a>默认格式</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 1.新建一个DateTimeFormatter对象</span></span><br><span class="line">        DateTimeFormatter isoDate = DateTimeFormatter.ISO_DATE;</span><br><span class="line">        </span><br><span class="line">        LocalDateTime ldt1 = LocalDateTime.now();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 2.调用该对象的format方法，参数是需要格式化的LocalDateTime对象。</span></span><br><span class="line">        String format = isoDate.format(ldt1);</span><br><span class="line">        </span><br><span class="line">        System.out.println(<span class="string">"时间是："</span> + format);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<h6 id="自定义格式"><a href="#自定义格式" class="headerlink" title="自定义格式"></a>自定义格式</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 1.新建一个DateTimeFormatter对象，调用ofPattern方法。</span></span><br><span class="line">        DateTimeFormatter pattern = DateTimeFormatter.ofPattern(<span class="string">"yyyy年MM月dd日 HH时mm分ss秒"</span>, Locale.CHINA);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 2.调用该对象的format方法，参数是需要格式化的LocalDateTime对象。</span></span><br><span class="line">        String format = pattern.format(LocalDateTime.now());</span><br><span class="line">        </span><br><span class="line">        System.out.println(<span class="string">"时间是："</span> + format);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<h6 id="自定义格式时间解析"><a href="#自定义格式时间解析" class="headerlink" title="自定义格式时间解析"></a>自定义格式时间解析</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test3</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 1.新建一个时间的字符串对象。</span></span><br><span class="line">        String dateTime = <span class="string">"2020年02月12日 22点22分22秒"</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 2.新建一个DateTimeFormatter对象，调用ofPattern方法。</span></span><br><span class="line">        DateTimeFormatter pattern = DateTimeFormatter.ofPattern(<span class="string">"yyyy年MM月dd日 HH点mm分ss秒"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 3.调用DateTimeFormatter对象的parse方法，进行解析，返回一个TemporalAccessor对象。</span></span><br><span class="line">        TemporalAccessor parse = pattern.parse(dateTime);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 4.调用LocalDateTime的静态方法form，将TemporalAccessor转换成LocalDateTime对象。</span></span><br><span class="line">        LocalDateTime ldt1 = LocalDateTime.from(parse);</span><br><span class="line">        </span><br><span class="line">        System.out.println(<span class="string">"LocalDateTime："</span> + ldt1);</span><br><span class="line">        System.out.println(<span class="string">"LocalDateTime："</span> + LocalDateTime.now());</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<h6 id="输出结果"><a href="#输出结果" class="headerlink" title="输出结果"></a>输出结果</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">时间是：2020-02-14</span><br><span class="line">时间是：2020年02月14日 16时30分55秒</span><br><span class="line">LocalDateTime：2020-02-12T22:22:22</span><br><span class="line">LocalDateTime：2020-02-14T16:30:55.544</span><br></pre></td></tr></table></figure>
-
+        <p>Java面试总结三<a id="more"></a></p>
+<h6 id="Collection接口"><a href="#Collection接口" class="headerlink" title="Collection接口"></a>Collection接口</h6><p>Collection是集合类的上级接口，List、Set继承此接口，Map没有继承。Map是键值对映射容器，与List和Set有明显的区别，而Set存储的零散的元素且不允许有重复元素，使用iterator()来区分重复与否，List是线性结构的容器，适用于按数值索引访问元素的情形。</p>
+<p>Collections是针对集合类的一个帮助类，他提供一系列静态方法实现对各种集合的搜索、排序、线程安全化等操作。</p>
+<h6 id="HashMap和Hashtable的区别"><a href="#HashMap和Hashtable的区别" class="headerlink" title="HashMap和Hashtable的区别"></a>HashMap和Hashtable的区别</h6><p>HashMap和Hashtable都实现了Map接口，因此很多特性非常相似。但是，他们有以下不同点：</p>
+<ul>
+<li><p>HashMap允许键和值是null，而Hashtable不允许键或者值是null。</p>
+</li>
+<li><p>Hashtable是同步的，而HashMap不是。</p>
+</li>
+</ul>
+<p>因此，HashMap更适合于单线程环境，而Hashtable适合于多线程环境。</p>
+<p>HashMap提供了可供应用迭代的键的集合，因此，HashMap是快速失败的。另一方面，Hashtable提供了对键的列举(Enumeration)。 一般认为Hashtable是一个遗留的类。</p>
 
     </div>
 
@@ -266,17 +269,14 @@
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
-                <a href="/2020/02/13/Python3%E7%9A%84%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="next" title="Python3的正则表达式">
-                  <i class="fa fa-chevron-left"></i> Python3的正则表达式
+                <a href="/2020/05/01/Java%E9%9D%A2%E7%BB%8F%E4%BA%8C/" rel="next" title="Java面经二">
+                  <i class="fa fa-chevron-left"></i> Java面经二
                 </a>
             </div>
 
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-                <a href="/2020/04/25/java%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="prev" title="java面试题">
-                  java面试题 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
       </footer>
@@ -315,7 +315,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#默认格式"><span class="nav-number">1.</span> <span class="nav-text">默认格式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#自定义格式"><span class="nav-number">2.</span> <span class="nav-text">自定义格式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#自定义格式时间解析"><span class="nav-number">3.</span> <span class="nav-text">自定义格式时间解析</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#输出结果"><span class="nav-number">4.</span> <span class="nav-text">输出结果</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#Collection接口"><span class="nav-number">1.</span> <span class="nav-text">Collection接口</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#HashMap和Hashtable的区别"><span class="nav-number">2.</span> <span class="nav-text">HashMap和Hashtable的区别</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
