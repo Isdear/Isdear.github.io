@@ -532,11 +532,32 @@
       </tags>
   </entry>
   <entry>
-    <title>Java面经四</title>
-    <url>/2020/05/02/Java%E9%9D%A2%E7%BB%8F%E5%9B%9B/</url>
-    <content><![CDATA[]]></content>
+    <title>Linux程序自启动</title>
+    <url>/2019/11/22/Linux%E7%A8%8B%E5%BA%8F%E8%87%AA%E5%90%AF%E5%8A%A8/</url>
+    <content><![CDATA[<p>在Linux系统如何让程序开机时自动启动<a id="more"></a></p>
+<p><img src="/2019/11/22/Linux%E7%A8%8B%E5%BA%8F%E8%87%AA%E5%90%AF%E5%8A%A8/linuxicon.jpg" alt></p>
+<h5 id="修改启动配置文件"><a href="#修改启动配置文件" class="headerlink" title="修改启动配置文件"></a>修改启动配置文件</h5><p>新建一个sh后缀的脚本文件（例如:stratup.sh），把你所要启动的命令编写进去。然后再编辑“<strong>/etc/rc.local</strong>”启动配置文件，把<strong>脚本文件所在位置的全路径</strong>输入进去即可。</p>
+<h5 id="计划定时启动"><a href="#计划定时启动" class="headerlink" title="计划定时启动"></a>计划定时启动</h5><p>通过crontab可以设定程序的执行时间表， 例如让程序在每天的9点，或者每个星期一的9点执行一次。 </p>
+<p>crontab -l 列出时间表；<br>crontab -e编辑时间表；<br>crontab -d删除时间表；</p>
+<p>“-l”查看时间表；<br>“-e”是编辑（其实就是用vim编辑一个特定文件）；<br>“-d”删除，把该用户所有的时间表都删除，一般都是用“-e”编辑把不要了的时间表逐行删除；</p>
+<p>crontab文件的格式是：M H D m d CMD。<br>一个6个字段，其中最后一个CMD就是所要执行的程序，如haha.sh。<br>M：分钟（0-59）<br>H：小时（0-23）<br>D：日期（1-31）<br>m：月份（1-12）<br>d：一个星期中的某天（0-6，0代表周日）</p>
+<p>这5个时间字段用空格隔开，其值可以是一个数字，也可以用逗号隔开的多个数字（或其他） ，如果不需设置，则默认为“*”。</p>
+<p>例如，每天的9点0分执行startup.sh，就是“0 9 * * * /home/programs/./startup.sh”。</p>
+<h5 id="注册系统服务"><a href="#注册系统服务" class="headerlink" title="注册系统服务"></a>注册系统服务</h5><p>操作系统自带的服务，如ssh，ftp等等，开机都是自动启动的，我们也可以通过这种方式让自己开发的程序伪装成系统服务。</p>
+<p>比如我想把某个程序添加为系统服务，可以执行以下命令：</p>
+<p>chkconfig –add 程序名称(首先，添加为系统服务，<strong>注意add前面是两个横杠</strong>)</p>
+<p>chkconfig -leve 启动级别 服务名 on     </p>
+<p>（说明，3级别代表在命令行模式启动，5级别代表在图形界面启动，on表示开启）</p>
+<p>chkconfig -leve 启动级别 服务名 off（说明，off表示关闭自启动）</p>
+<p>例如：chkconfig -level 3 mysql on  (说明：让mysql服务在命令行模式，随系统启动)</p>
+<p>也可以使用  chkconfig –del 服务名称  来删除系统服务</p>
+<p>如果要查看哪些服务被添加为系统服务可以使用命令 ：</p>
+<p>  ntsysv 或者chkconfig –list</p>
+<p>如果要查看哪些程序被添加为自启动，可以使用命令 ：</p>
+<p>cat  /etc/rc.local（查看这个文件中添加了哪些程序路径）</p>
+]]></content>
       <tags>
-        <tag>java</tag>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -718,32 +739,11 @@
       </tags>
   </entry>
   <entry>
-    <title>Linux程序自启动</title>
-    <url>/2019/11/22/Linux%E7%A8%8B%E5%BA%8F%E8%87%AA%E5%90%AF%E5%8A%A8/</url>
-    <content><![CDATA[<p>在Linux系统如何让程序开机时自动启动<a id="more"></a></p>
-<p><img src="/2019/11/22/Linux%E7%A8%8B%E5%BA%8F%E8%87%AA%E5%90%AF%E5%8A%A8/linuxicon.jpg" alt></p>
-<h5 id="修改启动配置文件"><a href="#修改启动配置文件" class="headerlink" title="修改启动配置文件"></a>修改启动配置文件</h5><p>新建一个sh后缀的脚本文件（例如:stratup.sh），把你所要启动的命令编写进去。然后再编辑“<strong>/etc/rc.local</strong>”启动配置文件，把<strong>脚本文件所在位置的全路径</strong>输入进去即可。</p>
-<h5 id="计划定时启动"><a href="#计划定时启动" class="headerlink" title="计划定时启动"></a>计划定时启动</h5><p>通过crontab可以设定程序的执行时间表， 例如让程序在每天的9点，或者每个星期一的9点执行一次。 </p>
-<p>crontab -l 列出时间表；<br>crontab -e编辑时间表；<br>crontab -d删除时间表；</p>
-<p>“-l”查看时间表；<br>“-e”是编辑（其实就是用vim编辑一个特定文件）；<br>“-d”删除，把该用户所有的时间表都删除，一般都是用“-e”编辑把不要了的时间表逐行删除；</p>
-<p>crontab文件的格式是：M H D m d CMD。<br>一个6个字段，其中最后一个CMD就是所要执行的程序，如haha.sh。<br>M：分钟（0-59）<br>H：小时（0-23）<br>D：日期（1-31）<br>m：月份（1-12）<br>d：一个星期中的某天（0-6，0代表周日）</p>
-<p>这5个时间字段用空格隔开，其值可以是一个数字，也可以用逗号隔开的多个数字（或其他） ，如果不需设置，则默认为“*”。</p>
-<p>例如，每天的9点0分执行startup.sh，就是“0 9 * * * /home/programs/./startup.sh”。</p>
-<h5 id="注册系统服务"><a href="#注册系统服务" class="headerlink" title="注册系统服务"></a>注册系统服务</h5><p>操作系统自带的服务，如ssh，ftp等等，开机都是自动启动的，我们也可以通过这种方式让自己开发的程序伪装成系统服务。</p>
-<p>比如我想把某个程序添加为系统服务，可以执行以下命令：</p>
-<p>chkconfig –add 程序名称(首先，添加为系统服务，<strong>注意add前面是两个横杠</strong>)</p>
-<p>chkconfig -leve 启动级别 服务名 on     </p>
-<p>（说明，3级别代表在命令行模式启动，5级别代表在图形界面启动，on表示开启）</p>
-<p>chkconfig -leve 启动级别 服务名 off（说明，off表示关闭自启动）</p>
-<p>例如：chkconfig -level 3 mysql on  (说明：让mysql服务在命令行模式，随系统启动)</p>
-<p>也可以使用  chkconfig –del 服务名称  来删除系统服务</p>
-<p>如果要查看哪些服务被添加为系统服务可以使用命令 ：</p>
-<p>  ntsysv 或者chkconfig –list</p>
-<p>如果要查看哪些程序被添加为自启动，可以使用命令 ：</p>
-<p>cat  /etc/rc.local（查看这个文件中添加了哪些程序路径）</p>
-]]></content>
+    <title>Java面经四</title>
+    <url>/2020/05/02/Java%E9%9D%A2%E7%BB%8F%E5%9B%9B/</url>
+    <content><![CDATA[]]></content>
       <tags>
-        <tag>Linux</tag>
+        <tag>java</tag>
       </tags>
   </entry>
   <entry>
@@ -1370,6 +1370,17 @@
       </tags>
   </entry>
   <entry>
+    <title>Python爬取电影天堂新片精品</title>
+    <url>/2020/02/12/Python%E7%88%AC%E5%8F%96%E7%94%B5%E5%BD%B1%E5%A4%A9%E5%A0%82%E6%96%B0%E7%89%87%E7%B2%BE%E5%93%81/</url>
+    <content><![CDATA[<p>爬取最新电影，内容包括标题、年代、产地、类别、评分、片场、导演、主演、下载链接。<a id="more"></a></p>
+<h6 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h6><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">base_domain = <span class="string">"https://www.dytt8.net"</span></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">"User-Agent"</span>: <span class="string">"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "</span></span><br><span class="line">                  <span class="string">"(KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36 Edg/80.0.361.111"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_detail_url</span><span class="params">(url)</span>:</span></span><br><span class="line">    resp = requests.get(url, headers=headers)</span><br><span class="line">    <span class="comment"># 解码出现"illegal multibyte sequence"，其他编码无法解决，使用ignore</span></span><br><span class="line">    <span class="comment"># text = resp.content.decode("gbk", errors="ignore")</span></span><br><span class="line">    text = resp.text</span><br><span class="line">    html = etree.HTML(text)</span><br><span class="line">    detail_urls = html.xpath(<span class="string">"//table[@class='tbspan']//a/@href"</span>)</span><br><span class="line">    detail_urls = map(<span class="keyword">lambda</span> url: base_domain + url, detail_urls)</span><br><span class="line">    <span class="keyword">return</span> detail_urls</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_html</span><span class="params">(url)</span>:</span></span><br><span class="line">    resp = requests.get(url, headers=headers)</span><br><span class="line">    text = resp.content.decode(<span class="string">"gbk"</span>, errors=<span class="string">"ignore"</span>)</span><br><span class="line">    html = etree.HTML(text)</span><br><span class="line">    <span class="keyword">return</span> html</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">parse_info</span><span class="params">(info, rule)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> info.replace(rule, <span class="string">""</span>).strip()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">parse_detail_page</span><span class="params">(url)</span>:</span></span><br><span class="line">    movie = &#123;&#125;</span><br><span class="line">    html = get_html(url)</span><br><span class="line">    title = html.xpath(<span class="string">"//div[@class='title_all']//font[@color='#07519a']/text()"</span>)[<span class="number">0</span>]</span><br><span class="line">    movie[<span class="string">"title"</span>] = title</span><br><span class="line">    zooms = html.xpath(<span class="string">"//div[@id='Zoom']"</span>)[<span class="number">0</span>]</span><br><span class="line">    poster = zooms.xpath(<span class="string">".//img/@src"</span>)</span><br><span class="line">    movie[<span class="string">"poster"</span>] = poster</span><br><span class="line"></span><br><span class="line">    infos = zooms.xpath(<span class="string">".//text()"</span>)</span><br><span class="line">    <span class="keyword">for</span> index, info <span class="keyword">in</span> enumerate(infos):</span><br><span class="line">        <span class="keyword">if</span> info.startswith(<span class="string">"◎年　　代"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎年　　代"</span>)</span><br><span class="line">            movie[<span class="string">"year"</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎产　　地"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎产　　地"</span>)</span><br><span class="line">            movie[<span class="string">"country"</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎类　　别"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎类　　别"</span>)</span><br><span class="line">            movie[<span class="string">"category"</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎豆瓣评分"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎豆瓣评分"</span>)</span><br><span class="line">            movie[<span class="string">"score"</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎片　　长"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎片　　长"</span>)</span><br><span class="line">            movie[<span class="string">"timelength"</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎导　　演"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎导　　演"</span>)</span><br><span class="line">            movie[<span class="string">"director"</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎主　　演"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎主　　演"</span>)</span><br><span class="line">            actors = [info]</span><br><span class="line">            <span class="keyword">for</span> x <span class="keyword">in</span> range(index + <span class="number">1</span>, len(infos)):</span><br><span class="line">                actor = infos[x].strip()</span><br><span class="line">                <span class="keyword">if</span> actor.startswith(<span class="string">"◎"</span>):</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                actors.append(actor)</span><br><span class="line">            movie[<span class="string">"actors"</span>] = actors</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎简　　介"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎简　　介"</span>)</span><br><span class="line">            <span class="keyword">for</span> x <span class="keyword">in</span> range(index + <span class="number">1</span>, len(infos)):</span><br><span class="line">                profile = infos[x].strip()</span><br><span class="line">                <span class="keyword">if</span> profile.startswith(<span class="string">"【"</span>):</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">            movie[<span class="string">"profile"</span>] = profile</span><br><span class="line"></span><br><span class="line">    down_url = zooms.xpath(<span class="string">".//table//a/@href"</span>)</span><br><span class="line">    movie[<span class="string">"down_url"</span>] = down_url</span><br><span class="line">    <span class="keyword">return</span> movie</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">spider</span><span class="params">()</span>:</span></span><br><span class="line">    index_url = <span class="string">"https://www.dytt8.net/html/gndy/dyzz/index.html"</span></span><br><span class="line">    base_url = <span class="string">"https://www.dytt8.net/html/gndy/dyzz/list_23_&#123;&#125;.html"</span></span><br><span class="line">    html = get_html(index_url)</span><br><span class="line">    pages = html.xpath(<span class="string">"//select[@name='sldd']/option"</span>)</span><br><span class="line">    movies = []</span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">1</span>, len(pages) + <span class="number">1</span>):</span><br><span class="line">        url = base_url.format(x)</span><br><span class="line">        detail_urls = get_detail_url(url)</span><br><span class="line">        <span class="keyword">for</span> detail_url <span class="keyword">in</span> detail_urls:</span><br><span class="line">            <span class="comment"># 遍历每一页中的所有电影</span></span><br><span class="line">            movie = parse_detail_page(detail_url)</span><br><span class="line">            movies.append(movie)</span><br><span class="line">            print(movie)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    spider()</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Redis数据库学习</title>
     <url>/2019/12/26/Redis%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0/</url>
     <content><![CDATA[<p>Redis数据库的一些常用知识了解。<a id="more"></a></p>
@@ -1959,17 +1970,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Python爬取电影天堂新片精品</title>
-    <url>/2020/02/12/Python%E7%88%AC%E5%8F%96%E7%94%B5%E5%BD%B1%E5%A4%A9%E5%A0%82%E6%96%B0%E7%89%87%E7%B2%BE%E5%93%81/</url>
-    <content><![CDATA[<p>爬取最新电影，内容包括标题、年代、产地、类别、评分、片场、导演、主演、下载链接。<a id="more"></a></p>
-<h6 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h6><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">base_domain = <span class="string">"https://www.dytt8.net"</span></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">"User-Agent"</span>: <span class="string">"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "</span></span><br><span class="line">                  <span class="string">"(KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36 Edg/80.0.361.111"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_detail_url</span><span class="params">(url)</span>:</span></span><br><span class="line">    resp = requests.get(url, headers=headers)</span><br><span class="line">    <span class="comment"># 解码出现"illegal multibyte sequence"，其他编码无法解决，使用ignore</span></span><br><span class="line">    <span class="comment"># text = resp.content.decode("gbk", errors="ignore")</span></span><br><span class="line">    text = resp.text</span><br><span class="line">    html = etree.HTML(text)</span><br><span class="line">    detail_urls = html.xpath(<span class="string">"//table[@class='tbspan']//a/@href"</span>)</span><br><span class="line">    detail_urls = map(<span class="keyword">lambda</span> url: base_domain + url, detail_urls)</span><br><span class="line">    <span class="keyword">return</span> detail_urls</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_html</span><span class="params">(url)</span>:</span></span><br><span class="line">    resp = requests.get(url, headers=headers)</span><br><span class="line">    text = resp.content.decode(<span class="string">"gbk"</span>, errors=<span class="string">"ignore"</span>)</span><br><span class="line">    html = etree.HTML(text)</span><br><span class="line">    <span class="keyword">return</span> html</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">parse_info</span><span class="params">(info, rule)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> info.replace(rule, <span class="string">""</span>).strip()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">parse_detail_page</span><span class="params">(url)</span>:</span></span><br><span class="line">    movie = &#123;&#125;</span><br><span class="line">    html = get_html(url)</span><br><span class="line">    title = html.xpath(<span class="string">"//div[@class='title_all']//font[@color='#07519a']/text()"</span>)[<span class="number">0</span>]</span><br><span class="line">    movie[<span class="string">"title"</span>] = title</span><br><span class="line">    zooms = html.xpath(<span class="string">"//div[@id='Zoom']"</span>)[<span class="number">0</span>]</span><br><span class="line">    poster = zooms.xpath(<span class="string">".//img/@src"</span>)</span><br><span class="line">    movie[<span class="string">"poster"</span>] = poster</span><br><span class="line"></span><br><span class="line">    infos = zooms.xpath(<span class="string">".//text()"</span>)</span><br><span class="line">    <span class="keyword">for</span> index, info <span class="keyword">in</span> enumerate(infos):</span><br><span class="line">        <span class="keyword">if</span> info.startswith(<span class="string">"◎年　　代"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎年　　代"</span>)</span><br><span class="line">            movie[<span class="string">"year"</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎产　　地"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎产　　地"</span>)</span><br><span class="line">            movie[<span class="string">"country"</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎类　　别"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎类　　别"</span>)</span><br><span class="line">            movie[<span class="string">"category"</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎豆瓣评分"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎豆瓣评分"</span>)</span><br><span class="line">            movie[<span class="string">"score"</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎片　　长"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎片　　长"</span>)</span><br><span class="line">            movie[<span class="string">"timelength"</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎导　　演"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎导　　演"</span>)</span><br><span class="line">            movie[<span class="string">"director"</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎主　　演"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎主　　演"</span>)</span><br><span class="line">            actors = [info]</span><br><span class="line">            <span class="keyword">for</span> x <span class="keyword">in</span> range(index + <span class="number">1</span>, len(infos)):</span><br><span class="line">                actor = infos[x].strip()</span><br><span class="line">                <span class="keyword">if</span> actor.startswith(<span class="string">"◎"</span>):</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                actors.append(actor)</span><br><span class="line">            movie[<span class="string">"actors"</span>] = actors</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎简　　介"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎简　　介"</span>)</span><br><span class="line">            <span class="keyword">for</span> x <span class="keyword">in</span> range(index + <span class="number">1</span>, len(infos)):</span><br><span class="line">                profile = infos[x].strip()</span><br><span class="line">                <span class="keyword">if</span> profile.startswith(<span class="string">"【"</span>):</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">            movie[<span class="string">"profile"</span>] = profile</span><br><span class="line"></span><br><span class="line">    down_url = zooms.xpath(<span class="string">".//table//a/@href"</span>)</span><br><span class="line">    movie[<span class="string">"down_url"</span>] = down_url</span><br><span class="line">    <span class="keyword">return</span> movie</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">spider</span><span class="params">()</span>:</span></span><br><span class="line">    index_url = <span class="string">"https://www.dytt8.net/html/gndy/dyzz/index.html"</span></span><br><span class="line">    base_url = <span class="string">"https://www.dytt8.net/html/gndy/dyzz/list_23_&#123;&#125;.html"</span></span><br><span class="line">    html = get_html(index_url)</span><br><span class="line">    pages = html.xpath(<span class="string">"//select[@name='sldd']/option"</span>)</span><br><span class="line">    movies = []</span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">1</span>, len(pages) + <span class="number">1</span>):</span><br><span class="line">        url = base_url.format(x)</span><br><span class="line">        detail_urls = get_detail_url(url)</span><br><span class="line">        <span class="keyword">for</span> detail_url <span class="keyword">in</span> detail_urls:</span><br><span class="line">            <span class="comment"># 遍历每一页中的所有电影</span></span><br><span class="line">            movie = parse_detail_page(detail_url)</span><br><span class="line">            movies.append(movie)</span><br><span class="line">            print(movie)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    spider()</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>StreamTokenizer使用</title>
     <url>/2020/02/09/StreamTokenizer%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<p>StreamTokenizer的用法<a id="more"></a></p>
@@ -2195,6 +2195,29 @@
       </tags>
   </entry>
   <entry>
+    <title>Swagger2自动生成API文档</title>
+    <url>/2020/01/25/Swagger2%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90API%E6%96%87%E6%A1%A3/</url>
+    <content><![CDATA[<p>Swagger2 是一个规范和完整的框架，用于生成、描述、调用和可视化Restful风格的web服务，现在我们使用spring boot 整合它。<a id="more"></a></p>
+<h5 id="引入pom依赖"><a href="#引入pom依赖" class="headerlink" title="引入pom依赖"></a>引入pom依赖</h5><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.springfox<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springfox-swagger-ui<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.9.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--界面支持--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.springfox<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springfox-swagger2<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.9.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="编写Swagger2配置文件"><a href="#编写Swagger2配置文件" class="headerlink" title="编写Swagger2配置文件"></a>编写Swagger2配置文件</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.kuang.git;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.builders.ApiInfoBuilder;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.builders.PathSelectors;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.builders.RequestHandlerSelectors;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.service.ApiInfo;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.spi.DocumentationType;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.spring.web.plugins.Docket;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.swagger2.annotations.EnableSwagger2;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableSwagger</span>2</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Swagger2Configuration</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//api接口扫描包路径</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String SWAGGER2_SCAN_BASE_PACKAGE = <span class="string">"com.kuang.git"</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String VERSION = <span class="string">"1.0.0"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Docket <span class="title">createRestApi</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Docket(DocumentationType.SWAGGER_2)</span><br><span class="line">                .apiInfo(swagger2ApiTest())</span><br><span class="line">                .select()</span><br><span class="line">                .apis(RequestHandlerSelectors.basePackage(SWAGGER2_SCAN_BASE_PACKAGE))</span><br><span class="line">                <span class="comment">//根据url路径设置哪些请求加入文档、忽略哪些请求</span></span><br><span class="line">                .paths(PathSelectors.any())</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> ApiInfo <span class="title">swagger2ApiTest</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ApiInfoBuilder()</span><br><span class="line">                .title(<span class="string">"SWAGGER2"</span>)<span class="comment">//设置文档标题</span></span><br><span class="line">                .description(<span class="string">"SWAGGER2 API文档测试"</span>)<span class="comment">//文档描述</span></span><br><span class="line">                .version(VERSION)<span class="comment">//文档版本</span></span><br><span class="line">                .termsOfServiceUrl(<span class="string">"http://www.baidu.com"</span>)<span class="comment">//设置文档的License信息</span></span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="使用注释"><a href="#使用注释" class="headerlink" title="使用注释"></a>使用注释</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.kuang.git;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.alibaba.fastjson.JSONException;</span><br><span class="line"><span class="keyword">import</span> com.alibaba.fastjson.JSONObject;</span><br><span class="line"><span class="keyword">import</span> io.swagger.annotations.Api;</span><br><span class="line"><span class="keyword">import</span> io.swagger.annotations.ApiOperation;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Controller;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMethod;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.ResponseBody;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.text.ParseException;</span><br><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Api</span>(description = <span class="string">"Swagger2 时间测试"</span>)</span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/swagger2"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Swagger2Web</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/time"</span>,method = RequestMethod.GET)</span><br><span class="line">    <span class="meta">@ApiOperation</span>(value = <span class="string">"获取系统时间"</span>,notes = <span class="string">"获取系统时间"</span>,produces = <span class="string">"aplication/json"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> JSONObject <span class="title">SwaggerTest</span><span class="params">()</span> <span class="keyword">throws</span> ParseException, JSONException </span>&#123;</span><br><span class="line">        JSONObject json = <span class="keyword">new</span> JSONObject();</span><br><span class="line">        <span class="comment">//标准时间</span></span><br><span class="line">        String res = (<span class="keyword">new</span> Date()).toString();</span><br><span class="line">        json.put(<span class="string">"Date"</span>,res);</span><br><span class="line">        <span class="keyword">return</span> json;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="常用注释说明"><a href="#常用注释说明" class="headerlink" title="常用注释说明"></a>常用注释说明</h5><p>@Api 注解可以用来标记 Controller 的功能</p>
+<p>@ApiOperation 注解用来标记一个方法的作用</p>
+<p>@ApilmplicitParam 注解用来描述一个参数，可以配置参数的中文含义，也可以给参数设置默认值，这样在接口测试的时候可以避免手动输入</p>
+<p>@ApilmplicitParams 如果有多个参数，则需要使用多个 @ApilmplicitParam 注解来描述， 多个 @ApilmplicitParam 注解需要放在一个 @ApilmplicitParams 注解中</p>
+<p>@ApiModel 如果参数是一个对象，则需要在对象所在的类上加上此注解</p>
+<p>@ApiModelProperty 如果参数是一个对象，则需要在对应的属性上加上此注解，还需要在对象所在的类上加上 @ApiModel</p>
+<p>@ApiIgnore 注解标识此参数可以忽略</p>
+<p>上面的配置完成之后就已经集成完成。启动项目之后，浏览器输入<a href="http://127.0.0.1:8083/swagger-ui.html" target="_blank" rel="noopener">http://127.0.0.1:8083/swagger-ui.html</a>访问。</p>
+]]></content>
+      <tags>
+        <tag>SpringBoot</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>java获取操作系统信息</title>
     <url>/2019/11/26/java%E8%8E%B7%E5%8F%96%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%BF%A1%E6%81%AF/</url>
     <content><![CDATA[<p>常用操作系统信息获取<a id="more"></a></p>
@@ -2319,29 +2342,6 @@
 ]]></content>
       <tags>
         <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Swagger2自动生成API文档</title>
-    <url>/2020/01/25/Swagger2%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90API%E6%96%87%E6%A1%A3/</url>
-    <content><![CDATA[<p>Swagger2 是一个规范和完整的框架，用于生成、描述、调用和可视化Restful风格的web服务，现在我们使用spring boot 整合它。<a id="more"></a></p>
-<h5 id="引入pom依赖"><a href="#引入pom依赖" class="headerlink" title="引入pom依赖"></a>引入pom依赖</h5><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.springfox<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springfox-swagger-ui<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.9.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--界面支持--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.springfox<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springfox-swagger2<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.9.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h5 id="编写Swagger2配置文件"><a href="#编写Swagger2配置文件" class="headerlink" title="编写Swagger2配置文件"></a>编写Swagger2配置文件</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.kuang.git;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.builders.ApiInfoBuilder;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.builders.PathSelectors;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.builders.RequestHandlerSelectors;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.service.ApiInfo;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.spi.DocumentationType;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.spring.web.plugins.Docket;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.swagger2.annotations.EnableSwagger2;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableSwagger</span>2</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Swagger2Configuration</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//api接口扫描包路径</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String SWAGGER2_SCAN_BASE_PACKAGE = <span class="string">"com.kuang.git"</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String VERSION = <span class="string">"1.0.0"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Docket <span class="title">createRestApi</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Docket(DocumentationType.SWAGGER_2)</span><br><span class="line">                .apiInfo(swagger2ApiTest())</span><br><span class="line">                .select()</span><br><span class="line">                .apis(RequestHandlerSelectors.basePackage(SWAGGER2_SCAN_BASE_PACKAGE))</span><br><span class="line">                <span class="comment">//根据url路径设置哪些请求加入文档、忽略哪些请求</span></span><br><span class="line">                .paths(PathSelectors.any())</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> ApiInfo <span class="title">swagger2ApiTest</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ApiInfoBuilder()</span><br><span class="line">                .title(<span class="string">"SWAGGER2"</span>)<span class="comment">//设置文档标题</span></span><br><span class="line">                .description(<span class="string">"SWAGGER2 API文档测试"</span>)<span class="comment">//文档描述</span></span><br><span class="line">                .version(VERSION)<span class="comment">//文档版本</span></span><br><span class="line">                .termsOfServiceUrl(<span class="string">"http://www.baidu.com"</span>)<span class="comment">//设置文档的License信息</span></span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="使用注释"><a href="#使用注释" class="headerlink" title="使用注释"></a>使用注释</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.kuang.git;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.alibaba.fastjson.JSONException;</span><br><span class="line"><span class="keyword">import</span> com.alibaba.fastjson.JSONObject;</span><br><span class="line"><span class="keyword">import</span> io.swagger.annotations.Api;</span><br><span class="line"><span class="keyword">import</span> io.swagger.annotations.ApiOperation;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Controller;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMethod;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.ResponseBody;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.text.ParseException;</span><br><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Api</span>(description = <span class="string">"Swagger2 时间测试"</span>)</span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/swagger2"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Swagger2Web</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/time"</span>,method = RequestMethod.GET)</span><br><span class="line">    <span class="meta">@ApiOperation</span>(value = <span class="string">"获取系统时间"</span>,notes = <span class="string">"获取系统时间"</span>,produces = <span class="string">"aplication/json"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> JSONObject <span class="title">SwaggerTest</span><span class="params">()</span> <span class="keyword">throws</span> ParseException, JSONException </span>&#123;</span><br><span class="line">        JSONObject json = <span class="keyword">new</span> JSONObject();</span><br><span class="line">        <span class="comment">//标准时间</span></span><br><span class="line">        String res = (<span class="keyword">new</span> Date()).toString();</span><br><span class="line">        json.put(<span class="string">"Date"</span>,res);</span><br><span class="line">        <span class="keyword">return</span> json;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="常用注释说明"><a href="#常用注释说明" class="headerlink" title="常用注释说明"></a>常用注释说明</h5><p>@Api 注解可以用来标记 Controller 的功能</p>
-<p>@ApiOperation 注解用来标记一个方法的作用</p>
-<p>@ApilmplicitParam 注解用来描述一个参数，可以配置参数的中文含义，也可以给参数设置默认值，这样在接口测试的时候可以避免手动输入</p>
-<p>@ApilmplicitParams 如果有多个参数，则需要使用多个 @ApilmplicitParam 注解来描述， 多个 @ApilmplicitParam 注解需要放在一个 @ApilmplicitParams 注解中</p>
-<p>@ApiModel 如果参数是一个对象，则需要在对象所在的类上加上此注解</p>
-<p>@ApiModelProperty 如果参数是一个对象，则需要在对应的属性上加上此注解，还需要在对象所在的类上加上 @ApiModel</p>
-<p>@ApiIgnore 注解标识此参数可以忽略</p>
-<p>上面的配置完成之后就已经集成完成。启动项目之后，浏览器输入<a href="http://127.0.0.1:8083/swagger-ui.html" target="_blank" rel="noopener">http://127.0.0.1:8083/swagger-ui.html</a>访问。</p>
-]]></content>
-      <tags>
-        <tag>SpringBoot</tag>
       </tags>
   </entry>
   <entry>
@@ -2571,44 +2571,6 @@
 ]]></content>
       <tags>
         <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>常见浏览器的用户代理</title>
-    <url>/2020/01/13/%E5%B8%B8%E8%A7%81%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E7%94%A8%E6%88%B7%E4%BB%A3%E7%90%86/</url>
-    <content><![CDATA[<p>常用浏览器用户代理总结。<a id="more"></a></p>
-<p>&emsp;&emsp;所谓 用户代理（User Agent ），最初是指浏览器告知网站管理员，本浏览器支持的类型和框架，让网站管理员以支持的模式结构向浏览器发送页面，呈现给用户浏览。演变到今天，网站管理员为了给用户带呈现最佳的页面效果，为了使不同浏览器展现同样的网站页面，通过浏览器获取用户的系统信息，包括硬件平台、系统软件、应用软件和用户个人偏好，然后通过服务器解析后以适合用户的页面类型发送到浏览器。</p>
-<p>&emsp;&emsp;目前 UA 分析监测可补全的系统：Windows 7、Windows 10、Mac OS X Lion、Ubuntu 14.04；浏览器：所有品牌和系列。</p>
-<h5 id="Windows10-64位"><a href="#Windows10-64位" class="headerlink" title="Windows10 64位"></a>Windows10 64位</h5><p>微软Chrome内核 Edge 浏览器</p>
-<p>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36 Edg/80.0.361.69</p>
-<p>360极速浏览器</p>
-<p>Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36 QIHU 360EE</p>
-<h5 id="Windows-7-64位"><a href="#Windows-7-64位" class="headerlink" title="Windows 7 64位"></a>Windows 7 64位</h5><p>[^]: Internet Explorer 10 浏览器和 Internet Explorer 11 浏览器以及微软 Edge 浏览器为 Windows 10 64 位。</p>
-<p>Chrome｜谷歌浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.87 Safari/537.36</p>
-<p>Firefox｜火狐浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64; rv:46.0) Gecko/20100101 Firefox/46.0</p>
-<p>Opera｜欧朋浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.87 Safari/537.36 OPR/37.0.2178.32</p>
-<p>Safari｜苹果浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/534.57.2 (KHTML, like Gecko) Version/5.1.7 Safari/534.57.2</p>
-<p>360极速浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36</p>
-<p>360安全浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36</p>
-<p>微软 Edge 浏览器<br>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2486.0 Safari/537.36 Edge/13.10586</p>
-<p>Internet Explorer 11 浏览器<br>Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko</p>
-<p>Internet Explorer 10 浏览器<br>Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; WOW64; Trident/6.0)</p>
-<p>Internet Explorer 9 浏览器<br>Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)</p>
-<p>Internet Explorer 8 浏览器<br>Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0)</p>
-<p>百度浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 BIDUBrowser/8.3 Safari/537.36</p>
-<p>遨游浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Maxthon/4.9.2.1000 Chrome/39.0.2146.0 Safari/537.36</p>
-<p>QQ浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.80 Safari/537.36 Core/1.47.277.400 QQBrowser/9.4.7658.400</p>
-<p>UC浏览器电脑版<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 UBrowser/5.6.12150.8 Safari/537.36</p>
-<p>搜狗浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.122 Safari/537.36 SE 2.X MetaSr 1.0</p>
-<p>猎豹浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.154 Safari/537.36 LBBROWSER </p>
-<p>世界之窗浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36 TheWorld 7</p>
-<p>安卓版QQ浏览器<br>Mozilla/5.0 (Linux; Android 5.0; SM-N9100 Build/LRX21V) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/37.0.0.0 Mobile Safari/537.36 V1_AND_SQ_5.3.1_196_YYB_D QQ/5.3.1.2335 NetType/WIFI</p>
-<p>安卓版微信浏览器<br>Mozilla/5.0 (Linux; Android 5.0; SM-N9100 Build/LRX21V) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/37.0.0.0 Mobile Safari/537.36 MicroMessenger/6.0.2.56_r958800.520 NetType/WIFI</p>
-<p>IOS版QQ浏览器<br>Mozilla/5.0 (iPhone; CPU iPhone OS 7_1_2 like Mac OS X) AppleWebKit/537.51.2 (KHTML, like Gecko) Mobile/11D257 QQ/5.2.1.302 NetType/WIFI Mem/28</p>
-<p>IOS版微信浏览器<br>Mozilla/5.0 (iPhone; CPU iPhone OS 7_1_2 like Mac OS X) AppleWebKit/537.51.2 (KHTML, like Gecko) Mobile/11D257 MicroMessenger/6.0.1 NetType/WIFI</p>
-]]></content>
-      <tags>
-        <tag>浏览器</tag>
       </tags>
   </entry>
   <entry>
@@ -3030,19 +2992,6 @@
       </tags>
   </entry>
   <entry>
-    <title>时间与时间戳相互转换</title>
-    <url>/2020/01/14/%E6%97%B6%E9%97%B4%E4%B8%8E%E6%97%B6%E9%97%B4%E6%88%B3%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/</url>
-    <content><![CDATA[<p>java时间与时间戳相互转换<a id="more"></a></p>
-<h6 id="时间转换成时间戳"><a href="#时间转换成时间戳" class="headerlink" title="时间转换成时间戳"></a>时间转换成时间戳</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">dateToStamp</span><span class="params">(String s)</span> <span class="keyword">throws</span> ParaseException</span>&#123;</span><br><span class="line">    String res;</span><br><span class="line">    SimpleDateFormat simpleDateFormat = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);</span><br><span class="line">    Date date = simpleDateFormat.parse(s);</span><br><span class="line">    <span class="keyword">long</span> ts = date.getTime();</span><br><span class="line">    res = String.valueOf(ts);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h6 id="时间戳转换成时间"><a href="#时间戳转换成时间" class="headerlink" title="时间戳转换成时间"></a>时间戳转换成时间</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">dateToStamp</span><span class="params">(String s)</span></span>&#123;</span><br><span class="line">    String res;</span><br><span class="line">    SimpleDateFormat simpleDateFormat = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);</span><br><span class="line">    <span class="keyword">long</span> lt = <span class="keyword">new</span> Long(s);</span><br><span class="line">    Date date = <span class="keyword">new</span> Date(lt);</span><br><span class="line">    res = simpleDateFormat.format(date);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>并查集</title>
     <url>/2020/02/08/%E5%B9%B6%E6%9F%A5%E9%9B%86/</url>
     <content><![CDATA[<p>建立迷宫时有所涉及，用来处理格子之间的相连问题。<a id="more"></a></p>
@@ -3085,6 +3034,57 @@
 ]]></content>
       <tags>
         <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>常见浏览器的用户代理</title>
+    <url>/2020/01/13/%E5%B8%B8%E8%A7%81%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E7%94%A8%E6%88%B7%E4%BB%A3%E7%90%86/</url>
+    <content><![CDATA[<p>常用浏览器用户代理总结。<a id="more"></a></p>
+<p>&emsp;&emsp;所谓 用户代理（User Agent ），最初是指浏览器告知网站管理员，本浏览器支持的类型和框架，让网站管理员以支持的模式结构向浏览器发送页面，呈现给用户浏览。演变到今天，网站管理员为了给用户带呈现最佳的页面效果，为了使不同浏览器展现同样的网站页面，通过浏览器获取用户的系统信息，包括硬件平台、系统软件、应用软件和用户个人偏好，然后通过服务器解析后以适合用户的页面类型发送到浏览器。</p>
+<p>&emsp;&emsp;目前 UA 分析监测可补全的系统：Windows 7、Windows 10、Mac OS X Lion、Ubuntu 14.04；浏览器：所有品牌和系列。</p>
+<h5 id="Windows10-64位"><a href="#Windows10-64位" class="headerlink" title="Windows10 64位"></a>Windows10 64位</h5><p>微软Chrome内核 Edge 浏览器</p>
+<p>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36 Edg/80.0.361.69</p>
+<p>360极速浏览器</p>
+<p>Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36 QIHU 360EE</p>
+<h5 id="Windows-7-64位"><a href="#Windows-7-64位" class="headerlink" title="Windows 7 64位"></a>Windows 7 64位</h5><p>[^]: Internet Explorer 10 浏览器和 Internet Explorer 11 浏览器以及微软 Edge 浏览器为 Windows 10 64 位。</p>
+<p>Chrome｜谷歌浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.87 Safari/537.36</p>
+<p>Firefox｜火狐浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64; rv:46.0) Gecko/20100101 Firefox/46.0</p>
+<p>Opera｜欧朋浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.87 Safari/537.36 OPR/37.0.2178.32</p>
+<p>Safari｜苹果浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/534.57.2 (KHTML, like Gecko) Version/5.1.7 Safari/534.57.2</p>
+<p>360极速浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36</p>
+<p>360安全浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36</p>
+<p>微软 Edge 浏览器<br>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2486.0 Safari/537.36 Edge/13.10586</p>
+<p>Internet Explorer 11 浏览器<br>Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko</p>
+<p>Internet Explorer 10 浏览器<br>Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; WOW64; Trident/6.0)</p>
+<p>Internet Explorer 9 浏览器<br>Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)</p>
+<p>Internet Explorer 8 浏览器<br>Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0)</p>
+<p>百度浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 BIDUBrowser/8.3 Safari/537.36</p>
+<p>遨游浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Maxthon/4.9.2.1000 Chrome/39.0.2146.0 Safari/537.36</p>
+<p>QQ浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.80 Safari/537.36 Core/1.47.277.400 QQBrowser/9.4.7658.400</p>
+<p>UC浏览器电脑版<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 UBrowser/5.6.12150.8 Safari/537.36</p>
+<p>搜狗浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.122 Safari/537.36 SE 2.X MetaSr 1.0</p>
+<p>猎豹浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.154 Safari/537.36 LBBROWSER </p>
+<p>世界之窗浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36 TheWorld 7</p>
+<p>安卓版QQ浏览器<br>Mozilla/5.0 (Linux; Android 5.0; SM-N9100 Build/LRX21V) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/37.0.0.0 Mobile Safari/537.36 V1_AND_SQ_5.3.1_196_YYB_D QQ/5.3.1.2335 NetType/WIFI</p>
+<p>安卓版微信浏览器<br>Mozilla/5.0 (Linux; Android 5.0; SM-N9100 Build/LRX21V) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/37.0.0.0 Mobile Safari/537.36 MicroMessenger/6.0.2.56_r958800.520 NetType/WIFI</p>
+<p>IOS版QQ浏览器<br>Mozilla/5.0 (iPhone; CPU iPhone OS 7_1_2 like Mac OS X) AppleWebKit/537.51.2 (KHTML, like Gecko) Mobile/11D257 QQ/5.2.1.302 NetType/WIFI Mem/28</p>
+<p>IOS版微信浏览器<br>Mozilla/5.0 (iPhone; CPU iPhone OS 7_1_2 like Mac OS X) AppleWebKit/537.51.2 (KHTML, like Gecko) Mobile/11D257 MicroMessenger/6.0.1 NetType/WIFI</p>
+]]></content>
+      <tags>
+        <tag>浏览器</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>时间与时间戳相互转换</title>
+    <url>/2020/01/14/%E6%97%B6%E9%97%B4%E4%B8%8E%E6%97%B6%E9%97%B4%E6%88%B3%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/</url>
+    <content><![CDATA[<p>java时间与时间戳相互转换<a id="more"></a></p>
+<h6 id="时间转换成时间戳"><a href="#时间转换成时间戳" class="headerlink" title="时间转换成时间戳"></a>时间转换成时间戳</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">dateToStamp</span><span class="params">(String s)</span> <span class="keyword">throws</span> ParaseException</span>&#123;</span><br><span class="line">    String res;</span><br><span class="line">    SimpleDateFormat simpleDateFormat = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);</span><br><span class="line">    Date date = simpleDateFormat.parse(s);</span><br><span class="line">    <span class="keyword">long</span> ts = date.getTime();</span><br><span class="line">    res = String.valueOf(ts);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="时间戳转换成时间"><a href="#时间戳转换成时间" class="headerlink" title="时间戳转换成时间"></a>时间戳转换成时间</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">dateToStamp</span><span class="params">(String s)</span></span>&#123;</span><br><span class="line">    String res;</span><br><span class="line">    SimpleDateFormat simpleDateFormat = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);</span><br><span class="line">    <span class="keyword">long</span> lt = <span class="keyword">new</span> Long(s);</span><br><span class="line">    Date date = <span class="keyword">new</span> Date(lt);</span><br><span class="line">    res = simpleDateFormat.format(date);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>java</tag>
       </tags>
   </entry>
   <entry>
