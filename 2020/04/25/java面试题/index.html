@@ -313,8 +313,8 @@
 <p>4.类Person里面有个方法sleep()，如果直接用Person.sleep()，则方法sleep前面必须用的关键词是？  ( B )</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span></span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class"><span class="title">static</span></span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class"><span class="title">public</span></span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class"><span class="title">final</span></span></span><br></pre></td></tr></table></figure>
 
-<p>解析：sleep方法能被类直接调用，说明是静态的，随着类的加载而加载s。</p>
-<p><strong>tatic关键字：针对多个对象共有的成员变量值时所提出的。</strong></p>
+<p>解析：sleep方法能被类直接调用，说明是静态的，随着类的加载而加载。</p>
+<p><strong>static关键字：针对多个对象共有的成员变量值时所提出的。</strong></p>
 <p><strong>特点：1、随着类的加载而加载；  2、优先于对象存在；  3、被类的所有对象共享；    4、可以通过类名直接调用。</strong></p>
 <p>注意事项：1.在静态方法中是没有this关键字的；    2.静态方法只能访问静态的成员变量和静态的成员方法。</p>
 <p>5.列表(List)和集合(Set)下面说法正确的是？  ( A )</p>
@@ -438,6 +438,8 @@
 
 <p>解析：<strong>PreparedStatement</strong>有预编译的过程，已经绑定sql，之后无论执行多少遍，都不会再去进行编译，执行速度要比statement 快，<strong>安全性高，可以防止SQL注入</strong>。而 statement 不同，如果执行多遍，则相应的就要编译多少遍sql。</p>
 <p>17.如下语句通过算术运算和逻辑运算之后i和 j的结果是（ D ）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> j=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">if</span>((++i&gt;<span class="number">0</span>)||(++j&gt;<span class="number">0</span>))</span><br><span class="line">&#123;</span><br><span class="line"><span class="comment">//打印出i和j的值。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">A	i=0;j=0</span><br><span class="line"></span><br><span class="line">B	i=1;j=1</span><br><span class="line"></span><br><span class="line">C	i=0;j=1</span><br><span class="line"></span><br><span class="line">D	i=1;j=0</span><br></pre></td></tr></table></figure>
 
 <p>解析：<strong>&amp;&amp; 和 || 为短路与和短路或</strong>。&amp;&amp; 若前面的表达式为false,整个逻辑表达式为false,所以后面的表达式无论true和false都无法影响整个表达式的逻辑结果，所以为了提高代码执行速率，这里后面的表达式就不会执行。同理， || 若前面表达式为true,则后面的表达式无需计算。<strong>&amp; 和 | 为不短路与不短路或</strong>。无论什么情况，前面的和后面的都要执行。</p>
