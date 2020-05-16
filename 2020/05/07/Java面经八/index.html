@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="alternate" href="/atom.xml" title="Welcome to my Hexo" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":false,"style":"default"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":true,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="Java面试总结八">
+<meta name="keywords" content="java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java面经八">
+<meta property="og:url" content="http:&#x2F;&#x2F;isdear.github.io&#x2F;2020&#x2F;05&#x2F;07&#x2F;Java%E9%9D%A2%E7%BB%8F%E5%85%AB&#x2F;index.html">
+<meta property="og:site_name" content="Welcome to my Hexo">
+<meta property="og:description" content="Java面试总结八">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http:&#x2F;&#x2F;isdear.github.io&#x2F;2020&#x2F;05&#x2F;07&#x2F;Java%E9%9D%A2%E7%BB%8F%E5%85%AB&#x2F;java8.jpg">
+<meta property="og:updated_time" content="2020-05-07T04:41:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;isdear.github.io&#x2F;2020&#x2F;05&#x2F;07&#x2F;Java%E9%9D%A2%E7%BB%8F%E5%85%AB&#x2F;java8.jpg">
+
+
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Java面经八 | Welcome to my Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Welcome to my Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-首页">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-档案">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>档案</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://Isdear.github.io/2020/05/07/Java%E9%9D%A2%E7%BB%8F%E5%85%AB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/kenan.jpg">
+      <meta itemprop="name" content="Kuang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to my Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java面经八
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-07 12:41:18" itemprop="dateCreated datePublished" datetime="2020-05-07T12:41:18+08:00">2020-05-07</time>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Java面试总结八<img src="/2020/05/07/Java%E9%9D%A2%E7%BB%8F%E5%85%AB/java8.jpg" alt><a id="more"></a></p>
+<h6 id="数据库的隔离级别"><a href="#数据库的隔离级别" class="headerlink" title="数据库的隔离级别"></a>数据库的隔离级别</h6><table>
+<thead>
+<tr>
+<th align="center">隔离级别</th>
+<th align="center">脏读（Dirty Read）</th>
+<th align="center">不可重复读（NonRepeatable Read）</th>
+<th align="center">幻读（Phantom Read）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">未提交读（Read uncommitted）</td>
+<td align="center">可能</td>
+<td align="center">可能</td>
+<td align="center">可能</td>
+</tr>
+<tr>
+<td align="center">已提交读（Read committed）</td>
+<td align="center">不可能</td>
+<td align="center">可能</td>
+<td align="center">可能</td>
+</tr>
+<tr>
+<td align="center">可重复读（Repeatable read）</td>
+<td align="center">不可能</td>
+<td align="center">不可能</td>
+<td align="center">可能</td>
+</tr>
+<tr>
+<td align="center">可串行化（Serializable ）</td>
+<td align="center">不可能</td>
+<td align="center">不可能</td>
+<td align="center">不可能</td>
+</tr>
+</tbody></table>
+<p>未提交读(Read Uncommitted)：允许脏读，也就是可能读取到其他会话中未提交事务修改的数据。</p>
+<p>提交读(Read Committed)：只能读取到已经提交的数据。Oracle等多数数据库默认都是该级别 (不重复读)。</p>
+<p>可重复读(Repeated Read)：可重复读。在同一个事务内的查询都是事务开始时刻一致的，InnoDB默认级别。在SQL标准中，该隔离级别消除了不可重复读，但是还存在幻象读。</p>
+<p>串行读(Serializable)：完全串行化的读，每次读都需要获得表级共享锁，读写相互都会阻塞。</p>
+<h6 id="数据库索引底层是怎么实现的？哪些情况下索引会失效？"><a href="#数据库索引底层是怎么实现的？哪些情况下索引会失效？" class="headerlink" title="数据库索引底层是怎么实现的？哪些情况下索引会失效？"></a>数据库索引底层是怎么实现的？哪些情况下索引会失效？</h6><p>B+树实现的。</p>
+<p>没有遵循最左匹配原则。</p>
+<p>一些关键字会导致索引失效，例如 or， ！= ， not in，is null ,is not unll</p>
+<p>like查询是以%开头</p>
+<p>隐式转换会导致索引失效。</p>
+<p>对索引应用内部函数，索引字段进行了运算。</p>
+<h6 id="数据库的两种引擎使用方法"><a href="#数据库的两种引擎使用方法" class="headerlink" title="数据库的两种引擎使用方法"></a>数据库的两种引擎使用方法</h6><p>InnoDB是聚集索引，支持事务，支持行级锁，主要面向在线事务处理（OLTP）的应用；</p>
+<p>MyISAM是非聚集索引，不支持事务，只支持表级锁，主要面向一些OLAP的应用。</p>
+<p>联机事务处理OLTP（on-line transaction processing）、联机分析处理OLAP（On-Line Analytical Processing）。OLTP是传统的关系型数据库的主要应用，主要是基本的、日常的事务处理，例如银行交易。OLAP是数据仓库系统的主要应用，支持复杂的分析操作，侧重决策支持，并且提供直观易懂的查询结果。 </p>
+<p><strong>OLTP</strong> 系统强调数据库内存效率，强调内存各种指标的命令率，强调绑定变量，强调并发操作；</p>
+<p><strong>OLAP</strong> 系统则强调数据分析，强调SQL执行市场，强调磁盘I/O，强调分区等。 </p>
+<h6 id="数据库水平切分与垂直切分"><a href="#数据库水平切分与垂直切分" class="headerlink" title="数据库水平切分与垂直切分"></a>数据库水平切分与垂直切分</h6><p>垂直拆分就是要把表按模块划分到不同数据库表中（当然原则还是不破坏第三范式）。说得简单就是要把原来强耦合的系统拆分成多个弱耦合的服务，通过服务间的调用来满足业务需求看，因此表拆出来后要通过服务的形式暴露出去，而不是直接调用不同模块的表，也非常有利于进行局部的优化和治理，保障核心模块的稳定性。</p>
+<p>水平拆分，上面谈到垂直切分只是把表按模块划分到不同数据库，但没有解决单表大数据量的问题，而水平切分就是要把一个表按照某种规则把数据划分到不同表或数据库里。</p>
+<p>通俗理解：水平拆分行，行数据拆分到不同表中， 垂直拆分列，表数据拆分到不同表中。</p>
+<h6 id="JDBC中如何进行事务处理"><a href="#JDBC中如何进行事务处理" class="headerlink" title="JDBC中如何进行事务处理"></a>JDBC中如何进行事务处理</h6><p>Connection提供了事务处理的方法，通过调用setAutoCommit(false)可以设置手动提交事务；当事务完成后用commit()显式提交事务；如果在事务处理过程中发生异常则通过rollback()进行事务回滚。除此之外，从JDBC 3.0中还引入了Savepoint（保存点）的概念，允许通过代码设置保存点并让事务回滚到指定的保存点。</p>
+<h6 id="数据库的事物特性"><a href="#数据库的事物特性" class="headerlink" title="数据库的事物特性"></a>数据库的事物特性</h6><ul>
+<li><p>原子性(Atomic)：事务中各项操作，要么全做要么全不做，任何一项操作的失败都会导致整个事务的失败； </p>
+</li>
+<li><p>一致性(Consistent)：事务结束后系统状态是一致的； </p>
+</li>
+<li><p>隔离性(Isolated)：并发执行的事务彼此无法看到对方的中间状态； </p>
+</li>
+<li><p>持久性(Durable)：事务完成后所做的改动都会被持久化，即使发生灾难性的失败。通过日志和同步备份可以在故障发生后重建数据。</p>
+</li>
+</ul>
+<h6 id="使用JDBC操作数据库时，经常遇到性能问题，请你说明一下如何提升读取数据的性能，以及更新数据的性能？"><a href="#使用JDBC操作数据库时，经常遇到性能问题，请你说明一下如何提升读取数据的性能，以及更新数据的性能？" class="headerlink" title="使用JDBC操作数据库时，经常遇到性能问题，请你说明一下如何提升读取数据的性能，以及更新数据的性能？"></a>使用JDBC操作数据库时，经常遇到性能问题，请你说明一下如何提升读取数据的性能，以及更新数据的性能？</h6><p>要提升读取数据的性能，可以指定通过结果集（ResultSet）对象的setFetchSize()方法指定每次抓取的记录数（典型的空间换时间策略）；要提升更新数据的性能可以使用PreparedStatement语句构建批处理，将若干SQL语句置于一个批处理中执行。</p>
+<h6 id="JDBC的反射及作用"><a href="#JDBC的反射及作用" class="headerlink" title="JDBC的反射及作用"></a>JDBC的反射及作用</h6><p>通过反射com.mysql.jdbc.Driver类，实例化该类的时候会执行该类内部的静态代码块，该代码块会在Java实现的DriverManager类中注册自己，DriverManager管理所有已经注册的驱动类，当调用DriverManager.geConnection方法时会遍历这些驱动类，并尝试去连接数据库，只要有一个能连接成功，就返回Connection对象，否则异常。</p>
+<h6 id="Java规范中和-与Web-Service相关的规范有哪些？"><a href="#Java规范中和-与Web-Service相关的规范有哪些？" class="headerlink" title="Java规范中和 与Web Service相关的规范有哪些？"></a>Java规范中和 与Web Service相关的规范有哪些？</h6><p>Java规范中和Web Service相关的有三个：</p>
+<ul>
+<li><p>JAX-WS(JSR 224)：这个规范是早期的基于SOAP的Web Service规范JAX-RPC的替代版本，它并不提供向下兼容性，因为RPC样式的WSDL以及相关的API已经在Java EE5中被移除了。WS-MetaData是JAX-WS的依赖规范，提供了基于注解配置Web Service和SOAP消息的相关API。</p>
+</li>
+<li><p>JAXM(JSR 67)：定义了发送和接收消息所需的API,相当于Web Service的服务器端。</p>
+</li>
+<li><p>JAX-RS(JSR 311 &amp; JSR 339 &amp; JSR 370)：是Java针对REST（Representation State Transfer）架构风格制定的一套Web Service规范。</p>
+</li>
+</ul>
+<p>REST是一种软件架构模式，是一种风格，它不像SOAP那样本身承载着一种消息协议， (两种风格的Web Service均采用了HTTP做传输协议，因为HTTP协议能穿越防火墙，Java的远程方法调用（RMI）等是重量级协议，通常不能穿越防火墙），因此可以将REST视为基于HTTP协议的软件架构。REST中最重要的两个概念是资源定位和资源操作，而HTTP协议恰好完整的提供了这两个点。HTTP协议中的URI可以完成资源定位，而GET、POST、OPTION、DELETE方法可以完成资源操作。因此REST完全依赖HTTP协议就可以完成Web Service，而不像SOAP协议那样只利用了HTTP的传输特性，定位和操作都是由SOAP协议自身完成的，也正是由于SOAP消息的存在使得基于SOAP的Web Service显得笨重而逐渐被淘汰。</p>
+<h6 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h6><p>定义：保证一个类仅有一个实例，并提供一个访问它的全局访问点。优点：单例类只有一个实例、共享资源，全局使用节省创建时间，提高性能。可以用静态内部实现，保证是懒加载就行了，就是使用才会创建实例对象。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/java/" rel="tag"># java</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2020/05/06/Java%E9%9D%A2%E7%BB%8F%E4%B8%83/" rel="next" title="Java面经七">
+                  <i class="fa fa-chevron-left"></i> Java面经七
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2020/05/13/Docker%E5%AE%B9%E5%99%A8/" rel="prev" title="Docker容器">
+                  Docker容器 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#数据库的隔离级别"><span class="nav-number">1.</span> <span class="nav-text">数据库的隔离级别</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#数据库索引底层是怎么实现的？哪些情况下索引会失效？"><span class="nav-number">2.</span> <span class="nav-text">数据库索引底层是怎么实现的？哪些情况下索引会失效？</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#数据库的两种引擎使用方法"><span class="nav-number">3.</span> <span class="nav-text">数据库的两种引擎使用方法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#数据库水平切分与垂直切分"><span class="nav-number">4.</span> <span class="nav-text">数据库水平切分与垂直切分</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#JDBC中如何进行事务处理"><span class="nav-number">5.</span> <span class="nav-text">JDBC中如何进行事务处理</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#数据库的事物特性"><span class="nav-number">6.</span> <span class="nav-text">数据库的事物特性</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#使用JDBC操作数据库时，经常遇到性能问题，请你说明一下如何提升读取数据的性能，以及更新数据的性能？"><span class="nav-number">7.</span> <span class="nav-text">使用JDBC操作数据库时，经常遇到性能问题，请你说明一下如何提升读取数据的性能，以及更新数据的性能？</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#JDBC的反射及作用"><span class="nav-number">8.</span> <span class="nav-text">JDBC的反射及作用</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Java规范中和-与Web-Service相关的规范有哪些？"><span class="nav-number">9.</span> <span class="nav-text">Java规范中和 与Web Service相关的规范有哪些？</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#单例模式"><span class="nav-number">10.</span> <span class="nav-text">单例模式</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Kuang"
+      src="/images/kenan.jpg">
+  <p class="site-author-name" itemprop="name">Kuang</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Isdear" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Isdear" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/kuang8421@qq.com" title="E-Mail → kuang8421@qq.com"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/269017831" title="B站 → https:&#x2F;&#x2F;space.bilibili.com&#x2F;269017831" rel="noopener" target="_blank"><i class="fa fa-fw fa-youtube-play"></i>B站</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/1906956615" title="QQ → 1906956615"><i class="fa fa-fw fa-qq"></i>QQ</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://isdear.github.io/" title="http:&#x2F;&#x2F;isdear.github.io">Title</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kuang</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+
+
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv">总访客<span id="busuanzi_value_site_uv"></span>人</span>
+    <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">主题 – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.5.0
+  </div>
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

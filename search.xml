@@ -1,93 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hexo搭建博客</title>
-    <url>/2019/11/22/Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<p> Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 <a href="http://daringfireball.net/projects/markdown/" target="_blank" rel="noopener">Markdown</a>（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。 </p>
-<a id="more"></a>
-
-<p>Hexo官方文档 <a href="https://hexo.io/docs/index.html" target="_blank" rel="noopener">https://hexo.io/docs/index.html</a> 。</p>
-<p>使用Hexo搭建自己的博客首先需要下列应用程序：</p>
-<ul>
-<li><a href="http://nodejs.org/" target="_blank" rel="noopener">Node.js</a> (建议使用 Node.js 10.0 及以上版本，现在最新稳定版13.1)</li>
-<li><a href="http://git-scm.com/" target="_blank" rel="noopener">Git</a></li>
-</ul>
-<p>所有必备的应用程序安装完成后，就可以利用npm安装Hexo。</p>
-<h5 id="Hexo安装"><a href="#Hexo安装" class="headerlink" title="Hexo安装"></a>Hexo安装</h5><p>利用命令提示符输入以下命令安装Hexo：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install -g hexo</span><br></pre></td></tr></table></figure>
-
-<p>新建一个文件夹用来部署你的博客项目，进入文件夹右键Git Bash Here打开git bush命令界面，输入下列命令初始化文件夹(以便后面部署到GitHub上)：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
-
-<p>在文件夹中安装npm:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
-
-<p>安装git部署插件:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-
-<h5 id="服务器端运行"><a href="#服务器端运行" class="headerlink" title="服务器端运行"></a>服务器端运行</h5><p>可以通过下面的命令在本地服务器运行，在浏览器中输入 <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> 即可，但是需要一直保持连接不断开:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
-
-<p>也可以利用SSH上传博客项目到GitHub的repository仓库上，就可以用网络直接访问仓库名即可打开博客。</p>
-<h6 id="创建GitHub账号"><a href="#创建GitHub账号" class="headerlink" title="创建GitHub账号"></a>创建GitHub账号</h6><p>在 <a href="https://github.com/" target="_blank" rel="noopener">https://github.com/</a> 上注册账号，完成后，在 <a href="https://github.com" target="_blank" rel="noopener">https://github.com</a> 页面点击右上角”+”的”new repository”创建自己的项目仓库，仓库名称是”自己的github名称.github.io”，例如我的github账号名称Isdear，仓库名即为”Isdear.github.io”。</p>
-<h6 id="关联本地仓库"><a href="#关联本地仓库" class="headerlink" title="关联本地仓库"></a>关联本地仓库</h6><p>右键点击Git Bash Here进入命令界面，通过命令绑定账户。</p>
-<p>配置用户名</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;Isdear&quot;</span><br></pre></td></tr></table></figure>
-
-<p>配置GitHub账户邮箱</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.email &quot;youremail@example.com&quot;</span><br></pre></td></tr></table></figure>
-
-<p>输入命令生成SSH key:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;youremail@example.com&quot;</span><br></pre></td></tr></table></figure>
-
-<p>命令界面会显示生成的位置，例如我的是在”c/users/dell/.ssh/id_rsa.pub”。打开id_rsa.pub文件，里面的内容全部复制。在网页中点击GitHub账户头像选择”Settings”，再点击”SSH and GPG keys”，点击SSH右边的”new SSH key”，Title可以随便输入，Key中就将刚刚复制的密钥粘贴过去，点击”Add SSH key”，之后就会生成的16进制的SSH 密令。打开GitHub上的仓库，复制SSH地址链接，</p>
-<p>Git Bash中输入关联GitHub账户:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh git@github.com</span><br></pre></td></tr></table></figure>
-
-<p>在你的博客项目文件夹中打开”_config.yml”文件，直接拉到最下面配置项目部署环境。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: git@github.com:Isdear/Isdear.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-
-<h6 id="部署项目"><a href="#部署项目" class="headerlink" title="部署项目"></a>部署项目</h6><p>在Git Bash界面输入下面的命令，生成博客项目的静态文件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>部署到GitHub上:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>接下来就可以直接浏览器的地址栏输入你的GitHub仓库名即可访问博客。</p>
-<h5 id="主题配置"><a href="#主题配置" class="headerlink" title="主题配置"></a>主题配置</h5><p>Hexo可以在 <a href="https://hexo.io/themes/" target="_blank" rel="noopener">https://hexo.io/themes/</a> 选择博客的主题，点击主题的名称，进入到主题的GitHub仓库，下载ZIP压缩包，解压后把文件夹放入到博客项目的themes目录下(文件夹名字有点长，可以重命名一下)。在博客项目主目录下打开”_config.yml”文件，修改theme属性，默认是”landscape”，你把它修改成你下载的主题的文件夹名称就可以了，重新执行生成和部署命令，就可以看到博客的新主题了。</p>
-<h5 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h5><p>这里只是提出一些常用的命令，更多命令还是到官方文档查看。</p>
-<h6 id="初始化本地文件夹为网站的根目录"><a href="#初始化本地文件夹为网站的根目录" class="headerlink" title="初始化本地文件夹为网站的根目录"></a>初始化本地文件夹为网站的根目录</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
-
-<h6 id="新建文章"><a href="#新建文章" class="headerlink" title="新建文章"></a>新建文章</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new [layout] title</span><br></pre></td></tr></table></figure>
-
-<h6 id="生成静态文件"><a href="#生成静态文件" class="headerlink" title="生成静态文件"></a>生成静态文件</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo generate</span><br><span class="line">可以简写为</span><br><span class="line">hexo g</span><br></pre></td></tr></table></figure>
-
-<h6 id="启动本地服务器"><a href="#启动本地服务器" class="headerlink" title="启动本地服务器"></a>启动本地服务器</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo server</span><br><span class="line">可以简写为</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-
-<h6 id="部署网站"><a href="#部署网站" class="headerlink" title="部署网站"></a>部署网站</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo deploy</span><br><span class="line">可以简写为</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-
-<p>指定生成后部署</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
-
-<h6 id="清除缓存"><a href="#清除缓存" class="headerlink" title="清除缓存"></a>清除缓存</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
-
-<h5 id="撰写文章"><a href="#撰写文章" class="headerlink" title="撰写文章"></a>撰写文章</h5><p>因为Hexo是使用Markdown解析文章的，所以推荐使用Typora工具来编写文章 <a href="https://www.typora.io" target="_blank" rel="noopener">https://www.typora.io</a> 。</p>
-<p>使用hexo new title命令可以在source/_posts目录下生成一个md格式的文档，使用Typora打开，开始写我们的博客。在工具内你可以右键添加图片、代码块、公式块、链接、表格、脚注、分割线、段落等，这里不再一一说明，只说明一些右键没有说明的设置。</p>
-<h6 id="文章头部设置"><a href="#文章头部设置" class="headerlink" title="文章头部设置"></a>文章头部设置</h6><p>创建文章之后，文章里的头部来自模板，默认是scaffolds目录下的post.md，你可以修改模板来对文章进行说明。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">title: Title </span><br><span class="line">date: YYYY-MM-DD HH:MM:SS </span><br><span class="line">tags: [tag1, tag2, ...] </span><br><span class="line">categories: category</span><br></pre></td></tr></table></figure>
-
-<p>属性与属性值中间必须要有一个空格，否则会解析错误。</p>
-<h6 id="首页显示"><a href="#首页显示" class="headerlink" title="首页显示"></a>首页显示</h6><p>Hexo框架搭建的博客网站中，首页显示的文章默认是显示全部内容，这样很不方便。使用<code>&lt;!--more--&gt;</code>标志，即可隐藏标志前面的内容。</p>
-<h6 id="部署发布"><a href="#部署发布" class="headerlink" title="部署发布"></a>部署发布</h6><p>每次写完文章或者修改配置后都要输入命令</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
-
-<p>重新生成静态文件重新部署。</p>
-]]></content>
-      <tags>
-        <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Docker容器</title>
     <url>/2020/05/13/Docker%E5%AE%B9%E5%99%A8/</url>
     <content><![CDATA[<p>Docker容器的简单了解，以CentOS系统为基础。<a id="more"></a></p>
@@ -354,6 +267,108 @@
       </tags>
   </entry>
   <entry>
+    <title>Hexo搭建博客</title>
+    <url>/2019/11/22/Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<p> Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 <a href="http://daringfireball.net/projects/markdown/" target="_blank" rel="noopener">Markdown</a>（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。 </p>
+<a id="more"></a>
+
+<p>Hexo官方文档 <a href="https://hexo.io/docs/index.html" target="_blank" rel="noopener">https://hexo.io/docs/index.html</a> 。</p>
+<p>使用Hexo搭建自己的博客首先需要下列应用程序：</p>
+<ul>
+<li><a href="http://nodejs.org/" target="_blank" rel="noopener">Node.js</a> (建议使用 Node.js 10.0 及以上版本，现在最新稳定版13.1)</li>
+<li><a href="http://git-scm.com/" target="_blank" rel="noopener">Git</a></li>
+</ul>
+<p>所有必备的应用程序安装完成后，就可以利用npm安装Hexo。</p>
+<h5 id="Hexo安装"><a href="#Hexo安装" class="headerlink" title="Hexo安装"></a>Hexo安装</h5><p>利用命令提示符输入以下命令安装Hexo：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install -g hexo</span><br></pre></td></tr></table></figure>
+
+<p>新建一个文件夹用来部署你的博客项目，进入文件夹右键Git Bash Here打开git bush命令界面，输入下列命令初始化文件夹(以便后面部署到GitHub上)：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+
+<p>在文件夹中安装npm:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
+<p>安装git部署插件:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<h5 id="服务器端运行"><a href="#服务器端运行" class="headerlink" title="服务器端运行"></a>服务器端运行</h5><p>可以通过下面的命令在本地服务器运行，在浏览器中输入 <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> 即可，但是需要一直保持连接不断开:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+
+<p>也可以利用SSH上传博客项目到GitHub的repository仓库上，就可以用网络直接访问仓库名即可打开博客。</p>
+<h6 id="创建GitHub账号"><a href="#创建GitHub账号" class="headerlink" title="创建GitHub账号"></a>创建GitHub账号</h6><p>在 <a href="https://github.com/" target="_blank" rel="noopener">https://github.com/</a> 上注册账号，完成后，在 <a href="https://github.com" target="_blank" rel="noopener">https://github.com</a> 页面点击右上角”+”的”new repository”创建自己的项目仓库，仓库名称是”自己的github名称.github.io”，例如我的github账号名称Isdear，仓库名即为”Isdear.github.io”。</p>
+<h6 id="关联本地仓库"><a href="#关联本地仓库" class="headerlink" title="关联本地仓库"></a>关联本地仓库</h6><p>右键点击Git Bash Here进入命令界面，通过命令绑定账户。</p>
+<p>配置用户名</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;Isdear&quot;</span><br></pre></td></tr></table></figure>
+
+<p>配置GitHub账户邮箱</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.email &quot;youremail@example.com&quot;</span><br></pre></td></tr></table></figure>
+
+<p>输入命令生成SSH key:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;youremail@example.com&quot;</span><br></pre></td></tr></table></figure>
+
+<p>命令界面会显示生成的位置，例如我的是在”c/users/dell/.ssh/id_rsa.pub”。打开id_rsa.pub文件，里面的内容全部复制。在网页中点击GitHub账户头像选择”Settings”，再点击”SSH and GPG keys”，点击SSH右边的”new SSH key”，Title可以随便输入，Key中就将刚刚复制的密钥粘贴过去，点击”Add SSH key”，之后就会生成的16进制的SSH 密令。打开GitHub上的仓库，复制SSH地址链接，</p>
+<p>Git Bash中输入关联GitHub账户:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh git@github.com</span><br></pre></td></tr></table></figure>
+
+<p>在你的博客项目文件夹中打开”_config.yml”文件，直接拉到最下面配置项目部署环境。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: git@github.com:Isdear/Isdear.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+
+<h6 id="部署项目"><a href="#部署项目" class="headerlink" title="部署项目"></a>部署项目</h6><p>在Git Bash界面输入下面的命令，生成博客项目的静态文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>部署到GitHub上:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>接下来就可以直接浏览器的地址栏输入你的GitHub仓库名即可访问博客。</p>
+<h5 id="主题配置"><a href="#主题配置" class="headerlink" title="主题配置"></a>主题配置</h5><p>Hexo可以在 <a href="https://hexo.io/themes/" target="_blank" rel="noopener">https://hexo.io/themes/</a> 选择博客的主题，点击主题的名称，进入到主题的GitHub仓库，下载ZIP压缩包，解压后把文件夹放入到博客项目的themes目录下(文件夹名字有点长，可以重命名一下)。在博客项目主目录下打开”_config.yml”文件，修改theme属性，默认是”landscape”，你把它修改成你下载的主题的文件夹名称就可以了，重新执行生成和部署命令，就可以看到博客的新主题了。</p>
+<h5 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h5><p>这里只是提出一些常用的命令，更多命令还是到官方文档查看。</p>
+<h6 id="初始化本地文件夹为网站的根目录"><a href="#初始化本地文件夹为网站的根目录" class="headerlink" title="初始化本地文件夹为网站的根目录"></a>初始化本地文件夹为网站的根目录</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+
+<h6 id="新建文章"><a href="#新建文章" class="headerlink" title="新建文章"></a>新建文章</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new [layout] title</span><br></pre></td></tr></table></figure>
+
+<h6 id="生成静态文件"><a href="#生成静态文件" class="headerlink" title="生成静态文件"></a>生成静态文件</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo generate</span><br><span class="line">可以简写为</span><br><span class="line">hexo g</span><br></pre></td></tr></table></figure>
+
+<h6 id="启动本地服务器"><a href="#启动本地服务器" class="headerlink" title="启动本地服务器"></a>启动本地服务器</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo server</span><br><span class="line">可以简写为</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+
+<h6 id="部署网站"><a href="#部署网站" class="headerlink" title="部署网站"></a>部署网站</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo deploy</span><br><span class="line">可以简写为</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+
+<p>指定生成后部署</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+
+<h6 id="清除缓存"><a href="#清除缓存" class="headerlink" title="清除缓存"></a>清除缓存</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
+
+<h5 id="撰写文章"><a href="#撰写文章" class="headerlink" title="撰写文章"></a>撰写文章</h5><p>因为Hexo是使用Markdown解析文章的，所以推荐使用Typora工具来编写文章 <a href="https://www.typora.io" target="_blank" rel="noopener">https://www.typora.io</a> 。</p>
+<p>使用hexo new title命令可以在source/_posts目录下生成一个md格式的文档，使用Typora打开，开始写我们的博客。在工具内你可以右键添加图片、代码块、公式块、链接、表格、脚注、分割线、段落等，这里不再一一说明，只说明一些右键没有说明的设置。</p>
+<h6 id="文章头部设置"><a href="#文章头部设置" class="headerlink" title="文章头部设置"></a>文章头部设置</h6><p>创建文章之后，文章里的头部来自模板，默认是scaffolds目录下的post.md，你可以修改模板来对文章进行说明。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">title: Title </span><br><span class="line">date: YYYY-MM-DD HH:MM:SS </span><br><span class="line">tags: [tag1, tag2, ...] </span><br><span class="line">categories: category</span><br></pre></td></tr></table></figure>
+
+<p>属性与属性值中间必须要有一个空格，否则会解析错误。</p>
+<h6 id="首页显示"><a href="#首页显示" class="headerlink" title="首页显示"></a>首页显示</h6><p>Hexo框架搭建的博客网站中，首页显示的文章默认是显示全部内容，这样很不方便。使用<code>&lt;!--more--&gt;</code>标志，即可隐藏标志前面的内容。</p>
+<h6 id="部署发布"><a href="#部署发布" class="headerlink" title="部署发布"></a>部署发布</h6><p>每次写完文章或者修改配置后都要输入命令</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+
+<p>重新生成静态文件重新部署。</p>
+]]></content>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>IDEA代码行数统计插件-Statistic</title>
+    <url>/2020/01/13/IDEA%E4%BB%A3%E7%A0%81%E8%A1%8C%E6%95%B0%E7%BB%9F%E8%AE%A1%E6%8F%92%E4%BB%B6-Statistic/</url>
+    <content><![CDATA[<p>Statistic是IDEA用来统计代码行数的插件<a id="more"></a></p>
+<blockquote>
+<p>Shows project statistic. This plugin shows files sorted by their extension along with size, line count LOC etc. User can select (Project/Module/Package/File) scope using the ‘Refresh on selection’ button. (This plugin requires Java 1.8)</p>
+</blockquote>
+<p>&emsp;&emsp;显示项目统计数量。这个插件显示的是按照文件扩展名排序的文件，以及大小、行数、LOC等。使用者能够选择（项目/模块/包/文件）范围使用”Refresh”按钮。（该插件需要java1.8）</p>
+<h5 id="Statistic安装"><a href="#Statistic安装" class="headerlink" title="Statistic安装"></a>Statistic安装</h5><p>&emsp;&emsp;进入IDEA插件File-&gt;Settings-&gt;Plugins，点击上方的Marketplace，搜索Statistic，点击Install。下载安装完之后重启IDEA。<img src="/2020/01/13/IDEA%E4%BB%A3%E7%A0%81%E8%A1%8C%E6%95%B0%E7%BB%9F%E8%AE%A1%E6%8F%92%E4%BB%B6-Statistic/s1.jpg" alt="install"></p>
+<h5 id="项目统计"><a href="#项目统计" class="headerlink" title="项目统计"></a>项目统计</h5><p>&emsp;&emsp;打开任意一个项目开始进行统计。在顶部的菜单栏找到插件，View-&gt;Tool Windows-&gt;Statistic。也可以查看IDEA底部的功能栏，点击Statistic，点击Refresh开始统计项目的代码行数。Overview是统计所有文件的数量count和行数lines，以及不同文件类型行数的和大小的最大值、最小值和平均值。可以选择右边查看需要的后缀名文件代码行数。具体某种文件类型（如：java），可以统计总行数Total Lines，有效代码行数Source Code Lines，注释行数Comment Lines，以及有效代码比重。<img src="/2020/01/13/IDEA%E4%BB%A3%E7%A0%81%E8%A1%8C%E6%95%B0%E7%BB%9F%E8%AE%A1%E6%8F%92%E4%BB%B6-Statistic/s2.jpg" alt="result"></p>
+]]></content>
+      <tags>
+        <tag>IDEA</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CSS3滤镜filter</title>
     <url>/2020/02/10/CSS3%E6%BB%A4%E9%95%9Cfilter/</url>
     <content><![CDATA[<p>网页图片的色彩处理<a id="more"></a></p>
@@ -600,21 +615,6 @@
 ]]></content>
       <tags>
         <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>IDEA代码行数统计插件-Statistic</title>
-    <url>/2020/01/13/IDEA%E4%BB%A3%E7%A0%81%E8%A1%8C%E6%95%B0%E7%BB%9F%E8%AE%A1%E6%8F%92%E4%BB%B6-Statistic/</url>
-    <content><![CDATA[<p>Statistic是IDEA用来统计代码行数的插件<a id="more"></a></p>
-<blockquote>
-<p>Shows project statistic. This plugin shows files sorted by their extension along with size, line count LOC etc. User can select (Project/Module/Package/File) scope using the ‘Refresh on selection’ button. (This plugin requires Java 1.8)</p>
-</blockquote>
-<p>&emsp;&emsp;显示项目统计数量。这个插件显示的是按照文件扩展名排序的文件，以及大小、行数、LOC等。使用者能够选择（项目/模块/包/文件）范围使用”Refresh”按钮。（该插件需要java1.8）</p>
-<h5 id="Statistic安装"><a href="#Statistic安装" class="headerlink" title="Statistic安装"></a>Statistic安装</h5><p>&emsp;&emsp;进入IDEA插件File-&gt;Settings-&gt;Plugins，点击上方的Marketplace，搜索Statistic，点击Install。下载安装完之后重启IDEA。<img src="/2020/01/13/IDEA%E4%BB%A3%E7%A0%81%E8%A1%8C%E6%95%B0%E7%BB%9F%E8%AE%A1%E6%8F%92%E4%BB%B6-Statistic/s1.jpg" alt="install"></p>
-<h5 id="项目统计"><a href="#项目统计" class="headerlink" title="项目统计"></a>项目统计</h5><p>&emsp;&emsp;打开任意一个项目开始进行统计。在顶部的菜单栏找到插件，View-&gt;Tool Windows-&gt;Statistic。也可以查看IDEA底部的功能栏，点击Statistic，点击Refresh开始统计项目的代码行数。Overview是统计所有文件的数量count和行数lines，以及不同文件类型行数的和大小的最大值、最小值和平均值。可以选择右边查看需要的后缀名文件代码行数。具体某种文件类型（如：java），可以统计总行数Total Lines，有效代码行数Source Code Lines，注释行数Comment Lines，以及有效代码比重。<img src="/2020/01/13/IDEA%E4%BB%A3%E7%A0%81%E8%A1%8C%E6%95%B0%E7%BB%9F%E8%AE%A1%E6%8F%92%E4%BB%B6-Statistic/s2.jpg" alt="result"></p>
-]]></content>
-      <tags>
-        <tag>IDEA</tag>
       </tags>
   </entry>
   <entry>
@@ -899,6 +899,91 @@
       </tags>
   </entry>
   <entry>
+    <title>Java面经八</title>
+    <url>/2020/05/07/Java%E9%9D%A2%E7%BB%8F%E5%85%AB/</url>
+    <content><![CDATA[<p>Java面试总结八<img src="/2020/05/07/Java%E9%9D%A2%E7%BB%8F%E5%85%AB/java8.jpg" alt><a id="more"></a></p>
+<h6 id="数据库的隔离级别"><a href="#数据库的隔离级别" class="headerlink" title="数据库的隔离级别"></a>数据库的隔离级别</h6><table>
+<thead>
+<tr>
+<th align="center">隔离级别</th>
+<th align="center">脏读（Dirty Read）</th>
+<th align="center">不可重复读（NonRepeatable Read）</th>
+<th align="center">幻读（Phantom Read）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">未提交读（Read uncommitted）</td>
+<td align="center">可能</td>
+<td align="center">可能</td>
+<td align="center">可能</td>
+</tr>
+<tr>
+<td align="center">已提交读（Read committed）</td>
+<td align="center">不可能</td>
+<td align="center">可能</td>
+<td align="center">可能</td>
+</tr>
+<tr>
+<td align="center">可重复读（Repeatable read）</td>
+<td align="center">不可能</td>
+<td align="center">不可能</td>
+<td align="center">可能</td>
+</tr>
+<tr>
+<td align="center">可串行化（Serializable ）</td>
+<td align="center">不可能</td>
+<td align="center">不可能</td>
+<td align="center">不可能</td>
+</tr>
+</tbody></table>
+<p>未提交读(Read Uncommitted)：允许脏读，也就是可能读取到其他会话中未提交事务修改的数据。</p>
+<p>提交读(Read Committed)：只能读取到已经提交的数据。Oracle等多数数据库默认都是该级别 (不重复读)。</p>
+<p>可重复读(Repeated Read)：可重复读。在同一个事务内的查询都是事务开始时刻一致的，InnoDB默认级别。在SQL标准中，该隔离级别消除了不可重复读，但是还存在幻象读。</p>
+<p>串行读(Serializable)：完全串行化的读，每次读都需要获得表级共享锁，读写相互都会阻塞。</p>
+<h6 id="数据库索引底层是怎么实现的？哪些情况下索引会失效？"><a href="#数据库索引底层是怎么实现的？哪些情况下索引会失效？" class="headerlink" title="数据库索引底层是怎么实现的？哪些情况下索引会失效？"></a>数据库索引底层是怎么实现的？哪些情况下索引会失效？</h6><p>B+树实现的。</p>
+<p>没有遵循最左匹配原则。</p>
+<p>一些关键字会导致索引失效，例如 or， ！= ， not in，is null ,is not unll</p>
+<p>like查询是以%开头</p>
+<p>隐式转换会导致索引失效。</p>
+<p>对索引应用内部函数，索引字段进行了运算。</p>
+<h6 id="数据库的两种引擎使用方法"><a href="#数据库的两种引擎使用方法" class="headerlink" title="数据库的两种引擎使用方法"></a>数据库的两种引擎使用方法</h6><p>InnoDB是聚集索引，支持事务，支持行级锁，主要面向在线事务处理（OLTP）的应用；</p>
+<p>MyISAM是非聚集索引，不支持事务，只支持表级锁，主要面向一些OLAP的应用。</p>
+<p>联机事务处理OLTP（on-line transaction processing）、联机分析处理OLAP（On-Line Analytical Processing）。OLTP是传统的关系型数据库的主要应用，主要是基本的、日常的事务处理，例如银行交易。OLAP是数据仓库系统的主要应用，支持复杂的分析操作，侧重决策支持，并且提供直观易懂的查询结果。 </p>
+<p><strong>OLTP</strong> 系统强调数据库内存效率，强调内存各种指标的命令率，强调绑定变量，强调并发操作；</p>
+<p><strong>OLAP</strong> 系统则强调数据分析，强调SQL执行市场，强调磁盘I/O，强调分区等。 </p>
+<h6 id="数据库水平切分与垂直切分"><a href="#数据库水平切分与垂直切分" class="headerlink" title="数据库水平切分与垂直切分"></a>数据库水平切分与垂直切分</h6><p>垂直拆分就是要把表按模块划分到不同数据库表中（当然原则还是不破坏第三范式）。说得简单就是要把原来强耦合的系统拆分成多个弱耦合的服务，通过服务间的调用来满足业务需求看，因此表拆出来后要通过服务的形式暴露出去，而不是直接调用不同模块的表，也非常有利于进行局部的优化和治理，保障核心模块的稳定性。</p>
+<p>水平拆分，上面谈到垂直切分只是把表按模块划分到不同数据库，但没有解决单表大数据量的问题，而水平切分就是要把一个表按照某种规则把数据划分到不同表或数据库里。</p>
+<p>通俗理解：水平拆分行，行数据拆分到不同表中， 垂直拆分列，表数据拆分到不同表中。</p>
+<h6 id="JDBC中如何进行事务处理"><a href="#JDBC中如何进行事务处理" class="headerlink" title="JDBC中如何进行事务处理"></a>JDBC中如何进行事务处理</h6><p>Connection提供了事务处理的方法，通过调用setAutoCommit(false)可以设置手动提交事务；当事务完成后用commit()显式提交事务；如果在事务处理过程中发生异常则通过rollback()进行事务回滚。除此之外，从JDBC 3.0中还引入了Savepoint（保存点）的概念，允许通过代码设置保存点并让事务回滚到指定的保存点。</p>
+<h6 id="数据库的事物特性"><a href="#数据库的事物特性" class="headerlink" title="数据库的事物特性"></a>数据库的事物特性</h6><ul>
+<li><p>原子性(Atomic)：事务中各项操作，要么全做要么全不做，任何一项操作的失败都会导致整个事务的失败； </p>
+</li>
+<li><p>一致性(Consistent)：事务结束后系统状态是一致的； </p>
+</li>
+<li><p>隔离性(Isolated)：并发执行的事务彼此无法看到对方的中间状态； </p>
+</li>
+<li><p>持久性(Durable)：事务完成后所做的改动都会被持久化，即使发生灾难性的失败。通过日志和同步备份可以在故障发生后重建数据。</p>
+</li>
+</ul>
+<h6 id="使用JDBC操作数据库时，经常遇到性能问题，请你说明一下如何提升读取数据的性能，以及更新数据的性能？"><a href="#使用JDBC操作数据库时，经常遇到性能问题，请你说明一下如何提升读取数据的性能，以及更新数据的性能？" class="headerlink" title="使用JDBC操作数据库时，经常遇到性能问题，请你说明一下如何提升读取数据的性能，以及更新数据的性能？"></a>使用JDBC操作数据库时，经常遇到性能问题，请你说明一下如何提升读取数据的性能，以及更新数据的性能？</h6><p>要提升读取数据的性能，可以指定通过结果集（ResultSet）对象的setFetchSize()方法指定每次抓取的记录数（典型的空间换时间策略）；要提升更新数据的性能可以使用PreparedStatement语句构建批处理，将若干SQL语句置于一个批处理中执行。</p>
+<h6 id="JDBC的反射及作用"><a href="#JDBC的反射及作用" class="headerlink" title="JDBC的反射及作用"></a>JDBC的反射及作用</h6><p>通过反射com.mysql.jdbc.Driver类，实例化该类的时候会执行该类内部的静态代码块，该代码块会在Java实现的DriverManager类中注册自己，DriverManager管理所有已经注册的驱动类，当调用DriverManager.geConnection方法时会遍历这些驱动类，并尝试去连接数据库，只要有一个能连接成功，就返回Connection对象，否则异常。</p>
+<h6 id="Java规范中和-与Web-Service相关的规范有哪些？"><a href="#Java规范中和-与Web-Service相关的规范有哪些？" class="headerlink" title="Java规范中和 与Web Service相关的规范有哪些？"></a>Java规范中和 与Web Service相关的规范有哪些？</h6><p>Java规范中和Web Service相关的有三个：</p>
+<ul>
+<li><p>JAX-WS(JSR 224)：这个规范是早期的基于SOAP的Web Service规范JAX-RPC的替代版本，它并不提供向下兼容性，因为RPC样式的WSDL以及相关的API已经在Java EE5中被移除了。WS-MetaData是JAX-WS的依赖规范，提供了基于注解配置Web Service和SOAP消息的相关API。</p>
+</li>
+<li><p>JAXM(JSR 67)：定义了发送和接收消息所需的API,相当于Web Service的服务器端。</p>
+</li>
+<li><p>JAX-RS(JSR 311 &amp; JSR 339 &amp; JSR 370)：是Java针对REST（Representation State Transfer）架构风格制定的一套Web Service规范。</p>
+</li>
+</ul>
+<p>REST是一种软件架构模式，是一种风格，它不像SOAP那样本身承载着一种消息协议， (两种风格的Web Service均采用了HTTP做传输协议，因为HTTP协议能穿越防火墙，Java的远程方法调用（RMI）等是重量级协议，通常不能穿越防火墙），因此可以将REST视为基于HTTP协议的软件架构。REST中最重要的两个概念是资源定位和资源操作，而HTTP协议恰好完整的提供了这两个点。HTTP协议中的URI可以完成资源定位，而GET、POST、OPTION、DELETE方法可以完成资源操作。因此REST完全依赖HTTP协议就可以完成Web Service，而不像SOAP协议那样只利用了HTTP的传输特性，定位和操作都是由SOAP协议自身完成的，也正是由于SOAP消息的存在使得基于SOAP的Web Service显得笨重而逐渐被淘汰。</p>
+<h6 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h6><p>定义：保证一个类仅有一个实例，并提供一个访问它的全局访问点。优点：单例类只有一个实例、共享资源，全局使用节省创建时间，提高性能。可以用静态内部实现，保证是懒加载就行了，就是使用才会创建实例对象。</p>
+]]></content>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java面经三</title>
     <url>/2020/05/02/Java%E9%9D%A2%E7%BB%8F%E4%B8%89/</url>
     <content><![CDATA[<p>Java面试总结三<a id="more"></a></p>
@@ -1028,6 +1113,110 @@
 </li>
 </ul>
 <p>Set和Map容器都有基于哈希存储和排序树的两种实现版本，基于哈希存储的版本理论存取时间复杂度为O(1)，而基于排序树版本的实现在插入或删除元素时会按照元素或元素的键（key）构成排序树从而达到排序和去重的效果。</p>
+]]></content>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux程序自启动</title>
+    <url>/2019/11/22/Linux%E7%A8%8B%E5%BA%8F%E8%87%AA%E5%90%AF%E5%8A%A8/</url>
+    <content><![CDATA[<p>在Linux系统如何让程序开机时自动启动<a id="more"></a></p>
+<p><img src="/2019/11/22/Linux%E7%A8%8B%E5%BA%8F%E8%87%AA%E5%90%AF%E5%8A%A8/linuxicon.jpg" alt></p>
+<h5 id="修改启动配置文件"><a href="#修改启动配置文件" class="headerlink" title="修改启动配置文件"></a>修改启动配置文件</h5><p>新建一个sh后缀的脚本文件（例如:stratup.sh），把你所要启动的命令编写进去。然后再编辑“<strong>/etc/rc.local</strong>”启动配置文件，把<strong>脚本文件所在位置的全路径</strong>输入进去即可。</p>
+<h5 id="计划定时启动"><a href="#计划定时启动" class="headerlink" title="计划定时启动"></a>计划定时启动</h5><p>通过crontab可以设定程序的执行时间表， 例如让程序在每天的9点，或者每个星期一的9点执行一次。 </p>
+<p>crontab -l 列出时间表；<br>crontab -e编辑时间表；<br>crontab -d删除时间表；</p>
+<p>“-l”查看时间表；<br>“-e”是编辑（其实就是用vim编辑一个特定文件）；<br>“-d”删除，把该用户所有的时间表都删除，一般都是用“-e”编辑把不要了的时间表逐行删除；</p>
+<p>crontab文件的格式是：M H D m d CMD。<br>一个6个字段，其中最后一个CMD就是所要执行的程序，如haha.sh。<br>M：分钟（0-59）<br>H：小时（0-23）<br>D：日期（1-31）<br>m：月份（1-12）<br>d：一个星期中的某天（0-6，0代表周日）</p>
+<p>这5个时间字段用空格隔开，其值可以是一个数字，也可以用逗号隔开的多个数字（或其他） ，如果不需设置，则默认为“*”。</p>
+<p>例如，每天的9点0分执行startup.sh，就是“0 9 * * * /home/programs/./startup.sh”。</p>
+<h5 id="注册系统服务"><a href="#注册系统服务" class="headerlink" title="注册系统服务"></a>注册系统服务</h5><p>操作系统自带的服务，如ssh，ftp等等，开机都是自动启动的，我们也可以通过这种方式让自己开发的程序伪装成系统服务。</p>
+<p>比如我想把某个程序添加为系统服务，可以执行以下命令：</p>
+<p>chkconfig –add 程序名称(首先，添加为系统服务，<strong>注意add前面是两个横杠</strong>)</p>
+<p>chkconfig -leve 启动级别 服务名 on     </p>
+<p>（说明，3级别代表在命令行模式启动，5级别代表在图形界面启动，on表示开启）</p>
+<p>chkconfig -leve 启动级别 服务名 off（说明，off表示关闭自启动）</p>
+<p>例如：chkconfig -level 3 mysql on  (说明：让mysql服务在命令行模式，随系统启动)</p>
+<p>也可以使用  chkconfig –del 服务名称  来删除系统服务</p>
+<p>如果要查看哪些服务被添加为系统服务可以使用命令 ：</p>
+<p>  ntsysv 或者chkconfig –list</p>
+<p>如果要查看哪些程序被添加为自启动，可以使用命令 ：</p>
+<p>cat  /etc/rc.local（查看这个文件中添加了哪些程序路径）</p>
+]]></content>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java面经四</title>
+    <url>/2020/05/03/Java%E9%9D%A2%E7%BB%8F%E5%9B%9B/</url>
+    <content><![CDATA[<p>Java面试总结四<a id="more"></a></p>
+<h6 id="synchronized和java-util-concurrent-locks-lock的区别"><a href="#synchronized和java-util-concurrent-locks-lock的区别" class="headerlink" title="synchronized和java.util.concurrent.locks.lock的区别"></a>synchronized和java.util.concurrent.locks.lock的区别</h6><p>主要相同点：Lock能完成Synchronized所实现的所有功能。</p>
+<p>主要不同点：Lock有比Synchronized更精确的线程予以和更好的性能。Synchronized会自动释放锁，但是Lock一定要求程序员手工释放，并且必须在finally从句中释放。</p>
+<p>synchronized 修饰方法时，表示同一个对象在不同的线程中表现为同步队列。</p>
+<h6 id="如何确保N个线程可以访问N个资源，但同时又不导致死锁？"><a href="#如何确保N个线程可以访问N个资源，但同时又不导致死锁？" class="headerlink" title="如何确保N个线程可以访问N个资源，但同时又不导致死锁？"></a>如何确保N个线程可以访问N个资源，但同时又不导致死锁？</h6><p>使用多线程的时候，一种非常简单的避免死锁的方式就是：指定获取锁的顺序，并强制线程按照指定的顺序获取锁。因此，如果所有的线程都是以同样的顺序加锁和释放锁，就不会出现死锁了。</p>
+<p>预防死锁，预先破坏产生死锁的四个条件。互斥不可能破坏，所以有如下三种方法：</p>
+<p>1.破坏请求和保持条件，进程必须等所有要请求的资源都空闲时才能申请资源，这种方法会使资源浪费严重(有些资源可能仅在运行初期或结束时才使用，甚至根本不使用)。允许进程获取初期所需资源后，便开始运行，运行过程中再逐步释放自己占有的资源，比如有一个进程的任务是把数据复制到磁盘中再打印，前期只需获得磁盘资源而不需要获得打印机资源，待复制完毕后再释放掉磁盘资源。这种方法比第一种方法好，会使资源利用率上升。</p>
+<p>2.破坏不可抢占条件，这种方法代价大，实现复杂。</p>
+<p>3.破坏循坏等待条件，对各进程请求资源的顺序做一个规定，避免相互等待。这种方法对资源的利用率比前两种都高，但是前期要为设备指定序号，新设备加入会有一个问题，其次对用户编程也有限制。</p>
+<h6 id="锁和同步的区别"><a href="#锁和同步的区别" class="headerlink" title="锁和同步的区别"></a>锁和同步的区别</h6><ol>
+<li><p>Lock是一个接口，而synchronized是Java中的关键字，synchronized是内置的语言实现，synchronized是在JVM层面上实现的，不但可以通过一些监控工具监控synchronized的锁定，而且在代码执行时出现异常，JVM会自动释放锁定，但是使用Lock则不行，lock是通过代码实现的，要保证锁定一定会被释放，就必须将 unLock()放到finally{} 中；</p>
+</li>
+<li><p>synchronized在发生异常时，会自动释放线程占有的锁，因此不会导致死锁现象发生；而Lock在发生异常时，如果没有主动通过unLock()去释放锁，则很可能造成死锁现象，因此使用Lock时需要在finally块中释放锁；</p>
+</li>
+<li><p>Lock可以让等待锁的线程响应中断，线程可以中断去干别的事务，而synchronized却不行，使用synchronized时，等待的线程会一直等待下去，不能够响应中断；</p>
+</li>
+<li><p>通过Lock可以知道有没有成功获取锁，而synchronized却无法办到;</p>
+</li>
+<li><p>Lock可以提高多个线程进行读操作的效率。</p>
+<p> 在性能上来说，如果竞争资源不激烈，两者的性能是差不多的，而当竞争资源非常激烈时（即有大量线程同时竞争），此时Lock的性能要远远优于synchronized。所以说，在具体使用时要根据适当情况选择。</p>
+</li>
+</ol>
+<h6 id="jdk和jre的区别"><a href="#jdk和jre的区别" class="headerlink" title="jdk和jre的区别"></a>jdk和jre的区别</h6><p>Java运行时环境(JRE)是将要执行Java程序的Java虚拟机。它同时也包含了执行applet需要的浏览器插件。Java开发工具包(JDK)是完整的Java软件开发包，包含了JRE，编译器和其他的工具(比如：JavaDoc，Java调试器)，可以让开发者开发、编译、执行Java应用程序。</p>
+<h6 id="Java内存模型"><a href="#Java内存模型" class="headerlink" title="Java内存模型"></a>Java内存模型</h6><p>Java内存模型(简称JMM)，JMM决定一个线程对共享变量的写入何时对另一个线程可见。从抽象的角度来看，JMM定义了线程和主内存之间的抽象关系：线程之间的共享变量存储在主内存（main memory）中，每个线程都有一个私有的本地内存（local memory），本地内存中存储了该线程以读/写共享变量的副本。</p>
+<p>本地内存是JMM的一个抽象概念，并不真实存在。它涵盖了缓存，写缓冲区，寄存器以及其他的硬件和编译器优化。其关系模型图如下图所示：</p>
+<p><img src="/2020/05/03/Java%E9%9D%A2%E7%BB%8F%E5%9B%9B/jvm.png" alt></p>
+<h6 id="JVM分区"><a href="#JVM分区" class="headerlink" title="JVM分区"></a>JVM分区</h6><p>java内存通常被划分为5个区域：程序计数器（Program Count Register）、本地方法栈（Native Stack）、方法区（Methon Area）、栈（Stack）、堆（Heap）。</p>
+<p><img src="/2020/05/03/Java%E9%9D%A2%E7%BB%8F%E5%9B%9B/JVM%E5%88%86%E5%8C%BA.png" alt></p>
+<h6 id="类的加载过程"><a href="#类的加载过程" class="headerlink" title="类的加载过程"></a>类的加载过程</h6><p>如下图所示，JVM类加载机制分为五个部分：加载，验证，准备，解析，初始化，下面我们就分别来看一下这五个过程。</p>
+<p><img src="/2020/05/03/Java%E9%9D%A2%E7%BB%8F%E5%9B%9B/loading.png" alt></p>
+<p>加载</p>
+<p>加载是类加载过程中的一个阶段，这个阶段会在内存中生成一个代表这个类的java.lang.Class对象，作为方法区这个类的各种数据的入口。注意这里不一定非得要从一个Class文件获取，这里既可以从ZIP包中读取（比如从jar包和war包中读取），也可以在运行时计算生成（动态代理），也可以由其它文件生成（比如将JSP文件转换成对应的Class类）。</p>
+<p>验证</p>
+<p>这一阶段的主要目的是为了确保Class文件的字节流中包含的信息是否符合当前虚拟机的要求，并且不会危害虚拟机自身的安全。</p>
+<p>准备</p>
+<p>准备阶段是正式为类变量分配内存并设置类变量的初始值阶段，即在方法区中分配这些变量所使用的内存空间。注意这里所说的初始值概念，比如一个类变量定义为： <code>public static int v = 8080;</code>实际上变量v在准备阶段过后的初始值为0而不是8080，将v赋值为8080的putstatic指令是程序被编译后，存放于类构造器<client>方法之中。但是注意如果声明为：<code>public static final int v = 8080;</code>在编译阶段会为v生成ConstantValue属性，在准备阶段虚拟机会根据ConstantValue属性将v赋值为8080。</client></p>
+<p>解析</p>
+<p>解析阶段是指虚拟机将常量池中的符号引用替换为直接引用的过程。符号引用就是class文件中的：<code>CONSTANT_Class_info</code>、<code>CONSTANT_Field_info</code>、<code>CONSTANT_Method_info</code>等类型的常量。</p>
+<p>初始化</p>
+<p>初始化阶段是类加载最后一个阶段，前面的类加载阶段之后，除了在加载阶段可以自定义类加载器以外，其它操作都由JVM主导。到了初始阶段，才开始真正执行类中定义的Java程序代码。</p>
+<p>初始化阶段是执行类构造器<client>方法的过程。<client>方法是由编译器自动收集类中的类变量的赋值操作和静态语句块中的语句合并而成的。虚拟机会保证<client>方法执行之前，父类的<client>方法已经执行完毕。p.s: 如果一个类中没有对静态变量赋值也没有静态语句块，那么编译器可以不为这个类生成<client>()方法。</client></client></client></client></client></p>
+<p>注意以下几种情况不会执行类初始化：</p>
+<ul>
+<li><p>通过子类引用父类的静态字段，只会触发父类的初始化，而不会触发子类的初始化。</p>
+</li>
+<li><p>定义对象数组，不会触发该类的初始化。</p>
+</li>
+<li><p>常量在编译期间会存入调用类的常量池中，本质上并没有直接引用定义常量的类，不会触发定义常量所在的类。</p>
+</li>
+<li><p>通过类名获取Class对象，不会触发类的初始化。</p>
+</li>
+<li><p>通过Class.forName加载指定类时，如果指定参数initialize为false时，也不会触发类初始化，其实这个参数是告诉虚拟机，是否要对类进行初始化。</p>
+</li>
+<li><p>通过ClassLoader默认的loadClass方法，也不会触发初始化动作。</p>
+</li>
+</ul>
+<h6 id="Spring生命周期流程图"><a href="#Spring生命周期流程图" class="headerlink" title="Spring生命周期流程图"></a>Spring生命周期流程图</h6><p><img src="/2020/05/03/Java%E9%9D%A2%E7%BB%8F%E5%9B%9B/spring.png" alt></p>
+<h6 id="什么是IoC和DI？简要说明一下DI是如何实现的？"><a href="#什么是IoC和DI？简要说明一下DI是如何实现的？" class="headerlink" title="什么是IoC和DI？简要说明一下DI是如何实现的？"></a>什么是IoC和DI？简要说明一下DI是如何实现的？</h6><p>IoC叫控制反转，是Inversion of Control的缩写，DI（Dependency Injection）叫依赖注入，是对IoC更简单的诠释。控制反转是把传统上由程序代码直接操控的对象的调用权交给容器，通过容器来实现对象组件的装配和管理。所谓的”控制反转”就是对组件对象控制权的转移，从程序代码本身转移到了外部容器，由容器来创建对象并管理对象之间的依赖关系。IoC体现了好莱坞原则 - “Don’t call me, we will call you”。依赖注入的基本原则是应用组件不应该负责查找资源或者其他依赖的协作对象。配置对象的工作应该由容器负责，查找资源的逻辑应该从应用组件的代码中抽取出来，交给容器来完成。DI是对IoC更准确的描述，即组件之间的依赖关系由容器在运行期决定，形象的来说，即由容器动态的将某种依赖关系注入到组件之中。</p>
+<p>一个类A需要用到接口B中的方法，那么就需要为类A和接口B建立关联或依赖关系，最原始的方法是在类A中创建一个接口B的实现类C的实例，但这种方法需要开发人员自行维护二者的依赖关系，也就是说当依赖关系发生变动的时候需要修改代码并重新构建整个系统。如果通过一个容器来管理这些对象以及对象的依赖关系，则只需要在类A中定义好用于关联接口B的方法（构造器或setter方法），将类A和接口B的实现类C放入容器中，通过对容器的配置来实现二者的关联。<br>依赖注入可以通过setter方法注入（设值注入）、构造器注入和接口注入三种方式来实现，Spring支持setter注入和构造器注入，通常使用构造器注入来注入必须的依赖关系，对于可选的依赖关系，则setter注入是更好的选择，setter注入需要类提供无参构造器或者无参的静态工厂方法来创建对象。</p>
+<h6 id="Spring中自动装配的方式有哪些？"><a href="#Spring中自动装配的方式有哪些？" class="headerlink" title="Spring中自动装配的方式有哪些？"></a>Spring中自动装配的方式有哪些？</h6><ul>
+<li>no：不进行自动装配，手动设置Bean的依赖关系；</li>
+<li>byName：根据Bean的名字进行自动装配；</li>
+<li>byType：根据Bean的类型进行自动装配；</li>
+<li>constructor：类似于byType，不过是应用于构造器的参数，如果正好有一个Bean与构造器的参数类型相同则可以自动装配，否则会导致错误；</li>
+<li>autodetect：如果有默认的构造器，则通过constructor的方式进行自动装配，否则使用byType的方式进行自动装配；</li>
+</ul>
+<p>自动装配没有自定义装配方式那么精确，而且不能自动装配简单属性（基本类型、字符串等），在使用时应注意。</p>
 ]]></content>
       <tags>
         <tag>java</tag>
@@ -1185,110 +1374,6 @@
 <p>⑥ServletRequestAttributeListener：对请求对象属性的添加、删除和替换进行监听。</p>
 <h6 id="请问过滤器有哪些作用？以及过滤器的用法又是什么呢"><a href="#请问过滤器有哪些作用？以及过滤器的用法又是什么呢" class="headerlink" title="请问过滤器有哪些作用？以及过滤器的用法又是什么呢?"></a>请问过滤器有哪些作用？以及过滤器的用法又是什么呢?</h6><p>Java Web开发中的过滤器（filter）是从Servlet 2.3规范开始增加的功能，并在Servlet 2.4规范中得到增强。对Web应用来说，过滤器是一个驻留在服务器端的Web组件，它可以截取客户端和服务器之间的请求与响应信息，并对这些信息进行过滤。当Web容器接受到一个对资源的请求时，它将判断是否有过滤器与这个资源相关联。如果有，那么容器将把请求交给过滤器进行处理。在过滤器中，你可以改变请求的内容，或者重新设置请求的报头信息，然后再将请求发送给目标资源。当目标资源对请求作出响应时候，容器同样会将响应先转发给过滤器，在过滤器中你可以对响应的内容进行转换，然后再将响应发送到客户端。</p>
 <p>常见的过滤器用途主要包括：对用户请求进行统一认证、对用户的访问请求进行记录和审核、对用户发送的数据进行过滤或替换、转换图象格式、对响应内容进行压缩以减少传输量、对请求或响应进行加解密处理、触发资源访问事件、对XML的输出应用XSLT等。<br>和过滤器相关的接口主要有：Filter、FilterConfig和FilterChain。</p>
-]]></content>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux程序自启动</title>
-    <url>/2019/11/22/Linux%E7%A8%8B%E5%BA%8F%E8%87%AA%E5%90%AF%E5%8A%A8/</url>
-    <content><![CDATA[<p>在Linux系统如何让程序开机时自动启动<a id="more"></a></p>
-<p><img src="/2019/11/22/Linux%E7%A8%8B%E5%BA%8F%E8%87%AA%E5%90%AF%E5%8A%A8/linuxicon.jpg" alt></p>
-<h5 id="修改启动配置文件"><a href="#修改启动配置文件" class="headerlink" title="修改启动配置文件"></a>修改启动配置文件</h5><p>新建一个sh后缀的脚本文件（例如:stratup.sh），把你所要启动的命令编写进去。然后再编辑“<strong>/etc/rc.local</strong>”启动配置文件，把<strong>脚本文件所在位置的全路径</strong>输入进去即可。</p>
-<h5 id="计划定时启动"><a href="#计划定时启动" class="headerlink" title="计划定时启动"></a>计划定时启动</h5><p>通过crontab可以设定程序的执行时间表， 例如让程序在每天的9点，或者每个星期一的9点执行一次。 </p>
-<p>crontab -l 列出时间表；<br>crontab -e编辑时间表；<br>crontab -d删除时间表；</p>
-<p>“-l”查看时间表；<br>“-e”是编辑（其实就是用vim编辑一个特定文件）；<br>“-d”删除，把该用户所有的时间表都删除，一般都是用“-e”编辑把不要了的时间表逐行删除；</p>
-<p>crontab文件的格式是：M H D m d CMD。<br>一个6个字段，其中最后一个CMD就是所要执行的程序，如haha.sh。<br>M：分钟（0-59）<br>H：小时（0-23）<br>D：日期（1-31）<br>m：月份（1-12）<br>d：一个星期中的某天（0-6，0代表周日）</p>
-<p>这5个时间字段用空格隔开，其值可以是一个数字，也可以用逗号隔开的多个数字（或其他） ，如果不需设置，则默认为“*”。</p>
-<p>例如，每天的9点0分执行startup.sh，就是“0 9 * * * /home/programs/./startup.sh”。</p>
-<h5 id="注册系统服务"><a href="#注册系统服务" class="headerlink" title="注册系统服务"></a>注册系统服务</h5><p>操作系统自带的服务，如ssh，ftp等等，开机都是自动启动的，我们也可以通过这种方式让自己开发的程序伪装成系统服务。</p>
-<p>比如我想把某个程序添加为系统服务，可以执行以下命令：</p>
-<p>chkconfig –add 程序名称(首先，添加为系统服务，<strong>注意add前面是两个横杠</strong>)</p>
-<p>chkconfig -leve 启动级别 服务名 on     </p>
-<p>（说明，3级别代表在命令行模式启动，5级别代表在图形界面启动，on表示开启）</p>
-<p>chkconfig -leve 启动级别 服务名 off（说明，off表示关闭自启动）</p>
-<p>例如：chkconfig -level 3 mysql on  (说明：让mysql服务在命令行模式，随系统启动)</p>
-<p>也可以使用  chkconfig –del 服务名称  来删除系统服务</p>
-<p>如果要查看哪些服务被添加为系统服务可以使用命令 ：</p>
-<p>  ntsysv 或者chkconfig –list</p>
-<p>如果要查看哪些程序被添加为自启动，可以使用命令 ：</p>
-<p>cat  /etc/rc.local（查看这个文件中添加了哪些程序路径）</p>
-]]></content>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java面经四</title>
-    <url>/2020/05/03/Java%E9%9D%A2%E7%BB%8F%E5%9B%9B/</url>
-    <content><![CDATA[<p>Java面试总结四<a id="more"></a></p>
-<h6 id="synchronized和java-util-concurrent-locks-lock的区别"><a href="#synchronized和java-util-concurrent-locks-lock的区别" class="headerlink" title="synchronized和java.util.concurrent.locks.lock的区别"></a>synchronized和java.util.concurrent.locks.lock的区别</h6><p>主要相同点：Lock能完成Synchronized所实现的所有功能。</p>
-<p>主要不同点：Lock有比Synchronized更精确的线程予以和更好的性能。Synchronized会自动释放锁，但是Lock一定要求程序员手工释放，并且必须在finally从句中释放。</p>
-<p>synchronized 修饰方法时，表示同一个对象在不同的线程中表现为同步队列。</p>
-<h6 id="如何确保N个线程可以访问N个资源，但同时又不导致死锁？"><a href="#如何确保N个线程可以访问N个资源，但同时又不导致死锁？" class="headerlink" title="如何确保N个线程可以访问N个资源，但同时又不导致死锁？"></a>如何确保N个线程可以访问N个资源，但同时又不导致死锁？</h6><p>使用多线程的时候，一种非常简单的避免死锁的方式就是：指定获取锁的顺序，并强制线程按照指定的顺序获取锁。因此，如果所有的线程都是以同样的顺序加锁和释放锁，就不会出现死锁了。</p>
-<p>预防死锁，预先破坏产生死锁的四个条件。互斥不可能破坏，所以有如下三种方法：</p>
-<p>1.破坏请求和保持条件，进程必须等所有要请求的资源都空闲时才能申请资源，这种方法会使资源浪费严重(有些资源可能仅在运行初期或结束时才使用，甚至根本不使用)。允许进程获取初期所需资源后，便开始运行，运行过程中再逐步释放自己占有的资源，比如有一个进程的任务是把数据复制到磁盘中再打印，前期只需获得磁盘资源而不需要获得打印机资源，待复制完毕后再释放掉磁盘资源。这种方法比第一种方法好，会使资源利用率上升。</p>
-<p>2.破坏不可抢占条件，这种方法代价大，实现复杂。</p>
-<p>3.破坏循坏等待条件，对各进程请求资源的顺序做一个规定，避免相互等待。这种方法对资源的利用率比前两种都高，但是前期要为设备指定序号，新设备加入会有一个问题，其次对用户编程也有限制。</p>
-<h6 id="锁和同步的区别"><a href="#锁和同步的区别" class="headerlink" title="锁和同步的区别"></a>锁和同步的区别</h6><ol>
-<li><p>Lock是一个接口，而synchronized是Java中的关键字，synchronized是内置的语言实现，synchronized是在JVM层面上实现的，不但可以通过一些监控工具监控synchronized的锁定，而且在代码执行时出现异常，JVM会自动释放锁定，但是使用Lock则不行，lock是通过代码实现的，要保证锁定一定会被释放，就必须将 unLock()放到finally{} 中；</p>
-</li>
-<li><p>synchronized在发生异常时，会自动释放线程占有的锁，因此不会导致死锁现象发生；而Lock在发生异常时，如果没有主动通过unLock()去释放锁，则很可能造成死锁现象，因此使用Lock时需要在finally块中释放锁；</p>
-</li>
-<li><p>Lock可以让等待锁的线程响应中断，线程可以中断去干别的事务，而synchronized却不行，使用synchronized时，等待的线程会一直等待下去，不能够响应中断；</p>
-</li>
-<li><p>通过Lock可以知道有没有成功获取锁，而synchronized却无法办到;</p>
-</li>
-<li><p>Lock可以提高多个线程进行读操作的效率。</p>
-<p> 在性能上来说，如果竞争资源不激烈，两者的性能是差不多的，而当竞争资源非常激烈时（即有大量线程同时竞争），此时Lock的性能要远远优于synchronized。所以说，在具体使用时要根据适当情况选择。</p>
-</li>
-</ol>
-<h6 id="jdk和jre的区别"><a href="#jdk和jre的区别" class="headerlink" title="jdk和jre的区别"></a>jdk和jre的区别</h6><p>Java运行时环境(JRE)是将要执行Java程序的Java虚拟机。它同时也包含了执行applet需要的浏览器插件。Java开发工具包(JDK)是完整的Java软件开发包，包含了JRE，编译器和其他的工具(比如：JavaDoc，Java调试器)，可以让开发者开发、编译、执行Java应用程序。</p>
-<h6 id="Java内存模型"><a href="#Java内存模型" class="headerlink" title="Java内存模型"></a>Java内存模型</h6><p>Java内存模型(简称JMM)，JMM决定一个线程对共享变量的写入何时对另一个线程可见。从抽象的角度来看，JMM定义了线程和主内存之间的抽象关系：线程之间的共享变量存储在主内存（main memory）中，每个线程都有一个私有的本地内存（local memory），本地内存中存储了该线程以读/写共享变量的副本。</p>
-<p>本地内存是JMM的一个抽象概念，并不真实存在。它涵盖了缓存，写缓冲区，寄存器以及其他的硬件和编译器优化。其关系模型图如下图所示：</p>
-<p><img src="/2020/05/03/Java%E9%9D%A2%E7%BB%8F%E5%9B%9B/jvm.png" alt></p>
-<h6 id="JVM分区"><a href="#JVM分区" class="headerlink" title="JVM分区"></a>JVM分区</h6><p>java内存通常被划分为5个区域：程序计数器（Program Count Register）、本地方法栈（Native Stack）、方法区（Methon Area）、栈（Stack）、堆（Heap）。</p>
-<p><img src="/2020/05/03/Java%E9%9D%A2%E7%BB%8F%E5%9B%9B/JVM%E5%88%86%E5%8C%BA.png" alt></p>
-<h6 id="类的加载过程"><a href="#类的加载过程" class="headerlink" title="类的加载过程"></a>类的加载过程</h6><p>如下图所示，JVM类加载机制分为五个部分：加载，验证，准备，解析，初始化，下面我们就分别来看一下这五个过程。</p>
-<p><img src="/2020/05/03/Java%E9%9D%A2%E7%BB%8F%E5%9B%9B/loading.png" alt></p>
-<p>加载</p>
-<p>加载是类加载过程中的一个阶段，这个阶段会在内存中生成一个代表这个类的java.lang.Class对象，作为方法区这个类的各种数据的入口。注意这里不一定非得要从一个Class文件获取，这里既可以从ZIP包中读取（比如从jar包和war包中读取），也可以在运行时计算生成（动态代理），也可以由其它文件生成（比如将JSP文件转换成对应的Class类）。</p>
-<p>验证</p>
-<p>这一阶段的主要目的是为了确保Class文件的字节流中包含的信息是否符合当前虚拟机的要求，并且不会危害虚拟机自身的安全。</p>
-<p>准备</p>
-<p>准备阶段是正式为类变量分配内存并设置类变量的初始值阶段，即在方法区中分配这些变量所使用的内存空间。注意这里所说的初始值概念，比如一个类变量定义为： <code>public static int v = 8080;</code>实际上变量v在准备阶段过后的初始值为0而不是8080，将v赋值为8080的putstatic指令是程序被编译后，存放于类构造器<client>方法之中。但是注意如果声明为：<code>public static final int v = 8080;</code>在编译阶段会为v生成ConstantValue属性，在准备阶段虚拟机会根据ConstantValue属性将v赋值为8080。</client></p>
-<p>解析</p>
-<p>解析阶段是指虚拟机将常量池中的符号引用替换为直接引用的过程。符号引用就是class文件中的：<code>CONSTANT_Class_info</code>、<code>CONSTANT_Field_info</code>、<code>CONSTANT_Method_info</code>等类型的常量。</p>
-<p>初始化</p>
-<p>初始化阶段是类加载最后一个阶段，前面的类加载阶段之后，除了在加载阶段可以自定义类加载器以外，其它操作都由JVM主导。到了初始阶段，才开始真正执行类中定义的Java程序代码。</p>
-<p>初始化阶段是执行类构造器<client>方法的过程。<client>方法是由编译器自动收集类中的类变量的赋值操作和静态语句块中的语句合并而成的。虚拟机会保证<client>方法执行之前，父类的<client>方法已经执行完毕。p.s: 如果一个类中没有对静态变量赋值也没有静态语句块，那么编译器可以不为这个类生成<client>()方法。</client></client></client></client></client></p>
-<p>注意以下几种情况不会执行类初始化：</p>
-<ul>
-<li><p>通过子类引用父类的静态字段，只会触发父类的初始化，而不会触发子类的初始化。</p>
-</li>
-<li><p>定义对象数组，不会触发该类的初始化。</p>
-</li>
-<li><p>常量在编译期间会存入调用类的常量池中，本质上并没有直接引用定义常量的类，不会触发定义常量所在的类。</p>
-</li>
-<li><p>通过类名获取Class对象，不会触发类的初始化。</p>
-</li>
-<li><p>通过Class.forName加载指定类时，如果指定参数initialize为false时，也不会触发类初始化，其实这个参数是告诉虚拟机，是否要对类进行初始化。</p>
-</li>
-<li><p>通过ClassLoader默认的loadClass方法，也不会触发初始化动作。</p>
-</li>
-</ul>
-<h6 id="Spring生命周期流程图"><a href="#Spring生命周期流程图" class="headerlink" title="Spring生命周期流程图"></a>Spring生命周期流程图</h6><p><img src="/2020/05/03/Java%E9%9D%A2%E7%BB%8F%E5%9B%9B/spring.png" alt></p>
-<h6 id="什么是IoC和DI？简要说明一下DI是如何实现的？"><a href="#什么是IoC和DI？简要说明一下DI是如何实现的？" class="headerlink" title="什么是IoC和DI？简要说明一下DI是如何实现的？"></a>什么是IoC和DI？简要说明一下DI是如何实现的？</h6><p>IoC叫控制反转，是Inversion of Control的缩写，DI（Dependency Injection）叫依赖注入，是对IoC更简单的诠释。控制反转是把传统上由程序代码直接操控的对象的调用权交给容器，通过容器来实现对象组件的装配和管理。所谓的”控制反转”就是对组件对象控制权的转移，从程序代码本身转移到了外部容器，由容器来创建对象并管理对象之间的依赖关系。IoC体现了好莱坞原则 - “Don’t call me, we will call you”。依赖注入的基本原则是应用组件不应该负责查找资源或者其他依赖的协作对象。配置对象的工作应该由容器负责，查找资源的逻辑应该从应用组件的代码中抽取出来，交给容器来完成。DI是对IoC更准确的描述，即组件之间的依赖关系由容器在运行期决定，形象的来说，即由容器动态的将某种依赖关系注入到组件之中。</p>
-<p>一个类A需要用到接口B中的方法，那么就需要为类A和接口B建立关联或依赖关系，最原始的方法是在类A中创建一个接口B的实现类C的实例，但这种方法需要开发人员自行维护二者的依赖关系，也就是说当依赖关系发生变动的时候需要修改代码并重新构建整个系统。如果通过一个容器来管理这些对象以及对象的依赖关系，则只需要在类A中定义好用于关联接口B的方法（构造器或setter方法），将类A和接口B的实现类C放入容器中，通过对容器的配置来实现二者的关联。<br>依赖注入可以通过setter方法注入（设值注入）、构造器注入和接口注入三种方式来实现，Spring支持setter注入和构造器注入，通常使用构造器注入来注入必须的依赖关系，对于可选的依赖关系，则setter注入是更好的选择，setter注入需要类提供无参构造器或者无参的静态工厂方法来创建对象。</p>
-<h6 id="Spring中自动装配的方式有哪些？"><a href="#Spring中自动装配的方式有哪些？" class="headerlink" title="Spring中自动装配的方式有哪些？"></a>Spring中自动装配的方式有哪些？</h6><ul>
-<li>no：不进行自动装配，手动设置Bean的依赖关系；</li>
-<li>byName：根据Bean的名字进行自动装配；</li>
-<li>byType：根据Bean的类型进行自动装配；</li>
-<li>constructor：类似于byType，不过是应用于构造器的参数，如果正好有一个Bean与构造器的参数类型相同则可以自动装配，否则会导致错误；</li>
-<li>autodetect：如果有默认的构造器，则通过constructor的方式进行自动装配，否则使用byType的方式进行自动装配；</li>
-</ul>
-<p>自动装配没有自定义装配方式那么精确，而且不能自动装配简单属性（基本类型、字符串等），在使用时应注意。</p>
 ]]></content>
       <tags>
         <tag>java</tag>
@@ -1540,17 +1625,6 @@
 ]]></content>
       <tags>
         <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python爬取电影天堂新片精品</title>
-    <url>/2020/02/12/Python%E7%88%AC%E5%8F%96%E7%94%B5%E5%BD%B1%E5%A4%A9%E5%A0%82%E6%96%B0%E7%89%87%E7%B2%BE%E5%93%81/</url>
-    <content><![CDATA[<p>爬取最新电影，内容包括标题、年代、产地、类别、评分、片场、导演、主演、下载链接。<a id="more"></a></p>
-<h6 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h6><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">base_domain = <span class="string">"https://www.dytt8.net"</span></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">"User-Agent"</span>: <span class="string">"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "</span></span><br><span class="line">                  <span class="string">"(KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36 Edg/80.0.361.111"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_detail_url</span><span class="params">(url)</span>:</span></span><br><span class="line">    resp = requests.get(url, headers=headers)</span><br><span class="line">    <span class="comment"># 解码出现"illegal multibyte sequence"，其他编码无法解决，使用ignore</span></span><br><span class="line">    <span class="comment"># text = resp.content.decode("gbk", errors="ignore")</span></span><br><span class="line">    text = resp.text</span><br><span class="line">    html = etree.HTML(text)</span><br><span class="line">    detail_urls = html.xpath(<span class="string">"//table[@class='tbspan']//a/@href"</span>)</span><br><span class="line">    detail_urls = map(<span class="keyword">lambda</span> url: base_domain + url, detail_urls)</span><br><span class="line">    <span class="keyword">return</span> detail_urls</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_html</span><span class="params">(url)</span>:</span></span><br><span class="line">    resp = requests.get(url, headers=headers)</span><br><span class="line">    text = resp.content.decode(<span class="string">"gbk"</span>, errors=<span class="string">"ignore"</span>)</span><br><span class="line">    html = etree.HTML(text)</span><br><span class="line">    <span class="keyword">return</span> html</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">parse_info</span><span class="params">(info, rule)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> info.replace(rule, <span class="string">""</span>).strip()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">parse_detail_page</span><span class="params">(url)</span>:</span></span><br><span class="line">    movie = &#123;&#125;</span><br><span class="line">    html = get_html(url)</span><br><span class="line">    title = html.xpath(<span class="string">"//div[@class='title_all']//font[@color='#07519a']/text()"</span>)[<span class="number">0</span>]</span><br><span class="line">    movie[<span class="string">"title"</span>] = title</span><br><span class="line">    zooms = html.xpath(<span class="string">"//div[@id='Zoom']"</span>)[<span class="number">0</span>]</span><br><span class="line">    poster = zooms.xpath(<span class="string">".//img/@src"</span>)</span><br><span class="line">    movie[<span class="string">"poster"</span>] = poster</span><br><span class="line"></span><br><span class="line">    infos = zooms.xpath(<span class="string">".//text()"</span>)</span><br><span class="line">    <span class="keyword">for</span> index, info <span class="keyword">in</span> enumerate(infos):</span><br><span class="line">        <span class="keyword">if</span> info.startswith(<span class="string">"◎年　　代"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎年　　代"</span>)</span><br><span class="line">            movie[<span class="string">"year"</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎产　　地"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎产　　地"</span>)</span><br><span class="line">            movie[<span class="string">"country"</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎类　　别"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎类　　别"</span>)</span><br><span class="line">            movie[<span class="string">"category"</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎豆瓣评分"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎豆瓣评分"</span>)</span><br><span class="line">            movie[<span class="string">"score"</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎片　　长"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎片　　长"</span>)</span><br><span class="line">            movie[<span class="string">"timelength"</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎导　　演"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎导　　演"</span>)</span><br><span class="line">            movie[<span class="string">"director"</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎主　　演"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎主　　演"</span>)</span><br><span class="line">            actors = [info]</span><br><span class="line">            <span class="keyword">for</span> x <span class="keyword">in</span> range(index + <span class="number">1</span>, len(infos)):</span><br><span class="line">                actor = infos[x].strip()</span><br><span class="line">                <span class="keyword">if</span> actor.startswith(<span class="string">"◎"</span>):</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                actors.append(actor)</span><br><span class="line">            movie[<span class="string">"actors"</span>] = actors</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎简　　介"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎简　　介"</span>)</span><br><span class="line">            <span class="keyword">for</span> x <span class="keyword">in</span> range(index + <span class="number">1</span>, len(infos)):</span><br><span class="line">                profile = infos[x].strip()</span><br><span class="line">                <span class="keyword">if</span> profile.startswith(<span class="string">"【"</span>):</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">            movie[<span class="string">"profile"</span>] = profile</span><br><span class="line"></span><br><span class="line">    down_url = zooms.xpath(<span class="string">".//table//a/@href"</span>)</span><br><span class="line">    movie[<span class="string">"down_url"</span>] = down_url</span><br><span class="line">    <span class="keyword">return</span> movie</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">spider</span><span class="params">()</span>:</span></span><br><span class="line">    index_url = <span class="string">"https://www.dytt8.net/html/gndy/dyzz/index.html"</span></span><br><span class="line">    base_url = <span class="string">"https://www.dytt8.net/html/gndy/dyzz/list_23_&#123;&#125;.html"</span></span><br><span class="line">    html = get_html(index_url)</span><br><span class="line">    pages = html.xpath(<span class="string">"//select[@name='sldd']/option"</span>)</span><br><span class="line">    movies = []</span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">1</span>, len(pages) + <span class="number">1</span>):</span><br><span class="line">        url = base_url.format(x)</span><br><span class="line">        detail_urls = get_detail_url(url)</span><br><span class="line">        <span class="keyword">for</span> detail_url <span class="keyword">in</span> detail_urls:</span><br><span class="line">            <span class="comment"># 遍历每一页中的所有电影</span></span><br><span class="line">            movie = parse_detail_page(detail_url)</span><br><span class="line">            movies.append(movie)</span><br><span class="line">            print(movie)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    spider()</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <tags>
-        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
@@ -1926,6 +2000,46 @@
 ]]></content>
       <tags>
         <tag>MQTT</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python爬取电影天堂新片精品</title>
+    <url>/2020/02/12/Python%E7%88%AC%E5%8F%96%E7%94%B5%E5%BD%B1%E5%A4%A9%E5%A0%82%E6%96%B0%E7%89%87%E7%B2%BE%E5%93%81/</url>
+    <content><![CDATA[<p>爬取最新电影，内容包括标题、年代、产地、类别、评分、片场、导演、主演、下载链接。<a id="more"></a></p>
+<h6 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h6><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">base_domain = <span class="string">"https://www.dytt8.net"</span></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">"User-Agent"</span>: <span class="string">"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "</span></span><br><span class="line">                  <span class="string">"(KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36 Edg/80.0.361.111"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_detail_url</span><span class="params">(url)</span>:</span></span><br><span class="line">    resp = requests.get(url, headers=headers)</span><br><span class="line">    <span class="comment"># 解码出现"illegal multibyte sequence"，其他编码无法解决，使用ignore</span></span><br><span class="line">    <span class="comment"># text = resp.content.decode("gbk", errors="ignore")</span></span><br><span class="line">    text = resp.text</span><br><span class="line">    html = etree.HTML(text)</span><br><span class="line">    detail_urls = html.xpath(<span class="string">"//table[@class='tbspan']//a/@href"</span>)</span><br><span class="line">    detail_urls = map(<span class="keyword">lambda</span> url: base_domain + url, detail_urls)</span><br><span class="line">    <span class="keyword">return</span> detail_urls</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_html</span><span class="params">(url)</span>:</span></span><br><span class="line">    resp = requests.get(url, headers=headers)</span><br><span class="line">    text = resp.content.decode(<span class="string">"gbk"</span>, errors=<span class="string">"ignore"</span>)</span><br><span class="line">    html = etree.HTML(text)</span><br><span class="line">    <span class="keyword">return</span> html</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">parse_info</span><span class="params">(info, rule)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> info.replace(rule, <span class="string">""</span>).strip()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">parse_detail_page</span><span class="params">(url)</span>:</span></span><br><span class="line">    movie = &#123;&#125;</span><br><span class="line">    html = get_html(url)</span><br><span class="line">    title = html.xpath(<span class="string">"//div[@class='title_all']//font[@color='#07519a']/text()"</span>)[<span class="number">0</span>]</span><br><span class="line">    movie[<span class="string">"title"</span>] = title</span><br><span class="line">    zooms = html.xpath(<span class="string">"//div[@id='Zoom']"</span>)[<span class="number">0</span>]</span><br><span class="line">    poster = zooms.xpath(<span class="string">".//img/@src"</span>)</span><br><span class="line">    movie[<span class="string">"poster"</span>] = poster</span><br><span class="line"></span><br><span class="line">    infos = zooms.xpath(<span class="string">".//text()"</span>)</span><br><span class="line">    <span class="keyword">for</span> index, info <span class="keyword">in</span> enumerate(infos):</span><br><span class="line">        <span class="keyword">if</span> info.startswith(<span class="string">"◎年　　代"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎年　　代"</span>)</span><br><span class="line">            movie[<span class="string">"year"</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎产　　地"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎产　　地"</span>)</span><br><span class="line">            movie[<span class="string">"country"</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎类　　别"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎类　　别"</span>)</span><br><span class="line">            movie[<span class="string">"category"</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎豆瓣评分"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎豆瓣评分"</span>)</span><br><span class="line">            movie[<span class="string">"score"</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎片　　长"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎片　　长"</span>)</span><br><span class="line">            movie[<span class="string">"timelength"</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎导　　演"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎导　　演"</span>)</span><br><span class="line">            movie[<span class="string">"director"</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎主　　演"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎主　　演"</span>)</span><br><span class="line">            actors = [info]</span><br><span class="line">            <span class="keyword">for</span> x <span class="keyword">in</span> range(index + <span class="number">1</span>, len(infos)):</span><br><span class="line">                actor = infos[x].strip()</span><br><span class="line">                <span class="keyword">if</span> actor.startswith(<span class="string">"◎"</span>):</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                actors.append(actor)</span><br><span class="line">            movie[<span class="string">"actors"</span>] = actors</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎简　　介"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎简　　介"</span>)</span><br><span class="line">            <span class="keyword">for</span> x <span class="keyword">in</span> range(index + <span class="number">1</span>, len(infos)):</span><br><span class="line">                profile = infos[x].strip()</span><br><span class="line">                <span class="keyword">if</span> profile.startswith(<span class="string">"【"</span>):</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">            movie[<span class="string">"profile"</span>] = profile</span><br><span class="line"></span><br><span class="line">    down_url = zooms.xpath(<span class="string">".//table//a/@href"</span>)</span><br><span class="line">    movie[<span class="string">"down_url"</span>] = down_url</span><br><span class="line">    <span class="keyword">return</span> movie</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">spider</span><span class="params">()</span>:</span></span><br><span class="line">    index_url = <span class="string">"https://www.dytt8.net/html/gndy/dyzz/index.html"</span></span><br><span class="line">    base_url = <span class="string">"https://www.dytt8.net/html/gndy/dyzz/list_23_&#123;&#125;.html"</span></span><br><span class="line">    html = get_html(index_url)</span><br><span class="line">    pages = html.xpath(<span class="string">"//select[@name='sldd']/option"</span>)</span><br><span class="line">    movies = []</span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">1</span>, len(pages) + <span class="number">1</span>):</span><br><span class="line">        url = base_url.format(x)</span><br><span class="line">        detail_urls = get_detail_url(url)</span><br><span class="line">        <span class="keyword">for</span> detail_url <span class="keyword">in</span> detail_urls:</span><br><span class="line">            <span class="comment"># 遍历每一页中的所有电影</span></span><br><span class="line">            movie = parse_detail_page(detail_url)</span><br><span class="line">            movies.append(movie)</span><br><span class="line">            print(movie)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    spider()</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>StreamTokenizer使用</title>
+    <url>/2020/02/09/StreamTokenizer%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<p>StreamTokenizer的用法<a id="more"></a></p>
+<p>Java联系解题一般使用Scanner类进行输入，但对时间要求严格的题目，用它可能会超时。使用StreamTokenizer类进行输入的效率比Scanner高一点。</p>
+<p>StreamTokenizer的使用小结：</p>
+<ol>
+<li><p>类java.io.StreamTokenizer可以获取输入流并将其分析为Token，StreamTokenizer的nextToken方法读取下一个标记。</p>
+</li>
+<li><p>默认情况下，StreamTokenizer认为下列内容是Token：字母、数字、除C和C++注释符号以外的其他符号。如符号“/”(中文双引号)不是Token，注释后的内容也不是，而”/“(英文双引号)是Token。单引号和双引号以及其他的内容，只能算是一个Token。</p>
+</li>
+<li><p>为了提高效率，使用BufferedReader读取数据。如下，创建StreamTokenizer对象</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">StreamTokenizer st = <span class="keyword">new</span> StreamTokenizer(<span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(System.in)));</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>为了从数据流中获取标记，可以调用StreamTokenizer的nextToken()方法。调用nextToken()方法以后，如果标记是字符串，可以用String s = st.sval，如果是整数用int n = (int)st.nval得到。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">st.nextToken();</span><br><span class="line"><span class="comment">//st.nval默认解析出的格式是double</span></span><br><span class="line"><span class="keyword">int</span> i = (<span class="keyword">int</span>)st.nval;</span><br><span class="line">st.nextToken();</span><br><span class="line"><span class="keyword">int</span> j = (<span class="keyword">int</span>)st.nval;</span><br><span class="line">st.nextToken();</span><br><span class="line">String s = st.sval;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>要统计文件的字符数，不能简单地统计Token数，因为字符数不等于Token，按照Token的规定，引号中的内容就算是10页也算是一个Token。如果希望引号和引号中的内容都算作Token，应该通过StreamTokenizer的ordinaryCha()方法将单引号和双引号当做普通字符处理。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//直接在程序中指定了文件输入路径：String fileName = "d:/ceshi.txt";</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">package</span> szu.edu;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.BufferedReader;</span><br><span class="line"><span class="keyword">import</span> java.io.FileReader;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.StreamTokenizer;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 使用StreamTokenizer来统计文件中的字符数</span></span><br><span class="line"><span class="comment"> * StreamTokenizer 类获取输入流并将其分析为“标记”，允许一次读取一个标记。</span></span><br><span class="line"><span class="comment"> * 分析过程由一个表和许多可以设置为各种状态的标志控制。</span></span><br><span class="line"><span class="comment"> * 该流的标记生成器可以识别标识符、数字、引用的字符串和各种注释样式。</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> *  默认情况下，StreamTokenizer认为下列内容是Token: 字母、数字、除C和C++注释符号以外的其他符号。</span></span><br><span class="line"><span class="comment"> *  如符号"/"不是Token，注释后的内容也不是，而"\"是Token。单引号和双引号以及其中的内容，只能算是一个Token。</span></span><br><span class="line"><span class="comment"> *  统计文章字符数的程序，不是简单的统计Token数就万事大吉，因为字符数不等于Token。按照Token的规定，</span></span><br><span class="line"><span class="comment"> *  引号中的内容就算是10页也算一个Token。如果希望引号和引号中的内容都算作Token，应该调用下面的代码：</span></span><br><span class="line"><span class="comment"> *     st.ordinaryChar('\'');  //将单引号设为普通字符</span></span><br><span class="line"><span class="comment"> * st.ordinaryChar('\"');    //将双引号设为普通字符</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StatisFileChars</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 统计字符数</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> fileName 文件名</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span>    字符数</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">long</span> <span class="title">statis</span><span class="params">(String fileName)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        FileReader fileReader = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            fileReader = <span class="keyword">new</span> FileReader(fileName);</span><br><span class="line">            <span class="comment">//创建分析给定字符流的标记生成器</span></span><br><span class="line">            StreamTokenizer st = <span class="keyword">new</span> StreamTokenizer(<span class="keyword">new</span> BufferedReader(</span><br><span class="line">                    fileReader));</span><br><span class="line"></span><br><span class="line">            <span class="comment">//ordinaryChar方法指定字符参数在此标记生成器中是“普通”字符。</span></span><br><span class="line">            <span class="comment">//下面指定单引号、双引号和注释符号是普通字符</span></span><br><span class="line">            st.ordinaryChar(<span class="string">'\''</span>);</span><br><span class="line">            st.ordinaryChar(<span class="string">'\"'</span>);</span><br><span class="line">            st.ordinaryChar(<span class="string">'/'</span>);</span><br><span class="line"></span><br><span class="line">            String s;</span><br><span class="line">            <span class="keyword">int</span> numberSum = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> wordSum = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> symbolSum = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> total = <span class="number">0</span>;</span><br><span class="line">            <span class="comment">//nextToken方法读取下一个Token.</span></span><br><span class="line">            <span class="comment">//TT_EOF指示已读到流末尾的常量。</span></span><br><span class="line">            <span class="keyword">while</span> (st.nextToken() != StreamTokenizer.TT_EOF) &#123;</span><br><span class="line">                <span class="comment">//在调用 nextToken 方法之后，ttype字段将包含刚读取的标记的类型</span></span><br><span class="line">                <span class="keyword">switch</span> (st.ttype) &#123;</span><br><span class="line">                <span class="comment">//TT_EOL指示已读到行末尾的常量。</span></span><br><span class="line">                <span class="keyword">case</span> StreamTokenizer.TT_EOL:</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="comment">//TT_NUMBER指示已读到一个数字标记的常量</span></span><br><span class="line">                <span class="keyword">case</span> StreamTokenizer.TT_NUMBER:</span><br><span class="line">                    <span class="comment">//如果当前标记是一个数字，nval字段将包含该数字的值</span></span><br><span class="line">                    s = String.valueOf((st.nval));</span><br><span class="line">                    System.out.println(s);</span><br><span class="line">                    numberSum += s.length();</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="comment">//TT_WORD指示已读到一个文字标记的常量</span></span><br><span class="line">                <span class="keyword">case</span> StreamTokenizer.TT_WORD:</span><br><span class="line">                    <span class="comment">//如果当前标记是一个文字标记，sval字段包含一个给出该文字标记的字符的字符串</span></span><br><span class="line">                    s = st.sval;</span><br><span class="line">                    wordSum += s.length();</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">default</span>:</span><br><span class="line">                    <span class="comment">//如果以上3中类型都不是，则为英文的标点符号</span></span><br><span class="line">                    s = String.valueOf((<span class="keyword">char</span>) st.ttype);</span><br><span class="line">                    symbolSum += s.length();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(<span class="string">"sum of number = "</span> + numberSum);</span><br><span class="line">            System.out.println(<span class="string">"sum of word = "</span> + wordSum);</span><br><span class="line">            System.out.println(<span class="string">"sum of symbol = "</span> + symbolSum);</span><br><span class="line">            total = symbolSum + numberSum + wordSum;</span><br><span class="line">            System.out.println(<span class="string">"Total = "</span> + total);</span><br><span class="line">            <span class="keyword">return</span> total;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (fileReader != <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    fileReader.close();</span><br><span class="line">                &#125; <span class="keyword">catch</span> (IOException e1) &#123;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String fileName = <span class="string">"d:/ceshi.txt"</span>;</span><br><span class="line">        StatisFileChars.statis(fileName);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>java</tag>
       </tags>
   </entry>
   <entry>
@@ -2518,35 +2632,6 @@
       </tags>
   </entry>
   <entry>
-    <title>StreamTokenizer使用</title>
-    <url>/2020/02/09/StreamTokenizer%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<p>StreamTokenizer的用法<a id="more"></a></p>
-<p>Java联系解题一般使用Scanner类进行输入，但对时间要求严格的题目，用它可能会超时。使用StreamTokenizer类进行输入的效率比Scanner高一点。</p>
-<p>StreamTokenizer的使用小结：</p>
-<ol>
-<li><p>类java.io.StreamTokenizer可以获取输入流并将其分析为Token，StreamTokenizer的nextToken方法读取下一个标记。</p>
-</li>
-<li><p>默认情况下，StreamTokenizer认为下列内容是Token：字母、数字、除C和C++注释符号以外的其他符号。如符号“/”(中文双引号)不是Token，注释后的内容也不是，而”/“(英文双引号)是Token。单引号和双引号以及其他的内容，只能算是一个Token。</p>
-</li>
-<li><p>为了提高效率，使用BufferedReader读取数据。如下，创建StreamTokenizer对象</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">StreamTokenizer st = <span class="keyword">new</span> StreamTokenizer(<span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(System.in)));</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>为了从数据流中获取标记，可以调用StreamTokenizer的nextToken()方法。调用nextToken()方法以后，如果标记是字符串，可以用String s = st.sval，如果是整数用int n = (int)st.nval得到。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">st.nextToken();</span><br><span class="line"><span class="comment">//st.nval默认解析出的格式是double</span></span><br><span class="line"><span class="keyword">int</span> i = (<span class="keyword">int</span>)st.nval;</span><br><span class="line">st.nextToken();</span><br><span class="line"><span class="keyword">int</span> j = (<span class="keyword">int</span>)st.nval;</span><br><span class="line">st.nextToken();</span><br><span class="line">String s = st.sval;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>要统计文件的字符数，不能简单地统计Token数，因为字符数不等于Token，按照Token的规定，引号中的内容就算是10页也算是一个Token。如果希望引号和引号中的内容都算作Token，应该通过StreamTokenizer的ordinaryCha()方法将单引号和双引号当做普通字符处理。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//直接在程序中指定了文件输入路径：String fileName = "d:/ceshi.txt";</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">package</span> szu.edu;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.BufferedReader;</span><br><span class="line"><span class="keyword">import</span> java.io.FileReader;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.StreamTokenizer;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 使用StreamTokenizer来统计文件中的字符数</span></span><br><span class="line"><span class="comment"> * StreamTokenizer 类获取输入流并将其分析为“标记”，允许一次读取一个标记。</span></span><br><span class="line"><span class="comment"> * 分析过程由一个表和许多可以设置为各种状态的标志控制。</span></span><br><span class="line"><span class="comment"> * 该流的标记生成器可以识别标识符、数字、引用的字符串和各种注释样式。</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> *  默认情况下，StreamTokenizer认为下列内容是Token: 字母、数字、除C和C++注释符号以外的其他符号。</span></span><br><span class="line"><span class="comment"> *  如符号"/"不是Token，注释后的内容也不是，而"\"是Token。单引号和双引号以及其中的内容，只能算是一个Token。</span></span><br><span class="line"><span class="comment"> *  统计文章字符数的程序，不是简单的统计Token数就万事大吉，因为字符数不等于Token。按照Token的规定，</span></span><br><span class="line"><span class="comment"> *  引号中的内容就算是10页也算一个Token。如果希望引号和引号中的内容都算作Token，应该调用下面的代码：</span></span><br><span class="line"><span class="comment"> *     st.ordinaryChar('\'');  //将单引号设为普通字符</span></span><br><span class="line"><span class="comment"> * st.ordinaryChar('\"');    //将双引号设为普通字符</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StatisFileChars</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 统计字符数</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> fileName 文件名</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span>    字符数</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">long</span> <span class="title">statis</span><span class="params">(String fileName)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        FileReader fileReader = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            fileReader = <span class="keyword">new</span> FileReader(fileName);</span><br><span class="line">            <span class="comment">//创建分析给定字符流的标记生成器</span></span><br><span class="line">            StreamTokenizer st = <span class="keyword">new</span> StreamTokenizer(<span class="keyword">new</span> BufferedReader(</span><br><span class="line">                    fileReader));</span><br><span class="line"></span><br><span class="line">            <span class="comment">//ordinaryChar方法指定字符参数在此标记生成器中是“普通”字符。</span></span><br><span class="line">            <span class="comment">//下面指定单引号、双引号和注释符号是普通字符</span></span><br><span class="line">            st.ordinaryChar(<span class="string">'\''</span>);</span><br><span class="line">            st.ordinaryChar(<span class="string">'\"'</span>);</span><br><span class="line">            st.ordinaryChar(<span class="string">'/'</span>);</span><br><span class="line"></span><br><span class="line">            String s;</span><br><span class="line">            <span class="keyword">int</span> numberSum = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> wordSum = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> symbolSum = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> total = <span class="number">0</span>;</span><br><span class="line">            <span class="comment">//nextToken方法读取下一个Token.</span></span><br><span class="line">            <span class="comment">//TT_EOF指示已读到流末尾的常量。</span></span><br><span class="line">            <span class="keyword">while</span> (st.nextToken() != StreamTokenizer.TT_EOF) &#123;</span><br><span class="line">                <span class="comment">//在调用 nextToken 方法之后，ttype字段将包含刚读取的标记的类型</span></span><br><span class="line">                <span class="keyword">switch</span> (st.ttype) &#123;</span><br><span class="line">                <span class="comment">//TT_EOL指示已读到行末尾的常量。</span></span><br><span class="line">                <span class="keyword">case</span> StreamTokenizer.TT_EOL:</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="comment">//TT_NUMBER指示已读到一个数字标记的常量</span></span><br><span class="line">                <span class="keyword">case</span> StreamTokenizer.TT_NUMBER:</span><br><span class="line">                    <span class="comment">//如果当前标记是一个数字，nval字段将包含该数字的值</span></span><br><span class="line">                    s = String.valueOf((st.nval));</span><br><span class="line">                    System.out.println(s);</span><br><span class="line">                    numberSum += s.length();</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="comment">//TT_WORD指示已读到一个文字标记的常量</span></span><br><span class="line">                <span class="keyword">case</span> StreamTokenizer.TT_WORD:</span><br><span class="line">                    <span class="comment">//如果当前标记是一个文字标记，sval字段包含一个给出该文字标记的字符的字符串</span></span><br><span class="line">                    s = st.sval;</span><br><span class="line">                    wordSum += s.length();</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">default</span>:</span><br><span class="line">                    <span class="comment">//如果以上3中类型都不是，则为英文的标点符号</span></span><br><span class="line">                    s = String.valueOf((<span class="keyword">char</span>) st.ttype);</span><br><span class="line">                    symbolSum += s.length();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(<span class="string">"sum of number = "</span> + numberSum);</span><br><span class="line">            System.out.println(<span class="string">"sum of word = "</span> + wordSum);</span><br><span class="line">            System.out.println(<span class="string">"sum of symbol = "</span> + symbolSum);</span><br><span class="line">            total = symbolSum + numberSum + wordSum;</span><br><span class="line">            System.out.println(<span class="string">"Total = "</span> + total);</span><br><span class="line">            <span class="keyword">return</span> total;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (fileReader != <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    fileReader.close();</span><br><span class="line">                &#125; <span class="keyword">catch</span> (IOException e1) &#123;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String fileName = <span class="string">"d:/ceshi.txt"</span>;</span><br><span class="line">        StatisFileChars.statis(fileName);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-]]></content>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Swagger2自动生成API文档</title>
     <url>/2020/01/25/Swagger2%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90API%E6%96%87%E6%A1%A3/</url>
     <content><![CDATA[<p>Swagger2 是一个规范和完整的框架，用于生成、描述、调用和可视化Restful风格的web服务，现在我们使用spring boot 整合它。<a id="more"></a></p>
@@ -2763,133 +2848,6 @@
 ]]></content>
       <tags>
         <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>java获取操作系统信息</title>
-    <url>/2019/11/26/java%E8%8E%B7%E5%8F%96%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%BF%A1%E6%81%AF/</url>
-    <content><![CDATA[<p>常用操作系统信息获取<a id="more"></a></p>
-<h6 id="获取本机的IP地址"><a href="#获取本机的IP地址" class="headerlink" title="获取本机的IP地址:"></a>获取本机的IP地址:</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">getIpAddress</span><span class="params">()</span> <span class="keyword">throws</span> UnknownHostException </span>&#123; </span><br><span class="line">    InetAddress address = InetAddress.getLocalHost(); </span><br><span class="line">    <span class="keyword">return</span> address.getHostAddress(); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h6 id="获取网卡地址"><a href="#获取网卡地址" class="headerlink" title="获取网卡地址:"></a>获取网卡地址:</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getMACAddress</span><span class="params">()</span></span>&#123;</span><br><span class="line">    String address = <span class="string">""</span>;</span><br><span class="line">    String os = System.getProperty(<span class="string">"os.name"</span>);</span><br><span class="line">    String osUser = System.getProperty(<span class="string">"user.name"</span>);</span><br><span class="line">    <span class="keyword">if</span>(os != <span class="keyword">null</span> &amp;&amp; os.startsWith(<span class="string">"Windows"</span>))&#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            String command = <span class="string">"cmd.exe /c ipconfig /all"</span>;</span><br><span class="line">            Process  p = Runtime.getRuntime().exec(command);</span><br><span class="line">            BufferedReader buffer = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(p.getInputStream()));</span><br><span class="line">            String line;</span><br><span class="line">            <span class="keyword">while</span>((line = buffer.readLine()) != <span class="keyword">null</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(line.indexOf(<span class="string">"Physical Address"</span>) &gt; <span class="number">0</span>)&#123;</span><br><span class="line">                    <span class="keyword">int</span> index = line.indexOf(<span class="string">":"</span>);</span><br><span class="line">                    index += <span class="number">2</span>;</span><br><span class="line">                    address = line.substring(index);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            buffer.close();</span><br><span class="line">            <span class="keyword">return</span> address.trim();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span>(IOException e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> address;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h6 id="获取操作系统账号"><a href="#获取操作系统账号" class="headerlink" title="获取操作系统账号"></a>获取操作系统账号</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">String osUser = System.getProperty(&quot;user.name&quot;);</span><br></pre></td></tr></table></figure>
-
-<h6 id="获取操作系统版本"><a href="#获取操作系统版本" class="headerlink" title="获取操作系统版本:"></a>获取操作系统版本:</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Properties; </span><br><span class="line"></span><br><span class="line">Properties props=System.getProperties(); <span class="comment">//获得系统属性集    </span></span><br><span class="line">String osName = props.getProperty(<span class="string">"os.name"</span>); <span class="comment">//操作系统名称    </span></span><br><span class="line">String osArch = props.getProperty(<span class="string">"os.arch"</span>); <span class="comment">//操作系统构架    </span></span><br><span class="line">String osVersion = props.getProperty(<span class="string">"os.version"</span>); <span class="comment">//操作系统版本</span></span><br></pre></td></tr></table></figure>
-
-<h6 id="一些常用信息获得"><a href="#一些常用信息获得" class="headerlink" title="一些常用信息获得"></a>一些常用信息获得</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getProperty</span><span class="params">(String key)</span></span></span><br></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th>键</th>
-<th>相关值的描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>java.version</td>
-<td>Java 运行时环境版本</td>
-</tr>
-<tr>
-<td>java.vendor</td>
-<td>Java 运行时环境供应商</td>
-</tr>
-<tr>
-<td>java.vendor.url</td>
-<td>Java 供应商的 URL</td>
-</tr>
-<tr>
-<td>java.home</td>
-<td>Java 安装目录</td>
-</tr>
-<tr>
-<td>java.vm.specification.version</td>
-<td>Java 虚拟机规范版本</td>
-</tr>
-<tr>
-<td>java.vm.specification.vendor</td>
-<td>Java 虚拟机规范供应商</td>
-</tr>
-<tr>
-<td>java.vm.specification.name</td>
-<td>Java 虚拟机规范名称</td>
-</tr>
-<tr>
-<td>java.vm.version</td>
-<td>Java 虚拟机实现版本</td>
-</tr>
-<tr>
-<td>java.vm.vendor</td>
-<td>Java 虚拟机实现供应商</td>
-</tr>
-<tr>
-<td>java.vm.name</td>
-<td>Java 虚拟机实现名称</td>
-</tr>
-<tr>
-<td>java.specification.version</td>
-<td>Java 运行时环境规范版本</td>
-</tr>
-<tr>
-<td>java.specification.vendor</td>
-<td>Java 运行时环境规范供应商</td>
-</tr>
-<tr>
-<td>java.specification.name</td>
-<td>Java 运行时环境规范名称</td>
-</tr>
-<tr>
-<td>java.<strong>class</strong>.version</td>
-<td>Java 类格式版本号</td>
-</tr>
-<tr>
-<td>java.<strong>class</strong>.path</td>
-<td>Java 类路径</td>
-</tr>
-<tr>
-<td>java.library.path</td>
-<td>加载库时搜索的路径列表</td>
-</tr>
-<tr>
-<td>java.io.tmpdir</td>
-<td>默认的临时文件路径</td>
-</tr>
-<tr>
-<td>java.compiler</td>
-<td>要使用的 JIT 编译器的名称</td>
-</tr>
-<tr>
-<td>java.ext.dirs</td>
-<td>一个或多个扩展目录的路径</td>
-</tr>
-<tr>
-<td>file.separator</td>
-<td>文件分隔符（在 UNIX 系统中是“/”）</td>
-</tr>
-<tr>
-<td>path.separator</td>
-<td>路径分隔符（在 UNIX 系统中是“:”）</td>
-</tr>
-<tr>
-<td>line.separator</td>
-<td>行分隔符（在 UNIX 系统中是“/n”）</td>
-</tr>
-<tr>
-<td>user.name</td>
-<td>用户的账户名称</td>
-</tr>
-<tr>
-<td>user.home</td>
-<td>用户的主目录</td>
-</tr>
-<tr>
-<td>user.dir</td>
-<td>用户的当前工作目录</td>
-</tr>
-</tbody></table>
-]]></content>
-      <tags>
-        <tag>java</tag>
       </tags>
   </entry>
   <entry>
@@ -3124,41 +3082,175 @@
       </tags>
   </entry>
   <entry>
-    <title>常见浏览器的用户代理</title>
-    <url>/2020/01/13/%E5%B8%B8%E8%A7%81%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E7%94%A8%E6%88%B7%E4%BB%A3%E7%90%86/</url>
-    <content><![CDATA[<p>常用浏览器用户代理总结。<a id="more"></a></p>
-<p>&emsp;&emsp;所谓 用户代理（User Agent ），最初是指浏览器告知网站管理员，本浏览器支持的类型和框架，让网站管理员以支持的模式结构向浏览器发送页面，呈现给用户浏览。演变到今天，网站管理员为了给用户带呈现最佳的页面效果，为了使不同浏览器展现同样的网站页面，通过浏览器获取用户的系统信息，包括硬件平台、系统软件、应用软件和用户个人偏好，然后通过服务器解析后以适合用户的页面类型发送到浏览器。</p>
-<p>&emsp;&emsp;目前 UA 分析监测可补全的系统：Windows 7、Windows 10、Mac OS X Lion、Ubuntu 14.04；浏览器：所有品牌和系列。</p>
-<h5 id="Windows10-64位"><a href="#Windows10-64位" class="headerlink" title="Windows10 64位"></a>Windows10 64位</h5><p>微软Chrome内核 Edge 浏览器</p>
-<p>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36 Edg/80.0.361.69</p>
-<p>360极速浏览器</p>
-<p>Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36 QIHU 360EE</p>
-<h5 id="Windows-7-64位"><a href="#Windows-7-64位" class="headerlink" title="Windows 7 64位"></a>Windows 7 64位</h5><p>[^]: Internet Explorer 10 浏览器和 Internet Explorer 11 浏览器以及微软 Edge 浏览器为 Windows 10 64 位。</p>
-<p>Chrome｜谷歌浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.87 Safari/537.36</p>
-<p>Firefox｜火狐浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64; rv:46.0) Gecko/20100101 Firefox/46.0</p>
-<p>Opera｜欧朋浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.87 Safari/537.36 OPR/37.0.2178.32</p>
-<p>Safari｜苹果浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/534.57.2 (KHTML, like Gecko) Version/5.1.7 Safari/534.57.2</p>
-<p>360极速浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36</p>
-<p>360安全浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36</p>
-<p>微软 Edge 浏览器<br>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2486.0 Safari/537.36 Edge/13.10586</p>
-<p>Internet Explorer 11 浏览器<br>Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko</p>
-<p>Internet Explorer 10 浏览器<br>Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; WOW64; Trident/6.0)</p>
-<p>Internet Explorer 9 浏览器<br>Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)</p>
-<p>Internet Explorer 8 浏览器<br>Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0)</p>
-<p>百度浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 BIDUBrowser/8.3 Safari/537.36</p>
-<p>遨游浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Maxthon/4.9.2.1000 Chrome/39.0.2146.0 Safari/537.36</p>
-<p>QQ浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.80 Safari/537.36 Core/1.47.277.400 QQBrowser/9.4.7658.400</p>
-<p>UC浏览器电脑版<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 UBrowser/5.6.12150.8 Safari/537.36</p>
-<p>搜狗浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.122 Safari/537.36 SE 2.X MetaSr 1.0</p>
-<p>猎豹浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.154 Safari/537.36 LBBROWSER </p>
-<p>世界之窗浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36 TheWorld 7</p>
-<p>安卓版QQ浏览器<br>Mozilla/5.0 (Linux; Android 5.0; SM-N9100 Build/LRX21V) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/37.0.0.0 Mobile Safari/537.36 V1_AND_SQ_5.3.1_196_YYB_D QQ/5.3.1.2335 NetType/WIFI</p>
-<p>安卓版微信浏览器<br>Mozilla/5.0 (Linux; Android 5.0; SM-N9100 Build/LRX21V) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/37.0.0.0 Mobile Safari/537.36 MicroMessenger/6.0.2.56_r958800.520 NetType/WIFI</p>
-<p>IOS版QQ浏览器<br>Mozilla/5.0 (iPhone; CPU iPhone OS 7_1_2 like Mac OS X) AppleWebKit/537.51.2 (KHTML, like Gecko) Mobile/11D257 QQ/5.2.1.302 NetType/WIFI Mem/28</p>
-<p>IOS版微信浏览器<br>Mozilla/5.0 (iPhone; CPU iPhone OS 7_1_2 like Mac OS X) AppleWebKit/537.51.2 (KHTML, like Gecko) Mobile/11D257 MicroMessenger/6.0.1 NetType/WIFI</p>
+    <title>java获取操作系统信息</title>
+    <url>/2019/11/26/java%E8%8E%B7%E5%8F%96%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%BF%A1%E6%81%AF/</url>
+    <content><![CDATA[<p>常用操作系统信息获取<a id="more"></a></p>
+<h6 id="获取本机的IP地址"><a href="#获取本机的IP地址" class="headerlink" title="获取本机的IP地址:"></a>获取本机的IP地址:</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">getIpAddress</span><span class="params">()</span> <span class="keyword">throws</span> UnknownHostException </span>&#123; </span><br><span class="line">    InetAddress address = InetAddress.getLocalHost(); </span><br><span class="line">    <span class="keyword">return</span> address.getHostAddress(); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="获取网卡地址"><a href="#获取网卡地址" class="headerlink" title="获取网卡地址:"></a>获取网卡地址:</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getMACAddress</span><span class="params">()</span></span>&#123;</span><br><span class="line">    String address = <span class="string">""</span>;</span><br><span class="line">    String os = System.getProperty(<span class="string">"os.name"</span>);</span><br><span class="line">    String osUser = System.getProperty(<span class="string">"user.name"</span>);</span><br><span class="line">    <span class="keyword">if</span>(os != <span class="keyword">null</span> &amp;&amp; os.startsWith(<span class="string">"Windows"</span>))&#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            String command = <span class="string">"cmd.exe /c ipconfig /all"</span>;</span><br><span class="line">            Process  p = Runtime.getRuntime().exec(command);</span><br><span class="line">            BufferedReader buffer = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(p.getInputStream()));</span><br><span class="line">            String line;</span><br><span class="line">            <span class="keyword">while</span>((line = buffer.readLine()) != <span class="keyword">null</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(line.indexOf(<span class="string">"Physical Address"</span>) &gt; <span class="number">0</span>)&#123;</span><br><span class="line">                    <span class="keyword">int</span> index = line.indexOf(<span class="string">":"</span>);</span><br><span class="line">                    index += <span class="number">2</span>;</span><br><span class="line">                    address = line.substring(index);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            buffer.close();</span><br><span class="line">            <span class="keyword">return</span> address.trim();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span>(IOException e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> address;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="获取操作系统账号"><a href="#获取操作系统账号" class="headerlink" title="获取操作系统账号"></a>获取操作系统账号</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">String osUser = System.getProperty(&quot;user.name&quot;);</span><br></pre></td></tr></table></figure>
+
+<h6 id="获取操作系统版本"><a href="#获取操作系统版本" class="headerlink" title="获取操作系统版本:"></a>获取操作系统版本:</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Properties; </span><br><span class="line"></span><br><span class="line">Properties props=System.getProperties(); <span class="comment">//获得系统属性集    </span></span><br><span class="line">String osName = props.getProperty(<span class="string">"os.name"</span>); <span class="comment">//操作系统名称    </span></span><br><span class="line">String osArch = props.getProperty(<span class="string">"os.arch"</span>); <span class="comment">//操作系统构架    </span></span><br><span class="line">String osVersion = props.getProperty(<span class="string">"os.version"</span>); <span class="comment">//操作系统版本</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="一些常用信息获得"><a href="#一些常用信息获得" class="headerlink" title="一些常用信息获得"></a>一些常用信息获得</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getProperty</span><span class="params">(String key)</span></span></span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>键</th>
+<th>相关值的描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>java.version</td>
+<td>Java 运行时环境版本</td>
+</tr>
+<tr>
+<td>java.vendor</td>
+<td>Java 运行时环境供应商</td>
+</tr>
+<tr>
+<td>java.vendor.url</td>
+<td>Java 供应商的 URL</td>
+</tr>
+<tr>
+<td>java.home</td>
+<td>Java 安装目录</td>
+</tr>
+<tr>
+<td>java.vm.specification.version</td>
+<td>Java 虚拟机规范版本</td>
+</tr>
+<tr>
+<td>java.vm.specification.vendor</td>
+<td>Java 虚拟机规范供应商</td>
+</tr>
+<tr>
+<td>java.vm.specification.name</td>
+<td>Java 虚拟机规范名称</td>
+</tr>
+<tr>
+<td>java.vm.version</td>
+<td>Java 虚拟机实现版本</td>
+</tr>
+<tr>
+<td>java.vm.vendor</td>
+<td>Java 虚拟机实现供应商</td>
+</tr>
+<tr>
+<td>java.vm.name</td>
+<td>Java 虚拟机实现名称</td>
+</tr>
+<tr>
+<td>java.specification.version</td>
+<td>Java 运行时环境规范版本</td>
+</tr>
+<tr>
+<td>java.specification.vendor</td>
+<td>Java 运行时环境规范供应商</td>
+</tr>
+<tr>
+<td>java.specification.name</td>
+<td>Java 运行时环境规范名称</td>
+</tr>
+<tr>
+<td>java.<strong>class</strong>.version</td>
+<td>Java 类格式版本号</td>
+</tr>
+<tr>
+<td>java.<strong>class</strong>.path</td>
+<td>Java 类路径</td>
+</tr>
+<tr>
+<td>java.library.path</td>
+<td>加载库时搜索的路径列表</td>
+</tr>
+<tr>
+<td>java.io.tmpdir</td>
+<td>默认的临时文件路径</td>
+</tr>
+<tr>
+<td>java.compiler</td>
+<td>要使用的 JIT 编译器的名称</td>
+</tr>
+<tr>
+<td>java.ext.dirs</td>
+<td>一个或多个扩展目录的路径</td>
+</tr>
+<tr>
+<td>file.separator</td>
+<td>文件分隔符（在 UNIX 系统中是“/”）</td>
+</tr>
+<tr>
+<td>path.separator</td>
+<td>路径分隔符（在 UNIX 系统中是“:”）</td>
+</tr>
+<tr>
+<td>line.separator</td>
+<td>行分隔符（在 UNIX 系统中是“/n”）</td>
+</tr>
+<tr>
+<td>user.name</td>
+<td>用户的账户名称</td>
+</tr>
+<tr>
+<td>user.home</td>
+<td>用户的主目录</td>
+</tr>
+<tr>
+<td>user.dir</td>
+<td>用户的当前工作目录</td>
+</tr>
+</tbody></table>
 ]]></content>
       <tags>
-        <tag>浏览器</tag>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>并查集</title>
+    <url>/2020/02/08/%E5%B9%B6%E6%9F%A5%E9%9B%86/</url>
+    <content><![CDATA[<p>建立迷宫时有所涉及，用来处理格子之间的相连问题。<a id="more"></a></p>
+<h5 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h5><p>&emsp;&emsp;并查集，在一些有N个元素的集合应用问题中，我们通常是在开始时让每个元素构成一个单元素的集合，然后按一定顺序将属于同一组的元素所在的集合合并，其间要反复查找一个元素在哪个集合中。这一类问题近几年来反复出现在信息学的国际国内赛题中，其特点是看似并不复杂，但数据量极大，若用正常的数据结构来描述的话，往往在空间上过大，计算机无法承受；即使在空间上勉强通过，运行的时间复杂度也极高，根本就不可能在比赛规定的运行时间（1～3秒）内计算出试题需要的结果，只能用并查集来描述。</p>
+<p>&emsp;&emsp;并查集是一种树型的数据结构，用于处理一些不相交集合（Disjoint Sets）的合并及查询问题。常常在使用中以森林来表示。</p>
+<h5 id="主要操作"><a href="#主要操作" class="headerlink" title="主要操作"></a>主要操作</h5><ul>
+<li>初始化<br>每个元素都将自己作为一个集合，时间复杂度为O(n)。</li>
+<li>查找<br>查找元素所在的集合，即根节点。</li>
+<li>合并<br>将两个元素所在的集合合并为一个集合。通常，首先判断两个元素是否在同一个集合，通过上步的查找来判断。</li>
+</ul>
+<h5 id="举例分析"><a href="#举例分析" class="headerlink" title="举例分析"></a>举例分析</h5><h6 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h6><p>&emsp;&emsp;若某个家族人员过于庞大，要判断两个是否是亲戚，确实不容易，给出某个亲戚关系图，求任意给出的两个人是否具有亲戚关系。</p>
+<p>规定：x和y是亲戚，y和z是亲戚，那么x和z也是亲戚。如果x,y是亲戚，那么x的亲戚都是y的亲戚，y的亲戚也都是x的亲戚。</p>
+<h6 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h6><p>&emsp;&emsp;第一行：三个整数n,m,p，（n&lt;=5000,m&lt;=5000,p&lt;=5000）</p>
+<p>&emsp;&emsp;分别表示有n个人，m个亲戚关系，询问p对新奇关系。</p>
+<p>&emsp;&emsp;以下m行：每行两个数Mi，Mj，1&lt;=Mi，Mj&lt;=n，表示Mi和Mj具有亲戚关系。</p>
+<p>&emsp;&emsp;接下来p行：每行两个数Pi，Pj，询问Pi和Pj是否具有亲戚关系。</p>
+<h6 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h6><p>&emsp;&emsp;共p行，每行一个“Yes”或“No”，表示第Pi个询问的答案为“有”或“没有”亲戚关系。</p>
+<h6 id="分析问题"><a href="#分析问题" class="headerlink" title="分析问题"></a>分析问题</h6><p>&emsp;&emsp;本题是一个图论中判断两个点是否在同一连通子图的问题。对于题目中的样例，将人作为点，亲戚关系作为边，建立无向图如下：</p>
+<p><img src="/2020/02/08/%E5%B9%B6%E6%9F%A5%E9%9B%86/1.jpg" alt></p>
+<p>&emsp;&emsp;比如判断3和4是否为亲戚时，我们检查3和4是否在同一个连通子图中，结果是在，于是他们是亲戚。又如7和10不在同一个连通子图中，所以他们不是亲戚。</p>
+<p>&emsp;&emsp; 例如样例：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="number">9</span> <span class="number">7</span> <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="number">2</span> <span class="number">4</span></span><br><span class="line"><span class="number">5</span> <span class="number">7</span></span><br><span class="line"><span class="number">1</span> <span class="number">3</span></span><br><span class="line"><span class="number">8</span> <span class="number">9</span></span><br><span class="line"><span class="number">1</span> <span class="number">2</span></span><br><span class="line"><span class="number">5</span> <span class="number">6</span></span><br><span class="line"><span class="number">2</span> <span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="number">1</span> <span class="number">9</span></span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;我们可以给每个人建立一个集合，集合的元素值有它自己，表示最开始时它不知道任何人是它的亲戚。以后每次给出一个亲戚关系a, b，则a和它的亲戚与b和它的亲戚就互为亲戚了，将a所在集合与b所在集合合并。对于样例数据的操作全过程如下：</p>
+<p>&emsp;&emsp;初始状态：{1} {2} {3} {4} {5} {6} {7} {8} {9}</p>
+<p>&emsp;&emsp;输入关系 分离集合</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(2,4) &#123;2,4&#125;&#123;1&#125; &#123;3&#125; &#123;5&#125; &#123;6&#125; &#123;7&#125; &#123;8&#125; &#123;9&#125;</span><br><span class="line"></span><br><span class="line">(5,7) &#123;2,4&#125; &#123;5,7&#125; &#123;1&#125; &#123;3&#125; &#123;6&#125; &#123;8&#125; &#123;9&#125;</span><br><span class="line"></span><br><span class="line">(1,3) &#123;1,3&#125; &#123;2,4&#125; &#123;5,7&#125;&#123;6&#125; &#123;8&#125; &#123;9&#125;</span><br><span class="line"></span><br><span class="line">(8,9) &#123;1,3&#125; &#123;2,4&#125; &#123;5,7&#125; &#123;8,9&#125;&#123;6&#125;</span><br><span class="line"></span><br><span class="line">(1,2) &#123;1,2,3,4&#125; &#123;5,7&#125; &#123;8,9&#125;&#123;6&#125;</span><br><span class="line"></span><br><span class="line">(5,6) &#123;1,2,3,4&#125; &#123;5,6,7&#125; &#123;8,9&#125;</span><br><span class="line"></span><br><span class="line">(2,3) &#123;1,2,3,4&#125; &#123;5,6,7&#125; &#123;8,9&#125;</span><br></pre></td></tr></table></figure>
+
+<p>判断亲戚关系</p>
+<p>(1,9)，因为1,9不在同一集合内，所以输出”NO”。</p>
+<p>&emsp;&emsp;最后我们得到3个集合{1,2,3,4}、{5,6,7}、{8,9}，于是判断两个人是否亲戚的问题就变成判断两个数是否在同一个集合中的问题。</p>
+<p>&emsp;&emsp;算法需要以下几个子过程：</p>
+<ol>
+<li>开始时，为每个人建立一个集合；</li>
+<li>得到一个关系，合并相应的集合；</li>
+<li>在合并集合时先要判断是否两个人在同一集合。合并完之后还要判断是否为亲戚；</li>
+</ol>
+<h6 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.BufferedReader;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStreamReader;</span><br><span class="line"><span class="keyword">import</span> java.io.StreamTokenizer;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MergeSet</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> father[];</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		<span class="comment">//获取输入流</span></span><br><span class="line">		StreamTokenizer st = <span class="keyword">new</span> StreamTokenizer(<span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(System.in)));</span><br><span class="line">		<span class="keyword">while</span>(st.nextToken() != StreamTokenizer.TT_EOF) &#123;</span><br><span class="line">			<span class="comment">//n为亲戚总数</span></span><br><span class="line">			<span class="keyword">int</span> n = (<span class="keyword">int</span>)st.nval;</span><br><span class="line">			father = <span class="keyword">new</span> <span class="keyword">int</span>[n+<span class="number">1</span>];</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++) &#123;</span><br><span class="line">				father[i] = i;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">//m个亲戚关系</span></span><br><span class="line">			st.nextToken();</span><br><span class="line">			<span class="keyword">int</span> m = (<span class="keyword">int</span>)st.nval;</span><br><span class="line">			<span class="comment">//询问p对亲戚关系</span></span><br><span class="line">			st.nextToken();</span><br><span class="line">			<span class="keyword">int</span> p = (<span class="keyword">int</span>)st.nval;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">				st.nextToken();</span><br><span class="line">				<span class="keyword">int</span> a = (<span class="keyword">int</span>)st.nval;</span><br><span class="line">				st.nextToken();</span><br><span class="line">				<span class="keyword">int</span> b = (<span class="keyword">int</span>)st.nval;</span><br><span class="line">				union(a,b);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; p; i++) &#123;</span><br><span class="line">				st.nextToken();</span><br><span class="line">				<span class="keyword">int</span> a = (<span class="keyword">int</span>)st.nval;</span><br><span class="line">				st.nextToken();</span><br><span class="line">				<span class="keyword">int</span> b = (<span class="keyword">int</span>)st.nval;</span><br><span class="line">				a = findParent(a);</span><br><span class="line">				b = findParent(b);</span><br><span class="line">				System.out.println(a == b ? <span class="string">"Yes"</span> : <span class="string">"No"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="comment">//亲戚关系连接</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">union</span><span class="params">(<span class="keyword">int</span> f, <span class="keyword">int</span> t)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> a = findParent(f);</span><br><span class="line">		<span class="keyword">int</span> b = findParent(t);</span><br><span class="line">        <span class="keyword">if</span>(a==b)<span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">if</span>(a&gt;b)&#123;</span><br><span class="line">            father[a] = b;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            father[b] = a;</span><br><span class="line">        &#125; </span><br><span class="line">	&#125;</span><br><span class="line">    <span class="comment">//判断是否具有亲戚关系</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">findParent</span><span class="params">(<span class="keyword">int</span> f)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">while</span>(father[f] != f)&#123;</span><br><span class="line">            f = father[f];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> f;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -3580,48 +3672,41 @@
       </tags>
   </entry>
   <entry>
-    <title>并查集</title>
-    <url>/2020/02/08/%E5%B9%B6%E6%9F%A5%E9%9B%86/</url>
-    <content><![CDATA[<p>建立迷宫时有所涉及，用来处理格子之间的相连问题。<a id="more"></a></p>
-<h5 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h5><p>&emsp;&emsp;并查集，在一些有N个元素的集合应用问题中，我们通常是在开始时让每个元素构成一个单元素的集合，然后按一定顺序将属于同一组的元素所在的集合合并，其间要反复查找一个元素在哪个集合中。这一类问题近几年来反复出现在信息学的国际国内赛题中，其特点是看似并不复杂，但数据量极大，若用正常的数据结构来描述的话，往往在空间上过大，计算机无法承受；即使在空间上勉强通过，运行的时间复杂度也极高，根本就不可能在比赛规定的运行时间（1～3秒）内计算出试题需要的结果，只能用并查集来描述。</p>
-<p>&emsp;&emsp;并查集是一种树型的数据结构，用于处理一些不相交集合（Disjoint Sets）的合并及查询问题。常常在使用中以森林来表示。</p>
-<h5 id="主要操作"><a href="#主要操作" class="headerlink" title="主要操作"></a>主要操作</h5><ul>
-<li>初始化<br>每个元素都将自己作为一个集合，时间复杂度为O(n)。</li>
-<li>查找<br>查找元素所在的集合，即根节点。</li>
-<li>合并<br>将两个元素所在的集合合并为一个集合。通常，首先判断两个元素是否在同一个集合，通过上步的查找来判断。</li>
-</ul>
-<h5 id="举例分析"><a href="#举例分析" class="headerlink" title="举例分析"></a>举例分析</h5><h6 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h6><p>&emsp;&emsp;若某个家族人员过于庞大，要判断两个是否是亲戚，确实不容易，给出某个亲戚关系图，求任意给出的两个人是否具有亲戚关系。</p>
-<p>规定：x和y是亲戚，y和z是亲戚，那么x和z也是亲戚。如果x,y是亲戚，那么x的亲戚都是y的亲戚，y的亲戚也都是x的亲戚。</p>
-<h6 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h6><p>&emsp;&emsp;第一行：三个整数n,m,p，（n&lt;=5000,m&lt;=5000,p&lt;=5000）</p>
-<p>&emsp;&emsp;分别表示有n个人，m个亲戚关系，询问p对新奇关系。</p>
-<p>&emsp;&emsp;以下m行：每行两个数Mi，Mj，1&lt;=Mi，Mj&lt;=n，表示Mi和Mj具有亲戚关系。</p>
-<p>&emsp;&emsp;接下来p行：每行两个数Pi，Pj，询问Pi和Pj是否具有亲戚关系。</p>
-<h6 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h6><p>&emsp;&emsp;共p行，每行一个“Yes”或“No”，表示第Pi个询问的答案为“有”或“没有”亲戚关系。</p>
-<h6 id="分析问题"><a href="#分析问题" class="headerlink" title="分析问题"></a>分析问题</h6><p>&emsp;&emsp;本题是一个图论中判断两个点是否在同一连通子图的问题。对于题目中的样例，将人作为点，亲戚关系作为边，建立无向图如下：</p>
-<p><img src="/2020/02/08/%E5%B9%B6%E6%9F%A5%E9%9B%86/1.jpg" alt></p>
-<p>&emsp;&emsp;比如判断3和4是否为亲戚时，我们检查3和4是否在同一个连通子图中，结果是在，于是他们是亲戚。又如7和10不在同一个连通子图中，所以他们不是亲戚。</p>
-<p>&emsp;&emsp; 例如样例：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="number">9</span> <span class="number">7</span> <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="number">2</span> <span class="number">4</span></span><br><span class="line"><span class="number">5</span> <span class="number">7</span></span><br><span class="line"><span class="number">1</span> <span class="number">3</span></span><br><span class="line"><span class="number">8</span> <span class="number">9</span></span><br><span class="line"><span class="number">1</span> <span class="number">2</span></span><br><span class="line"><span class="number">5</span> <span class="number">6</span></span><br><span class="line"><span class="number">2</span> <span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="number">1</span> <span class="number">9</span></span><br></pre></td></tr></table></figure>
-
-<p>&emsp;&emsp;我们可以给每个人建立一个集合，集合的元素值有它自己，表示最开始时它不知道任何人是它的亲戚。以后每次给出一个亲戚关系a, b，则a和它的亲戚与b和它的亲戚就互为亲戚了，将a所在集合与b所在集合合并。对于样例数据的操作全过程如下：</p>
-<p>&emsp;&emsp;初始状态：{1} {2} {3} {4} {5} {6} {7} {8} {9}</p>
-<p>&emsp;&emsp;输入关系 分离集合</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(2,4) &#123;2,4&#125;&#123;1&#125; &#123;3&#125; &#123;5&#125; &#123;6&#125; &#123;7&#125; &#123;8&#125; &#123;9&#125;</span><br><span class="line"></span><br><span class="line">(5,7) &#123;2,4&#125; &#123;5,7&#125; &#123;1&#125; &#123;3&#125; &#123;6&#125; &#123;8&#125; &#123;9&#125;</span><br><span class="line"></span><br><span class="line">(1,3) &#123;1,3&#125; &#123;2,4&#125; &#123;5,7&#125;&#123;6&#125; &#123;8&#125; &#123;9&#125;</span><br><span class="line"></span><br><span class="line">(8,9) &#123;1,3&#125; &#123;2,4&#125; &#123;5,7&#125; &#123;8,9&#125;&#123;6&#125;</span><br><span class="line"></span><br><span class="line">(1,2) &#123;1,2,3,4&#125; &#123;5,7&#125; &#123;8,9&#125;&#123;6&#125;</span><br><span class="line"></span><br><span class="line">(5,6) &#123;1,2,3,4&#125; &#123;5,6,7&#125; &#123;8,9&#125;</span><br><span class="line"></span><br><span class="line">(2,3) &#123;1,2,3,4&#125; &#123;5,6,7&#125; &#123;8,9&#125;</span><br></pre></td></tr></table></figure>
-
-<p>判断亲戚关系</p>
-<p>(1,9)，因为1,9不在同一集合内，所以输出”NO”。</p>
-<p>&emsp;&emsp;最后我们得到3个集合{1,2,3,4}、{5,6,7}、{8,9}，于是判断两个人是否亲戚的问题就变成判断两个数是否在同一个集合中的问题。</p>
-<p>&emsp;&emsp;算法需要以下几个子过程：</p>
-<ol>
-<li>开始时，为每个人建立一个集合；</li>
-<li>得到一个关系，合并相应的集合；</li>
-<li>在合并集合时先要判断是否两个人在同一集合。合并完之后还要判断是否为亲戚；</li>
-</ol>
-<h6 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.BufferedReader;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStreamReader;</span><br><span class="line"><span class="keyword">import</span> java.io.StreamTokenizer;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MergeSet</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> father[];</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		<span class="comment">//获取输入流</span></span><br><span class="line">		StreamTokenizer st = <span class="keyword">new</span> StreamTokenizer(<span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(System.in)));</span><br><span class="line">		<span class="keyword">while</span>(st.nextToken() != StreamTokenizer.TT_EOF) &#123;</span><br><span class="line">			<span class="comment">//n为亲戚总数</span></span><br><span class="line">			<span class="keyword">int</span> n = (<span class="keyword">int</span>)st.nval;</span><br><span class="line">			father = <span class="keyword">new</span> <span class="keyword">int</span>[n+<span class="number">1</span>];</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++) &#123;</span><br><span class="line">				father[i] = i;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">//m个亲戚关系</span></span><br><span class="line">			st.nextToken();</span><br><span class="line">			<span class="keyword">int</span> m = (<span class="keyword">int</span>)st.nval;</span><br><span class="line">			<span class="comment">//询问p对亲戚关系</span></span><br><span class="line">			st.nextToken();</span><br><span class="line">			<span class="keyword">int</span> p = (<span class="keyword">int</span>)st.nval;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">				st.nextToken();</span><br><span class="line">				<span class="keyword">int</span> a = (<span class="keyword">int</span>)st.nval;</span><br><span class="line">				st.nextToken();</span><br><span class="line">				<span class="keyword">int</span> b = (<span class="keyword">int</span>)st.nval;</span><br><span class="line">				union(a,b);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; p; i++) &#123;</span><br><span class="line">				st.nextToken();</span><br><span class="line">				<span class="keyword">int</span> a = (<span class="keyword">int</span>)st.nval;</span><br><span class="line">				st.nextToken();</span><br><span class="line">				<span class="keyword">int</span> b = (<span class="keyword">int</span>)st.nval;</span><br><span class="line">				a = findParent(a);</span><br><span class="line">				b = findParent(b);</span><br><span class="line">				System.out.println(a == b ? <span class="string">"Yes"</span> : <span class="string">"No"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="comment">//亲戚关系连接</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">union</span><span class="params">(<span class="keyword">int</span> f, <span class="keyword">int</span> t)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> a = findParent(f);</span><br><span class="line">		<span class="keyword">int</span> b = findParent(t);</span><br><span class="line">        <span class="keyword">if</span>(a==b)<span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">if</span>(a&gt;b)&#123;</span><br><span class="line">            father[a] = b;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            father[b] = a;</span><br><span class="line">        &#125; </span><br><span class="line">	&#125;</span><br><span class="line">    <span class="comment">//判断是否具有亲戚关系</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">findParent</span><span class="params">(<span class="keyword">int</span> f)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">while</span>(father[f] != f)&#123;</span><br><span class="line">            f = father[f];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> f;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+    <title>常见浏览器的用户代理</title>
+    <url>/2020/01/13/%E5%B8%B8%E8%A7%81%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E7%94%A8%E6%88%B7%E4%BB%A3%E7%90%86/</url>
+    <content><![CDATA[<p>常用浏览器用户代理总结。<a id="more"></a></p>
+<p>&emsp;&emsp;所谓 用户代理（User Agent ），最初是指浏览器告知网站管理员，本浏览器支持的类型和框架，让网站管理员以支持的模式结构向浏览器发送页面，呈现给用户浏览。演变到今天，网站管理员为了给用户带呈现最佳的页面效果，为了使不同浏览器展现同样的网站页面，通过浏览器获取用户的系统信息，包括硬件平台、系统软件、应用软件和用户个人偏好，然后通过服务器解析后以适合用户的页面类型发送到浏览器。</p>
+<p>&emsp;&emsp;目前 UA 分析监测可补全的系统：Windows 7、Windows 10、Mac OS X Lion、Ubuntu 14.04；浏览器：所有品牌和系列。</p>
+<h5 id="Windows10-64位"><a href="#Windows10-64位" class="headerlink" title="Windows10 64位"></a>Windows10 64位</h5><p>微软Chrome内核 Edge 浏览器</p>
+<p>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36 Edg/80.0.361.69</p>
+<p>360极速浏览器</p>
+<p>Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36 QIHU 360EE</p>
+<h5 id="Windows-7-64位"><a href="#Windows-7-64位" class="headerlink" title="Windows 7 64位"></a>Windows 7 64位</h5><p>[^]: Internet Explorer 10 浏览器和 Internet Explorer 11 浏览器以及微软 Edge 浏览器为 Windows 10 64 位。</p>
+<p>Chrome｜谷歌浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.87 Safari/537.36</p>
+<p>Firefox｜火狐浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64; rv:46.0) Gecko/20100101 Firefox/46.0</p>
+<p>Opera｜欧朋浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.87 Safari/537.36 OPR/37.0.2178.32</p>
+<p>Safari｜苹果浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/534.57.2 (KHTML, like Gecko) Version/5.1.7 Safari/534.57.2</p>
+<p>360极速浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36</p>
+<p>360安全浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36</p>
+<p>微软 Edge 浏览器<br>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2486.0 Safari/537.36 Edge/13.10586</p>
+<p>Internet Explorer 11 浏览器<br>Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko</p>
+<p>Internet Explorer 10 浏览器<br>Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; WOW64; Trident/6.0)</p>
+<p>Internet Explorer 9 浏览器<br>Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)</p>
+<p>Internet Explorer 8 浏览器<br>Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0)</p>
+<p>百度浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 BIDUBrowser/8.3 Safari/537.36</p>
+<p>遨游浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Maxthon/4.9.2.1000 Chrome/39.0.2146.0 Safari/537.36</p>
+<p>QQ浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.80 Safari/537.36 Core/1.47.277.400 QQBrowser/9.4.7658.400</p>
+<p>UC浏览器电脑版<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 UBrowser/5.6.12150.8 Safari/537.36</p>
+<p>搜狗浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.122 Safari/537.36 SE 2.X MetaSr 1.0</p>
+<p>猎豹浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.154 Safari/537.36 LBBROWSER </p>
+<p>世界之窗浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36 TheWorld 7</p>
+<p>安卓版QQ浏览器<br>Mozilla/5.0 (Linux; Android 5.0; SM-N9100 Build/LRX21V) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/37.0.0.0 Mobile Safari/537.36 V1_AND_SQ_5.3.1_196_YYB_D QQ/5.3.1.2335 NetType/WIFI</p>
+<p>安卓版微信浏览器<br>Mozilla/5.0 (Linux; Android 5.0; SM-N9100 Build/LRX21V) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/37.0.0.0 Mobile Safari/537.36 MicroMessenger/6.0.2.56_r958800.520 NetType/WIFI</p>
+<p>IOS版QQ浏览器<br>Mozilla/5.0 (iPhone; CPU iPhone OS 7_1_2 like Mac OS X) AppleWebKit/537.51.2 (KHTML, like Gecko) Mobile/11D257 QQ/5.2.1.302 NetType/WIFI Mem/28</p>
+<p>IOS版微信浏览器<br>Mozilla/5.0 (iPhone; CPU iPhone OS 7_1_2 like Mac OS X) AppleWebKit/537.51.2 (KHTML, like Gecko) Mobile/11D257 MicroMessenger/6.0.1 NetType/WIFI</p>
 ]]></content>
       <tags>
-        <tag>算法</tag>
+        <tag>浏览器</tag>
       </tags>
   </entry>
   <entry>
