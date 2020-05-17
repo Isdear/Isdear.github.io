@@ -901,7 +901,7 @@
   <entry>
     <title>Java面经八</title>
     <url>/2020/05/07/Java%E9%9D%A2%E7%BB%8F%E5%85%AB/</url>
-    <content><![CDATA[<p>Java面试总结八<img src="/2020/05/07/Java%E9%9D%A2%E7%BB%8F%E5%85%AB/java8.jpg" alt><a id="more"></a></p>
+    <content><![CDATA[<p>Java面试总结八<a id="more"></a></p>
 <h6 id="数据库的隔离级别"><a href="#数据库的隔离级别" class="headerlink" title="数据库的隔离级别"></a>数据库的隔离级别</h6><table>
 <thead>
 <tr>
