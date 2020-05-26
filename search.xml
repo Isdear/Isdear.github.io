@@ -3541,7 +3541,7 @@
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HashMap</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;</span></span><br><span class="line"><span class="class">    <span class="keyword">extends</span> <span class="title">AbstractMap</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;</span></span><br><span class="line"><span class="class">    <span class="keyword">implements</span> <span class="title">Map</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;, <span class="title">Cloneable</span>, <span class="title">Serializable</span></span></span><br></pre></td></tr></table></figure>
 
 <p>C中，应该是Arrays.asList()，其将一个数组转化为一个List对象，这个方法返回一个ArrayList类型的对象， 这个<font color="red">ArrayList类并非java.util.ArrayList类，而是Arrays类的内部类</font>。</p>
-<p>2.下面哪些具体实现类可以用于存储键，值对，并且方法调用提供了基本的多线程安全支持：(<strong>AE</strong>)</p>
+<p>2.下面哪些具体实现类可以用于存储键值对，并且方法调用提供了基本的多线程安全支持：(<strong>AE</strong>)</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">java.util.ConcurrentHashMap</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">java.util.Map</span><br></pre></td></tr></table></figure>
@@ -3556,7 +3556,7 @@
 
 <p>解析：线程安全的类有hashtable、concurrentHashMap、synchronizedMap。</p>
 <p>3.以下描述错误的是( C )</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">程序计数器是一个比较小的内存区域，用于指示当前线程所执行的字节码执行  到了第几行，是线程隔离的</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">程序计数器是一个比较小的内存区域，用于指示当前线程所执行的字节码执行到了第几行，是线程隔离的</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">原则上讲，所有的对象都是在堆区上分配内存，是线程之间共享的</span><br></pre></td></tr></table></figure>
 
@@ -3671,7 +3671,7 @@
 
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Super:hashSet</span><br><span class="line">Super:arrayList</span><br><span class="line">Super:collection</span><br></pre></td></tr></table></figure>
 
-<p>解析：这是静态分派的过程，在编译时已经决定了使用super的方法，因为subToSuper 是指super对象，可是为什么会选择collection呢，for循环出来他们实际上指的是collection对象表示的，即类似于Collection   col = new  HashSet&lt;&gt;();这样传入方法getType（）中的参数就是col，左边是静态类型，右边是实际类型。由于重载实际上是使用静态分派的，重载时是通过参数的静态类型而不是实际类型作为判定依据的。</p>
+<p>解析：这是静态分派的过程，在编译时已经决定了使用super的方法，因为subToSuper 是指super对象，可是为什么会选择collection呢，for循环出来他们实际上指的是collection对象表示的，即类似于Collection   col = new  HashSet&lt;&gt;();这样传入方法getType()中的参数就是col，左边是静态类型，右边是实际类型。由于重载实际上是使用静态分派的，重载时是通过参数的静态类型而不是实际类型作为判定依据的。</p>
 <p>11.下面代码运行结果是（ C ）</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;   </span><br><span class="line">         <span class="keyword">try</span> &#123;</span><br><span class="line">             <span class="keyword">return</span> a+b;      </span><br><span class="line">         &#125; </span><br><span class="line">        <span class="keyword">catch</span> (Exception e) &#123;  </span><br><span class="line">            System.out.println(<span class="string">"catch语句块"</span>);</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">finally</span>&#123; </span><br><span class="line">             System.out.println(<span class="string">"finally语句块"</span>);</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125; </span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String argv[])</span></span>&#123; </span><br><span class="line">         Test test =<span class="keyword">new</span> Test(); </span><br><span class="line">         System.out.println(<span class="string">"和是："</span>+test.add(<span class="number">9</span>, <span class="number">34</span>)); </span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -3693,8 +3693,8 @@
 <p>如下哪些使用是正确的( D )</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">A t.f = 1.0</span><br><span class="line">B this.n</span><br><span class="line">C Test.m</span><br><span class="line">D Test.n</span><br></pre></td></tr></table></figure>
 
-<p>解析：A项，编译不成功，因为float浮点类型默认是double，所以<code>float f = 1.0f</code>。选项没有加’f’，<font color="red">由高精度(double)向低精度(float)转换会丢失精度</font>，所以报错。</p>
-<p>B项，this使用时，针对在方法内部使局部变量等值于实例变量而使用的一个关键字，此处的n是静态变量而非实例变量 所以this的调用会出错（试想一下，static本来是全类中可以使用的，是全局的，你非得this去调用，这不是区分局部变量和实例变量的分水线吗？但是此处是全局的，不需要区分）</p>
+<p>解析：A项，编译不成功，因为float浮点类型默认是double，所以<code>float f = 1.0f</code>。选项没有加 <code>&#39;f&#39;</code>，<font color="red">由高精度(double)向低精度(float)转换会丢失精度</font>，所以报错。</p>
+<p>B项，this使用时，在方法内部使局部变量等值于实例变量而使用的一个关键字，此处的n是静态变量而非实例变量 所以this的调用会出错（试想一下，static本来是全类中可以使用的，是全局的，你非得this去调用，这不是区分局部变量和实例变量的分水线吗？但是此处是全局的，不需要区分）</p>
 <p>C项，m是实例变量，什么是实例变量：就是需要new 一个对象出来才能使用的，这里直接用类名就调用了，jvm怎么知道m是谁？</p>
 <p>13.下列关于Java并发的说法中正确的是（ B ）</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CopyOnWriteArrayList适用于写多读少的并发场景</span><br><span class="line"></span><br><span class="line">ReadWriteLock适用于读多写少的并发场景</span><br><span class="line"></span><br><span class="line">ConcurrentHashMap的写操作不需要加锁，读操作需要加锁</span><br><span class="line"></span><br><span class="line">只要在定义int类型的成员变量i的时候加上volatile关键字，那么多线程并发执行i++这样的操作的时候就是线程安全的了</span><br></pre></td></tr></table></figure>
@@ -3745,7 +3745,7 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">A	-1</span><br><span class="line"></span><br><span class="line">B	-2</span><br><span class="line"></span><br><span class="line">C	0</span><br><span class="line"></span><br><span class="line">D	1</span><br></pre></td></tr></table></figure>
 
 <p>解析：每个线程对a 均做了两次读写操作，分别是 “ +1 ” 和 “ -2 ”。</p>
-<p>而题目问了是最终a 的结果，所以 a 的结果取决于各自线程对 a 的先后读写的顺序</p>
+<p>而题目问了是最终a 的结果，所以 a 的结果取决于各自线程对 a 的先后读写的顺序。</p>
 <p>结论：a的可能取值为-1、0、-2。<img src="/2020/04/25/java%E9%9D%A2%E8%AF%95%E9%A2%98/Thread.png" alt></p>
 ]]></content>
       <tags>
