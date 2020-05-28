@@ -247,9 +247,9 @@
 <ol>
 <li><p>方法重载，参数列表不相同，返回值类型可以不同；方法重写，遵循两同-两小-一大规则。两同：方法名和参数列表相同；两小：子类返回值类型小于等于父类的，异常抛出小于等于父类；一大：访问权限修饰符大于等于父类。</p>
 </li>
-<li><p>HashMap可以用null值和空字符串作为K,不过只能有一个。</p>
+<li><p>HashMap可以用null值和空字符串作为Key,不过只能有一个。</p>
 </li>
-<li><p>字面量”+”拼接是在编译期间进行的，拼接后的字符串存放在字符串池中；而字符串引用的”+”拼接运算实在运行时进行的，新创建的字符串存放在堆中。</p>
+<li><p>字面量”+”拼接是在编译期间进行的，拼接后的字符串存放在字符串池中；而字符串引用的”+”拼接运算是在运行时进行的，新创建的字符串存放在堆中。</p>
 </li>
 <li><p>数组是一种引用数据类型，长度固定。那么它肯定是继承Object类的，所以里面有equals() 方法。但是没有被重写过，所以它并不是比较数组内的内容，Arrays.equals()才是比较两个数组中的内容。</p>
 </li>
@@ -269,7 +269,7 @@
 <tr>
 <th align="center"><strong>修饰符</strong></th>
 <th align="center"><strong>类</strong></th>
-<th align="center"><strong>成员访求</strong></th>
+<th align="center">成员方法</th>
 <th align="center"><strong>构造方法</strong></th>
 <th align="center"><strong>成员变量</strong></th>
 <th align="center"><strong>局部变量</strong></th>
