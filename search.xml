@@ -1,77 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>CSS3滤镜filter</title>
-    <url>/2020/02/10/CSS3%E6%BB%A4%E9%95%9Cfilter/</url>
-    <content><![CDATA[<p>网页图片的色彩处理<a id="more"></a></p>
-<h6 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h6><table>
-<thead>
-<tr>
-<th align="center">none</th>
-<th>默认值，没有效果。</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">blur(<em>px</em>)</td>
-<td>给图像设置高斯模糊。”radius”一值设定高斯函数的标准差，或者是屏幕上以多少像素融在一起， 所以值越大越模糊；  如果没有设定值，则默认是0；这个参数可设置css长度值，但不接受百分比值。</td>
-</tr>
-<tr>
-<td align="center">brightness(<em>%</em>)</td>
-<td>给图片应用一种线性乘法，使其看起来更亮或更暗。如果值是0%，图像会全黑。值是100%，则图像无变化。其他的值对应线性乘数效果。值超过100%也是可以的，图像会比原来更亮。如果没有设定值，默认是1。</td>
-</tr>
-<tr>
-<td align="center">contrast(<em>%</em>)</td>
-<td>调整图像的对比度。值是0%的话，图像会全黑。值是100%，图像不变。值可以超过100%，意味着会运用更低的对比。若没有设置值，默认是1。</td>
-</tr>
-<tr>
-<td align="center">drop-shadow(<em>h-shadow v-shadow blur spread color</em>)</td>
-<td>给图像设置一个阴影效果。阴影是合成在图像下面，可以有模糊度的，可以以特定颜色画出的遮罩图的偏移版本。 函数接受<shadow>(在CSS3背景中定义)类型的值，除了”inset”关键字是不允许的。该函数与已有的box-shadow box-shadow属性很相似；不同之处在于，通过滤镜，一些浏览器为了更好的性能会提供硬件加速。参数如下：<offset-x><offset-y>(必须)这是设置阴影偏移量的两个 值. <offset-x> 设定水平方向距离. 负值会使阴影出现在元素左边. <offset-y>设定垂直距离.负值会使阴影出现在元素上方。查看<length>可能的单位.<strong>如果两个值都是0</strong>, 则阴影出现在元素正后面 (如果设置了 and/or ，会有模糊效果).<blur-radius> (可选)这是第三个code&gt;值. 值越大，越模糊，则阴影会变得更大更淡.不允许负值 若未设定，默认是0 (则阴影的边界很锐利).<spread-radius>(可选)这是第四个 值. 正值会使阴影扩张和变大，负值会是阴影缩小.若未设定，默认是0 (阴影会与元素一样大小). 注意: Webkit, 以及一些其他浏览器 不支持第四个长度，如果加了也不会渲染。 <color> (可选)查看 该值可能的关键字和标记。若未设定，颜色值基于浏览器。在Gecko (Firefox), Presto (Opera)和Trident (Internet Explorer)中， 会应用color<strong>color</strong>属性的值。另外, 如果颜色值省略，WebKit中阴影是透明的。</color></spread-radius></blur-radius></length></offset-y></offset-x></offset-y></offset-x></shadow></td>
-</tr>
-<tr>
-<td align="center">grayscale(<em>%</em>)</td>
-<td>将图像转换为灰度图像。值定义转换的比例。值为100%则完全转为灰度图像，值为0%图像无变化。值在0%到100%之间，则是效果的线性乘子。若未设置，值默认是0；</td>
-</tr>
-<tr>
-<td align="center">hue-rotate(<em>deg</em>)</td>
-<td>给图像应用色相旋转。”angle”一值设定图像会被调整的色环角度值。值为0deg，则图像无变化。若值未设置，默认值是0deg。该值虽然没有最大值，超过360deg的值相当于又绕一圈。</td>
-</tr>
-<tr>
-<td align="center">invert(<em>%</em>)</td>
-<td>反转输入图像。值定义转换的比例。100%的价值是完全反转。值为0%则图像无变化。值在0%和100%之间，则是效果的线性乘子。 若值未设置，值默认是0。</td>
-</tr>
-<tr>
-<td align="center">opacity(<em>%</em>)</td>
-<td>转化图像的透明程度。值定义转换的比例。值为0%则是完全透明，值为100%则图像无变化。值在0%和100%之间，则是效果的线性乘子，也相当于图像样本乘以数量。 若值未设置，值默认是1。该函数与已有的opacity属性很相似，不同之处在于通过filter，一些浏览器为了提升性能会提供硬件加速。</td>
-</tr>
-<tr>
-<td align="center">saturate(<em>%</em>)</td>
-<td>转换图像饱和度。值定义转换的比例。值为0%则是完全不饱和，值为100%则图像无变化。其他值，则是效果的线性乘子。超过100%的值是允许的，则有更高的饱和度。 若值未设置，值默认是1。</td>
-</tr>
-<tr>
-<td align="center">sepia(<em>%</em>)</td>
-<td>将图像转换为深褐色。值定义转换的比例。值为100%则完全是深褐色的，值为0%图像无变化。值在0%到100%之间，则是效果的线性乘子。若未设置，值默认是0；</td>
-</tr>
-<tr>
-<td align="center">url()</td>
-<td>URL函数接受一个XML文件，该文件设置了 一个SVG滤镜，且可以包含一个锚点来指定一个具体的滤镜元素。例如：<code>filter: url(svg-url#element-id)</code></td>
-</tr>
-<tr>
-<td align="center">initial</td>
-<td>设置属性为默认值</td>
-</tr>
-<tr>
-<td align="center">inherit</td>
-<td>从父元素继承该属性</td>
-</tr>
-</tbody></table>
-<h6 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h6><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">img &#123;</span><br><span class="line">    width: 33%;</span><br><span class="line">    height: auto;</span><br><span class="line">    float: left; </span><br><span class="line">&#125;</span><br><span class="line"><span class="css"><span class="comment">/*模糊*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.blur</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">blur</span>(4px);<span class="attribute">filter</span>: <span class="built_in">blur</span>(4px);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*亮度*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.brightness</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">brightness</span>(0.30);<span class="attribute">filter</span>: <span class="built_in">brightness</span>(0.30);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*对比度*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.contrast</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">contrast</span>(180%);<span class="attribute">filter</span>: <span class="built_in">contrast</span>(180%);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*灰度*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.grayscale</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">grayscale</span>(100%);<span class="attribute">filter</span>: <span class="built_in">grayscale</span>(100%);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*色相旋转*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.huerotate</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">hue-rotate</span>(180deg);<span class="attribute">filter</span>: <span class="built_in">hue-rotate</span>(180deg);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*反色*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.invert</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">invert</span>(100%);<span class="attribute">filter</span>: <span class="built_in">invert</span>(100%);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*透明度*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.opacity</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">opacity</span>(50%);<span class="attribute">filter</span>: <span class="built_in">opacity</span>(50%);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*饱和度*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.saturate</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">saturate</span>(7); <span class="attribute">filter</span>: <span class="built_in">saturate</span>(7);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*深褐色*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.sepia</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">sepia</span>(100%);<span class="attribute">filter</span>: <span class="built_in">sepia</span>(100%);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*阴影*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.shadow</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">drop-shadow</span>(8px 8px 10px green);<span class="attribute">filter</span>: <span class="built_in">drop-shadow</span>(8px 8px 10px green);&#125;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">strong</span>&gt;</span>注意：<span class="tag">&lt;/<span class="name">strong</span>&gt;</span> Internet Explorer 不支持 filter 属性。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"blur"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"brightness"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"contrast"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"grayscale"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"huerotate"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"invert"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"opacity"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"saturate"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"sepia"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"shadow"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <tags>
-        <tag>CSS</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Docker容器</title>
     <url>/2020/05/13/Docker%E5%AE%B9%E5%99%A8/</url>
     <content><![CDATA[<p>Docker容器的简单了解，以CentOS系统为基础。<a id="more"></a></p>
@@ -338,18 +267,74 @@
       </tags>
   </entry>
   <entry>
-    <title>IDEA代码行数统计插件-Statistic</title>
-    <url>/2020/01/13/IDEA%E4%BB%A3%E7%A0%81%E8%A1%8C%E6%95%B0%E7%BB%9F%E8%AE%A1%E6%8F%92%E4%BB%B6-Statistic/</url>
-    <content><![CDATA[<p>Statistic是IDEA用来统计代码行数的插件<a id="more"></a></p>
-<blockquote>
-<p>Shows project statistic. This plugin shows files sorted by their extension along with size, line count LOC etc. User can select (Project/Module/Package/File) scope using the ‘Refresh on selection’ button. (This plugin requires Java 1.8)</p>
-</blockquote>
-<p>&emsp;&emsp;显示项目统计数量。这个插件显示的是按照文件扩展名排序的文件，以及大小、行数、LOC等。使用者能够选择（项目/模块/包/文件）范围使用”Refresh”按钮。（该插件需要java1.8）</p>
-<h5 id="Statistic安装"><a href="#Statistic安装" class="headerlink" title="Statistic安装"></a>Statistic安装</h5><p>&emsp;&emsp;进入IDEA插件File-&gt;Settings-&gt;Plugins，点击上方的Marketplace，搜索Statistic，点击Install。下载安装完之后重启IDEA。<img src="/2020/01/13/IDEA%E4%BB%A3%E7%A0%81%E8%A1%8C%E6%95%B0%E7%BB%9F%E8%AE%A1%E6%8F%92%E4%BB%B6-Statistic/s1.jpg" alt="install"></p>
-<h5 id="项目统计"><a href="#项目统计" class="headerlink" title="项目统计"></a>项目统计</h5><p>&emsp;&emsp;打开任意一个项目开始进行统计。在顶部的菜单栏找到插件，View-&gt;Tool Windows-&gt;Statistic。也可以查看IDEA底部的功能栏，点击Statistic，点击Refresh开始统计项目的代码行数。Overview是统计所有文件的数量count和行数lines，以及不同文件类型行数的和大小的最大值、最小值和平均值。可以选择右边查看需要的后缀名文件代码行数。具体某种文件类型（如：java），可以统计总行数Total Lines，有效代码行数Source Code Lines，注释行数Comment Lines，以及有效代码比重。<img src="/2020/01/13/IDEA%E4%BB%A3%E7%A0%81%E8%A1%8C%E6%95%B0%E7%BB%9F%E8%AE%A1%E6%8F%92%E4%BB%B6-Statistic/s2.jpg" alt="result"></p>
+    <title>CSS3滤镜filter</title>
+    <url>/2020/02/10/CSS3%E6%BB%A4%E9%95%9Cfilter/</url>
+    <content><![CDATA[<p>网页图片的色彩处理<a id="more"></a></p>
+<h6 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h6><table>
+<thead>
+<tr>
+<th align="center">none</th>
+<th>默认值，没有效果。</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">blur(<em>px</em>)</td>
+<td>给图像设置高斯模糊。”radius”一值设定高斯函数的标准差，或者是屏幕上以多少像素融在一起， 所以值越大越模糊；  如果没有设定值，则默认是0；这个参数可设置css长度值，但不接受百分比值。</td>
+</tr>
+<tr>
+<td align="center">brightness(<em>%</em>)</td>
+<td>给图片应用一种线性乘法，使其看起来更亮或更暗。如果值是0%，图像会全黑。值是100%，则图像无变化。其他的值对应线性乘数效果。值超过100%也是可以的，图像会比原来更亮。如果没有设定值，默认是1。</td>
+</tr>
+<tr>
+<td align="center">contrast(<em>%</em>)</td>
+<td>调整图像的对比度。值是0%的话，图像会全黑。值是100%，图像不变。值可以超过100%，意味着会运用更低的对比。若没有设置值，默认是1。</td>
+</tr>
+<tr>
+<td align="center">drop-shadow(<em>h-shadow v-shadow blur spread color</em>)</td>
+<td>给图像设置一个阴影效果。阴影是合成在图像下面，可以有模糊度的，可以以特定颜色画出的遮罩图的偏移版本。 函数接受<shadow>(在CSS3背景中定义)类型的值，除了”inset”关键字是不允许的。该函数与已有的box-shadow box-shadow属性很相似；不同之处在于，通过滤镜，一些浏览器为了更好的性能会提供硬件加速。参数如下：<offset-x><offset-y>(必须)这是设置阴影偏移量的两个 值. <offset-x> 设定水平方向距离. 负值会使阴影出现在元素左边. <offset-y>设定垂直距离.负值会使阴影出现在元素上方。查看<length>可能的单位.<strong>如果两个值都是0</strong>, 则阴影出现在元素正后面 (如果设置了 and/or ，会有模糊效果).<blur-radius> (可选)这是第三个code&gt;值. 值越大，越模糊，则阴影会变得更大更淡.不允许负值 若未设定，默认是0 (则阴影的边界很锐利).<spread-radius>(可选)这是第四个 值. 正值会使阴影扩张和变大，负值会是阴影缩小.若未设定，默认是0 (阴影会与元素一样大小). 注意: Webkit, 以及一些其他浏览器 不支持第四个长度，如果加了也不会渲染。 <color> (可选)查看 该值可能的关键字和标记。若未设定，颜色值基于浏览器。在Gecko (Firefox), Presto (Opera)和Trident (Internet Explorer)中， 会应用color<strong>color</strong>属性的值。另外, 如果颜色值省略，WebKit中阴影是透明的。</color></spread-radius></blur-radius></length></offset-y></offset-x></offset-y></offset-x></shadow></td>
+</tr>
+<tr>
+<td align="center">grayscale(<em>%</em>)</td>
+<td>将图像转换为灰度图像。值定义转换的比例。值为100%则完全转为灰度图像，值为0%图像无变化。值在0%到100%之间，则是效果的线性乘子。若未设置，值默认是0；</td>
+</tr>
+<tr>
+<td align="center">hue-rotate(<em>deg</em>)</td>
+<td>给图像应用色相旋转。”angle”一值设定图像会被调整的色环角度值。值为0deg，则图像无变化。若值未设置，默认值是0deg。该值虽然没有最大值，超过360deg的值相当于又绕一圈。</td>
+</tr>
+<tr>
+<td align="center">invert(<em>%</em>)</td>
+<td>反转输入图像。值定义转换的比例。100%的价值是完全反转。值为0%则图像无变化。值在0%和100%之间，则是效果的线性乘子。 若值未设置，值默认是0。</td>
+</tr>
+<tr>
+<td align="center">opacity(<em>%</em>)</td>
+<td>转化图像的透明程度。值定义转换的比例。值为0%则是完全透明，值为100%则图像无变化。值在0%和100%之间，则是效果的线性乘子，也相当于图像样本乘以数量。 若值未设置，值默认是1。该函数与已有的opacity属性很相似，不同之处在于通过filter，一些浏览器为了提升性能会提供硬件加速。</td>
+</tr>
+<tr>
+<td align="center">saturate(<em>%</em>)</td>
+<td>转换图像饱和度。值定义转换的比例。值为0%则是完全不饱和，值为100%则图像无变化。其他值，则是效果的线性乘子。超过100%的值是允许的，则有更高的饱和度。 若值未设置，值默认是1。</td>
+</tr>
+<tr>
+<td align="center">sepia(<em>%</em>)</td>
+<td>将图像转换为深褐色。值定义转换的比例。值为100%则完全是深褐色的，值为0%图像无变化。值在0%到100%之间，则是效果的线性乘子。若未设置，值默认是0；</td>
+</tr>
+<tr>
+<td align="center">url()</td>
+<td>URL函数接受一个XML文件，该文件设置了 一个SVG滤镜，且可以包含一个锚点来指定一个具体的滤镜元素。例如：<code>filter: url(svg-url#element-id)</code></td>
+</tr>
+<tr>
+<td align="center">initial</td>
+<td>设置属性为默认值</td>
+</tr>
+<tr>
+<td align="center">inherit</td>
+<td>从父元素继承该属性</td>
+</tr>
+</tbody></table>
+<h6 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h6><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">img &#123;</span><br><span class="line">    width: 33%;</span><br><span class="line">    height: auto;</span><br><span class="line">    float: left; </span><br><span class="line">&#125;</span><br><span class="line"><span class="css"><span class="comment">/*模糊*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.blur</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">blur</span>(4px);<span class="attribute">filter</span>: <span class="built_in">blur</span>(4px);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*亮度*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.brightness</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">brightness</span>(0.30);<span class="attribute">filter</span>: <span class="built_in">brightness</span>(0.30);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*对比度*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.contrast</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">contrast</span>(180%);<span class="attribute">filter</span>: <span class="built_in">contrast</span>(180%);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*灰度*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.grayscale</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">grayscale</span>(100%);<span class="attribute">filter</span>: <span class="built_in">grayscale</span>(100%);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*色相旋转*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.huerotate</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">hue-rotate</span>(180deg);<span class="attribute">filter</span>: <span class="built_in">hue-rotate</span>(180deg);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*反色*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.invert</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">invert</span>(100%);<span class="attribute">filter</span>: <span class="built_in">invert</span>(100%);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*透明度*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.opacity</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">opacity</span>(50%);<span class="attribute">filter</span>: <span class="built_in">opacity</span>(50%);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*饱和度*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.saturate</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">saturate</span>(7); <span class="attribute">filter</span>: <span class="built_in">saturate</span>(7);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*深褐色*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.sepia</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">sepia</span>(100%);<span class="attribute">filter</span>: <span class="built_in">sepia</span>(100%);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*阴影*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.shadow</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">drop-shadow</span>(8px 8px 10px green);<span class="attribute">filter</span>: <span class="built_in">drop-shadow</span>(8px 8px 10px green);&#125;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">strong</span>&gt;</span>注意：<span class="tag">&lt;/<span class="name">strong</span>&gt;</span> Internet Explorer 不支持 filter 属性。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"blur"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"brightness"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"contrast"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"grayscale"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"huerotate"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"invert"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"opacity"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"saturate"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"sepia"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"shadow"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
 ]]></content>
       <tags>
-        <tag>IDEA</tag>
+        <tag>CSS</tag>
       </tags>
   </entry>
   <entry>
@@ -440,6 +425,21 @@
       </tags>
   </entry>
   <entry>
+    <title>IDEA代码行数统计插件-Statistic</title>
+    <url>/2020/01/13/IDEA%E4%BB%A3%E7%A0%81%E8%A1%8C%E6%95%B0%E7%BB%9F%E8%AE%A1%E6%8F%92%E4%BB%B6-Statistic/</url>
+    <content><![CDATA[<p>Statistic是IDEA用来统计代码行数的插件<a id="more"></a></p>
+<blockquote>
+<p>Shows project statistic. This plugin shows files sorted by their extension along with size, line count LOC etc. User can select (Project/Module/Package/File) scope using the ‘Refresh on selection’ button. (This plugin requires Java 1.8)</p>
+</blockquote>
+<p>&emsp;&emsp;显示项目统计数量。这个插件显示的是按照文件扩展名排序的文件，以及大小、行数、LOC等。使用者能够选择（项目/模块/包/文件）范围使用”Refresh”按钮。（该插件需要java1.8）</p>
+<h5 id="Statistic安装"><a href="#Statistic安装" class="headerlink" title="Statistic安装"></a>Statistic安装</h5><p>&emsp;&emsp;进入IDEA插件File-&gt;Settings-&gt;Plugins，点击上方的Marketplace，搜索Statistic，点击Install。下载安装完之后重启IDEA。<img src="/2020/01/13/IDEA%E4%BB%A3%E7%A0%81%E8%A1%8C%E6%95%B0%E7%BB%9F%E8%AE%A1%E6%8F%92%E4%BB%B6-Statistic/s1.jpg" alt="install"></p>
+<h5 id="项目统计"><a href="#项目统计" class="headerlink" title="项目统计"></a>项目统计</h5><p>&emsp;&emsp;打开任意一个项目开始进行统计。在顶部的菜单栏找到插件，View-&gt;Tool Windows-&gt;Statistic。也可以查看IDEA底部的功能栏，点击Statistic，点击Refresh开始统计项目的代码行数。Overview是统计所有文件的数量count和行数lines，以及不同文件类型行数的和大小的最大值、最小值和平均值。可以选择右边查看需要的后缀名文件代码行数。具体某种文件类型（如：java），可以统计总行数Total Lines，有效代码行数Source Code Lines，注释行数Comment Lines，以及有效代码比重。<img src="/2020/01/13/IDEA%E4%BB%A3%E7%A0%81%E8%A1%8C%E6%95%B0%E7%BB%9F%E8%AE%A1%E6%8F%92%E4%BB%B6-Statistic/s2.jpg" alt="result"></p>
+]]></content>
+      <tags>
+        <tag>IDEA</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>IDEA连接数据库设置时区问题</title>
     <url>/2020/05/24/IDEA%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E7%BD%AE%E6%97%B6%E5%8C%BA%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<p>Server returns invalid timezone. Go to ‘Advanced’ tab and set ‘serverTimezone’ property manually<a id="more"></a></p>
@@ -464,6 +464,64 @@
 ]]></content>
       <tags>
         <tag>IDEA</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java面经七</title>
+    <url>/2020/05/06/Java%E9%9D%A2%E7%BB%8F%E4%B8%83/</url>
+    <content><![CDATA[<p>Java面试总结七<a id="more"></a></p>
+<h6 id="Redis的List能在什么场景下使用？"><a href="#Redis的List能在什么场景下使用？" class="headerlink" title="Redis的List能在什么场景下使用？"></a>Redis的List能在什么场景下使用？</h6><p>Redis 中list的数据结构实现是双向链表，所以可以非常便捷的应用于消息队列（生产者 / 消费者模型）。消息的生产者只需要通过lpush将消息放入 list，消费者便可以通过rpop取出该消息，并且可以保证消息的有序性。如果需要实现带有优先级的消息队列也可以选择sorted set。而pub/sub功能也可以用作发布者 / 订阅者模型的消息。</p>
+<h6 id="AOF和RDB都有哪些优点？以及两者有何区别？"><a href="#AOF和RDB都有哪些优点？以及两者有何区别？" class="headerlink" title="AOF和RDB都有哪些优点？以及两者有何区别？"></a>AOF和RDB都有哪些优点？以及两者有何区别？</h6><p>Redis的数据都存放在内存中，如果没有配置持久化，redis重启后数据就全丢失了，于是需要开启redis的持久化功能，将数据保存到磁盘上，当redis重启后，可以从磁盘中恢复数据。redis提供两种方式进行持久化，一种是RDB持久化（原理是将Reids在内存中的数据库记录定时dump到磁盘上的RDB持久化），另外一种是AOF持久化（原理是将Reids的操作日志以追加的方式写入文件）。</p>
+<p>RDB 持久化可以在指定的时间间隔内生成数据集的时间点快照（point-in-time snapshot）。</p>
+<p>AOF 持久化记录服务器执行的所有写操作命令，并在服务器启动时，通过重新执行这些命令来还原数据集。 AOF 文件中的命令全部以 Redis 协议的格式来保存，新命令会被追加到文件的末尾。 Redis 还可以在后台对 AOF 文件进行重写（rewrite），使得 AOF 文件的体积不会超出保存数据集状态所需的实际大小。Redis 还可以同时使用 AOF 持久化和 RDB 持久化。 在这种情况下， 当 Redis 重启时， 它会优先使用 AOF 文件来还原数据集， 因为 AOF 文件保存的数据集通常比 RDB 文件所保存的数据集更完整。你甚至可以关闭持久化功能，让数据只在服务器运行时存在。</p>
+<p>RDB 的优点:</p>
+<p>RDB 是一个非常紧凑（compact）的文件，它保存了 Redis 在某个时间点上的数据集。 这种文件非常适合用于进行备份： 比如说，你可以在最近的 24 小时内，每小时备份一次 RDB 文件，并且在每个月的每一天，也备份一个 RDB 文件。 这样的话，即使遇上问题，也可以随时将数据集还原到不同的版本。RDB 非常适用于灾难恢复（disaster recovery）：它只有一个文件，并且内容都非常紧凑，可以（在加密后）将它传送到别的数据中心，或者亚马逊 S3 中。RDB 可以最大化 Redis 的性能：父进程在保存 RDB 文件时唯一要做的就是 fork 出一个子进程，然后这个子进程就会处理接下来的所有保存工作，父进程无须执行任何磁盘 I/O 操作。RDB 在恢复大数据集时的速度比 AOF 的恢复速度要快。</p>
+<p>RDB 的缺点:</p>
+<p>如果你需要尽量避免在服务器故障时丢失数据，那么 RDB 不适合你。 虽然 Redis 允许你设置不同的保存点（save point）来控制保存 RDB 文件的频率， 但是， 因为RDB 文件需要保存整个数据集的状态， 所以它并不是一个轻松的操作。 因此你可能会至少 5 分钟才保存一次 RDB 文件。 在这种情况下， 一旦发生故障停机， 你就可能会丢失好几分钟的数据。每次保存 RDB 的时候，Redis 都要 fork() 出一个子进程，并由子进程来进行实际的持久化工作。 在数据集比较庞大时， fork() 可能会非常耗时，造成服务器在某某毫秒内停止处理客户端； 如果数据集非常巨大，并且 CPU 时间非常紧张的话，那么这种停止时间甚至可能会长达整整一秒。 虽然 AOF 重写也需要进行 fork() ，但无论 AOF 重写的执行间隔有多长，数据的耐久性都不会有任何损失。</p>
+<p>AOF 的优点:</p>
+<p>使用 AOF 持久化会让 Redis 变得非常耐久（much more durable）：你可以设置不同的 fsync 策略，比如无 fsync ，每秒钟一次 fsync ，或者每次执行写入命令时 fsync 。 AOF 的默认策略为每秒钟 fsync 一次，在这种配置下，Redis 仍然可以保持良好的性能，并且就算发生故障停机，也最多只会丢失一秒钟的数据（ fsync 会在后台线程执行，所以主线程可以继续努力地处理命令请求）。AOF 文件是一个只进行追加操作的日志文件（append only log）， 因此对 AOF 文件的写入不需要进行 seek ， 即使日志因为某些原因而包含了未写入完整的命令（比如写入时磁盘已满，写入中途停机，等等）， redis-check-aof 工具也可以轻易地修复这种问题。</p>
+<p>Redis 可以在 AOF 文件体积变得过大时，自动地在后台对 AOF 进行重写： 重写后的新 AOF 文件包含了恢复当前数据集所需的最小命令集合。 整个重写操作是绝对安全的，因为 Redis 在创建新 AOF 文件的过程中，会继续将命令追加到现有的 AOF 文件里面，即使重写过程中发生停机，现有的 AOF 文件也不会丢失。 而一旦新 AOF 文件创建完毕，Redis 就会从旧 AOF 文件切换到新 AOF 文件，并开始对新 AOF 文件进行追加操作。AOF 文件有序地保存了对数据库执行的所有写入操作， 这些写入操作以 Redis 协议的格式保存， 因此 AOF 文件的内容非常容易被人读懂， 对文件进行分析（parse）也很轻松。 导出（export） AOF 文件也非常简单： 举个例子， 如果你不小心执行了 FLUSHALL 命令， 但只要 AOF 文件未被重写， 那么只要停止服务器， 移除 AOF 文件末尾的 FLUSHALL 命令， 并重启 Redis ， 就可以将数据集恢复到 FLUSHALL 执行之前的状态。</p>
+<p>AOF 的缺点:</p>
+<p>对于相同的数据集来说，AOF 文件的体积通常要大于 RDB 文件的体积。根据所使用的 fsync 策略，AOF 的速度可能会慢于 RDB 。 在一般情况下， 每秒 fsync 的性能依然非常高， 而关闭 fsync 可以让 AOF 的速度和 RDB 一样快， 即使在高负荷之下也是如此。 不过在处理巨大的写入载入时，RDB 可以提供更有保证的最大延迟时间（latency）。AOF 在过去曾经发生过这样的 bug ： 因为个别命令的原因，导致 AOF 文件在重新载入时，无法将数据集恢复成保存时的原样。 （举个例子，阻塞命令 BRPOPLPUSH 就曾经引起过这样的 bug 。） 测试套件里为这种情况添加了测试： 它们会自动生成随机的、复杂的数据集， 并通过重新载入这些数据来确保一切正常。 虽然这种 bug 在 AOF 文件中并不常见， 但是对比来说， RDB 几乎是不可能出现这种 bug 的。</p>
+<h6 id="Redis为什么是单线程？"><a href="#Redis为什么是单线程？" class="headerlink" title="Redis为什么是单线程？"></a>Redis为什么是单线程？</h6><p>因为CPU不是Redis的瓶颈。Redis的瓶颈最有可能是机器内存或者网络带宽。既然单线程容易实现，而且CPU不会成为瓶颈，那就顺理成章地采用单线程的方案了。</p>
+<p>缺点：服务器其他核闲置。</p>
+<h6 id="为什么-redis-读写速率快、性能好？"><a href="#为什么-redis-读写速率快、性能好？" class="headerlink" title="为什么 redis 读写速率快、性能好？"></a>为什么 redis 读写速率快、性能好？</h6><p>Redis是纯内存数据库，相对于读写磁盘，读写内存的速度就不是几倍几十倍了，一般，hash查找可以达到每秒百万次的数量级。</p>
+<p>多路复用IO，“多路”指的是多个网络连接，“复用”指的是复用同一个线程。采用多路 I/O 复用技术可以让单个线程高效的处理多个连接请求（尽量减少网络IO的时间消耗）。可以直接理解为：单线程的原子操作，避免上下文切换的时间和性能消耗；加上对内存中数据的处理速度，很自然的提高redis的吞吐量。</p>
+<h6 id="DAO模式"><a href="#DAO模式" class="headerlink" title="DAO模式"></a>DAO模式</h6><p>DAO（Data Access Object）顾名思义是一个为数据库或其他持久化机制提供了抽象接口的对象，在不暴露底层持久化方案实现细节的前提下提供了各种数据访问操作。在实际的开发中，应该将所有对数据源的访问操作进行抽象化后封装在一个公共API中。用程序设计语言来说，就是建立一个接口，接口中定义了此应用程序中将会用到的所有事务方法。在这个应用程序中，当需要和数据源进行交互的时候则使用这个接口，并且编写一个单独的类来实现这个接口，在逻辑上该类对应一个特定的数据存储。DAO模式实际上包含了两个模式，一是Data Accessor（数据访问器），二是Data Object（数据对象），前者要解决如何访问数据的问题，而后者要解决的是如何用对象封装数据。</p>
+<h6 id="Get和Post请求的区别"><a href="#Get和Post请求的区别" class="headerlink" title="Get和Post请求的区别"></a>Get和Post请求的区别</h6><p>①get请求用来从服务器上获得资源，而post是用来向服务器提交数据；</p>
+<p>②get将表单中数据按照name=value的形式，添加到action 所指向的URL 后面，并且两者使用”?”连接，而各个变量之间使用”&amp;”连接；post是将表单中的数据放在HTTP协议的请求头或消息体中，传递到action所指向URL；</p>
+<p>③get传输的数据要受到URL长度限制（1024字节）；而post可以传输大量的数据，上传文件通常要使用post方式；</p>
+<p>④使用get时参数会显示在地址栏上，如果这些数据不是敏感数据，那么可以使用get；对于敏感数据还是应用使用post；</p>
+<p>⑤get使用MIME类型application/x-www-form-urlencoded的URL编码（也叫百分号编码）文本的格式传递参数，保证被传送的参数由遵循规范的文本组成，例如一个空格的编码是”%20”。</p>
+<h6 id="J2EE常用名词解释"><a href="#J2EE常用名词解释" class="headerlink" title="J2EE常用名词解释"></a>J2EE常用名词解释</h6><p><strong>web 容器</strong>：给处于其中的应用程序组件（JSP，SERVLET）提供一个环境，使JSP,SERVLET直接和容器中的环境变量接接口互，不必关注其它系统问题。主要有WEB服务器来实现。例如：TOMCAT,WEBLOGIC,WEBSPHERE等。该容器提供的接口严格遵守J2EE规范中的WEBAPPLICATION 标准。我们把遵守以上标准的WEB服务器就叫做J2EE中的WEB容器。</p>
+<p><strong>Web container</strong>：实现J2EE体系结构中Web组件协议的容器。这个协议规定了一个Web组件运行时的环境，包括安全，一致性，生命周期管理，事务，配置和其它的服务。一个提供和JSP和J2EE平台APIs界面相同服务的容器。一个Web container 由Web服务器或者J2EE服务器提供。</p>
+<p><strong>EJB容器</strong>：Enterprise java bean 容器。更具有行业领域特色。他提供给运行在其中的组件EJB各种管理功能。只要满足J2EE规范的EJB放入该容器，马上就会被容器进行高效率的管理。并且可以通过现成的接口来获得系统级别的服务。例如邮件服务、事务管理。一个实现了J2EE体系结构中EJB组件规范的容器。这个规范指定了一个Enterprise bean的运行时环境，包括安全，一致性，生命周期，事务，配置，和其他的服务。</p>
+<p><strong>JNDI</strong>：（Java Naming &amp; Directory Interface）JAVA命名目录服务。主要提供的功能是：提供一个目录系统，让其它各地的应用程序在其上面留下自己的索引，从而满足快速查找和定位分布式应用程序的功能。</p>
+<p><strong>JMS</strong>：（Java Message Service）JAVA消息服务。主要实现各个应用程序之间的通讯。包括点对点和广播。</p>
+<p><strong>JTA</strong>：（Java Transaction API）JAVA事务服务。提供各种分布式事务服务。应用程序只需调用其提供的接口即可。</p>
+<p><strong>JAF</strong>：（Java Action FrameWork）JAVA安全认证框架。提供一些安全控制方面的框架。让开发者通过各种部署和自定义实现自己的个性安全控制策略。</p>
+<p><strong>RMI/IIOP</strong>: （Remote Method Invocation /internet对象请求中介协议）他们主要用于通过远程调用服务。例如，远程有一台计算机上运行一个程序，它提供股票分析服务，我们可以在本地计算机上实现对其直接调用。当然这是要通过一定的规范才能在异构的系统之间进行通信。RMI是JAVA特有的。RMI-IIOP出现以前，只有RMI和 CORBA两种选择来进行分布式程序设计。RMI-IIOP综合了RMI和CORBA的优点，克服了他们的缺点，使得程序员能更方便的编写分布式程序设计，实现分布式计算。首先，RMI-IIOP综合了RMI的简单性和CORBA的多语言性（兼容性），其次RMI-IIOP克服了RMI只能用于Java 的缺点和CORBA的复杂性。</p>
+<h6 id="Cookie和Session的区别"><a href="#Cookie和Session的区别" class="headerlink" title="Cookie和Session的区别"></a>Cookie和Session的区别</h6><p>1、cookie数据存放在客户的浏览器上，session数据放在服务器上。</p>
+<p>2、cookie不是很安全，别人可以分析存放在本地的COOKIE并进行COOKIE欺骗</p>
+<p>考虑到安全应当使用session。</p>
+<p>3、session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能，考虑到减轻服务器性能方面，应当使用COOKIE。</p>
+<p>4、单个cookie保存的数据不能超过4K，很多浏览器都限制一个站点最多保存20个cookie。</p>
+<h6 id="数据库优化方法"><a href="#数据库优化方法" class="headerlink" title="数据库优化方法"></a>数据库优化方法</h6><p>（1）选取最适用的字段属性</p>
+<p>MySQL可以很好的支持大数据量的存取，但是一般说来，数据库中的表越小，在它上面执行的查询也就会越快。因此，在创建表的时候，为了获得更好的性能，我们可以将表中字段的宽度设得尽可能小。</p>
+<p>例如，在定义邮政编码这个字段时，如果将其设置为CHAR(255),显然给数据库增加了不必要的空间，甚至使用VARCHAR这种类型也是多余的，因为CHAR(6)就可以很好的完成任务了。同样的，如果可以的话，我们应该使用MEDIUMINT而不是BIGIN来定义整型字段。</p>
+<p>另外一个提高效率的方法是在可能的情况下，应该尽量把字段设置为NOTNULL，这样在将来执行查询的时候，数据库不用去比较NULL值。<br>对于某些文本字段，例如“省份”或者“性别”，我们可以将它们定义为ENUM类型。因为在MySQL中，ENUM类型被当作数值型数据来处理，而数值型数据被处理起来的速度要比文本类型快得多。这样，我们又可以提高数据库的性能。</p>
+<p>（2）使用连接（JOIN）来代替子查询(Sub-Queries)</p>
+<p>MySQL从4.1开始支持SQL的子查询。这个技术可以使用SELECT语句来创建一个单列的查询结果，然后把这个结果作为过滤条件用在另一个查询中。例如，我们要将客户基本信息表中没有任何订单的客户删除掉，就可以利用子查询先从销售信息表中将所有发出订单的客户ID取出来，然后将结果传递给主查询</p>
+<p>（3）使用联合(UNION)来代替手动创建的临时表</p>
+<p>MySQL从4.0的版本开始支持union查询，它可以把需要使用临时表的两条或更多的select查询合并的一个查询中。在客户端的查询会话结束的时候，临时表会被自动删除，从而保证数据库整齐、高效。使用union来创建查询的时候，我们只需要用UNION作为关键字把多个select语句连接起来就可以了，要注意的是所有select语句中的字段数目要想同。下面的例子就演示了一个使用UNION的查询。</p>
+<p>（4）事务</p>
+<p>尽管我们可以使用子查询（Sub-Queries）、连接（JOIN）和联合（UNION）来创建各种各样的查询，但不是所有的数据库操作都可以只用一条或少数几条SQL语句就可以完成的。更多的时候是需要用到一系列的语句来完成某种工作。但是在这种情况下，当这个语句块中的某一条语句运行出错的时候，整个语句块的操作就会变得不确定起来。设想一下，要把某个数据同时插入两个相关联的表中，可能会出现这样的情况：第一个表中成功更新后，数据库突然出现意外状况，造成第二个表中的操作没有完成，这样，就会造成数据的不完整，甚至会破坏数据库中的数据。要避免这种情况，就应该使用事务，它的作用是：要么语句块中每条语句都操作成功，要么都失败。换句话说，就是可以保持数据库中数据的一致性和完整性。事物以BEGIN关键字开始，COMMIT关键字结束。在这之间的一条SQL操作失败，那么，ROLLBACK命令就可以把数据库恢复到BEGIN开始之前的状态。</p>
+<h6 id="数据库的三个范式"><a href="#数据库的三个范式" class="headerlink" title="数据库的三个范式"></a>数据库的三个范式</h6><p>第一范式（1NF）<br>强调的是列的原子性，即列不能够再分成其他几列。</p>
+<p>第二范式（2NF）<br>首先是 1NF，另外包含两部分内容，一是表必须有一个主键；二是没有包含在主键中的列必须完全依赖于主键，而不能只依赖于主键的一部分。<br>在1NF基础上，任何非主属性不依赖于其它非主属性[在2NF基础上消除传递依赖]。</p>
+<p>第三范式（3NF）<br>第三范式（3NF）是第二范式（2NF）的一个子集，即满足第三范式（3NF）必须满足第二范式（2NF）。首先是 2NF，另外非主键列必须直接依赖于主键，不能存在传递依赖。即不能存在：非主键列 A 依赖于非主键列 B，非主键列 B 依赖于主键的情况。</p>
+]]></content>
+      <tags>
+        <tag>java</tag>
       </tags>
   </entry>
   <entry>
@@ -639,6 +697,103 @@
 </ol>
 </li>
 </ol>
+]]></content>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JWT授权验证</title>
+    <url>/2020/06/14/JWT%E6%8E%88%E6%9D%83%E9%AA%8C%E8%AF%81/</url>
+    <content><![CDATA[<p>Jwt(Json web token)网络令牌<a id="more"></a></p>
+<h5 id="传统的session验证"><a href="#传统的session验证" class="headerlink" title="传统的session验证"></a>传统的session验证</h5><p>传统的基于session验证将用户信息保存为cookie存到服务器中，每次用户发起的请求都会验证cookie中的用户信息，这样服务器才能判断请求来自哪个用户。随着不同客户端用户的增加，独立的服务器无法承载更多的用户。</p>
+<p>用户认证之后，服务端做认证记录，如果认证的记录被保存在内存中的话，这意味着用户下次请求还必须要请求在这台服务器上，这样才能拿到授权的资源，这样在分布式的应用上，相应的限制了负载均衡器的能力。这也意味着限制了应用的扩展能力。</p>
+<p>因为是基于cookie来进行用户识别的，cookie如果被截获，用户就会很容易受到跨站请求伪造的攻击。</p>
+<h5 id="基于token的鉴权机制"><a href="#基于token的鉴权机制" class="headerlink" title="基于token的鉴权机制"></a>基于token的鉴权机制</h5><p>基于token的鉴权机制类似于http协议也是无状态的，它不需要在服务端去保留用户的认证信息或者会话信息。这就意味着基于token认证机制的应用不需要去考虑用户在哪一台服务器登录了，这就为应用的扩展提供了便利。</p>
+<p>流程上是这样的：</p>
+<ul>
+<li><p>用户使用用户名密码来请求服务器</p>
+</li>
+<li><p>服务器进行验证用户的信息</p>
+</li>
+<li><p>服务器通过验证发送给用户一个token</p>
+</li>
+<li><p>客户端存储token，并在每次请求时附送上这个token值</p>
+</li>
+<li><p>服务端验证token值，并返回数据</p>
+</li>
+</ul>
+<p>这个token必须要在每次请求时传递给服务端，它应该保存在请求头里， 另外，服务端要支持<code>CORS(跨来源资源共享)</code>策略，一般我们在服务端这么做就可以了<code>Access-Control-Allow-Origin: *</code>。</p>
+<h5 id="JWT的构成"><a href="#JWT的构成" class="headerlink" title="JWT的构成"></a>JWT的构成</h5><p>JWT是由三段信息构成的，将这三段信息文本用<code>.</code>链接一起就构成了Jwt字符串。就像这样:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ</span><br></pre></td></tr></table></figure>
+
+<p>第一部分我们称它为头部（header)，第二部分我们称其为载荷（payload，类似于飞机上承载的物品)，第三部分是签证（signature)。</p>
+<h6 id="header"><a href="#header" class="headerlink" title="header"></a>header</h6><p>jwt的头部承载两部分信息：</p>
+<ul>
+<li><p>声明类型，这里是jwt</p>
+</li>
+<li><p>声明加密的算法，通常直接使用HMAC SHA256</p>
+</li>
+</ul>
+<p>完整的头部就像是下面这样的JSON</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	'typ': 'JWT',</span><br><span class="line">	'alg': 'HS256'</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后将头部进行base64加密，构成第一部分<code>eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9</code>。</p>
+<h6 id="playload"><a href="#playload" class="headerlink" title="playload"></a>playload</h6><p>载荷就是存放有效信息的地方。这个名字像是特指飞机上承载的货品，这些有效信息包含三个部分</p>
+<ul>
+<li>标准中注册的声明</li>
+<li>公共的声明</li>
+<li>私有的声明</li>
+</ul>
+<p>标准中注册的声明 (建议但不强制使用) ：</p>
+<ul>
+<li>iss: jwt签发者</li>
+<li>sub: jwt所面向的用户</li>
+<li>aud: 接收jwt的一方</li>
+<li>exp: jwt的过期时间，这个过期时间必须要大于签发时间</li>
+<li>nbf: 定义在什么时间之前，该jwt都是不可用的.</li>
+<li>iat: jwt的签发时间</li>
+<li>jti: jwt的唯一身份标识，主要用来作为一次性token，从而回避重放攻击。</li>
+</ul>
+<p>公共的声明 ：<br> 公共的声明可以添加任何的信息，一般添加用户的相关信息或其他业务需要的必要信息。但不建议添加敏感信息，因为该部分在客户端可解密。</p>
+<p>私有的声明 ：<br> 私有声明是提供者和消费者所共同定义的声明，一般不建议存放敏感信息，因为base64是对称解密的，意味着该部分信息可以归类为明文信息。</p>
+<p>定义一个payload:</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"sub"</span>: <span class="string">"1234567890"</span>,</span><br><span class="line">  <span class="attr">"name"</span>: <span class="string">"John Doe"</span>,</span><br><span class="line">  <span class="attr">"admin"</span>: <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后将其进行base64加密，得到Jwt的第二部分<code>eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9</code>。</p>
+<h6 id="signature"><a href="#signature" class="headerlink" title="signature"></a>signature</h6><p>jwt的第三部分是一个签证信息，这个签证信息由三部分组成：</p>
+<ul>
+<li>header (base64后的)</li>
+<li>payload (base64后的)</li>
+<li>secret</li>
+</ul>
+<p>这个部分需要base64加密后的header和base64加密后的payload使用<code>.</code>连接组成的字符串，然后通过header中声明的加密方式进行加盐<code>secret</code>组合加密，然后就构成了jwt的第三部分。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// javascript</span></span><br><span class="line"><span class="keyword">var</span> encodedString = base64UrlEncode(header) + <span class="string">'.'</span> + base64UrlEncode(payload);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> signature = HMACSHA256(encodedString, <span class="string">'secret'</span>); </span><br><span class="line"><span class="comment">// TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ</span></span><br></pre></td></tr></table></figure>
+
+<p>将这三部分用<code>.</code>连接成一个完整的字符串，构成了最终的jwt:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ</span><br></pre></td></tr></table></figure>
+
+<p>注意：secret是保存在服务器端的，jwt的签发生成也是在服务器端的，secret就是用来进行jwt的签发和jwt的验证，所以，它就是你服务端的私钥，在任何场景都不应该流露出去。一旦客户端得知这个secret，那就意味着客户端是可以自我签发jwt了。</p>
+<h5 id="JWT应用"><a href="#JWT应用" class="headerlink" title="JWT应用"></a>JWT应用</h5><p>一般是在请求头里加入<code>Authorization</code>，并加上<code>Bearer</code>标注：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">fetch(&apos;api/user/1&apos;, &#123;</span><br><span class="line">  headers: &#123;</span><br><span class="line">    &apos;Authorization&apos;: &apos;Bearer &apos; + token</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>服务端会验证token，如果验证通过就会返回相应的资源。整个流程就是这样的:</p>
+<p><img src="/2020/06/14/JWT%E6%8E%88%E6%9D%83%E9%AA%8C%E8%AF%81/jwt.png" alt></p>
+<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><h6 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h6><ul>
+<li><p>因为json的通用性，所以JWT是可以进行跨语言支持的，像JAVA,JavaScript,NodeJS,PHP等很多语言都可以使用。</p>
+</li>
+<li><p>因为有了payload部分，所以JWT可以在自身存储一些其他业务逻辑所必要的非敏感信息。</p>
+</li>
+<li><p>便于传输，jwt的构成非常简单，字节占用很小，所以它是非常便于传输的。</p>
+</li>
+<li><p>它不需要在服务端保存会话信息, 所以它易于应用的扩展。</p>
+</li>
+</ul>
+<h6 id="安全部分"><a href="#安全部分" class="headerlink" title="安全部分"></a>安全部分</h6><ul>
+<li>不应该在jwt的payload部分存放敏感信息，因为该部分是客户端可解密的部分。</li>
+<li>保护好secret私钥，该私钥非常重要。</li>
+<li>如果可以，请使用https协议。</li>
+</ul>
 ]]></content>
       <tags>
         <tag>java</tag>
@@ -868,161 +1023,6 @@
       </tags>
   </entry>
   <entry>
-    <title>JWT授权验证</title>
-    <url>/2020/06/14/JWT%E6%8E%88%E6%9D%83%E9%AA%8C%E8%AF%81/</url>
-    <content><![CDATA[<p>Jwt(Json web token)网络令牌<a id="more"></a></p>
-<h5 id="传统的session验证"><a href="#传统的session验证" class="headerlink" title="传统的session验证"></a>传统的session验证</h5><p>传统的基于session验证将用户信息保存为cookie存到服务器中，每次用户发起的请求都会验证cookie中的用户信息，这样服务器才能判断请求来自哪个用户。随着不同客户端用户的增加，独立的服务器无法承载更多的用户。</p>
-<p>用户认证之后，服务端做认证记录，如果认证的记录被保存在内存中的话，这意味着用户下次请求还必须要请求在这台服务器上，这样才能拿到授权的资源，这样在分布式的应用上，相应的限制了负载均衡器的能力。这也意味着限制了应用的扩展能力。</p>
-<p>因为是基于cookie来进行用户识别的，cookie如果被截获，用户就会很容易受到跨站请求伪造的攻击。</p>
-<h5 id="基于token的鉴权机制"><a href="#基于token的鉴权机制" class="headerlink" title="基于token的鉴权机制"></a>基于token的鉴权机制</h5><p>基于token的鉴权机制类似于http协议也是无状态的，它不需要在服务端去保留用户的认证信息或者会话信息。这就意味着基于token认证机制的应用不需要去考虑用户在哪一台服务器登录了，这就为应用的扩展提供了便利。</p>
-<p>流程上是这样的：</p>
-<ul>
-<li><p>用户使用用户名密码来请求服务器</p>
-</li>
-<li><p>服务器进行验证用户的信息</p>
-</li>
-<li><p>服务器通过验证发送给用户一个token</p>
-</li>
-<li><p>客户端存储token，并在每次请求时附送上这个token值</p>
-</li>
-<li><p>服务端验证token值，并返回数据</p>
-</li>
-</ul>
-<p>这个token必须要在每次请求时传递给服务端，它应该保存在请求头里， 另外，服务端要支持<code>CORS(跨来源资源共享)</code>策略，一般我们在服务端这么做就可以了<code>Access-Control-Allow-Origin: *</code>。</p>
-<h5 id="JWT的构成"><a href="#JWT的构成" class="headerlink" title="JWT的构成"></a>JWT的构成</h5><p>JWT是由三段信息构成的，将这三段信息文本用<code>.</code>链接一起就构成了Jwt字符串。就像这样:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ</span><br></pre></td></tr></table></figure>
-
-<p>第一部分我们称它为头部（header)，第二部分我们称其为载荷（payload，类似于飞机上承载的物品)，第三部分是签证（signature)。</p>
-<h6 id="header"><a href="#header" class="headerlink" title="header"></a>header</h6><p>jwt的头部承载两部分信息：</p>
-<ul>
-<li><p>声明类型，这里是jwt</p>
-</li>
-<li><p>声明加密的算法，通常直接使用HMAC SHA256</p>
-</li>
-</ul>
-<p>完整的头部就像是下面这样的JSON</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	'typ': 'JWT',</span><br><span class="line">	'alg': 'HS256'</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>然后将头部进行base64加密，构成第一部分<code>eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9</code>。</p>
-<h6 id="playload"><a href="#playload" class="headerlink" title="playload"></a>playload</h6><p>载荷就是存放有效信息的地方。这个名字像是特指飞机上承载的货品，这些有效信息包含三个部分</p>
-<ul>
-<li>标准中注册的声明</li>
-<li>公共的声明</li>
-<li>私有的声明</li>
-</ul>
-<p>标准中注册的声明 (建议但不强制使用) ：</p>
-<ul>
-<li>iss: jwt签发者</li>
-<li>sub: jwt所面向的用户</li>
-<li>aud: 接收jwt的一方</li>
-<li>exp: jwt的过期时间，这个过期时间必须要大于签发时间</li>
-<li>nbf: 定义在什么时间之前，该jwt都是不可用的.</li>
-<li>iat: jwt的签发时间</li>
-<li>jti: jwt的唯一身份标识，主要用来作为一次性token，从而回避重放攻击。</li>
-</ul>
-<p>公共的声明 ：<br> 公共的声明可以添加任何的信息，一般添加用户的相关信息或其他业务需要的必要信息。但不建议添加敏感信息，因为该部分在客户端可解密。</p>
-<p>私有的声明 ：<br> 私有声明是提供者和消费者所共同定义的声明，一般不建议存放敏感信息，因为base64是对称解密的，意味着该部分信息可以归类为明文信息。</p>
-<p>定义一个payload:</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"sub"</span>: <span class="string">"1234567890"</span>,</span><br><span class="line">  <span class="attr">"name"</span>: <span class="string">"John Doe"</span>,</span><br><span class="line">  <span class="attr">"admin"</span>: <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>然后将其进行base64加密，得到Jwt的第二部分<code>eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9</code>。</p>
-<h6 id="signature"><a href="#signature" class="headerlink" title="signature"></a>signature</h6><p>jwt的第三部分是一个签证信息，这个签证信息由三部分组成：</p>
-<ul>
-<li>header (base64后的)</li>
-<li>payload (base64后的)</li>
-<li>secret</li>
-</ul>
-<p>这个部分需要base64加密后的header和base64加密后的payload使用<code>.</code>连接组成的字符串，然后通过header中声明的加密方式进行加盐<code>secret</code>组合加密，然后就构成了jwt的第三部分。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// javascript</span></span><br><span class="line"><span class="keyword">var</span> encodedString = base64UrlEncode(header) + <span class="string">'.'</span> + base64UrlEncode(payload);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> signature = HMACSHA256(encodedString, <span class="string">'secret'</span>); </span><br><span class="line"><span class="comment">// TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ</span></span><br></pre></td></tr></table></figure>
-
-<p>将这三部分用<code>.</code>连接成一个完整的字符串，构成了最终的jwt:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ</span><br></pre></td></tr></table></figure>
-
-<p>注意：secret是保存在服务器端的，jwt的签发生成也是在服务器端的，secret就是用来进行jwt的签发和jwt的验证，所以，它就是你服务端的私钥，在任何场景都不应该流露出去。一旦客户端得知这个secret，那就意味着客户端是可以自我签发jwt了。</p>
-<h5 id="JWT应用"><a href="#JWT应用" class="headerlink" title="JWT应用"></a>JWT应用</h5><p>一般是在请求头里加入<code>Authorization</code>，并加上<code>Bearer</code>标注：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">fetch(&apos;api/user/1&apos;, &#123;</span><br><span class="line">  headers: &#123;</span><br><span class="line">    &apos;Authorization&apos;: &apos;Bearer &apos; + token</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>服务端会验证token，如果验证通过就会返回相应的资源。整个流程就是这样的:</p>
-<p><img src="/2020/06/14/JWT%E6%8E%88%E6%9D%83%E9%AA%8C%E8%AF%81/jwt.png" alt></p>
-<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><h6 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h6><ul>
-<li><p>因为json的通用性，所以JWT是可以进行跨语言支持的，像JAVA,JavaScript,NodeJS,PHP等很多语言都可以使用。</p>
-</li>
-<li><p>因为有了payload部分，所以JWT可以在自身存储一些其他业务逻辑所必要的非敏感信息。</p>
-</li>
-<li><p>便于传输，jwt的构成非常简单，字节占用很小，所以它是非常便于传输的。</p>
-</li>
-<li><p>它不需要在服务端保存会话信息, 所以它易于应用的扩展。</p>
-</li>
-</ul>
-<h6 id="安全部分"><a href="#安全部分" class="headerlink" title="安全部分"></a>安全部分</h6><ul>
-<li>不应该在jwt的payload部分存放敏感信息，因为该部分是客户端可解密的部分。</li>
-<li>保护好secret私钥，该私钥非常重要。</li>
-<li>如果可以，请使用https协议。</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java面经七</title>
-    <url>/2020/05/06/Java%E9%9D%A2%E7%BB%8F%E4%B8%83/</url>
-    <content><![CDATA[<p>Java面试总结七<a id="more"></a></p>
-<h6 id="Redis的List能在什么场景下使用？"><a href="#Redis的List能在什么场景下使用？" class="headerlink" title="Redis的List能在什么场景下使用？"></a>Redis的List能在什么场景下使用？</h6><p>Redis 中list的数据结构实现是双向链表，所以可以非常便捷的应用于消息队列（生产者 / 消费者模型）。消息的生产者只需要通过lpush将消息放入 list，消费者便可以通过rpop取出该消息，并且可以保证消息的有序性。如果需要实现带有优先级的消息队列也可以选择sorted set。而pub/sub功能也可以用作发布者 / 订阅者模型的消息。</p>
-<h6 id="AOF和RDB都有哪些优点？以及两者有何区别？"><a href="#AOF和RDB都有哪些优点？以及两者有何区别？" class="headerlink" title="AOF和RDB都有哪些优点？以及两者有何区别？"></a>AOF和RDB都有哪些优点？以及两者有何区别？</h6><p>Redis的数据都存放在内存中，如果没有配置持久化，redis重启后数据就全丢失了，于是需要开启redis的持久化功能，将数据保存到磁盘上，当redis重启后，可以从磁盘中恢复数据。redis提供两种方式进行持久化，一种是RDB持久化（原理是将Reids在内存中的数据库记录定时dump到磁盘上的RDB持久化），另外一种是AOF持久化（原理是将Reids的操作日志以追加的方式写入文件）。</p>
-<p>RDB 持久化可以在指定的时间间隔内生成数据集的时间点快照（point-in-time snapshot）。</p>
-<p>AOF 持久化记录服务器执行的所有写操作命令，并在服务器启动时，通过重新执行这些命令来还原数据集。 AOF 文件中的命令全部以 Redis 协议的格式来保存，新命令会被追加到文件的末尾。 Redis 还可以在后台对 AOF 文件进行重写（rewrite），使得 AOF 文件的体积不会超出保存数据集状态所需的实际大小。Redis 还可以同时使用 AOF 持久化和 RDB 持久化。 在这种情况下， 当 Redis 重启时， 它会优先使用 AOF 文件来还原数据集， 因为 AOF 文件保存的数据集通常比 RDB 文件所保存的数据集更完整。你甚至可以关闭持久化功能，让数据只在服务器运行时存在。</p>
-<p>RDB 的优点:</p>
-<p>RDB 是一个非常紧凑（compact）的文件，它保存了 Redis 在某个时间点上的数据集。 这种文件非常适合用于进行备份： 比如说，你可以在最近的 24 小时内，每小时备份一次 RDB 文件，并且在每个月的每一天，也备份一个 RDB 文件。 这样的话，即使遇上问题，也可以随时将数据集还原到不同的版本。RDB 非常适用于灾难恢复（disaster recovery）：它只有一个文件，并且内容都非常紧凑，可以（在加密后）将它传送到别的数据中心，或者亚马逊 S3 中。RDB 可以最大化 Redis 的性能：父进程在保存 RDB 文件时唯一要做的就是 fork 出一个子进程，然后这个子进程就会处理接下来的所有保存工作，父进程无须执行任何磁盘 I/O 操作。RDB 在恢复大数据集时的速度比 AOF 的恢复速度要快。</p>
-<p>RDB 的缺点:</p>
-<p>如果你需要尽量避免在服务器故障时丢失数据，那么 RDB 不适合你。 虽然 Redis 允许你设置不同的保存点（save point）来控制保存 RDB 文件的频率， 但是， 因为RDB 文件需要保存整个数据集的状态， 所以它并不是一个轻松的操作。 因此你可能会至少 5 分钟才保存一次 RDB 文件。 在这种情况下， 一旦发生故障停机， 你就可能会丢失好几分钟的数据。每次保存 RDB 的时候，Redis 都要 fork() 出一个子进程，并由子进程来进行实际的持久化工作。 在数据集比较庞大时， fork() 可能会非常耗时，造成服务器在某某毫秒内停止处理客户端； 如果数据集非常巨大，并且 CPU 时间非常紧张的话，那么这种停止时间甚至可能会长达整整一秒。 虽然 AOF 重写也需要进行 fork() ，但无论 AOF 重写的执行间隔有多长，数据的耐久性都不会有任何损失。</p>
-<p>AOF 的优点:</p>
-<p>使用 AOF 持久化会让 Redis 变得非常耐久（much more durable）：你可以设置不同的 fsync 策略，比如无 fsync ，每秒钟一次 fsync ，或者每次执行写入命令时 fsync 。 AOF 的默认策略为每秒钟 fsync 一次，在这种配置下，Redis 仍然可以保持良好的性能，并且就算发生故障停机，也最多只会丢失一秒钟的数据（ fsync 会在后台线程执行，所以主线程可以继续努力地处理命令请求）。AOF 文件是一个只进行追加操作的日志文件（append only log）， 因此对 AOF 文件的写入不需要进行 seek ， 即使日志因为某些原因而包含了未写入完整的命令（比如写入时磁盘已满，写入中途停机，等等）， redis-check-aof 工具也可以轻易地修复这种问题。</p>
-<p>Redis 可以在 AOF 文件体积变得过大时，自动地在后台对 AOF 进行重写： 重写后的新 AOF 文件包含了恢复当前数据集所需的最小命令集合。 整个重写操作是绝对安全的，因为 Redis 在创建新 AOF 文件的过程中，会继续将命令追加到现有的 AOF 文件里面，即使重写过程中发生停机，现有的 AOF 文件也不会丢失。 而一旦新 AOF 文件创建完毕，Redis 就会从旧 AOF 文件切换到新 AOF 文件，并开始对新 AOF 文件进行追加操作。AOF 文件有序地保存了对数据库执行的所有写入操作， 这些写入操作以 Redis 协议的格式保存， 因此 AOF 文件的内容非常容易被人读懂， 对文件进行分析（parse）也很轻松。 导出（export） AOF 文件也非常简单： 举个例子， 如果你不小心执行了 FLUSHALL 命令， 但只要 AOF 文件未被重写， 那么只要停止服务器， 移除 AOF 文件末尾的 FLUSHALL 命令， 并重启 Redis ， 就可以将数据集恢复到 FLUSHALL 执行之前的状态。</p>
-<p>AOF 的缺点:</p>
-<p>对于相同的数据集来说，AOF 文件的体积通常要大于 RDB 文件的体积。根据所使用的 fsync 策略，AOF 的速度可能会慢于 RDB 。 在一般情况下， 每秒 fsync 的性能依然非常高， 而关闭 fsync 可以让 AOF 的速度和 RDB 一样快， 即使在高负荷之下也是如此。 不过在处理巨大的写入载入时，RDB 可以提供更有保证的最大延迟时间（latency）。AOF 在过去曾经发生过这样的 bug ： 因为个别命令的原因，导致 AOF 文件在重新载入时，无法将数据集恢复成保存时的原样。 （举个例子，阻塞命令 BRPOPLPUSH 就曾经引起过这样的 bug 。） 测试套件里为这种情况添加了测试： 它们会自动生成随机的、复杂的数据集， 并通过重新载入这些数据来确保一切正常。 虽然这种 bug 在 AOF 文件中并不常见， 但是对比来说， RDB 几乎是不可能出现这种 bug 的。</p>
-<h6 id="Redis为什么是单线程？"><a href="#Redis为什么是单线程？" class="headerlink" title="Redis为什么是单线程？"></a>Redis为什么是单线程？</h6><p>因为CPU不是Redis的瓶颈。Redis的瓶颈最有可能是机器内存或者网络带宽。既然单线程容易实现，而且CPU不会成为瓶颈，那就顺理成章地采用单线程的方案了。</p>
-<p>缺点：服务器其他核闲置。</p>
-<h6 id="为什么-redis-读写速率快、性能好？"><a href="#为什么-redis-读写速率快、性能好？" class="headerlink" title="为什么 redis 读写速率快、性能好？"></a>为什么 redis 读写速率快、性能好？</h6><p>Redis是纯内存数据库，相对于读写磁盘，读写内存的速度就不是几倍几十倍了，一般，hash查找可以达到每秒百万次的数量级。</p>
-<p>多路复用IO，“多路”指的是多个网络连接，“复用”指的是复用同一个线程。采用多路 I/O 复用技术可以让单个线程高效的处理多个连接请求（尽量减少网络IO的时间消耗）。可以直接理解为：单线程的原子操作，避免上下文切换的时间和性能消耗；加上对内存中数据的处理速度，很自然的提高redis的吞吐量。</p>
-<h6 id="DAO模式"><a href="#DAO模式" class="headerlink" title="DAO模式"></a>DAO模式</h6><p>DAO（Data Access Object）顾名思义是一个为数据库或其他持久化机制提供了抽象接口的对象，在不暴露底层持久化方案实现细节的前提下提供了各种数据访问操作。在实际的开发中，应该将所有对数据源的访问操作进行抽象化后封装在一个公共API中。用程序设计语言来说，就是建立一个接口，接口中定义了此应用程序中将会用到的所有事务方法。在这个应用程序中，当需要和数据源进行交互的时候则使用这个接口，并且编写一个单独的类来实现这个接口，在逻辑上该类对应一个特定的数据存储。DAO模式实际上包含了两个模式，一是Data Accessor（数据访问器），二是Data Object（数据对象），前者要解决如何访问数据的问题，而后者要解决的是如何用对象封装数据。</p>
-<h6 id="Get和Post请求的区别"><a href="#Get和Post请求的区别" class="headerlink" title="Get和Post请求的区别"></a>Get和Post请求的区别</h6><p>①get请求用来从服务器上获得资源，而post是用来向服务器提交数据；</p>
-<p>②get将表单中数据按照name=value的形式，添加到action 所指向的URL 后面，并且两者使用”?”连接，而各个变量之间使用”&amp;”连接；post是将表单中的数据放在HTTP协议的请求头或消息体中，传递到action所指向URL；</p>
-<p>③get传输的数据要受到URL长度限制（1024字节）；而post可以传输大量的数据，上传文件通常要使用post方式；</p>
-<p>④使用get时参数会显示在地址栏上，如果这些数据不是敏感数据，那么可以使用get；对于敏感数据还是应用使用post；</p>
-<p>⑤get使用MIME类型application/x-www-form-urlencoded的URL编码（也叫百分号编码）文本的格式传递参数，保证被传送的参数由遵循规范的文本组成，例如一个空格的编码是”%20”。</p>
-<h6 id="J2EE常用名词解释"><a href="#J2EE常用名词解释" class="headerlink" title="J2EE常用名词解释"></a>J2EE常用名词解释</h6><p><strong>web 容器</strong>：给处于其中的应用程序组件（JSP，SERVLET）提供一个环境，使JSP,SERVLET直接和容器中的环境变量接接口互，不必关注其它系统问题。主要有WEB服务器来实现。例如：TOMCAT,WEBLOGIC,WEBSPHERE等。该容器提供的接口严格遵守J2EE规范中的WEBAPPLICATION 标准。我们把遵守以上标准的WEB服务器就叫做J2EE中的WEB容器。</p>
-<p><strong>Web container</strong>：实现J2EE体系结构中Web组件协议的容器。这个协议规定了一个Web组件运行时的环境，包括安全，一致性，生命周期管理，事务，配置和其它的服务。一个提供和JSP和J2EE平台APIs界面相同服务的容器。一个Web container 由Web服务器或者J2EE服务器提供。</p>
-<p><strong>EJB容器</strong>：Enterprise java bean 容器。更具有行业领域特色。他提供给运行在其中的组件EJB各种管理功能。只要满足J2EE规范的EJB放入该容器，马上就会被容器进行高效率的管理。并且可以通过现成的接口来获得系统级别的服务。例如邮件服务、事务管理。一个实现了J2EE体系结构中EJB组件规范的容器。这个规范指定了一个Enterprise bean的运行时环境，包括安全，一致性，生命周期，事务，配置，和其他的服务。</p>
-<p><strong>JNDI</strong>：（Java Naming &amp; Directory Interface）JAVA命名目录服务。主要提供的功能是：提供一个目录系统，让其它各地的应用程序在其上面留下自己的索引，从而满足快速查找和定位分布式应用程序的功能。</p>
-<p><strong>JMS</strong>：（Java Message Service）JAVA消息服务。主要实现各个应用程序之间的通讯。包括点对点和广播。</p>
-<p><strong>JTA</strong>：（Java Transaction API）JAVA事务服务。提供各种分布式事务服务。应用程序只需调用其提供的接口即可。</p>
-<p><strong>JAF</strong>：（Java Action FrameWork）JAVA安全认证框架。提供一些安全控制方面的框架。让开发者通过各种部署和自定义实现自己的个性安全控制策略。</p>
-<p><strong>RMI/IIOP</strong>: （Remote Method Invocation /internet对象请求中介协议）他们主要用于通过远程调用服务。例如，远程有一台计算机上运行一个程序，它提供股票分析服务，我们可以在本地计算机上实现对其直接调用。当然这是要通过一定的规范才能在异构的系统之间进行通信。RMI是JAVA特有的。RMI-IIOP出现以前，只有RMI和 CORBA两种选择来进行分布式程序设计。RMI-IIOP综合了RMI和CORBA的优点，克服了他们的缺点，使得程序员能更方便的编写分布式程序设计，实现分布式计算。首先，RMI-IIOP综合了RMI的简单性和CORBA的多语言性（兼容性），其次RMI-IIOP克服了RMI只能用于Java 的缺点和CORBA的复杂性。</p>
-<h6 id="Cookie和Session的区别"><a href="#Cookie和Session的区别" class="headerlink" title="Cookie和Session的区别"></a>Cookie和Session的区别</h6><p>1、cookie数据存放在客户的浏览器上，session数据放在服务器上。</p>
-<p>2、cookie不是很安全，别人可以分析存放在本地的COOKIE并进行COOKIE欺骗</p>
-<p>考虑到安全应当使用session。</p>
-<p>3、session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能，考虑到减轻服务器性能方面，应当使用COOKIE。</p>
-<p>4、单个cookie保存的数据不能超过4K，很多浏览器都限制一个站点最多保存20个cookie。</p>
-<h6 id="数据库优化方法"><a href="#数据库优化方法" class="headerlink" title="数据库优化方法"></a>数据库优化方法</h6><p>（1）选取最适用的字段属性</p>
-<p>MySQL可以很好的支持大数据量的存取，但是一般说来，数据库中的表越小，在它上面执行的查询也就会越快。因此，在创建表的时候，为了获得更好的性能，我们可以将表中字段的宽度设得尽可能小。</p>
-<p>例如，在定义邮政编码这个字段时，如果将其设置为CHAR(255),显然给数据库增加了不必要的空间，甚至使用VARCHAR这种类型也是多余的，因为CHAR(6)就可以很好的完成任务了。同样的，如果可以的话，我们应该使用MEDIUMINT而不是BIGIN来定义整型字段。</p>
-<p>另外一个提高效率的方法是在可能的情况下，应该尽量把字段设置为NOTNULL，这样在将来执行查询的时候，数据库不用去比较NULL值。<br>对于某些文本字段，例如“省份”或者“性别”，我们可以将它们定义为ENUM类型。因为在MySQL中，ENUM类型被当作数值型数据来处理，而数值型数据被处理起来的速度要比文本类型快得多。这样，我们又可以提高数据库的性能。</p>
-<p>（2）使用连接（JOIN）来代替子查询(Sub-Queries)</p>
-<p>MySQL从4.1开始支持SQL的子查询。这个技术可以使用SELECT语句来创建一个单列的查询结果，然后把这个结果作为过滤条件用在另一个查询中。例如，我们要将客户基本信息表中没有任何订单的客户删除掉，就可以利用子查询先从销售信息表中将所有发出订单的客户ID取出来，然后将结果传递给主查询</p>
-<p>（3）使用联合(UNION)来代替手动创建的临时表</p>
-<p>MySQL从4.0的版本开始支持union查询，它可以把需要使用临时表的两条或更多的select查询合并的一个查询中。在客户端的查询会话结束的时候，临时表会被自动删除，从而保证数据库整齐、高效。使用union来创建查询的时候，我们只需要用UNION作为关键字把多个select语句连接起来就可以了，要注意的是所有select语句中的字段数目要想同。下面的例子就演示了一个使用UNION的查询。</p>
-<p>（4）事务</p>
-<p>尽管我们可以使用子查询（Sub-Queries）、连接（JOIN）和联合（UNION）来创建各种各样的查询，但不是所有的数据库操作都可以只用一条或少数几条SQL语句就可以完成的。更多的时候是需要用到一系列的语句来完成某种工作。但是在这种情况下，当这个语句块中的某一条语句运行出错的时候，整个语句块的操作就会变得不确定起来。设想一下，要把某个数据同时插入两个相关联的表中，可能会出现这样的情况：第一个表中成功更新后，数据库突然出现意外状况，造成第二个表中的操作没有完成，这样，就会造成数据的不完整，甚至会破坏数据库中的数据。要避免这种情况，就应该使用事务，它的作用是：要么语句块中每条语句都操作成功，要么都失败。换句话说，就是可以保持数据库中数据的一致性和完整性。事物以BEGIN关键字开始，COMMIT关键字结束。在这之间的一条SQL操作失败，那么，ROLLBACK命令就可以把数据库恢复到BEGIN开始之前的状态。</p>
-<h6 id="数据库的三个范式"><a href="#数据库的三个范式" class="headerlink" title="数据库的三个范式"></a>数据库的三个范式</h6><p>第一范式（1NF）<br>强调的是列的原子性，即列不能够再分成其他几列。</p>
-<p>第二范式（2NF）<br>首先是 1NF，另外包含两部分内容，一是表必须有一个主键；二是没有包含在主键中的列必须完全依赖于主键，而不能只依赖于主键的一部分。<br>在1NF基础上，任何非主属性不依赖于其它非主属性[在2NF基础上消除传递依赖]。</p>
-<p>第三范式（3NF）<br>第三范式（3NF）是第二范式（2NF）的一个子集，即满足第三范式（3NF）必须满足第二范式（2NF）。首先是 2NF，另外非主键列必须直接依赖于主键，不能存在传递依赖。即不能存在：非主键列 A 依赖于非主键列 B，非主键列 B 依赖于主键的情况。</p>
-]]></content>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Java面经二</title>
     <url>/2020/05/01/Java%E9%9D%A2%E7%BB%8F%E4%BA%8C/</url>
     <content><![CDATA[<p>Java面试总结二<a id="more"></a></p>
@@ -1084,65 +1084,6 @@
 </li>
 </ul>
 <p>Set和Map容器都有基于哈希存储和排序树的两种实现版本，基于哈希存储的版本理论存取时间复杂度为O(1)，而基于排序树版本的实现在插入或删除元素时会按照元素或元素的键（key）构成排序树从而达到排序和去重的效果。</p>
-]]></content>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java面经五</title>
-    <url>/2020/05/04/Java%E9%9D%A2%E7%BB%8F%E4%BA%94/</url>
-    <content><![CDATA[<p>Java面试总结五<a id="more"></a></p>
-<h6 id="Spring中BeanFactory和ApplicationContext的区别是什么？"><a href="#Spring中BeanFactory和ApplicationContext的区别是什么？" class="headerlink" title="Spring中BeanFactory和ApplicationContext的区别是什么？"></a>Spring中BeanFactory和ApplicationContext的区别是什么？</h6><p><strong>BeanFactory</strong>：</p>
-<p>BeanFactory是spring中比较原始，比较古老的Factory。因为比较古老，所以BeanFactory无法支持spring插件，例如：AOP、Web应用等功能。</p>
-<p><strong>ApplicationContext</strong>：</p>
-<p>ApplicationContext是BeanFactory的子类，因为古老的BeanFactory无法满足不断更新的spring的需求，于是ApplicationContext就基本上代替了BeanFactory的工作，以一种更面向框架的工作方式以及对上下文进行分层和实现继承，并在这个基础上对功能进行扩展：</p>
-<ul>
-<li>MessageSource, 提供国际化的消息访问</li>
-<li>资源访问（如URL和文件）</li>
-<li>事件传递</li>
-<li>Bean的自动装配</li>
-<li>各种不同应用层的Context实现</li>
-</ul>
-<p>区别：</p>
-<ol>
-<li>如果使用ApplicationContext，如果配置的bean是singleton，那么不管你有没有或想不想用它，它都会被实例化。好处是可以预先加载，坏处是浪费内存。</li>
-<li>BeanFactory，当使用BeanFactory实例化对象时，配置的bean不会马上被实例化，而是等到你使用该bean的时候（getBean）才会被实例化。好处是节约内存，坏处是速度比较慢。多用于移动设备的开发。</li>
-<li>没有特殊要求的情况下，应该使用ApplicationContext完成。因为BeanFactory能完成的事情，ApplicationContext都能完成，并且提供了更多接近现在开发的功能。</li>
-</ol>
-<h6 id="Spring中Bean的作用域有哪些？"><a href="#Spring中Bean的作用域有哪些？" class="headerlink" title="Spring中Bean的作用域有哪些？"></a>Spring中Bean的作用域有哪些？</h6><p>在Spring的早期版本中，仅有两个作用域：<strong>singleton</strong>和<strong>prototype</strong>，前者表示Bean以单例的方式存在；后者表示每次从容器中调用Bean时，都会返回一个新的实例，prototype通常翻译为原型。</p>
-<p>设计模式中的创建型模式中也有一个原型模式，原型模式也是一个常用的模式，例如做一个室内设计软件，所有的素材都在工具箱中，而每次从工具箱中取出的都是素材对象的一个原型，可以通过对象克隆来实现原型模式。Spring 2.x中针对WebApplicationContext新增了3个作用域，分别是：<strong>request</strong>（每次HTTP请求都会创建一个新的Bean）、<strong>session</strong>（同一个HttpSession共享同一个Bean，不同的HttpSession使用不同的Bean）和<strong>globalSession</strong>（同一个全局Session共享一个Bean）。</p>
-<p>单例模式和原型模式都是重要的设计模式。一般情况下，无状态或状态不可变的类适合使用单例模式。在传统开发中，由于DAO持有Connection这个非线程安全对象因而没有使用单例模式；但在Spring环境下，所有DAO类对可以采用单例模式，因为Spring利用AOP和Java API中的ThreadLocal对非线程安全的对象进行了特殊处理。</p>
-<h6 id="依赖注入的方式"><a href="#依赖注入的方式" class="headerlink" title="依赖注入的方式"></a>依赖注入的方式</h6><p>1、Setter注入 2、构造器(Construct)注入 3、接口注入</p>
-<h6 id="Autowired和Resource的区别"><a href="#Autowired和Resource的区别" class="headerlink" title="Autowired和Resource的区别"></a>Autowired和Resource的区别</h6><p>1.共同点</p>
-<p>两者都可以写在字段和setter方法上。两者如果都写在字段上，那么就不需要再写setter方法。</p>
-<p>2、不同点</p>
-<p>（1）@Autowired</p>
-<p>@Autowired为Spring提供的注解，需要导入包org.springframework.beans.factory.annotation.Autowired;只按照byType注入。</p>
-<p>@Autowired注解是按照类型（byType）装配依赖对象，默认情况下它要求依赖对象必须存在，如果允许null值，可以设置它的required属性为false。如果我们想使用按照名称（byName）来装配，可以结合@Qualifier注解一起使用。</p>
-<p>（2）@Resource</p>
-<p>@Resource默认按照ByName自动注入，由J2EE提供，需要导入包javax.annotation.Resource。@Resource有两个重要的属性：name和type，而Spring将@Resource注解的name属性解析为bean的名字，而type属性则解析为bean的类型。所以，如果使用name属性，则使用byName的自动注入策略，而使用type属性时则使用byType自动注入策略。如果既不制定name也不制定type属性，这时将通过反射机制使用byName自动注入策略。</p>
-<h6 id="Spring支持的事务管理类型有哪些？"><a href="#Spring支持的事务管理类型有哪些？" class="headerlink" title="Spring支持的事务管理类型有哪些？"></a>Spring支持的事务管理类型有哪些？</h6><p>Spring支持编程式事务管理和声明式事务管理。许多Spring框架的用户选择声明式事务管理，因为这种方式和应用程序的关联较少，因此更加符合轻量级容器的概念。声明式事务管理要优于编程式事务管理，尽管在灵活性方面它弱于编程式事务管理，因为编程式事务允许你通过代码控制业务。</p>
-<p>事务分为全局事务和局部事务。全局事务由应用服务器管理，需要底层服务器JTA支持（如WebLogic、WildFly等）。局部事务和底层采用的持久化方案有关，例如使用JDBC进行持久化时，需要使用Connection对象来操作事务；而采用Hibernate进行持久化时，需要使用Session对象来操作事务。</p>
-<p>这些事务的父接口都是PlatformTransactionManager。Spring的事务管理机制是一种典型的策略模式，PlatformTransactionManager代表事务管理接口，该接口定义了三个方法，该接口并不知道底层如何管理事务，但是它的实现类必须提供getTransaction()方法（开启事务）、commit()方法（提交事务）、rollback()方法（回滚事务）的多态实现，这样就可以用不同的实现类代表不同的事务管理策略。使用JTA全局事务策略时，需要底层应用服务器支持，而不同的应用服务器所提供的JTA全局事务可能存在细节上的差异，因此实际配置全局事务管理器是可能需要使用JtaTransactionManager的子类，如：WebLogicJtaTransactionManager（Oracle的WebLogic服务器提供）、UowJtaTransactionManager（IBM的WebSphere服务器提供）等。</p>
-<h6 id="你如何理解AOP中的连接点（Joinpoint）、切点（Pointcut）、增强（Advice）、引介（Introduction）、织入（Weaving）、切面（Aspect）这些概念？"><a href="#你如何理解AOP中的连接点（Joinpoint）、切点（Pointcut）、增强（Advice）、引介（Introduction）、织入（Weaving）、切面（Aspect）这些概念？" class="headerlink" title="你如何理解AOP中的连接点（Joinpoint）、切点（Pointcut）、增强（Advice）、引介（Introduction）、织入（Weaving）、切面（Aspect）这些概念？"></a>你如何理解AOP中的连接点（Joinpoint）、切点（Pointcut）、增强（Advice）、引介（Introduction）、织入（Weaving）、切面（Aspect）这些概念？</h6><p>a. 连接点（Joinpoint）：程序执行的某个特定位置（如：某个方法调用前、调用后，方法抛出异常后）。一个类或一段程序代码拥有一些具有边界性质的特定点，这些代码中的特定点就是连接点。Spring仅支持方法的连接点。</p>
-<p>b. 切点（Pointcut）：如果连接点相当于数据中的记录，那么切点相当于查询条件，一个切点可以匹配多个连接点。Spring AOP的规则解析引擎负责解析切点所设定的查询条件，找到对应的连接点。</p>
-<p>c. 增强（Advice）：增强是织入到目标类连接点上的一段程序代码。Spring提供的增强接口都是带方位名的，如：BeforeAdvice、AfterReturningAdvice、ThrowsAdvice等。</p>
-<p>d. 引介（Introduction）：引介是一种特殊的增强，它为类添加一些属性和方法。这样，即使一个业务类原本没有实现某个接口，通过引介功能，可以动态的为该业务类添加接口的实现逻辑，让业务类成为这个接口的实现类。</p>
-<p>e. 织入（Weaving）：织入是将增强添加到目标类具体连接点上的过程，AOP有三种织入方式：①编译期织入：需要特殊的Java编译期（例如AspectJ的ajc）；②装载期织入：要求使用特殊的类加载器，在装载类的时候对类进行增强；③运行时织入：在运行时为目标类生成代理实现增强。Spring采用了动态代理的方式实现了运行时织入，而AspectJ采用了编译期织入和装载期织入的方式。</p>
-<p>f. 切面（Aspect）：切面是由切点和增强（引介）组成的，它包括了对横切关注功能的定义，也包括了对连接点的定义。</p>
-<h6 id="AOP的原理"><a href="#AOP的原理" class="headerlink" title="AOP的原理"></a>AOP的原理</h6><p>AOP（Aspect Orient Programming），指面向方面（切面）编程，作为面向对象的一种补充，用于处理系统中分布于各个模块的横切关注点，比如事务管理、日志、缓存等等。AOP实现的关键在于AOP框架自动创建的AOP代理，AOP代理主要分为静态代理和动态代理，静态代理的代表为AspectJ；而动态代理则以Spring AOP为代表。通常使用AspectJ的编译时增强实现AOP，AspectJ是静态代理的增强，所谓的静态代理就是AOP框架会在编译阶段生成AOP代理类，因此也称为编译时增强。</p>
-<p>Spring AOP中的动态代理主要有两种方式，JDK动态代理和CGLIB动态代理。JDK动态代理通过反射来接收被代理的类，并且要求被代理的类必须实现一个接口。JDK动态代理的核心是InvocationHandler接口和Proxy类。</p>
-<p>如果目标类没有实现接口，那么Spring AOP会选择使用CGLIB来动态代理目标类。CGLIB（Code Generation Library），是一个代码生成的类库，可以在运行时动态的生成某个类的子类，注意，CGLIB是通过继承的方式做的动态代理，因此如果某个类被标记为final，那么它是无法使用CGLIB做动态代理的。</p>
-<h6 id="AOP的应用场景"><a href="#AOP的应用场景" class="headerlink" title="AOP的应用场景"></a>AOP的应用场景</h6><p>Authentication 权限 ，Caching 缓存 ，Context passing 内容传递 ，Error handling 错误处理 ，Lazy loading 懒加载 ，Debugging 调试 ，logging, tracing, profiling and monitoring 记录跟踪　优化　校准，Performance optimization 性能优化 ，Persistence 持久化 ，Resource pooling 资源池 ，Synchronization 同步，Transactions 事务。</p>
-<h6 id="Spring框架的优点"><a href="#Spring框架的优点" class="headerlink" title="Spring框架的优点"></a>Spring框架的优点</h6><p>Spring是一个轻量级的DI和AOP容器框架，在项目的中的使用越来越广泛，它的优点主要有以下几点：</p>
-<p>Spring是一个非侵入式框架，其目标是使应用程序代码对框架的依赖最小化，应用代码可以在没有Spring或者其他容器的情况运行。</p>
-<p>Spring提供了一个一致的编程模型，使应用直接使用POJO开发，从而可以使运行环境隔离开来。</p>
-<p>Spring推动应用的设计风格向面向对象及面向接口编程转变，提高了代码的重用性和可测试性。</p>
-<p>Spring改进了结构体系的选择，虽然作为应用平台，Spring可以帮助我们选择不同的技术实现，比如从Hibernate切换到其他的ORM工具，从Struts切换到Spring MVC,尽管我们通常不会这么做，但是我们在技术方案上选择使用Spring作为应用平台，Spring至少为我们提供了这种可能性的选择，从而降低了平台锁定风险。</p>
-<h6 id="请问持久层设计要考虑的问题有哪些？请谈一下你用过的持久层框架都有哪些？"><a href="#请问持久层设计要考虑的问题有哪些？请谈一下你用过的持久层框架都有哪些？" class="headerlink" title="请问持久层设计要考虑的问题有哪些？请谈一下你用过的持久层框架都有哪些？"></a>请问持久层设计要考虑的问题有哪些？请谈一下你用过的持久层框架都有哪些？</h6><p>所谓”持久”就是将数据保存到可掉电式存储设备中以便今后使用，简单的说，就是将内存中的数据保存到关系型数据库、文件系统、消息队列等提供持久化支持的设备中。持久层就是系统中专注于实现数据持久化的相对独立的层面。</p>
-<p>持久层设计的目标包括：<br>- 数据存储逻辑的分离，提供抽象化的数据访问接口。<br>- 数据访问底层实现的分离，可以在不修改代码的情况下切换底层实现。<br>- 资源管理和调度的分离，在数据访问层实现统一的资源调度（如缓存机制）。<br>- 数据抽象，提供更面向对象的数据操作。</p>
-<p>持久层框架有：<br>- Hibernate<br>- MyBatis<br>- TopLink<br>- Guzz<br>- jOOQ<br>- Spring Data<br>- ActiveJDBC</p>
 ]]></content>
       <tags>
         <tag>java</tag>
@@ -1302,32 +1243,62 @@
       </tags>
   </entry>
   <entry>
-    <title>Linux程序自启动</title>
-    <url>/2019/11/22/Linux%E7%A8%8B%E5%BA%8F%E8%87%AA%E5%90%AF%E5%8A%A8/</url>
-    <content><![CDATA[<p>在Linux系统如何让程序开机时自动启动<a id="more"></a></p>
-<p><img src="/2019/11/22/Linux%E7%A8%8B%E5%BA%8F%E8%87%AA%E5%90%AF%E5%8A%A8/linuxicon.jpg" alt></p>
-<h5 id="修改启动配置文件"><a href="#修改启动配置文件" class="headerlink" title="修改启动配置文件"></a>修改启动配置文件</h5><p>新建一个sh后缀的脚本文件（例如:stratup.sh），把你所要启动的命令编写进去。然后再编辑“<strong>/etc/rc.local</strong>”启动配置文件，把<strong>脚本文件所在位置的全路径</strong>输入进去即可。</p>
-<h5 id="计划定时启动"><a href="#计划定时启动" class="headerlink" title="计划定时启动"></a>计划定时启动</h5><p>通过crontab可以设定程序的执行时间表， 例如让程序在每天的9点，或者每个星期一的9点执行一次。 </p>
-<p>crontab -l 列出时间表；<br>crontab -e编辑时间表；<br>crontab -d删除时间表；</p>
-<p>“-l”查看时间表；<br>“-e”是编辑（其实就是用vim编辑一个特定文件）；<br>“-d”删除，把该用户所有的时间表都删除，一般都是用“-e”编辑把不要了的时间表逐行删除；</p>
-<p>crontab文件的格式是：M H D m d CMD。<br>一个6个字段，其中最后一个CMD就是所要执行的程序，如haha.sh。<br>M：分钟（0-59）<br>H：小时（0-23）<br>D：日期（1-31）<br>m：月份（1-12）<br>d：一个星期中的某天（0-6，0代表周日）</p>
-<p>这5个时间字段用空格隔开，其值可以是一个数字，也可以用逗号隔开的多个数字（或其他） ，如果不需设置，则默认为“*”。</p>
-<p>例如，每天的9点0分执行startup.sh，就是“0 9 * * * /home/programs/./startup.sh”。</p>
-<h5 id="注册系统服务"><a href="#注册系统服务" class="headerlink" title="注册系统服务"></a>注册系统服务</h5><p>操作系统自带的服务，如ssh，ftp等等，开机都是自动启动的，我们也可以通过这种方式让自己开发的程序伪装成系统服务。</p>
-<p>比如我想把某个程序添加为系统服务，可以执行以下命令：</p>
-<p>chkconfig –add 程序名称(首先，添加为系统服务，<strong>注意add前面是两个横杠</strong>)</p>
-<p>chkconfig -leve 启动级别 服务名 on     </p>
-<p>（说明，3级别代表在命令行模式启动，5级别代表在图形界面启动，on表示开启）</p>
-<p>chkconfig -leve 启动级别 服务名 off（说明，off表示关闭自启动）</p>
-<p>例如：chkconfig -level 3 mysql on  (说明：让mysql服务在命令行模式，随系统启动)</p>
-<p>也可以使用  chkconfig –del 服务名称  来删除系统服务</p>
-<p>如果要查看哪些服务被添加为系统服务可以使用命令 ：</p>
-<p>  ntsysv 或者chkconfig –list</p>
-<p>如果要查看哪些程序被添加为自启动，可以使用命令 ：</p>
-<p>cat  /etc/rc.local（查看这个文件中添加了哪些程序路径）</p>
+    <title>Java面经五</title>
+    <url>/2020/05/04/Java%E9%9D%A2%E7%BB%8F%E4%BA%94/</url>
+    <content><![CDATA[<p>Java面试总结五<a id="more"></a></p>
+<h6 id="Spring中BeanFactory和ApplicationContext的区别是什么？"><a href="#Spring中BeanFactory和ApplicationContext的区别是什么？" class="headerlink" title="Spring中BeanFactory和ApplicationContext的区别是什么？"></a>Spring中BeanFactory和ApplicationContext的区别是什么？</h6><p><strong>BeanFactory</strong>：</p>
+<p>BeanFactory是spring中比较原始，比较古老的Factory。因为比较古老，所以BeanFactory无法支持spring插件，例如：AOP、Web应用等功能。</p>
+<p><strong>ApplicationContext</strong>：</p>
+<p>ApplicationContext是BeanFactory的子类，因为古老的BeanFactory无法满足不断更新的spring的需求，于是ApplicationContext就基本上代替了BeanFactory的工作，以一种更面向框架的工作方式以及对上下文进行分层和实现继承，并在这个基础上对功能进行扩展：</p>
+<ul>
+<li>MessageSource, 提供国际化的消息访问</li>
+<li>资源访问（如URL和文件）</li>
+<li>事件传递</li>
+<li>Bean的自动装配</li>
+<li>各种不同应用层的Context实现</li>
+</ul>
+<p>区别：</p>
+<ol>
+<li>如果使用ApplicationContext，如果配置的bean是singleton，那么不管你有没有或想不想用它，它都会被实例化。好处是可以预先加载，坏处是浪费内存。</li>
+<li>BeanFactory，当使用BeanFactory实例化对象时，配置的bean不会马上被实例化，而是等到你使用该bean的时候（getBean）才会被实例化。好处是节约内存，坏处是速度比较慢。多用于移动设备的开发。</li>
+<li>没有特殊要求的情况下，应该使用ApplicationContext完成。因为BeanFactory能完成的事情，ApplicationContext都能完成，并且提供了更多接近现在开发的功能。</li>
+</ol>
+<h6 id="Spring中Bean的作用域有哪些？"><a href="#Spring中Bean的作用域有哪些？" class="headerlink" title="Spring中Bean的作用域有哪些？"></a>Spring中Bean的作用域有哪些？</h6><p>在Spring的早期版本中，仅有两个作用域：<strong>singleton</strong>和<strong>prototype</strong>，前者表示Bean以单例的方式存在；后者表示每次从容器中调用Bean时，都会返回一个新的实例，prototype通常翻译为原型。</p>
+<p>设计模式中的创建型模式中也有一个原型模式，原型模式也是一个常用的模式，例如做一个室内设计软件，所有的素材都在工具箱中，而每次从工具箱中取出的都是素材对象的一个原型，可以通过对象克隆来实现原型模式。Spring 2.x中针对WebApplicationContext新增了3个作用域，分别是：<strong>request</strong>（每次HTTP请求都会创建一个新的Bean）、<strong>session</strong>（同一个HttpSession共享同一个Bean，不同的HttpSession使用不同的Bean）和<strong>globalSession</strong>（同一个全局Session共享一个Bean）。</p>
+<p>单例模式和原型模式都是重要的设计模式。一般情况下，无状态或状态不可变的类适合使用单例模式。在传统开发中，由于DAO持有Connection这个非线程安全对象因而没有使用单例模式；但在Spring环境下，所有DAO类对可以采用单例模式，因为Spring利用AOP和Java API中的ThreadLocal对非线程安全的对象进行了特殊处理。</p>
+<h6 id="依赖注入的方式"><a href="#依赖注入的方式" class="headerlink" title="依赖注入的方式"></a>依赖注入的方式</h6><p>1、Setter注入 2、构造器(Construct)注入 3、接口注入</p>
+<h6 id="Autowired和Resource的区别"><a href="#Autowired和Resource的区别" class="headerlink" title="Autowired和Resource的区别"></a>Autowired和Resource的区别</h6><p>1.共同点</p>
+<p>两者都可以写在字段和setter方法上。两者如果都写在字段上，那么就不需要再写setter方法。</p>
+<p>2、不同点</p>
+<p>（1）@Autowired</p>
+<p>@Autowired为Spring提供的注解，需要导入包org.springframework.beans.factory.annotation.Autowired;只按照byType注入。</p>
+<p>@Autowired注解是按照类型（byType）装配依赖对象，默认情况下它要求依赖对象必须存在，如果允许null值，可以设置它的required属性为false。如果我们想使用按照名称（byName）来装配，可以结合@Qualifier注解一起使用。</p>
+<p>（2）@Resource</p>
+<p>@Resource默认按照ByName自动注入，由J2EE提供，需要导入包javax.annotation.Resource。@Resource有两个重要的属性：name和type，而Spring将@Resource注解的name属性解析为bean的名字，而type属性则解析为bean的类型。所以，如果使用name属性，则使用byName的自动注入策略，而使用type属性时则使用byType自动注入策略。如果既不制定name也不制定type属性，这时将通过反射机制使用byName自动注入策略。</p>
+<h6 id="Spring支持的事务管理类型有哪些？"><a href="#Spring支持的事务管理类型有哪些？" class="headerlink" title="Spring支持的事务管理类型有哪些？"></a>Spring支持的事务管理类型有哪些？</h6><p>Spring支持编程式事务管理和声明式事务管理。许多Spring框架的用户选择声明式事务管理，因为这种方式和应用程序的关联较少，因此更加符合轻量级容器的概念。声明式事务管理要优于编程式事务管理，尽管在灵活性方面它弱于编程式事务管理，因为编程式事务允许你通过代码控制业务。</p>
+<p>事务分为全局事务和局部事务。全局事务由应用服务器管理，需要底层服务器JTA支持（如WebLogic、WildFly等）。局部事务和底层采用的持久化方案有关，例如使用JDBC进行持久化时，需要使用Connection对象来操作事务；而采用Hibernate进行持久化时，需要使用Session对象来操作事务。</p>
+<p>这些事务的父接口都是PlatformTransactionManager。Spring的事务管理机制是一种典型的策略模式，PlatformTransactionManager代表事务管理接口，该接口定义了三个方法，该接口并不知道底层如何管理事务，但是它的实现类必须提供getTransaction()方法（开启事务）、commit()方法（提交事务）、rollback()方法（回滚事务）的多态实现，这样就可以用不同的实现类代表不同的事务管理策略。使用JTA全局事务策略时，需要底层应用服务器支持，而不同的应用服务器所提供的JTA全局事务可能存在细节上的差异，因此实际配置全局事务管理器是可能需要使用JtaTransactionManager的子类，如：WebLogicJtaTransactionManager（Oracle的WebLogic服务器提供）、UowJtaTransactionManager（IBM的WebSphere服务器提供）等。</p>
+<h6 id="你如何理解AOP中的连接点（Joinpoint）、切点（Pointcut）、增强（Advice）、引介（Introduction）、织入（Weaving）、切面（Aspect）这些概念？"><a href="#你如何理解AOP中的连接点（Joinpoint）、切点（Pointcut）、增强（Advice）、引介（Introduction）、织入（Weaving）、切面（Aspect）这些概念？" class="headerlink" title="你如何理解AOP中的连接点（Joinpoint）、切点（Pointcut）、增强（Advice）、引介（Introduction）、织入（Weaving）、切面（Aspect）这些概念？"></a>你如何理解AOP中的连接点（Joinpoint）、切点（Pointcut）、增强（Advice）、引介（Introduction）、织入（Weaving）、切面（Aspect）这些概念？</h6><p>a. 连接点（Joinpoint）：程序执行的某个特定位置（如：某个方法调用前、调用后，方法抛出异常后）。一个类或一段程序代码拥有一些具有边界性质的特定点，这些代码中的特定点就是连接点。Spring仅支持方法的连接点。</p>
+<p>b. 切点（Pointcut）：如果连接点相当于数据中的记录，那么切点相当于查询条件，一个切点可以匹配多个连接点。Spring AOP的规则解析引擎负责解析切点所设定的查询条件，找到对应的连接点。</p>
+<p>c. 增强（Advice）：增强是织入到目标类连接点上的一段程序代码。Spring提供的增强接口都是带方位名的，如：BeforeAdvice、AfterReturningAdvice、ThrowsAdvice等。</p>
+<p>d. 引介（Introduction）：引介是一种特殊的增强，它为类添加一些属性和方法。这样，即使一个业务类原本没有实现某个接口，通过引介功能，可以动态的为该业务类添加接口的实现逻辑，让业务类成为这个接口的实现类。</p>
+<p>e. 织入（Weaving）：织入是将增强添加到目标类具体连接点上的过程，AOP有三种织入方式：①编译期织入：需要特殊的Java编译期（例如AspectJ的ajc）；②装载期织入：要求使用特殊的类加载器，在装载类的时候对类进行增强；③运行时织入：在运行时为目标类生成代理实现增强。Spring采用了动态代理的方式实现了运行时织入，而AspectJ采用了编译期织入和装载期织入的方式。</p>
+<p>f. 切面（Aspect）：切面是由切点和增强（引介）组成的，它包括了对横切关注功能的定义，也包括了对连接点的定义。</p>
+<h6 id="AOP的原理"><a href="#AOP的原理" class="headerlink" title="AOP的原理"></a>AOP的原理</h6><p>AOP（Aspect Orient Programming），指面向方面（切面）编程，作为面向对象的一种补充，用于处理系统中分布于各个模块的横切关注点，比如事务管理、日志、缓存等等。AOP实现的关键在于AOP框架自动创建的AOP代理，AOP代理主要分为静态代理和动态代理，静态代理的代表为AspectJ；而动态代理则以Spring AOP为代表。通常使用AspectJ的编译时增强实现AOP，AspectJ是静态代理的增强，所谓的静态代理就是AOP框架会在编译阶段生成AOP代理类，因此也称为编译时增强。</p>
+<p>Spring AOP中的动态代理主要有两种方式，JDK动态代理和CGLIB动态代理。JDK动态代理通过反射来接收被代理的类，并且要求被代理的类必须实现一个接口。JDK动态代理的核心是InvocationHandler接口和Proxy类。</p>
+<p>如果目标类没有实现接口，那么Spring AOP会选择使用CGLIB来动态代理目标类。CGLIB（Code Generation Library），是一个代码生成的类库，可以在运行时动态的生成某个类的子类，注意，CGLIB是通过继承的方式做的动态代理，因此如果某个类被标记为final，那么它是无法使用CGLIB做动态代理的。</p>
+<h6 id="AOP的应用场景"><a href="#AOP的应用场景" class="headerlink" title="AOP的应用场景"></a>AOP的应用场景</h6><p>Authentication 权限 ，Caching 缓存 ，Context passing 内容传递 ，Error handling 错误处理 ，Lazy loading 懒加载 ，Debugging 调试 ，logging, tracing, profiling and monitoring 记录跟踪　优化　校准，Performance optimization 性能优化 ，Persistence 持久化 ，Resource pooling 资源池 ，Synchronization 同步，Transactions 事务。</p>
+<h6 id="Spring框架的优点"><a href="#Spring框架的优点" class="headerlink" title="Spring框架的优点"></a>Spring框架的优点</h6><p>Spring是一个轻量级的DI和AOP容器框架，在项目的中的使用越来越广泛，它的优点主要有以下几点：</p>
+<p>Spring是一个非侵入式框架，其目标是使应用程序代码对框架的依赖最小化，应用代码可以在没有Spring或者其他容器的情况运行。</p>
+<p>Spring提供了一个一致的编程模型，使应用直接使用POJO开发，从而可以使运行环境隔离开来。</p>
+<p>Spring推动应用的设计风格向面向对象及面向接口编程转变，提高了代码的重用性和可测试性。</p>
+<p>Spring改进了结构体系的选择，虽然作为应用平台，Spring可以帮助我们选择不同的技术实现，比如从Hibernate切换到其他的ORM工具，从Struts切换到Spring MVC,尽管我们通常不会这么做，但是我们在技术方案上选择使用Spring作为应用平台，Spring至少为我们提供了这种可能性的选择，从而降低了平台锁定风险。</p>
+<h6 id="请问持久层设计要考虑的问题有哪些？请谈一下你用过的持久层框架都有哪些？"><a href="#请问持久层设计要考虑的问题有哪些？请谈一下你用过的持久层框架都有哪些？" class="headerlink" title="请问持久层设计要考虑的问题有哪些？请谈一下你用过的持久层框架都有哪些？"></a>请问持久层设计要考虑的问题有哪些？请谈一下你用过的持久层框架都有哪些？</h6><p>所谓”持久”就是将数据保存到可掉电式存储设备中以便今后使用，简单的说，就是将内存中的数据保存到关系型数据库、文件系统、消息队列等提供持久化支持的设备中。持久层就是系统中专注于实现数据持久化的相对独立的层面。</p>
+<p>持久层设计的目标包括：<br>- 数据存储逻辑的分离，提供抽象化的数据访问接口。<br>- 数据访问底层实现的分离，可以在不修改代码的情况下切换底层实现。<br>- 资源管理和调度的分离，在数据访问层实现统一的资源调度（如缓存机制）。<br>- 数据抽象，提供更面向对象的数据操作。</p>
+<p>持久层框架有：<br>- Hibernate<br>- MyBatis<br>- TopLink<br>- Guzz<br>- jOOQ<br>- Spring Data<br>- ActiveJDBC</p>
 ]]></content>
       <tags>
-        <tag>Linux</tag>
+        <tag>java</tag>
       </tags>
   </entry>
   <entry>
@@ -1400,104 +1371,6 @@
 <li>autodetect：如果有默认的构造器，则通过constructor的方式进行自动装配，否则使用byType的方式进行自动装配；</li>
 </ul>
 <p>自动装配没有自定义装配方式那么精确，而且不能自动装配简单属性（基本类型、字符串等），在使用时应注意。</p>
-]]></content>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java面经六</title>
-    <url>/2020/05/05/Java%E9%9D%A2%E7%BB%8F%E5%85%AD/</url>
-    <content><![CDATA[<p>Java面试总结六<a id="more"></a></p>
-<h6 id="MyBatis中命名空间-namespace-的作用"><a href="#MyBatis中命名空间-namespace-的作用" class="headerlink" title="MyBatis中命名空间(namespace)的作用"></a>MyBatis中命名空间(namespace)的作用</h6><p>在大型项目中，可能存在大量的SQL语句，这时候为每个SQL语句起一个唯一的标识（ID）就变得并不容易了。为了解决这个问题，在MyBatis中，可以为每个映射文件起一个唯一的命名空间，这样定义在这个映射文件中的每个SQL语句就成了定义在这个命名空间中的一个ID。只要我们能够保证每个命名空间中这个ID是唯一的，即使在不同映射文件中的语句ID相同，也不会再产生冲突了。</p>
-<h6 id="SpringMVC的工作原理"><a href="#SpringMVC的工作原理" class="headerlink" title="SpringMVC的工作原理"></a>SpringMVC的工作原理</h6><p>①客户端的所有请求都交给前端控制器DispatcherServlet来处理，它会负责调用系统的其他模块来真正处理用户的请求。</p>
-<p>② DispatcherServlet收到请求后，将根据请求的信息（包括URL、HTTP协议方法、请求头、请求参数、Cookie等）以及HandlerMapping的配置找到处理该请求的Handler（任何一个对象都可以作为请求的Handler）。</p>
-<p>③在这个地方Spring会通过HandlerAdapter对该处理器进行封装。</p>
-<p>④ HandlerAdapter是一个适配器，它用统一的接口对各种Handler中的方法进行调用。</p>
-<p>⑤ Handler完成对用户请求的处理后，会返回一个ModelAndView对象给DispatcherServlet，ModelAndView顾名思义，包含了数据模型以及相应的视图的信息。</p>
-<p>⑥ ModelAndView的视图是逻辑视图，DispatcherServlet还要借助ViewResolver完成从逻辑视图到真实视图对象的解析工作。</p>
-<p>⑦ 当得到真正的视图对象后，DispatcherServlet会利用视图对象对模型数据进行渲染。</p>
-<p>⑧ 客户端得到响应，可能是一个普通的HTML页面，也可以是XML或JSON字符串，还可以是一张图片或者一个PDF文件。</p>
-<h6 id="Mybatis和Hibernate的区别"><a href="#Mybatis和Hibernate的区别" class="headerlink" title="Mybatis和Hibernate的区别"></a>Mybatis和Hibernate的区别</h6><p>1、简介</p>
-<p>Hibernate：Hibernate是当前最流行的ORM框架之一，对JDBC提供了较为完整的封装。Hibernate的O/R Mapping实现了POJO 和数据库表之间的映射，以及SQL的自动生成和执行。</p>
-<p>Mybatis：Mybatis同样也是非常流行的ORM框架，主要着力点在于 POJO 与 SQL 之间的映射关系。然后通过映射配置文件，将SQL所需的参数，以及返回的结果字段映射到指定 POJO 。相对Hibernate“O/R”而言，Mybatis 是一种“Sql Mapping”的ORM实现。</p>
-<p>2、缓存机制对比</p>
-<p>相同点</p>
-<p>Hibernate和Mybatis的二级缓存除了采用系统默认的缓存机制外，都可以通过实现你自己的缓存或为其他第三方缓存方案，创建适配器来完全覆盖缓存行为。</p>
-<p>不同点</p>
-<p>Hibernate的二级缓存配置在SessionFactory生成的配置文件中进行详细配置，然后再在具体的表-对象映射中配置是那种缓存。</p>
-<p>MyBatis的二级缓存配置都是在每个具体的表-对象映射中进行详细配置，这样针对不同的表可以自定义不同的缓存机制。并且Mybatis可以在命名空间中共享相同的缓存配置和实例，通过Cache-ref来实现。</p>
-<p>两者比较</p>
-<p>因为Hibernate对查询对象有着良好的管理机制，用户无需关心SQL。所以在使用二级缓存时如果出现脏数据，系统会报出错误并提示。而MyBatis在这一方面，使用二级缓存时需要特别小心。如果不能完全确定数据更新操作的波及范围，避免Cache的盲目使用。否则，脏数据的出现会给系统的正常运行带来很大的隐患。</p>
-<p>Mybatis：小巧、方便、高效、简单、直接、半自动化。</p>
-<p>Hibernate：强大、方便、高效、复杂、间接、全自动化。</p>
-<h6 id="1分钟之内只能处理1000个请求，你怎么实现？"><a href="#1分钟之内只能处理1000个请求，你怎么实现？" class="headerlink" title="1分钟之内只能处理1000个请求，你怎么实现？"></a>1分钟之内只能处理1000个请求，你怎么实现？</h6><p>限流的几种放大：计数器，滑动窗口漏桶法，令牌桶</p>
-<h6 id="JSP的静态包含和动态包含的区别"><a href="#JSP的静态包含和动态包含的区别" class="headerlink" title="JSP的静态包含和动态包含的区别"></a>JSP的静态包含和动态包含的区别</h6><p>静态包含是通过JSP的<code>&lt;%@include file=&quot;···&quot;&gt;</code> 指令包含页面，动态包含是通过JSP标准动作<code>&lt;jsp:include page=&quot;···&quot; flush=&quot;true&quot;&gt;</code>包含页面。</p>
-<p>静态包含是编译时包含，如果包含的页面不存在则会产生编译错误，而且两个页面的”contentType”属性应保持一致，因为两个页面会合二为一，只产生一个class文件，因此被包含页面发生的变动再包含它的页面更新前不会得到更新。</p>
-<p>动态包含是运行时包含，可以向被包含的页面传递参数，包含页面和被包含页面是独立的，会编译出两个class文件，如果被包含的页面不存在，不会产生编译错误，也不影响页面其他部分的执行。</p>
-<p>静态包含<br><code>&lt;%@ include file=&quot;...&quot; %&gt;</code></p>
-<p>动态包含</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;jsp:include page=<span class="string">"..."</span>&gt;</span><br><span class="line">&lt;jsp:param name=<span class="string">"..."</span> value=<span class="string">"..."</span> /&gt;</span><br><span class="line">&lt;/jsp:include&gt;</span><br></pre></td></tr></table></figure>
-
-<h6 id="Request对象的主要方法"><a href="#Request对象的主要方法" class="headerlink" title="Request对象的主要方法"></a>Request对象的主要方法</h6><p>setAttribute(String name,Object)：设置名字为name的request的参数值</p>
-<p>getAttribute(String name)：返回由name指定的属性值</p>
-<p>getAttributeNames()：返回request对象所有属性的名字集合，结果是一个枚举的实例</p>
-<p>getCookies()：返回客户端的所有Cookie对象，结果是一个Cookie数组</p>
-<p>getCharacterEncoding()：返回请求中的字符编码方式</p>
-<p>getContentLength()：返回请求的Body的长度</p>
-<p>getHeader(String name)：获得HTTP协议定义的文件头信息</p>
-<p>getHeaders(String name)：返回指定名字的request Header的所有值，结果是一个枚举的实例</p>
-<p>getHeaderNames()：返回所以request Header的名字，结果是一个枚举的实例</p>
-<p>getInputStream()：返回请求的输入流，用于获得请求中的数据</p>
-<p>getMethod()：获得客户端向服务器端传送数据的方法</p>
-<p>getParameter(String name)：获得客户端传送给服务器端的有name指定的参数值</p>
-<p>getParameterNames()：获得客户端传送给服务器端的所有参数的名字，结果是一个枚举的实例</p>
-<p>getParameterValues(String name)：获得有name指定的参数的所有值</p>
-<p>getProtocol()：获取客户端向服务器端传送数据所依据的协议名称</p>
-<p>getQueryString()：获得查询字符串</p>
-<p>getRequestURI()：获取发出请求字符串的客户端地址</p>
-<p>getRemoteAddr()：获取客户端的IP地址</p>
-<p>getRemoteHost()：获取客户端的名字</p>
-<p>getSession([Boolean create])：返回和请求相关Session</p>
-<p>getServerName()：获取服务器的名字</p>
-<p>getServletPath()：获取客户端所请求的脚本文件的路径</p>
-<p>getServerPort()：获取服务器的端口号</p>
-<p>removeAttribute(String name)：删除请求中的一个属性</p>
-<h6 id="四种会话跟踪技术"><a href="#四种会话跟踪技术" class="headerlink" title="四种会话跟踪技术"></a>四种会话跟踪技术</h6><p>会话跟踪是一种灵活、轻便的机制，它使Web上的状态编程变为可能。</p>
-<p>HTTP是一种无状态协议，每当用户发出请求时，服务器就会做出响应，客户端与服务器之间的联系是离散的、非连续的。</p>
-<p>当用户在同一网站的多个页面之间转换时，根本无法确定是否是同一个客户，会话跟踪技术就可以解决这个问题。当一个客户在多个页面间切换时，服务器会保存该用户的信息。有四种方法可以实现会话跟踪技术：URL重写、隐藏表单域、Cookie、Session。</p>
-<p>1）隐藏表单域：<input type="hidden">，非常适合步需要大量数据存储的会话应用。</p>
-<p>2）URL 重写:URL 可以在后面附加参数，和服务器的请求一起发送，这些参数为名字/值对。</p>
-<p>3）Cookie:一个 Cookie 是一个小的，已命名数据元素。服务器使用 SET-Cookie 头标将它作为 HTTP响应的一部分传送到客户端，客户端被请求保存 Cookie 值，在对同一服务器的后续请求使用一个Cookie 头标将之返回到服务器。与其它技术比较，Cookie 的一个优点是在浏览器会话结束后，甚至在客户端计算机重启后它仍可以保留其值。</p>
-<p>4）Session：使用 setAttribute(String str,Object obj)方法将对象捆绑到一个会话</p>
-<h6 id="web-xml文件中可以配置哪些内容？"><a href="#web-xml文件中可以配置哪些内容？" class="headerlink" title="web.xml文件中可以配置哪些内容？"></a>web.xml文件中可以配置哪些内容？</h6><p>web.xml用于配置Web应用的相关信息，如：监听器（listener）、过滤器（filter）、 Servlet、相关参数、会话超时时间、安全验证方式、错误页面等，下面是一些开发中常见的配置：</p>
-<p>①配置Spring上下文加载监听器加载Spring配置文件并创建IoC容器：</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">context-param</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">param-value</span>&gt;</span>classpath:applicationContext.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">context-param</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">listener</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">listener-class</span>&gt;</span></span><br><span class="line">org.springframework.web.context.ContextLoaderListener</span><br><span class="line"><span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">listener</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>②配置Spring的OpenSessionInView过滤器来解决延迟加载和Hibernate会话关闭的矛盾：</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>openSessionInView<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">filter-class</span>&gt;</span></span><br><span class="line">org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</span><br><span class="line"><span class="tag">&lt;/<span class="name">filter-class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>openSessionInView<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>③配置会话超时时间为10分钟：</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">session-config</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">session-timeout</span>&gt;</span>10<span class="tag">&lt;/<span class="name">session-timeout</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">session-config</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>④配置404和Exception的错误页面：</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">error-page</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">error-code</span>&gt;</span>404<span class="tag">&lt;/<span class="name">error-code</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">location</span>&gt;</span>/error.jsp<span class="tag">&lt;/<span class="name">location</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">error-page</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">error-page</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">exception-type</span>&gt;</span>java.lang.Exception<span class="tag">&lt;/<span class="name">exception-type</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">location</span>&gt;</span>/error.jsp<span class="tag">&lt;/<span class="name">location</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">error-page</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>⑤配置安全认证方式：</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">security-constraint</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">web-resource-collection</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">web-resource-name</span>&gt;</span>ProtectedArea<span class="tag">&lt;/<span class="name">web-resource-name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/admin/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">http-method</span>&gt;</span>GET<span class="tag">&lt;/<span class="name">http-method</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">http-method</span>&gt;</span>POST<span class="tag">&lt;/<span class="name">http-method</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">web-resource-collection</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">auth-constraint</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">role-name</span>&gt;</span>admin<span class="tag">&lt;/<span class="name">role-name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">auth-constraint</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">security-constraint</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">login-config</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">auth-method</span>&gt;</span>BASIC<span class="tag">&lt;/<span class="name">auth-method</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">login-config</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">security-role</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">role-name</span>&gt;</span>admin<span class="tag">&lt;/<span class="name">role-name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">security-role</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h6 id="Javaweb开发中的监听器的理解"><a href="#Javaweb开发中的监听器的理解" class="headerlink" title="Javaweb开发中的监听器的理解"></a>Javaweb开发中的监听器的理解</h6><p>Java Web开发中的监听器（listener）就是application、session、request三个对象创建、销毁或者往其中添加修改删除属性时自动执行代码的功能组件，如下所示：</p>
-<p>①ServletContextListener：对Servlet上下文的创建和销毁进行监听。</p>
-<p>②ServletContextAttributeListener：监听Servlet上下文属性的添加、删除和替换。</p>
-<p>③HttpSessionListener：对Session的创建和销毁进行监听。</p>
-<p>session的销毁有两种情况：</p>
-<p>1). session超时（可以在web.xml中通过<code>&lt;session-config&gt;/&lt;session-timeout&gt;</code>标签配置超时时间）；</p>
-<p>2). 通过调用session对象的invalidate()方法使session失效。</p>
-<p>④HttpSessionAttributeListener：对Session对象中属性的添加、删除和替换进行监听。</p>
-<p>⑤ServletRequestListener：对请求对象的初始化和销毁进行监听。</p>
-<p>⑥ServletRequestAttributeListener：对请求对象属性的添加、删除和替换进行监听。</p>
-<h6 id="请问过滤器有哪些作用？以及过滤器的用法又是什么呢"><a href="#请问过滤器有哪些作用？以及过滤器的用法又是什么呢" class="headerlink" title="请问过滤器有哪些作用？以及过滤器的用法又是什么呢?"></a>请问过滤器有哪些作用？以及过滤器的用法又是什么呢?</h6><p>Java Web开发中的过滤器（filter）是从Servlet 2.3规范开始增加的功能，并在Servlet 2.4规范中得到增强。对Web应用来说，过滤器是一个驻留在服务器端的Web组件，它可以截取客户端和服务器之间的请求与响应信息，并对这些信息进行过滤。当Web容器接受到一个对资源的请求时，它将判断是否有过滤器与这个资源相关联。如果有，那么容器将把请求交给过滤器进行处理。在过滤器中，你可以改变请求的内容，或者重新设置请求的报头信息，然后再将请求发送给目标资源。当目标资源对请求作出响应时候，容器同样会将响应先转发给过滤器，在过滤器中你可以对响应的内容进行转换，然后再将响应发送到客户端。</p>
-<p>常见的过滤器用途主要包括：对用户请求进行统一认证、对用户的访问请求进行记录和审核、对用户发送的数据进行过滤或替换、转换图象格式、对响应内容进行压缩以减少传输量、对请求或响应进行加解密处理、触发资源访问事件、对XML的输出应用XSLT等。<br>和过滤器相关的接口主要有：Filter、FilterConfig和FilterChain。</p>
 ]]></content>
       <tags>
         <tag>java</tag>
@@ -1690,29 +1563,130 @@
       </tags>
   </entry>
   <entry>
-    <title>Oracle中的COALESCER函数</title>
-    <url>/2020/07/26/Oracle%E4%B8%AD%E7%9A%84COALESCER%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<p>coalesce函数的使用说明<a id="more"></a></p>
-<h5 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h5><p>返回其参数中第一个非空表达式。</p>
-<h6 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h6><p>coalesce ( 表达式1 ,…表达式n )</p>
-<h6 id="返回类型"><a href="#返回类型" class="headerlink" title="返回类型"></a>返回类型</h6><p>返回数据类型优先级最高的表达式的数据类型，如果所有参数均为null，则coalesce返回null。</p>
-<h5 id="等效的case函数"><a href="#等效的case函数" class="headerlink" title="等效的case函数"></a>等效的case函数</h5><h6 id="case语句"><a href="#case语句" class="headerlink" title="case语句"></a>case语句</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CASE</span><br><span class="line"></span><br><span class="line">   WHEN (expression1 IS NOT NULL) THEN expression1</span><br><span class="line"></span><br><span class="line">   ...</span><br><span class="line"></span><br><span class="line">   WHEN (expressionN IS NOT NULL) THEN expressionN</span><br><span class="line"></span><br><span class="line">   ELSE NULL</span><br><span class="line"></span><br><span class="line">END</span><br></pre></td></tr></table></figure>
-
-<p>尽管 IS NULL 等效于 COALESCE，但它们的行为是不同的。包含具有非空参数的 IS NULL 的表达式将视为 NOT NULL，而包含具有非空参数的 COALESCE 的表达式将视为 NULL。</p>
-<h6 id="SQL-Server的非空参数问题"><a href="#SQL-Server的非空参数问题" class="headerlink" title="SQL Server的非空参数问题"></a>SQL Server的非空参数问题</h6><p>在 SQL Server 中，若要对包含具有非空参数的 COALESCE 的表达式创建索引，可以使用 PERSISTED 列属性将计算列持久化，例如下面案例</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CREATE TABLE #CheckSumTest</span><br><span class="line"></span><br><span class="line">    (</span><br><span class="line"></span><br><span class="line">        ID int identity ,</span><br><span class="line"></span><br><span class="line">        Num int DEFAULT ( RAND() * 100 ) ,</span><br><span class="line"></span><br><span class="line">        RowCheckSum AS COALESCE( CHECKSUM( id , num ) , 0 ) PERSISTED PRIMARY KEY</span><br><span class="line"></span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
-
-<h6 id="COALESCE-使用示例"><a href="#COALESCE-使用示例" class="headerlink" title="COALESCE 使用示例"></a>COALESCE 使用示例</h6><p>在以下示例中，wages 表中包括以下三列有关雇员的年薪的信息：hourly wage、salary 和 commission。但是，每个雇员只能接受一种付款方式。若要确定支付给所有雇员的金额总数，请使用 COALESCE 函数，它只接受在 hourly_wage、salary 和 commission 中找到的非空值。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SET NOCOUNT ON;</span><br><span class="line"></span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line">USE master;</span><br><span class="line"></span><br><span class="line">IF EXISTS (SELECT name FROM sys.tables</span><br><span class="line"></span><br><span class="line">      WHERE name = &apos;wages&apos;)</span><br><span class="line"></span><br><span class="line">   DROP TABLE wages;</span><br><span class="line"></span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line">CREATE TABLE wages</span><br><span class="line"></span><br><span class="line">(</span><br><span class="line"></span><br><span class="line">   emp_id      tinyint    identity,</span><br><span class="line"></span><br><span class="line">   hourly_wage   decimal   NULL,</span><br><span class="line"></span><br><span class="line">   salary      decimal    NULL,</span><br><span class="line"></span><br><span class="line">   commission   decimal   NULL,</span><br><span class="line"></span><br><span class="line">   num_sales   tinyint   NULL</span><br><span class="line"></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(10.00, NULL, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(20.00, NULL, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(30.00, NULL, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(40.00, NULL, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, 10000.00, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, 20000.00, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, 30000.00, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, 40000.00, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, NULL, 15000, 3);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, NULL, 25000, 2);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, NULL, 20000, 6);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, NULL, 14000, 4);</span><br><span class="line"></span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line">SET NOCOUNT OFF;</span><br><span class="line"></span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line">SELECT CAST(COALESCE(hourly_wage * 40 * 52,</span><br><span class="line"></span><br><span class="line">   salary,</span><br><span class="line"></span><br><span class="line">   commission * num_sales) AS money) AS &apos;Total Salary&apos;</span><br><span class="line"></span><br><span class="line">FROM wages;</span><br><span class="line"></span><br><span class="line">GO</span><br></pre></td></tr></table></figure>
-
-<p>结果集</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Total Salary</span><br><span class="line"></span><br><span class="line">------------</span><br><span class="line"></span><br><span class="line">20800.0000</span><br><span class="line"></span><br><span class="line">41600.0000</span><br><span class="line"></span><br><span class="line">62400.0000</span><br><span class="line"></span><br><span class="line">83200.0000</span><br><span class="line"></span><br><span class="line">10000.0000</span><br><span class="line"></span><br><span class="line">20000.0000</span><br><span class="line"></span><br><span class="line">30000.0000</span><br><span class="line"></span><br><span class="line">40000.0000</span><br><span class="line"></span><br><span class="line">45000.0000</span><br><span class="line"></span><br><span class="line">50000.0000</span><br><span class="line"></span><br><span class="line">120000.0000</span><br><span class="line"></span><br><span class="line">56000.0000</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">(12 row(s) affected)</span><br></pre></td></tr></table></figure>
-
-
-
+    <title>Linux程序自启动</title>
+    <url>/2019/11/22/Linux%E7%A8%8B%E5%BA%8F%E8%87%AA%E5%90%AF%E5%8A%A8/</url>
+    <content><![CDATA[<p>在Linux系统如何让程序开机时自动启动<a id="more"></a></p>
+<p><img src="/2019/11/22/Linux%E7%A8%8B%E5%BA%8F%E8%87%AA%E5%90%AF%E5%8A%A8/linuxicon.jpg" alt></p>
+<h5 id="修改启动配置文件"><a href="#修改启动配置文件" class="headerlink" title="修改启动配置文件"></a>修改启动配置文件</h5><p>新建一个sh后缀的脚本文件（例如:stratup.sh），把你所要启动的命令编写进去。然后再编辑“<strong>/etc/rc.local</strong>”启动配置文件，把<strong>脚本文件所在位置的全路径</strong>输入进去即可。</p>
+<h5 id="计划定时启动"><a href="#计划定时启动" class="headerlink" title="计划定时启动"></a>计划定时启动</h5><p>通过crontab可以设定程序的执行时间表， 例如让程序在每天的9点，或者每个星期一的9点执行一次。 </p>
+<p>crontab -l 列出时间表；<br>crontab -e编辑时间表；<br>crontab -d删除时间表；</p>
+<p>“-l”查看时间表；<br>“-e”是编辑（其实就是用vim编辑一个特定文件）；<br>“-d”删除，把该用户所有的时间表都删除，一般都是用“-e”编辑把不要了的时间表逐行删除；</p>
+<p>crontab文件的格式是：M H D m d CMD。<br>一个6个字段，其中最后一个CMD就是所要执行的程序，如haha.sh。<br>M：分钟（0-59）<br>H：小时（0-23）<br>D：日期（1-31）<br>m：月份（1-12）<br>d：一个星期中的某天（0-6，0代表周日）</p>
+<p>这5个时间字段用空格隔开，其值可以是一个数字，也可以用逗号隔开的多个数字（或其他） ，如果不需设置，则默认为“*”。</p>
+<p>例如，每天的9点0分执行startup.sh，就是“0 9 * * * /home/programs/./startup.sh”。</p>
+<h5 id="注册系统服务"><a href="#注册系统服务" class="headerlink" title="注册系统服务"></a>注册系统服务</h5><p>操作系统自带的服务，如ssh，ftp等等，开机都是自动启动的，我们也可以通过这种方式让自己开发的程序伪装成系统服务。</p>
+<p>比如我想把某个程序添加为系统服务，可以执行以下命令：</p>
+<p>chkconfig –add 程序名称(首先，添加为系统服务，<strong>注意add前面是两个横杠</strong>)</p>
+<p>chkconfig -leve 启动级别 服务名 on     </p>
+<p>（说明，3级别代表在命令行模式启动，5级别代表在图形界面启动，on表示开启）</p>
+<p>chkconfig -leve 启动级别 服务名 off（说明，off表示关闭自启动）</p>
+<p>例如：chkconfig -level 3 mysql on  (说明：让mysql服务在命令行模式，随系统启动)</p>
+<p>也可以使用  chkconfig –del 服务名称  来删除系统服务</p>
+<p>如果要查看哪些服务被添加为系统服务可以使用命令 ：</p>
+<p>  ntsysv 或者chkconfig –list</p>
+<p>如果要查看哪些程序被添加为自启动，可以使用命令 ：</p>
+<p>cat  /etc/rc.local（查看这个文件中添加了哪些程序路径）</p>
 ]]></content>
       <tags>
-        <tag>oracle</tag>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java面经六</title>
+    <url>/2020/05/05/Java%E9%9D%A2%E7%BB%8F%E5%85%AD/</url>
+    <content><![CDATA[<p>Java面试总结六<a id="more"></a></p>
+<h6 id="MyBatis中命名空间-namespace-的作用"><a href="#MyBatis中命名空间-namespace-的作用" class="headerlink" title="MyBatis中命名空间(namespace)的作用"></a>MyBatis中命名空间(namespace)的作用</h6><p>在大型项目中，可能存在大量的SQL语句，这时候为每个SQL语句起一个唯一的标识（ID）就变得并不容易了。为了解决这个问题，在MyBatis中，可以为每个映射文件起一个唯一的命名空间，这样定义在这个映射文件中的每个SQL语句就成了定义在这个命名空间中的一个ID。只要我们能够保证每个命名空间中这个ID是唯一的，即使在不同映射文件中的语句ID相同，也不会再产生冲突了。</p>
+<h6 id="SpringMVC的工作原理"><a href="#SpringMVC的工作原理" class="headerlink" title="SpringMVC的工作原理"></a>SpringMVC的工作原理</h6><p>①客户端的所有请求都交给前端控制器DispatcherServlet来处理，它会负责调用系统的其他模块来真正处理用户的请求。</p>
+<p>② DispatcherServlet收到请求后，将根据请求的信息（包括URL、HTTP协议方法、请求头、请求参数、Cookie等）以及HandlerMapping的配置找到处理该请求的Handler（任何一个对象都可以作为请求的Handler）。</p>
+<p>③在这个地方Spring会通过HandlerAdapter对该处理器进行封装。</p>
+<p>④ HandlerAdapter是一个适配器，它用统一的接口对各种Handler中的方法进行调用。</p>
+<p>⑤ Handler完成对用户请求的处理后，会返回一个ModelAndView对象给DispatcherServlet，ModelAndView顾名思义，包含了数据模型以及相应的视图的信息。</p>
+<p>⑥ ModelAndView的视图是逻辑视图，DispatcherServlet还要借助ViewResolver完成从逻辑视图到真实视图对象的解析工作。</p>
+<p>⑦ 当得到真正的视图对象后，DispatcherServlet会利用视图对象对模型数据进行渲染。</p>
+<p>⑧ 客户端得到响应，可能是一个普通的HTML页面，也可以是XML或JSON字符串，还可以是一张图片或者一个PDF文件。</p>
+<h6 id="Mybatis和Hibernate的区别"><a href="#Mybatis和Hibernate的区别" class="headerlink" title="Mybatis和Hibernate的区别"></a>Mybatis和Hibernate的区别</h6><p>1、简介</p>
+<p>Hibernate：Hibernate是当前最流行的ORM框架之一，对JDBC提供了较为完整的封装。Hibernate的O/R Mapping实现了POJO 和数据库表之间的映射，以及SQL的自动生成和执行。</p>
+<p>Mybatis：Mybatis同样也是非常流行的ORM框架，主要着力点在于 POJO 与 SQL 之间的映射关系。然后通过映射配置文件，将SQL所需的参数，以及返回的结果字段映射到指定 POJO 。相对Hibernate“O/R”而言，Mybatis 是一种“Sql Mapping”的ORM实现。</p>
+<p>2、缓存机制对比</p>
+<p>相同点</p>
+<p>Hibernate和Mybatis的二级缓存除了采用系统默认的缓存机制外，都可以通过实现你自己的缓存或为其他第三方缓存方案，创建适配器来完全覆盖缓存行为。</p>
+<p>不同点</p>
+<p>Hibernate的二级缓存配置在SessionFactory生成的配置文件中进行详细配置，然后再在具体的表-对象映射中配置是那种缓存。</p>
+<p>MyBatis的二级缓存配置都是在每个具体的表-对象映射中进行详细配置，这样针对不同的表可以自定义不同的缓存机制。并且Mybatis可以在命名空间中共享相同的缓存配置和实例，通过Cache-ref来实现。</p>
+<p>两者比较</p>
+<p>因为Hibernate对查询对象有着良好的管理机制，用户无需关心SQL。所以在使用二级缓存时如果出现脏数据，系统会报出错误并提示。而MyBatis在这一方面，使用二级缓存时需要特别小心。如果不能完全确定数据更新操作的波及范围，避免Cache的盲目使用。否则，脏数据的出现会给系统的正常运行带来很大的隐患。</p>
+<p>Mybatis：小巧、方便、高效、简单、直接、半自动化。</p>
+<p>Hibernate：强大、方便、高效、复杂、间接、全自动化。</p>
+<h6 id="1分钟之内只能处理1000个请求，你怎么实现？"><a href="#1分钟之内只能处理1000个请求，你怎么实现？" class="headerlink" title="1分钟之内只能处理1000个请求，你怎么实现？"></a>1分钟之内只能处理1000个请求，你怎么实现？</h6><p>限流的几种放大：计数器，滑动窗口漏桶法，令牌桶</p>
+<h6 id="JSP的静态包含和动态包含的区别"><a href="#JSP的静态包含和动态包含的区别" class="headerlink" title="JSP的静态包含和动态包含的区别"></a>JSP的静态包含和动态包含的区别</h6><p>静态包含是通过JSP的<code>&lt;%@include file=&quot;···&quot;&gt;</code> 指令包含页面，动态包含是通过JSP标准动作<code>&lt;jsp:include page=&quot;···&quot; flush=&quot;true&quot;&gt;</code>包含页面。</p>
+<p>静态包含是编译时包含，如果包含的页面不存在则会产生编译错误，而且两个页面的”contentType”属性应保持一致，因为两个页面会合二为一，只产生一个class文件，因此被包含页面发生的变动再包含它的页面更新前不会得到更新。</p>
+<p>动态包含是运行时包含，可以向被包含的页面传递参数，包含页面和被包含页面是独立的，会编译出两个class文件，如果被包含的页面不存在，不会产生编译错误，也不影响页面其他部分的执行。</p>
+<p>静态包含<br><code>&lt;%@ include file=&quot;...&quot; %&gt;</code></p>
+<p>动态包含</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;jsp:include page=<span class="string">"..."</span>&gt;</span><br><span class="line">&lt;jsp:param name=<span class="string">"..."</span> value=<span class="string">"..."</span> /&gt;</span><br><span class="line">&lt;/jsp:include&gt;</span><br></pre></td></tr></table></figure>
+
+<h6 id="Request对象的主要方法"><a href="#Request对象的主要方法" class="headerlink" title="Request对象的主要方法"></a>Request对象的主要方法</h6><p>setAttribute(String name,Object)：设置名字为name的request的参数值</p>
+<p>getAttribute(String name)：返回由name指定的属性值</p>
+<p>getAttributeNames()：返回request对象所有属性的名字集合，结果是一个枚举的实例</p>
+<p>getCookies()：返回客户端的所有Cookie对象，结果是一个Cookie数组</p>
+<p>getCharacterEncoding()：返回请求中的字符编码方式</p>
+<p>getContentLength()：返回请求的Body的长度</p>
+<p>getHeader(String name)：获得HTTP协议定义的文件头信息</p>
+<p>getHeaders(String name)：返回指定名字的request Header的所有值，结果是一个枚举的实例</p>
+<p>getHeaderNames()：返回所以request Header的名字，结果是一个枚举的实例</p>
+<p>getInputStream()：返回请求的输入流，用于获得请求中的数据</p>
+<p>getMethod()：获得客户端向服务器端传送数据的方法</p>
+<p>getParameter(String name)：获得客户端传送给服务器端的有name指定的参数值</p>
+<p>getParameterNames()：获得客户端传送给服务器端的所有参数的名字，结果是一个枚举的实例</p>
+<p>getParameterValues(String name)：获得有name指定的参数的所有值</p>
+<p>getProtocol()：获取客户端向服务器端传送数据所依据的协议名称</p>
+<p>getQueryString()：获得查询字符串</p>
+<p>getRequestURI()：获取发出请求字符串的客户端地址</p>
+<p>getRemoteAddr()：获取客户端的IP地址</p>
+<p>getRemoteHost()：获取客户端的名字</p>
+<p>getSession([Boolean create])：返回和请求相关Session</p>
+<p>getServerName()：获取服务器的名字</p>
+<p>getServletPath()：获取客户端所请求的脚本文件的路径</p>
+<p>getServerPort()：获取服务器的端口号</p>
+<p>removeAttribute(String name)：删除请求中的一个属性</p>
+<h6 id="四种会话跟踪技术"><a href="#四种会话跟踪技术" class="headerlink" title="四种会话跟踪技术"></a>四种会话跟踪技术</h6><p>会话跟踪是一种灵活、轻便的机制，它使Web上的状态编程变为可能。</p>
+<p>HTTP是一种无状态协议，每当用户发出请求时，服务器就会做出响应，客户端与服务器之间的联系是离散的、非连续的。</p>
+<p>当用户在同一网站的多个页面之间转换时，根本无法确定是否是同一个客户，会话跟踪技术就可以解决这个问题。当一个客户在多个页面间切换时，服务器会保存该用户的信息。有四种方法可以实现会话跟踪技术：URL重写、隐藏表单域、Cookie、Session。</p>
+<p>1）隐藏表单域：<input type="hidden">，非常适合步需要大量数据存储的会话应用。</p>
+<p>2）URL 重写:URL 可以在后面附加参数，和服务器的请求一起发送，这些参数为名字/值对。</p>
+<p>3）Cookie:一个 Cookie 是一个小的，已命名数据元素。服务器使用 SET-Cookie 头标将它作为 HTTP响应的一部分传送到客户端，客户端被请求保存 Cookie 值，在对同一服务器的后续请求使用一个Cookie 头标将之返回到服务器。与其它技术比较，Cookie 的一个优点是在浏览器会话结束后，甚至在客户端计算机重启后它仍可以保留其值。</p>
+<p>4）Session：使用 setAttribute(String str,Object obj)方法将对象捆绑到一个会话</p>
+<h6 id="web-xml文件中可以配置哪些内容？"><a href="#web-xml文件中可以配置哪些内容？" class="headerlink" title="web.xml文件中可以配置哪些内容？"></a>web.xml文件中可以配置哪些内容？</h6><p>web.xml用于配置Web应用的相关信息，如：监听器（listener）、过滤器（filter）、 Servlet、相关参数、会话超时时间、安全验证方式、错误页面等，下面是一些开发中常见的配置：</p>
+<p>①配置Spring上下文加载监听器加载Spring配置文件并创建IoC容器：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">context-param</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">param-value</span>&gt;</span>classpath:applicationContext.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">context-param</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">listener</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">listener-class</span>&gt;</span></span><br><span class="line">org.springframework.web.context.ContextLoaderListener</span><br><span class="line"><span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">listener</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>②配置Spring的OpenSessionInView过滤器来解决延迟加载和Hibernate会话关闭的矛盾：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>openSessionInView<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">filter-class</span>&gt;</span></span><br><span class="line">org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</span><br><span class="line"><span class="tag">&lt;/<span class="name">filter-class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>openSessionInView<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>③配置会话超时时间为10分钟：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">session-config</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">session-timeout</span>&gt;</span>10<span class="tag">&lt;/<span class="name">session-timeout</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">session-config</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>④配置404和Exception的错误页面：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">error-page</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">error-code</span>&gt;</span>404<span class="tag">&lt;/<span class="name">error-code</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">location</span>&gt;</span>/error.jsp<span class="tag">&lt;/<span class="name">location</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">error-page</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">error-page</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">exception-type</span>&gt;</span>java.lang.Exception<span class="tag">&lt;/<span class="name">exception-type</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">location</span>&gt;</span>/error.jsp<span class="tag">&lt;/<span class="name">location</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">error-page</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>⑤配置安全认证方式：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">security-constraint</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">web-resource-collection</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">web-resource-name</span>&gt;</span>ProtectedArea<span class="tag">&lt;/<span class="name">web-resource-name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/admin/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">http-method</span>&gt;</span>GET<span class="tag">&lt;/<span class="name">http-method</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">http-method</span>&gt;</span>POST<span class="tag">&lt;/<span class="name">http-method</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">web-resource-collection</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">auth-constraint</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">role-name</span>&gt;</span>admin<span class="tag">&lt;/<span class="name">role-name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">auth-constraint</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">security-constraint</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">login-config</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">auth-method</span>&gt;</span>BASIC<span class="tag">&lt;/<span class="name">auth-method</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">login-config</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">security-role</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">role-name</span>&gt;</span>admin<span class="tag">&lt;/<span class="name">role-name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">security-role</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="Javaweb开发中的监听器的理解"><a href="#Javaweb开发中的监听器的理解" class="headerlink" title="Javaweb开发中的监听器的理解"></a>Javaweb开发中的监听器的理解</h6><p>Java Web开发中的监听器（listener）就是application、session、request三个对象创建、销毁或者往其中添加修改删除属性时自动执行代码的功能组件，如下所示：</p>
+<p>①ServletContextListener：对Servlet上下文的创建和销毁进行监听。</p>
+<p>②ServletContextAttributeListener：监听Servlet上下文属性的添加、删除和替换。</p>
+<p>③HttpSessionListener：对Session的创建和销毁进行监听。</p>
+<p>session的销毁有两种情况：</p>
+<p>1). session超时（可以在web.xml中通过<code>&lt;session-config&gt;/&lt;session-timeout&gt;</code>标签配置超时时间）；</p>
+<p>2). 通过调用session对象的invalidate()方法使session失效。</p>
+<p>④HttpSessionAttributeListener：对Session对象中属性的添加、删除和替换进行监听。</p>
+<p>⑤ServletRequestListener：对请求对象的初始化和销毁进行监听。</p>
+<p>⑥ServletRequestAttributeListener：对请求对象属性的添加、删除和替换进行监听。</p>
+<h6 id="请问过滤器有哪些作用？以及过滤器的用法又是什么呢"><a href="#请问过滤器有哪些作用？以及过滤器的用法又是什么呢" class="headerlink" title="请问过滤器有哪些作用？以及过滤器的用法又是什么呢?"></a>请问过滤器有哪些作用？以及过滤器的用法又是什么呢?</h6><p>Java Web开发中的过滤器（filter）是从Servlet 2.3规范开始增加的功能，并在Servlet 2.4规范中得到增强。对Web应用来说，过滤器是一个驻留在服务器端的Web组件，它可以截取客户端和服务器之间的请求与响应信息，并对这些信息进行过滤。当Web容器接受到一个对资源的请求时，它将判断是否有过滤器与这个资源相关联。如果有，那么容器将把请求交给过滤器进行处理。在过滤器中，你可以改变请求的内容，或者重新设置请求的报头信息，然后再将请求发送给目标资源。当目标资源对请求作出响应时候，容器同样会将响应先转发给过滤器，在过滤器中你可以对响应的内容进行转换，然后再将响应发送到客户端。</p>
+<p>常见的过滤器用途主要包括：对用户请求进行统一认证、对用户的访问请求进行记录和审核、对用户发送的数据进行过滤或替换、转换图象格式、对响应内容进行压缩以减少传输量、对请求或响应进行加解密处理、触发资源访问事件、对XML的输出应用XSLT等。<br>和过滤器相关的接口主要有：Filter、FilterConfig和FilterChain。</p>
+]]></content>
+      <tags>
+        <tag>java</tag>
       </tags>
   </entry>
   <entry>
@@ -1775,6 +1749,86 @@
 ]]></content>
       <tags>
         <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Oracle中的COALESCER函数</title>
+    <url>/2020/07/26/Oracle%E4%B8%AD%E7%9A%84COALESCER%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<p>coalesce函数的使用说明<a id="more"></a></p>
+<h5 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h5><p>返回其参数中第一个非空表达式。</p>
+<h6 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h6><p>coalesce ( 表达式1 ,…表达式n )</p>
+<h6 id="返回类型"><a href="#返回类型" class="headerlink" title="返回类型"></a>返回类型</h6><p>返回数据类型优先级最高的表达式的数据类型，如果所有参数均为null，则coalesce返回null。</p>
+<h5 id="等效的case函数"><a href="#等效的case函数" class="headerlink" title="等效的case函数"></a>等效的case函数</h5><h6 id="case语句"><a href="#case语句" class="headerlink" title="case语句"></a>case语句</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CASE</span><br><span class="line"></span><br><span class="line">   WHEN (expression1 IS NOT NULL) THEN expression1</span><br><span class="line"></span><br><span class="line">   ...</span><br><span class="line"></span><br><span class="line">   WHEN (expressionN IS NOT NULL) THEN expressionN</span><br><span class="line"></span><br><span class="line">   ELSE NULL</span><br><span class="line"></span><br><span class="line">END</span><br></pre></td></tr></table></figure>
+
+<p>尽管 IS NULL 等效于 COALESCE，但它们的行为是不同的。包含具有非空参数的 IS NULL 的表达式将视为 NOT NULL，而包含具有非空参数的 COALESCE 的表达式将视为 NULL。</p>
+<h6 id="SQL-Server的非空参数问题"><a href="#SQL-Server的非空参数问题" class="headerlink" title="SQL Server的非空参数问题"></a>SQL Server的非空参数问题</h6><p>在 SQL Server 中，若要对包含具有非空参数的 COALESCE 的表达式创建索引，可以使用 PERSISTED 列属性将计算列持久化，例如下面案例</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CREATE TABLE #CheckSumTest</span><br><span class="line"></span><br><span class="line">    (</span><br><span class="line"></span><br><span class="line">        ID int identity ,</span><br><span class="line"></span><br><span class="line">        Num int DEFAULT ( RAND() * 100 ) ,</span><br><span class="line"></span><br><span class="line">        RowCheckSum AS COALESCE( CHECKSUM( id , num ) , 0 ) PERSISTED PRIMARY KEY</span><br><span class="line"></span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
+
+<h6 id="COALESCE-使用示例"><a href="#COALESCE-使用示例" class="headerlink" title="COALESCE 使用示例"></a>COALESCE 使用示例</h6><p>在以下示例中，wages 表中包括以下三列有关雇员的年薪的信息：hourly wage、salary 和 commission。但是，每个雇员只能接受一种付款方式。若要确定支付给所有雇员的金额总数，请使用 COALESCE 函数，它只接受在 hourly_wage、salary 和 commission 中找到的非空值。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SET NOCOUNT ON;</span><br><span class="line"></span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line">USE master;</span><br><span class="line"></span><br><span class="line">IF EXISTS (SELECT name FROM sys.tables</span><br><span class="line"></span><br><span class="line">      WHERE name = &apos;wages&apos;)</span><br><span class="line"></span><br><span class="line">   DROP TABLE wages;</span><br><span class="line"></span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line">CREATE TABLE wages</span><br><span class="line"></span><br><span class="line">(</span><br><span class="line"></span><br><span class="line">   emp_id      tinyint    identity,</span><br><span class="line"></span><br><span class="line">   hourly_wage   decimal   NULL,</span><br><span class="line"></span><br><span class="line">   salary      decimal    NULL,</span><br><span class="line"></span><br><span class="line">   commission   decimal   NULL,</span><br><span class="line"></span><br><span class="line">   num_sales   tinyint   NULL</span><br><span class="line"></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(10.00, NULL, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(20.00, NULL, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(30.00, NULL, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(40.00, NULL, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, 10000.00, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, 20000.00, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, 30000.00, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, 40000.00, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, NULL, 15000, 3);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, NULL, 25000, 2);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, NULL, 20000, 6);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, NULL, 14000, 4);</span><br><span class="line"></span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line">SET NOCOUNT OFF;</span><br><span class="line"></span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line">SELECT CAST(COALESCE(hourly_wage * 40 * 52,</span><br><span class="line"></span><br><span class="line">   salary,</span><br><span class="line"></span><br><span class="line">   commission * num_sales) AS money) AS &apos;Total Salary&apos;</span><br><span class="line"></span><br><span class="line">FROM wages;</span><br><span class="line"></span><br><span class="line">GO</span><br></pre></td></tr></table></figure>
+
+<p>结果集</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Total Salary</span><br><span class="line"></span><br><span class="line">------------</span><br><span class="line"></span><br><span class="line">20800.0000</span><br><span class="line"></span><br><span class="line">41600.0000</span><br><span class="line"></span><br><span class="line">62400.0000</span><br><span class="line"></span><br><span class="line">83200.0000</span><br><span class="line"></span><br><span class="line">10000.0000</span><br><span class="line"></span><br><span class="line">20000.0000</span><br><span class="line"></span><br><span class="line">30000.0000</span><br><span class="line"></span><br><span class="line">40000.0000</span><br><span class="line"></span><br><span class="line">45000.0000</span><br><span class="line"></span><br><span class="line">50000.0000</span><br><span class="line"></span><br><span class="line">120000.0000</span><br><span class="line"></span><br><span class="line">56000.0000</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">(12 row(s) affected)</span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <tags>
+        <tag>oracle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MySql数据库优化的八种方法</title>
+    <url>/2020/05/22/MySql%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98%E5%8C%96%E7%9A%84%E5%85%AB%E7%A7%8D%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<p>新建数据库的时候考虑优化问题就能解决很多不必要的麻烦。<a id="more"></a></p>
+<h5 id="选取最适用的字段属性"><a href="#选取最适用的字段属性" class="headerlink" title="选取最适用的字段属性"></a>选取最适用的字段属性</h5><p>MySQL可以很好的支持大数据量的存取，但是一般说来，数据库中的表越小，在它上面执行的查询也就会越快。因此，在创建表的时候，为了获得更好的性能，我们可以将表中字段的宽度设得尽可能小。</p>
+<p>例如，在定义邮政编码这个字段时，如果将其设置为CHAR(255),显然给数据库增加了不必要的空间，甚至使用VARCHAR这种类型也是多余的，因为CHAR(6)就可以很好的完成任务了。同样的，如果可以的话，我们应该使用MEDIUMINT而不是BIGIN来定义整型字段。</p>
+<p>另外一个提高效率的方法是在可能的情况下，应该尽量把字段设置为<strong>NOT NULL</strong>，这样在将来执行查询的时候，数据库不用去比较NULL值。</p>
+<p>对于某些文本字段，例如“省份”或者“性别”，我们可以将它们定义为ENUM类型。因为在MySQL中，ENUM类型被当作数值型数据来处理，而数值型数据被处理起来的速度要比文本类型快得多。</p>
+<h5 id="使用连接-JOIN-来代替子查询-Sub-Queries"><a href="#使用连接-JOIN-来代替子查询-Sub-Queries" class="headerlink" title="使用连接(JOIN)来代替子查询(Sub-Queries)"></a>使用连接(JOIN)来代替子查询(Sub-Queries)</h5><p>MySQL从4.1开始支持SQL的子查询。这个技术可以使用SELECT语句来创建一个单列的查询结果，然后把这个结果作为过滤条件用在另一个查询中。例如，我们要将客户基本信息表中没有任何订单的客户删除掉，就可以利用子查询先从销售信息表中将所有发出订单的客户ID取出来，然后将结果传递给主查询，如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">DELETE FROM customerinfo</span><br><span class="line"></span><br><span class="line">WHERE CustomerID NOT in (SELECT customerid FROM salesinfo)</span><br></pre></td></tr></table></figure>
+
+<p>使用子查询可以一次性的完成很多逻辑上需要多个步骤才能完成的SQL操作，同时也可以避免事务或者表锁死，并且写起来也很容易。但是，有些情况下，子查询可以被更有效率的连接（JOIN）替代。例如，我们要将所有没有订单记录的用户取出来，可以用下面这个查询完成：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT * FROM customerinfo</span><br><span class="line"></span><br><span class="line">WHERE customerid NOT IN (SELECT customerid FROM salesinfo)</span><br></pre></td></tr></table></figure>
+
+<p>如果使用连接（JOIN）来完成这个查询工作，速度将会快很多。尤其是当salesinfo表中对CustomerID建有索引的话，性能将会更好，查询如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT * FROM customerinfo LEFT JOIN salesinfo </span><br><span class="line"></span><br><span class="line">ON customerinfo.customerid = salesinfo.customerid</span><br><span class="line"></span><br><span class="line">WHERE salesinfo.customerid IS NULL</span><br></pre></td></tr></table></figure>
+
+<p>连接（JOIN）之所以更有效率一些，是因为MySQL不需要在内存中创建临时表来完成这个逻辑上的需要两个步骤的查询工作。</p>
+<h5 id="使用联合-UNION-来代替手动创建的临时表"><a href="#使用联合-UNION-来代替手动创建的临时表" class="headerlink" title="使用联合(UNION)来代替手动创建的临时表"></a>使用联合(UNION)来代替手动创建的临时表</h5><p>MySQL从4.0的版本开始支持union查询，它可以把需要使用临时表的两条或更多的select查询合并的一个查询中。在客户端的查询会话结束的时候，临时表会被自动删除，从而保证数据库整齐、高效。使用union来创建查询的时候，我们只需要用<strong>UNION</strong>作为关键字把多个select语句连接起来就可以了，要注意的是<strong>所有select语句中的字段数目要相同</strong>。下面的例子就演示了一个使用UNION的查询。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT name,phone FROM client UNION</span><br><span class="line"></span><br><span class="line">SELECT name,birthdate FROM author UNION</span><br><span class="line"></span><br><span class="line">SELECT name,supplier FROM product</span><br></pre></td></tr></table></figure>
+
+<h5 id="事物"><a href="#事物" class="headerlink" title="事物"></a>事物</h5><p>尽管我们可以使用子查询（Sub-Queries）、连接（JOIN）和联合（UNION）来创建各种各样的查询，但不是所有的数据库操作都可以只用一条或少数几条SQL语句就可以完成的，更多的时候是需要用到一系列的语句来完成某种工作。但是在这种情况下，当这个语句块中的某一条语句运行出错的时候，整个语句块的操作就会变得不确定起来。设想一下，要把某个数据同时插入两个相关联的表中，可能会出现这样的情况：第一个表中成功更新后，数据库突然出现意外状况，造成第二个表中的操作没有完成，这样，就会造成数据的不完整，甚至会破坏数据库中的数据。要避免这种情况，就应该使用事务，它的作用是：要么语句块中每条语句都操作成功，要么都失败。换句话说，就是可以保持数据库中数据的一致性和完整性。事物以<strong>BEGIN</strong>关键字开始，<strong>COMMIT</strong>关键字结束。在这之间的一条SQL操作失败，那么，<strong>ROLLBACK</strong>命令就可以把数据库恢复到BEGIN开始之前的状态。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">BEGIN;</span><br><span class="line">  INSERT INTO salesinfo SET customerid=14;</span><br><span class="line">  UPDATE inventory SET quantity =11 WHERE item=&apos;book&apos;;</span><br><span class="line">COMMIT;</span><br></pre></td></tr></table></figure>
+
+<p>事务的另一个重要作用是当多个用户同时使用相同的数据源时，它可以利用锁定数据库的方法来为用户提供一种安全的访问方式，这样可以保证用户的操作不被其它的用户所干扰。</p>
+<h5 id="锁定表"><a href="#锁定表" class="headerlink" title="锁定表"></a>锁定表</h5><p>尽管事务是维护数据库完整性的一个非常好的方法，但却因为它的独占性，有时会影响数据库的性能，尤其是在很大的应用系统中。由于在事务执行的过程中，数据库将会被锁定，因此其它的用户请求只能暂时等待直到该事务结束。如果一个数据库系统只有少数几个用户来使用，事务造成的影响不会成为一个太大的问题；但假设有成千上万的用户同时访问一个数据库系统，例如访问一个电子商务网站，就会产生比较严重的响应延迟。</p>
+<p>其实，有些情况下我们可以通过锁定表的方法来获得更好的性能。下面的例子就用锁定表的方法来完成前面一个例子中事务的功能。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">LOCK TABLE inventory WRITE SELECT quantity FROM inventory WHERE Item=&apos;book&apos;;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">UPDATE inventory SET Quantity=11 WHERE Item=&apos;book&apos;;UNLOCKTABLES</span><br></pre></td></tr></table></figure>
+
+<p>这里，我们用一个select语句取出初始数据，通过一些计算，用update语句将新值更新到表中。包含有WRITE关键字的LOCKTABLE语句可以保证在UNLOCKTABLES命令被执行之前，不会有其它的访问来对inventory进行插入、更新或者删除的操作。</p>
+<h5 id="使用外键"><a href="#使用外键" class="headerlink" title="使用外键"></a>使用外键</h5><p>锁定表的方法可以维护数据的完整性，但是它却不能保证数据的关联性。这个时候我们就可以使用外键。</p>
+<p>例如，外键可以保证每一条销售记录都指向某一个存在的客户。在这里，外键可以把customerinfo表中的customerid映射到salesinfo表中customerid，任何一条没有合法customerid的记录都不会被更新或插入到salesinfo中。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CREATE TABLE customerinfo( customerid int primary key) engine = innodb;</span><br><span class="line"></span><br><span class="line">CREATE TABLE salesinfo( salesid int not null,customerid int not null, primary key(customerid,salesid),foreign key(customerid) references  customerinfo(customerid) on delete cascade)engine = innodb;</span><br></pre></td></tr></table></figure>
+
+<p>注意例子中的参数“on delete cascade”。该参数保证当customerinfo表中的一条客户记录被删除的时候，salesinfo表中所有与该客户相关的记录也会被自动删除。<strong>如果要在MySQL中使用外键，一定要记住在创建表的时候将表的类型定义为事务安全表InnoDB类型</strong>。该类型不是MySQL表的默认类型。定义的方法是在CREATE TABLE语句中加上engine=INNODB。如例中所示。</p>
+<h5 id="使用索引"><a href="#使用索引" class="headerlink" title="使用索引"></a>使用索引</h5><p>索引是提高数据库性能的常用方法，它可以令数据库服务器以比没有索引快得多的速度检索特定的行，尤其是在查询语句当中包含有MAX(),MIN()和ORDER BY这些命令的时候，性能提高更为明显。</p>
+<p>一般说来，索引应建立在那些将用于JOIN,WHERE判断和ORDER BY排序的字段上。尽量不要对数据库中某个含有大量重复的值的字段建立索引。对于一个ENUM类型的字段来说，出现大量重复值是很有可能的情况。</p>
+<p>例如customerinfo中的“province”字段，在这样的字段上建立索引将不会有什么帮助；相反，还有可能降低数据库的性能。我们在创建表的时候可以同时创建合适的索引，也可以使用ALTER TABLE或CREATE INDEX在以后创建索引。此外，MySQL从版本3.23.23开始支持全文索引和搜索。全文索引在MySQL中是一个FULLTEXT类型索引，但仅能用于MyISAM类型的表。对于一个大的数据库，将数据装载到一个没有FULLTEXT索引的表中，然后再使用ALTER TABLE或CREATE INDEX创建索引，将是非常快的。但如果将数据装载到一个已经有FULLTEXT索引的表中，执行过程将会非常慢。</p>
+<h5 id="优化的查询语句"><a href="#优化的查询语句" class="headerlink" title="优化的查询语句"></a>优化的查询语句</h5><p>绝大多数情况下，使用索引可以提高查询的速度，但如果SQL语句使用不恰当的话，索引将无法发挥它应有的作用。</p>
+<p>下面是应该注意的几个方面。</p>
+<h6 id="最好是在相同类型的字段间进行比较的操作"><a href="#最好是在相同类型的字段间进行比较的操作" class="headerlink" title="最好是在相同类型的字段间进行比较的操作"></a>最好是在相同类型的字段间进行比较的操作</h6><p>在MySQL3.23版之前，这甚至是一个必须的条件。例如不能将一个建有索引的INT字段和BIGINT字段进行比较；但是作为特殊的情况，在CHAR类型的字段和VARCHAR类型字段的字段大小相同的时候，可以将它们进行比较。</p>
+<h6 id="在建有索引的字段上尽量不要使用函数进行操作"><a href="#在建有索引的字段上尽量不要使用函数进行操作" class="headerlink" title="在建有索引的字段上尽量不要使用函数进行操作"></a>在建有索引的字段上尽量不要使用函数进行操作</h6><p>例如，在一个DATE类型的字段上使用YEAE()函数时，将会使索引不能发挥应有的作用。所以，下面的两个查询虽然返回的结果一样，但后者要比前者快得多。</p>
+<h6 id="在搜索字符型字段时，我们有时会使用LIKE关键字和通配符，这种做法虽然简单，但却也是以牺牲系统性能为代价的"><a href="#在搜索字符型字段时，我们有时会使用LIKE关键字和通配符，这种做法虽然简单，但却也是以牺牲系统性能为代价的" class="headerlink" title="在搜索字符型字段时，我们有时会使用LIKE关键字和通配符，这种做法虽然简单，但却也是以牺牲系统性能为代价的"></a>在搜索字符型字段时，我们有时会使用LIKE关键字和通配符，这种做法虽然简单，但却也是以牺牲系统性能为代价的</h6><p>例如下面的查询将会比较表中的每一条记录。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT * FROM books WHERE name like &quot;MySQL%&quot;</span><br></pre></td></tr></table></figure>
+
+<p>但是如果换用下面的查询，返回的结果一样，但速度就要快上很多：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT * FROM books WHERE name ＞= &quot;MySQL&quot; and name ＜&quot;MySQM&quot;</span><br></pre></td></tr></table></figure>
+
+<p>最后，应该注意避免在查询中让MySQL进行自动类型转换，因为转换过程也会使索引变得不起作用。</p>
+]]></content>
+      <tags>
+        <tag>mysql</tag>
       </tags>
   </entry>
   <entry>
@@ -2153,57 +2207,12 @@
       </tags>
   </entry>
   <entry>
-    <title>MySql数据库优化的八种方法</title>
-    <url>/2020/05/22/MySql%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98%E5%8C%96%E7%9A%84%E5%85%AB%E7%A7%8D%E6%96%B9%E6%B3%95/</url>
-    <content><![CDATA[<p>新建数据库的时候考虑优化问题就能解决很多不必要的麻烦。<a id="more"></a></p>
-<h5 id="选取最适用的字段属性"><a href="#选取最适用的字段属性" class="headerlink" title="选取最适用的字段属性"></a>选取最适用的字段属性</h5><p>MySQL可以很好的支持大数据量的存取，但是一般说来，数据库中的表越小，在它上面执行的查询也就会越快。因此，在创建表的时候，为了获得更好的性能，我们可以将表中字段的宽度设得尽可能小。</p>
-<p>例如，在定义邮政编码这个字段时，如果将其设置为CHAR(255),显然给数据库增加了不必要的空间，甚至使用VARCHAR这种类型也是多余的，因为CHAR(6)就可以很好的完成任务了。同样的，如果可以的话，我们应该使用MEDIUMINT而不是BIGIN来定义整型字段。</p>
-<p>另外一个提高效率的方法是在可能的情况下，应该尽量把字段设置为<strong>NOT NULL</strong>，这样在将来执行查询的时候，数据库不用去比较NULL值。</p>
-<p>对于某些文本字段，例如“省份”或者“性别”，我们可以将它们定义为ENUM类型。因为在MySQL中，ENUM类型被当作数值型数据来处理，而数值型数据被处理起来的速度要比文本类型快得多。</p>
-<h5 id="使用连接-JOIN-来代替子查询-Sub-Queries"><a href="#使用连接-JOIN-来代替子查询-Sub-Queries" class="headerlink" title="使用连接(JOIN)来代替子查询(Sub-Queries)"></a>使用连接(JOIN)来代替子查询(Sub-Queries)</h5><p>MySQL从4.1开始支持SQL的子查询。这个技术可以使用SELECT语句来创建一个单列的查询结果，然后把这个结果作为过滤条件用在另一个查询中。例如，我们要将客户基本信息表中没有任何订单的客户删除掉，就可以利用子查询先从销售信息表中将所有发出订单的客户ID取出来，然后将结果传递给主查询，如下所示：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">DELETE FROM customerinfo</span><br><span class="line"></span><br><span class="line">WHERE CustomerID NOT in (SELECT customerid FROM salesinfo)</span><br></pre></td></tr></table></figure>
-
-<p>使用子查询可以一次性的完成很多逻辑上需要多个步骤才能完成的SQL操作，同时也可以避免事务或者表锁死，并且写起来也很容易。但是，有些情况下，子查询可以被更有效率的连接（JOIN）替代。例如，我们要将所有没有订单记录的用户取出来，可以用下面这个查询完成：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT * FROM customerinfo</span><br><span class="line"></span><br><span class="line">WHERE customerid NOT IN (SELECT customerid FROM salesinfo)</span><br></pre></td></tr></table></figure>
-
-<p>如果使用连接（JOIN）来完成这个查询工作，速度将会快很多。尤其是当salesinfo表中对CustomerID建有索引的话，性能将会更好，查询如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT * FROM customerinfo LEFT JOIN salesinfo </span><br><span class="line"></span><br><span class="line">ON customerinfo.customerid = salesinfo.customerid</span><br><span class="line"></span><br><span class="line">WHERE salesinfo.customerid IS NULL</span><br></pre></td></tr></table></figure>
-
-<p>连接（JOIN）之所以更有效率一些，是因为MySQL不需要在内存中创建临时表来完成这个逻辑上的需要两个步骤的查询工作。</p>
-<h5 id="使用联合-UNION-来代替手动创建的临时表"><a href="#使用联合-UNION-来代替手动创建的临时表" class="headerlink" title="使用联合(UNION)来代替手动创建的临时表"></a>使用联合(UNION)来代替手动创建的临时表</h5><p>MySQL从4.0的版本开始支持union查询，它可以把需要使用临时表的两条或更多的select查询合并的一个查询中。在客户端的查询会话结束的时候，临时表会被自动删除，从而保证数据库整齐、高效。使用union来创建查询的时候，我们只需要用<strong>UNION</strong>作为关键字把多个select语句连接起来就可以了，要注意的是<strong>所有select语句中的字段数目要相同</strong>。下面的例子就演示了一个使用UNION的查询。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT name,phone FROM client UNION</span><br><span class="line"></span><br><span class="line">SELECT name,birthdate FROM author UNION</span><br><span class="line"></span><br><span class="line">SELECT name,supplier FROM product</span><br></pre></td></tr></table></figure>
-
-<h5 id="事物"><a href="#事物" class="headerlink" title="事物"></a>事物</h5><p>尽管我们可以使用子查询（Sub-Queries）、连接（JOIN）和联合（UNION）来创建各种各样的查询，但不是所有的数据库操作都可以只用一条或少数几条SQL语句就可以完成的，更多的时候是需要用到一系列的语句来完成某种工作。但是在这种情况下，当这个语句块中的某一条语句运行出错的时候，整个语句块的操作就会变得不确定起来。设想一下，要把某个数据同时插入两个相关联的表中，可能会出现这样的情况：第一个表中成功更新后，数据库突然出现意外状况，造成第二个表中的操作没有完成，这样，就会造成数据的不完整，甚至会破坏数据库中的数据。要避免这种情况，就应该使用事务，它的作用是：要么语句块中每条语句都操作成功，要么都失败。换句话说，就是可以保持数据库中数据的一致性和完整性。事物以<strong>BEGIN</strong>关键字开始，<strong>COMMIT</strong>关键字结束。在这之间的一条SQL操作失败，那么，<strong>ROLLBACK</strong>命令就可以把数据库恢复到BEGIN开始之前的状态。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">BEGIN;</span><br><span class="line">  INSERT INTO salesinfo SET customerid=14;</span><br><span class="line">  UPDATE inventory SET quantity =11 WHERE item=&apos;book&apos;;</span><br><span class="line">COMMIT;</span><br></pre></td></tr></table></figure>
-
-<p>事务的另一个重要作用是当多个用户同时使用相同的数据源时，它可以利用锁定数据库的方法来为用户提供一种安全的访问方式，这样可以保证用户的操作不被其它的用户所干扰。</p>
-<h5 id="锁定表"><a href="#锁定表" class="headerlink" title="锁定表"></a>锁定表</h5><p>尽管事务是维护数据库完整性的一个非常好的方法，但却因为它的独占性，有时会影响数据库的性能，尤其是在很大的应用系统中。由于在事务执行的过程中，数据库将会被锁定，因此其它的用户请求只能暂时等待直到该事务结束。如果一个数据库系统只有少数几个用户来使用，事务造成的影响不会成为一个太大的问题；但假设有成千上万的用户同时访问一个数据库系统，例如访问一个电子商务网站，就会产生比较严重的响应延迟。</p>
-<p>其实，有些情况下我们可以通过锁定表的方法来获得更好的性能。下面的例子就用锁定表的方法来完成前面一个例子中事务的功能。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">LOCK TABLE inventory WRITE SELECT quantity FROM inventory WHERE Item=&apos;book&apos;;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">UPDATE inventory SET Quantity=11 WHERE Item=&apos;book&apos;;UNLOCKTABLES</span><br></pre></td></tr></table></figure>
-
-<p>这里，我们用一个select语句取出初始数据，通过一些计算，用update语句将新值更新到表中。包含有WRITE关键字的LOCKTABLE语句可以保证在UNLOCKTABLES命令被执行之前，不会有其它的访问来对inventory进行插入、更新或者删除的操作。</p>
-<h5 id="使用外键"><a href="#使用外键" class="headerlink" title="使用外键"></a>使用外键</h5><p>锁定表的方法可以维护数据的完整性，但是它却不能保证数据的关联性。这个时候我们就可以使用外键。</p>
-<p>例如，外键可以保证每一条销售记录都指向某一个存在的客户。在这里，外键可以把customerinfo表中的customerid映射到salesinfo表中customerid，任何一条没有合法customerid的记录都不会被更新或插入到salesinfo中。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CREATE TABLE customerinfo( customerid int primary key) engine = innodb;</span><br><span class="line"></span><br><span class="line">CREATE TABLE salesinfo( salesid int not null,customerid int not null, primary key(customerid,salesid),foreign key(customerid) references  customerinfo(customerid) on delete cascade)engine = innodb;</span><br></pre></td></tr></table></figure>
-
-<p>注意例子中的参数“on delete cascade”。该参数保证当customerinfo表中的一条客户记录被删除的时候，salesinfo表中所有与该客户相关的记录也会被自动删除。<strong>如果要在MySQL中使用外键，一定要记住在创建表的时候将表的类型定义为事务安全表InnoDB类型</strong>。该类型不是MySQL表的默认类型。定义的方法是在CREATE TABLE语句中加上engine=INNODB。如例中所示。</p>
-<h5 id="使用索引"><a href="#使用索引" class="headerlink" title="使用索引"></a>使用索引</h5><p>索引是提高数据库性能的常用方法，它可以令数据库服务器以比没有索引快得多的速度检索特定的行，尤其是在查询语句当中包含有MAX(),MIN()和ORDER BY这些命令的时候，性能提高更为明显。</p>
-<p>一般说来，索引应建立在那些将用于JOIN,WHERE判断和ORDER BY排序的字段上。尽量不要对数据库中某个含有大量重复的值的字段建立索引。对于一个ENUM类型的字段来说，出现大量重复值是很有可能的情况。</p>
-<p>例如customerinfo中的“province”字段，在这样的字段上建立索引将不会有什么帮助；相反，还有可能降低数据库的性能。我们在创建表的时候可以同时创建合适的索引，也可以使用ALTER TABLE或CREATE INDEX在以后创建索引。此外，MySQL从版本3.23.23开始支持全文索引和搜索。全文索引在MySQL中是一个FULLTEXT类型索引，但仅能用于MyISAM类型的表。对于一个大的数据库，将数据装载到一个没有FULLTEXT索引的表中，然后再使用ALTER TABLE或CREATE INDEX创建索引，将是非常快的。但如果将数据装载到一个已经有FULLTEXT索引的表中，执行过程将会非常慢。</p>
-<h5 id="优化的查询语句"><a href="#优化的查询语句" class="headerlink" title="优化的查询语句"></a>优化的查询语句</h5><p>绝大多数情况下，使用索引可以提高查询的速度，但如果SQL语句使用不恰当的话，索引将无法发挥它应有的作用。</p>
-<p>下面是应该注意的几个方面。</p>
-<h6 id="最好是在相同类型的字段间进行比较的操作"><a href="#最好是在相同类型的字段间进行比较的操作" class="headerlink" title="最好是在相同类型的字段间进行比较的操作"></a>最好是在相同类型的字段间进行比较的操作</h6><p>在MySQL3.23版之前，这甚至是一个必须的条件。例如不能将一个建有索引的INT字段和BIGINT字段进行比较；但是作为特殊的情况，在CHAR类型的字段和VARCHAR类型字段的字段大小相同的时候，可以将它们进行比较。</p>
-<h6 id="在建有索引的字段上尽量不要使用函数进行操作"><a href="#在建有索引的字段上尽量不要使用函数进行操作" class="headerlink" title="在建有索引的字段上尽量不要使用函数进行操作"></a>在建有索引的字段上尽量不要使用函数进行操作</h6><p>例如，在一个DATE类型的字段上使用YEAE()函数时，将会使索引不能发挥应有的作用。所以，下面的两个查询虽然返回的结果一样，但后者要比前者快得多。</p>
-<h6 id="在搜索字符型字段时，我们有时会使用LIKE关键字和通配符，这种做法虽然简单，但却也是以牺牲系统性能为代价的"><a href="#在搜索字符型字段时，我们有时会使用LIKE关键字和通配符，这种做法虽然简单，但却也是以牺牲系统性能为代价的" class="headerlink" title="在搜索字符型字段时，我们有时会使用LIKE关键字和通配符，这种做法虽然简单，但却也是以牺牲系统性能为代价的"></a>在搜索字符型字段时，我们有时会使用LIKE关键字和通配符，这种做法虽然简单，但却也是以牺牲系统性能为代价的</h6><p>例如下面的查询将会比较表中的每一条记录。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT * FROM books WHERE name like &quot;MySQL%&quot;</span><br></pre></td></tr></table></figure>
-
-<p>但是如果换用下面的查询，返回的结果一样，但速度就要快上很多：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT * FROM books WHERE name ＞= &quot;MySQL&quot; and name ＜&quot;MySQM&quot;</span><br></pre></td></tr></table></figure>
-
-<p>最后，应该注意避免在查询中让MySQL进行自动类型转换，因为转换过程也会使索引变得不起作用。</p>
+    <title>React的Ref属性</title>
+    <url>/2020/07/25/React%E7%9A%84Ref%E5%B1%9E%E6%80%A7/</url>
+    <content><![CDATA[<p>11<a id="more"></a></p>
 ]]></content>
       <tags>
-        <tag>mysql</tag>
+        <tag>React</tag>
       </tags>
   </entry>
   <entry>
@@ -2215,15 +2224,6 @@
 ]]></content>
       <tags>
         <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>React的Ref属性</title>
-    <url>/2020/07/25/React%E7%9A%84Ref%E5%B1%9E%E6%80%A7/</url>
-    <content><![CDATA[<p>11<a id="more"></a></p>
-]]></content>
-      <tags>
-        <tag>React</tag>
       </tags>
   </entry>
   <entry>
@@ -2910,6 +2910,230 @@
       </tags>
   </entry>
   <entry>
+    <title>java获取操作系统信息</title>
+    <url>/2019/11/26/java%E8%8E%B7%E5%8F%96%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%BF%A1%E6%81%AF/</url>
+    <content><![CDATA[<p>常用操作系统信息获取<a id="more"></a></p>
+<h6 id="获取本机的IP地址"><a href="#获取本机的IP地址" class="headerlink" title="获取本机的IP地址:"></a>获取本机的IP地址:</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">getIpAddress</span><span class="params">()</span> <span class="keyword">throws</span> UnknownHostException </span>&#123; </span><br><span class="line">    InetAddress address = InetAddress.getLocalHost(); </span><br><span class="line">    <span class="keyword">return</span> address.getHostAddress(); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="获取网卡地址"><a href="#获取网卡地址" class="headerlink" title="获取网卡地址:"></a>获取网卡地址:</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getMACAddress</span><span class="params">()</span></span>&#123;</span><br><span class="line">    String address = <span class="string">""</span>;</span><br><span class="line">    String os = System.getProperty(<span class="string">"os.name"</span>);</span><br><span class="line">    String osUser = System.getProperty(<span class="string">"user.name"</span>);</span><br><span class="line">    <span class="keyword">if</span>(os != <span class="keyword">null</span> &amp;&amp; os.startsWith(<span class="string">"Windows"</span>))&#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            String command = <span class="string">"cmd.exe /c ipconfig /all"</span>;</span><br><span class="line">            Process  p = Runtime.getRuntime().exec(command);</span><br><span class="line">            BufferedReader buffer = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(p.getInputStream()));</span><br><span class="line">            String line;</span><br><span class="line">            <span class="keyword">while</span>((line = buffer.readLine()) != <span class="keyword">null</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(line.indexOf(<span class="string">"Physical Address"</span>) &gt; <span class="number">0</span>)&#123;</span><br><span class="line">                    <span class="keyword">int</span> index = line.indexOf(<span class="string">":"</span>);</span><br><span class="line">                    index += <span class="number">2</span>;</span><br><span class="line">                    address = line.substring(index);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            buffer.close();</span><br><span class="line">            <span class="keyword">return</span> address.trim();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span>(IOException e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> address;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="获取操作系统账号"><a href="#获取操作系统账号" class="headerlink" title="获取操作系统账号"></a>获取操作系统账号</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">String osUser = System.getProperty(&quot;user.name&quot;);</span><br></pre></td></tr></table></figure>
+
+<h6 id="获取操作系统版本"><a href="#获取操作系统版本" class="headerlink" title="获取操作系统版本:"></a>获取操作系统版本:</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Properties; </span><br><span class="line"></span><br><span class="line">Properties props=System.getProperties(); <span class="comment">//获得系统属性集    </span></span><br><span class="line">String osName = props.getProperty(<span class="string">"os.name"</span>); <span class="comment">//操作系统名称    </span></span><br><span class="line">String osArch = props.getProperty(<span class="string">"os.arch"</span>); <span class="comment">//操作系统构架    </span></span><br><span class="line">String osVersion = props.getProperty(<span class="string">"os.version"</span>); <span class="comment">//操作系统版本</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="一些常用信息获得"><a href="#一些常用信息获得" class="headerlink" title="一些常用信息获得"></a>一些常用信息获得</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getProperty</span><span class="params">(String key)</span></span></span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>键</th>
+<th>相关值的描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>java.version</td>
+<td>Java 运行时环境版本</td>
+</tr>
+<tr>
+<td>java.vendor</td>
+<td>Java 运行时环境供应商</td>
+</tr>
+<tr>
+<td>java.vendor.url</td>
+<td>Java 供应商的 URL</td>
+</tr>
+<tr>
+<td>java.home</td>
+<td>Java 安装目录</td>
+</tr>
+<tr>
+<td>java.vm.specification.version</td>
+<td>Java 虚拟机规范版本</td>
+</tr>
+<tr>
+<td>java.vm.specification.vendor</td>
+<td>Java 虚拟机规范供应商</td>
+</tr>
+<tr>
+<td>java.vm.specification.name</td>
+<td>Java 虚拟机规范名称</td>
+</tr>
+<tr>
+<td>java.vm.version</td>
+<td>Java 虚拟机实现版本</td>
+</tr>
+<tr>
+<td>java.vm.vendor</td>
+<td>Java 虚拟机实现供应商</td>
+</tr>
+<tr>
+<td>java.vm.name</td>
+<td>Java 虚拟机实现名称</td>
+</tr>
+<tr>
+<td>java.specification.version</td>
+<td>Java 运行时环境规范版本</td>
+</tr>
+<tr>
+<td>java.specification.vendor</td>
+<td>Java 运行时环境规范供应商</td>
+</tr>
+<tr>
+<td>java.specification.name</td>
+<td>Java 运行时环境规范名称</td>
+</tr>
+<tr>
+<td>java.<strong>class</strong>.version</td>
+<td>Java 类格式版本号</td>
+</tr>
+<tr>
+<td>java.<strong>class</strong>.path</td>
+<td>Java 类路径</td>
+</tr>
+<tr>
+<td>java.library.path</td>
+<td>加载库时搜索的路径列表</td>
+</tr>
+<tr>
+<td>java.io.tmpdir</td>
+<td>默认的临时文件路径</td>
+</tr>
+<tr>
+<td>java.compiler</td>
+<td>要使用的 JIT 编译器的名称</td>
+</tr>
+<tr>
+<td>java.ext.dirs</td>
+<td>一个或多个扩展目录的路径</td>
+</tr>
+<tr>
+<td>file.separator</td>
+<td>文件分隔符（在 UNIX 系统中是“/”）</td>
+</tr>
+<tr>
+<td>path.separator</td>
+<td>路径分隔符（在 UNIX 系统中是“:”）</td>
+</tr>
+<tr>
+<td>line.separator</td>
+<td>行分隔符（在 UNIX 系统中是“/n”）</td>
+</tr>
+<tr>
+<td>user.name</td>
+<td>用户的账户名称</td>
+</tr>
+<tr>
+<td>user.home</td>
+<td>用户的主目录</td>
+</tr>
+<tr>
+<td>user.dir</td>
+<td>用户的当前工作目录</td>
+</tr>
+</tbody></table>
+]]></content>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>oracle分析函数over</title>
+    <url>/2020/07/28/oracle%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/</url>
+    <content><![CDATA[<p>Over()分析函数的使用<a id="more"></a></p>
+<h4 id="Over-分析函数"><a href="#Over-分析函数" class="headerlink" title="Over()分析函数"></a>Over()分析函数</h4><p>聚合函数（如sum()、max()等）可以计算基于组的某种聚合值，但是聚合函数对于某个组只能返回一行记录。若想对于某组返回多行记录，则需要使用分析函数。</p>
+<h5 id="rank-dense-rank-over-partition-by-…-order-by-…"><a href="#rank-dense-rank-over-partition-by-…-order-by-…" class="headerlink" title="rank()/dense_rank over(partition by … order by …)"></a>rank()/dense_rank over(partition by … order by …)</h5><p>说明：over()在什么条件之上; </p>
+<p>　　partition by 按哪个字段划分组；</p>
+<p>　　order by 按哪个字段排序；</p>
+<p>注意：</p>
+<p>　　（1）使用rank()/dense_rank() 时，必须要带order by否则非法</p>
+<p>　　（2）rank()/dense_rank()分级的区别：</p>
+<p>rank(): 跳跃排序，如果有两个第一级时，接下来就是第三级。</p>
+<p>dense_rank(): 连续排序，如果有两个第一级时，接下来仍然是第二级。</p>
+<p>示例：查询每个部门工资最高的员工信息</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> E.ENAME, E.JOB, E.SAL, E.DEPTNO</span><br><span class="line">  <span class="keyword">FROM</span> SCOTT.EMP E,</span><br><span class="line">       (<span class="keyword">SELECT</span> E.DEPTNO, <span class="keyword">MAX</span>(E.SAL) SAL <span class="keyword">FROM</span> SCOTT.EMP E <span class="keyword">GROUP</span> <span class="keyword">BY</span> E.DEPTNO) ME</span><br><span class="line"> <span class="keyword">WHERE</span> E.DEPTNO = ME.DEPTNO</span><br><span class="line">   <span class="keyword">AND</span> E.SAL = ME.SAL;</span><br></pre></td></tr></table></figure>
+
+<p>使用Over()函数：</p>
+<p>方法一：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> E.ENAME, E.JOB, E.SAL, E.DEPTNO</span><br><span class="line">  <span class="keyword">FROM</span> (<span class="keyword">SELECT</span> E.ENAME,</span><br><span class="line">               E.JOB,</span><br><span class="line">               E.SAL,</span><br><span class="line">               E.DEPTNO,</span><br><span class="line">               <span class="keyword">RANK</span>() <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO <span class="keyword">ORDER</span> <span class="keyword">BY</span> E.SAL <span class="keyword">DESC</span>) <span class="keyword">RANK</span>  <span class="comment">--在按部门划分的基础上，工资从高到低分级，级别RANK从1开始依次递增</span></span><br><span class="line">          <span class="keyword">FROM</span> EMP E) E</span><br><span class="line"> <span class="keyword">WHERE</span> E.RANK = <span class="number">1</span> ;</span><br></pre></td></tr></table></figure>
+
+<p>方法二：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> E.ENAME, E.JOB, E.SAL, E.DEPTNO</span><br><span class="line"> <span class="keyword">FROM</span> (<span class="keyword">SELECT</span> E.ENAME,</span><br><span class="line">              E.JOB,</span><br><span class="line">              E.SAL,</span><br><span class="line">              E.DEPTNO,</span><br><span class="line">              <span class="keyword">DENSE_RANK</span>() <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO <span class="keyword">ORDER</span> <span class="keyword">BY</span> E.SAL <span class="keyword">DESC</span>) <span class="keyword">RANK</span></span><br><span class="line">         <span class="keyword">FROM</span> EMP E) E</span><br><span class="line"><span class="keyword">WHERE</span> E.RANK = <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+<p>对比查询结果：左边的是用一般的方法查询结果，右边的是分析函数查询结果（两种方法结果相同）</p>
+<p><img src="/2020/07/28/oracle%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/sql.jpg" alt></p>
+<h5 id="min-max-over-partition-by-…"><a href="#min-max-over-partition-by-…" class="headerlink" title="min()/max() over(partition by …)"></a>min()/max() over(partition by …)</h5><p>查询员工信息的同时，查询员工工资与所在部门最低、最高工资的差额</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> E.ENAME,</span><br><span class="line">       E.JOB,</span><br><span class="line">       E.SAL,</span><br><span class="line">       E.DEPTNO,</span><br><span class="line">       E.SAL - ME.MIN_SAL DIFF_MIN_SAL,</span><br><span class="line">       ME.MAX_SAL - E.SAL DIFF_MAX_SAL</span><br><span class="line">  <span class="keyword">FROM</span> SCOTT.EMP E,</span><br><span class="line">       (<span class="keyword">SELECT</span> E.DEPTNO, <span class="keyword">MIN</span>(E.SAL) MIN_SAL, <span class="keyword">MAX</span>(E.SAL) MAX_SAL</span><br><span class="line">          <span class="keyword">FROM</span> SCOTT.EMP E</span><br><span class="line">         <span class="keyword">GROUP</span> <span class="keyword">BY</span> E.DEPTNO) ME</span><br><span class="line"> <span class="keyword">WHERE</span> E.DEPTNO = ME.DEPTNO</span><br><span class="line"> <span class="keyword">ORDER</span> <span class="keyword">BY</span> E.DEPTNO, E.SAL;</span><br></pre></td></tr></table></figure>
+
+<p>使用分析函数：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> E.ENAME,</span><br><span class="line">       E.JOB,</span><br><span class="line">       E.SAL,</span><br><span class="line">       E.DEPTNO,</span><br><span class="line">       <span class="keyword">MIN</span>(E.SAL) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO) MIN_SAL,</span><br><span class="line">       <span class="keyword">MAX</span>(E.SAL) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO) MAX_SAL,</span><br><span class="line">       NVL(E.SAL - <span class="keyword">MIN</span>(E.SAL) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO), <span class="number">0</span>) DIFF_MIN_SAL,</span><br><span class="line">       NVL(<span class="keyword">MAX</span>(E.SAL) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO) - E.SAL, <span class="number">0</span>) DIFF_MAX_SAL</span><br><span class="line">  <span class="keyword">FROM</span> EMP E;</span><br></pre></td></tr></table></figure>
+
+<p>注：这里没有排序条件，若加上order by 排序条件，</p>
+<p>MAX() OVER(PARTITION BY .. ORDER BY .. DESC) 排序规则只能为desc，否则不起作用，将查询到目前为止排序值最高字段的对应值<br>MIN() OVER(PARTITION BY .. ORDER BY .. ASC ) 排序规则只能为asc，否则不起作用，将查询到目前为止排序值最低的字段的对应值，</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> E.ENAME,</span><br><span class="line">       E.JOB,</span><br><span class="line">       E.SAL,</span><br><span class="line">       E.DEPTNO,</span><br><span class="line">       <span class="keyword">MIN</span>(E.SAL) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO) MIN_SAL01,</span><br><span class="line">       <span class="keyword">MAX</span>(E.SAL) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO) MAX_SAL01,</span><br><span class="line">       <span class="keyword">MIN</span>(E.SAL) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO <span class="keyword">ORDER</span> <span class="keyword">BY</span> E.SAL) MIN_SAL02,</span><br><span class="line">       <span class="keyword">MAX</span>(E.SAL) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO <span class="keyword">ORDER</span> <span class="keyword">BY</span> E.SAL) MAX_SAL02, <span class="comment">--不起作用</span></span><br><span class="line">       <span class="keyword">MIN</span>(E.SAL) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO <span class="keyword">ORDER</span> <span class="keyword">BY</span> E.SAL <span class="keyword">DESC</span>) MIN_SAL03, <span class="comment">--不起作用</span></span><br><span class="line">       <span class="keyword">MAX</span>(E.SAL) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO <span class="keyword">ORDER</span> <span class="keyword">BY</span> E.SAL <span class="keyword">DESC</span>) MAX_SAL03,</span><br><span class="line">       <span class="keyword">MIN</span>(E.SAL) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO <span class="keyword">ORDER</span> <span class="keyword">BY</span> E.SAL <span class="keyword">ASC</span>) MIN_SAL04,</span><br><span class="line">       <span class="keyword">MAX</span>(E.SAL) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO <span class="keyword">ORDER</span> <span class="keyword">BY</span> E.SAL <span class="keyword">ASC</span>) MAX_SAL04, <span class="comment">--不起作用</span></span><br><span class="line">       NVL(E.SAL - <span class="keyword">MIN</span>(E.SAL) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO), <span class="number">0</span>) DIFF_MIN_SAL,</span><br><span class="line">       NVL(<span class="keyword">MAX</span>(E.SAL) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO) - E.SAL, <span class="number">0</span>) DIFF_MAX_SAL</span><br><span class="line">  <span class="keyword">FROM</span> EMP E;</span><br></pre></td></tr></table></figure>
+
+<p>结果如下：</p>
+<p><img src="/2020/07/28/oracle%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/oracle.jpg" alt></p>
+<h5 id="lead-lag-over-partition-by-…-order-by-…-取前面-后面第n行记录"><a href="#lead-lag-over-partition-by-…-order-by-…-取前面-后面第n行记录" class="headerlink" title="lead()/lag() over(partition by … order by …) 取前面/后面第n行记录"></a>lead()/lag() over(partition by … order by …) 取前面/后面第n行记录</h5><p>说明：</p>
+<p>lead(列名,n,m): 当前记录后面第n行记录的&lt;列名&gt;的值，没有则默认值为m；如果不带参数n,m，则查找当前记录后面第一行的记录&lt;列名&gt;的值，没有则默认值为null。<br>lag(列名,n,m): 当前记录前面第n行记录的&lt;列名&gt;的值，没有则默认值为m；如果不带参数n,m，则查找当前记录前面第一行的记录&lt;列名&gt;的值，没有则默认值为null。</p>
+<p>示例：查询个人工资与比自己高一位、第一位的工资的差额</p>
+<p>使用分析函数：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> E.ENAME,</span><br><span class="line">        E.JOB,</span><br><span class="line">        E.SAL,</span><br><span class="line">        E.DEPTNO,</span><br><span class="line">        <span class="keyword">LEAD</span>(E.SAL, <span class="number">1</span>, <span class="number">0</span>) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO <span class="keyword">ORDER</span> <span class="keyword">BY</span> E.SAL) LEAD_SAL, <span class="comment">--记录后面第n行记录</span></span><br><span class="line">        LAG(E.SAL, <span class="number">1</span>, <span class="number">0</span>) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO <span class="keyword">ORDER</span> <span class="keyword">BY</span> E.SAL) LAG_SAL, <span class="comment">--记录前面第N行记录</span></span><br><span class="line">        NVL(<span class="keyword">LEAD</span>(E.SAL) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO <span class="keyword">ORDER</span> <span class="keyword">BY</span> E.SAL) - E.SAL,  </span><br><span class="line">            <span class="number">0</span>) DIFF_LEAD_SAL,</span><br><span class="line">        NVL(E.SAL - <span class="keyword">LEAD</span>(E.SAL) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO <span class="keyword">ORDER</span> <span class="keyword">BY</span> E.SAL),</span><br><span class="line">            <span class="number">0</span>) DIFF_LAG_SAL</span><br><span class="line">   <span class="keyword">FROM</span> EMP E;</span><br></pre></td></tr></table></figure>
+
+<p>查询结果：</p>
+<p><img src="/2020/07/28/oracle%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/lead.jpg" alt></p>
+<h5 id="FIRST-VALUE-LAST-VALUE-OVER-PARTITION-BY-…-取首尾记录"><a href="#FIRST-VALUE-LAST-VALUE-OVER-PARTITION-BY-…-取首尾记录" class="headerlink" title="FIRST_VALUE/LAST_VALUE() OVER(PARTITION BY …) 取首尾记录"></a>FIRST_VALUE/LAST_VALUE() OVER(PARTITION BY …) 取首尾记录</h5><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> E.EMPNO,</span><br><span class="line">        E.ENAME,</span><br><span class="line">        E.JOB,</span><br><span class="line">        E.MGR,</span><br><span class="line">        E.SAL,</span><br><span class="line">        E.DEPTNO,</span><br><span class="line">        <span class="keyword">FIRST_VALUE</span>(E.SAL) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO) FIRST_SAL,</span><br><span class="line">        <span class="keyword">LAST_VALUE</span>(E.SAL) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO) LAST_SAL</span><br><span class="line">   <span class="keyword">FROM</span> EMP E;</span><br></pre></td></tr></table></figure>
+
+<p>查询结果：</p>
+<p><img src="/2020/07/28/oracle%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/first.jpg" alt="first"></p>
+<h5 id="ROW-NUMBER-OVER-PARTITION-BY-ORDER-BY-排序（应用：分页）"><a href="#ROW-NUMBER-OVER-PARTITION-BY-ORDER-BY-排序（应用：分页）" class="headerlink" title="ROW_NUMBER() OVER(PARTITION BY.. ORDER BY ..) 排序（应用：分页）"></a>ROW_NUMBER() OVER(PARTITION BY.. ORDER BY ..) 排序（应用：分页）</h5><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> E.ENAME, E.JOB, E.SAL, E.DEPTNO,E.ROW_NUM</span><br><span class="line">   <span class="keyword">FROM</span> (<span class="keyword">SELECT</span> E.ENAME,</span><br><span class="line">                E.JOB,</span><br><span class="line">                E.SAL,</span><br><span class="line">                E.DEPTNO,</span><br><span class="line">                ROW_NUMBER() <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO <span class="keyword">ORDER</span> <span class="keyword">BY</span> E.SAL) ROW_NUM</span><br><span class="line">           <span class="keyword">FROM</span> EMP E) E</span><br><span class="line">  <span class="keyword">WHERE</span> E.ROW_NUM &gt; <span class="number">3</span>;</span><br></pre></td></tr></table></figure>
+
+<p>查询结果：</p>
+<p><img src="/2020/07/28/oracle%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/row.jpg" alt></p>
+<p>补充：</p>
+<p>类似分页的操作还可以用rownum、fetch(Oracle12C后的新特性)实现</p>
+<h5 id="sum-avg-count-over-partition-by"><a href="#sum-avg-count-over-partition-by" class="headerlink" title="sum/avg/count() over(partition by ..)"></a>sum/avg/count() over(partition by ..)</h5><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> E.ENAME,</span><br><span class="line">       E.JOB,</span><br><span class="line">       E.SAL,</span><br><span class="line">       E.DEPTNO,</span><br><span class="line">       <span class="keyword">SUM</span>(E.SAL) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO) SUM_SAL,     <span class="comment">--统计某组中的总计值</span></span><br><span class="line">       <span class="keyword">AVG</span>(E.SAL) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO) AVG_SAL,     <span class="comment">--统计某组中的平均值</span></span><br><span class="line">       <span class="keyword">COUNT</span>(E.SAL) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO) COUNT_SAL  <span class="comment">--按某列分组，并统计该组中记录数量</span></span><br><span class="line">  <span class="keyword">FROM</span> EMP E;</span><br></pre></td></tr></table></figure>
+
+<p>查询结果：</p>
+<p><img src="/2020/07/28/oracle%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/sum.jpg" alt></p>
+<p>示例2（全统计）：为数据集统计部门销售总和，全公司销售总和，部门销售均值，全公司销售均值</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> A.DEPT_ID,</span><br><span class="line">       A.SALE_DATE,</span><br><span class="line">       A.GOODS_TYPE,</span><br><span class="line">       A.SALE_CNT,</span><br><span class="line">       <span class="keyword">SUM</span>(A.SALE_CNT) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> A.DEPT_ID) DEPT_TOTAL, <span class="comment">--部门销售总和</span></span><br><span class="line">       <span class="keyword">SUM</span>(A.SALE_CNT) <span class="keyword">OVER</span>() CMP_TOTAL,  <span class="comment">--公司销售总额</span></span><br><span class="line">       <span class="keyword">AVG</span>(A.SALE_CNT) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> A.DEPT_ID) DEPT_AVG, <span class="comment">--部门销售均值</span></span><br><span class="line">       <span class="keyword">AVG</span>(A.SALE_CNT) <span class="keyword">OVER</span>() CMP_AVG  <span class="comment">--公司销售均值</span></span><br><span class="line">  <span class="keyword">FROM</span> LEARN_FUN_KEEP A;</span><br></pre></td></tr></table></figure>
+
+<h5 id="rows-range-between-…-preceding-and-…-following-上下范围内求值"><a href="#rows-range-between-…-preceding-and-…-following-上下范围内求值" class="headerlink" title="rows/range between … preceding and … following 上下范围内求值"></a>rows/range between … preceding and … following 上下范围内求值</h5><p>说明：unbounded：不受控制的，无限的<br>　　　preceding：在…之前<br>　　　following：在…之后</p>
+<p><strong>rows between … preceding and … following</strong></p>
+<p>示例1：显示各部门员工的工资，并附带显示该部门的最高工资</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> E.DEPTNO,</span><br><span class="line">       E.EMPNO,</span><br><span class="line">       E.ENAME,</span><br><span class="line">       E.SAL,</span><br><span class="line">       <span class="keyword">LAST_VALUE</span>(E.SAL) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO <span class="keyword">ORDER</span> <span class="keyword">BY</span> E.SAL <span class="keyword">ROWS</span>       <span class="comment">/*MAX(E.SAL) OVER(PARTITION BY E.DEPTNO ORDER BY E.SAL ROWS*/</span></span><br><span class="line">       <span class="comment">--unbounded preceding and unbouned following针对当前所有记录的前一条、后一条记录，也就是表中的所有记录</span></span><br><span class="line">       <span class="comment">--unbounded：不受控制的，无限的</span></span><br><span class="line">       <span class="comment">--preceding：在...之前</span></span><br><span class="line">       <span class="comment">--following：在...之后</span></span><br><span class="line">        <span class="keyword">BETWEEN</span> <span class="keyword">UNBOUNDED</span> <span class="keyword">PRECEDING</span> <span class="keyword">AND</span> <span class="keyword">UNBOUNDED</span> <span class="keyword">FOLLOWING</span>) MAX_SAL</span><br><span class="line">  <span class="keyword">FROM</span> EMP E;</span><br></pre></td></tr></table></figure>
+
+<p>结果如下：</p>
+<p><img src="/2020/07/28/oracle%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/rows.jpg" alt></p>
+<p>写法二:</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> E.DEPTNO,</span><br><span class="line">       E.EMPNO,</span><br><span class="line">       E.ENAME,</span><br><span class="line">       E.SAL,</span><br><span class="line">       <span class="keyword">MAX</span>(E.SAL) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO</span><br><span class="line">       <span class="comment">/*ORDER BY E.SAL*/</span>) MAX_SAL</span><br><span class="line">  <span class="keyword">FROM</span> EMP E;</span><br></pre></td></tr></table></figure>
+
+<p>示例2：对各部门进行分组，并附带显示第一行至当前行的汇总</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> EMPNO,</span><br><span class="line">       ENAME,</span><br><span class="line">       DEPTNO,</span><br><span class="line">       SAL,</span><br><span class="line">       <span class="comment">--注意ROWS BETWEEN unbounded preceding AND current row  是指第一行至当前行的汇总</span></span><br><span class="line">       <span class="keyword">SUM</span>(SAL) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> DEPTNO </span><br><span class="line">                     <span class="keyword">ORDER</span> <span class="keyword">BY</span> ENAME </span><br><span class="line">                     <span class="keyword">ROWS</span> <span class="keyword">BETWEEN</span> <span class="keyword">UNBOUNDED</span> <span class="keyword">PRECEDING</span> <span class="keyword">AND</span> <span class="keyword">CURRENT</span> <span class="keyword">ROW</span>) max_sal</span><br><span class="line">  <span class="keyword">FROM</span> SCOTT.EMP;</span><br></pre></td></tr></table></figure>
+
+<p>结果如下：</p>
+<p><img src="/2020/07/28/oracle%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/rows2.jpg" alt></p>
+<p>示例3：当前行至最后一行的汇总</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> EMPNO,</span><br><span class="line">       ENAME,</span><br><span class="line">       DEPTNO,</span><br><span class="line">       SAL,</span><br><span class="line">       <span class="comment">--注意ROWS BETWEEN current row AND unbounded following 指当前行到最后一行的汇总</span></span><br><span class="line">       <span class="keyword">SUM</span>(SAL) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> DEPTNO </span><br><span class="line">                     <span class="keyword">ORDER</span> <span class="keyword">BY</span> ENAME </span><br><span class="line">                     <span class="keyword">ROWS</span> <span class="keyword">BETWEEN</span> <span class="keyword">CURRENT</span> <span class="keyword">ROW</span> <span class="keyword">AND</span> <span class="keyword">UNBOUNDED</span> <span class="keyword">FOLLOWING</span>) max_sal</span><br><span class="line">  <span class="keyword">FROM</span> SCOTT.EMP;</span><br></pre></td></tr></table></figure>
+
+<p>结果如下：</p>
+<p><img src="https://images2015.cnblogs.com/blog/540755/201706/540755-20170621140513538-1201638924.png" alt="img"></p>
+<p>示例4：当前行的上一行(rownum-1)到当前行的汇总</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> EMPNO,</span><br><span class="line">       ENAME,</span><br><span class="line">       DEPTNO,</span><br><span class="line">       SAL,</span><br><span class="line">       <span class="comment">--注意ROWS BETWEEN 1 preceding AND current row 是指当前行的上一行(rownum-1)到当前行的汇总 </span></span><br><span class="line">       <span class="keyword">SUM</span>(SAL) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> DEPTNO </span><br><span class="line">                     <span class="keyword">ORDER</span> <span class="keyword">BY</span> ENAME <span class="keyword">ROWS</span> </span><br><span class="line">                     <span class="keyword">BETWEEN</span> <span class="number">1</span> <span class="keyword">PRECEDING</span> <span class="keyword">AND</span> <span class="keyword">CURRENT</span> <span class="keyword">ROW</span>) max_sal</span><br><span class="line">  <span class="keyword">FROM</span> SCOTT.EMP;</span><br></pre></td></tr></table></figure>
+
+<p>结果如下：</p>
+<p><img src="https://images2015.cnblogs.com/blog/540755/201706/540755-20170621140746882-1940488481.png" alt="img"></p>
+<p>示例5：当前行的上一行(rownum-1)到当前行的下两行(rownum+2)的汇总 </p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> EMPNO,</span><br><span class="line">       ENAME,</span><br><span class="line">       DEPTNO,</span><br><span class="line">       SAL,</span><br><span class="line">       <span class="comment">--注意ROWS BETWEEN 1 preceding AND 1 following 是指当前行的上一行(rownum-1)到当前行的下辆行(rownum+2)的汇总</span></span><br><span class="line">       <span class="keyword">SUM</span>(SAL) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> DEPTNO </span><br><span class="line">                     <span class="keyword">ORDER</span> <span class="keyword">BY</span> ENAME </span><br><span class="line">                     <span class="keyword">ROWS</span> <span class="keyword">BETWEEN</span> <span class="number">1</span> <span class="keyword">PRECEDING</span> <span class="keyword">AND</span> <span class="number">2</span> <span class="keyword">FOLLOWING</span>) max_sal</span><br><span class="line">  <span class="keyword">FROM</span> SCOTT.EMP;</span><br></pre></td></tr></table></figure>
+
+<p>结果如下：</p>
+<p><img src="https://images2015.cnblogs.com/blog/540755/201706/540755-20170621140921382-538208257.png" alt="img"></p>
+]]></content>
+      <tags>
+        <tag>oracle</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>XPath语法</title>
     <url>/2020/02/11/XPath%E8%AF%AD%E6%B3%95/</url>
     <content><![CDATA[<p>XPath使用语法<a id="more"></a></p>
@@ -3103,171 +3327,6 @@
 ]]></content>
       <tags>
         <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>java获取操作系统信息</title>
-    <url>/2019/11/26/java%E8%8E%B7%E5%8F%96%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%BF%A1%E6%81%AF/</url>
-    <content><![CDATA[<p>常用操作系统信息获取<a id="more"></a></p>
-<h6 id="获取本机的IP地址"><a href="#获取本机的IP地址" class="headerlink" title="获取本机的IP地址:"></a>获取本机的IP地址:</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">getIpAddress</span><span class="params">()</span> <span class="keyword">throws</span> UnknownHostException </span>&#123; </span><br><span class="line">    InetAddress address = InetAddress.getLocalHost(); </span><br><span class="line">    <span class="keyword">return</span> address.getHostAddress(); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h6 id="获取网卡地址"><a href="#获取网卡地址" class="headerlink" title="获取网卡地址:"></a>获取网卡地址:</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getMACAddress</span><span class="params">()</span></span>&#123;</span><br><span class="line">    String address = <span class="string">""</span>;</span><br><span class="line">    String os = System.getProperty(<span class="string">"os.name"</span>);</span><br><span class="line">    String osUser = System.getProperty(<span class="string">"user.name"</span>);</span><br><span class="line">    <span class="keyword">if</span>(os != <span class="keyword">null</span> &amp;&amp; os.startsWith(<span class="string">"Windows"</span>))&#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            String command = <span class="string">"cmd.exe /c ipconfig /all"</span>;</span><br><span class="line">            Process  p = Runtime.getRuntime().exec(command);</span><br><span class="line">            BufferedReader buffer = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(p.getInputStream()));</span><br><span class="line">            String line;</span><br><span class="line">            <span class="keyword">while</span>((line = buffer.readLine()) != <span class="keyword">null</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(line.indexOf(<span class="string">"Physical Address"</span>) &gt; <span class="number">0</span>)&#123;</span><br><span class="line">                    <span class="keyword">int</span> index = line.indexOf(<span class="string">":"</span>);</span><br><span class="line">                    index += <span class="number">2</span>;</span><br><span class="line">                    address = line.substring(index);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            buffer.close();</span><br><span class="line">            <span class="keyword">return</span> address.trim();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span>(IOException e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> address;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h6 id="获取操作系统账号"><a href="#获取操作系统账号" class="headerlink" title="获取操作系统账号"></a>获取操作系统账号</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">String osUser = System.getProperty(&quot;user.name&quot;);</span><br></pre></td></tr></table></figure>
-
-<h6 id="获取操作系统版本"><a href="#获取操作系统版本" class="headerlink" title="获取操作系统版本:"></a>获取操作系统版本:</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Properties; </span><br><span class="line"></span><br><span class="line">Properties props=System.getProperties(); <span class="comment">//获得系统属性集    </span></span><br><span class="line">String osName = props.getProperty(<span class="string">"os.name"</span>); <span class="comment">//操作系统名称    </span></span><br><span class="line">String osArch = props.getProperty(<span class="string">"os.arch"</span>); <span class="comment">//操作系统构架    </span></span><br><span class="line">String osVersion = props.getProperty(<span class="string">"os.version"</span>); <span class="comment">//操作系统版本</span></span><br></pre></td></tr></table></figure>
-
-<h6 id="一些常用信息获得"><a href="#一些常用信息获得" class="headerlink" title="一些常用信息获得"></a>一些常用信息获得</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getProperty</span><span class="params">(String key)</span></span></span><br></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th>键</th>
-<th>相关值的描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>java.version</td>
-<td>Java 运行时环境版本</td>
-</tr>
-<tr>
-<td>java.vendor</td>
-<td>Java 运行时环境供应商</td>
-</tr>
-<tr>
-<td>java.vendor.url</td>
-<td>Java 供应商的 URL</td>
-</tr>
-<tr>
-<td>java.home</td>
-<td>Java 安装目录</td>
-</tr>
-<tr>
-<td>java.vm.specification.version</td>
-<td>Java 虚拟机规范版本</td>
-</tr>
-<tr>
-<td>java.vm.specification.vendor</td>
-<td>Java 虚拟机规范供应商</td>
-</tr>
-<tr>
-<td>java.vm.specification.name</td>
-<td>Java 虚拟机规范名称</td>
-</tr>
-<tr>
-<td>java.vm.version</td>
-<td>Java 虚拟机实现版本</td>
-</tr>
-<tr>
-<td>java.vm.vendor</td>
-<td>Java 虚拟机实现供应商</td>
-</tr>
-<tr>
-<td>java.vm.name</td>
-<td>Java 虚拟机实现名称</td>
-</tr>
-<tr>
-<td>java.specification.version</td>
-<td>Java 运行时环境规范版本</td>
-</tr>
-<tr>
-<td>java.specification.vendor</td>
-<td>Java 运行时环境规范供应商</td>
-</tr>
-<tr>
-<td>java.specification.name</td>
-<td>Java 运行时环境规范名称</td>
-</tr>
-<tr>
-<td>java.<strong>class</strong>.version</td>
-<td>Java 类格式版本号</td>
-</tr>
-<tr>
-<td>java.<strong>class</strong>.path</td>
-<td>Java 类路径</td>
-</tr>
-<tr>
-<td>java.library.path</td>
-<td>加载库时搜索的路径列表</td>
-</tr>
-<tr>
-<td>java.io.tmpdir</td>
-<td>默认的临时文件路径</td>
-</tr>
-<tr>
-<td>java.compiler</td>
-<td>要使用的 JIT 编译器的名称</td>
-</tr>
-<tr>
-<td>java.ext.dirs</td>
-<td>一个或多个扩展目录的路径</td>
-</tr>
-<tr>
-<td>file.separator</td>
-<td>文件分隔符（在 UNIX 系统中是“/”）</td>
-</tr>
-<tr>
-<td>path.separator</td>
-<td>路径分隔符（在 UNIX 系统中是“:”）</td>
-</tr>
-<tr>
-<td>line.separator</td>
-<td>行分隔符（在 UNIX 系统中是“/n”）</td>
-</tr>
-<tr>
-<td>user.name</td>
-<td>用户的账户名称</td>
-</tr>
-<tr>
-<td>user.home</td>
-<td>用户的主目录</td>
-</tr>
-<tr>
-<td>user.dir</td>
-<td>用户的当前工作目录</td>
-</tr>
-</tbody></table>
-]]></content>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>常见浏览器的用户代理</title>
-    <url>/2020/01/13/%E5%B8%B8%E8%A7%81%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E7%94%A8%E6%88%B7%E4%BB%A3%E7%90%86/</url>
-    <content><![CDATA[<p>常用浏览器用户代理总结。<a id="more"></a></p>
-<p>&emsp;&emsp;所谓 用户代理（User Agent ），最初是指浏览器告知网站管理员，本浏览器支持的类型和框架，让网站管理员以支持的模式结构向浏览器发送页面，呈现给用户浏览。演变到今天，网站管理员为了给用户带呈现最佳的页面效果，为了使不同浏览器展现同样的网站页面，通过浏览器获取用户的系统信息，包括硬件平台、系统软件、应用软件和用户个人偏好，然后通过服务器解析后以适合用户的页面类型发送到浏览器。</p>
-<p>&emsp;&emsp;目前 UA 分析监测可补全的系统：Windows 7、Windows 10、Mac OS X Lion、Ubuntu 14.04；浏览器：所有品牌和系列。</p>
-<h5 id="Windows10-64位"><a href="#Windows10-64位" class="headerlink" title="Windows10 64位"></a>Windows10 64位</h5><p>微软Chrome内核 Edge 浏览器</p>
-<p>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36 Edg/80.0.361.69</p>
-<p>360极速浏览器</p>
-<p>Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36 QIHU 360EE</p>
-<h5 id="Windows-7-64位"><a href="#Windows-7-64位" class="headerlink" title="Windows 7 64位"></a>Windows 7 64位</h5><p>[^]: Internet Explorer 10 浏览器和 Internet Explorer 11 浏览器以及微软 Edge 浏览器为 Windows 10 64 位。</p>
-<p>Chrome｜谷歌浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.87 Safari/537.36</p>
-<p>Firefox｜火狐浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64; rv:46.0) Gecko/20100101 Firefox/46.0</p>
-<p>Opera｜欧朋浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.87 Safari/537.36 OPR/37.0.2178.32</p>
-<p>Safari｜苹果浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/534.57.2 (KHTML, like Gecko) Version/5.1.7 Safari/534.57.2</p>
-<p>360极速浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36</p>
-<p>360安全浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36</p>
-<p>微软 Edge 浏览器<br>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2486.0 Safari/537.36 Edge/13.10586</p>
-<p>Internet Explorer 11 浏览器<br>Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko</p>
-<p>Internet Explorer 10 浏览器<br>Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; WOW64; Trident/6.0)</p>
-<p>Internet Explorer 9 浏览器<br>Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)</p>
-<p>Internet Explorer 8 浏览器<br>Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0)</p>
-<p>百度浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 BIDUBrowser/8.3 Safari/537.36</p>
-<p>遨游浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Maxthon/4.9.2.1000 Chrome/39.0.2146.0 Safari/537.36</p>
-<p>QQ浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.80 Safari/537.36 Core/1.47.277.400 QQBrowser/9.4.7658.400</p>
-<p>UC浏览器电脑版<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 UBrowser/5.6.12150.8 Safari/537.36</p>
-<p>搜狗浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.122 Safari/537.36 SE 2.X MetaSr 1.0</p>
-<p>猎豹浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.154 Safari/537.36 LBBROWSER </p>
-<p>世界之窗浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36 TheWorld 7</p>
-<p>安卓版QQ浏览器<br>Mozilla/5.0 (Linux; Android 5.0; SM-N9100 Build/LRX21V) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/37.0.0.0 Mobile Safari/537.36 V1_AND_SQ_5.3.1_196_YYB_D QQ/5.3.1.2335 NetType/WIFI</p>
-<p>安卓版微信浏览器<br>Mozilla/5.0 (Linux; Android 5.0; SM-N9100 Build/LRX21V) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/37.0.0.0 Mobile Safari/537.36 MicroMessenger/6.0.2.56_r958800.520 NetType/WIFI</p>
-<p>IOS版QQ浏览器<br>Mozilla/5.0 (iPhone; CPU iPhone OS 7_1_2 like Mac OS X) AppleWebKit/537.51.2 (KHTML, like Gecko) Mobile/11D257 QQ/5.2.1.302 NetType/WIFI Mem/28</p>
-<p>IOS版微信浏览器<br>Mozilla/5.0 (iPhone; CPU iPhone OS 7_1_2 like Mac OS X) AppleWebKit/537.51.2 (KHTML, like Gecko) Mobile/11D257 MicroMessenger/6.0.1 NetType/WIFI</p>
-]]></content>
-      <tags>
-        <tag>浏览器</tag>
       </tags>
   </entry>
   <entry>
@@ -3920,6 +3979,44 @@
       </tags>
   </entry>
   <entry>
+    <title>常见浏览器的用户代理</title>
+    <url>/2020/01/13/%E5%B8%B8%E8%A7%81%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E7%94%A8%E6%88%B7%E4%BB%A3%E7%90%86/</url>
+    <content><![CDATA[<p>常用浏览器用户代理总结。<a id="more"></a></p>
+<p>&emsp;&emsp;所谓 用户代理（User Agent ），最初是指浏览器告知网站管理员，本浏览器支持的类型和框架，让网站管理员以支持的模式结构向浏览器发送页面，呈现给用户浏览。演变到今天，网站管理员为了给用户带呈现最佳的页面效果，为了使不同浏览器展现同样的网站页面，通过浏览器获取用户的系统信息，包括硬件平台、系统软件、应用软件和用户个人偏好，然后通过服务器解析后以适合用户的页面类型发送到浏览器。</p>
+<p>&emsp;&emsp;目前 UA 分析监测可补全的系统：Windows 7、Windows 10、Mac OS X Lion、Ubuntu 14.04；浏览器：所有品牌和系列。</p>
+<h5 id="Windows10-64位"><a href="#Windows10-64位" class="headerlink" title="Windows10 64位"></a>Windows10 64位</h5><p>微软Chrome内核 Edge 浏览器</p>
+<p>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36 Edg/80.0.361.69</p>
+<p>360极速浏览器</p>
+<p>Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36 QIHU 360EE</p>
+<h5 id="Windows-7-64位"><a href="#Windows-7-64位" class="headerlink" title="Windows 7 64位"></a>Windows 7 64位</h5><p>[^]: Internet Explorer 10 浏览器和 Internet Explorer 11 浏览器以及微软 Edge 浏览器为 Windows 10 64 位。</p>
+<p>Chrome｜谷歌浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.87 Safari/537.36</p>
+<p>Firefox｜火狐浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64; rv:46.0) Gecko/20100101 Firefox/46.0</p>
+<p>Opera｜欧朋浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.87 Safari/537.36 OPR/37.0.2178.32</p>
+<p>Safari｜苹果浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/534.57.2 (KHTML, like Gecko) Version/5.1.7 Safari/534.57.2</p>
+<p>360极速浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36</p>
+<p>360安全浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36</p>
+<p>微软 Edge 浏览器<br>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2486.0 Safari/537.36 Edge/13.10586</p>
+<p>Internet Explorer 11 浏览器<br>Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko</p>
+<p>Internet Explorer 10 浏览器<br>Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; WOW64; Trident/6.0)</p>
+<p>Internet Explorer 9 浏览器<br>Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)</p>
+<p>Internet Explorer 8 浏览器<br>Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0)</p>
+<p>百度浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 BIDUBrowser/8.3 Safari/537.36</p>
+<p>遨游浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Maxthon/4.9.2.1000 Chrome/39.0.2146.0 Safari/537.36</p>
+<p>QQ浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.80 Safari/537.36 Core/1.47.277.400 QQBrowser/9.4.7658.400</p>
+<p>UC浏览器电脑版<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 UBrowser/5.6.12150.8 Safari/537.36</p>
+<p>搜狗浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.122 Safari/537.36 SE 2.X MetaSr 1.0</p>
+<p>猎豹浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.154 Safari/537.36 LBBROWSER </p>
+<p>世界之窗浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36 TheWorld 7</p>
+<p>安卓版QQ浏览器<br>Mozilla/5.0 (Linux; Android 5.0; SM-N9100 Build/LRX21V) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/37.0.0.0 Mobile Safari/537.36 V1_AND_SQ_5.3.1_196_YYB_D QQ/5.3.1.2335 NetType/WIFI</p>
+<p>安卓版微信浏览器<br>Mozilla/5.0 (Linux; Android 5.0; SM-N9100 Build/LRX21V) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/37.0.0.0 Mobile Safari/537.36 MicroMessenger/6.0.2.56_r958800.520 NetType/WIFI</p>
+<p>IOS版QQ浏览器<br>Mozilla/5.0 (iPhone; CPU iPhone OS 7_1_2 like Mac OS X) AppleWebKit/537.51.2 (KHTML, like Gecko) Mobile/11D257 QQ/5.2.1.302 NetType/WIFI Mem/28</p>
+<p>IOS版微信浏览器<br>Mozilla/5.0 (iPhone; CPU iPhone OS 7_1_2 like Mac OS X) AppleWebKit/537.51.2 (KHTML, like Gecko) Mobile/11D257 MicroMessenger/6.0.1 NetType/WIFI</p>
+]]></content>
+      <tags>
+        <tag>浏览器</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>并查集</title>
     <url>/2020/02/08/%E5%B9%B6%E6%9F%A5%E9%9B%86/</url>
     <content><![CDATA[<p>建立迷宫时有所涉及，用来处理格子之间的相连问题。<a id="more"></a></p>
@@ -3995,25 +4092,6 @@
       </tags>
   </entry>
   <entry>
-    <title>比较java中Array类的两个方法：equals和deepEquals</title>
-    <url>/2020/01/14/%E6%AF%94%E8%BE%83java%E4%B8%ADArray%E7%B1%BB%E7%9A%84%E4%B8%A4%E4%B8%AA%E6%96%B9%E6%B3%95%EF%BC%9Aequals%E5%92%8CdeepEquals/</url>
-    <content><![CDATA[<p>举例分析equals和deepEquals的区别。<a id="more"></a></p>
-<h5 id="例一"><a href="#例一" class="headerlink" title="例一"></a>例一</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        String[][] name1 = &#123;&#123; <span class="string">"G"</span>,<span class="string">"a"</span>,<span class="string">"o"</span>&#125;,&#123;<span class="string">"H"</span>,<span class="string">"u"</span>,<span class="string">"a"</span>,<span class="string">"n"</span>&#125;,&#123;<span class="string">"j"</span>,<span class="string">"i"</span>,<span class="string">"e"</span>&#125;&#125;;</span><br><span class="line">        String[][] name2 =  &#123;&#123; <span class="string">"G"</span>,<span class="string">"a"</span>,<span class="string">"o"</span>&#125;,&#123;<span class="string">"H"</span>,<span class="string">"u"</span>,<span class="string">"a"</span>,<span class="string">"n"</span>&#125;,&#123;<span class="string">"j"</span>,<span class="string">"i"</span>,<span class="string">"e"</span>&#125;&#125;;</span><br><span class="line">      System.out.println(Arrays.equals(name1,name2));<span class="comment">//false  </span></span><br><span class="line">      System.out.println(Arrays.deepEquals(name1,name2));<span class="comment">//true  </span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="例二"><a href="#例二" class="headerlink" title="例二"></a>例二</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        String[] name1 = &#123;&#123; <span class="string">"G"</span>,<span class="string">"a"</span>,<span class="string">"o"</span>&#125;,&#123;<span class="string">"H"</span>,<span class="string">"u"</span>,<span class="string">"a"</span>,<span class="string">"n"</span>&#125;,&#123;<span class="string">"j"</span>,<span class="string">"i"</span>,<span class="string">"e"</span>&#125;&#125;;</span><br><span class="line">        String[] name2 =  &#123;&#123; <span class="string">"G"</span>,<span class="string">"a"</span>,<span class="string">"o"</span>&#125;,&#123;<span class="string">"H"</span>,<span class="string">"u"</span>,<span class="string">"a"</span>,<span class="string">"n"</span>&#125;,&#123;<span class="string">"j"</span>,<span class="string">"i"</span>,<span class="string">"e"</span>&#125;&#125;;</span><br><span class="line">      System.out.println(Arrays.equals(name1,name2));<span class="comment">//false  </span></span><br><span class="line">      System.out.println(Arrays.deepEquals(name1,name2));<span class="comment">//true  </span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><ol>
-<li>deepEquals用于判定两个指定数组彼此是否深层相等，此方法适用于任意深度的嵌套数组。</li>
-<li>equals用于判定两个数组是否相等，如果两个数组以相同顺序包含相同元素，则返回true，否则返回false。</li>
-<li>通过比对“例一”和“例二”我们可以得出这样一个结论：如果两个数组使用equals返回true，则使用deepEquals也返回true，也就是说在比较的两个数组均为一维数组的前提下，equals和deepEquals的比较结果没有差别。</li>
-</ol>
-<p>​    4、如果要比较多为数组，则需要使用deepEquals方法。</p>
-]]></content>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>研究生考试数学公式大全</title>
     <url>/2019/12/22/%E7%A0%94%E7%A9%B6%E7%94%9F%E8%80%83%E8%AF%95%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E5%A4%A7%E5%85%A8/</url>
     <content><![CDATA[<p>数学公式大全<a id="more"></a></p>
@@ -4035,6 +4113,25 @@
       </categories>
       <tags>
         <tag>Math</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>比较java中Array类的两个方法：equals和deepEquals</title>
+    <url>/2020/01/14/%E6%AF%94%E8%BE%83java%E4%B8%ADArray%E7%B1%BB%E7%9A%84%E4%B8%A4%E4%B8%AA%E6%96%B9%E6%B3%95%EF%BC%9Aequals%E5%92%8CdeepEquals/</url>
+    <content><![CDATA[<p>举例分析equals和deepEquals的区别。<a id="more"></a></p>
+<h5 id="例一"><a href="#例一" class="headerlink" title="例一"></a>例一</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        String[][] name1 = &#123;&#123; <span class="string">"G"</span>,<span class="string">"a"</span>,<span class="string">"o"</span>&#125;,&#123;<span class="string">"H"</span>,<span class="string">"u"</span>,<span class="string">"a"</span>,<span class="string">"n"</span>&#125;,&#123;<span class="string">"j"</span>,<span class="string">"i"</span>,<span class="string">"e"</span>&#125;&#125;;</span><br><span class="line">        String[][] name2 =  &#123;&#123; <span class="string">"G"</span>,<span class="string">"a"</span>,<span class="string">"o"</span>&#125;,&#123;<span class="string">"H"</span>,<span class="string">"u"</span>,<span class="string">"a"</span>,<span class="string">"n"</span>&#125;,&#123;<span class="string">"j"</span>,<span class="string">"i"</span>,<span class="string">"e"</span>&#125;&#125;;</span><br><span class="line">      System.out.println(Arrays.equals(name1,name2));<span class="comment">//false  </span></span><br><span class="line">      System.out.println(Arrays.deepEquals(name1,name2));<span class="comment">//true  </span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="例二"><a href="#例二" class="headerlink" title="例二"></a>例二</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        String[] name1 = &#123;&#123; <span class="string">"G"</span>,<span class="string">"a"</span>,<span class="string">"o"</span>&#125;,&#123;<span class="string">"H"</span>,<span class="string">"u"</span>,<span class="string">"a"</span>,<span class="string">"n"</span>&#125;,&#123;<span class="string">"j"</span>,<span class="string">"i"</span>,<span class="string">"e"</span>&#125;&#125;;</span><br><span class="line">        String[] name2 =  &#123;&#123; <span class="string">"G"</span>,<span class="string">"a"</span>,<span class="string">"o"</span>&#125;,&#123;<span class="string">"H"</span>,<span class="string">"u"</span>,<span class="string">"a"</span>,<span class="string">"n"</span>&#125;,&#123;<span class="string">"j"</span>,<span class="string">"i"</span>,<span class="string">"e"</span>&#125;&#125;;</span><br><span class="line">      System.out.println(Arrays.equals(name1,name2));<span class="comment">//false  </span></span><br><span class="line">      System.out.println(Arrays.deepEquals(name1,name2));<span class="comment">//true  </span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><ol>
+<li>deepEquals用于判定两个指定数组彼此是否深层相等，此方法适用于任意深度的嵌套数组。</li>
+<li>equals用于判定两个数组是否相等，如果两个数组以相同顺序包含相同元素，则返回true，否则返回false。</li>
+<li>通过比对“例一”和“例二”我们可以得出这样一个结论：如果两个数组使用equals返回true，则使用deepEquals也返回true，也就是说在比较的两个数组均为一维数组的前提下，equals和deepEquals的比较结果没有差别。</li>
+</ol>
+<p>​    4、如果要比较多为数组，则需要使用deepEquals方法。</p>
+]]></content>
+      <tags>
+        <tag>java</tag>
       </tags>
   </entry>
 </search>
