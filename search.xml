@@ -67,6 +67,9 @@
 <h6 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h6><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">img &#123;</span><br><span class="line">    width: 33%;</span><br><span class="line">    height: auto;</span><br><span class="line">    float: left; </span><br><span class="line">&#125;</span><br><span class="line"><span class="css"><span class="comment">/*模糊*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.blur</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">blur</span>(4px);<span class="attribute">filter</span>: <span class="built_in">blur</span>(4px);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*亮度*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.brightness</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">brightness</span>(0.30);<span class="attribute">filter</span>: <span class="built_in">brightness</span>(0.30);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*对比度*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.contrast</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">contrast</span>(180%);<span class="attribute">filter</span>: <span class="built_in">contrast</span>(180%);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*灰度*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.grayscale</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">grayscale</span>(100%);<span class="attribute">filter</span>: <span class="built_in">grayscale</span>(100%);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*色相旋转*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.huerotate</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">hue-rotate</span>(180deg);<span class="attribute">filter</span>: <span class="built_in">hue-rotate</span>(180deg);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*反色*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.invert</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">invert</span>(100%);<span class="attribute">filter</span>: <span class="built_in">invert</span>(100%);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*透明度*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.opacity</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">opacity</span>(50%);<span class="attribute">filter</span>: <span class="built_in">opacity</span>(50%);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*饱和度*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.saturate</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">saturate</span>(7); <span class="attribute">filter</span>: <span class="built_in">saturate</span>(7);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*深褐色*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.sepia</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">sepia</span>(100%);<span class="attribute">filter</span>: <span class="built_in">sepia</span>(100%);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*阴影*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.shadow</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">drop-shadow</span>(8px 8px 10px green);<span class="attribute">filter</span>: <span class="built_in">drop-shadow</span>(8px 8px 10px green);&#125;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">strong</span>&gt;</span>注意：<span class="tag">&lt;/<span class="name">strong</span>&gt;</span> Internet Explorer 不支持 filter 属性。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"blur"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"brightness"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"contrast"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"grayscale"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"huerotate"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"invert"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"opacity"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"saturate"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"sepia"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"shadow"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 ]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
       <tags>
         <tag>CSS</tag>
       </tags>
@@ -333,6 +336,9 @@
 </li>
 </ol>
 ]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
       <tags>
         <tag>Docker</tag>
       </tags>
@@ -430,6 +436,9 @@
 <li>如果可以，请使用https协议。</li>
 </ul>
 ]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
       <tags>
         <tag>java</tag>
       </tags>
@@ -457,6 +466,9 @@
 </ol>
 <p><img src="/2020/05/24/IDEA%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E7%BD%AE%E6%97%B6%E5%8C%BA%E9%97%AE%E9%A2%98/idea.png" alt></p>
 ]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
       <tags>
         <tag>IDEA</tag>
       </tags>
@@ -544,6 +556,9 @@
 
 <p>重新生成静态文件重新部署。</p>
 ]]></content>
+      <categories>
+        <category>博客</category>
+      </categories>
       <tags>
         <tag>Hexo</tag>
       </tags>
@@ -722,6 +737,9 @@
 </li>
 </ol>
 ]]></content>
+      <categories>
+        <category>面试</category>
+      </categories>
       <tags>
         <tag>java</tag>
       </tags>
@@ -737,6 +755,9 @@
 <h5 id="Statistic安装"><a href="#Statistic安装" class="headerlink" title="Statistic安装"></a>Statistic安装</h5><p>&emsp;&emsp;进入IDEA插件File-&gt;Settings-&gt;Plugins，点击上方的Marketplace，搜索Statistic，点击Install。下载安装完之后重启IDEA。<img src="/2020/01/13/IDEA%E4%BB%A3%E7%A0%81%E8%A1%8C%E6%95%B0%E7%BB%9F%E8%AE%A1%E6%8F%92%E4%BB%B6-Statistic/s1.jpg" alt="install"></p>
 <h5 id="项目统计"><a href="#项目统计" class="headerlink" title="项目统计"></a>项目统计</h5><p>&emsp;&emsp;打开任意一个项目开始进行统计。在顶部的菜单栏找到插件，View-&gt;Tool Windows-&gt;Statistic。也可以查看IDEA底部的功能栏，点击Statistic，点击Refresh开始统计项目的代码行数。Overview是统计所有文件的数量count和行数lines，以及不同文件类型行数的和大小的最大值、最小值和平均值。可以选择右边查看需要的后缀名文件代码行数。具体某种文件类型（如：java），可以统计总行数Total Lines，有效代码行数Source Code Lines，注释行数Comment Lines，以及有效代码比重。<img src="/2020/01/13/IDEA%E4%BB%A3%E7%A0%81%E8%A1%8C%E6%95%B0%E7%BB%9F%E8%AE%A1%E6%8F%92%E4%BB%B6-Statistic/s2.jpg" alt="result"></p>
 ]]></content>
+      <categories>
+        <category>插件</category>
+      </categories>
       <tags>
         <tag>IDEA</tag>
       </tags>
@@ -960,6 +981,9 @@
 <p><strong>合成聚合复用原则</strong>：优先使用聚合或合成关系复用代码。（通过继承来复用代码是面向对象程序设计中被滥用得最多的东西，因为所有的教科书都无一例外的对继承进行了鼓吹从而误导了初学者，类与类之间简单的说有三种关系，Is-A关系、Has-A关系、Use-A关系，分别代表继承、关联和依赖。其中，关联关系根据其关联的强度又可以进一步划分为关联、聚合和合成，但说白了都是Has-A关系，合成聚合复用原则想表达的是优先考虑Has-A关系而不是Is-A关系复用代码，原因嘛可以自己从百度上找到一万个理由，需要说明的是，即使在Java的API中也有不少滥用继承的例子，例如Properties类继承了Hashtable类，Stack类继承了Vector类，这些继承明显就是错误的，更好的做法是在Properties类中放置一个Hashtable类型的成员并且将其键和值都设置为字符串来存储数据，而Stack类的设计也应该是在Stack类中放一个Vector对象来存储数据。记住：任何时候都不要继承工具类，工具是可以拥有并可以使用的，而不是拿来继承的。）</p>
 <p><strong>迪米特法则</strong>：迪米特法则又叫最少知识原则，一个对象应当对其他对象有尽可能少的了解。再复杂的系统都可以为用户提供一个简单的门面，Java Web开发中作为前端控制器的Servlet或Filter不就是一个门面吗，浏览器对服务器的运作方式一无所知，但是通过前端控制器就能够根据你的请求得到相应的服务。调停者模式也可以举一个简单的例子来说明，例如一台计算机，CPU、内存、硬盘、显卡、声卡各种设备需要相互配合才能很好的工作，但是如果这些东西都直接连接到一起，计算机的布线将异常复杂，在这种情况下，主板作为一个调停者的身份出现，它将各个设备连接在一起而不需要每个设备之间直接交换数据，这样就减小了系统的耦合度和复杂度。</p>
 ]]></content>
+      <categories>
+        <category>面试</category>
+      </categories>
       <tags>
         <tag>java</tag>
       </tags>
@@ -1018,6 +1042,9 @@
 <p>第二范式（2NF）<br>首先是 1NF，另外包含两部分内容，一是表必须有一个主键；二是没有包含在主键中的列必须完全依赖于主键，而不能只依赖于主键的一部分。<br>在1NF基础上，任何非主属性不依赖于其它非主属性[在2NF基础上消除传递依赖]。</p>
 <p>第三范式（3NF）<br>第三范式（3NF）是第二范式（2NF）的一个子集，即满足第三范式（3NF）必须满足第二范式（2NF）。首先是 2NF，另外非主键列必须直接依赖于主键，不能存在传递依赖。即不能存在：非主键列 A 依赖于非主键列 B，非主键列 B 依赖于主键的情况。</p>
 ]]></content>
+      <categories>
+        <category>面试</category>
+      </categories>
       <tags>
         <tag>java</tag>
       </tags>
@@ -1086,6 +1113,9 @@
 </ol>
 <h6 id="线程池的运行流程，使用参数以及方法策略"><a href="#线程池的运行流程，使用参数以及方法策略" class="headerlink" title="线程池的运行流程，使用参数以及方法策略"></a>线程池的运行流程，使用参数以及方法策略</h6><p>线程池主要就是指定线程池核心线程数大小，最大线程数，存储的队列，拒绝策略，空闲线程存活时长。当需要任务大于核心线程数时候，就开始把任务往存储任务的队列里，当存储队列满了的话，就开始增加线程池创建的线程数量，如果当线程数量也达到了最大，就开始执行拒绝策略，比如说记录日志，直接丢弃，或者丢弃最老的任务。</p>
 ]]></content>
+      <categories>
+        <category>面试</category>
+      </categories>
       <tags>
         <tag>java</tag>
       </tags>
@@ -1145,6 +1175,9 @@
 <p>持久层设计的目标包括：<br>- 数据存储逻辑的分离，提供抽象化的数据访问接口。<br>- 数据访问底层实现的分离，可以在不修改代码的情况下切换底层实现。<br>- 资源管理和调度的分离，在数据访问层实现统一的资源调度（如缓存机制）。<br>- 数据抽象，提供更面向对象的数据操作。</p>
 <p>持久层框架有：<br>- Hibernate<br>- MyBatis<br>- TopLink<br>- Guzz<br>- jOOQ<br>- Spring Data<br>- ActiveJDBC</p>
 ]]></content>
+      <categories>
+        <category>面试</category>
+      </categories>
       <tags>
         <tag>java</tag>
       </tags>
@@ -1212,6 +1245,9 @@
 </ul>
 <p>Set和Map容器都有基于哈希存储和排序树的两种实现版本，基于哈希存储的版本理论存取时间复杂度为O(1)，而基于排序树版本的实现在插入或删除元素时会按照元素或元素的键（key）构成排序树从而达到排序和去重的效果。</p>
 ]]></content>
+      <categories>
+        <category>面试</category>
+      </categories>
       <tags>
         <tag>java</tag>
       </tags>
@@ -1297,6 +1333,9 @@
 <p>REST是一种软件架构模式，是一种风格，它不像SOAP那样本身承载着一种消息协议， (两种风格的Web Service均采用了HTTP做传输协议，因为HTTP协议能穿越防火墙，Java的远程方法调用（RMI）等是重量级协议，通常不能穿越防火墙），因此可以将REST视为基于HTTP协议的软件架构。REST中最重要的两个概念是资源定位和资源操作，而HTTP协议恰好完整的提供了这两个点。HTTP协议中的URI可以完成资源定位，而GET、POST、OPTION、DELETE方法可以完成资源操作。因此REST完全依赖HTTP协议就可以完成Web Service，而不像SOAP协议那样只利用了HTTP的传输特性，定位和操作都是由SOAP协议自身完成的，也正是由于SOAP消息的存在使得基于SOAP的Web Service显得笨重而逐渐被淘汰。</p>
 <h6 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h6><p>定义：保证一个类仅有一个实例，并提供一个访问它的全局访问点。优点：单例类只有一个实例、共享资源，全局使用节省创建时间，提高性能。可以用静态内部实现，保证是懒加载就行了，就是使用才会创建实例对象。</p>
 ]]></content>
+      <categories>
+        <category>面试</category>
+      </categories>
       <tags>
         <tag>java</tag>
       </tags>
@@ -1395,6 +1434,9 @@
 <h6 id="请问过滤器有哪些作用？以及过滤器的用法又是什么呢"><a href="#请问过滤器有哪些作用？以及过滤器的用法又是什么呢" class="headerlink" title="请问过滤器有哪些作用？以及过滤器的用法又是什么呢?"></a>请问过滤器有哪些作用？以及过滤器的用法又是什么呢?</h6><p>Java Web开发中的过滤器（filter）是从Servlet 2.3规范开始增加的功能，并在Servlet 2.4规范中得到增强。对Web应用来说，过滤器是一个驻留在服务器端的Web组件，它可以截取客户端和服务器之间的请求与响应信息，并对这些信息进行过滤。当Web容器接受到一个对资源的请求时，它将判断是否有过滤器与这个资源相关联。如果有，那么容器将把请求交给过滤器进行处理。在过滤器中，你可以改变请求的内容，或者重新设置请求的报头信息，然后再将请求发送给目标资源。当目标资源对请求作出响应时候，容器同样会将响应先转发给过滤器，在过滤器中你可以对响应的内容进行转换，然后再将响应发送到客户端。</p>
 <p>常见的过滤器用途主要包括：对用户请求进行统一认证、对用户的访问请求进行记录和审核、对用户发送的数据进行过滤或替换、转换图象格式、对响应内容进行压缩以减少传输量、对请求或响应进行加解密处理、触发资源访问事件、对XML的输出应用XSLT等。<br>和过滤器相关的接口主要有：Filter、FilterConfig和FilterChain。</p>
 ]]></content>
+      <categories>
+        <category>面试</category>
+      </categories>
       <tags>
         <tag>java</tag>
       </tags>
@@ -1470,6 +1512,9 @@
 </ul>
 <p>自动装配没有自定义装配方式那么精确，而且不能自动装配简单属性（基本类型、字符串等），在使用时应注意。</p>
 ]]></content>
+      <categories>
+        <category>面试</category>
+      </categories>
       <tags>
         <tag>java</tag>
       </tags>
@@ -1499,6 +1544,9 @@
 <p>如果要查看哪些程序被添加为自启动，可以使用命令 ：</p>
 <p>cat  /etc/rc.local（查看这个文件中添加了哪些程序路径）</p>
 ]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
       <tags>
         <tag>Linux</tag>
       </tags>
@@ -1561,6 +1609,9 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --remove-forward-port=proto=80:proto=tcp:toaddr=192.168.0.1:toport=8080</span><br></pre></td></tr></table></figure>
 
 ]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
       <tags>
         <tag>Linux</tag>
       </tags>
@@ -1747,6 +1798,9 @@
 </tr>
 </tbody></table>
 ]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
       <tags>
         <tag>Linux</tag>
       </tags>
@@ -1781,6 +1835,9 @@
 
 <p><img src="http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/152377/156838966242265_zh-CN.png" alt="MQTT应用场景" title="MQTT应用场景"></p>
 ]]></content>
+      <categories>
+        <category>消息队列</category>
+      </categories>
       <tags>
         <tag>MQTT</tag>
       </tags>
@@ -1807,6 +1864,9 @@
 
 
 ]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
       <tags>
         <tag>oracle</tag>
       </tags>
@@ -2148,6 +2208,9 @@
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt;<span class="keyword">import</span> re</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>re.split(<span class="string">'\W+'</span>, <span class="string">'runoob, runoob, runoob.'</span>)</span><br><span class="line">[<span class="string">'runoob'</span>, <span class="string">'runoob'</span>, <span class="string">'runoob'</span>, <span class="string">''</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>re.split(<span class="string">'(\W+)'</span>, <span class="string">' runoob, runoob, runoob.'</span>) </span><br><span class="line">[<span class="string">''</span>, <span class="string">' '</span>, <span class="string">'runoob'</span>, <span class="string">', '</span>, <span class="string">'runoob'</span>, <span class="string">', '</span>, <span class="string">'runoob'</span>, <span class="string">'.'</span>, <span class="string">''</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>re.split(<span class="string">'\W+'</span>, <span class="string">' runoob, runoob, runoob.'</span>, <span class="number">1</span>) </span><br><span class="line">[<span class="string">''</span>, <span class="string">'runoob, runoob, runoob.'</span>]</span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>re.split(<span class="string">'a*'</span>, <span class="string">'hello world'</span>)   <span class="comment"># 对于一个找不到匹配的字符串而言，split 不会对其作出分割</span></span><br><span class="line">[<span class="string">'hello world'</span>]</span><br></pre></td></tr></table></figure>
 
 ]]></content>
+      <categories>
+        <category>语法</category>
+      </categories>
       <tags>
         <tag>Python</tag>
       </tags>
@@ -2202,6 +2265,9 @@
 
 <p>最后，应该注意避免在查询中让MySQL进行自动类型转换，因为转换过程也会使索引变得不起作用。</p>
 ]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
       <tags>
         <tag>mysql</tag>
       </tags>
@@ -2213,6 +2279,9 @@
 <h6 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h6><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">base_domain = <span class="string">"https://www.dytt8.net"</span></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">"User-Agent"</span>: <span class="string">"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "</span></span><br><span class="line">                  <span class="string">"(KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36 Edg/80.0.361.111"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_detail_url</span><span class="params">(url)</span>:</span></span><br><span class="line">    resp = requests.get(url, headers=headers)</span><br><span class="line">    <span class="comment"># 解码出现"illegal multibyte sequence"，其他编码无法解决，使用ignore</span></span><br><span class="line">    <span class="comment"># text = resp.content.decode("gbk", errors="ignore")</span></span><br><span class="line">    text = resp.text</span><br><span class="line">    html = etree.HTML(text)</span><br><span class="line">    detail_urls = html.xpath(<span class="string">"//table[@class='tbspan']//a/@href"</span>)</span><br><span class="line">    detail_urls = map(<span class="keyword">lambda</span> url: base_domain + url, detail_urls)</span><br><span class="line">    <span class="keyword">return</span> detail_urls</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_html</span><span class="params">(url)</span>:</span></span><br><span class="line">    resp = requests.get(url, headers=headers)</span><br><span class="line">    text = resp.content.decode(<span class="string">"gbk"</span>, errors=<span class="string">"ignore"</span>)</span><br><span class="line">    html = etree.HTML(text)</span><br><span class="line">    <span class="keyword">return</span> html</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">parse_info</span><span class="params">(info, rule)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> info.replace(rule, <span class="string">""</span>).strip()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">parse_detail_page</span><span class="params">(url)</span>:</span></span><br><span class="line">    movie = &#123;&#125;</span><br><span class="line">    html = get_html(url)</span><br><span class="line">    title = html.xpath(<span class="string">"//div[@class='title_all']//font[@color='#07519a']/text()"</span>)[<span class="number">0</span>]</span><br><span class="line">    movie[<span class="string">"title"</span>] = title</span><br><span class="line">    zooms = html.xpath(<span class="string">"//div[@id='Zoom']"</span>)[<span class="number">0</span>]</span><br><span class="line">    poster = zooms.xpath(<span class="string">".//img/@src"</span>)</span><br><span class="line">    movie[<span class="string">"poster"</span>] = poster</span><br><span class="line"></span><br><span class="line">    infos = zooms.xpath(<span class="string">".//text()"</span>)</span><br><span class="line">    <span class="keyword">for</span> index, info <span class="keyword">in</span> enumerate(infos):</span><br><span class="line">        <span class="keyword">if</span> info.startswith(<span class="string">"◎年　　代"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎年　　代"</span>)</span><br><span class="line">            movie[<span class="string">"year"</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎产　　地"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎产　　地"</span>)</span><br><span class="line">            movie[<span class="string">"country"</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎类　　别"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎类　　别"</span>)</span><br><span class="line">            movie[<span class="string">"category"</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎豆瓣评分"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎豆瓣评分"</span>)</span><br><span class="line">            movie[<span class="string">"score"</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎片　　长"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎片　　长"</span>)</span><br><span class="line">            movie[<span class="string">"timelength"</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎导　　演"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎导　　演"</span>)</span><br><span class="line">            movie[<span class="string">"director"</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎主　　演"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎主　　演"</span>)</span><br><span class="line">            actors = [info]</span><br><span class="line">            <span class="keyword">for</span> x <span class="keyword">in</span> range(index + <span class="number">1</span>, len(infos)):</span><br><span class="line">                actor = infos[x].strip()</span><br><span class="line">                <span class="keyword">if</span> actor.startswith(<span class="string">"◎"</span>):</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                actors.append(actor)</span><br><span class="line">            movie[<span class="string">"actors"</span>] = actors</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎简　　介"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎简　　介"</span>)</span><br><span class="line">            <span class="keyword">for</span> x <span class="keyword">in</span> range(index + <span class="number">1</span>, len(infos)):</span><br><span class="line">                profile = infos[x].strip()</span><br><span class="line">                <span class="keyword">if</span> profile.startswith(<span class="string">"【"</span>):</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">            movie[<span class="string">"profile"</span>] = profile</span><br><span class="line"></span><br><span class="line">    down_url = zooms.xpath(<span class="string">".//table//a/@href"</span>)</span><br><span class="line">    movie[<span class="string">"down_url"</span>] = down_url</span><br><span class="line">    <span class="keyword">return</span> movie</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">spider</span><span class="params">()</span>:</span></span><br><span class="line">    index_url = <span class="string">"https://www.dytt8.net/html/gndy/dyzz/index.html"</span></span><br><span class="line">    base_url = <span class="string">"https://www.dytt8.net/html/gndy/dyzz/list_23_&#123;&#125;.html"</span></span><br><span class="line">    html = get_html(index_url)</span><br><span class="line">    pages = html.xpath(<span class="string">"//select[@name='sldd']/option"</span>)</span><br><span class="line">    movies = []</span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">1</span>, len(pages) + <span class="number">1</span>):</span><br><span class="line">        url = base_url.format(x)</span><br><span class="line">        detail_urls = get_detail_url(url)</span><br><span class="line">        <span class="keyword">for</span> detail_url <span class="keyword">in</span> detail_urls:</span><br><span class="line">            <span class="comment"># 遍历每一页中的所有电影</span></span><br><span class="line">            movie = parse_detail_page(detail_url)</span><br><span class="line">            movies.append(movie)</span><br><span class="line">            print(movie)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    spider()</span><br></pre></td></tr></table></figure>
 
 ]]></content>
+      <categories>
+        <category>实例</category>
+      </categories>
       <tags>
         <tag>Python</tag>
       </tags>
@@ -2222,6 +2291,9 @@
     <url>/2020/07/25/React%E7%9A%84Ref%E5%B1%9E%E6%80%A7/</url>
     <content><![CDATA[<p>11<a id="more"></a></p>
 ]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
       <tags>
         <tag>React</tag>
       </tags>
@@ -2264,6 +2336,9 @@
 
 <p>以上实例初始化 state ， setNewnumber 用于更新 state。所有生命周期在 Content 组件中。</p>
 ]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
       <tags>
         <tag>React</tag>
       </tags>
@@ -2853,6 +2928,9 @@
 </tr>
 </tbody></table>
 ]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
       <tags>
         <tag>Redis</tag>
       </tags>
@@ -2882,6 +2960,9 @@
 </li>
 </ol>
 ]]></content>
+      <categories>
+        <category>java方法</category>
+      </categories>
       <tags>
         <tag>java</tag>
       </tags>
@@ -2905,6 +2986,9 @@
 <p>@ApiIgnore 注解标识此参数可以忽略</p>
 <p>上面的配置完成之后就已经集成完成。启动项目之后，浏览器输入<a href="http://127.0.0.1:8083/swagger-ui.html" target="_blank" rel="noopener">http://127.0.0.1:8083/swagger-ui.html</a>访问。</p>
 ]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
       <tags>
         <tag>SpringBoot</tag>
       </tags>
@@ -3101,6 +3185,9 @@
 </tr>
 </tbody></table>
 ]]></content>
+      <categories>
+        <category>语法</category>
+      </categories>
       <tags>
         <tag>Python</tag>
       </tags>
@@ -3332,6 +3419,9 @@
 <p>而题目问了是最终a 的结果，所以 a 的结果取决于各自线程对 a 的先后读写的顺序。</p>
 <p>结论：a的可能取值为-1、0、-2。<img src="/2020/04/25/java%E9%9D%A2%E8%AF%95%E9%A2%98/Thread.png" alt></p>
 ]]></content>
+      <categories>
+        <category>面试</category>
+      </categories>
       <tags>
         <tag>java</tag>
       </tags>
@@ -3459,6 +3549,9 @@
 </tr>
 </tbody></table>
 ]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
       <tags>
         <tag>java</tag>
       </tags>
@@ -3475,6 +3568,9 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT</span><br><span class="line">	* </span><br><span class="line">FROM</span><br><span class="line">	( SELECT dl_time, task_id, dl_dscr FROM dq_dl_log GROUP BY task_id DESC ) t </span><br><span class="line">ORDER BY</span><br><span class="line">	t.dl_time</span><br></pre></td></tr></table></figure>
 
 <h6 id="Oracle实现方法"><a href="#Oracle实现方法" class="headerlink" title="Oracle实现方法"></a>Oracle实现方法</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT</span><br><span class="line">	row_number() over ( PARTITION BY task_id ORDER BY dl_time ) rank </span><br><span class="line">FROM</span><br><span class="line">	dq_dl_log </span><br><span class="line">WHERE</span><br><span class="line">	rank = 1</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
       <tags>
         <tag>mysql</tag>
       </tags>
@@ -3572,6 +3668,9 @@
 <p>结果如下：</p>
 <p><img src="https://images2015.cnblogs.com/blog/540755/201706/540755-20170621140921382-538208257.png" alt="img"></p>
 ]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
       <tags>
         <tag>oracle</tag>
       </tags>
@@ -3990,6 +4089,9 @@
 </li>
 </ol>
 ]]></content>
+      <categories>
+        <category>论文</category>
+      </categories>
       <tags>
         <tag>paper</tag>
       </tags>
@@ -4035,6 +4137,9 @@
 <h6 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.BufferedReader;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStreamReader;</span><br><span class="line"><span class="keyword">import</span> java.io.StreamTokenizer;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MergeSet</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> father[];</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		<span class="comment">//获取输入流</span></span><br><span class="line">		StreamTokenizer st = <span class="keyword">new</span> StreamTokenizer(<span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(System.in)));</span><br><span class="line">		<span class="keyword">while</span>(st.nextToken() != StreamTokenizer.TT_EOF) &#123;</span><br><span class="line">			<span class="comment">//n为亲戚总数</span></span><br><span class="line">			<span class="keyword">int</span> n = (<span class="keyword">int</span>)st.nval;</span><br><span class="line">			father = <span class="keyword">new</span> <span class="keyword">int</span>[n+<span class="number">1</span>];</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++) &#123;</span><br><span class="line">				father[i] = i;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">//m个亲戚关系</span></span><br><span class="line">			st.nextToken();</span><br><span class="line">			<span class="keyword">int</span> m = (<span class="keyword">int</span>)st.nval;</span><br><span class="line">			<span class="comment">//询问p对亲戚关系</span></span><br><span class="line">			st.nextToken();</span><br><span class="line">			<span class="keyword">int</span> p = (<span class="keyword">int</span>)st.nval;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">				st.nextToken();</span><br><span class="line">				<span class="keyword">int</span> a = (<span class="keyword">int</span>)st.nval;</span><br><span class="line">				st.nextToken();</span><br><span class="line">				<span class="keyword">int</span> b = (<span class="keyword">int</span>)st.nval;</span><br><span class="line">				union(a,b);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; p; i++) &#123;</span><br><span class="line">				st.nextToken();</span><br><span class="line">				<span class="keyword">int</span> a = (<span class="keyword">int</span>)st.nval;</span><br><span class="line">				st.nextToken();</span><br><span class="line">				<span class="keyword">int</span> b = (<span class="keyword">int</span>)st.nval;</span><br><span class="line">				a = findParent(a);</span><br><span class="line">				b = findParent(b);</span><br><span class="line">				System.out.println(a == b ? <span class="string">"Yes"</span> : <span class="string">"No"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="comment">//亲戚关系连接</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">union</span><span class="params">(<span class="keyword">int</span> f, <span class="keyword">int</span> t)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> a = findParent(f);</span><br><span class="line">		<span class="keyword">int</span> b = findParent(t);</span><br><span class="line">        <span class="keyword">if</span>(a==b)<span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">if</span>(a&gt;b)&#123;</span><br><span class="line">            father[a] = b;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            father[b] = a;</span><br><span class="line">        &#125; </span><br><span class="line">	&#125;</span><br><span class="line">    <span class="comment">//判断是否具有亲戚关系</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">findParent</span><span class="params">(<span class="keyword">int</span> f)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">while</span>(father[f] != f)&#123;</span><br><span class="line">            f = father[f];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> f;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 ]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
       <tags>
         <tag>算法</tag>
       </tags>
@@ -4073,6 +4178,9 @@
 <p>IOS版QQ浏览器<br>Mozilla/5.0 (iPhone; CPU iPhone OS 7_1_2 like Mac OS X) AppleWebKit/537.51.2 (KHTML, like Gecko) Mobile/11D257 QQ/5.2.1.302 NetType/WIFI Mem/28</p>
 <p>IOS版微信浏览器<br>Mozilla/5.0 (iPhone; CPU iPhone OS 7_1_2 like Mac OS X) AppleWebKit/537.51.2 (KHTML, like Gecko) Mobile/11D257 MicroMessenger/6.0.1 NetType/WIFI</p>
 ]]></content>
+      <categories>
+        <category>代理</category>
+      </categories>
       <tags>
         <tag>浏览器</tag>
       </tags>
@@ -4086,6 +4194,9 @@
 <h6 id="时间戳转换成时间"><a href="#时间戳转换成时间" class="headerlink" title="时间戳转换成时间"></a>时间戳转换成时间</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">dateToStamp</span><span class="params">(String s)</span></span>&#123;</span><br><span class="line">    String res;</span><br><span class="line">    SimpleDateFormat simpleDateFormat = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);</span><br><span class="line">    <span class="keyword">long</span> lt = <span class="keyword">new</span> Long(s);</span><br><span class="line">    Date date = <span class="keyword">new</span> Date(lt);</span><br><span class="line">    res = simpleDateFormat.format(date);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 ]]></content>
+      <categories>
+        <category>格式化</category>
+      </categories>
       <tags>
         <tag>java</tag>
       </tags>
@@ -4103,6 +4214,9 @@
 <h6 id="输出结果"><a href="#输出结果" class="headerlink" title="输出结果"></a>输出结果</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">时间是：2020-02-14</span><br><span class="line">时间是：2020年02月14日 16时30分55秒</span><br><span class="line">LocalDateTime：2020-02-12T22:22:22</span><br><span class="line">LocalDateTime：2020-02-14T16:30:55.544</span><br></pre></td></tr></table></figure>
 
 ]]></content>
+      <categories>
+        <category>格式化</category>
+      </categories>
       <tags>
         <tag>java</tag>
       </tags>
@@ -4122,6 +4236,9 @@
 </ol>
 <p>​    4、如果要比较多为数组，则需要使用deepEquals方法。</p>
 ]]></content>
+      <categories>
+        <category>java方法</category>
+      </categories>
       <tags>
         <tag>java</tag>
       </tags>
@@ -4144,7 +4261,7 @@
 <p><img src="/2019/12/22/%E7%A0%94%E7%A9%B6%E7%94%9F%E8%80%83%E8%AF%95%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E5%A4%A7%E5%85%A8/145.jpg" alt></p>
 ]]></content>
       <categories>
-        <category>Graduate</category>
+        <category>考试</category>
       </categories>
       <tags>
         <tag>Math</tag>
