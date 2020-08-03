@@ -3130,7 +3130,9 @@
   <entry>
     <title>sql函数</title>
     <url>/2020/08/02/sql%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<h6 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h6><p>upper(str)/ucase(str)：返回字符串str，将所有字符改为大写</p>
+    <content><![CDATA[<p>工作中常用的SQL函数。<a id="more"></a></p>
+<p>top关键字属性SQL Server，平常并没有使用SQL Server。</p>
+<h6 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h6><p>upper(str)/ucase(str)：返回字符串str，将所有字符改为大写</p>
 <p>lower(str)/lcase(str)：返回字符串str，将所有字符改为小写</p>
 <p>first(column_name)：返回指定的字段中第一个记录的值，可使用 ORDER BY 语句对记录进行排序</p>
 <p>last(column_name)：返回指定的字段中最后一个记录的值，可使用 ORDER BY 语句对记录进行排序</p>
@@ -3227,10 +3229,10 @@
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> 日程安排 <span class="keyword">where</span> <span class="keyword">datediff</span>(<span class="string">'minute'</span>,f开始时间,<span class="keyword">getdate</span>())&gt;<span class="number">5</span></span><br></pre></td></tr></table></figure>
 
 <p>一条sql语句搞定数据库分页</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">*select top 10 b.* from (select top 20 主键字段,排序字段 from 表名 order by 排序字段 desc) a,表名 b where b.主键字段 = a.主键字段 order by a.排序字段</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> top <span class="number">10</span> b.* <span class="keyword">from</span> (<span class="keyword">select</span> top <span class="number">20</span> 主键字段,排序字段 <span class="keyword">from</span> 表名 <span class="keyword">order</span> <span class="keyword">by</span> 排序字段 <span class="keyword">desc</span>) a,表名 b <span class="keyword">where</span> b.主键字段 = a.主键字段 <span class="keyword">order</span> <span class="keyword">by</span> a.排序字段</span><br></pre></td></tr></table></figure>
 
 <p>前10条记录</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> top <span class="number">10</span> * <span class="keyword">form</span> table1 <span class="keyword">where</span> 范围</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> top <span class="number">10</span> * <span class="keyword">from</span> table1 <span class="keyword">where</span> 范围</span><br></pre></td></tr></table></figure>
 
 <p>选择在每一组b值相同的数据中对应的a最大的记录的所有信息(类似这样的用法可以用于论坛每月排行榜,每月热销产品分析,按科目成绩排名,等等.)</p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> a,b,c <span class="keyword">from</span> tablename ta <span class="keyword">where</span> a=(<span class="keyword">select</span> <span class="keyword">max</span>(a) <span class="keyword">from</span> tablename tb <span class="keyword">where</span> tb.b=ta.b)</span><br></pre></td></tr></table></figure>
@@ -3238,7 +3240,7 @@
 <p>包括所有在TableA中但不在TableB和TableC中的行并消除所有重复行而派生出一个结果表</p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">(<span class="keyword">select</span> a <span class="keyword">from</span> tableA ) <span class="keyword">except</span> (<span class="keyword">select</span> a <span class="keyword">from</span> tableB) <span class="keyword">except</span> (<span class="keyword">select</span> a <span class="keyword">from</span> tableC)</span><br></pre></td></tr></table></figure>
 
-<p>随机取出10**条数据</p>
+<p>随机取出10条数据</p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> top <span class="number">10</span> * <span class="keyword">from</span> tablename <span class="keyword">order</span> <span class="keyword">by</span> newid()</span><br></pre></td></tr></table></figure>
 
 <p>随机选择记录</p>
