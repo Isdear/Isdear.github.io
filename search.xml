@@ -1,77 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>CSS3滤镜filter</title>
-    <url>/2020/02/10/CSS3%E6%BB%A4%E9%95%9Cfilter/</url>
-    <content><![CDATA[<p>网页图片的色彩处理<a id="more"></a></p>
-<h6 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h6><table>
-<thead>
-<tr>
-<th align="center">none</th>
-<th>默认值，没有效果。</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">blur(<em>px</em>)</td>
-<td>给图像设置高斯模糊。”radius”一值设定高斯函数的标准差，或者是屏幕上以多少像素融在一起， 所以值越大越模糊；  如果没有设定值，则默认是0；这个参数可设置css长度值，但不接受百分比值。</td>
-</tr>
-<tr>
-<td align="center">brightness(<em>%</em>)</td>
-<td>给图片应用一种线性乘法，使其看起来更亮或更暗。如果值是0%，图像会全黑。值是100%，则图像无变化。其他的值对应线性乘数效果。值超过100%也是可以的，图像会比原来更亮。如果没有设定值，默认是1。</td>
-</tr>
-<tr>
-<td align="center">contrast(<em>%</em>)</td>
-<td>调整图像的对比度。值是0%的话，图像会全黑。值是100%，图像不变。值可以超过100%，意味着会运用更低的对比。若没有设置值，默认是1。</td>
-</tr>
-<tr>
-<td align="center">drop-shadow(<em>h-shadow v-shadow blur spread color</em>)</td>
-<td>给图像设置一个阴影效果。阴影是合成在图像下面，可以有模糊度的，可以以特定颜色画出的遮罩图的偏移版本。 函数接受<shadow>(在CSS3背景中定义)类型的值，除了”inset”关键字是不允许的。该函数与已有的box-shadow box-shadow属性很相似；不同之处在于，通过滤镜，一些浏览器为了更好的性能会提供硬件加速。参数如下：<offset-x><offset-y>(必须)这是设置阴影偏移量的两个 值. <offset-x> 设定水平方向距离. 负值会使阴影出现在元素左边. <offset-y>设定垂直距离.负值会使阴影出现在元素上方。查看<length>可能的单位.<strong>如果两个值都是0</strong>, 则阴影出现在元素正后面 (如果设置了 and/or ，会有模糊效果).<blur-radius> (可选)这是第三个code&gt;值. 值越大，越模糊，则阴影会变得更大更淡.不允许负值 若未设定，默认是0 (则阴影的边界很锐利).<spread-radius>(可选)这是第四个 值. 正值会使阴影扩张和变大，负值会是阴影缩小.若未设定，默认是0 (阴影会与元素一样大小). 注意: Webkit, 以及一些其他浏览器 不支持第四个长度，如果加了也不会渲染。 <color> (可选)查看 该值可能的关键字和标记。若未设定，颜色值基于浏览器。在Gecko (Firefox), Presto (Opera)和Trident (Internet Explorer)中， 会应用color<strong>color</strong>属性的值。另外, 如果颜色值省略，WebKit中阴影是透明的。</color></spread-radius></blur-radius></length></offset-y></offset-x></offset-y></offset-x></shadow></td>
-</tr>
-<tr>
-<td align="center">grayscale(<em>%</em>)</td>
-<td>将图像转换为灰度图像。值定义转换的比例。值为100%则完全转为灰度图像，值为0%图像无变化。值在0%到100%之间，则是效果的线性乘子。若未设置，值默认是0；</td>
-</tr>
-<tr>
-<td align="center">hue-rotate(<em>deg</em>)</td>
-<td>给图像应用色相旋转。”angle”一值设定图像会被调整的色环角度值。值为0deg，则图像无变化。若值未设置，默认值是0deg。该值虽然没有最大值，超过360deg的值相当于又绕一圈。</td>
-</tr>
-<tr>
-<td align="center">invert(<em>%</em>)</td>
-<td>反转输入图像。值定义转换的比例。100%的价值是完全反转。值为0%则图像无变化。值在0%和100%之间，则是效果的线性乘子。 若值未设置，值默认是0。</td>
-</tr>
-<tr>
-<td align="center">opacity(<em>%</em>)</td>
-<td>转化图像的透明程度。值定义转换的比例。值为0%则是完全透明，值为100%则图像无变化。值在0%和100%之间，则是效果的线性乘子，也相当于图像样本乘以数量。 若值未设置，值默认是1。该函数与已有的opacity属性很相似，不同之处在于通过filter，一些浏览器为了提升性能会提供硬件加速。</td>
-</tr>
-<tr>
-<td align="center">saturate(<em>%</em>)</td>
-<td>转换图像饱和度。值定义转换的比例。值为0%则是完全不饱和，值为100%则图像无变化。其他值，则是效果的线性乘子。超过100%的值是允许的，则有更高的饱和度。 若值未设置，值默认是1。</td>
-</tr>
-<tr>
-<td align="center">sepia(<em>%</em>)</td>
-<td>将图像转换为深褐色。值定义转换的比例。值为100%则完全是深褐色的，值为0%图像无变化。值在0%到100%之间，则是效果的线性乘子。若未设置，值默认是0；</td>
-</tr>
-<tr>
-<td align="center">url()</td>
-<td>URL函数接受一个XML文件，该文件设置了 一个SVG滤镜，且可以包含一个锚点来指定一个具体的滤镜元素。例如：<code>filter: url(svg-url#element-id)</code></td>
-</tr>
-<tr>
-<td align="center">initial</td>
-<td>设置属性为默认值</td>
-</tr>
-<tr>
-<td align="center">inherit</td>
-<td>从父元素继承该属性</td>
-</tr>
-</tbody></table>
-<h6 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h6><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">img &#123;</span><br><span class="line">    width: 33%;</span><br><span class="line">    height: auto;</span><br><span class="line">    float: left; </span><br><span class="line">&#125;</span><br><span class="line"><span class="css"><span class="comment">/*模糊*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.blur</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">blur</span>(4px);<span class="attribute">filter</span>: <span class="built_in">blur</span>(4px);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*亮度*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.brightness</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">brightness</span>(0.30);<span class="attribute">filter</span>: <span class="built_in">brightness</span>(0.30);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*对比度*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.contrast</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">contrast</span>(180%);<span class="attribute">filter</span>: <span class="built_in">contrast</span>(180%);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*灰度*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.grayscale</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">grayscale</span>(100%);<span class="attribute">filter</span>: <span class="built_in">grayscale</span>(100%);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*色相旋转*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.huerotate</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">hue-rotate</span>(180deg);<span class="attribute">filter</span>: <span class="built_in">hue-rotate</span>(180deg);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*反色*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.invert</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">invert</span>(100%);<span class="attribute">filter</span>: <span class="built_in">invert</span>(100%);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*透明度*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.opacity</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">opacity</span>(50%);<span class="attribute">filter</span>: <span class="built_in">opacity</span>(50%);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*饱和度*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.saturate</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">saturate</span>(7); <span class="attribute">filter</span>: <span class="built_in">saturate</span>(7);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*深褐色*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.sepia</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">sepia</span>(100%);<span class="attribute">filter</span>: <span class="built_in">sepia</span>(100%);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*阴影*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.shadow</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">drop-shadow</span>(8px 8px 10px green);<span class="attribute">filter</span>: <span class="built_in">drop-shadow</span>(8px 8px 10px green);&#125;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">strong</span>&gt;</span>注意：<span class="tag">&lt;/<span class="name">strong</span>&gt;</span> Internet Explorer 不支持 filter 属性。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"blur"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"brightness"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"contrast"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"grayscale"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"huerotate"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"invert"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"opacity"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"saturate"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"sepia"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"shadow"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
+    <title>ETL</title>
+    <url>/2020/08/08/ETL/</url>
+    <content><![CDATA[<p>ETL的概率及使用场景<a id="more"></a></p>
+<h5 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h5><p>ETL 是三个单词的缩写：</p>
+<ul>
+<li>Extraction：抽取、提取；就是把数据从数据库里面取出来；</li>
+<li>Transformation：转换；包括但不限于：数据筛选校验、数据关联、数据内容及结构的修改、运算、统计等等；</li>
+<li>Loading：加载；将处理后的数据保存到目标数据库。</li>
+</ul>
+<p>从这三个单词基本可以了解 ETL 的作用：将各个业务系统的数据，通过抽取、清洗、转换之后，将加工后的数据落地到数据库中（数据仓库）；在这个过程中，ETL 可以将分散、零乱、标准不统一的数据整合到一起。</p>
+<p><img src="/2020/08/08/ETL/ETL.webp.jpg" alt></p>
+<h5 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h5><h6 id="报表、BI系统"><a href="#报表、BI系统" class="headerlink" title="报表、BI系统"></a>报表、BI系统</h6><p>在公司建设的初期，业务比较少，系统也比较少，一台数据库就搞定了；随着公司业务的增加，业务系统被拆成很多系统；随着数据量的继续增加，单个系统的数据增加到一定程度的时候，也做了分库分表；</p>
+<p>这时候领导、业务人员在用数据做分析的时候，数据来源可能是多个系统的多张表，这时候企图通过一个复杂的 SQL 跑出来结果就很困难了；通常公司会建立一个数据仓库，通过ETL工具把数据抽取到数据仓库中，再做数据的拟合和展示。</p>
+<h6 id="跨系统的数据加工或查询"><a href="#跨系统的数据加工或查询" class="headerlink" title="跨系统的数据加工或查询"></a>跨系统的数据加工或查询</h6><p>业务系统有几百个，由于业务流程比较复杂，前端系统在做业务操作的时候，在正式提交交易之前，有很多业务校验；</p>
+<p>比如要查询客户在 X 系统的交易历史，在 Y 系统的交易历史，在 Z 系统的交易历史；那么就需要分别调用 X、Y、Z 系统的接口，这个对前端系统很不友好，那么通常的解决方案是什么？</p>
+<ul>
+<li>A 方案：做一个中间服务，中间服务去调用 X、Y、Z 系统的接口，客户端直接调用这个中间服务；这种方案只是把前端要做的事情，转移到了中间服务；</li>
+<li>B 方案：整合 X、Y、Z 三个系统，建服务中台；这种方法很好，但是极为难，对于很多公司来说，别说把 X、Y、Z 三个系统整合成一个中台系统，就是其中一个系统本身进行重构，都是非常困难的；</li>
+<li>C 方案：把 X、Y、Z 三个系统中需要的数据，通过 ETL 抽取加工到一个数据仓库中，对外提供服务；这个系统最大的好处是在不改造 X、Y、Z 三个系统的前提下，又可以实现跨系统的查询。</li>
+</ul>
+<p>我们在 C 方案的基础上又往前做了一步，就是将落地后的数据又做了一次加工，将需要跨表关联的数据，提前关联好存入 MongoDB 中，对外提供查询服务；这样可以将多表关联查询，变成了单表查询。</p>
+<p><img src="/2020/08/08/ETL/ETL2.webp.jpg" alt></p>
 ]]></content>
       <categories>
-        <category>前端</category>
+        <category>数据库</category>
       </categories>
       <tags>
-        <tag>CSS</tag>
+        <tag>oracle</tag>
       </tags>
   </entry>
   <entry>
@@ -341,6 +298,80 @@
       </categories>
       <tags>
         <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CSS3滤镜filter</title>
+    <url>/2020/02/10/CSS3%E6%BB%A4%E9%95%9Cfilter/</url>
+    <content><![CDATA[<p>网页图片的色彩处理<a id="more"></a></p>
+<h6 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h6><table>
+<thead>
+<tr>
+<th align="center">none</th>
+<th>默认值，没有效果。</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">blur(<em>px</em>)</td>
+<td>给图像设置高斯模糊。”radius”一值设定高斯函数的标准差，或者是屏幕上以多少像素融在一起， 所以值越大越模糊；  如果没有设定值，则默认是0；这个参数可设置css长度值，但不接受百分比值。</td>
+</tr>
+<tr>
+<td align="center">brightness(<em>%</em>)</td>
+<td>给图片应用一种线性乘法，使其看起来更亮或更暗。如果值是0%，图像会全黑。值是100%，则图像无变化。其他的值对应线性乘数效果。值超过100%也是可以的，图像会比原来更亮。如果没有设定值，默认是1。</td>
+</tr>
+<tr>
+<td align="center">contrast(<em>%</em>)</td>
+<td>调整图像的对比度。值是0%的话，图像会全黑。值是100%，图像不变。值可以超过100%，意味着会运用更低的对比。若没有设置值，默认是1。</td>
+</tr>
+<tr>
+<td align="center">drop-shadow(<em>h-shadow v-shadow blur spread color</em>)</td>
+<td>给图像设置一个阴影效果。阴影是合成在图像下面，可以有模糊度的，可以以特定颜色画出的遮罩图的偏移版本。 函数接受<shadow>(在CSS3背景中定义)类型的值，除了”inset”关键字是不允许的。该函数与已有的box-shadow box-shadow属性很相似；不同之处在于，通过滤镜，一些浏览器为了更好的性能会提供硬件加速。参数如下：<offset-x><offset-y>(必须)这是设置阴影偏移量的两个 值. <offset-x> 设定水平方向距离. 负值会使阴影出现在元素左边. <offset-y>设定垂直距离.负值会使阴影出现在元素上方。查看<length>可能的单位.<strong>如果两个值都是0</strong>, 则阴影出现在元素正后面 (如果设置了 and/or ，会有模糊效果).<blur-radius> (可选)这是第三个code&gt;值. 值越大，越模糊，则阴影会变得更大更淡.不允许负值 若未设定，默认是0 (则阴影的边界很锐利).<spread-radius>(可选)这是第四个 值. 正值会使阴影扩张和变大，负值会是阴影缩小.若未设定，默认是0 (阴影会与元素一样大小). 注意: Webkit, 以及一些其他浏览器 不支持第四个长度，如果加了也不会渲染。 <color> (可选)查看 该值可能的关键字和标记。若未设定，颜色值基于浏览器。在Gecko (Firefox), Presto (Opera)和Trident (Internet Explorer)中， 会应用color<strong>color</strong>属性的值。另外, 如果颜色值省略，WebKit中阴影是透明的。</color></spread-radius></blur-radius></length></offset-y></offset-x></offset-y></offset-x></shadow></td>
+</tr>
+<tr>
+<td align="center">grayscale(<em>%</em>)</td>
+<td>将图像转换为灰度图像。值定义转换的比例。值为100%则完全转为灰度图像，值为0%图像无变化。值在0%到100%之间，则是效果的线性乘子。若未设置，值默认是0；</td>
+</tr>
+<tr>
+<td align="center">hue-rotate(<em>deg</em>)</td>
+<td>给图像应用色相旋转。”angle”一值设定图像会被调整的色环角度值。值为0deg，则图像无变化。若值未设置，默认值是0deg。该值虽然没有最大值，超过360deg的值相当于又绕一圈。</td>
+</tr>
+<tr>
+<td align="center">invert(<em>%</em>)</td>
+<td>反转输入图像。值定义转换的比例。100%的价值是完全反转。值为0%则图像无变化。值在0%和100%之间，则是效果的线性乘子。 若值未设置，值默认是0。</td>
+</tr>
+<tr>
+<td align="center">opacity(<em>%</em>)</td>
+<td>转化图像的透明程度。值定义转换的比例。值为0%则是完全透明，值为100%则图像无变化。值在0%和100%之间，则是效果的线性乘子，也相当于图像样本乘以数量。 若值未设置，值默认是1。该函数与已有的opacity属性很相似，不同之处在于通过filter，一些浏览器为了提升性能会提供硬件加速。</td>
+</tr>
+<tr>
+<td align="center">saturate(<em>%</em>)</td>
+<td>转换图像饱和度。值定义转换的比例。值为0%则是完全不饱和，值为100%则图像无变化。其他值，则是效果的线性乘子。超过100%的值是允许的，则有更高的饱和度。 若值未设置，值默认是1。</td>
+</tr>
+<tr>
+<td align="center">sepia(<em>%</em>)</td>
+<td>将图像转换为深褐色。值定义转换的比例。值为100%则完全是深褐色的，值为0%图像无变化。值在0%到100%之间，则是效果的线性乘子。若未设置，值默认是0；</td>
+</tr>
+<tr>
+<td align="center">url()</td>
+<td>URL函数接受一个XML文件，该文件设置了 一个SVG滤镜，且可以包含一个锚点来指定一个具体的滤镜元素。例如：<code>filter: url(svg-url#element-id)</code></td>
+</tr>
+<tr>
+<td align="center">initial</td>
+<td>设置属性为默认值</td>
+</tr>
+<tr>
+<td align="center">inherit</td>
+<td>从父元素继承该属性</td>
+</tr>
+</tbody></table>
+<h6 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h6><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">img &#123;</span><br><span class="line">    width: 33%;</span><br><span class="line">    height: auto;</span><br><span class="line">    float: left; </span><br><span class="line">&#125;</span><br><span class="line"><span class="css"><span class="comment">/*模糊*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.blur</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">blur</span>(4px);<span class="attribute">filter</span>: <span class="built_in">blur</span>(4px);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*亮度*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.brightness</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">brightness</span>(0.30);<span class="attribute">filter</span>: <span class="built_in">brightness</span>(0.30);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*对比度*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.contrast</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">contrast</span>(180%);<span class="attribute">filter</span>: <span class="built_in">contrast</span>(180%);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*灰度*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.grayscale</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">grayscale</span>(100%);<span class="attribute">filter</span>: <span class="built_in">grayscale</span>(100%);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*色相旋转*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.huerotate</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">hue-rotate</span>(180deg);<span class="attribute">filter</span>: <span class="built_in">hue-rotate</span>(180deg);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*反色*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.invert</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">invert</span>(100%);<span class="attribute">filter</span>: <span class="built_in">invert</span>(100%);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*透明度*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.opacity</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">opacity</span>(50%);<span class="attribute">filter</span>: <span class="built_in">opacity</span>(50%);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*饱和度*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.saturate</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">saturate</span>(7); <span class="attribute">filter</span>: <span class="built_in">saturate</span>(7);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*深褐色*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.sepia</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">sepia</span>(100%);<span class="attribute">filter</span>: <span class="built_in">sepia</span>(100%);&#125;</span></span><br><span class="line"><span class="css"><span class="comment">/*阴影*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.shadow</span> &#123;<span class="attribute">-webkit-filter</span>: <span class="built_in">drop-shadow</span>(8px 8px 10px green);<span class="attribute">filter</span>: <span class="built_in">drop-shadow</span>(8px 8px 10px green);&#125;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">strong</span>&gt;</span>注意：<span class="tag">&lt;/<span class="name">strong</span>&gt;</span> Internet Explorer 不支持 filter 属性。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"blur"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"brightness"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"contrast"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"grayscale"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"huerotate"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"invert"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"opacity"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"saturate"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"sepia"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"shadow"</span> <span class="attr">src</span>=<span class="string">"pineapple.jpg"</span> <span class="attr">alt</span>=<span class="string">"Pineapple"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>CSS</tag>
       </tags>
   </entry>
   <entry>
@@ -1617,43 +1648,6 @@
       </tags>
   </entry>
   <entry>
-    <title>MQTT的回调类</title>
-    <url>/2019/11/21/MQTT%E7%9A%84%E5%9B%9E%E8%B0%83%E7%B1%BB/</url>
-    <content><![CDATA[<p>关于MQTT的回调类的实现<a id="more"></a></p>
-<h5 id="在使用回调方式前，先通过MQTT获取回调链接"><a href="#在使用回调方式前，先通过MQTT获取回调链接" class="headerlink" title="在使用回调方式前，先通过MQTT获取回调链接"></a>在使用回调方式前，先通过MQTT获取回调链接</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">MQTT mqtt = <span class="keyword">new</span> MQTT();</span><br><span class="line"></span><br><span class="line"><span class="comment">//此处省略设置MQTT的属性</span></span><br><span class="line"></span><br><span class="line">CallbackConnection connection = mqtt.callbackConnection();</span><br></pre></td></tr></table></figure>
-
-<h5 id="调用CallbackConnection的方法实现业务逻辑"><a href="#调用CallbackConnection的方法实现业务逻辑" class="headerlink" title="调用CallbackConnection的方法实现业务逻辑"></a>调用CallbackConnection的方法实现业务逻辑</h5><h6 id="connect-连接方法-："><a href="#connect-连接方法-：" class="headerlink" title="connect(连接方法)："></a>connect(连接方法)：</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">connection.connect(<span class="keyword">new</span> Callback&lt;Void&gt;() &#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onSuccess</span><span class="params">(Void arg0)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//进入该方法表示连接成功连接成功</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Throwable value)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//进入该方法表示连接失败</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>一般可以在connect的onSuccess方法中发布(publish)和订阅(subscribe)相应的主题(topic)，在其onError方法中作相应的断开连接等操作。</p>
-<h6 id="listener-监听方法"><a href="#listener-监听方法" class="headerlink" title="listener(监听方法):"></a>listener(监听方法):</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">connection.listener(<span class="keyword">new</span> Listener() &#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPublish</span><span class="params">(UTF8Buffer topicmsg, Buffer msg, Runnable ack)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//utf-8 is used for dealing with the garbled</span></span><br><span class="line">		<span class="comment">//String topic = topicmsg.utf8().toString();</span></span><br><span class="line">		<span class="comment">//String payload = msg.utf8().toString();</span></span><br><span class="line">		<span class="comment">//表示监听成功</span></span><br><span class="line">		ack.run();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Throwable value)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//表示监听失败</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//execute only once when connection is ended</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDisconnected</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		/表示监听到断开连接</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//execute only once when connecting started</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onConnected</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">//表示监听到连接成功</span></span><br><span class="line">		&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>onpublish表示发布成功，可以获取到订阅的主题(topic)和订阅的内容(UTF8Buffer topicmsg 表示订阅的主题,Buffer msg表示订阅的内容)，一般的可以在这个方法中获取订阅的主题和内容然后进行相应的判断和其他业务逻辑操作；</p>
-<p>onConneted表示监听到连接建立，该方法只在建立连接成功时执行一次，表示连接成功建立，如果有必要可以在该方法中进行相应的订阅操作； </p>
-<p> onDisconnected表示监听到连接断开，该方法只在断开连接时执行一次，如有必要可以进行相应的资源回收操作。 </p>
-<h6 id="subscirbe-订阅方法"><a href="#subscirbe-订阅方法" class="headerlink" title="subscirbe(订阅方法):"></a>subscirbe(订阅方法):</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">connection.subscribe(topics, <span class="keyword">new</span> Callback&lt;<span class="keyword">byte</span>[]&gt;() &#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onSuccess</span><span class="params">(<span class="keyword">byte</span>[] qoses)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//主题订阅成功</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Throwable value)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//状态主题订阅失败</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p> onSuccess方法表示订阅成功，onError方法表示订阅失败；方法中Topic[] topics表示定于的主题数组，注意只有在改方法订阅的主题时，才能够在监听方法中接收到。 </p>
-<h6 id="publish-发布主题-topic-方法"><a href="#publish-发布主题-topic-方法" class="headerlink" title="publish(发布主题(topic)方法):"></a>publish(发布主题(topic)方法):</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">connection.publish(topic, payload.getBytes(), qos, retain, <span class="keyword">new</span> Callback&lt;Void&gt;() &#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onSuccess</span><span class="params">(Void arg0)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//表示发布主题成功</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Throwable throwable)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//表示发布主题失败</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p> publish方法用于发布响应的主题，以便订阅者订阅；onSuccess表示发布成功，onError表示发布失败。 </p>
-<h6 id="disconnect-断开连接方法"><a href="#disconnect-断开连接方法" class="headerlink" title="disconnect(断开连接方法):"></a>disconnect(断开连接方法):</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">connection.disconnect(<span class="keyword">new</span> Callback&lt;Void&gt;() &#123;</span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onSuccess</span><span class="params">(Void arg0)</span> </span>&#123;</span><br><span class="line">			<span class="comment">//与服务器断开连接成功</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Throwable arg0)</span> </span>&#123;</span><br><span class="line">			<span class="comment">//与服务器断开连接失败</span></span><br><span class="line">		&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p> disconnect表示断开与代理服务器的连接，调用该方法后只是表示断开连接但是实际的connect依然存在并没有为null，再次调用connect方法又能够连接成功。 </p>
-<p>注意：</p>
-<p>1、在上面的五个方法中一般先调用connect和listener方法</p>
-<p>2、回调将执行与连接相关联的调度队列，以便可以安全使用从回调的连接，但你绝不能在回调中执行任何阻塞操作，否则会改变执行的顺序，这样可能出错。如果可能存在阻塞时，最好是在连接的调度队列中执行另外一个线程：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">connection.getDispatchQueue().execute(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">//在这里进行相应的订阅、发布、停止连接等等操作			</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/152377/156838966242265_zh-CN.png" alt="MQTT应用场景" title="MQTT应用场景"></p>
-]]></content>
-      <categories>
-        <category>消息队列</category>
-      </categories>
-      <tags>
-        <tag>MQTT</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Linux系统下MongoDB的安装与配置</title>
     <url>/2019/11/29/Linux%E7%B3%BB%E7%BB%9F%E4%B8%8BMongoDB%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</url>
     <content><![CDATA[<p>最简便的安装教程<a id="more"></a></p>
@@ -1843,6 +1837,43 @@
       </tags>
   </entry>
   <entry>
+    <title>MQTT的回调类</title>
+    <url>/2019/11/21/MQTT%E7%9A%84%E5%9B%9E%E8%B0%83%E7%B1%BB/</url>
+    <content><![CDATA[<p>关于MQTT的回调类的实现<a id="more"></a></p>
+<h5 id="在使用回调方式前，先通过MQTT获取回调链接"><a href="#在使用回调方式前，先通过MQTT获取回调链接" class="headerlink" title="在使用回调方式前，先通过MQTT获取回调链接"></a>在使用回调方式前，先通过MQTT获取回调链接</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">MQTT mqtt = <span class="keyword">new</span> MQTT();</span><br><span class="line"></span><br><span class="line"><span class="comment">//此处省略设置MQTT的属性</span></span><br><span class="line"></span><br><span class="line">CallbackConnection connection = mqtt.callbackConnection();</span><br></pre></td></tr></table></figure>
+
+<h5 id="调用CallbackConnection的方法实现业务逻辑"><a href="#调用CallbackConnection的方法实现业务逻辑" class="headerlink" title="调用CallbackConnection的方法实现业务逻辑"></a>调用CallbackConnection的方法实现业务逻辑</h5><h6 id="connect-连接方法-："><a href="#connect-连接方法-：" class="headerlink" title="connect(连接方法)："></a>connect(连接方法)：</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">connection.connect(<span class="keyword">new</span> Callback&lt;Void&gt;() &#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onSuccess</span><span class="params">(Void arg0)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//进入该方法表示连接成功连接成功</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Throwable value)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//进入该方法表示连接失败</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>一般可以在connect的onSuccess方法中发布(publish)和订阅(subscribe)相应的主题(topic)，在其onError方法中作相应的断开连接等操作。</p>
+<h6 id="listener-监听方法"><a href="#listener-监听方法" class="headerlink" title="listener(监听方法):"></a>listener(监听方法):</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">connection.listener(<span class="keyword">new</span> Listener() &#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPublish</span><span class="params">(UTF8Buffer topicmsg, Buffer msg, Runnable ack)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//utf-8 is used for dealing with the garbled</span></span><br><span class="line">		<span class="comment">//String topic = topicmsg.utf8().toString();</span></span><br><span class="line">		<span class="comment">//String payload = msg.utf8().toString();</span></span><br><span class="line">		<span class="comment">//表示监听成功</span></span><br><span class="line">		ack.run();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Throwable value)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//表示监听失败</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//execute only once when connection is ended</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDisconnected</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		/表示监听到断开连接</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//execute only once when connecting started</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onConnected</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">//表示监听到连接成功</span></span><br><span class="line">		&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>onpublish表示发布成功，可以获取到订阅的主题(topic)和订阅的内容(UTF8Buffer topicmsg 表示订阅的主题,Buffer msg表示订阅的内容)，一般的可以在这个方法中获取订阅的主题和内容然后进行相应的判断和其他业务逻辑操作；</p>
+<p>onConneted表示监听到连接建立，该方法只在建立连接成功时执行一次，表示连接成功建立，如果有必要可以在该方法中进行相应的订阅操作； </p>
+<p> onDisconnected表示监听到连接断开，该方法只在断开连接时执行一次，如有必要可以进行相应的资源回收操作。 </p>
+<h6 id="subscirbe-订阅方法"><a href="#subscirbe-订阅方法" class="headerlink" title="subscirbe(订阅方法):"></a>subscirbe(订阅方法):</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">connection.subscribe(topics, <span class="keyword">new</span> Callback&lt;<span class="keyword">byte</span>[]&gt;() &#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onSuccess</span><span class="params">(<span class="keyword">byte</span>[] qoses)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//主题订阅成功</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Throwable value)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//状态主题订阅失败</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p> onSuccess方法表示订阅成功，onError方法表示订阅失败；方法中Topic[] topics表示定于的主题数组，注意只有在改方法订阅的主题时，才能够在监听方法中接收到。 </p>
+<h6 id="publish-发布主题-topic-方法"><a href="#publish-发布主题-topic-方法" class="headerlink" title="publish(发布主题(topic)方法):"></a>publish(发布主题(topic)方法):</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">connection.publish(topic, payload.getBytes(), qos, retain, <span class="keyword">new</span> Callback&lt;Void&gt;() &#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onSuccess</span><span class="params">(Void arg0)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//表示发布主题成功</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Throwable throwable)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//表示发布主题失败</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p> publish方法用于发布响应的主题，以便订阅者订阅；onSuccess表示发布成功，onError表示发布失败。 </p>
+<h6 id="disconnect-断开连接方法"><a href="#disconnect-断开连接方法" class="headerlink" title="disconnect(断开连接方法):"></a>disconnect(断开连接方法):</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">connection.disconnect(<span class="keyword">new</span> Callback&lt;Void&gt;() &#123;</span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onSuccess</span><span class="params">(Void arg0)</span> </span>&#123;</span><br><span class="line">			<span class="comment">//与服务器断开连接成功</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Throwable arg0)</span> </span>&#123;</span><br><span class="line">			<span class="comment">//与服务器断开连接失败</span></span><br><span class="line">		&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p> disconnect表示断开与代理服务器的连接，调用该方法后只是表示断开连接但是实际的connect依然存在并没有为null，再次调用connect方法又能够连接成功。 </p>
+<p>注意：</p>
+<p>1、在上面的五个方法中一般先调用connect和listener方法</p>
+<p>2、回调将执行与连接相关联的调度队列，以便可以安全使用从回调的连接，但你绝不能在回调中执行任何阻塞操作，否则会改变执行的顺序，这样可能出错。如果可能存在阻塞时，最好是在连接的调度队列中执行另外一个线程：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">connection.getDispatchQueue().execute(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">//在这里进行相应的订阅、发布、停止连接等等操作			</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/152377/156838966242265_zh-CN.png" alt="MQTT应用场景" title="MQTT应用场景"></p>
+]]></content>
+      <categories>
+        <category>消息队列</category>
+      </categories>
+      <tags>
+        <tag>MQTT</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Oracle中的COALESCER函数</title>
     <url>/2020/07/26/Oracle%E4%B8%AD%E7%9A%84COALESCER%E5%87%BD%E6%95%B0/</url>
     <content><![CDATA[<p>coalesce函数的使用说明<a id="more"></a></p>
@@ -1926,6 +1957,20 @@
       </categories>
       <tags>
         <tag>mysql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python爬取电影天堂新片精品</title>
+    <url>/2020/02/12/Python%E7%88%AC%E5%8F%96%E7%94%B5%E5%BD%B1%E5%A4%A9%E5%A0%82%E6%96%B0%E7%89%87%E7%B2%BE%E5%93%81/</url>
+    <content><![CDATA[<p>爬取最新电影，内容包括标题、年代、产地、类别、评分、片场、导演、主演、下载链接。<a id="more"></a></p>
+<h6 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h6><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">base_domain = <span class="string">"https://www.dytt8.net"</span></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">"User-Agent"</span>: <span class="string">"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "</span></span><br><span class="line">                  <span class="string">"(KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36 Edg/80.0.361.111"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_detail_url</span><span class="params">(url)</span>:</span></span><br><span class="line">    resp = requests.get(url, headers=headers)</span><br><span class="line">    <span class="comment"># 解码出现"illegal multibyte sequence"，其他编码无法解决，使用ignore</span></span><br><span class="line">    <span class="comment"># text = resp.content.decode("gbk", errors="ignore")</span></span><br><span class="line">    text = resp.text</span><br><span class="line">    html = etree.HTML(text)</span><br><span class="line">    detail_urls = html.xpath(<span class="string">"//table[@class='tbspan']//a/@href"</span>)</span><br><span class="line">    detail_urls = map(<span class="keyword">lambda</span> url: base_domain + url, detail_urls)</span><br><span class="line">    <span class="keyword">return</span> detail_urls</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_html</span><span class="params">(url)</span>:</span></span><br><span class="line">    resp = requests.get(url, headers=headers)</span><br><span class="line">    text = resp.content.decode(<span class="string">"gbk"</span>, errors=<span class="string">"ignore"</span>)</span><br><span class="line">    html = etree.HTML(text)</span><br><span class="line">    <span class="keyword">return</span> html</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">parse_info</span><span class="params">(info, rule)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> info.replace(rule, <span class="string">""</span>).strip()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">parse_detail_page</span><span class="params">(url)</span>:</span></span><br><span class="line">    movie = &#123;&#125;</span><br><span class="line">    html = get_html(url)</span><br><span class="line">    title = html.xpath(<span class="string">"//div[@class='title_all']//font[@color='#07519a']/text()"</span>)[<span class="number">0</span>]</span><br><span class="line">    movie[<span class="string">"title"</span>] = title</span><br><span class="line">    zooms = html.xpath(<span class="string">"//div[@id='Zoom']"</span>)[<span class="number">0</span>]</span><br><span class="line">    poster = zooms.xpath(<span class="string">".//img/@src"</span>)</span><br><span class="line">    movie[<span class="string">"poster"</span>] = poster</span><br><span class="line"></span><br><span class="line">    infos = zooms.xpath(<span class="string">".//text()"</span>)</span><br><span class="line">    <span class="keyword">for</span> index, info <span class="keyword">in</span> enumerate(infos):</span><br><span class="line">        <span class="keyword">if</span> info.startswith(<span class="string">"◎年　　代"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎年　　代"</span>)</span><br><span class="line">            movie[<span class="string">"year"</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎产　　地"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎产　　地"</span>)</span><br><span class="line">            movie[<span class="string">"country"</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎类　　别"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎类　　别"</span>)</span><br><span class="line">            movie[<span class="string">"category"</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎豆瓣评分"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎豆瓣评分"</span>)</span><br><span class="line">            movie[<span class="string">"score"</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎片　　长"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎片　　长"</span>)</span><br><span class="line">            movie[<span class="string">"timelength"</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎导　　演"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎导　　演"</span>)</span><br><span class="line">            movie[<span class="string">"director"</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎主　　演"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎主　　演"</span>)</span><br><span class="line">            actors = [info]</span><br><span class="line">            <span class="keyword">for</span> x <span class="keyword">in</span> range(index + <span class="number">1</span>, len(infos)):</span><br><span class="line">                actor = infos[x].strip()</span><br><span class="line">                <span class="keyword">if</span> actor.startswith(<span class="string">"◎"</span>):</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                actors.append(actor)</span><br><span class="line">            movie[<span class="string">"actors"</span>] = actors</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎简　　介"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎简　　介"</span>)</span><br><span class="line">            <span class="keyword">for</span> x <span class="keyword">in</span> range(index + <span class="number">1</span>, len(infos)):</span><br><span class="line">                profile = infos[x].strip()</span><br><span class="line">                <span class="keyword">if</span> profile.startswith(<span class="string">"【"</span>):</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">            movie[<span class="string">"profile"</span>] = profile</span><br><span class="line"></span><br><span class="line">    down_url = zooms.xpath(<span class="string">".//table//a/@href"</span>)</span><br><span class="line">    movie[<span class="string">"down_url"</span>] = down_url</span><br><span class="line">    <span class="keyword">return</span> movie</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">spider</span><span class="params">()</span>:</span></span><br><span class="line">    index_url = <span class="string">"https://www.dytt8.net/html/gndy/dyzz/index.html"</span></span><br><span class="line">    base_url = <span class="string">"https://www.dytt8.net/html/gndy/dyzz/list_23_&#123;&#125;.html"</span></span><br><span class="line">    html = get_html(index_url)</span><br><span class="line">    pages = html.xpath(<span class="string">"//select[@name='sldd']/option"</span>)</span><br><span class="line">    movies = []</span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">1</span>, len(pages) + <span class="number">1</span>):</span><br><span class="line">        url = base_url.format(x)</span><br><span class="line">        detail_urls = get_detail_url(url)</span><br><span class="line">        <span class="keyword">for</span> detail_url <span class="keyword">in</span> detail_urls:</span><br><span class="line">            <span class="comment"># 遍历每一页中的所有电影</span></span><br><span class="line">            movie = parse_detail_page(detail_url)</span><br><span class="line">            movies.append(movie)</span><br><span class="line">            print(movie)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    spider()</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>实例</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
@@ -2286,20 +2331,6 @@
       </categories>
       <tags>
         <tag>React</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python爬取电影天堂新片精品</title>
-    <url>/2020/02/12/Python%E7%88%AC%E5%8F%96%E7%94%B5%E5%BD%B1%E5%A4%A9%E5%A0%82%E6%96%B0%E7%89%87%E7%B2%BE%E5%93%81/</url>
-    <content><![CDATA[<p>爬取最新电影，内容包括标题、年代、产地、类别、评分、片场、导演、主演、下载链接。<a id="more"></a></p>
-<h6 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h6><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">base_domain = <span class="string">"https://www.dytt8.net"</span></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">"User-Agent"</span>: <span class="string">"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "</span></span><br><span class="line">                  <span class="string">"(KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36 Edg/80.0.361.111"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_detail_url</span><span class="params">(url)</span>:</span></span><br><span class="line">    resp = requests.get(url, headers=headers)</span><br><span class="line">    <span class="comment"># 解码出现"illegal multibyte sequence"，其他编码无法解决，使用ignore</span></span><br><span class="line">    <span class="comment"># text = resp.content.decode("gbk", errors="ignore")</span></span><br><span class="line">    text = resp.text</span><br><span class="line">    html = etree.HTML(text)</span><br><span class="line">    detail_urls = html.xpath(<span class="string">"//table[@class='tbspan']//a/@href"</span>)</span><br><span class="line">    detail_urls = map(<span class="keyword">lambda</span> url: base_domain + url, detail_urls)</span><br><span class="line">    <span class="keyword">return</span> detail_urls</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_html</span><span class="params">(url)</span>:</span></span><br><span class="line">    resp = requests.get(url, headers=headers)</span><br><span class="line">    text = resp.content.decode(<span class="string">"gbk"</span>, errors=<span class="string">"ignore"</span>)</span><br><span class="line">    html = etree.HTML(text)</span><br><span class="line">    <span class="keyword">return</span> html</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">parse_info</span><span class="params">(info, rule)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> info.replace(rule, <span class="string">""</span>).strip()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">parse_detail_page</span><span class="params">(url)</span>:</span></span><br><span class="line">    movie = &#123;&#125;</span><br><span class="line">    html = get_html(url)</span><br><span class="line">    title = html.xpath(<span class="string">"//div[@class='title_all']//font[@color='#07519a']/text()"</span>)[<span class="number">0</span>]</span><br><span class="line">    movie[<span class="string">"title"</span>] = title</span><br><span class="line">    zooms = html.xpath(<span class="string">"//div[@id='Zoom']"</span>)[<span class="number">0</span>]</span><br><span class="line">    poster = zooms.xpath(<span class="string">".//img/@src"</span>)</span><br><span class="line">    movie[<span class="string">"poster"</span>] = poster</span><br><span class="line"></span><br><span class="line">    infos = zooms.xpath(<span class="string">".//text()"</span>)</span><br><span class="line">    <span class="keyword">for</span> index, info <span class="keyword">in</span> enumerate(infos):</span><br><span class="line">        <span class="keyword">if</span> info.startswith(<span class="string">"◎年　　代"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎年　　代"</span>)</span><br><span class="line">            movie[<span class="string">"year"</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎产　　地"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎产　　地"</span>)</span><br><span class="line">            movie[<span class="string">"country"</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎类　　别"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎类　　别"</span>)</span><br><span class="line">            movie[<span class="string">"category"</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎豆瓣评分"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎豆瓣评分"</span>)</span><br><span class="line">            movie[<span class="string">"score"</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎片　　长"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎片　　长"</span>)</span><br><span class="line">            movie[<span class="string">"timelength"</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎导　　演"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎导　　演"</span>)</span><br><span class="line">            movie[<span class="string">"director"</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎主　　演"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎主　　演"</span>)</span><br><span class="line">            actors = [info]</span><br><span class="line">            <span class="keyword">for</span> x <span class="keyword">in</span> range(index + <span class="number">1</span>, len(infos)):</span><br><span class="line">                actor = infos[x].strip()</span><br><span class="line">                <span class="keyword">if</span> actor.startswith(<span class="string">"◎"</span>):</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                actors.append(actor)</span><br><span class="line">            movie[<span class="string">"actors"</span>] = actors</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">"◎简　　介"</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">"◎简　　介"</span>)</span><br><span class="line">            <span class="keyword">for</span> x <span class="keyword">in</span> range(index + <span class="number">1</span>, len(infos)):</span><br><span class="line">                profile = infos[x].strip()</span><br><span class="line">                <span class="keyword">if</span> profile.startswith(<span class="string">"【"</span>):</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">            movie[<span class="string">"profile"</span>] = profile</span><br><span class="line"></span><br><span class="line">    down_url = zooms.xpath(<span class="string">".//table//a/@href"</span>)</span><br><span class="line">    movie[<span class="string">"down_url"</span>] = down_url</span><br><span class="line">    <span class="keyword">return</span> movie</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">spider</span><span class="params">()</span>:</span></span><br><span class="line">    index_url = <span class="string">"https://www.dytt8.net/html/gndy/dyzz/index.html"</span></span><br><span class="line">    base_url = <span class="string">"https://www.dytt8.net/html/gndy/dyzz/list_23_&#123;&#125;.html"</span></span><br><span class="line">    html = get_html(index_url)</span><br><span class="line">    pages = html.xpath(<span class="string">"//select[@name='sldd']/option"</span>)</span><br><span class="line">    movies = []</span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">1</span>, len(pages) + <span class="number">1</span>):</span><br><span class="line">        url = base_url.format(x)</span><br><span class="line">        detail_urls = get_detail_url(url)</span><br><span class="line">        <span class="keyword">for</span> detail_url <span class="keyword">in</span> detail_urls:</span><br><span class="line">            <span class="comment"># 遍历每一页中的所有电影</span></span><br><span class="line">            movie = parse_detail_page(detail_url)</span><br><span class="line">            movies.append(movie)</span><br><span class="line">            print(movie)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    spider()</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>实例</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
@@ -2972,136 +3003,6 @@
       </tags>
   </entry>
   <entry>
-    <title>java获取操作系统信息</title>
-    <url>/2019/11/26/java%E8%8E%B7%E5%8F%96%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%BF%A1%E6%81%AF/</url>
-    <content><![CDATA[<p>常用操作系统信息获取<a id="more"></a></p>
-<h6 id="获取本机的IP地址"><a href="#获取本机的IP地址" class="headerlink" title="获取本机的IP地址:"></a>获取本机的IP地址:</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">getIpAddress</span><span class="params">()</span> <span class="keyword">throws</span> UnknownHostException </span>&#123; </span><br><span class="line">    InetAddress address = InetAddress.getLocalHost(); </span><br><span class="line">    <span class="keyword">return</span> address.getHostAddress(); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h6 id="获取网卡地址"><a href="#获取网卡地址" class="headerlink" title="获取网卡地址:"></a>获取网卡地址:</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getMACAddress</span><span class="params">()</span></span>&#123;</span><br><span class="line">    String address = <span class="string">""</span>;</span><br><span class="line">    String os = System.getProperty(<span class="string">"os.name"</span>);</span><br><span class="line">    String osUser = System.getProperty(<span class="string">"user.name"</span>);</span><br><span class="line">    <span class="keyword">if</span>(os != <span class="keyword">null</span> &amp;&amp; os.startsWith(<span class="string">"Windows"</span>))&#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            String command = <span class="string">"cmd.exe /c ipconfig /all"</span>;</span><br><span class="line">            Process  p = Runtime.getRuntime().exec(command);</span><br><span class="line">            BufferedReader buffer = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(p.getInputStream()));</span><br><span class="line">            String line;</span><br><span class="line">            <span class="keyword">while</span>((line = buffer.readLine()) != <span class="keyword">null</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(line.indexOf(<span class="string">"Physical Address"</span>) &gt; <span class="number">0</span>)&#123;</span><br><span class="line">                    <span class="keyword">int</span> index = line.indexOf(<span class="string">":"</span>);</span><br><span class="line">                    index += <span class="number">2</span>;</span><br><span class="line">                    address = line.substring(index);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            buffer.close();</span><br><span class="line">            <span class="keyword">return</span> address.trim();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span>(IOException e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> address;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h6 id="获取操作系统账号"><a href="#获取操作系统账号" class="headerlink" title="获取操作系统账号"></a>获取操作系统账号</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">String osUser = System.getProperty(&quot;user.name&quot;);</span><br></pre></td></tr></table></figure>
-
-<h6 id="获取操作系统版本"><a href="#获取操作系统版本" class="headerlink" title="获取操作系统版本:"></a>获取操作系统版本:</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Properties; </span><br><span class="line"></span><br><span class="line">Properties props=System.getProperties(); <span class="comment">//获得系统属性集    </span></span><br><span class="line">String osName = props.getProperty(<span class="string">"os.name"</span>); <span class="comment">//操作系统名称    </span></span><br><span class="line">String osArch = props.getProperty(<span class="string">"os.arch"</span>); <span class="comment">//操作系统构架    </span></span><br><span class="line">String osVersion = props.getProperty(<span class="string">"os.version"</span>); <span class="comment">//操作系统版本</span></span><br></pre></td></tr></table></figure>
-
-<h6 id="一些常用信息获得"><a href="#一些常用信息获得" class="headerlink" title="一些常用信息获得"></a>一些常用信息获得</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getProperty</span><span class="params">(String key)</span></span></span><br></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th>键</th>
-<th>相关值的描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>java.version</td>
-<td>Java 运行时环境版本</td>
-</tr>
-<tr>
-<td>java.vendor</td>
-<td>Java 运行时环境供应商</td>
-</tr>
-<tr>
-<td>java.vendor.url</td>
-<td>Java 供应商的 URL</td>
-</tr>
-<tr>
-<td>java.home</td>
-<td>Java 安装目录</td>
-</tr>
-<tr>
-<td>java.vm.specification.version</td>
-<td>Java 虚拟机规范版本</td>
-</tr>
-<tr>
-<td>java.vm.specification.vendor</td>
-<td>Java 虚拟机规范供应商</td>
-</tr>
-<tr>
-<td>java.vm.specification.name</td>
-<td>Java 虚拟机规范名称</td>
-</tr>
-<tr>
-<td>java.vm.version</td>
-<td>Java 虚拟机实现版本</td>
-</tr>
-<tr>
-<td>java.vm.vendor</td>
-<td>Java 虚拟机实现供应商</td>
-</tr>
-<tr>
-<td>java.vm.name</td>
-<td>Java 虚拟机实现名称</td>
-</tr>
-<tr>
-<td>java.specification.version</td>
-<td>Java 运行时环境规范版本</td>
-</tr>
-<tr>
-<td>java.specification.vendor</td>
-<td>Java 运行时环境规范供应商</td>
-</tr>
-<tr>
-<td>java.specification.name</td>
-<td>Java 运行时环境规范名称</td>
-</tr>
-<tr>
-<td>java.<strong>class</strong>.version</td>
-<td>Java 类格式版本号</td>
-</tr>
-<tr>
-<td>java.<strong>class</strong>.path</td>
-<td>Java 类路径</td>
-</tr>
-<tr>
-<td>java.library.path</td>
-<td>加载库时搜索的路径列表</td>
-</tr>
-<tr>
-<td>java.io.tmpdir</td>
-<td>默认的临时文件路径</td>
-</tr>
-<tr>
-<td>java.compiler</td>
-<td>要使用的 JIT 编译器的名称</td>
-</tr>
-<tr>
-<td>java.ext.dirs</td>
-<td>一个或多个扩展目录的路径</td>
-</tr>
-<tr>
-<td>file.separator</td>
-<td>文件分隔符（在 UNIX 系统中是“/”）</td>
-</tr>
-<tr>
-<td>path.separator</td>
-<td>路径分隔符（在 UNIX 系统中是“:”）</td>
-</tr>
-<tr>
-<td>line.separator</td>
-<td>行分隔符（在 UNIX 系统中是“/n”）</td>
-</tr>
-<tr>
-<td>user.name</td>
-<td>用户的账户名称</td>
-</tr>
-<tr>
-<td>user.home</td>
-<td>用户的主目录</td>
-</tr>
-<tr>
-<td>user.dir</td>
-<td>用户的当前工作目录</td>
-</tr>
-</tbody></table>
-]]></content>
-      <categories>
-        <category>操作系统</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Swagger2自动生成API文档</title>
     <url>/2020/01/25/Swagger2%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90API%E6%96%87%E6%A1%A3/</url>
     <content><![CDATA[<p>Swagger2 是一个规范和完整的框架，用于生成、描述、调用和可视化Restful风格的web服务，现在我们使用spring boot 整合它。<a id="more"></a></p>
@@ -3125,162 +3026,6 @@
       </categories>
       <tags>
         <tag>SpringBoot</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>sql函数</title>
-    <url>/2020/08/02/sql%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<p>工作中常用的SQL函数。<a id="more"></a></p>
-<p>top关键字属性SQL Server，平常并没有使用SQL Server。</p>
-<h6 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h6><p>upper(str)/ucase(str)：返回字符串str，将所有字符改为大写</p>
-<p>lower(str)/lcase(str)：返回字符串str，将所有字符改为小写</p>
-<p>first(column_name)：返回指定的字段中第一个记录的值，可使用 ORDER BY 语句对记录进行排序</p>
-<p>last(column_name)：返回指定的字段中最后一个记录的值，可使用 ORDER BY 语句对记录进行排序</p>
-<p>mid(str,start,length)：用于从文本字段中提取字符，str要提取的字段(必须)，start开始位置(必须)，length提取长度，若为空，则返回剩余字符串</p>
-<p>now()：返回当前日期</p>
-<p>format(column_name,format)：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT ProductName, UnitPrice, FORMAT(Now(),&apos;YYYY-MM-DD&apos;) as PerDate</span><br><span class="line">FROM Products</span><br></pre></td></tr></table></figure>
-
-<p> replace(X,old,new) n：在X中查找old，并替换成new</p>
-<p>instr(X,STR[,START][,N)：从X中查找str，可以指定从start开始，也可以指定从n开始</p>
-<p>ltrim(X[,TRIM_STR])：把X的左边截去trim_str字符串，缺省截去空格</p>
-<p>rtrim(X[,TRIM_STR])：把X的右边截去trim_str字符串，缺省截去空格</p>
-<p>trim([TRIM_STR FROM]X)：把X的两边截去trim_str字符串，缺省截去空格</p>
-<p>trunc(x[,y])：直接截取，不四舍五入。</p>
-<p>在缺省 y 时，默认 y=0；比如：TRUNC (3.56)=3。</p>
-<p>Y是正整数，就是四舍五入到小数点后 y 位。TRUNC (5.654,2)=5.65。</p>
-<p>y 是负整数，四舍五入到小数点左边|y|位。TRUNC (351.654,-2)=300。</p>
-<p>add_months(d,n)，在某一个日期 d 上，加上指定的月数 n，返回计算后的新日期。d 表示日期，n 表示要加的月数</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">SYSDATE</span>,add_months(<span class="keyword">SYSDATE</span>,<span class="number">5</span>) <span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
-
-<p>last_day(d)，返回指定日期当月的最后一天</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">SYSDATE</span>,<span class="keyword">last_day</span>(<span class="keyword">SYSDATE</span>) <span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
-
-<p>nvl(X,VALUE)：如果X为空，返回value，否则返回X</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> ENAME,JOB,SAL,NVL(COMM,<span class="number">100</span>) <span class="keyword">FROM</span> EMP <span class="keyword">WHERE</span> SAL&lt;<span class="number">2000</span>;</span><br></pre></td></tr></table></figure>
-
-<h6 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h6><p>except(sql server)：通过包括所有在 TABLE1 中但不在 TABLE2 中的行并消除所有重复行而派生出一个结果表</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT</span><br><span class="line">	reg_num </span><br><span class="line">FROM</span><br><span class="line">	dq_list except</span><br><span class="line">EXCEPT</span><br><span class="line">SELECT</span><br><span class="line">	reg_num </span><br><span class="line">FROM</span><br><span class="line">	dq_result</span><br></pre></td></tr></table></figure>
-
-<p>minus(oracle)：先找出第一个 SQL 语句所产生的结果，然后看这些结果有没有在第二个 SQL 语句的结果中。如果有的话，那这一笔资料就被去除，而不会在最后的结果中出现。如果第二个 SQL 语句所产生的结果并没有存在于第一个 SQL 语句所产生的结果内，那这笔资料就被抛弃。</p>
-<p><strong><em>Store_Information</em></strong> 表格</p>
-<table>
-<thead>
-<tr>
-<th>Store_Name</th>
-<th>Sales</th>
-<th>Txn_Date</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Los Angeles</td>
-<td>1500</td>
-<td>05-Jan-1999</td>
-</tr>
-<tr>
-<td>San Diego</td>
-<td>250</td>
-<td>07-Jan-1999</td>
-</tr>
-<tr>
-<td>Los Angeles</td>
-<td>300</td>
-<td>08-Jan-1999</td>
-</tr>
-<tr>
-<td>Boston</td>
-<td>700</td>
-<td>08-Jan-1999</td>
-</tr>
-</tbody></table>
-<p><strong><em>Internet Sales</em></strong> 表格</p>
-<table>
-<thead>
-<tr>
-<th>Txn_Date</th>
-<th>Sales</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>07-Jan-1999</td>
-<td>250</td>
-</tr>
-<tr>
-<td>10-Jan-1999</td>
-<td>535</td>
-</tr>
-<tr>
-<td>11-Jan-1999</td>
-<td>320</td>
-</tr>
-<tr>
-<td>12-Jan-1999</td>
-<td>750</td>
-</tr>
-</tbody></table>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT Txn_Date FROM Store_Information</span><br><span class="line">MINUS</span><br><span class="line">SELECT Txn_Date FROM Internet_Sales;</span><br></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th>Txn_Date</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Jan-05-1999</td>
-</tr>
-<tr>
-<td>Jan-08-1999</td>
-</tr>
-</tbody></table>
-<p>intersect：通过只包括 TABLE1 和 TABLE2 中都有的行并消除所有重复行而派生出一个结果表。</p>
-<h6 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h6><p>复制表(只复制结构,源表名：a 新表名：b) (Access可用)</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">into</span> b <span class="keyword">from</span> a <span class="keyword">where</span> <span class="number">1</span>&lt;&gt;<span class="number">1</span>（仅用于SQlServer）</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> top <span class="number">0</span> * <span class="keyword">into</span> b <span class="keyword">from</span> a</span><br></pre></td></tr></table></figure>
-
-<p>显示文章、提交人和最后回复时间</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> a.title,a.username,b.adddate <span class="keyword">from</span> <span class="keyword">table</span> a,(<span class="keyword">select</span> <span class="keyword">max</span>(adddate) adddate <span class="keyword">from</span> <span class="keyword">table</span> <span class="keyword">where</span> table.title=a.title) b</span><br></pre></td></tr></table></figure>
-
-<p>两张关联表，删除主表中已经在副表中没有的信息 </p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> table1 <span class="keyword">where</span> <span class="keyword">not</span> <span class="keyword">exists</span> ( <span class="keyword">select</span> * <span class="keyword">from</span> table2 <span class="keyword">where</span> table1.field1=table2.field1 )</span><br></pre></td></tr></table></figure>
-
-<p>日程安排提前五分钟提醒</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> 日程安排 <span class="keyword">where</span> <span class="keyword">datediff</span>(<span class="string">'minute'</span>,f开始时间,<span class="keyword">getdate</span>())&gt;<span class="number">5</span></span><br></pre></td></tr></table></figure>
-
-<p>一条sql语句搞定数据库分页</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> top <span class="number">10</span> b.* <span class="keyword">from</span> (<span class="keyword">select</span> top <span class="number">20</span> 主键字段,排序字段 <span class="keyword">from</span> 表名 <span class="keyword">order</span> <span class="keyword">by</span> 排序字段 <span class="keyword">desc</span>) a,表名 b <span class="keyword">where</span> b.主键字段 = a.主键字段 <span class="keyword">order</span> <span class="keyword">by</span> a.排序字段</span><br></pre></td></tr></table></figure>
-
-<p>前10条记录</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> top <span class="number">10</span> * <span class="keyword">from</span> table1 <span class="keyword">where</span> 范围</span><br></pre></td></tr></table></figure>
-
-<p>选择在每一组b值相同的数据中对应的a最大的记录的所有信息(类似这样的用法可以用于论坛每月排行榜,每月热销产品分析,按科目成绩排名,等等.)</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> a,b,c <span class="keyword">from</span> tablename ta <span class="keyword">where</span> a=(<span class="keyword">select</span> <span class="keyword">max</span>(a) <span class="keyword">from</span> tablename tb <span class="keyword">where</span> tb.b=ta.b)</span><br></pre></td></tr></table></figure>
-
-<p>包括所有在TableA中但不在TableB和TableC中的行并消除所有重复行而派生出一个结果表</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">(<span class="keyword">select</span> a <span class="keyword">from</span> tableA ) <span class="keyword">except</span> (<span class="keyword">select</span> a <span class="keyword">from</span> tableB) <span class="keyword">except</span> (<span class="keyword">select</span> a <span class="keyword">from</span> tableC)</span><br></pre></td></tr></table></figure>
-
-<p>随机取出10条数据</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> top <span class="number">10</span> * <span class="keyword">from</span> tablename <span class="keyword">order</span> <span class="keyword">by</span> newid()</span><br></pre></td></tr></table></figure>
-
-<p>随机选择记录</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> newid()</span><br></pre></td></tr></table></figure>
-
-<p>列出数据库里所有的表名</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">name</span> <span class="keyword">from</span> sysobjects <span class="keyword">where</span> <span class="keyword">type</span>=<span class="string">'U'</span> // U代表用户</span><br></pre></td></tr></table></figure>
-
-<p>列出表里的所有的列名</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">name</span> <span class="keyword">from</span> syscolumns <span class="keyword">where</span> <span class="keyword">id</span>=object_id(<span class="string">'TableName'</span>)</span><br></pre></td></tr></table></figure>
-
-<p>选择从10到15的记录</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> top <span class="number">5</span> * <span class="keyword">from</span> (<span class="keyword">select</span> top <span class="number">15</span> * <span class="keyword">from</span> <span class="keyword">table</span> <span class="keyword">order</span> <span class="keyword">by</span> <span class="keyword">id</span> <span class="keyword">asc</span>) table_别名 <span class="keyword">order</span> <span class="keyword">by</span> <span class="keyword">id</span> <span class="keyword">desc</span></span><br></pre></td></tr></table></figure>
-
-
-
-]]></content>
-      <categories>
-        <category>数据库</category>
-      </categories>
-      <tags>
-        <tag>mysql</tag>
       </tags>
   </entry>
   <entry>
@@ -3480,6 +3225,155 @@
       </categories>
       <tags>
         <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>java获取操作系统信息</title>
+    <url>/2019/11/26/java%E8%8E%B7%E5%8F%96%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%BF%A1%E6%81%AF/</url>
+    <content><![CDATA[<p>常用操作系统信息获取<a id="more"></a></p>
+<h6 id="获取本机的IP地址"><a href="#获取本机的IP地址" class="headerlink" title="获取本机的IP地址:"></a>获取本机的IP地址:</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">getIpAddress</span><span class="params">()</span> <span class="keyword">throws</span> UnknownHostException </span>&#123; </span><br><span class="line">    InetAddress address = InetAddress.getLocalHost(); </span><br><span class="line">    <span class="keyword">return</span> address.getHostAddress(); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="获取网卡地址"><a href="#获取网卡地址" class="headerlink" title="获取网卡地址:"></a>获取网卡地址:</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getMACAddress</span><span class="params">()</span></span>&#123;</span><br><span class="line">    String address = <span class="string">""</span>;</span><br><span class="line">    String os = System.getProperty(<span class="string">"os.name"</span>);</span><br><span class="line">    String osUser = System.getProperty(<span class="string">"user.name"</span>);</span><br><span class="line">    <span class="keyword">if</span>(os != <span class="keyword">null</span> &amp;&amp; os.startsWith(<span class="string">"Windows"</span>))&#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            String command = <span class="string">"cmd.exe /c ipconfig /all"</span>;</span><br><span class="line">            Process  p = Runtime.getRuntime().exec(command);</span><br><span class="line">            BufferedReader buffer = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(p.getInputStream()));</span><br><span class="line">            String line;</span><br><span class="line">            <span class="keyword">while</span>((line = buffer.readLine()) != <span class="keyword">null</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(line.indexOf(<span class="string">"Physical Address"</span>) &gt; <span class="number">0</span>)&#123;</span><br><span class="line">                    <span class="keyword">int</span> index = line.indexOf(<span class="string">":"</span>);</span><br><span class="line">                    index += <span class="number">2</span>;</span><br><span class="line">                    address = line.substring(index);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            buffer.close();</span><br><span class="line">            <span class="keyword">return</span> address.trim();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span>(IOException e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> address;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="获取操作系统账号"><a href="#获取操作系统账号" class="headerlink" title="获取操作系统账号"></a>获取操作系统账号</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">String osUser = System.getProperty(&quot;user.name&quot;);</span><br></pre></td></tr></table></figure>
+
+<h6 id="获取操作系统版本"><a href="#获取操作系统版本" class="headerlink" title="获取操作系统版本:"></a>获取操作系统版本:</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Properties; </span><br><span class="line"></span><br><span class="line">Properties props=System.getProperties(); <span class="comment">//获得系统属性集    </span></span><br><span class="line">String osName = props.getProperty(<span class="string">"os.name"</span>); <span class="comment">//操作系统名称    </span></span><br><span class="line">String osArch = props.getProperty(<span class="string">"os.arch"</span>); <span class="comment">//操作系统构架    </span></span><br><span class="line">String osVersion = props.getProperty(<span class="string">"os.version"</span>); <span class="comment">//操作系统版本</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="一些常用信息获得"><a href="#一些常用信息获得" class="headerlink" title="一些常用信息获得"></a>一些常用信息获得</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getProperty</span><span class="params">(String key)</span></span></span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>键</th>
+<th>相关值的描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>java.version</td>
+<td>Java 运行时环境版本</td>
+</tr>
+<tr>
+<td>java.vendor</td>
+<td>Java 运行时环境供应商</td>
+</tr>
+<tr>
+<td>java.vendor.url</td>
+<td>Java 供应商的 URL</td>
+</tr>
+<tr>
+<td>java.home</td>
+<td>Java 安装目录</td>
+</tr>
+<tr>
+<td>java.vm.specification.version</td>
+<td>Java 虚拟机规范版本</td>
+</tr>
+<tr>
+<td>java.vm.specification.vendor</td>
+<td>Java 虚拟机规范供应商</td>
+</tr>
+<tr>
+<td>java.vm.specification.name</td>
+<td>Java 虚拟机规范名称</td>
+</tr>
+<tr>
+<td>java.vm.version</td>
+<td>Java 虚拟机实现版本</td>
+</tr>
+<tr>
+<td>java.vm.vendor</td>
+<td>Java 虚拟机实现供应商</td>
+</tr>
+<tr>
+<td>java.vm.name</td>
+<td>Java 虚拟机实现名称</td>
+</tr>
+<tr>
+<td>java.specification.version</td>
+<td>Java 运行时环境规范版本</td>
+</tr>
+<tr>
+<td>java.specification.vendor</td>
+<td>Java 运行时环境规范供应商</td>
+</tr>
+<tr>
+<td>java.specification.name</td>
+<td>Java 运行时环境规范名称</td>
+</tr>
+<tr>
+<td>java.<strong>class</strong>.version</td>
+<td>Java 类格式版本号</td>
+</tr>
+<tr>
+<td>java.<strong>class</strong>.path</td>
+<td>Java 类路径</td>
+</tr>
+<tr>
+<td>java.library.path</td>
+<td>加载库时搜索的路径列表</td>
+</tr>
+<tr>
+<td>java.io.tmpdir</td>
+<td>默认的临时文件路径</td>
+</tr>
+<tr>
+<td>java.compiler</td>
+<td>要使用的 JIT 编译器的名称</td>
+</tr>
+<tr>
+<td>java.ext.dirs</td>
+<td>一个或多个扩展目录的路径</td>
+</tr>
+<tr>
+<td>file.separator</td>
+<td>文件分隔符（在 UNIX 系统中是“/”）</td>
+</tr>
+<tr>
+<td>path.separator</td>
+<td>路径分隔符（在 UNIX 系统中是“:”）</td>
+</tr>
+<tr>
+<td>line.separator</td>
+<td>行分隔符（在 UNIX 系统中是“/n”）</td>
+</tr>
+<tr>
+<td>user.name</td>
+<td>用户的账户名称</td>
+</tr>
+<tr>
+<td>user.home</td>
+<td>用户的主目录</td>
+</tr>
+<tr>
+<td>user.dir</td>
+<td>用户的当前工作目录</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>mysql5.7分组排序后取每组最新一条</title>
+    <url>/2020/08/01/mysql5-7%E5%88%86%E7%BB%84%E6%8E%92%E5%BA%8F%E5%90%8E%E5%8F%96%E6%AF%8F%E7%BB%84%E6%9C%80%E6%96%B0%E4%B8%80%E6%9D%A1/</url>
+    <content><![CDATA[<p>在mysql5.7版本上实现的，目前mysql8.0已经可以使用分析函数了，不需要那么麻烦了。<a id="more"></a></p>
+<h6 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h6><p>一张表内有ID、时间、描述信息等，依据ID找出最新时间的一条描述信息。</p>
+<h6 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h6><p>先按照ID进行分组，然后对时间进行倒序排序，选出最新的一条记录。</p>
+<h6 id="测试表结构"><a href="#测试表结构" class="headerlink" title="测试表结构"></a>测试表结构</h6><p>与实现有关的字段有task_id、dl_time、dl_dscr。</p>
+<h6 id="Mysql实现方法"><a href="#Mysql实现方法" class="headerlink" title="Mysql实现方法"></a>Mysql实现方法</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT</span><br><span class="line">	* </span><br><span class="line">FROM</span><br><span class="line">	dq_ld_log AS b </span><br><span class="line">WHERE</span><br><span class="line">	NOT EXISTS (</span><br><span class="line">	SELECT</span><br><span class="line">		1 </span><br><span class="line">	FROM</span><br><span class="line">		dq_dl_log </span><br><span class="line">	WHERE</span><br><span class="line">	task_id = b.task_id </span><br><span class="line">	AND b.dl_time &lt; dl_time)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT</span><br><span class="line">	* </span><br><span class="line">FROM</span><br><span class="line">	( SELECT dl_time, task_id, dl_dscr FROM dq_dl_log GROUP BY task_id DESC ) t </span><br><span class="line">ORDER BY</span><br><span class="line">	t.dl_time</span><br></pre></td></tr></table></figure>
+
+<h6 id="Oracle实现方法"><a href="#Oracle实现方法" class="headerlink" title="Oracle实现方法"></a>Oracle实现方法</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT</span><br><span class="line">	row_number() over ( PARTITION BY task_id ORDER BY dl_time ) rank </span><br><span class="line">FROM</span><br><span class="line">	dq_dl_log </span><br><span class="line">WHERE</span><br><span class="line">	rank = 1</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>mysql</tag>
       </tags>
   </entry>
   <entry>
@@ -3717,17 +3611,156 @@
       </tags>
   </entry>
   <entry>
-    <title>mysql5.7分组排序后取每组最新一条</title>
-    <url>/2020/08/01/mysql5-7%E5%88%86%E7%BB%84%E6%8E%92%E5%BA%8F%E5%90%8E%E5%8F%96%E6%AF%8F%E7%BB%84%E6%9C%80%E6%96%B0%E4%B8%80%E6%9D%A1/</url>
-    <content><![CDATA[<p>在mysql5.7版本上实现的，目前mysql8.0已经可以使用分析函数了，不需要那么麻烦了。<a id="more"></a></p>
-<h6 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h6><p>一张表内有ID、时间、描述信息等，依据ID找出最新时间的一条描述信息。</p>
-<h6 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h6><p>先按照ID进行分组，然后对时间进行倒序排序，选出最新的一条记录。</p>
-<h6 id="测试表结构"><a href="#测试表结构" class="headerlink" title="测试表结构"></a>测试表结构</h6><p>与实现有关的字段有task_id、dl_time、dl_dscr。</p>
-<h6 id="Mysql实现方法"><a href="#Mysql实现方法" class="headerlink" title="Mysql实现方法"></a>Mysql实现方法</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT</span><br><span class="line">	* </span><br><span class="line">FROM</span><br><span class="line">	dq_ld_log AS b </span><br><span class="line">WHERE</span><br><span class="line">	NOT EXISTS (</span><br><span class="line">	SELECT</span><br><span class="line">		1 </span><br><span class="line">	FROM</span><br><span class="line">		dq_dl_log </span><br><span class="line">	WHERE</span><br><span class="line">	task_id = b.task_id </span><br><span class="line">	AND b.dl_time &lt; dl_time)</span><br></pre></td></tr></table></figure>
+    <title>sql函数</title>
+    <url>/2020/08/02/sql%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<p>工作中常用的SQL函数。<a id="more"></a></p>
+<p>top关键字属性SQL Server，平常并没有使用SQL Server。</p>
+<h6 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h6><p>upper(str)/ucase(str)：返回字符串str，将所有字符改为大写</p>
+<p>lower(str)/lcase(str)：返回字符串str，将所有字符改为小写</p>
+<p>first(column_name)：返回指定的字段中第一个记录的值，可使用 ORDER BY 语句对记录进行排序</p>
+<p>last(column_name)：返回指定的字段中最后一个记录的值，可使用 ORDER BY 语句对记录进行排序</p>
+<p>mid(str,start,length)：用于从文本字段中提取字符，str要提取的字段(必须)，start开始位置(必须)，length提取长度，若为空，则返回剩余字符串</p>
+<p>now()：返回当前日期</p>
+<p>format(column_name,format)：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> ProductName, UnitPrice, <span class="keyword">FORMAT</span>(<span class="keyword">Now</span>(),<span class="string">'YYYY-MM-DD'</span>) <span class="keyword">as</span> PerDate</span><br><span class="line"><span class="keyword">FROM</span> Products</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT</span><br><span class="line">	* </span><br><span class="line">FROM</span><br><span class="line">	( SELECT dl_time, task_id, dl_dscr FROM dq_dl_log GROUP BY task_id DESC ) t </span><br><span class="line">ORDER BY</span><br><span class="line">	t.dl_time</span><br></pre></td></tr></table></figure>
+<p> replace(X,old,new) n：在X中查找old，并替换成new</p>
+<p> instr(X,STR[,START][,N)：从X中查找str，可以指定从start开始，也可以指定从n开始</p>
+<p> ltrim(X[,TRIM_STR])：把X的左边截去trim_str字符串，缺省截去空格</p>
+<p> rtrim(X[,TRIM_STR])：把X的右边截去trim_str字符串，缺省截去空格</p>
+<p> trim([TRIM_STR FROM]X)：把X的两边截去trim_str字符串，缺省截去空格</p>
+<p> trunc(x[,y])：直接截取，不四舍五入。</p>
+<p> 在缺省 y 时，默认 y=0；比如：TRUNC (3.56)=3。</p>
+<p> Y是正整数，就是四舍五入到小数点后 y 位。TRUNC (5.654,2)=5.65。</p>
+<p> y 是负整数，四舍五入到小数点左边|y|位。TRUNC (351.654,-2)=300。</p>
+<p> add_months(d,n)，在某一个日期 d 上，加上指定的月数 n，返回计算后的新日期。d 表示日期，n 表示要加的月数</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">SYSDATE</span>,add_months(<span class="keyword">SYSDATE</span>,<span class="number">5</span>) <span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
 
-<h6 id="Oracle实现方法"><a href="#Oracle实现方法" class="headerlink" title="Oracle实现方法"></a>Oracle实现方法</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT</span><br><span class="line">	row_number() over ( PARTITION BY task_id ORDER BY dl_time ) rank </span><br><span class="line">FROM</span><br><span class="line">	dq_dl_log </span><br><span class="line">WHERE</span><br><span class="line">	rank = 1</span><br></pre></td></tr></table></figure>]]></content>
+<p> last_day(d)，返回指定日期当月的最后一天</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">SYSDATE</span>,<span class="keyword">last_day</span>(<span class="keyword">SYSDATE</span>) <span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+
+<p> nvl(X,VALUE)：如果X为空，返回value，否则返回X</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> ENAME,JOB,SAL,NVL(COMM,<span class="number">100</span>) <span class="keyword">FROM</span> EMP <span class="keyword">WHERE</span> SAL&lt;<span class="number">2000</span>;</span><br></pre></td></tr></table></figure>
+
+<p> to_number()：将字符型数据转换成数字型    </p>
+<p> to_date()：将字符型数据转换成日期型</p>
+<h6 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h6><p>except(sql server)：通过包括所有在 TABLE1 中但不在 TABLE2 中的行并消除所有重复行而派生出一个结果表</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	reg_num </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	dq_list <span class="keyword">except</span></span><br><span class="line"><span class="keyword">EXCEPT</span></span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	reg_num </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	dq_result</span><br></pre></td></tr></table></figure>
+
+<p>minus(oracle)：先找出第一个 SQL 语句所产生的结果，然后看这些结果有没有在第二个 SQL 语句的结果中。如果有的话，那这一笔资料就被去除，而不会在最后的结果中出现。如果第二个 SQL 语句所产生的结果并没有存在于第一个 SQL 语句所产生的结果内，那这笔资料就被抛弃。</p>
+<p><strong><em>Store_Information</em></strong> 表格</p>
+<table>
+<thead>
+<tr>
+<th>Store_Name</th>
+<th>Sales</th>
+<th>Txn_Date</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Los Angeles</td>
+<td>1500</td>
+<td>05-Jan-1999</td>
+</tr>
+<tr>
+<td>San Diego</td>
+<td>250</td>
+<td>07-Jan-1999</td>
+</tr>
+<tr>
+<td>Los Angeles</td>
+<td>300</td>
+<td>08-Jan-1999</td>
+</tr>
+<tr>
+<td>Boston</td>
+<td>700</td>
+<td>08-Jan-1999</td>
+</tr>
+</tbody></table>
+<p><strong><em>Internet Sales</em></strong> 表格</p>
+<table>
+<thead>
+<tr>
+<th>Txn_Date</th>
+<th>Sales</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>07-Jan-1999</td>
+<td>250</td>
+</tr>
+<tr>
+<td>10-Jan-1999</td>
+<td>535</td>
+</tr>
+<tr>
+<td>11-Jan-1999</td>
+<td>320</td>
+</tr>
+<tr>
+<td>12-Jan-1999</td>
+<td>750</td>
+</tr>
+</tbody></table>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Txn_Date <span class="keyword">FROM</span> Store_Information</span><br><span class="line"><span class="keyword">MINUS</span></span><br><span class="line"><span class="keyword">SELECT</span> Txn_Date <span class="keyword">FROM</span> Internet_Sales;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>Txn_Date</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Jan-05-1999</td>
+</tr>
+<tr>
+<td>Jan-08-1999</td>
+</tr>
+</tbody></table>
+<p>intersect：通过只包括 TABLE1 和 TABLE2 中都有的行并消除所有重复行而派生出一个结果表。</p>
+<h6 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h6><p>复制表(只复制结构,源表名：a 新表名：b) (Access可用)</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">into</span> b <span class="keyword">from</span> a <span class="keyword">where</span> <span class="number">1</span>&lt;&gt;<span class="number">1</span>（仅用于SQlServer）</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> top <span class="number">0</span> * <span class="keyword">into</span> b <span class="keyword">from</span> a</span><br></pre></td></tr></table></figure>
+
+<p>显示文章、提交人和最后回复时间</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> a.title,a.username,b.adddate <span class="keyword">from</span> <span class="keyword">table</span> a,(<span class="keyword">select</span> <span class="keyword">max</span>(adddate) adddate <span class="keyword">from</span> <span class="keyword">table</span> <span class="keyword">where</span> table.title=a.title) b</span><br></pre></td></tr></table></figure>
+
+<p>两张关联表，删除主表中已经在副表中没有的信息 </p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> table1 <span class="keyword">where</span> <span class="keyword">not</span> <span class="keyword">exists</span> ( <span class="keyword">select</span> * <span class="keyword">from</span> table2 <span class="keyword">where</span> table1.field1=table2.field1 )</span><br></pre></td></tr></table></figure>
+
+<p>日程安排提前五分钟提醒</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> 日程安排 <span class="keyword">where</span> <span class="keyword">datediff</span>(<span class="string">'minute'</span>,f开始时间,<span class="keyword">getdate</span>())&gt;<span class="number">5</span></span><br></pre></td></tr></table></figure>
+
+<p>一条sql语句搞定数据库分页</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> top <span class="number">10</span> b.* <span class="keyword">from</span> (<span class="keyword">select</span> top <span class="number">20</span> 主键字段,排序字段 <span class="keyword">from</span> 表名 <span class="keyword">order</span> <span class="keyword">by</span> 排序字段 <span class="keyword">desc</span>) a,表名 b <span class="keyword">where</span> b.主键字段 = a.主键字段 <span class="keyword">order</span> <span class="keyword">by</span> a.排序字段</span><br></pre></td></tr></table></figure>
+
+<p>前10条记录</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> top <span class="number">10</span> * <span class="keyword">from</span> table1 <span class="keyword">where</span> 范围</span><br></pre></td></tr></table></figure>
+
+<p>选择在每一组b值相同的数据中对应的a最大的记录的所有信息(类似这样的用法可以用于论坛每月排行榜,每月热销产品分析,按科目成绩排名,等等.)</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> a,b,c <span class="keyword">from</span> tablename ta <span class="keyword">where</span> a=(<span class="keyword">select</span> <span class="keyword">max</span>(a) <span class="keyword">from</span> tablename tb <span class="keyword">where</span> tb.b=ta.b)</span><br></pre></td></tr></table></figure>
+
+<p>包括所有在TableA中但不在TableB和TableC中的行并消除所有重复行而派生出一个结果表</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">(<span class="keyword">select</span> a <span class="keyword">from</span> tableA ) <span class="keyword">except</span> (<span class="keyword">select</span> a <span class="keyword">from</span> tableB) <span class="keyword">except</span> (<span class="keyword">select</span> a <span class="keyword">from</span> tableC)</span><br></pre></td></tr></table></figure>
+
+<p>随机取出10条数据</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> top <span class="number">10</span> * <span class="keyword">from</span> tablename <span class="keyword">order</span> <span class="keyword">by</span> newid()</span><br></pre></td></tr></table></figure>
+
+<p>随机选择记录</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> newid()</span><br></pre></td></tr></table></figure>
+
+<p>列出数据库里所有的表名</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">name</span> <span class="keyword">from</span> sysobjects <span class="keyword">where</span> <span class="keyword">type</span>=<span class="string">'U'</span> // U代表用户</span><br></pre></td></tr></table></figure>
+
+<p>列出表里的所有的列名</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">name</span> <span class="keyword">from</span> syscolumns <span class="keyword">where</span> <span class="keyword">id</span>=object_id(<span class="string">'TableName'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>选择从10到15的记录</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> top <span class="number">5</span> * <span class="keyword">from</span> (<span class="keyword">select</span> top <span class="number">15</span> * <span class="keyword">from</span> <span class="keyword">table</span> <span class="keyword">order</span> <span class="keyword">by</span> <span class="keyword">id</span> <span class="keyword">asc</span>) table_别名 <span class="keyword">order</span> <span class="keyword">by</span> <span class="keyword">id</span> <span class="keyword">desc</span></span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
       <categories>
         <category>数据库</category>
       </categories>
@@ -4362,6 +4395,28 @@
       </tags>
   </entry>
   <entry>
+    <title>比较java中Array类的两个方法：equals和deepEquals</title>
+    <url>/2020/01/14/%E6%AF%94%E8%BE%83java%E4%B8%ADArray%E7%B1%BB%E7%9A%84%E4%B8%A4%E4%B8%AA%E6%96%B9%E6%B3%95%EF%BC%9Aequals%E5%92%8CdeepEquals/</url>
+    <content><![CDATA[<p>举例分析equals和deepEquals的区别。<a id="more"></a></p>
+<h5 id="例一"><a href="#例一" class="headerlink" title="例一"></a>例一</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        String[][] name1 = &#123;&#123; <span class="string">"G"</span>,<span class="string">"a"</span>,<span class="string">"o"</span>&#125;,&#123;<span class="string">"H"</span>,<span class="string">"u"</span>,<span class="string">"a"</span>,<span class="string">"n"</span>&#125;,&#123;<span class="string">"j"</span>,<span class="string">"i"</span>,<span class="string">"e"</span>&#125;&#125;;</span><br><span class="line">        String[][] name2 =  &#123;&#123; <span class="string">"G"</span>,<span class="string">"a"</span>,<span class="string">"o"</span>&#125;,&#123;<span class="string">"H"</span>,<span class="string">"u"</span>,<span class="string">"a"</span>,<span class="string">"n"</span>&#125;,&#123;<span class="string">"j"</span>,<span class="string">"i"</span>,<span class="string">"e"</span>&#125;&#125;;</span><br><span class="line">      System.out.println(Arrays.equals(name1,name2));<span class="comment">//false  </span></span><br><span class="line">      System.out.println(Arrays.deepEquals(name1,name2));<span class="comment">//true  </span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="例二"><a href="#例二" class="headerlink" title="例二"></a>例二</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        String[] name1 = &#123;&#123; <span class="string">"G"</span>,<span class="string">"a"</span>,<span class="string">"o"</span>&#125;,&#123;<span class="string">"H"</span>,<span class="string">"u"</span>,<span class="string">"a"</span>,<span class="string">"n"</span>&#125;,&#123;<span class="string">"j"</span>,<span class="string">"i"</span>,<span class="string">"e"</span>&#125;&#125;;</span><br><span class="line">        String[] name2 =  &#123;&#123; <span class="string">"G"</span>,<span class="string">"a"</span>,<span class="string">"o"</span>&#125;,&#123;<span class="string">"H"</span>,<span class="string">"u"</span>,<span class="string">"a"</span>,<span class="string">"n"</span>&#125;,&#123;<span class="string">"j"</span>,<span class="string">"i"</span>,<span class="string">"e"</span>&#125;&#125;;</span><br><span class="line">      System.out.println(Arrays.equals(name1,name2));<span class="comment">//false  </span></span><br><span class="line">      System.out.println(Arrays.deepEquals(name1,name2));<span class="comment">//true  </span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><ol>
+<li>deepEquals用于判定两个指定数组彼此是否深层相等，此方法适用于任意深度的嵌套数组。</li>
+<li>equals用于判定两个数组是否相等，如果两个数组以相同顺序包含相同元素，则返回true，否则返回false。</li>
+<li>通过比对“例一”和“例二”我们可以得出这样一个结论：如果两个数组使用equals返回true，则使用deepEquals也返回true，也就是说在比较的两个数组均为一维数组的前提下，equals和deepEquals的比较结果没有差别。</li>
+</ol>
+<p>​    4、如果要比较多为数组，则需要使用deepEquals方法。</p>
+]]></content>
+      <categories>
+        <category>java方法</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>时间格式化DateTimeFormatter</title>
     <url>/2020/02/14/%E6%97%B6%E9%97%B4%E6%A0%BC%E5%BC%8F%E5%8C%96DateTimeFormatter/</url>
     <content><![CDATA[<p>DateTimeFormatter类提供了三种时间格式化方法。<a id="more"></a></p>
@@ -4403,28 +4458,6 @@
       </categories>
       <tags>
         <tag>Math</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>比较java中Array类的两个方法：equals和deepEquals</title>
-    <url>/2020/01/14/%E6%AF%94%E8%BE%83java%E4%B8%ADArray%E7%B1%BB%E7%9A%84%E4%B8%A4%E4%B8%AA%E6%96%B9%E6%B3%95%EF%BC%9Aequals%E5%92%8CdeepEquals/</url>
-    <content><![CDATA[<p>举例分析equals和deepEquals的区别。<a id="more"></a></p>
-<h5 id="例一"><a href="#例一" class="headerlink" title="例一"></a>例一</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        String[][] name1 = &#123;&#123; <span class="string">"G"</span>,<span class="string">"a"</span>,<span class="string">"o"</span>&#125;,&#123;<span class="string">"H"</span>,<span class="string">"u"</span>,<span class="string">"a"</span>,<span class="string">"n"</span>&#125;,&#123;<span class="string">"j"</span>,<span class="string">"i"</span>,<span class="string">"e"</span>&#125;&#125;;</span><br><span class="line">        String[][] name2 =  &#123;&#123; <span class="string">"G"</span>,<span class="string">"a"</span>,<span class="string">"o"</span>&#125;,&#123;<span class="string">"H"</span>,<span class="string">"u"</span>,<span class="string">"a"</span>,<span class="string">"n"</span>&#125;,&#123;<span class="string">"j"</span>,<span class="string">"i"</span>,<span class="string">"e"</span>&#125;&#125;;</span><br><span class="line">      System.out.println(Arrays.equals(name1,name2));<span class="comment">//false  </span></span><br><span class="line">      System.out.println(Arrays.deepEquals(name1,name2));<span class="comment">//true  </span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="例二"><a href="#例二" class="headerlink" title="例二"></a>例二</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        String[] name1 = &#123;&#123; <span class="string">"G"</span>,<span class="string">"a"</span>,<span class="string">"o"</span>&#125;,&#123;<span class="string">"H"</span>,<span class="string">"u"</span>,<span class="string">"a"</span>,<span class="string">"n"</span>&#125;,&#123;<span class="string">"j"</span>,<span class="string">"i"</span>,<span class="string">"e"</span>&#125;&#125;;</span><br><span class="line">        String[] name2 =  &#123;&#123; <span class="string">"G"</span>,<span class="string">"a"</span>,<span class="string">"o"</span>&#125;,&#123;<span class="string">"H"</span>,<span class="string">"u"</span>,<span class="string">"a"</span>,<span class="string">"n"</span>&#125;,&#123;<span class="string">"j"</span>,<span class="string">"i"</span>,<span class="string">"e"</span>&#125;&#125;;</span><br><span class="line">      System.out.println(Arrays.equals(name1,name2));<span class="comment">//false  </span></span><br><span class="line">      System.out.println(Arrays.deepEquals(name1,name2));<span class="comment">//true  </span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><ol>
-<li>deepEquals用于判定两个指定数组彼此是否深层相等，此方法适用于任意深度的嵌套数组。</li>
-<li>equals用于判定两个数组是否相等，如果两个数组以相同顺序包含相同元素，则返回true，否则返回false。</li>
-<li>通过比对“例一”和“例二”我们可以得出这样一个结论：如果两个数组使用equals返回true，则使用deepEquals也返回true，也就是说在比较的两个数组均为一维数组的前提下，equals和deepEquals的比较结果没有差别。</li>
-</ol>
-<p>​    4、如果要比较多为数组，则需要使用deepEquals方法。</p>
-]]></content>
-      <categories>
-        <category>java方法</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
       </tags>
   </entry>
 </search>
