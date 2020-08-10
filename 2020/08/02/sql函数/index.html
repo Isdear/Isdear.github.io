@@ -293,6 +293,8 @@
 
 <p> to_number()：将字符型数据转换成数字型    </p>
 <p> to_date()：将字符型数据转换成日期型</p>
+<p>ceil()：向上取整</p>
+<p>floor()：向下取整</p>
 <h6 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h6><p>except(sql server)：通过包括所有在 TABLE1 中但不在 TABLE2 中的行并消除所有重复行而派生出一个结果表</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	reg_num </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	dq_list <span class="keyword">except</span></span><br><span class="line"><span class="keyword">EXCEPT</span></span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	reg_num </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	dq_result</span><br></pre></td></tr></table></figure>
 
