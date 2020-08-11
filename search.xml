@@ -3644,8 +3644,10 @@
 
 <p> to_number()：将字符型数据转换成数字型    </p>
 <p> to_date()：将字符型数据转换成日期型</p>
-<p>ceil()：向上取整</p>
-<p>floor()：向下取整</p>
+<p>ceil()：向上取整，结果为124。<code>select ceil(123.123) from dual;</code></p>
+<p>floor()：向下取整，结果为123。<code>select floor(123.123) from dual;</code></p>
+<p>trunc(n1,n2)取整函数,n1代表字符串，n2代表小数位数，结果为123.12。<br><code>select trunc(123.125,2) from dual;</code></p>
+<p>round(n1,n2)四舍五入，n1代表字符串,n2代表小数位数，结果为123.57。<code>select round(123.567) from dual;</code></p>
 <h6 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h6><p>except(sql server)：通过包括所有在 TABLE1 中但不在 TABLE2 中的行并消除所有重复行而派生出一个结果表</p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	reg_num </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	dq_list <span class="keyword">except</span></span><br><span class="line"><span class="keyword">EXCEPT</span></span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	reg_num </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	dq_result</span><br></pre></td></tr></table></figure>
 
