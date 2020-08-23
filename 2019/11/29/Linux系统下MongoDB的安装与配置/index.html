@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Linux系统下MongoDB的安装与配置 | Welcome to my Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="最简便的安装教程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux系统下MongoDB的安装与配置">
+<meta property="og:url" content="http://isdear.github.io/2019/11/29/Linux%E7%B3%BB%E7%BB%9F%E4%B8%8BMongoDB%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:site_name" content="Welcome to my Hexo">
+<meta property="og:description" content="最简便的安装教程">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-11-29T12:27:04.000Z">
+<meta property="article:modified_time" content="2019-11-29T12:27:04.000Z">
+<meta property="article:author" content="Kuang">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Welcome to my Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Welcome to my Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">档案</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://Isdear.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Linux系统下MongoDB的安装与配置" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/29/Linux%E7%B3%BB%E7%BB%9F%E4%B8%8BMongoDB%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/" class="article-date">
+  <time datetime="2019-11-29T12:27:04.000Z" itemprop="datePublished">2019-11-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Linux系统下MongoDB的安装与配置
+    </h1>
+  
+
+                
+           <a href="/2019/11/29/Linux%E7%B3%BB%E7%BB%9F%E4%B8%8BMongoDB%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/" class="archive-article-date">
+  <time datetime="2019-11-29T12:27:04.000Z" itemprop="datePublished">2019-11-29</time>
+</a> 
+           <!-- 需要添加的位置 -->
+           <!-- 开始添加字数统计-->
+                    
+           <!-- 添加完成 -->        
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最简便的安装教程<a id="more"></a></p>
+<h5 id="一键安装MongoDB数据库"><a href="#一键安装MongoDB数据库" class="headerlink" title="一键安装MongoDB数据库"></a>一键安装MongoDB数据库</h5><p>使用wget命令在线一键安装MongoDB数据库，并配置密码123456。</p>
+<p><code>注意：不要在 / 目录下运行</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -c http:&#x2F;&#x2F;mirrors.linuxeye.com&#x2F;oneinstack-full.tar.gz &amp;&amp; tar xzf oneinstack-full.tar.gz &amp;&amp; .&#x2F;oneinstack&#x2F;install.sh --db_option 15 --dbinstallmethod 1 --dbrootpwd 123456 --reboot</span><br></pre></td></tr></table></figure>
+
+<p>安装时间较长，请耐心等待。</p>
+<p>如果没有找到wget命令，就使用下列命令安装wget:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install wget</span><br></pre></td></tr></table></figure>
+
+<h5 id="验证超级管理员账户"><a href="#验证超级管理员账户" class="headerlink" title="验证超级管理员账户"></a>验证超级管理员账户</h5><p>重新进入服务器后，在窗口中输入 <em>mongo</em> ，进入数据库。</p>
+<p>输入 <em>db</em> ，默认是在test数据库下，输入 <em>use admin</em> ，进入 <em>admin</em> 数据库。然后再输入<em>db.auth(‘root’,’123456’)</em>，返回1表示验证成功。注意：这个账户密码就是刚刚安装数据库时设置的。</p>
+<h5 id="创建新数据库并配置"><a href="#创建新数据库并配置" class="headerlink" title="创建新数据库并配置"></a>创建新数据库并配置</h5><p>输入<em>use newDatabase</em>，进入新的数据库，然后输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.createUser(&#123;user: &quot;username&quot;, pwd: &quot;password&quot;, roles: [&#123; role: &quot;dbOwner&quot;, db: &quot;newDatabase&quot; &#125;]&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>username和password分别对应自己设定的账户和密码，db后的集合名一定要和use的名称一致。每创建一个数据库都要进行授权，否则无法访问。</p>
+<h5 id="MongoDB参数配置"><a href="#MongoDB参数配置" class="headerlink" title="MongoDB参数配置"></a>MongoDB参数配置</h5><p>进入到/usr/local/mongodb文件夹，创建data、log目录和mongo.conf文件，用来存储数据及日志文件，其中log目录下创建mongodb.log文件。mongodb.conf文件内用vim写入下列命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">port&#x3D;27017 #端口</span><br><span class="line">dbpath&#x3D; &#x2F;programs&#x2F;mongodb&#x2F;data #数据库存文件存放目录</span><br><span class="line">logpath&#x3D; &#x2F;programs&#x2F;mongodb&#x2F;log&#x2F;mongodb.log #日志文件存放路径</span><br><span class="line">logappend&#x3D;true #使用追加的方式写日志</span><br><span class="line">fork&#x3D;true #以守护进程的方式运行，创建服务器进程</span><br><span class="line">maxConns&#x3D;100 #最大同时连接数</span><br><span class="line">auth&#x3D;true #启用验证</span><br><span class="line">journal&#x3D;true #每次写入会记录一条操作日志（通过journal可以重新构造出写入的数据）。</span><br><span class="line">#即使宕机，启动时wiredtiger会先将数据恢复到最近一次的checkpoint点，然后重放后续的journal日志来恢复。</span><br><span class="line">storageEngine&#x3D;wiredTiger  #存储引擎有mmapv1、wiretiger、mongorocks</span><br><span class="line">bind_ip &#x3D; 0.0.0.0  #这样就可外部访问了，例如从win10中去连虚拟机中的MongoDB</span><br></pre></td></tr></table></figure>
+
+<h5 id="开机自启动"><a href="#开机自启动" class="headerlink" title="开机自启动"></a>开机自启动</h5><p>输入下列命令便可以直接在/etc/rc.local文件中写入mongodb services用于开机自启动：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;&#x2F;usr&#x2F;local&#x2F;mongodb&#x2F;bin&#x2F;mongod --dbpath&#x3D;&#x2F;usr&#x2F;local&#x2F;mongodb&#x2F;data -logpath&#x3D;&#x2F;usr&#x2F;local&#x2F;mongodb&#x2F;log -logappend --auth --port&#x3D;27017&quot; &gt;&gt; &#x2F;etc&#x2F;rc.local</span><br></pre></td></tr></table></figure>
+
+<p>配置参数含义</p>
+<table>
+<thead>
+<tr>
+<th>–quiet</th>
+<th align="left">安静输出</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>–port arg</td>
+<td align="left">指定服务端口号，默认端口27017</td>
+</tr>
+<tr>
+<td>–bind_ip arg</td>
+<td align="left">绑定服务IP，若绑定127.0.0.1，则只能本机访问，不指定默认本地所有IP</td>
+</tr>
+<tr>
+<td>–logpath arg</td>
+<td align="left">指定MongoDB日志文件，注意是指定文件不是目录</td>
+</tr>
+<tr>
+<td>–logappend</td>
+<td align="left">使用追加的方式写日志</td>
+</tr>
+<tr>
+<td>–pidfilepath arg</td>
+<td align="left">PID File 的完整路径，如果没有设置，则没有PID文件</td>
+</tr>
+<tr>
+<td>–keyFile arg</td>
+<td align="left">集群的私钥的完整路径，只对于Replica Set 架构有效</td>
+</tr>
+<tr>
+<td>–unixSocketPrefix arg</td>
+<td align="left">UNIX域套接字替代目录,(默认为 /tmp)</td>
+</tr>
+<tr>
+<td>–fork</td>
+<td align="left">以守护进程的方式运行MongoDB，创建服务器进程</td>
+</tr>
+<tr>
+<td>–auth</td>
+<td align="left">启用验证</td>
+</tr>
+<tr>
+<td>–cpu</td>
+<td align="left">定期显示CPU的CPU利用率和iowait</td>
+</tr>
+<tr>
+<td>–dbpath arg</td>
+<td align="left">指定数据库路径</td>
+</tr>
+<tr>
+<td>–diaglog arg</td>
+<td align="left">diaglog选项 0=off 1=W 2=R 3=both 7=W+some reads</td>
+</tr>
+<tr>
+<td>–directoryperdb</td>
+<td align="left">设置每个数据库将被保存在一个单独的目录</td>
+</tr>
+<tr>
+<td>–journal</td>
+<td align="left">启用日志选项，MongoDB的数据操作将会写入到journal文件夹的文件里</td>
+</tr>
+<tr>
+<td>–journalOptions arg</td>
+<td align="left">启用日志诊断选项</td>
+</tr>
+<tr>
+<td>–ipv6</td>
+<td align="left">启用IPv6选项</td>
+</tr>
+<tr>
+<td>–jsonp</td>
+<td align="left">允许JSONP形式通过HTTP访问（有安全影响）</td>
+</tr>
+<tr>
+<td>–maxConns arg</td>
+<td align="left">最大同时连接数 默认2000</td>
+</tr>
+<tr>
+<td>–noauth</td>
+<td align="left">不启用验证</td>
+</tr>
+<tr>
+<td>–nohttpinterface</td>
+<td align="left">关闭http接口，默认关闭27018端口访问</td>
+</tr>
+<tr>
+<td>–noprealloc</td>
+<td align="left">禁用数据文件预分配(往往影响性能)</td>
+</tr>
+<tr>
+<td>–noscripting</td>
+<td align="left">禁用脚本引擎</td>
+</tr>
+<tr>
+<td>–notablescan</td>
+<td align="left">不允许表扫描</td>
+</tr>
+<tr>
+<td>–nounixsocket</td>
+<td align="left">禁用Unix套接字监听</td>
+</tr>
+<tr>
+<td>–nssize arg (=16)</td>
+<td align="left">设置信数据库.ns文件大小(MB)</td>
+</tr>
+<tr>
+<td>–objcheck</td>
+<td align="left">在收到客户数据,检查的有效性，</td>
+</tr>
+<tr>
+<td>–profile arg</td>
+<td align="left">档案参数 0=off 1=slow, 2=all</td>
+</tr>
+<tr>
+<td>–quota</td>
+<td align="left">限制每个数据库的文件数，设置默认为8</td>
+</tr>
+<tr>
+<td>–quotaFiles arg</td>
+<td align="left">number of files allower per db, requires –quota</td>
+</tr>
+<tr>
+<td>–rest</td>
+<td align="left">开启简单的rest API</td>
+</tr>
+<tr>
+<td>–repair</td>
+<td align="left">修复所有数据库run repair on all dbs</td>
+</tr>
+<tr>
+<td>–repairpath arg</td>
+<td align="left">修复库生成的文件的目录,默认为目录名称dbpath</td>
+</tr>
+<tr>
+<td>–slowms arg (=100)</td>
+<td align="left">value of slow for profile and console log</td>
+</tr>
+<tr>
+<td>–smallfiles</td>
+<td align="left">使用较小的默认文件</td>
+</tr>
+<tr>
+<td>–syncdelay arg (=60)</td>
+<td align="left">数据写入磁盘的时间秒数(0=never,不推荐)</td>
+</tr>
+<tr>
+<td>–sysinfo</td>
+<td align="left">打印一些诊断系统信息</td>
+</tr>
+<tr>
+<td>–upgrade</td>
+<td align="left">如果需要升级数据库</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://isdear.github.io/2019/11/29/Linux%E7%B3%BB%E7%BB%9F%E4%B8%8BMongoDB%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/" data-id="cke70hl7000132wv1c5a3hi7c" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/12/22/%E7%A0%94%E7%A9%B6%E7%94%9F%E8%80%83%E8%AF%95%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E5%A4%A7%E5%85%A8/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          研究生考试数学公式大全
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/11/26/java%E8%8E%B7%E5%8F%96%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%BF%A1%E6%81%AF/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">java获取操作系统信息</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/java%E6%96%B9%E6%B3%95/">java方法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BB%A3%E7%90%86/">代理</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%9A%E5%AE%A2/">博客</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%9E%E4%BE%8B/">实例</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8F%92%E4%BB%B6/">插件</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A0%BC%E5%BC%8F%E5%8C%96/">格式化</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/">消息队列</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%80%83%E8%AF%95/">考试</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BA%E6%96%87/">论文</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%AD%E6%B3%95/">语法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MQTT/" rel="tag">MQTT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Math/" rel="tag">Math</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/" rel="tag">oracle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/" rel="tag">paper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" rel="tag">浏览器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/08/22/oracle%E4%B8%AD%E7%9A%84%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/">oracle中的数学公式</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/22/oracle%E8%A1%A8%E7%9A%84%E5%88%A0%E9%99%A4%E5%92%8C%E6%8E%88%E6%9D%83/">oracle表的删除和授权</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/08/ETL/">ETL</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/02/sql%E5%87%BD%E6%95%B0/">sql函数</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/01/mysql5-7%E5%88%86%E7%BB%84%E6%8E%92%E5%BA%8F%E5%90%8E%E5%8F%96%E6%AF%8F%E7%BB%84%E6%9C%80%E6%96%B0%E4%B8%80%E6%9D%A1/">mysql5.7分组排序后取每组最新一条</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Kuang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">档案</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

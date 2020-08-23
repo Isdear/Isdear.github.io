@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Oracle中的COALESCER函数 | Welcome to my Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="coalesce函数的使用说明">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Oracle中的COALESCER函数">
+<meta property="og:url" content="http://isdear.github.io/2020/07/26/Oracle%E4%B8%AD%E7%9A%84COALESCER%E5%87%BD%E6%95%B0/index.html">
+<meta property="og:site_name" content="Welcome to my Hexo">
+<meta property="og:description" content="coalesce函数的使用说明">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-07-26T14:20:42.000Z">
+<meta property="article:modified_time" content="2020-07-26T14:20:42.000Z">
+<meta property="article:author" content="Kuang">
+<meta property="article:tag" content="oracle">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Welcome to my Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Welcome to my Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">档案</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://Isdear.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Oracle中的COALESCER函数" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/26/Oracle%E4%B8%AD%E7%9A%84COALESCER%E5%87%BD%E6%95%B0/" class="article-date">
+  <time datetime="2020-07-26T14:20:42.000Z" itemprop="datePublished">2020-07-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Oracle中的COALESCER函数
+    </h1>
+  
+
+                
+           <a href="/2020/07/26/Oracle%E4%B8%AD%E7%9A%84COALESCER%E5%87%BD%E6%95%B0/" class="archive-article-date">
+  <time datetime="2020-07-26T14:20:42.000Z" itemprop="datePublished">2020-07-26</time>
+</a> 
+           <!-- 需要添加的位置 -->
+           <!-- 开始添加字数统计-->
+                    
+           <!-- 添加完成 -->        
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>coalesce函数的使用说明<a id="more"></a></p>
+<h5 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h5><p>返回其参数中第一个非空表达式。</p>
+<h6 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h6><p>coalesce ( 表达式1 ,…表达式n )</p>
+<h6 id="返回类型"><a href="#返回类型" class="headerlink" title="返回类型"></a>返回类型</h6><p>返回数据类型优先级最高的表达式的数据类型，如果所有参数均为null，则coalesce返回null。</p>
+<h5 id="等效的case函数"><a href="#等效的case函数" class="headerlink" title="等效的case函数"></a>等效的case函数</h5><h6 id="case语句"><a href="#case语句" class="headerlink" title="case语句"></a>case语句</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">CASE</span><br><span class="line"></span><br><span class="line">   WHEN (expression1 IS NOT NULL) THEN expression1</span><br><span class="line"></span><br><span class="line">   ...</span><br><span class="line"></span><br><span class="line">   WHEN (expressionN IS NOT NULL) THEN expressionN</span><br><span class="line"></span><br><span class="line">   ELSE NULL</span><br><span class="line"></span><br><span class="line">END</span><br></pre></td></tr></table></figure>
+
+<p>尽管 IS NULL 等效于 COALESCE，但它们的行为是不同的。包含具有非空参数的 IS NULL 的表达式将视为 NOT NULL，而包含具有非空参数的 COALESCE 的表达式将视为 NULL。</p>
+<h6 id="SQL-Server的非空参数问题"><a href="#SQL-Server的非空参数问题" class="headerlink" title="SQL Server的非空参数问题"></a>SQL Server的非空参数问题</h6><p>在 SQL Server 中，若要对包含具有非空参数的 COALESCE 的表达式创建索引，可以使用 PERSISTED 列属性将计算列持久化，例如下面案例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE #CheckSumTest</span><br><span class="line"></span><br><span class="line">    (</span><br><span class="line"></span><br><span class="line">        ID int identity ,</span><br><span class="line"></span><br><span class="line">        Num int DEFAULT ( RAND() * 100 ) ,</span><br><span class="line"></span><br><span class="line">        RowCheckSum AS COALESCE( CHECKSUM( id , num ) , 0 ) PERSISTED PRIMARY KEY</span><br><span class="line"></span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
+
+<h6 id="COALESCE-使用示例"><a href="#COALESCE-使用示例" class="headerlink" title="COALESCE 使用示例"></a>COALESCE 使用示例</h6><p>在以下示例中，wages 表中包括以下三列有关雇员的年薪的信息：hourly wage、salary 和 commission。但是，每个雇员只能接受一种付款方式。若要确定支付给所有雇员的金额总数，请使用 COALESCE 函数，它只接受在 hourly_wage、salary 和 commission 中找到的非空值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">SET NOCOUNT ON;</span><br><span class="line"></span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line">USE master;</span><br><span class="line"></span><br><span class="line">IF EXISTS (SELECT name FROM sys.tables</span><br><span class="line"></span><br><span class="line">      WHERE name &#x3D; &#39;wages&#39;)</span><br><span class="line"></span><br><span class="line">   DROP TABLE wages;</span><br><span class="line"></span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line">CREATE TABLE wages</span><br><span class="line"></span><br><span class="line">(</span><br><span class="line"></span><br><span class="line">   emp_id      tinyint    identity,</span><br><span class="line"></span><br><span class="line">   hourly_wage   decimal   NULL,</span><br><span class="line"></span><br><span class="line">   salary      decimal    NULL,</span><br><span class="line"></span><br><span class="line">   commission   decimal   NULL,</span><br><span class="line"></span><br><span class="line">   num_sales   tinyint   NULL</span><br><span class="line"></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(10.00, NULL, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(20.00, NULL, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(30.00, NULL, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(40.00, NULL, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, 10000.00, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, 20000.00, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, 30000.00, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, 40000.00, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, NULL, 15000, 3);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, NULL, 25000, 2);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, NULL, 20000, 6);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, NULL, 14000, 4);</span><br><span class="line"></span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line">SET NOCOUNT OFF;</span><br><span class="line"></span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line">SELECT CAST(COALESCE(hourly_wage * 40 * 52,</span><br><span class="line"></span><br><span class="line">   salary,</span><br><span class="line"></span><br><span class="line">   commission * num_sales) AS money) AS &#39;Total Salary&#39;</span><br><span class="line"></span><br><span class="line">FROM wages;</span><br><span class="line"></span><br><span class="line">GO</span><br></pre></td></tr></table></figure>
+
+<p>结果集</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">Total Salary</span><br><span class="line"></span><br><span class="line">------------</span><br><span class="line"></span><br><span class="line">20800.0000</span><br><span class="line"></span><br><span class="line">41600.0000</span><br><span class="line"></span><br><span class="line">62400.0000</span><br><span class="line"></span><br><span class="line">83200.0000</span><br><span class="line"></span><br><span class="line">10000.0000</span><br><span class="line"></span><br><span class="line">20000.0000</span><br><span class="line"></span><br><span class="line">30000.0000</span><br><span class="line"></span><br><span class="line">40000.0000</span><br><span class="line"></span><br><span class="line">45000.0000</span><br><span class="line"></span><br><span class="line">50000.0000</span><br><span class="line"></span><br><span class="line">120000.0000</span><br><span class="line"></span><br><span class="line">56000.0000</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">(12 row(s) affected)</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://isdear.github.io/2020/07/26/Oracle%E4%B8%AD%E7%9A%84COALESCER%E5%87%BD%E6%95%B0/" data-id="cke70hl76001f2wv14kbe6kau" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/oracle/" rel="tag">oracle</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/07/28/oracle%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          oracle分析函数over
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/07/25/React%E7%9A%84Ref%E5%B1%9E%E6%80%A7/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">React的Ref属性</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/java%E6%96%B9%E6%B3%95/">java方法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BB%A3%E7%90%86/">代理</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%9A%E5%AE%A2/">博客</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%9E%E4%BE%8B/">实例</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8F%92%E4%BB%B6/">插件</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A0%BC%E5%BC%8F%E5%8C%96/">格式化</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/">消息队列</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%80%83%E8%AF%95/">考试</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BA%E6%96%87/">论文</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%AD%E6%B3%95/">语法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MQTT/" rel="tag">MQTT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Math/" rel="tag">Math</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/" rel="tag">oracle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/" rel="tag">paper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" rel="tag">浏览器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/08/22/oracle%E4%B8%AD%E7%9A%84%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/">oracle中的数学公式</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/22/oracle%E8%A1%A8%E7%9A%84%E5%88%A0%E9%99%A4%E5%92%8C%E6%8E%88%E6%9D%83/">oracle表的删除和授权</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/08/ETL/">ETL</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/02/sql%E5%87%BD%E6%95%B0/">sql函数</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/01/mysql5-7%E5%88%86%E7%BB%84%E6%8E%92%E5%BA%8F%E5%90%8E%E5%8F%96%E6%AF%8F%E7%BB%84%E6%9C%80%E6%96%B0%E4%B8%80%E6%9D%A1/">mysql5.7分组排序后取每组最新一条</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Kuang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">档案</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

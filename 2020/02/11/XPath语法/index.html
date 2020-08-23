@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>XPath语法 | Welcome to my Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="XPath使用语法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="XPath语法">
+<meta property="og:url" content="http://isdear.github.io/2020/02/11/XPath%E8%AF%AD%E6%B3%95/index.html">
+<meta property="og:site_name" content="Welcome to my Hexo">
+<meta property="og:description" content="XPath使用语法">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-02-11T10:53:41.000Z">
+<meta property="article:modified_time" content="2020-02-11T10:53:41.000Z">
+<meta property="article:author" content="Kuang">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Welcome to my Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Welcome to my Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">档案</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://Isdear.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-XPath语法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/02/11/XPath%E8%AF%AD%E6%B3%95/" class="article-date">
+  <time datetime="2020-02-11T10:53:41.000Z" itemprop="datePublished">2020-02-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%AF%AD%E6%B3%95/">语法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      XPath语法
+    </h1>
+  
+
+                
+           <a href="/2020/02/11/XPath%E8%AF%AD%E6%B3%95/" class="archive-article-date">
+  <time datetime="2020-02-11T10:53:41.000Z" itemprop="datePublished">2020-02-11</time>
+</a> 
+           <!-- 需要添加的位置 -->
+           <!-- 开始添加字数统计-->
+                    
+           <!-- 添加完成 -->        
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>XPath使用语法<a id="more"></a></p>
+<h6 id="选取节点"><a href="#选取节点" class="headerlink" title="选取节点"></a>选取节点</h6><table>
+<thead>
+<tr>
+<th align="center">表达式</th>
+<th align="center">描述</th>
+<th align="center">示例</th>
+<th align="center">结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">nodename</td>
+<td align="center">选取此节点的所有子节点</td>
+<td align="center">html</td>
+<td align="center">选取html下所有的子节点</td>
+</tr>
+<tr>
+<td align="center">/</td>
+<td align="center">如果是在最前面，代表从根节点选取。否则选择某节点下的某个节点</td>
+<td align="center">/html</td>
+<td align="center">选取整个html节点</td>
+</tr>
+<tr>
+<td align="center">//</td>
+<td align="center">从全局节点中选择节点，随便在哪个位置</td>
+<td align="center">//div</td>
+<td align="center">选取所有的div节点</td>
+</tr>
+<tr>
+<td align="center">@</td>
+<td align="center">选取某个节点中的属性</td>
+<td align="center">//div[@class]</td>
+<td align="center">选取所有div节点下的class属性</td>
+</tr>
+</tbody></table>
+<h6 id="谓语"><a href="#谓语" class="headerlink" title="谓语"></a>谓语</h6><p>谓语用来查找某个特定的节点或者包含某个制定的值的节点，被嵌在方括号里。</p>
+<p>在下面的表格中，我们列出了带有谓语的一些路径表达式，以及表达式的结果：</p>
+<table>
+<thead>
+<tr>
+<th align="center">路径表达式</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">//body/div[1]</td>
+<td align="center">获取body节点下的第一个div(下标从1开始)</td>
+</tr>
+<tr>
+<td align="center">//body/div[last()]</td>
+<td align="center">获取body节点下最后一个div元素</td>
+</tr>
+<tr>
+<td align="center">//body/div[position()&lt;3]</td>
+<td align="center">获取body节点下前两个div元素</td>
+</tr>
+<tr>
+<td align="center">//div[@class]</td>
+<td align="center">获取div节点下拥有class属性的元素</td>
+</tr>
+<tr>
+<td align="center">//div[@price=10]</td>
+<td align="center">获取div节点下属性为price=10的元素</td>
+</tr>
+<tr>
+<td align="center">//div[contains(@class,”fl”)]</td>
+<td align="center">模糊匹配，选取div节点下包含fl的class元素</td>
+</tr>
+</tbody></table>
+<h6 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h6><table>
+<thead>
+<tr>
+<th align="center">通配符</th>
+<th align="center">描述</th>
+<th align="center">示例</th>
+<th align="center">结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">*</td>
+<td align="center">匹配任意节点</td>
+<td align="center">//body/*</td>
+<td align="center">body下的额所有节点</td>
+</tr>
+<tr>
+<td align="center">@*</td>
+<td align="center">匹配节点中的任何属性</td>
+<td align="center">//div[@*]</td>
+<td align="center">div下的所有属性节点</td>
+</tr>
+</tbody></table>
+<h6 id="选取多个路径"><a href="#选取多个路径" class="headerlink" title="选取多个路径"></a>选取多个路径</h6><p>通过在路径表达式中使用”|”运算符，可以选取若干个路径</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">//dd[@class=&quot;job_bt&quot;] | //dd[@class=&quot;job-advant-age&quot;]</span><br></pre></td></tr></table></figure>
+
+<h6 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h6><table>
+<thead>
+<tr>
+<th align="center">运算符</th>
+<th align="center">描述</th>
+<th align="center">实例</th>
+<th align="center">返回值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">|</td>
+<td align="center">计算两个节点集</td>
+<td align="center">//book | //cd</td>
+<td align="center">返回所有拥有 book 和 cd 元素的节点集</td>
+</tr>
+<tr>
+<td align="center">+</td>
+<td align="center">加法</td>
+<td align="center">6 + 4</td>
+<td align="center">10</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">减法</td>
+<td align="center">6 - 4</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">*</td>
+<td align="center">乘法</td>
+<td align="center">6 * 4</td>
+<td align="center">24</td>
+</tr>
+<tr>
+<td align="center">div</td>
+<td align="center">除法</td>
+<td align="center">8 div 4</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">=</td>
+<td align="center">等于</td>
+<td align="center">price=9.80</td>
+<td align="center">如果 price 是 9.80，则返回 true，否则 false。</td>
+</tr>
+<tr>
+<td align="center">!=</td>
+<td align="center">不等于</td>
+<td align="center">price!=9.80</td>
+<td align="center">如果 price 是 9.90，则返回 true，否则 false。</td>
+</tr>
+<tr>
+<td align="center">&lt;</td>
+<td align="center">小于</td>
+<td align="center">price&lt;9.80</td>
+<td align="center">如果 price 是 9.00，则返回 true，否则 false。</td>
+</tr>
+<tr>
+<td align="center">&lt;=</td>
+<td align="center">小于或等于</td>
+<td align="center">price&lt;=9.80</td>
+<td align="center">如果 price 是 9.00，则返回 true，否则 false。</td>
+</tr>
+<tr>
+<td align="center">&gt;</td>
+<td align="center">大于</td>
+<td align="center">price&gt;9.80</td>
+<td align="center">如果 price 是 9.90，则返回 true，否则 false。</td>
+</tr>
+<tr>
+<td align="center">&gt;=</td>
+<td align="center">大于或等于</td>
+<td align="center">price&gt;=9.80</td>
+<td align="center">如果 price 是 9.90，则返回 true，否则 false。</td>
+</tr>
+<tr>
+<td align="center">or</td>
+<td align="center">或</td>
+<td align="center">price=9.80 or price=9.70</td>
+<td align="center">如果 price 是 9.80，则返回 true，否则 false。</td>
+</tr>
+<tr>
+<td align="center">and</td>
+<td align="center">与</td>
+<td align="center">price&gt;9.00 and price&lt;9.90</td>
+<td align="center">如果 price 是 9.80，则返回 true，否则 false。</td>
+</tr>
+<tr>
+<td align="center">mod</td>
+<td align="center">计算除法的余数</td>
+<td align="center">5 mod 2</td>
+<td align="center">1</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://isdear.github.io/2020/02/11/XPath%E8%AF%AD%E6%B3%95/" data-id="cke70hl7g00252wv1a40ucw4t" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/02/12/Python%E7%88%AC%E5%8F%96%E7%94%B5%E5%BD%B1%E5%A4%A9%E5%A0%82%E6%96%B0%E7%89%87%E7%B2%BE%E5%93%81/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Python爬取电影天堂新片精品
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/02/10/CSS3%E6%BB%A4%E9%95%9Cfilter/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">CSS3滤镜filter</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/java%E6%96%B9%E6%B3%95/">java方法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BB%A3%E7%90%86/">代理</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%9A%E5%AE%A2/">博客</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%9E%E4%BE%8B/">实例</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8F%92%E4%BB%B6/">插件</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A0%BC%E5%BC%8F%E5%8C%96/">格式化</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/">消息队列</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%80%83%E8%AF%95/">考试</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BA%E6%96%87/">论文</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%AD%E6%B3%95/">语法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MQTT/" rel="tag">MQTT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Math/" rel="tag">Math</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/" rel="tag">oracle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/" rel="tag">paper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" rel="tag">浏览器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/08/22/oracle%E4%B8%AD%E7%9A%84%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/">oracle中的数学公式</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/22/oracle%E8%A1%A8%E7%9A%84%E5%88%A0%E9%99%A4%E5%92%8C%E6%8E%88%E6%9D%83/">oracle表的删除和授权</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/08/ETL/">ETL</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/02/sql%E5%87%BD%E6%95%B0/">sql函数</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/01/mysql5-7%E5%88%86%E7%BB%84%E6%8E%92%E5%BA%8F%E5%90%8E%E5%8F%96%E6%AF%8F%E7%BB%84%E6%9C%80%E6%96%B0%E4%B8%80%E6%9D%A1/">mysql5.7分组排序后取每组最新一条</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Kuang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">档案</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>sql函数 | Welcome to my Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="工作中常用的SQL函数。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sql函数">
+<meta property="og:url" content="http://isdear.github.io/2020/08/02/sql%E5%87%BD%E6%95%B0/index.html">
+<meta property="og:site_name" content="Welcome to my Hexo">
+<meta property="og:description" content="工作中常用的SQL函数。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-08-02T02:34:06.000Z">
+<meta property="article:modified_time" content="2020-08-02T02:34:06.000Z">
+<meta property="article:author" content="Kuang">
+<meta property="article:tag" content="mysql">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Welcome to my Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Welcome to my Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">档案</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://Isdear.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-sql函数" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/02/sql%E5%87%BD%E6%95%B0/" class="article-date">
+  <time datetime="2020-08-02T02:34:06.000Z" itemprop="datePublished">2020-08-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      sql函数
+    </h1>
+  
+
+                
+           <a href="/2020/08/02/sql%E5%87%BD%E6%95%B0/" class="archive-article-date">
+  <time datetime="2020-08-02T02:34:06.000Z" itemprop="datePublished">2020-08-02</time>
+</a> 
+           <!-- 需要添加的位置 -->
+           <!-- 开始添加字数统计-->
+                    
+           <!-- 添加完成 -->        
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>工作中常用的SQL函数。<a id="more"></a></p>
+<p>top关键字属性SQL Server，平常并没有使用SQL Server。</p>
+<h6 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h6><ul>
+<li><p>upper(str)/ucase(str)：返回字符串str，将所有字符改为大写</p>
+</li>
+<li><p>lower(str)/lcase(str)：返回字符串str，将所有字符改为小写</p>
+</li>
+<li><p>first(column_name)：返回指定的字段中第一个记录的值，可使用 ORDER BY 语句对记录进行排序</p>
+</li>
+<li><p>last(column_name)：返回指定的字段中最后一个记录的值，可使用 ORDER BY 语句对记录进行排序</p>
+</li>
+<li><p>mid(str,start,length)：用于从文本字段中提取字符，str要提取的字段(必须)，start开始位置(必须)，length提取长度，若为空，则返回剩余字符串</p>
+</li>
+<li><p>now()：返回当前日期</p>
+</li>
+<li><p>format(column_name,format)：</p>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> ProductName, UnitPrice, <span class="keyword">FORMAT</span>(<span class="keyword">Now</span>(),<span class="string">&#x27;YYYY-MM-DD&#x27;</span>) <span class="keyword">as</span> PerDate</span><br><span class="line"><span class="keyword">FROM</span> Products</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>replace(X,old,new) n：在X中查找old，并替换成new</p>
+</li>
+<li><p>instr(X,STR[,START][,N)：从X中查找str，可以指定从start开始，也可以指定从n开始</p>
+</li>
+<li><p>ltrim(X[,TRIM_STR])：把X的左边截去trim_str字符串，缺省截去空格</p>
+</li>
+<li><p>rtrim(X[,TRIM_STR])：把X的右边截去trim_str字符串，缺省截去空格</p>
+</li>
+<li><p>trim([TRIM_STR FROM]X)：把X的两边截去trim_str字符串，缺省截去空格</p>
+</li>
+<li><p>trunc(x[,y])：直接截取，不四舍五入。</p>
+<p>在缺省 y 时，默认 y=0；比如：TRUNC (3.56)=3。</p>
+<p>Y是正整数，就是四舍五入到小数点后 y 位。TRUNC (5.654,2)=5.65。</p>
+<p>y 是负整数，四舍五入到小数点左边|y|位。TRUNC (351.654,-2)=300。</p>
+</li>
+<li><p>add_months(d,n)，在某一个日期 d 上，加上指定的月数 n，返回计算后的新日期。d 表示日期，n 表示要加的月数</p>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">SYSDATE</span>,add_months(<span class="keyword">SYSDATE</span>,<span class="number">5</span>) <span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>last_day(d)，返回指定日期当月的最后一天</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">SYSDATE</span>,<span class="keyword">last_day</span>(<span class="keyword">SYSDATE</span>) <span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>nvl(X,VALUE)：如果X为空，返回value，否则返回X</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> ENAME,JOB,SAL,NVL(COMM,<span class="number">100</span>) <span class="keyword">FROM</span> EMP <span class="keyword">WHERE</span> SAL&lt;<span class="number">2000</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>to_number()：将字符型数据转换成数字型    </p>
+</li>
+<li><p>to_date()：将字符型数据转换成日期型</p>
+</li>
+<li><p>ceil()：向上取整，结果为124。<code>select ceil(123.123) from dual;</code></p>
+</li>
+<li><p>floor()：向下取整，结果为123。<code>select floor(123.123) from dual;</code></p>
+</li>
+<li><p>trunc(n1,n2)取整函数,n1代表字符串，n2代表小数位数，结果为123.12。<br>  <code>select trunc(123.125,2) from dual;</code></p>
+</li>
+<li><p>round(n1,n2)四舍五入，n1代表字符串,n2代表小数位数，结果为123.57。<code>select round(123.567) from dual;</code></p>
+</li>
+</ul>
+<h6 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h6><ul>
+<li>except(sql server)：通过包括所有在 TABLE1 中但不在 TABLE2 中的行并消除所有重复行而派生出一个结果表</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	reg_num </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	dq_list <span class="keyword">except</span></span><br><span class="line"><span class="keyword">EXCEPT</span></span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	reg_num </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	dq_result</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>minus(oracle)：先找出第一个 SQL 语句所产生的结果，然后看这些结果有没有在第二个 SQL 语句的结果中。如果有的话，那这一笔资料就被去除，而不会在最后的结果中出现。如果第二个 SQL 语句所产生的结果并没有存在于第一个 SQL 语句所产生的结果内，那这笔资料就被抛弃。</li>
+</ul>
+<p><strong><em>Store_Information</em></strong> 表格</p>
+<table>
+<thead>
+<tr>
+<th>Store_Name</th>
+<th>Sales</th>
+<th>Txn_Date</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Los Angeles</td>
+<td>1500</td>
+<td>05-Jan-1999</td>
+</tr>
+<tr>
+<td>San Diego</td>
+<td>250</td>
+<td>07-Jan-1999</td>
+</tr>
+<tr>
+<td>Los Angeles</td>
+<td>300</td>
+<td>08-Jan-1999</td>
+</tr>
+<tr>
+<td>Boston</td>
+<td>700</td>
+<td>08-Jan-1999</td>
+</tr>
+</tbody></table>
+<p><strong><em>Internet Sales</em></strong> 表格</p>
+<table>
+<thead>
+<tr>
+<th>Txn_Date</th>
+<th>Sales</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>07-Jan-1999</td>
+<td>250</td>
+</tr>
+<tr>
+<td>10-Jan-1999</td>
+<td>535</td>
+</tr>
+<tr>
+<td>11-Jan-1999</td>
+<td>320</td>
+</tr>
+<tr>
+<td>12-Jan-1999</td>
+<td>750</td>
+</tr>
+</tbody></table>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Txn_Date <span class="keyword">FROM</span> Store_Information</span><br><span class="line"><span class="keyword">MINUS</span></span><br><span class="line"><span class="keyword">SELECT</span> Txn_Date <span class="keyword">FROM</span> Internet_Sales;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>Txn_Date</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Jan-05-1999</td>
+</tr>
+<tr>
+<td>Jan-08-1999</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>intersect：通过只包括 TABLE1 和 TABLE2 中都有的行并消除所有重复行而派生出一个结果表。</p>
+</li>
+<li><p>zeroifnull(expr)：如果表达式expr的值为0，则返回null，否则返回表达式expr的值。</p>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> zeroifnull(<span class="keyword">count</span>(<span class="keyword">DISTINCT</span> userid)) <span class="keyword">from</span> table_name;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>nullifzero(expr)：如果表达式expr的值为null，则返回0，否则返回表达式expr的值。</li>
+</ul>
+<h6 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h6><p>复制表(只复制结构,源表名：a 新表名：b) (Access可用)</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">into</span> b <span class="keyword">from</span> a <span class="keyword">where</span> <span class="number">1</span>&lt;&gt;<span class="number">1</span>（仅用于SQlServer）</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> top <span class="number">0</span> * <span class="keyword">into</span> b <span class="keyword">from</span> a</span><br></pre></td></tr></table></figure>
+
+<p>显示文章、提交人和最后回复时间</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> a.title,a.username,b.adddate <span class="keyword">from</span> <span class="keyword">table</span> a,(<span class="keyword">select</span> <span class="keyword">max</span>(adddate) adddate <span class="keyword">from</span> <span class="keyword">table</span> <span class="keyword">where</span> table.title=a.title) b</span><br></pre></td></tr></table></figure>
+
+<p>两张关联表，删除主表中已经在副表中没有的信息 </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> table1 <span class="keyword">where</span> <span class="keyword">not</span> <span class="keyword">exists</span> ( <span class="keyword">select</span> * <span class="keyword">from</span> table2 <span class="keyword">where</span> table1.field1=table2.field1 )</span><br></pre></td></tr></table></figure>
+
+<p>日程安排提前五分钟提醒</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> 日程安排 <span class="keyword">where</span> <span class="keyword">datediff</span>(<span class="string">&#x27;minute&#x27;</span>,f开始时间,<span class="keyword">getdate</span>())&gt;<span class="number">5</span></span><br></pre></td></tr></table></figure>
+
+<p>一条sql语句搞定数据库分页</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> top <span class="number">10</span> b.* <span class="keyword">from</span> (<span class="keyword">select</span> top <span class="number">20</span> 主键字段,排序字段 <span class="keyword">from</span> 表名 <span class="keyword">order</span> <span class="keyword">by</span> 排序字段 <span class="keyword">desc</span>) a,表名 b <span class="keyword">where</span> b.主键字段 = a.主键字段 <span class="keyword">order</span> <span class="keyword">by</span> a.排序字段</span><br></pre></td></tr></table></figure>
+
+<p>前10条记录</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> top <span class="number">10</span> * <span class="keyword">from</span> table1 <span class="keyword">where</span> 范围</span><br></pre></td></tr></table></figure>
+
+<p>选择在每一组b值相同的数据中对应的a最大的记录的所有信息(类似这样的用法可以用于论坛每月排行榜,每月热销产品分析,按科目成绩排名,等等.)</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> a,b,c <span class="keyword">from</span> tablename ta <span class="keyword">where</span> a=(<span class="keyword">select</span> <span class="keyword">max</span>(a) <span class="keyword">from</span> tablename tb <span class="keyword">where</span> tb.b=ta.b)</span><br></pre></td></tr></table></figure>
+
+<p>包括所有在TableA中但不在TableB和TableC中的行并消除所有重复行而派生出一个结果表</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">select</span> a <span class="keyword">from</span> tableA ) <span class="keyword">except</span> (<span class="keyword">select</span> a <span class="keyword">from</span> tableB) <span class="keyword">except</span> (<span class="keyword">select</span> a <span class="keyword">from</span> tableC)</span><br></pre></td></tr></table></figure>
+
+<p>随机取出10条数据</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> top <span class="number">10</span> * <span class="keyword">from</span> tablename <span class="keyword">order</span> <span class="keyword">by</span> newid()</span><br></pre></td></tr></table></figure>
+
+<p>随机选择记录</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> newid()</span><br></pre></td></tr></table></figure>
+
+<p>列出数据库里所有的表名</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">name</span> <span class="keyword">from</span> sysobjects <span class="keyword">where</span> <span class="keyword">type</span>=<span class="string">&#x27;U&#x27;</span> // U代表用户</span><br></pre></td></tr></table></figure>
+
+<p>列出表里的所有的列名</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">name</span> <span class="keyword">from</span> syscolumns <span class="keyword">where</span> <span class="keyword">id</span>=object_id(<span class="string">&#x27;TableName&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>选择从10到15的记录</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> top <span class="number">5</span> * <span class="keyword">from</span> (<span class="keyword">select</span> top <span class="number">15</span> * <span class="keyword">from</span> <span class="keyword">table</span> <span class="keyword">order</span> <span class="keyword">by</span> <span class="keyword">id</span> <span class="keyword">asc</span>) table_别名 <span class="keyword">order</span> <span class="keyword">by</span> <span class="keyword">id</span> <span class="keyword">desc</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://isdear.github.io/2020/08/02/sql%E5%87%BD%E6%95%B0/" data-id="cke70hl7p002s2wv1de1h49zt" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/08/08/ETL/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          ETL
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/08/01/mysql5-7%E5%88%86%E7%BB%84%E6%8E%92%E5%BA%8F%E5%90%8E%E5%8F%96%E6%AF%8F%E7%BB%84%E6%9C%80%E6%96%B0%E4%B8%80%E6%9D%A1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">mysql5.7分组排序后取每组最新一条</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/java%E6%96%B9%E6%B3%95/">java方法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BB%A3%E7%90%86/">代理</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%9A%E5%AE%A2/">博客</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%9E%E4%BE%8B/">实例</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8F%92%E4%BB%B6/">插件</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A0%BC%E5%BC%8F%E5%8C%96/">格式化</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/">消息队列</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%80%83%E8%AF%95/">考试</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BA%E6%96%87/">论文</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%AD%E6%B3%95/">语法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MQTT/" rel="tag">MQTT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Math/" rel="tag">Math</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/" rel="tag">oracle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/" rel="tag">paper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" rel="tag">浏览器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/08/22/oracle%E4%B8%AD%E7%9A%84%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/">oracle中的数学公式</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/22/oracle%E8%A1%A8%E7%9A%84%E5%88%A0%E9%99%A4%E5%92%8C%E6%8E%88%E6%9D%83/">oracle表的删除和授权</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/08/ETL/">ETL</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/02/sql%E5%87%BD%E6%95%B0/">sql函数</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/01/mysql5-7%E5%88%86%E7%BB%84%E6%8E%92%E5%BA%8F%E5%90%8E%E5%8F%96%E6%AF%8F%E7%BB%84%E6%9C%80%E6%96%B0%E4%B8%80%E6%9D%A1/">mysql5.7分组排序后取每组最新一条</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Kuang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">档案</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
