@@ -46,15 +46,15 @@
   };
 </script>
 
-  <meta name="description" content="在mysql5.7版本上实现的，目前mysql8.0已经可以使用分析函数了，不需要那么麻烦了。">
-<meta name="keywords" content="mysql">
+  <meta name="description" content="表的快速删除和授权操作">
+<meta name="keywords" content="oracle">
 <meta property="og:type" content="article">
-<meta property="og:title" content="mysql5.7分组排序后取每组最新一条">
-<meta property="og:url" content="http:&#x2F;&#x2F;isdear.github.io&#x2F;2020&#x2F;08&#x2F;01&#x2F;mysql5-7%E5%88%86%E7%BB%84%E6%8E%92%E5%BA%8F%E5%90%8E%E5%8F%96%E6%AF%8F%E7%BB%84%E6%9C%80%E6%96%B0%E4%B8%80%E6%9D%A1&#x2F;index.html">
+<meta property="og:title" content="oracle表的删除和授权">
+<meta property="og:url" content="http:&#x2F;&#x2F;isdear.github.io&#x2F;2020&#x2F;08&#x2F;22&#x2F;oracle%E8%A1%A8%E7%9A%84%E5%88%A0%E9%99%A4%E5%92%8C%E6%8E%88%E6%9D%83&#x2F;index.html">
 <meta property="og:site_name" content="Welcome to my Hexo">
-<meta property="og:description" content="在mysql5.7版本上实现的，目前mysql8.0已经可以使用分析函数了，不需要那么麻烦了。">
+<meta property="og:description" content="表的快速删除和授权操作">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-08-01T00:31:27.000Z">
+<meta property="og:updated_time" content="2020-08-22T07:17:54.000Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -71,7 +71,7 @@
   };
 </script>
 
-  <title>mysql5.7分组排序后取每组最新一条 | Welcome to my Hexo</title>
+  <title>oracle表的删除和授权 | Welcome to my Hexo</title>
   
 
 
@@ -207,7 +207,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://Isdear.github.io/2020/08/01/mysql5-7%E5%88%86%E7%BB%84%E6%8E%92%E5%BA%8F%E5%90%8E%E5%8F%96%E6%AF%8F%E7%BB%84%E6%9C%80%E6%96%B0%E4%B8%80%E6%9D%A1/">
+    <link itemprop="mainEntityOfPage" href="http://Isdear.github.io/2020/08/22/oracle%E8%A1%A8%E7%9A%84%E5%88%A0%E9%99%A4%E5%92%8C%E6%8E%88%E6%9D%83/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/kenan.jpg">
@@ -220,7 +220,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          mysql5.7分组排序后取每组最新一条
+          oracle表的删除和授权
         </h1>
 
         <div class="post-meta">
@@ -230,7 +230,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-08-01 08:31:27" itemprop="dateCreated datePublished" datetime="2020-08-01T08:31:27+08:00">2020-08-01</time>
+              <time title="创建时间：2020-08-22 15:17:54" itemprop="dateCreated datePublished" datetime="2020-08-22T15:17:54+08:00">2020-08-22</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -262,15 +262,25 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>在mysql5.7版本上实现的，目前mysql8.0已经可以使用分析函数了，不需要那么麻烦了。<a id="more"></a></p>
-<h6 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h6><p>一张表内有ID、时间、描述信息等，依据ID找出最新时间的一条描述信息。</p>
-<h6 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h6><p>先按照ID进行分组，然后对时间进行倒序排序，选出最新的一条记录。</p>
-<h6 id="测试表结构"><a href="#测试表结构" class="headerlink" title="测试表结构"></a>测试表结构</h6><p>与实现有关的字段有task_id、dl_time、dl_dscr。</p>
-<h6 id="Mysql实现方法"><a href="#Mysql实现方法" class="headerlink" title="Mysql实现方法"></a>Mysql实现方法</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">SELECT</span><br><span class="line">	* </span><br><span class="line">FROM</span><br><span class="line">	dq_ld_log AS b </span><br><span class="line">WHERE</span><br><span class="line">	NOT EXISTS (</span><br><span class="line">	SELECT</span><br><span class="line">		1 </span><br><span class="line">	FROM</span><br><span class="line">		dq_dl_log </span><br><span class="line">	WHERE</span><br><span class="line">	task_id = b.task_id </span><br><span class="line">	AND b.dl_time &lt; dl_time)</span><br></pre></td></tr></table></figure>
+        <p>表的快速删除和授权操作<a id="more"></a></p>
+<h5 id="truncate"><a href="#truncate" class="headerlink" title="truncate"></a>truncate</h5><p>TRUNCATE TABLE 一次性地从表中删除所有的数据并不把单独的删除操作记录记入日志保存，删除行是不能恢复的。并且在删除的过程中不会激活与表有关的删除触发器。执行速度快。</p>
+<p>DELETE语句执行删除的过程是每次从表中删除一行，并且同时将该行的删除操作作为事务记录在日志中保存以便进行进行回滚操作。</p>
+<p>如果只想清空含有大量数据的表时，直接使用TRUNCATE。当表被TRUNCATE 后，这个表和索引所占用的空间会恢复到初始大小。</p>
+<p><strong>执行速度DROP &gt;  TRUNCATE &gt; DELETE。</strong></p>
+<p><strong>TRUNCATE 的使用范围只能对TABLE； DELETE可以是table和view。</strong></p>
+<p> Truncate table 表名 速度快，而且效率高，因为truncate table 在功能上与不带 WHERE 子句的 DELETE 语句相同，二者均删除表中的全部行。但 TRUNCATE TABLE 比 DELETE 速度快，且使用的系统和事务日志资源少。DELETE 语句每次删除一行，并在事务日志中为所删除的每行记录一项。TRUNCATE TABLE 通过释放存储表数据所用的数据页来删除数据，并且只在事务日志中记录页的释放。</p>
+<p>对于由 FOREIGN KEY 约束引用的表，不能使用 TRUNCATE TABLE，而应使用不带 WHERE 子句的 DELETE 语句。由于 TRUNCATE TABLE 不记录在日志中，所以它不能激活触发器。</p>
+<h5 id="授权"><a href="#授权" class="headerlink" title="授权"></a>授权</h5><ul>
+<li><p>select * from dba_users; –查询数据库中的所有用户</p>
+</li>
+<li><p>GRANT SELECT ON tableName to userName;–授权查询（将表tableName的查询权授给userName）<br>   GRANT INSERT ON tableName to userName;–授权插入（将表tableName的插入权授给userName）<br>   GRANT UPDATE ON tableName to userName;–授权更新（将表tableName的更新权授给userName）<br>  GRANT UPDATE ON table1 to userName with grant option; –授权更新权限转移给用户，该用户可以继续授权；<br>GRANT EXECUTE ON procedure1 to userName;–授权存储过程</p>
+</li>
+<li><p>revoke select on table1 from user1; –收回查询表的权限；<br>  revoke all on table1 from user1;–收回表table1的所有权限；</p>
+</li>
+<li><p>select table_name,privilege from dba_tab_privs where grantee=’xujin’ ;–查询一个用户拥有的对象权限<br>  select * from dba_sys_privs where grantee=’xujin’ ;–查询一个用户拥有的系统权限<br>  select * from session_privs ;–a当前会话有效的系统权限</p>
+</li>
+</ul>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SELECT</span><br><span class="line">	* </span><br><span class="line">FROM</span><br><span class="line">	( SELECT dl_time, task_id, dl_dscr FROM dq_dl_log GROUP BY task_id DESC ) t </span><br><span class="line">ORDER BY</span><br><span class="line">	t.dl_time</span><br></pre></td></tr></table></figure>
-
-<h6 id="Oracle实现方法"><a href="#Oracle实现方法" class="headerlink" title="Oracle实现方法"></a>Oracle实现方法</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SELECT</span><br><span class="line">	row_number() over ( PARTITION BY task_id ORDER BY dl_time ) rank </span><br><span class="line">FROM</span><br><span class="line">	dq_dl_log </span><br><span class="line">WHERE</span><br><span class="line">	rank = 1</span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -279,23 +289,23 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/mysql/" rel="tag"># mysql</a>
+              <a href="/tags/oracle/" rel="tag"># oracle</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
-                <a href="/2020/07/28/oracle%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/" rel="next" title="oracle分析函数over">
-                  <i class="fa fa-chevron-left"></i> oracle分析函数over
+                <a href="/2020/08/08/ETL/" rel="next" title="ETL">
+                  <i class="fa fa-chevron-left"></i> ETL
                 </a>
             </div>
 
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-                <a href="/2020/08/02/sql%E5%87%BD%E6%95%B0/" rel="prev" title="sql函数">
-                  sql函数 <i class="fa fa-chevron-right"></i>
+                <a href="/2020/08/22/oracle%E4%B8%AD%E7%9A%84%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/" rel="prev" title="oracle中的数学公式">
+                  oracle中的数学公式 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -335,7 +345,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#需求"><span class="nav-number">1.</span> <span class="nav-text">需求</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#测试表结构"><span class="nav-number">3.</span> <span class="nav-text">测试表结构</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Mysql实现方法"><span class="nav-number">4.</span> <span class="nav-text">Mysql实现方法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Oracle实现方法"><span class="nav-number">5.</span> <span class="nav-text">Oracle实现方法</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#truncate"><span class="nav-number">1.</span> <span class="nav-text">truncate</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#授权"><span class="nav-number">2.</span> <span class="nav-text">授权</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
