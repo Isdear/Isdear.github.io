@@ -375,7 +375,7 @@
 <h6 id="创建GitHub账号"><a href="#创建GitHub账号" class="headerlink" title="创建GitHub账号"></a>创建GitHub账号</h6><p>在 <a href="https://github.com/">https://github.com/</a> 上注册账号，完成后，在 <a href="https://github.com">https://github.com</a> 页面点击右上角”+”的”new repository”创建自己的项目仓库，仓库名称是”自己的github名称.github.io”，例如我的github账号名称Isdear，仓库名即为”Isdear.github.io”。</p>
 <h6 id="关联本地仓库"><a href="#关联本地仓库" class="headerlink" title="关联本地仓库"></a>关联本地仓库</h6><p>右键点击Git Bash Here进入命令界面，通过命令绑定账户。</p>
 <p>配置用户名</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;Isdear&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;yourname&quot;</span><br></pre></td></tr></table></figure>
 
 <p>配置GitHub账户邮箱</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.email &quot;youremail@example.com&quot;</span><br></pre></td></tr></table></figure>
