@@ -344,37 +344,6 @@
       </tags>
   </entry>
   <entry>
-    <title>ETL</title>
-    <url>/2020/08/08/ETL/</url>
-    <content><![CDATA[<p>ETL的概念及使用场景<a id="more"></a></p>
-<h5 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h5><p>ETL 是三个单词的缩写：</p>
-<ul>
-<li>Extraction：抽取、提取；就是把数据从数据库里面取出来；</li>
-<li>Transformation：转换；包括但不限于：数据筛选校验、数据关联、数据内容及结构的修改、运算、统计等等；</li>
-<li>Loading：加载；将处理后的数据保存到目标数据库。</li>
-</ul>
-<p>从这三个单词基本可以了解 ETL 的作用：将各个业务系统的数据，通过抽取、清洗、转换之后，将加工后的数据落地到数据库中（数据仓库）；在这个过程中，ETL 可以将分散、零乱、标准不统一的数据整合到一起。</p>
-<p><img src="/2020/08/08/ETL/ETL.webp.jpg" alt></p>
-<h5 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h5><h6 id="报表、BI系统"><a href="#报表、BI系统" class="headerlink" title="报表、BI系统"></a>报表、BI系统</h6><p>在公司建设的初期，业务比较少，系统也比较少，一台数据库就搞定了；随着公司业务的增加，业务系统被拆成很多系统；随着数据量的继续增加，单个系统的数据增加到一定程度的时候，也做了分库分表；</p>
-<p>这时候领导、业务人员在用数据做分析的时候，数据来源可能是多个系统的多张表，这时候企图通过一个复杂的 SQL 跑出来结果就很困难了；通常公司会建立一个数据仓库，通过ETL工具把数据抽取到数据仓库中，再做数据的拟合和展示。</p>
-<h6 id="跨系统的数据加工或查询"><a href="#跨系统的数据加工或查询" class="headerlink" title="跨系统的数据加工或查询"></a>跨系统的数据加工或查询</h6><p>业务系统有几百个，由于业务流程比较复杂，前端系统在做业务操作的时候，在正式提交交易之前，有很多业务校验；</p>
-<p>比如要查询客户在 X 系统的交易历史，在 Y 系统的交易历史，在 Z 系统的交易历史；那么就需要分别调用 X、Y、Z 系统的接口，这个对前端系统很不友好，那么通常的解决方案是什么？</p>
-<ul>
-<li>A 方案：做一个中间服务，中间服务去调用 X、Y、Z 系统的接口，客户端直接调用这个中间服务；这种方案只是把前端要做的事情，转移到了中间服务；</li>
-<li>B 方案：整合 X、Y、Z 三个系统，建服务中台；这种方法很好，但是极为难，对于很多公司来说，别说把 X、Y、Z 三个系统整合成一个中台系统，就是其中一个系统本身进行重构，都是非常困难的；</li>
-<li>C 方案：把 X、Y、Z 三个系统中需要的数据，通过 ETL 抽取加工到一个数据仓库中，对外提供服务；这个系统最大的好处是在不改造 X、Y、Z 三个系统的前提下，又可以实现跨系统的查询。</li>
-</ul>
-<p>我们在 C 方案的基础上又往前做了一步，就是将落地后的数据又做了一次加工，将需要跨表关联的数据，提前关联好存入 MongoDB 中，对外提供查询服务；这样可以将多表关联查询，变成了单表查询。</p>
-<p><img src="/2020/08/08/ETL/ETL2.webp.jpg" alt></p>
-]]></content>
-      <categories>
-        <category>数据库</category>
-      </categories>
-      <tags>
-        <tag>oracle</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hexo搭建博客</title>
     <url>/2019/11/22/Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<p> Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 <a href="http://daringfireball.net/projects/markdown/">Markdown</a>（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。 </p>
@@ -462,6 +431,37 @@
       </categories>
       <tags>
         <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ETL</title>
+    <url>/2020/08/08/ETL/</url>
+    <content><![CDATA[<p>ETL的概念及使用场景<a id="more"></a></p>
+<h5 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h5><p>ETL 是三个单词的缩写：</p>
+<ul>
+<li>Extraction：抽取、提取；就是把数据从数据库里面取出来；</li>
+<li>Transformation：转换；包括但不限于：数据筛选校验、数据关联、数据内容及结构的修改、运算、统计等等；</li>
+<li>Loading：加载；将处理后的数据保存到目标数据库。</li>
+</ul>
+<p>从这三个单词基本可以了解 ETL 的作用：将各个业务系统的数据，通过抽取、清洗、转换之后，将加工后的数据落地到数据库中（数据仓库）；在这个过程中，ETL 可以将分散、零乱、标准不统一的数据整合到一起。</p>
+<p><img src="/2020/08/08/ETL/ETL.webp.jpg" alt></p>
+<h5 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h5><h6 id="报表、BI系统"><a href="#报表、BI系统" class="headerlink" title="报表、BI系统"></a>报表、BI系统</h6><p>在公司建设的初期，业务比较少，系统也比较少，一台数据库就搞定了；随着公司业务的增加，业务系统被拆成很多系统；随着数据量的继续增加，单个系统的数据增加到一定程度的时候，也做了分库分表；</p>
+<p>这时候领导、业务人员在用数据做分析的时候，数据来源可能是多个系统的多张表，这时候企图通过一个复杂的 SQL 跑出来结果就很困难了；通常公司会建立一个数据仓库，通过ETL工具把数据抽取到数据仓库中，再做数据的拟合和展示。</p>
+<h6 id="跨系统的数据加工或查询"><a href="#跨系统的数据加工或查询" class="headerlink" title="跨系统的数据加工或查询"></a>跨系统的数据加工或查询</h6><p>业务系统有几百个，由于业务流程比较复杂，前端系统在做业务操作的时候，在正式提交交易之前，有很多业务校验；</p>
+<p>比如要查询客户在 X 系统的交易历史，在 Y 系统的交易历史，在 Z 系统的交易历史；那么就需要分别调用 X、Y、Z 系统的接口，这个对前端系统很不友好，那么通常的解决方案是什么？</p>
+<ul>
+<li>A 方案：做一个中间服务，中间服务去调用 X、Y、Z 系统的接口，客户端直接调用这个中间服务；这种方案只是把前端要做的事情，转移到了中间服务；</li>
+<li>B 方案：整合 X、Y、Z 三个系统，建服务中台；这种方法很好，但是极为难，对于很多公司来说，别说把 X、Y、Z 三个系统整合成一个中台系统，就是其中一个系统本身进行重构，都是非常困难的；</li>
+<li>C 方案：把 X、Y、Z 三个系统中需要的数据，通过 ETL 抽取加工到一个数据仓库中，对外提供服务；这个系统最大的好处是在不改造 X、Y、Z 三个系统的前提下，又可以实现跨系统的查询。</li>
+</ul>
+<p>我们在 C 方案的基础上又往前做了一步，就是将落地后的数据又做了一次加工，将需要跨表关联的数据，提前关联好存入 MongoDB 中，对外提供查询服务；这样可以将多表关联查询，变成了单表查询。</p>
+<p><img src="/2020/08/08/ETL/ETL2.webp.jpg" alt></p>
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>oracle</tag>
       </tags>
   </entry>
   <entry>
@@ -2521,7 +2521,7 @@
 </tr>
 </tbody></table>
 <h6 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h6><p>此函数将其参数转换为 DOUBLE，执行双精度浮点计算，并返回一个 DOUBLE 作为结果。如果将 <em>COVAR_POP</em> 应用于空集，它将返回 NULL。</p>
-<p>dependent-expression 和 independent-expression 都是数值。在消除 dependent-expression 或 independent-expression 为 NULL 的值对之后，系统会将此函数应用于 dependent-expression 和 independent-expression 的集合。然后执行以下计算：<br>$$<br>(SUM(x*y) - SUM(x) * SUM(y) / n) / n<br>$$<br>其中 x 表示 dependent-expression，y 表示 independent-expression。</p>
+<p>dependent-expression 和 independent-expression 都是数值。在消除 dependent-expression 或 independent-expression 为 NULL 的值对之后，系统会将此函数应用于 dependent-expression 和 independent-expression 的集合。然后执行以下计算：<br>$$ {}<br>(SUM(x*y) - SUM(x) * SUM(y) / n) / n<br>$$ {}<br>其中 x 表示 dependent-expression，y 表示 independent-expression。</p>
 <h6 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h6><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> owner, <span class="keyword">COVAR_POP</span>(avg_row_len, avg_space)</span><br><span class="line"> <span class="keyword">from</span> all_tables</span><br><span class="line"> <span class="keyword">group</span> <span class="keyword">by</span> owner;</span><br></pre></td></tr></table></figure>
 
 <p>[^注意]: GROUP BY 子句不支持 ROLLUP 和 CUBE。DISTINCT 不受支持。</p>
@@ -2541,7 +2541,7 @@
 </tr>
 </tbody></table>
 <h6 id="注释-1"><a href="#注释-1" class="headerlink" title="注释"></a>注释</h6><p>计算所提供的针对每个组行或分区行（如果指定了 DISTINCT，则为在消除重复项后剩余的各行）求值的 <value expression> 的总体方差，其定义为：<value expression> 与 <value expression> 均值之差的平方和，然后再除以组中或分区中剩余的行数。</value></value></value></p>
-<p>基于总体的方差是根据以下公式计算的：<br>$$<br>∑(xi-x ̅)^2/n<br>$$</p>
+<p>基于总体的方差是根据以下公式计算的：<br>$$ {}<br>∑(xi-x ̅)^2/n<br>$$ {}</p>
 <h6 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h6><p>以下语句列出不同时间段每个订单的产品数目的平均值和方差：</p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">year</span>( ShipDate ) <span class="keyword">AS</span> <span class="keyword">Year</span>, <span class="keyword">quarter</span>( ShipDate )</span><br><span class="line">  <span class="keyword">AS</span> <span class="keyword">Quarter</span>, <span class="keyword">AVG</span>( Quantity ) <span class="keyword">AS</span> Average, </span><br><span class="line">  VAR_POP( Quantity ) <span class="keyword">AS</span> <span class="keyword">Variance</span> </span><br><span class="line"><span class="keyword">FROM</span> SalesOrderItems <span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="keyword">Year</span>, <span class="keyword">Quarter</span> </span><br><span class="line">  <span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">Year</span>, <span class="keyword">Quarter</span></span><br></pre></td></tr></table></figure>
 
