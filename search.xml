@@ -865,6 +865,68 @@
       </tags>
   </entry>
   <entry>
+    <title>Java面经五</title>
+    <url>/2020/05/04/21/51/Java%E9%9D%A2%E7%BB%8F%E4%BA%94/</url>
+    <content><![CDATA[<p>Java面试总结五<a id="more"></a></p>
+<h6 id="Spring中BeanFactory和ApplicationContext的区别是什么？"><a href="#Spring中BeanFactory和ApplicationContext的区别是什么？" class="headerlink" title="Spring中BeanFactory和ApplicationContext的区别是什么？"></a>Spring中BeanFactory和ApplicationContext的区别是什么？</h6><p><strong>BeanFactory</strong>：</p>
+<p>BeanFactory是spring中比较原始，比较古老的Factory。因为比较古老，所以BeanFactory无法支持spring插件，例如：AOP、Web应用等功能。</p>
+<p><strong>ApplicationContext</strong>：</p>
+<p>ApplicationContext是BeanFactory的子类，因为古老的BeanFactory无法满足不断更新的spring的需求，于是ApplicationContext就基本上代替了BeanFactory的工作，以一种更面向框架的工作方式以及对上下文进行分层和实现继承，并在这个基础上对功能进行扩展：</p>
+<ul>
+<li>MessageSource, 提供国际化的消息访问</li>
+<li>资源访问（如URL和文件）</li>
+<li>事件传递</li>
+<li>Bean的自动装配</li>
+<li>各种不同应用层的Context实现</li>
+</ul>
+<p>区别：</p>
+<ol>
+<li>如果使用ApplicationContext，如果配置的bean是singleton，那么不管你有没有或想不想用它，它都会被实例化。好处是可以预先加载，坏处是浪费内存。</li>
+<li>BeanFactory，当使用BeanFactory实例化对象时，配置的bean不会马上被实例化，而是等到你使用该bean的时候（getBean）才会被实例化。好处是节约内存，坏处是速度比较慢。多用于移动设备的开发。</li>
+<li>没有特殊要求的情况下，应该使用ApplicationContext完成。因为BeanFactory能完成的事情，ApplicationContext都能完成，并且提供了更多接近现在开发的功能。</li>
+</ol>
+<h6 id="Spring中Bean的作用域有哪些？"><a href="#Spring中Bean的作用域有哪些？" class="headerlink" title="Spring中Bean的作用域有哪些？"></a>Spring中Bean的作用域有哪些？</h6><p>在Spring的早期版本中，仅有两个作用域：<strong>singleton</strong>和<strong>prototype</strong>，前者表示Bean以单例的方式存在；后者表示每次从容器中调用Bean时，都会返回一个新的实例，prototype通常翻译为原型。</p>
+<p>设计模式中的创建型模式中也有一个原型模式，原型模式也是一个常用的模式，例如做一个室内设计软件，所有的素材都在工具箱中，而每次从工具箱中取出的都是素材对象的一个原型，可以通过对象克隆来实现原型模式。Spring 2.x中针对WebApplicationContext新增了3个作用域，分别是：<strong>request</strong>（每次HTTP请求都会创建一个新的Bean）、<strong>session</strong>（同一个HttpSession共享同一个Bean，不同的HttpSession使用不同的Bean）和<strong>globalSession</strong>（同一个全局Session共享一个Bean）。</p>
+<p>单例模式和原型模式都是重要的设计模式。一般情况下，无状态或状态不可变的类适合使用单例模式。在传统开发中，由于DAO持有Connection这个非线程安全对象因而没有使用单例模式；但在Spring环境下，所有DAO类对可以采用单例模式，因为Spring利用AOP和Java API中的ThreadLocal对非线程安全的对象进行了特殊处理。</p>
+<h6 id="依赖注入的方式"><a href="#依赖注入的方式" class="headerlink" title="依赖注入的方式"></a>依赖注入的方式</h6><p>1、Setter注入 2、构造器(Construct)注入 3、接口注入</p>
+<h6 id="Autowired和Resource的区别"><a href="#Autowired和Resource的区别" class="headerlink" title="Autowired和Resource的区别"></a>Autowired和Resource的区别</h6><p>1.共同点</p>
+<p>两者都可以写在字段和setter方法上。两者如果都写在字段上，那么就不需要再写setter方法。</p>
+<p>2、不同点</p>
+<p>（1）@Autowired</p>
+<p>@Autowired为Spring提供的注解，需要导入包org.springframework.beans.factory.annotation.Autowired;只按照byType注入。</p>
+<p>@Autowired注解是按照类型（byType）装配依赖对象，默认情况下它要求依赖对象必须存在，如果允许null值，可以设置它的required属性为false。如果我们想使用按照名称（byName）来装配，可以结合@Qualifier注解一起使用。</p>
+<p>（2）@Resource</p>
+<p>@Resource默认按照ByName自动注入，由J2EE提供，需要导入包javax.annotation.Resource。@Resource有两个重要的属性：name和type，而Spring将@Resource注解的name属性解析为bean的名字，而type属性则解析为bean的类型。所以，如果使用name属性，则使用byName的自动注入策略，而使用type属性时则使用byType自动注入策略。如果既不制定name也不制定type属性，这时将通过反射机制使用byName自动注入策略。</p>
+<h6 id="Spring支持的事务管理类型有哪些？"><a href="#Spring支持的事务管理类型有哪些？" class="headerlink" title="Spring支持的事务管理类型有哪些？"></a>Spring支持的事务管理类型有哪些？</h6><p>Spring支持编程式事务管理和声明式事务管理。许多Spring框架的用户选择声明式事务管理，因为这种方式和应用程序的关联较少，因此更加符合轻量级容器的概念。声明式事务管理要优于编程式事务管理，尽管在灵活性方面它弱于编程式事务管理，因为编程式事务允许你通过代码控制业务。</p>
+<p>事务分为全局事务和局部事务。全局事务由应用服务器管理，需要底层服务器JTA支持（如WebLogic、WildFly等）。局部事务和底层采用的持久化方案有关，例如使用JDBC进行持久化时，需要使用Connection对象来操作事务；而采用Hibernate进行持久化时，需要使用Session对象来操作事务。</p>
+<p>这些事务的父接口都是PlatformTransactionManager。Spring的事务管理机制是一种典型的策略模式，PlatformTransactionManager代表事务管理接口，该接口定义了三个方法，该接口并不知道底层如何管理事务，但是它的实现类必须提供getTransaction()方法（开启事务）、commit()方法（提交事务）、rollback()方法（回滚事务）的多态实现，这样就可以用不同的实现类代表不同的事务管理策略。使用JTA全局事务策略时，需要底层应用服务器支持，而不同的应用服务器所提供的JTA全局事务可能存在细节上的差异，因此实际配置全局事务管理器是可能需要使用JtaTransactionManager的子类，如：WebLogicJtaTransactionManager（Oracle的WebLogic服务器提供）、UowJtaTransactionManager（IBM的WebSphere服务器提供）等。</p>
+<h6 id="你如何理解AOP中的连接点（Joinpoint）、切点（Pointcut）、增强（Advice）、引介（Introduction）、织入（Weaving）、切面（Aspect）这些概念？"><a href="#你如何理解AOP中的连接点（Joinpoint）、切点（Pointcut）、增强（Advice）、引介（Introduction）、织入（Weaving）、切面（Aspect）这些概念？" class="headerlink" title="你如何理解AOP中的连接点（Joinpoint）、切点（Pointcut）、增强（Advice）、引介（Introduction）、织入（Weaving）、切面（Aspect）这些概念？"></a>你如何理解AOP中的连接点（Joinpoint）、切点（Pointcut）、增强（Advice）、引介（Introduction）、织入（Weaving）、切面（Aspect）这些概念？</h6><p>a. 连接点（Joinpoint）：程序执行的某个特定位置（如：某个方法调用前、调用后，方法抛出异常后）。一个类或一段程序代码拥有一些具有边界性质的特定点，这些代码中的特定点就是连接点。Spring仅支持方法的连接点。</p>
+<p>b. 切点（Pointcut）：如果连接点相当于数据中的记录，那么切点相当于查询条件，一个切点可以匹配多个连接点。Spring AOP的规则解析引擎负责解析切点所设定的查询条件，找到对应的连接点。</p>
+<p>c. 增强（Advice）：增强是织入到目标类连接点上的一段程序代码。Spring提供的增强接口都是带方位名的，如：BeforeAdvice、AfterReturningAdvice、ThrowsAdvice等。</p>
+<p>d. 引介（Introduction）：引介是一种特殊的增强，它为类添加一些属性和方法。这样，即使一个业务类原本没有实现某个接口，通过引介功能，可以动态的为该业务类添加接口的实现逻辑，让业务类成为这个接口的实现类。</p>
+<p>e. 织入（Weaving）：织入是将增强添加到目标类具体连接点上的过程，AOP有三种织入方式：①编译期织入：需要特殊的Java编译期（例如AspectJ的ajc）；②装载期织入：要求使用特殊的类加载器，在装载类的时候对类进行增强；③运行时织入：在运行时为目标类生成代理实现增强。Spring采用了动态代理的方式实现了运行时织入，而AspectJ采用了编译期织入和装载期织入的方式。</p>
+<p>f. 切面（Aspect）：切面是由切点和增强（引介）组成的，它包括了对横切关注功能的定义，也包括了对连接点的定义。</p>
+<h6 id="AOP的原理"><a href="#AOP的原理" class="headerlink" title="AOP的原理"></a>AOP的原理</h6><p>AOP（Aspect Orient Programming），指面向方面（切面）编程，作为面向对象的一种补充，用于处理系统中分布于各个模块的横切关注点，比如事务管理、日志、缓存等等。AOP实现的关键在于AOP框架自动创建的AOP代理，AOP代理主要分为静态代理和动态代理，静态代理的代表为AspectJ；而动态代理则以Spring AOP为代表。通常使用AspectJ的编译时增强实现AOP，AspectJ是静态代理的增强，所谓的静态代理就是AOP框架会在编译阶段生成AOP代理类，因此也称为编译时增强。</p>
+<p>Spring AOP中的动态代理主要有两种方式，JDK动态代理和CGLIB动态代理。JDK动态代理通过反射来接收被代理的类，并且要求被代理的类必须实现一个接口。JDK动态代理的核心是InvocationHandler接口和Proxy类。</p>
+<p>如果目标类没有实现接口，那么Spring AOP会选择使用CGLIB来动态代理目标类。CGLIB（Code Generation Library），是一个代码生成的类库，可以在运行时动态的生成某个类的子类，注意，CGLIB是通过继承的方式做的动态代理，因此如果某个类被标记为final，那么它是无法使用CGLIB做动态代理的。</p>
+<h6 id="AOP的应用场景"><a href="#AOP的应用场景" class="headerlink" title="AOP的应用场景"></a>AOP的应用场景</h6><p>Authentication 权限 ，Caching 缓存 ，Context passing 内容传递 ，Error handling 错误处理 ，Lazy loading 懒加载 ，Debugging 调试 ，logging, tracing, profiling and monitoring 记录跟踪　优化　校准，Performance optimization 性能优化 ，Persistence 持久化 ，Resource pooling 资源池 ，Synchronization 同步，Transactions 事务。</p>
+<h6 id="Spring框架的优点"><a href="#Spring框架的优点" class="headerlink" title="Spring框架的优点"></a>Spring框架的优点</h6><p>Spring是一个轻量级的DI和AOP容器框架，在项目的中的使用越来越广泛，它的优点主要有以下几点：</p>
+<p>Spring是一个非侵入式框架，其目标是使应用程序代码对框架的依赖最小化，应用代码可以在没有Spring或者其他容器的情况运行。</p>
+<p>Spring提供了一个一致的编程模型，使应用直接使用POJO开发，从而可以使运行环境隔离开来。</p>
+<p>Spring推动应用的设计风格向面向对象及面向接口编程转变，提高了代码的重用性和可测试性。</p>
+<p>Spring改进了结构体系的选择，虽然作为应用平台，Spring可以帮助我们选择不同的技术实现，比如从Hibernate切换到其他的ORM工具，从Struts切换到Spring MVC,尽管我们通常不会这么做，但是我们在技术方案上选择使用Spring作为应用平台，Spring至少为我们提供了这种可能性的选择，从而降低了平台锁定风险。</p>
+<h6 id="请问持久层设计要考虑的问题有哪些？请谈一下你用过的持久层框架都有哪些？"><a href="#请问持久层设计要考虑的问题有哪些？请谈一下你用过的持久层框架都有哪些？" class="headerlink" title="请问持久层设计要考虑的问题有哪些？请谈一下你用过的持久层框架都有哪些？"></a>请问持久层设计要考虑的问题有哪些？请谈一下你用过的持久层框架都有哪些？</h6><p>所谓”持久”就是将数据保存到可掉电式存储设备中以便今后使用，简单的说，就是将内存中的数据保存到关系型数据库、文件系统、消息队列等提供持久化支持的设备中。持久层就是系统中专注于实现数据持久化的相对独立的层面。</p>
+<p>持久层设计的目标包括：<br>- 数据存储逻辑的分离，提供抽象化的数据访问接口。<br>- 数据访问底层实现的分离，可以在不修改代码的情况下切换底层实现。<br>- 资源管理和调度的分离，在数据访问层实现统一的资源调度（如缓存机制）。<br>- 数据抽象，提供更面向对象的数据操作。</p>
+<p>持久层框架有：<br>- Hibernate<br>- MyBatis<br>- TopLink<br>- Guzz<br>- jOOQ<br>- Spring Data<br>- ActiveJDBC</p>
+]]></content>
+      <categories>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java面经二</title>
     <url>/2020/05/01/08/14/Java%E9%9D%A2%E7%BB%8F%E4%BA%8C/</url>
     <content><![CDATA[<p>Java面试总结二<a id="more"></a></p>
@@ -926,68 +988,6 @@
 </li>
 </ul>
 <p>Set和Map容器都有基于哈希存储和排序树的两种实现版本，基于哈希存储的版本理论存取时间复杂度为O(1)，而基于排序树版本的实现在插入或删除元素时会按照元素或元素的键（key）构成排序树从而达到排序和去重的效果。</p>
-]]></content>
-      <categories>
-        <category>面试</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java面经五</title>
-    <url>/2020/05/04/21/51/Java%E9%9D%A2%E7%BB%8F%E4%BA%94/</url>
-    <content><![CDATA[<p>Java面试总结五<a id="more"></a></p>
-<h6 id="Spring中BeanFactory和ApplicationContext的区别是什么？"><a href="#Spring中BeanFactory和ApplicationContext的区别是什么？" class="headerlink" title="Spring中BeanFactory和ApplicationContext的区别是什么？"></a>Spring中BeanFactory和ApplicationContext的区别是什么？</h6><p><strong>BeanFactory</strong>：</p>
-<p>BeanFactory是spring中比较原始，比较古老的Factory。因为比较古老，所以BeanFactory无法支持spring插件，例如：AOP、Web应用等功能。</p>
-<p><strong>ApplicationContext</strong>：</p>
-<p>ApplicationContext是BeanFactory的子类，因为古老的BeanFactory无法满足不断更新的spring的需求，于是ApplicationContext就基本上代替了BeanFactory的工作，以一种更面向框架的工作方式以及对上下文进行分层和实现继承，并在这个基础上对功能进行扩展：</p>
-<ul>
-<li>MessageSource, 提供国际化的消息访问</li>
-<li>资源访问（如URL和文件）</li>
-<li>事件传递</li>
-<li>Bean的自动装配</li>
-<li>各种不同应用层的Context实现</li>
-</ul>
-<p>区别：</p>
-<ol>
-<li>如果使用ApplicationContext，如果配置的bean是singleton，那么不管你有没有或想不想用它，它都会被实例化。好处是可以预先加载，坏处是浪费内存。</li>
-<li>BeanFactory，当使用BeanFactory实例化对象时，配置的bean不会马上被实例化，而是等到你使用该bean的时候（getBean）才会被实例化。好处是节约内存，坏处是速度比较慢。多用于移动设备的开发。</li>
-<li>没有特殊要求的情况下，应该使用ApplicationContext完成。因为BeanFactory能完成的事情，ApplicationContext都能完成，并且提供了更多接近现在开发的功能。</li>
-</ol>
-<h6 id="Spring中Bean的作用域有哪些？"><a href="#Spring中Bean的作用域有哪些？" class="headerlink" title="Spring中Bean的作用域有哪些？"></a>Spring中Bean的作用域有哪些？</h6><p>在Spring的早期版本中，仅有两个作用域：<strong>singleton</strong>和<strong>prototype</strong>，前者表示Bean以单例的方式存在；后者表示每次从容器中调用Bean时，都会返回一个新的实例，prototype通常翻译为原型。</p>
-<p>设计模式中的创建型模式中也有一个原型模式，原型模式也是一个常用的模式，例如做一个室内设计软件，所有的素材都在工具箱中，而每次从工具箱中取出的都是素材对象的一个原型，可以通过对象克隆来实现原型模式。Spring 2.x中针对WebApplicationContext新增了3个作用域，分别是：<strong>request</strong>（每次HTTP请求都会创建一个新的Bean）、<strong>session</strong>（同一个HttpSession共享同一个Bean，不同的HttpSession使用不同的Bean）和<strong>globalSession</strong>（同一个全局Session共享一个Bean）。</p>
-<p>单例模式和原型模式都是重要的设计模式。一般情况下，无状态或状态不可变的类适合使用单例模式。在传统开发中，由于DAO持有Connection这个非线程安全对象因而没有使用单例模式；但在Spring环境下，所有DAO类对可以采用单例模式，因为Spring利用AOP和Java API中的ThreadLocal对非线程安全的对象进行了特殊处理。</p>
-<h6 id="依赖注入的方式"><a href="#依赖注入的方式" class="headerlink" title="依赖注入的方式"></a>依赖注入的方式</h6><p>1、Setter注入 2、构造器(Construct)注入 3、接口注入</p>
-<h6 id="Autowired和Resource的区别"><a href="#Autowired和Resource的区别" class="headerlink" title="Autowired和Resource的区别"></a>Autowired和Resource的区别</h6><p>1.共同点</p>
-<p>两者都可以写在字段和setter方法上。两者如果都写在字段上，那么就不需要再写setter方法。</p>
-<p>2、不同点</p>
-<p>（1）@Autowired</p>
-<p>@Autowired为Spring提供的注解，需要导入包org.springframework.beans.factory.annotation.Autowired;只按照byType注入。</p>
-<p>@Autowired注解是按照类型（byType）装配依赖对象，默认情况下它要求依赖对象必须存在，如果允许null值，可以设置它的required属性为false。如果我们想使用按照名称（byName）来装配，可以结合@Qualifier注解一起使用。</p>
-<p>（2）@Resource</p>
-<p>@Resource默认按照ByName自动注入，由J2EE提供，需要导入包javax.annotation.Resource。@Resource有两个重要的属性：name和type，而Spring将@Resource注解的name属性解析为bean的名字，而type属性则解析为bean的类型。所以，如果使用name属性，则使用byName的自动注入策略，而使用type属性时则使用byType自动注入策略。如果既不制定name也不制定type属性，这时将通过反射机制使用byName自动注入策略。</p>
-<h6 id="Spring支持的事务管理类型有哪些？"><a href="#Spring支持的事务管理类型有哪些？" class="headerlink" title="Spring支持的事务管理类型有哪些？"></a>Spring支持的事务管理类型有哪些？</h6><p>Spring支持编程式事务管理和声明式事务管理。许多Spring框架的用户选择声明式事务管理，因为这种方式和应用程序的关联较少，因此更加符合轻量级容器的概念。声明式事务管理要优于编程式事务管理，尽管在灵活性方面它弱于编程式事务管理，因为编程式事务允许你通过代码控制业务。</p>
-<p>事务分为全局事务和局部事务。全局事务由应用服务器管理，需要底层服务器JTA支持（如WebLogic、WildFly等）。局部事务和底层采用的持久化方案有关，例如使用JDBC进行持久化时，需要使用Connection对象来操作事务；而采用Hibernate进行持久化时，需要使用Session对象来操作事务。</p>
-<p>这些事务的父接口都是PlatformTransactionManager。Spring的事务管理机制是一种典型的策略模式，PlatformTransactionManager代表事务管理接口，该接口定义了三个方法，该接口并不知道底层如何管理事务，但是它的实现类必须提供getTransaction()方法（开启事务）、commit()方法（提交事务）、rollback()方法（回滚事务）的多态实现，这样就可以用不同的实现类代表不同的事务管理策略。使用JTA全局事务策略时，需要底层应用服务器支持，而不同的应用服务器所提供的JTA全局事务可能存在细节上的差异，因此实际配置全局事务管理器是可能需要使用JtaTransactionManager的子类，如：WebLogicJtaTransactionManager（Oracle的WebLogic服务器提供）、UowJtaTransactionManager（IBM的WebSphere服务器提供）等。</p>
-<h6 id="你如何理解AOP中的连接点（Joinpoint）、切点（Pointcut）、增强（Advice）、引介（Introduction）、织入（Weaving）、切面（Aspect）这些概念？"><a href="#你如何理解AOP中的连接点（Joinpoint）、切点（Pointcut）、增强（Advice）、引介（Introduction）、织入（Weaving）、切面（Aspect）这些概念？" class="headerlink" title="你如何理解AOP中的连接点（Joinpoint）、切点（Pointcut）、增强（Advice）、引介（Introduction）、织入（Weaving）、切面（Aspect）这些概念？"></a>你如何理解AOP中的连接点（Joinpoint）、切点（Pointcut）、增强（Advice）、引介（Introduction）、织入（Weaving）、切面（Aspect）这些概念？</h6><p>a. 连接点（Joinpoint）：程序执行的某个特定位置（如：某个方法调用前、调用后，方法抛出异常后）。一个类或一段程序代码拥有一些具有边界性质的特定点，这些代码中的特定点就是连接点。Spring仅支持方法的连接点。</p>
-<p>b. 切点（Pointcut）：如果连接点相当于数据中的记录，那么切点相当于查询条件，一个切点可以匹配多个连接点。Spring AOP的规则解析引擎负责解析切点所设定的查询条件，找到对应的连接点。</p>
-<p>c. 增强（Advice）：增强是织入到目标类连接点上的一段程序代码。Spring提供的增强接口都是带方位名的，如：BeforeAdvice、AfterReturningAdvice、ThrowsAdvice等。</p>
-<p>d. 引介（Introduction）：引介是一种特殊的增强，它为类添加一些属性和方法。这样，即使一个业务类原本没有实现某个接口，通过引介功能，可以动态的为该业务类添加接口的实现逻辑，让业务类成为这个接口的实现类。</p>
-<p>e. 织入（Weaving）：织入是将增强添加到目标类具体连接点上的过程，AOP有三种织入方式：①编译期织入：需要特殊的Java编译期（例如AspectJ的ajc）；②装载期织入：要求使用特殊的类加载器，在装载类的时候对类进行增强；③运行时织入：在运行时为目标类生成代理实现增强。Spring采用了动态代理的方式实现了运行时织入，而AspectJ采用了编译期织入和装载期织入的方式。</p>
-<p>f. 切面（Aspect）：切面是由切点和增强（引介）组成的，它包括了对横切关注功能的定义，也包括了对连接点的定义。</p>
-<h6 id="AOP的原理"><a href="#AOP的原理" class="headerlink" title="AOP的原理"></a>AOP的原理</h6><p>AOP（Aspect Orient Programming），指面向方面（切面）编程，作为面向对象的一种补充，用于处理系统中分布于各个模块的横切关注点，比如事务管理、日志、缓存等等。AOP实现的关键在于AOP框架自动创建的AOP代理，AOP代理主要分为静态代理和动态代理，静态代理的代表为AspectJ；而动态代理则以Spring AOP为代表。通常使用AspectJ的编译时增强实现AOP，AspectJ是静态代理的增强，所谓的静态代理就是AOP框架会在编译阶段生成AOP代理类，因此也称为编译时增强。</p>
-<p>Spring AOP中的动态代理主要有两种方式，JDK动态代理和CGLIB动态代理。JDK动态代理通过反射来接收被代理的类，并且要求被代理的类必须实现一个接口。JDK动态代理的核心是InvocationHandler接口和Proxy类。</p>
-<p>如果目标类没有实现接口，那么Spring AOP会选择使用CGLIB来动态代理目标类。CGLIB（Code Generation Library），是一个代码生成的类库，可以在运行时动态的生成某个类的子类，注意，CGLIB是通过继承的方式做的动态代理，因此如果某个类被标记为final，那么它是无法使用CGLIB做动态代理的。</p>
-<h6 id="AOP的应用场景"><a href="#AOP的应用场景" class="headerlink" title="AOP的应用场景"></a>AOP的应用场景</h6><p>Authentication 权限 ，Caching 缓存 ，Context passing 内容传递 ，Error handling 错误处理 ，Lazy loading 懒加载 ，Debugging 调试 ，logging, tracing, profiling and monitoring 记录跟踪　优化　校准，Performance optimization 性能优化 ，Persistence 持久化 ，Resource pooling 资源池 ，Synchronization 同步，Transactions 事务。</p>
-<h6 id="Spring框架的优点"><a href="#Spring框架的优点" class="headerlink" title="Spring框架的优点"></a>Spring框架的优点</h6><p>Spring是一个轻量级的DI和AOP容器框架，在项目的中的使用越来越广泛，它的优点主要有以下几点：</p>
-<p>Spring是一个非侵入式框架，其目标是使应用程序代码对框架的依赖最小化，应用代码可以在没有Spring或者其他容器的情况运行。</p>
-<p>Spring提供了一个一致的编程模型，使应用直接使用POJO开发，从而可以使运行环境隔离开来。</p>
-<p>Spring推动应用的设计风格向面向对象及面向接口编程转变，提高了代码的重用性和可测试性。</p>
-<p>Spring改进了结构体系的选择，虽然作为应用平台，Spring可以帮助我们选择不同的技术实现，比如从Hibernate切换到其他的ORM工具，从Struts切换到Spring MVC,尽管我们通常不会这么做，但是我们在技术方案上选择使用Spring作为应用平台，Spring至少为我们提供了这种可能性的选择，从而降低了平台锁定风险。</p>
-<h6 id="请问持久层设计要考虑的问题有哪些？请谈一下你用过的持久层框架都有哪些？"><a href="#请问持久层设计要考虑的问题有哪些？请谈一下你用过的持久层框架都有哪些？" class="headerlink" title="请问持久层设计要考虑的问题有哪些？请谈一下你用过的持久层框架都有哪些？"></a>请问持久层设计要考虑的问题有哪些？请谈一下你用过的持久层框架都有哪些？</h6><p>所谓”持久”就是将数据保存到可掉电式存储设备中以便今后使用，简单的说，就是将内存中的数据保存到关系型数据库、文件系统、消息队列等提供持久化支持的设备中。持久层就是系统中专注于实现数据持久化的相对独立的层面。</p>
-<p>持久层设计的目标包括：<br>- 数据存储逻辑的分离，提供抽象化的数据访问接口。<br>- 数据访问底层实现的分离，可以在不修改代码的情况下切换底层实现。<br>- 资源管理和调度的分离，在数据访问层实现统一的资源调度（如缓存机制）。<br>- 数据抽象，提供更面向对象的数据操作。</p>
-<p>持久层框架有：<br>- Hibernate<br>- MyBatis<br>- TopLink<br>- Guzz<br>- jOOQ<br>- Spring Data<br>- ActiveJDBC</p>
 ]]></content>
       <categories>
         <category>面试</category>
@@ -1673,20 +1673,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Python爬取电影天堂新片精品</title>
-    <url>/2020/02/12/16/02/Python%E7%88%AC%E5%8F%96%E7%94%B5%E5%BD%B1%E5%A4%A9%E5%A0%82%E6%96%B0%E7%89%87%E7%B2%BE%E5%93%81/</url>
-    <content><![CDATA[<p>爬取最新电影，内容包括标题、年代、产地、类别、评分、片场、导演、主演、下载链接。<a id="more"></a></p>
-<h6 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h6><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">base_domain = <span class="string">&quot;https://www.dytt8.net&quot;</span></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">&quot;User-Agent&quot;</span>: <span class="string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 &quot;</span></span><br><span class="line">                  <span class="string">&quot;(KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36 Edg/80.0.361.111&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_detail_url</span>(<span class="params">url</span>):</span></span><br><span class="line">    resp = requests.get(url, headers=headers)</span><br><span class="line">    <span class="comment"># 解码出现&quot;illegal multibyte sequence&quot;，其他编码无法解决，使用ignore</span></span><br><span class="line">    <span class="comment"># text = resp.content.decode(&quot;gbk&quot;, errors=&quot;ignore&quot;)</span></span><br><span class="line">    text = resp.text</span><br><span class="line">    html = etree.HTML(text)</span><br><span class="line">    detail_urls = html.xpath(<span class="string">&quot;//table[@class=&#x27;tbspan&#x27;]//a/@href&quot;</span>)</span><br><span class="line">    detail_urls = map(<span class="keyword">lambda</span> url: base_domain + url, detail_urls)</span><br><span class="line">    <span class="keyword">return</span> detail_urls</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_html</span>(<span class="params">url</span>):</span></span><br><span class="line">    resp = requests.get(url, headers=headers)</span><br><span class="line">    text = resp.content.decode(<span class="string">&quot;gbk&quot;</span>, errors=<span class="string">&quot;ignore&quot;</span>)</span><br><span class="line">    html = etree.HTML(text)</span><br><span class="line">    <span class="keyword">return</span> html</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">parse_info</span>(<span class="params">info, rule</span>):</span></span><br><span class="line">    <span class="keyword">return</span> info.replace(rule, <span class="string">&quot;&quot;</span>).strip()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">parse_detail_page</span>(<span class="params">url</span>):</span></span><br><span class="line">    movie = &#123;&#125;</span><br><span class="line">    html = get_html(url)</span><br><span class="line">    title = html.xpath(<span class="string">&quot;//div[@class=&#x27;title_all&#x27;]//font[@color=&#x27;#07519a&#x27;]/text()&quot;</span>)[<span class="number">0</span>]</span><br><span class="line">    movie[<span class="string">&quot;title&quot;</span>] = title</span><br><span class="line">    zooms = html.xpath(<span class="string">&quot;//div[@id=&#x27;Zoom&#x27;]&quot;</span>)[<span class="number">0</span>]</span><br><span class="line">    poster = zooms.xpath(<span class="string">&quot;.//img/@src&quot;</span>)</span><br><span class="line">    movie[<span class="string">&quot;poster&quot;</span>] = poster</span><br><span class="line"></span><br><span class="line">    infos = zooms.xpath(<span class="string">&quot;.//text()&quot;</span>)</span><br><span class="line">    <span class="keyword">for</span> index, info <span class="keyword">in</span> enumerate(infos):</span><br><span class="line">        <span class="keyword">if</span> info.startswith(<span class="string">&quot;◎年　　代&quot;</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">&quot;◎年　　代&quot;</span>)</span><br><span class="line">            movie[<span class="string">&quot;year&quot;</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">&quot;◎产　　地&quot;</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">&quot;◎产　　地&quot;</span>)</span><br><span class="line">            movie[<span class="string">&quot;country&quot;</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">&quot;◎类　　别&quot;</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">&quot;◎类　　别&quot;</span>)</span><br><span class="line">            movie[<span class="string">&quot;category&quot;</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">&quot;◎豆瓣评分&quot;</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">&quot;◎豆瓣评分&quot;</span>)</span><br><span class="line">            movie[<span class="string">&quot;score&quot;</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">&quot;◎片　　长&quot;</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">&quot;◎片　　长&quot;</span>)</span><br><span class="line">            movie[<span class="string">&quot;timelength&quot;</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">&quot;◎导　　演&quot;</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">&quot;◎导　　演&quot;</span>)</span><br><span class="line">            movie[<span class="string">&quot;director&quot;</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">&quot;◎主　　演&quot;</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">&quot;◎主　　演&quot;</span>)</span><br><span class="line">            actors = [info]</span><br><span class="line">            <span class="keyword">for</span> x <span class="keyword">in</span> range(index + <span class="number">1</span>, len(infos)):</span><br><span class="line">                actor = infos[x].strip()</span><br><span class="line">                <span class="keyword">if</span> actor.startswith(<span class="string">&quot;◎&quot;</span>):</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                actors.append(actor)</span><br><span class="line">            movie[<span class="string">&quot;actors&quot;</span>] = actors</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">&quot;◎简　　介&quot;</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">&quot;◎简　　介&quot;</span>)</span><br><span class="line">            <span class="keyword">for</span> x <span class="keyword">in</span> range(index + <span class="number">1</span>, len(infos)):</span><br><span class="line">                profile = infos[x].strip()</span><br><span class="line">                <span class="keyword">if</span> profile.startswith(<span class="string">&quot;【&quot;</span>):</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">            movie[<span class="string">&quot;profile&quot;</span>] = profile</span><br><span class="line"></span><br><span class="line">    down_url = zooms.xpath(<span class="string">&quot;.//table//a/@href&quot;</span>)</span><br><span class="line">    movie[<span class="string">&quot;down_url&quot;</span>] = down_url</span><br><span class="line">    <span class="keyword">return</span> movie</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">spider</span>():</span></span><br><span class="line">    index_url = <span class="string">&quot;https://www.dytt8.net/html/gndy/dyzz/index.html&quot;</span></span><br><span class="line">    base_url = <span class="string">&quot;https://www.dytt8.net/html/gndy/dyzz/list_23_&#123;&#125;.html&quot;</span></span><br><span class="line">    html = get_html(index_url)</span><br><span class="line">    pages = html.xpath(<span class="string">&quot;//select[@name=&#x27;sldd&#x27;]/option&quot;</span>)</span><br><span class="line">    movies = []</span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">1</span>, len(pages) + <span class="number">1</span>):</span><br><span class="line">        url = base_url.format(x)</span><br><span class="line">        detail_urls = get_detail_url(url)</span><br><span class="line">        <span class="keyword">for</span> detail_url <span class="keyword">in</span> detail_urls:</span><br><span class="line">            <span class="comment"># 遍历每一页中的所有电影</span></span><br><span class="line">            movie = parse_detail_page(detail_url)</span><br><span class="line">            movies.append(movie)</span><br><span class="line">            print(movie)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    spider()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>实例</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Python3的正则表达式</title>
     <url>/2020/02/13/17/06/Python3%E7%9A%84%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</url>
     <content><![CDATA[<p>主要介绍 Python 中常用的正则表达式处理函数。<a id="more"></a></p>
@@ -2025,6 +2011,20 @@
 ]]></content>
       <categories>
         <category>语法</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python爬取电影天堂新片精品</title>
+    <url>/2020/02/12/16/02/Python%E7%88%AC%E5%8F%96%E7%94%B5%E5%BD%B1%E5%A4%A9%E5%A0%82%E6%96%B0%E7%89%87%E7%B2%BE%E5%93%81/</url>
+    <content><![CDATA[<p>爬取最新电影，内容包括标题、年代、产地、类别、评分、片场、导演、主演、下载链接。<a id="more"></a></p>
+<h6 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h6><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">base_domain = <span class="string">&quot;https://www.dytt8.net&quot;</span></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">&quot;User-Agent&quot;</span>: <span class="string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 &quot;</span></span><br><span class="line">                  <span class="string">&quot;(KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36 Edg/80.0.361.111&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_detail_url</span>(<span class="params">url</span>):</span></span><br><span class="line">    resp = requests.get(url, headers=headers)</span><br><span class="line">    <span class="comment"># 解码出现&quot;illegal multibyte sequence&quot;，其他编码无法解决，使用ignore</span></span><br><span class="line">    <span class="comment"># text = resp.content.decode(&quot;gbk&quot;, errors=&quot;ignore&quot;)</span></span><br><span class="line">    text = resp.text</span><br><span class="line">    html = etree.HTML(text)</span><br><span class="line">    detail_urls = html.xpath(<span class="string">&quot;//table[@class=&#x27;tbspan&#x27;]//a/@href&quot;</span>)</span><br><span class="line">    detail_urls = map(<span class="keyword">lambda</span> url: base_domain + url, detail_urls)</span><br><span class="line">    <span class="keyword">return</span> detail_urls</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_html</span>(<span class="params">url</span>):</span></span><br><span class="line">    resp = requests.get(url, headers=headers)</span><br><span class="line">    text = resp.content.decode(<span class="string">&quot;gbk&quot;</span>, errors=<span class="string">&quot;ignore&quot;</span>)</span><br><span class="line">    html = etree.HTML(text)</span><br><span class="line">    <span class="keyword">return</span> html</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">parse_info</span>(<span class="params">info, rule</span>):</span></span><br><span class="line">    <span class="keyword">return</span> info.replace(rule, <span class="string">&quot;&quot;</span>).strip()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">parse_detail_page</span>(<span class="params">url</span>):</span></span><br><span class="line">    movie = &#123;&#125;</span><br><span class="line">    html = get_html(url)</span><br><span class="line">    title = html.xpath(<span class="string">&quot;//div[@class=&#x27;title_all&#x27;]//font[@color=&#x27;#07519a&#x27;]/text()&quot;</span>)[<span class="number">0</span>]</span><br><span class="line">    movie[<span class="string">&quot;title&quot;</span>] = title</span><br><span class="line">    zooms = html.xpath(<span class="string">&quot;//div[@id=&#x27;Zoom&#x27;]&quot;</span>)[<span class="number">0</span>]</span><br><span class="line">    poster = zooms.xpath(<span class="string">&quot;.//img/@src&quot;</span>)</span><br><span class="line">    movie[<span class="string">&quot;poster&quot;</span>] = poster</span><br><span class="line"></span><br><span class="line">    infos = zooms.xpath(<span class="string">&quot;.//text()&quot;</span>)</span><br><span class="line">    <span class="keyword">for</span> index, info <span class="keyword">in</span> enumerate(infos):</span><br><span class="line">        <span class="keyword">if</span> info.startswith(<span class="string">&quot;◎年　　代&quot;</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">&quot;◎年　　代&quot;</span>)</span><br><span class="line">            movie[<span class="string">&quot;year&quot;</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">&quot;◎产　　地&quot;</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">&quot;◎产　　地&quot;</span>)</span><br><span class="line">            movie[<span class="string">&quot;country&quot;</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">&quot;◎类　　别&quot;</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">&quot;◎类　　别&quot;</span>)</span><br><span class="line">            movie[<span class="string">&quot;category&quot;</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">&quot;◎豆瓣评分&quot;</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">&quot;◎豆瓣评分&quot;</span>)</span><br><span class="line">            movie[<span class="string">&quot;score&quot;</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">&quot;◎片　　长&quot;</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">&quot;◎片　　长&quot;</span>)</span><br><span class="line">            movie[<span class="string">&quot;timelength&quot;</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">&quot;◎导　　演&quot;</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">&quot;◎导　　演&quot;</span>)</span><br><span class="line">            movie[<span class="string">&quot;director&quot;</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">&quot;◎主　　演&quot;</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">&quot;◎主　　演&quot;</span>)</span><br><span class="line">            actors = [info]</span><br><span class="line">            <span class="keyword">for</span> x <span class="keyword">in</span> range(index + <span class="number">1</span>, len(infos)):</span><br><span class="line">                actor = infos[x].strip()</span><br><span class="line">                <span class="keyword">if</span> actor.startswith(<span class="string">&quot;◎&quot;</span>):</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                actors.append(actor)</span><br><span class="line">            movie[<span class="string">&quot;actors&quot;</span>] = actors</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">&quot;◎简　　介&quot;</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">&quot;◎简　　介&quot;</span>)</span><br><span class="line">            <span class="keyword">for</span> x <span class="keyword">in</span> range(index + <span class="number">1</span>, len(infos)):</span><br><span class="line">                profile = infos[x].strip()</span><br><span class="line">                <span class="keyword">if</span> profile.startswith(<span class="string">&quot;【&quot;</span>):</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">            movie[<span class="string">&quot;profile&quot;</span>] = profile</span><br><span class="line"></span><br><span class="line">    down_url = zooms.xpath(<span class="string">&quot;.//table//a/@href&quot;</span>)</span><br><span class="line">    movie[<span class="string">&quot;down_url&quot;</span>] = down_url</span><br><span class="line">    <span class="keyword">return</span> movie</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">spider</span>():</span></span><br><span class="line">    index_url = <span class="string">&quot;https://www.dytt8.net/html/gndy/dyzz/index.html&quot;</span></span><br><span class="line">    base_url = <span class="string">&quot;https://www.dytt8.net/html/gndy/dyzz/list_23_&#123;&#125;.html&quot;</span></span><br><span class="line">    html = get_html(index_url)</span><br><span class="line">    pages = html.xpath(<span class="string">&quot;//select[@name=&#x27;sldd&#x27;]/option&quot;</span>)</span><br><span class="line">    movies = []</span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">1</span>, len(pages) + <span class="number">1</span>):</span><br><span class="line">        url = base_url.format(x)</span><br><span class="line">        detail_urls = get_detail_url(url)</span><br><span class="line">        <span class="keyword">for</span> detail_url <span class="keyword">in</span> detail_urls:</span><br><span class="line">            <span class="comment"># 遍历每一页中的所有电影</span></span><br><span class="line">            movie = parse_detail_page(detail_url)</span><br><span class="line">            movies.append(movie)</span><br><span class="line">            print(movie)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    spider()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>实例</category>
       </categories>
       <tags>
         <tag>Python</tag>
@@ -2722,6 +2722,79 @@
       </tags>
   </entry>
   <entry>
+    <title>oracle的存储过程</title>
+    <url>/2020/08/27/23/02/oracle%E7%9A%84%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/</url>
+    <content><![CDATA[<p>oracle的存储过程用法<a id="more"></a></p>
+<h5 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CREATE OR REPLACE PRODUCE 存储过程名</span><br><span class="line">IS</span><br><span class="line">BEGIN</span><br><span class="line">NULL;</span><br><span class="line">END;</span><br></pre></td></tr></table></figure>
+
+<p>CREATE OR REPLACE PROCEDURE 是一个SQL语句通知Oracle数据库去创建一个叫做skeleton存储过程, 如果存在就覆盖它;<br>　　IS关键词表明后面将跟随一个PL/SQL体。<br>　　BEGIN关键词表明PL/SQL体的开始。<br>　　NULL PL/SQL语句表明什么事都不做，这句不能删去，因为PL/SQL体中至少需要有一句;<br>　　END关键词表明PL/SQL体的结束</p>
+<h5 id="创建语法"><a href="#创建语法" class="headerlink" title="创建语法"></a>创建语法</h5><p>create or replace procedure 存储过程名（param1 in type，param2 out type）as</p>
+<p>变量1 类型（值范围）; –vs_msg VARCHAR2(4000);</p>
+<p>变量2 类型（值范围）;</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> </span><br><span class="line">Begin </span><br><span class="line">Select count(*) into 变量1 from 表A where列名&#x3D;param1； </span><br><span class="line"></span><br><span class="line">If (判断条件) then </span><br><span class="line">Select 列名 into 变量2 from 表A where列名&#x3D;param1； </span><br><span class="line">Dbms_output。Put_line(‘打印信息&#39;); </span><br><span class="line">Elsif (判断条件) then </span><br><span class="line">Dbms_output。Put_line(‘打印信息&#39;); </span><br><span class="line">Else </span><br><span class="line">Raise 异常名（NO_DATA_FOUND）; </span><br><span class="line">End if; </span><br><span class="line">Exception </span><br><span class="line">When others then </span><br><span class="line">Rollback; </span><br><span class="line">End; </span><br></pre></td></tr></table></figure>
+
+<p><strong>注意事项</strong>：</p>
+<ul>
+<li><p>存储过程参数不带取值范围，in表示传入，out表示输出类型可以使用任意Oracle中的合法类型</p>
+</li>
+<li><p>变量带取值范围，后面接分号</p>
+</li>
+<li><p>在判断语句前最好先用count（*）函数判断是否存在该条操作记录</p>
+</li>
+<li><p>用select 。。。into。。。给变量赋值</p>
+</li>
+<li><p>在代码中抛异常用 raise+异常名</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> </span><br><span class="line">CREATE OR REPLACE PROCEDURE存储过程名 </span><br><span class="line">( </span><br><span class="line">--定义参数 </span><br><span class="line">is_ym IN CHAR(6) , </span><br><span class="line">the_count OUT NUMBER, </span><br><span class="line">) </span><br><span class="line">AS </span><br><span class="line">--定义变量 </span><br><span class="line">vs_msg VARCHAR2(4000); --错误信息变量 </span><br><span class="line">vs_ym_beg CHAR(6); --起始月份 </span><br><span class="line">vs_ym_end CHAR(6); --终止月份 </span><br><span class="line">vs_ym_sn_beg CHAR(6); --同期起始月份 </span><br><span class="line">vs_ym_sn_end CHAR(6); --同期终止月份 </span><br><span class="line">--定义游标(简单的说就是一个可以遍历的结果集) </span><br><span class="line"></span><br><span class="line">CURSOR cur_1 IS </span><br><span class="line">SELECT 。。。 </span><br><span class="line">FROM 。。。 </span><br><span class="line">WHERE 。。。 </span><br><span class="line">GROUP BY 。。。; </span><br><span class="line">BEGIN </span><br><span class="line"></span><br><span class="line">--用输入参数给变量赋初值，用到了Oralce的SUBSTR TO_CHAR ADD_MONTHS </span><br><span class="line"></span><br><span class="line">TO_DATE 等很常用的函数。 </span><br><span class="line">vs_ym_beg :&#x3D; SUBSTR(is_ym,1,6); </span><br><span class="line">vs_ym_end :&#x3D; SUBSTR(is_ym,7,6); </span><br><span class="line">vs_ym_sn_beg :&#x3D; TO_CHAR(ADD_MONTHS(TO_DATE(vs_ym_beg,&#39;yyyymm&#39;), -12),&#39;yyyymm&#39;); </span><br><span class="line">vs_ym_sn_end :&#x3D; TO_CHAR(ADD_MONTHS(TO_DATE(vs_ym_end,&#39;yyyymm&#39;), -12),&#39;yyyymm&#39;); </span><br><span class="line"></span><br><span class="line">--先删除表中特定条件的数据。 </span><br><span class="line"></span><br><span class="line">DELETE FROM 表名 WHERE ym &#x3D; is_ym; </span><br><span class="line"></span><br><span class="line">--然后用内置的DBMS_OUTPUT对象的put_line方法打印出影响的记录行数，其中用到一个系统变量SQL%rowcount </span><br><span class="line"></span><br><span class="line">DBMS_OUTPUT.put_line(&#39;del上月记录&#x3D;&#39;||SQL%rowcount||&#39;条&#39;); </span><br><span class="line">INSERT INTO表名(area_code,ym,CMCODE,rmb_amt,usd_amt) </span><br><span class="line">SELECT area_code,is_ym,CMCODE,SUM(rmb_amt)&#x2F;10000,SUM(usd_amt)&#x2F;10000 </span><br><span class="line">FROM BGD_AREA_CM_M_BASE_T </span><br><span class="line">WHERE ym &gt;&#x3D; vs_ym_beg </span><br><span class="line">AND ym &lt;&#x3D; vs_ym_end </span><br><span class="line">GROUP BY area_code,CMCODE; </span><br><span class="line">DBMS_OUTPUT.put_line(&#39;ins当月记录&#x3D;&#39;||SQL%rowcount||&#39;条&#39;); </span><br><span class="line">--遍历游标处理后更新到表。遍历游标有几种方法，用for语句是其中比较直观的一种。 </span><br><span class="line"></span><br><span class="line">FOR rec IN cur_1 LOOP </span><br><span class="line">UPDATE 表名 </span><br><span class="line">SET rmb_amt_sn &#x3D; rec.rmb_amt_sn,usd_amt_sn &#x3D; rec.usd_amt_sn </span><br><span class="line">WHERE area_code &#x3D; rec.area_code </span><br><span class="line">AND CMCODE &#x3D; rec.CMCODE </span><br><span class="line">AND ym &#x3D; is_ym; </span><br><span class="line">END LOOP; </span><br><span class="line">COMMIT; </span><br><span class="line"></span><br><span class="line">--错误处理部分。OTHERS表示除了声明外的任意错误。SQLERRM是系统内置变量保存了当前错误的详细信息。 </span><br><span class="line"></span><br><span class="line">EXCEPTION </span><br><span class="line"></span><br><span class="line">WHEN OTHERS THEN </span><br><span class="line">vs_msg :&#x3D; &#39;ERROR IN xxxxxxxxxxx_p(&#39;||is_ym||&#39;):&#39;||SUBSTR(SQLERRM,1,500); </span><br><span class="line"></span><br><span class="line">ROLLBACK; </span><br><span class="line"></span><br><span class="line">--把当前错误记录进日志表。 </span><br><span class="line"></span><br><span class="line">INSERT INTO LOG_INFO(proc_name,error_info,op_date) </span><br><span class="line">VALUES(&#39;xxxxxxxxxxx_p&#39;,vs_msg,SYSDATE); </span><br><span class="line">COMMIT; </span><br><span class="line">RETURN; </span><br><span class="line"></span><br><span class="line">END; </span><br></pre></td></tr></table></figure>
+
+<h5 id="存储过程语法"><a href="#存储过程语法" class="headerlink" title="存储过程语法"></a>存储过程语法</h5><h6 id="判断语句"><a href="#判断语句" class="headerlink" title="判断语句"></a>判断语句</h6><p>if 比较式 then begin end; end if;</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">create or replace procedure test(x in number) is </span><br><span class="line">begin </span><br><span class="line">if x &gt;0 then </span><br><span class="line">begin </span><br><span class="line">x :&#x3D; 0 - x; </span><br><span class="line">end; </span><br><span class="line">end if; </span><br><span class="line">if x &#x3D; 0 then </span><br><span class="line">begin </span><br><span class="line">x: &#x3D; 1; </span><br><span class="line">end; </span><br><span class="line">end if; </span><br><span class="line">end test; </span><br></pre></td></tr></table></figure>
+
+<h6 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">create or replace procedure test() as </span><br><span class="line">Cursor cursor is select name from student; name varchar(20); </span><br><span class="line">begin </span><br><span class="line">for name in cursor LOOP </span><br><span class="line">begin </span><br><span class="line">dbms_output.putline(name); </span><br><span class="line">end; </span><br><span class="line">end LOOP; </span><br><span class="line">end test; </span><br></pre></td></tr></table></figure>
+
+<h6 id="循环遍历数组"><a href="#循环遍历数组" class="headerlink" title="循环遍历数组"></a>循环遍历数组</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">create or replace procedure test(varArray in myPackage.TestArray) as </span><br><span class="line">--( 输入参数varArray 是自定义的数组类型，定义方式见标题6) </span><br><span class="line">i number; </span><br><span class="line">begin </span><br><span class="line">i :&#x3D; 1; -- 存储过程数组是起始位置是从1 开始的，与java 、C 、C++ 等语言不同。因为在Oracle 中本是没有数组的概念的，数组其实就是一张 </span><br><span class="line">-- 表(Table), 每个数组元素就是表中的一个记录，所以遍历数组时就相当于从表中的第一条记录开始遍历 </span><br><span class="line">for i in 1..varArray.count LOOP </span><br><span class="line">dbms_output.putline(&#39;The No.&#39;|| i || &#39;record in varArray is:&#39;||varArray(i)); </span><br><span class="line">end LOOP; </span><br><span class="line">end test; </span><br></pre></td></tr></table></figure>
+
+<h6 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">begin </span><br><span class="line">end; </span><br><span class="line">end LOOP; </span><br><span class="line">E.g </span><br><span class="line">create or replace procedure test(i in number) as </span><br><span class="line">begin </span><br><span class="line">while i &lt; 10 LOOP </span><br><span class="line">begin </span><br><span class="line">i:&#x3D; i + 1; </span><br><span class="line">end; </span><br><span class="line">end LOOP; </span><br><span class="line">end test; </span><br></pre></td></tr></table></figure>
+
+<h6 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h6><p>首先明确一个概念：Oracle 中本是没有数组的概念的，数组其实就是一张表(Table), 每个数组元素就是表中的一个记录。</p>
+<p>使用数组时，用户可以使用Oracle 已经定义好的数组类型，或可根据自己的需要定义数组类型。</p>
+<ol>
+<li>使用Oracle 自带的数组类型</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">x array; -- 使用时需要需要进行初始化</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">create or replace procedure test(y out array) is</span><br><span class="line">x array;</span><br><span class="line">begin</span><br><span class="line">x :&#x3D; new array();</span><br><span class="line">y :&#x3D; x;</span><br><span class="line">end test;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>自定义的数组类型 ( 自定义数据类型时，建议通过创建Package 的方式实现，以便于管理)</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">create or replace package myPackage is</span><br><span class="line">Public type declarations type info is record( name varchar(20), y number);</span><br><span class="line">type TestArray is table of info index by binary_integer;</span><br><span class="line">-- 此处声明了一个TestArray 的类型数据，其实其为一张存储Info 数据类型的Table 而已，及TestArray 就是一张表，有两个字段，一个是name ，一个是y 。需要注意的是此处使用了Index by binary_integer 编制该Table 的索引项，也可以不写，直接写成：type TestArray is</span><br><span class="line">table of info ，如果不写的话使用数组时就需要进行初始化：varArray myPackage.TestArray; varArray :&#x3D; new myPackage.TestArray();</span><br><span class="line">end TestArray;</span><br></pre></td></tr></table></figure>
+
+<h6 id="游标"><a href="#游标" class="headerlink" title="游标"></a>游标</h6><p>Oracle 中Cursor 是非常有用的，用于遍历临时表中的查询结果。其相关方法和属性也很多，现仅就常用的用法做一二介绍：</p>
+<ol>
+<li>Cursor 型游标( 不能用于参数传递)</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">create or replace procedure test() is</span><br><span class="line">cusor_1 Cursor is select std_name from student where ...; --Cursor 的使用方式1 cursor_2 Cursor;</span><br><span class="line">begin</span><br><span class="line">select class_name into cursor_2 from class where ...; --Cursor 的使用方式2</span><br><span class="line">可使用For x in cursor LOOP .... end LOOP; 来实现对Cursor 的遍历</span><br><span class="line">end test;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>SYS_REFCURSOR 型游标，该游标是Oracle 以预先定义的游标，可作出参数进行传递</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">create or replace procedure test(rsCursor out SYS_REFCURSOR) is</span><br><span class="line">cursor SYS_REFCURSOR;</span><br><span class="line">name varhcar(20);</span><br><span class="line">begin</span><br><span class="line">OPEN cursor FOR select name from student where ... --SYS_REFCURSOR 只能通过OPEN 方法来打开和赋值</span><br><span class="line">LOOP</span><br><span class="line">fetch cursor into name --SYS_REFCURSOR 只能通过fetch into 来打开和遍历 exit when cursor%NOTFOUND; --SYS_REFCURSOR 中可使用三个状态属性： ---%NOTFOUND( 未找到记录信息) %FOUND( 找到记录信息) ---%ROWCOUNT( 然后当前游标所指向的行位置)</span><br><span class="line">dbms_output.putline(name);</span><br><span class="line">end LOOP;</span><br><span class="line">rsCursor :&#x3D; cursor;</span><br><span class="line">end test;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h6 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h6><p>假设存在两张表，一张是学生成绩表(studnet) ，字段：stdId, math, article, language, music, sport, total, average, step；一张是学生课外成绩表(out_school),，字段为：stdId, parctice, comment。通过存储过程自动计算出每位学生的总成绩和平均成绩，同时，如果学生在课外课程中获得的评价为A ，就在总成绩上加20 分。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> </span><br><span class="line">create or replace procedure autocomputer(step in number) is </span><br><span class="line">rsCursor SYS_REFCURSOR; </span><br><span class="line">commentArray myPackage.myArray; </span><br><span class="line">math number; </span><br><span class="line">article number; </span><br><span class="line">language number; </span><br><span class="line">music number; </span><br><span class="line">sport number; </span><br><span class="line">total number; </span><br><span class="line">average number; </span><br><span class="line">stdId varchar(30); </span><br><span class="line">record myPackage.stdInfo; </span><br><span class="line">i number; </span><br><span class="line">begin </span><br><span class="line">i :&#x3D; 1; </span><br><span class="line">get_comment(commentArray); -- 调用名为get_comment() 的存储过程获取学生课外评分信息 </span><br><span class="line">OPEN rsCursor for select stdId,math,article,language,music,sport from student t where t.step &#x3D; step; </span><br><span class="line">LOOP </span><br><span class="line">fetch rsCursor into stdId,math,article,language,music,sport; exit when rsCursor%NOTFOUND; </span><br><span class="line">total :&#x3D; math + article + language + music + sport; </span><br><span class="line">for i in 1..commentArray.count LOOP </span><br><span class="line">record :&#x3D; commentArray(i); </span><br><span class="line">if stdId &#x3D; record.stdId then </span><br><span class="line">begin </span><br><span class="line">if record.comment &#x3D; &#39;A&#39; then </span><br><span class="line">begin </span><br><span class="line">total :&#x3D; total + 20; </span><br><span class="line">go to next; -- 使用go to 跳出for 循环 </span><br><span class="line">end; </span><br><span class="line">end if; </span><br><span class="line">end; </span><br><span class="line">end if; </span><br><span class="line">end LOOP; </span><br><span class="line">&lt;&lt;continue&gt;&gt; average :&#x3D; total &#x2F; 5; </span><br><span class="line">update student t set t.total&#x3D;total and t.average &#x3D; average where t.stdId &#x3D; stdId; </span><br><span class="line">end LOOP; </span><br><span class="line">end; </span><br><span class="line">end autocomputer; </span><br><span class="line">-- 取得学生评论信息的存储过程 </span><br><span class="line">create or replace procedure get_comment(commentArray out myPackage.myArray) is </span><br><span class="line">rs SYS_REFCURSOR ； </span><br><span class="line">record myPackage.stdInfo; </span><br><span class="line">stdId varchar(30); </span><br><span class="line">comment varchar(1); </span><br><span class="line">i number; </span><br><span class="line">begin </span><br><span class="line">open rs for select stdId,comment from out_school </span><br><span class="line">i :&#x3D; 1; </span><br><span class="line">LOOP </span><br><span class="line">fetch rs into stdId,comment; exit when rs%NOTFOUND; </span><br><span class="line">record.stdId :&#x3D; stdId; </span><br><span class="line">record.comment :&#x3D; comment; </span><br><span class="line">recommentArray(i) :&#x3D; record; </span><br><span class="line">i:&#x3D;i + 1; </span><br><span class="line">end LOOP; </span><br><span class="line">end get_comment; </span><br><span class="line">-- 定义数组类型myArray </span><br><span class="line">create or replace package myPackage is begin </span><br><span class="line">type stdInfo is record(stdId varchar(30),comment varchar(1)); </span><br><span class="line">type myArray is table of stdInfo index by binary_integer; </span><br><span class="line">end myPackage; </span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>oracle</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>oracle表的删除和授权</title>
     <url>/2020/08/22/15/17/oracle%E8%A1%A8%E7%9A%84%E5%88%A0%E9%99%A4%E5%92%8C%E6%8E%88%E6%9D%83/</url>
     <content><![CDATA[<p>表的快速删除和授权操作<a id="more"></a></p>
@@ -2958,47 +3031,6 @@
       </tags>
   </entry>
   <entry>
-    <title>常见浏览器的用户代理</title>
-    <url>/2020/01/13/17/35/%E5%B8%B8%E8%A7%81%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E7%94%A8%E6%88%B7%E4%BB%A3%E7%90%86/</url>
-    <content><![CDATA[<p>常用浏览器用户代理总结。<a id="more"></a></p>
-<p>&emsp;&emsp;所谓 用户代理（User Agent ），最初是指浏览器告知网站管理员，本浏览器支持的类型和框架，让网站管理员以支持的模式结构向浏览器发送页面，呈现给用户浏览。演变到今天，网站管理员为了给用户带呈现最佳的页面效果，为了使不同浏览器展现同样的网站页面，通过浏览器获取用户的系统信息，包括硬件平台、系统软件、应用软件和用户个人偏好，然后通过服务器解析后以适合用户的页面类型发送到浏览器。</p>
-<p>&emsp;&emsp;目前 UA 分析监测可补全的系统：Windows 7、Windows 10、Mac OS X Lion、Ubuntu 14.04；浏览器：所有品牌和系列。</p>
-<h5 id="Windows10-64位"><a href="#Windows10-64位" class="headerlink" title="Windows10 64位"></a>Windows10 64位</h5><p>微软Chrome内核 Edge 浏览器</p>
-<p>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36 Edg/80.0.361.69</p>
-<p>360极速浏览器</p>
-<p>Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36 QIHU 360EE</p>
-<h5 id="Windows-7-64位"><a href="#Windows-7-64位" class="headerlink" title="Windows 7 64位"></a>Windows 7 64位</h5><p>[^]: Internet Explorer 10 浏览器和 Internet Explorer 11 浏览器以及微软 Edge 浏览器为 Windows 10 64 位。</p>
-<p>Chrome｜谷歌浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.87 Safari/537.36</p>
-<p>Firefox｜火狐浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64; rv:46.0) Gecko/20100101 Firefox/46.0</p>
-<p>Opera｜欧朋浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.87 Safari/537.36 OPR/37.0.2178.32</p>
-<p>Safari｜苹果浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/534.57.2 (KHTML, like Gecko) Version/5.1.7 Safari/534.57.2</p>
-<p>360极速浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36</p>
-<p>360安全浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36</p>
-<p>微软 Edge 浏览器<br>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2486.0 Safari/537.36 Edge/13.10586</p>
-<p>Internet Explorer 11 浏览器<br>Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko</p>
-<p>Internet Explorer 10 浏览器<br>Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; WOW64; Trident/6.0)</p>
-<p>Internet Explorer 9 浏览器<br>Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)</p>
-<p>Internet Explorer 8 浏览器<br>Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0)</p>
-<p>百度浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 BIDUBrowser/8.3 Safari/537.36</p>
-<p>遨游浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Maxthon/4.9.2.1000 Chrome/39.0.2146.0 Safari/537.36</p>
-<p>QQ浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.80 Safari/537.36 Core/1.47.277.400 QQBrowser/9.4.7658.400</p>
-<p>UC浏览器电脑版<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 UBrowser/5.6.12150.8 Safari/537.36</p>
-<p>搜狗浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.122 Safari/537.36 SE 2.X MetaSr 1.0</p>
-<p>猎豹浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.154 Safari/537.36 LBBROWSER </p>
-<p>世界之窗浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36 TheWorld 7</p>
-<p>安卓版QQ浏览器<br>Mozilla/5.0 (Linux; Android 5.0; SM-N9100 Build/LRX21V) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/37.0.0.0 Mobile Safari/537.36 V1_AND_SQ_5.3.1_196_YYB_D QQ/5.3.1.2335 NetType/WIFI</p>
-<p>安卓版微信浏览器<br>Mozilla/5.0 (Linux; Android 5.0; SM-N9100 Build/LRX21V) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/37.0.0.0 Mobile Safari/537.36 MicroMessenger/6.0.2.56_r958800.520 NetType/WIFI</p>
-<p>IOS版QQ浏览器<br>Mozilla/5.0 (iPhone; CPU iPhone OS 7_1_2 like Mac OS X) AppleWebKit/537.51.2 (KHTML, like Gecko) Mobile/11D257 QQ/5.2.1.302 NetType/WIFI Mem/28</p>
-<p>IOS版微信浏览器<br>Mozilla/5.0 (iPhone; CPU iPhone OS 7_1_2 like Mac OS X) AppleWebKit/537.51.2 (KHTML, like Gecko) Mobile/11D257 MicroMessenger/6.0.1 NetType/WIFI</p>
-]]></content>
-      <categories>
-        <category>代理</category>
-      </categories>
-      <tags>
-        <tag>浏览器</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>并查集</title>
     <url>/2020/02/08/15/56/%E5%B9%B6%E6%9F%A5%E9%9B%86/</url>
     <content><![CDATA[<p>建立迷宫时有所涉及，用来处理格子之间的相连问题。<a id="more"></a></p>
@@ -3126,6 +3158,47 @@
       </categories>
       <tags>
         <tag>Math</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>常见浏览器的用户代理</title>
+    <url>/2020/01/13/17/35/%E5%B8%B8%E8%A7%81%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E7%94%A8%E6%88%B7%E4%BB%A3%E7%90%86/</url>
+    <content><![CDATA[<p>常用浏览器用户代理总结。<a id="more"></a></p>
+<p>&emsp;&emsp;所谓 用户代理（User Agent ），最初是指浏览器告知网站管理员，本浏览器支持的类型和框架，让网站管理员以支持的模式结构向浏览器发送页面，呈现给用户浏览。演变到今天，网站管理员为了给用户带呈现最佳的页面效果，为了使不同浏览器展现同样的网站页面，通过浏览器获取用户的系统信息，包括硬件平台、系统软件、应用软件和用户个人偏好，然后通过服务器解析后以适合用户的页面类型发送到浏览器。</p>
+<p>&emsp;&emsp;目前 UA 分析监测可补全的系统：Windows 7、Windows 10、Mac OS X Lion、Ubuntu 14.04；浏览器：所有品牌和系列。</p>
+<h5 id="Windows10-64位"><a href="#Windows10-64位" class="headerlink" title="Windows10 64位"></a>Windows10 64位</h5><p>微软Chrome内核 Edge 浏览器</p>
+<p>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36 Edg/80.0.361.69</p>
+<p>360极速浏览器</p>
+<p>Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36 QIHU 360EE</p>
+<h5 id="Windows-7-64位"><a href="#Windows-7-64位" class="headerlink" title="Windows 7 64位"></a>Windows 7 64位</h5><p>[^]: Internet Explorer 10 浏览器和 Internet Explorer 11 浏览器以及微软 Edge 浏览器为 Windows 10 64 位。</p>
+<p>Chrome｜谷歌浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.87 Safari/537.36</p>
+<p>Firefox｜火狐浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64; rv:46.0) Gecko/20100101 Firefox/46.0</p>
+<p>Opera｜欧朋浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.87 Safari/537.36 OPR/37.0.2178.32</p>
+<p>Safari｜苹果浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/534.57.2 (KHTML, like Gecko) Version/5.1.7 Safari/534.57.2</p>
+<p>360极速浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36</p>
+<p>360安全浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36</p>
+<p>微软 Edge 浏览器<br>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2486.0 Safari/537.36 Edge/13.10586</p>
+<p>Internet Explorer 11 浏览器<br>Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko</p>
+<p>Internet Explorer 10 浏览器<br>Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; WOW64; Trident/6.0)</p>
+<p>Internet Explorer 9 浏览器<br>Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)</p>
+<p>Internet Explorer 8 浏览器<br>Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0)</p>
+<p>百度浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 BIDUBrowser/8.3 Safari/537.36</p>
+<p>遨游浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Maxthon/4.9.2.1000 Chrome/39.0.2146.0 Safari/537.36</p>
+<p>QQ浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.80 Safari/537.36 Core/1.47.277.400 QQBrowser/9.4.7658.400</p>
+<p>UC浏览器电脑版<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 UBrowser/5.6.12150.8 Safari/537.36</p>
+<p>搜狗浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.122 Safari/537.36 SE 2.X MetaSr 1.0</p>
+<p>猎豹浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.154 Safari/537.36 LBBROWSER </p>
+<p>世界之窗浏览器<br>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36 TheWorld 7</p>
+<p>安卓版QQ浏览器<br>Mozilla/5.0 (Linux; Android 5.0; SM-N9100 Build/LRX21V) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/37.0.0.0 Mobile Safari/537.36 V1_AND_SQ_5.3.1_196_YYB_D QQ/5.3.1.2335 NetType/WIFI</p>
+<p>安卓版微信浏览器<br>Mozilla/5.0 (Linux; Android 5.0; SM-N9100 Build/LRX21V) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/37.0.0.0 Mobile Safari/537.36 MicroMessenger/6.0.2.56_r958800.520 NetType/WIFI</p>
+<p>IOS版QQ浏览器<br>Mozilla/5.0 (iPhone; CPU iPhone OS 7_1_2 like Mac OS X) AppleWebKit/537.51.2 (KHTML, like Gecko) Mobile/11D257 QQ/5.2.1.302 NetType/WIFI Mem/28</p>
+<p>IOS版微信浏览器<br>Mozilla/5.0 (iPhone; CPU iPhone OS 7_1_2 like Mac OS X) AppleWebKit/537.51.2 (KHTML, like Gecko) Mobile/11D257 MicroMessenger/6.0.1 NetType/WIFI</p>
+]]></content>
+      <categories>
+        <category>代理</category>
+      </categories>
+      <tags>
+        <tag>浏览器</tag>
       </tags>
   </entry>
   <entry>
@@ -4660,79 +4733,6 @@
       </categories>
       <tags>
         <tag>paper</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>oracle的存储过程</title>
-    <url>/2020/08/27/23/02/oracle%E7%9A%84%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/</url>
-    <content><![CDATA[<p>oracle的存储过程用法<a id="more"></a></p>
-<h5 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CREATE OR REPLACE PRODUCE 存储过程名</span><br><span class="line">IS</span><br><span class="line">BEGIN</span><br><span class="line">NULL;</span><br><span class="line">END;</span><br></pre></td></tr></table></figure>
-
-<p>CREATE OR REPLACE PROCEDURE 是一个SQL语句通知Oracle数据库去创建一个叫做skeleton存储过程, 如果存在就覆盖它;<br>　　IS关键词表明后面将跟随一个PL/SQL体。<br>　　BEGIN关键词表明PL/SQL体的开始。<br>　　NULL PL/SQL语句表明什么事都不做，这句不能删去，因为PL/SQL体中至少需要有一句;<br>　　END关键词表明PL/SQL体的结束</p>
-<h5 id="创建语法"><a href="#创建语法" class="headerlink" title="创建语法"></a>创建语法</h5><p>create or replace procedure 存储过程名（param1 in type，param2 out type）as</p>
-<p>变量1 类型（值范围）; –vs_msg VARCHAR2(4000);</p>
-<p>变量2 类型（值范围）;</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> </span><br><span class="line">Begin </span><br><span class="line">Select count(*) into 变量1 from 表A where列名&#x3D;param1； </span><br><span class="line"></span><br><span class="line">If (判断条件) then </span><br><span class="line">Select 列名 into 变量2 from 表A where列名&#x3D;param1； </span><br><span class="line">Dbms_output。Put_line(‘打印信息&#39;); </span><br><span class="line">Elsif (判断条件) then </span><br><span class="line">Dbms_output。Put_line(‘打印信息&#39;); </span><br><span class="line">Else </span><br><span class="line">Raise 异常名（NO_DATA_FOUND）; </span><br><span class="line">End if; </span><br><span class="line">Exception </span><br><span class="line">When others then </span><br><span class="line">Rollback; </span><br><span class="line">End; </span><br></pre></td></tr></table></figure>
-
-<p><strong>注意事项</strong>：</p>
-<ul>
-<li><p>存储过程参数不带取值范围，in表示传入，out表示输出类型可以使用任意Oracle中的合法类型</p>
-</li>
-<li><p>变量带取值范围，后面接分号</p>
-</li>
-<li><p>在判断语句前最好先用count（*）函数判断是否存在该条操作记录</p>
-</li>
-<li><p>用select 。。。into。。。给变量赋值</p>
-</li>
-<li><p>在代码中抛异常用 raise+异常名</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> </span><br><span class="line">CREATE OR REPLACE PROCEDURE存储过程名 </span><br><span class="line">( </span><br><span class="line">--定义参数 </span><br><span class="line">is_ym IN CHAR(6) , </span><br><span class="line">the_count OUT NUMBER, </span><br><span class="line">) </span><br><span class="line">AS </span><br><span class="line">--定义变量 </span><br><span class="line">vs_msg VARCHAR2(4000); --错误信息变量 </span><br><span class="line">vs_ym_beg CHAR(6); --起始月份 </span><br><span class="line">vs_ym_end CHAR(6); --终止月份 </span><br><span class="line">vs_ym_sn_beg CHAR(6); --同期起始月份 </span><br><span class="line">vs_ym_sn_end CHAR(6); --同期终止月份 </span><br><span class="line">--定义游标(简单的说就是一个可以遍历的结果集) </span><br><span class="line"></span><br><span class="line">CURSOR cur_1 IS </span><br><span class="line">SELECT 。。。 </span><br><span class="line">FROM 。。。 </span><br><span class="line">WHERE 。。。 </span><br><span class="line">GROUP BY 。。。; </span><br><span class="line">BEGIN </span><br><span class="line"></span><br><span class="line">--用输入参数给变量赋初值，用到了Oralce的SUBSTR TO_CHAR ADD_MONTHS </span><br><span class="line"></span><br><span class="line">TO_DATE 等很常用的函数。 </span><br><span class="line">vs_ym_beg :&#x3D; SUBSTR(is_ym,1,6); </span><br><span class="line">vs_ym_end :&#x3D; SUBSTR(is_ym,7,6); </span><br><span class="line">vs_ym_sn_beg :&#x3D; TO_CHAR(ADD_MONTHS(TO_DATE(vs_ym_beg,&#39;yyyymm&#39;), -12),&#39;yyyymm&#39;); </span><br><span class="line">vs_ym_sn_end :&#x3D; TO_CHAR(ADD_MONTHS(TO_DATE(vs_ym_end,&#39;yyyymm&#39;), -12),&#39;yyyymm&#39;); </span><br><span class="line"></span><br><span class="line">--先删除表中特定条件的数据。 </span><br><span class="line"></span><br><span class="line">DELETE FROM 表名 WHERE ym &#x3D; is_ym; </span><br><span class="line"></span><br><span class="line">--然后用内置的DBMS_OUTPUT对象的put_line方法打印出影响的记录行数，其中用到一个系统变量SQL%rowcount </span><br><span class="line"></span><br><span class="line">DBMS_OUTPUT.put_line(&#39;del上月记录&#x3D;&#39;||SQL%rowcount||&#39;条&#39;); </span><br><span class="line">INSERT INTO表名(area_code,ym,CMCODE,rmb_amt,usd_amt) </span><br><span class="line">SELECT area_code,is_ym,CMCODE,SUM(rmb_amt)&#x2F;10000,SUM(usd_amt)&#x2F;10000 </span><br><span class="line">FROM BGD_AREA_CM_M_BASE_T </span><br><span class="line">WHERE ym &gt;&#x3D; vs_ym_beg </span><br><span class="line">AND ym &lt;&#x3D; vs_ym_end </span><br><span class="line">GROUP BY area_code,CMCODE; </span><br><span class="line">DBMS_OUTPUT.put_line(&#39;ins当月记录&#x3D;&#39;||SQL%rowcount||&#39;条&#39;); </span><br><span class="line">--遍历游标处理后更新到表。遍历游标有几种方法，用for语句是其中比较直观的一种。 </span><br><span class="line"></span><br><span class="line">FOR rec IN cur_1 LOOP </span><br><span class="line">UPDATE 表名 </span><br><span class="line">SET rmb_amt_sn &#x3D; rec.rmb_amt_sn,usd_amt_sn &#x3D; rec.usd_amt_sn </span><br><span class="line">WHERE area_code &#x3D; rec.area_code </span><br><span class="line">AND CMCODE &#x3D; rec.CMCODE </span><br><span class="line">AND ym &#x3D; is_ym; </span><br><span class="line">END LOOP; </span><br><span class="line">COMMIT; </span><br><span class="line"></span><br><span class="line">--错误处理部分。OTHERS表示除了声明外的任意错误。SQLERRM是系统内置变量保存了当前错误的详细信息。 </span><br><span class="line"></span><br><span class="line">EXCEPTION </span><br><span class="line"></span><br><span class="line">WHEN OTHERS THEN </span><br><span class="line">vs_msg :&#x3D; &#39;ERROR IN xxxxxxxxxxx_p(&#39;||is_ym||&#39;):&#39;||SUBSTR(SQLERRM,1,500); </span><br><span class="line"></span><br><span class="line">ROLLBACK; </span><br><span class="line"></span><br><span class="line">--把当前错误记录进日志表。 </span><br><span class="line"></span><br><span class="line">INSERT INTO LOG_INFO(proc_name,error_info,op_date) </span><br><span class="line">VALUES(&#39;xxxxxxxxxxx_p&#39;,vs_msg,SYSDATE); </span><br><span class="line">COMMIT; </span><br><span class="line">RETURN; </span><br><span class="line"></span><br><span class="line">END; </span><br></pre></td></tr></table></figure>
-
-<h5 id="存储过程语法"><a href="#存储过程语法" class="headerlink" title="存储过程语法"></a>存储过程语法</h5><h6 id="判断语句"><a href="#判断语句" class="headerlink" title="判断语句"></a>判断语句</h6><p>if 比较式 then begin end; end if;</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">create or replace procedure test(x in number) is </span><br><span class="line">begin </span><br><span class="line">if x &gt;0 then </span><br><span class="line">begin </span><br><span class="line">x :&#x3D; 0 - x; </span><br><span class="line">end; </span><br><span class="line">end if; </span><br><span class="line">if x &#x3D; 0 then </span><br><span class="line">begin </span><br><span class="line">x: &#x3D; 1; </span><br><span class="line">end; </span><br><span class="line">end if; </span><br><span class="line">end test; </span><br></pre></td></tr></table></figure>
-
-<h6 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">create or replace procedure test() as </span><br><span class="line">Cursor cursor is select name from student; name varchar(20); </span><br><span class="line">begin </span><br><span class="line">for name in cursor LOOP </span><br><span class="line">begin </span><br><span class="line">dbms_output.putline(name); </span><br><span class="line">end; </span><br><span class="line">end LOOP; </span><br><span class="line">end test; </span><br></pre></td></tr></table></figure>
-
-<h6 id="循环遍历数组"><a href="#循环遍历数组" class="headerlink" title="循环遍历数组"></a>循环遍历数组</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">create or replace procedure test(varArray in myPackage.TestArray) as </span><br><span class="line">--( 输入参数varArray 是自定义的数组类型，定义方式见标题6) </span><br><span class="line">i number; </span><br><span class="line">begin </span><br><span class="line">i :&#x3D; 1; -- 存储过程数组是起始位置是从1 开始的，与java 、C 、C++ 等语言不同。因为在Oracle 中本是没有数组的概念的，数组其实就是一张 </span><br><span class="line">-- 表(Table), 每个数组元素就是表中的一个记录，所以遍历数组时就相当于从表中的第一条记录开始遍历 </span><br><span class="line">for i in 1..varArray.count LOOP </span><br><span class="line">dbms_output.putline(&#39;The No.&#39;|| i || &#39;record in varArray is:&#39;||varArray(i)); </span><br><span class="line">end LOOP; </span><br><span class="line">end test; </span><br></pre></td></tr></table></figure>
-
-<h6 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">begin </span><br><span class="line">end; </span><br><span class="line">end LOOP; </span><br><span class="line">E.g </span><br><span class="line">create or replace procedure test(i in number) as </span><br><span class="line">begin </span><br><span class="line">while i &lt; 10 LOOP </span><br><span class="line">begin </span><br><span class="line">i:&#x3D; i + 1; </span><br><span class="line">end; </span><br><span class="line">end LOOP; </span><br><span class="line">end test; </span><br></pre></td></tr></table></figure>
-
-<h6 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h6><p>首先明确一个概念：Oracle 中本是没有数组的概念的，数组其实就是一张表(Table), 每个数组元素就是表中的一个记录。</p>
-<p>使用数组时，用户可以使用Oracle 已经定义好的数组类型，或可根据自己的需要定义数组类型。</p>
-<ol>
-<li>使用Oracle 自带的数组类型</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">x array; -- 使用时需要需要进行初始化</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">create or replace procedure test(y out array) is</span><br><span class="line">x array;</span><br><span class="line">begin</span><br><span class="line">x :&#x3D; new array();</span><br><span class="line">y :&#x3D; x;</span><br><span class="line">end test;</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>自定义的数组类型 ( 自定义数据类型时，建议通过创建Package 的方式实现，以便于管理)</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">create or replace package myPackage is</span><br><span class="line">Public type declarations type info is record( name varchar(20), y number);</span><br><span class="line">type TestArray is table of info index by binary_integer;</span><br><span class="line">-- 此处声明了一个TestArray 的类型数据，其实其为一张存储Info 数据类型的Table 而已，及TestArray 就是一张表，有两个字段，一个是name ，一个是y 。需要注意的是此处使用了Index by binary_integer 编制该Table 的索引项，也可以不写，直接写成：type TestArray is</span><br><span class="line">table of info ，如果不写的话使用数组时就需要进行初始化：varArray myPackage.TestArray; varArray :&#x3D; new myPackage.TestArray();</span><br><span class="line">end TestArray;</span><br></pre></td></tr></table></figure>
-
-<h6 id="游标"><a href="#游标" class="headerlink" title="游标"></a>游标</h6><p>Oracle 中Cursor 是非常有用的，用于遍历临时表中的查询结果。其相关方法和属性也很多，现仅就常用的用法做一二介绍：</p>
-<ol>
-<li>Cursor 型游标( 不能用于参数传递)</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">create or replace procedure test() is</span><br><span class="line">cusor_1 Cursor is select std_name from student where ...; --Cursor 的使用方式1 cursor_2 Cursor;</span><br><span class="line">begin</span><br><span class="line">select class_name into cursor_2 from class where ...; --Cursor 的使用方式2</span><br><span class="line">可使用For x in cursor LOOP .... end LOOP; 来实现对Cursor 的遍历</span><br><span class="line">end test;</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li><p>SYS_REFCURSOR 型游标，该游标是Oracle 以预先定义的游标，可作出参数进行传递</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">create or replace procedure test(rsCursor out SYS_REFCURSOR) is</span><br><span class="line">cursor SYS_REFCURSOR;</span><br><span class="line">name varhcar(20);</span><br><span class="line">begin</span><br><span class="line">OPEN cursor FOR select name from student where ... --SYS_REFCURSOR 只能通过OPEN 方法来打开和赋值</span><br><span class="line">LOOP</span><br><span class="line">fetch cursor into name --SYS_REFCURSOR 只能通过fetch into 来打开和遍历 exit when cursor%NOTFOUND; --SYS_REFCURSOR 中可使用三个状态属性： ---%NOTFOUND( 未找到记录信息) %FOUND( 找到记录信息) ---%ROWCOUNT( 然后当前游标所指向的行位置)</span><br><span class="line">dbms_output.putline(name);</span><br><span class="line">end LOOP;</span><br><span class="line">rsCursor :&#x3D; cursor;</span><br><span class="line">end test;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<h6 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h6><p>假设存在两张表，一张是学生成绩表(studnet) ，字段：stdId, math, article, language, music, sport, total, average, step；一张是学生课外成绩表(out_school),，字段为：stdId, parctice, comment。通过存储过程自动计算出每位学生的总成绩和平均成绩，同时，如果学生在课外课程中获得的评价为A ，就在总成绩上加20 分。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> </span><br><span class="line">create or replace procedure autocomputer(step in number) is </span><br><span class="line">rsCursor SYS_REFCURSOR; </span><br><span class="line">commentArray myPackage.myArray; </span><br><span class="line">math number; </span><br><span class="line">article number; </span><br><span class="line">language number; </span><br><span class="line">music number; </span><br><span class="line">sport number; </span><br><span class="line">total number; </span><br><span class="line">average number; </span><br><span class="line">stdId varchar(30); </span><br><span class="line">record myPackage.stdInfo; </span><br><span class="line">i number; </span><br><span class="line">begin </span><br><span class="line">i :&#x3D; 1; </span><br><span class="line">get_comment(commentArray); -- 调用名为get_comment() 的存储过程获取学生课外评分信息 </span><br><span class="line">OPEN rsCursor for select stdId,math,article,language,music,sport from student t where t.step &#x3D; step; </span><br><span class="line">LOOP </span><br><span class="line">fetch rsCursor into stdId,math,article,language,music,sport; exit when rsCursor%NOTFOUND; </span><br><span class="line">total :&#x3D; math + article + language + music + sport; </span><br><span class="line">for i in 1..commentArray.count LOOP </span><br><span class="line">record :&#x3D; commentArray(i); </span><br><span class="line">if stdId &#x3D; record.stdId then </span><br><span class="line">begin </span><br><span class="line">if record.comment &#x3D; &#39;A&#39; then </span><br><span class="line">begin </span><br><span class="line">total :&#x3D; total + 20; </span><br><span class="line">go to next; -- 使用go to 跳出for 循环 </span><br><span class="line">end; </span><br><span class="line">end if; </span><br><span class="line">end; </span><br><span class="line">end if; </span><br><span class="line">end LOOP; </span><br><span class="line">&lt;&lt;continue&gt;&gt; average :&#x3D; total &#x2F; 5; </span><br><span class="line">update student t set t.total&#x3D;total and t.average &#x3D; average where t.stdId &#x3D; stdId; </span><br><span class="line">end LOOP; </span><br><span class="line">end; </span><br><span class="line">end autocomputer; </span><br><span class="line">-- 取得学生评论信息的存储过程 </span><br><span class="line">create or replace procedure get_comment(commentArray out myPackage.myArray) is </span><br><span class="line">rs SYS_REFCURSOR ； </span><br><span class="line">record myPackage.stdInfo; </span><br><span class="line">stdId varchar(30); </span><br><span class="line">comment varchar(1); </span><br><span class="line">i number; </span><br><span class="line">begin </span><br><span class="line">open rs for select stdId,comment from out_school </span><br><span class="line">i :&#x3D; 1; </span><br><span class="line">LOOP </span><br><span class="line">fetch rs into stdId,comment; exit when rs%NOTFOUND; </span><br><span class="line">record.stdId :&#x3D; stdId; </span><br><span class="line">record.comment :&#x3D; comment; </span><br><span class="line">recommentArray(i) :&#x3D; record; </span><br><span class="line">i:&#x3D;i + 1; </span><br><span class="line">end LOOP; </span><br><span class="line">end get_comment; </span><br><span class="line">-- 定义数组类型myArray </span><br><span class="line">create or replace package myPackage is begin </span><br><span class="line">type stdInfo is record(stdId varchar(30),comment varchar(1)); </span><br><span class="line">type myArray is table of stdInfo index by binary_integer; </span><br><span class="line">end myPackage; </span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>数据库</category>
-      </categories>
-      <tags>
-        <tag>oracle</tag>
       </tags>
   </entry>
 </search>
