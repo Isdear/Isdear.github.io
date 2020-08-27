@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"isdear.github.io","root":"/","scheme":"Pisces","version":"8.0.0-rc.5","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
+  </script>
+
+  <meta name="description" content="oracle的存储过程用法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="oracle的存储过程">
+<meta property="og:url" content="http://isdear.github.io/2020/08/27/23/02/oracle%E7%9A%84%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/index.html">
+<meta property="og:site_name" content="Welcome to my Hexo">
+<meta property="og:description" content="oracle的存储过程用法">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-08-27T15:02:41.000Z">
+<meta property="article:modified_time" content="2020-08-27T15:29:54.479Z">
+<meta property="article:author" content="Kuang">
+<meta property="article:tag" content="oracle">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://isdear.github.io/2020/08/27/23/02/oracle%E7%9A%84%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>oracle的存储过程 | Welcome to my Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Welcome to my Hexo</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-首页">
+
+    <a href="/" rel="section"><i class="home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-标签">
+
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-类别">
+
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>类别</a>
+
+  </li>
+        <li class="menu-item menu-item-档案">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>档案</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">基本语法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E8%AF%AD%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">创建语法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E8%AF%AD%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">存储过程语法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%88%A4%E6%96%AD%E8%AF%AD%E5%8F%A5"><span class="nav-number">3.1.</span> <span class="nav-text">判断语句</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#for%E5%BE%AA%E7%8E%AF"><span class="nav-number">3.2.</span> <span class="nav-text">for循环</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E9%81%8D%E5%8E%86%E6%95%B0%E7%BB%84"><span class="nav-number">3.3.</span> <span class="nav-text">循环遍历数组</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#while%E5%BE%AA%E7%8E%AF"><span class="nav-number">3.4.</span> <span class="nav-text">while循环</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%95%B0%E7%BB%84"><span class="nav-number">3.5.</span> <span class="nav-text">数组</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%B8%B8%E6%A0%87"><span class="nav-number">3.6.</span> <span class="nav-text">游标</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B"><span class="nav-number">3.7.</span> <span class="nav-text">示例</span></a></li></ol></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Kuang"
+      src="/images/kenan.jpg">
+  <p class="site-author-name" itemprop="name">Kuang</p>
+  <div class="site-description" itemprop="description">个人博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Isdear" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Isdear" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/kuang8421@qq.com" title="E-Mail → kuang8421@qq.com"><i class="envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/269017831" title="B站 → https:&#x2F;&#x2F;space.bilibili.com&#x2F;269017831" rel="noopener" target="_blank"><i class="youtube-play fa-fw"></i>B站</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/1906956615" title="QQ → 1906956615"><i class="qq fa-fw"></i>QQ</a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://isdear.github.io/2020/08/27/23/02/oracle%E7%9A%84%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/kenan.jpg">
+      <meta itemprop="name" content="Kuang">
+      <meta itemprop="description" content="个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to my Hexo">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          oracle的存储过程
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-08-27 23:02:41 / 修改时间：23:29:54" itemprop="dateCreated datePublished" datetime="2020-08-27T23:02:41+08:00">2020-08-27</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="far fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>oracle的存储过程用法<a id="more"></a></p>
+<h5 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CREATE OR REPLACE PRODUCE 存储过程名</span><br><span class="line">IS</span><br><span class="line">BEGIN</span><br><span class="line">NULL;</span><br><span class="line">END;</span><br></pre></td></tr></table></figure>
+
+<p>CREATE OR REPLACE PROCEDURE 是一个SQL语句通知Oracle数据库去创建一个叫做skeleton存储过程, 如果存在就覆盖它;<br>　　IS关键词表明后面将跟随一个PL/SQL体。<br>　　BEGIN关键词表明PL/SQL体的开始。<br>　　NULL PL/SQL语句表明什么事都不做，这句不能删去，因为PL/SQL体中至少需要有一句;<br>　　END关键词表明PL/SQL体的结束</p>
+<h5 id="创建语法"><a href="#创建语法" class="headerlink" title="创建语法"></a>创建语法</h5><p>create or replace procedure 存储过程名（param1 in type，param2 out type）as</p>
+<p>变量1 类型（值范围）; –vs_msg VARCHAR2(4000);</p>
+<p>变量2 类型（值范围）;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line">Begin </span><br><span class="line">Select count(*) into 变量1 from 表A where列名&#x3D;param1； </span><br><span class="line"></span><br><span class="line">If (判断条件) then </span><br><span class="line">Select 列名 into 变量2 from 表A where列名&#x3D;param1； </span><br><span class="line">Dbms_output。Put_line(‘打印信息&#39;); </span><br><span class="line">Elsif (判断条件) then </span><br><span class="line">Dbms_output。Put_line(‘打印信息&#39;); </span><br><span class="line">Else </span><br><span class="line">Raise 异常名（NO_DATA_FOUND）; </span><br><span class="line">End if; </span><br><span class="line">Exception </span><br><span class="line">When others then </span><br><span class="line">Rollback; </span><br><span class="line">End; </span><br></pre></td></tr></table></figure>
+
+<p><strong>注意事项</strong>：</p>
+<ul>
+<li><p>存储过程参数不带取值范围，in表示传入，out表示输出类型可以使用任意Oracle中的合法类型</p>
+</li>
+<li><p>变量带取值范围，后面接分号</p>
+</li>
+<li><p>在判断语句前最好先用count（*）函数判断是否存在该条操作记录</p>
+</li>
+<li><p>用select 。。。into。。。给变量赋值</p>
+</li>
+<li><p>在代码中抛异常用 raise+异常名</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line">CREATE OR REPLACE PROCEDURE存储过程名 </span><br><span class="line">( </span><br><span class="line">--定义参数 </span><br><span class="line">is_ym IN CHAR(6) , </span><br><span class="line">the_count OUT NUMBER, </span><br><span class="line">) </span><br><span class="line">AS </span><br><span class="line">--定义变量 </span><br><span class="line">vs_msg VARCHAR2(4000); --错误信息变量 </span><br><span class="line">vs_ym_beg CHAR(6); --起始月份 </span><br><span class="line">vs_ym_end CHAR(6); --终止月份 </span><br><span class="line">vs_ym_sn_beg CHAR(6); --同期起始月份 </span><br><span class="line">vs_ym_sn_end CHAR(6); --同期终止月份 </span><br><span class="line">--定义游标(简单的说就是一个可以遍历的结果集) </span><br><span class="line"></span><br><span class="line">CURSOR cur_1 IS </span><br><span class="line">SELECT 。。。 </span><br><span class="line">FROM 。。。 </span><br><span class="line">WHERE 。。。 </span><br><span class="line">GROUP BY 。。。; </span><br><span class="line">BEGIN </span><br><span class="line"></span><br><span class="line">--用输入参数给变量赋初值，用到了Oralce的SUBSTR TO_CHAR ADD_MONTHS </span><br><span class="line"></span><br><span class="line">TO_DATE 等很常用的函数。 </span><br><span class="line">vs_ym_beg :&#x3D; SUBSTR(is_ym,1,6); </span><br><span class="line">vs_ym_end :&#x3D; SUBSTR(is_ym,7,6); </span><br><span class="line">vs_ym_sn_beg :&#x3D; TO_CHAR(ADD_MONTHS(TO_DATE(vs_ym_beg,&#39;yyyymm&#39;), -12),&#39;yyyymm&#39;); </span><br><span class="line">vs_ym_sn_end :&#x3D; TO_CHAR(ADD_MONTHS(TO_DATE(vs_ym_end,&#39;yyyymm&#39;), -12),&#39;yyyymm&#39;); </span><br><span class="line"></span><br><span class="line">--先删除表中特定条件的数据。 </span><br><span class="line"></span><br><span class="line">DELETE FROM 表名 WHERE ym &#x3D; is_ym; </span><br><span class="line"></span><br><span class="line">--然后用内置的DBMS_OUTPUT对象的put_line方法打印出影响的记录行数，其中用到一个系统变量SQL%rowcount </span><br><span class="line"></span><br><span class="line">DBMS_OUTPUT.put_line(&#39;del上月记录&#x3D;&#39;||SQL%rowcount||&#39;条&#39;); </span><br><span class="line">INSERT INTO表名(area_code,ym,CMCODE,rmb_amt,usd_amt) </span><br><span class="line">SELECT area_code,is_ym,CMCODE,SUM(rmb_amt)&#x2F;10000,SUM(usd_amt)&#x2F;10000 </span><br><span class="line">FROM BGD_AREA_CM_M_BASE_T </span><br><span class="line">WHERE ym &gt;&#x3D; vs_ym_beg </span><br><span class="line">AND ym &lt;&#x3D; vs_ym_end </span><br><span class="line">GROUP BY area_code,CMCODE; </span><br><span class="line">DBMS_OUTPUT.put_line(&#39;ins当月记录&#x3D;&#39;||SQL%rowcount||&#39;条&#39;); </span><br><span class="line">--遍历游标处理后更新到表。遍历游标有几种方法，用for语句是其中比较直观的一种。 </span><br><span class="line"></span><br><span class="line">FOR rec IN cur_1 LOOP </span><br><span class="line">UPDATE 表名 </span><br><span class="line">SET rmb_amt_sn &#x3D; rec.rmb_amt_sn,usd_amt_sn &#x3D; rec.usd_amt_sn </span><br><span class="line">WHERE area_code &#x3D; rec.area_code </span><br><span class="line">AND CMCODE &#x3D; rec.CMCODE </span><br><span class="line">AND ym &#x3D; is_ym; </span><br><span class="line">END LOOP; </span><br><span class="line">COMMIT; </span><br><span class="line"></span><br><span class="line">--错误处理部分。OTHERS表示除了声明外的任意错误。SQLERRM是系统内置变量保存了当前错误的详细信息。 </span><br><span class="line"></span><br><span class="line">EXCEPTION </span><br><span class="line"></span><br><span class="line">WHEN OTHERS THEN </span><br><span class="line">vs_msg :&#x3D; &#39;ERROR IN xxxxxxxxxxx_p(&#39;||is_ym||&#39;):&#39;||SUBSTR(SQLERRM,1,500); </span><br><span class="line"></span><br><span class="line">ROLLBACK; </span><br><span class="line"></span><br><span class="line">--把当前错误记录进日志表。 </span><br><span class="line"></span><br><span class="line">INSERT INTO LOG_INFO(proc_name,error_info,op_date) </span><br><span class="line">VALUES(&#39;xxxxxxxxxxx_p&#39;,vs_msg,SYSDATE); </span><br><span class="line">COMMIT; </span><br><span class="line">RETURN; </span><br><span class="line"></span><br><span class="line">END; </span><br></pre></td></tr></table></figure>
+
+<h5 id="存储过程语法"><a href="#存储过程语法" class="headerlink" title="存储过程语法"></a>存储过程语法</h5><h6 id="判断语句"><a href="#判断语句" class="headerlink" title="判断语句"></a>判断语句</h6><p>if 比较式 then begin end; end if;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">create or replace procedure test(x in number) is </span><br><span class="line">begin </span><br><span class="line">if x &gt;0 then </span><br><span class="line">begin </span><br><span class="line">x :&#x3D; 0 - x; </span><br><span class="line">end; </span><br><span class="line">end if; </span><br><span class="line">if x &#x3D; 0 then </span><br><span class="line">begin </span><br><span class="line">x: &#x3D; 1; </span><br><span class="line">end; </span><br><span class="line">end if; </span><br><span class="line">end test; </span><br></pre></td></tr></table></figure>
+
+<h6 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">create or replace procedure test() as </span><br><span class="line">Cursor cursor is select name from student; name varchar(20); </span><br><span class="line">begin </span><br><span class="line">for name in cursor LOOP </span><br><span class="line">begin </span><br><span class="line">dbms_output.putline(name); </span><br><span class="line">end; </span><br><span class="line">end LOOP; </span><br><span class="line">end test; </span><br></pre></td></tr></table></figure>
+
+<h6 id="循环遍历数组"><a href="#循环遍历数组" class="headerlink" title="循环遍历数组"></a>循环遍历数组</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">create or replace procedure test(varArray in myPackage.TestArray) as </span><br><span class="line">--( 输入参数varArray 是自定义的数组类型，定义方式见标题6) </span><br><span class="line">i number; </span><br><span class="line">begin </span><br><span class="line">i :&#x3D; 1; -- 存储过程数组是起始位置是从1 开始的，与java 、C 、C++ 等语言不同。因为在Oracle 中本是没有数组的概念的，数组其实就是一张 </span><br><span class="line">-- 表(Table), 每个数组元素就是表中的一个记录，所以遍历数组时就相当于从表中的第一条记录开始遍历 </span><br><span class="line">for i in 1..varArray.count LOOP </span><br><span class="line">dbms_output.putline(&#39;The No.&#39;|| i || &#39;record in varArray is:&#39;||varArray(i)); </span><br><span class="line">end LOOP; </span><br><span class="line">end test; </span><br></pre></td></tr></table></figure>
+
+<h6 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">begin </span><br><span class="line">end; </span><br><span class="line">end LOOP; </span><br><span class="line">E.g </span><br><span class="line">create or replace procedure test(i in number) as </span><br><span class="line">begin </span><br><span class="line">while i &lt; 10 LOOP </span><br><span class="line">begin </span><br><span class="line">i:&#x3D; i + 1; </span><br><span class="line">end; </span><br><span class="line">end LOOP; </span><br><span class="line">end test; </span><br></pre></td></tr></table></figure>
+
+<h6 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h6><p>首先明确一个概念：Oracle 中本是没有数组的概念的，数组其实就是一张表(Table), 每个数组元素就是表中的一个记录。</p>
+<p>使用数组时，用户可以使用Oracle 已经定义好的数组类型，或可根据自己的需要定义数组类型。</p>
+<ol>
+<li>使用Oracle 自带的数组类型</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x array; -- 使用时需要需要进行初始化</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">create or replace procedure test(y out array) is</span><br><span class="line">x array;</span><br><span class="line">begin</span><br><span class="line">x :&#x3D; new array();</span><br><span class="line">y :&#x3D; x;</span><br><span class="line">end test;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>自定义的数组类型 ( 自定义数据类型时，建议通过创建Package 的方式实现，以便于管理)</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">create or replace package myPackage is</span><br><span class="line">Public type declarations type info is record( name varchar(20), y number);</span><br><span class="line">type TestArray is table of info index by binary_integer;</span><br><span class="line">-- 此处声明了一个TestArray 的类型数据，其实其为一张存储Info 数据类型的Table 而已，及TestArray 就是一张表，有两个字段，一个是name ，一个是y 。需要注意的是此处使用了Index by binary_integer 编制该Table 的索引项，也可以不写，直接写成：type TestArray is</span><br><span class="line">table of info ，如果不写的话使用数组时就需要进行初始化：varArray myPackage.TestArray; varArray :&#x3D; new myPackage.TestArray();</span><br><span class="line">end TestArray;</span><br></pre></td></tr></table></figure>
+
+<h6 id="游标"><a href="#游标" class="headerlink" title="游标"></a>游标</h6><p>Oracle 中Cursor 是非常有用的，用于遍历临时表中的查询结果。其相关方法和属性也很多，现仅就常用的用法做一二介绍：</p>
+<ol>
+<li>Cursor 型游标( 不能用于参数传递)</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">create or replace procedure test() is</span><br><span class="line">cusor_1 Cursor is select std_name from student where ...; --Cursor 的使用方式1 cursor_2 Cursor;</span><br><span class="line">begin</span><br><span class="line">select class_name into cursor_2 from class where ...; --Cursor 的使用方式2</span><br><span class="line">可使用For x in cursor LOOP .... end LOOP; 来实现对Cursor 的遍历</span><br><span class="line">end test;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>SYS_REFCURSOR 型游标，该游标是Oracle 以预先定义的游标，可作出参数进行传递</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">create or replace procedure test(rsCursor out SYS_REFCURSOR) is</span><br><span class="line">cursor SYS_REFCURSOR;</span><br><span class="line">name varhcar(20);</span><br><span class="line">begin</span><br><span class="line">OPEN cursor FOR select name from student where ... --SYS_REFCURSOR 只能通过OPEN 方法来打开和赋值</span><br><span class="line">LOOP</span><br><span class="line">fetch cursor into name --SYS_REFCURSOR 只能通过fetch into 来打开和遍历 exit when cursor%NOTFOUND; --SYS_REFCURSOR 中可使用三个状态属性： ---%NOTFOUND( 未找到记录信息) %FOUND( 找到记录信息) ---%ROWCOUNT( 然后当前游标所指向的行位置)</span><br><span class="line">dbms_output.putline(name);</span><br><span class="line">end LOOP;</span><br><span class="line">rsCursor :&#x3D; cursor;</span><br><span class="line">end test;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h6 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h6><p>假设存在两张表，一张是学生成绩表(studnet) ，字段：stdId, math, article, language, music, sport, total, average, step；一张是学生课外成绩表(out_school),，字段为：stdId, parctice, comment。通过存储过程自动计算出每位学生的总成绩和平均成绩，同时，如果学生在课外课程中获得的评价为A ，就在总成绩上加20 分。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line">create or replace procedure autocomputer(step in number) is </span><br><span class="line">rsCursor SYS_REFCURSOR; </span><br><span class="line">commentArray myPackage.myArray; </span><br><span class="line">math number; </span><br><span class="line">article number; </span><br><span class="line">language number; </span><br><span class="line">music number; </span><br><span class="line">sport number; </span><br><span class="line">total number; </span><br><span class="line">average number; </span><br><span class="line">stdId varchar(30); </span><br><span class="line">record myPackage.stdInfo; </span><br><span class="line">i number; </span><br><span class="line">begin </span><br><span class="line">i :&#x3D; 1; </span><br><span class="line">get_comment(commentArray); -- 调用名为get_comment() 的存储过程获取学生课外评分信息 </span><br><span class="line">OPEN rsCursor for select stdId,math,article,language,music,sport from student t where t.step &#x3D; step; </span><br><span class="line">LOOP </span><br><span class="line">fetch rsCursor into stdId,math,article,language,music,sport; exit when rsCursor%NOTFOUND; </span><br><span class="line">total :&#x3D; math + article + language + music + sport; </span><br><span class="line">for i in 1..commentArray.count LOOP </span><br><span class="line">record :&#x3D; commentArray(i); </span><br><span class="line">if stdId &#x3D; record.stdId then </span><br><span class="line">begin </span><br><span class="line">if record.comment &#x3D; &#39;A&#39; then </span><br><span class="line">begin </span><br><span class="line">total :&#x3D; total + 20; </span><br><span class="line">go to next; -- 使用go to 跳出for 循环 </span><br><span class="line">end; </span><br><span class="line">end if; </span><br><span class="line">end; </span><br><span class="line">end if; </span><br><span class="line">end LOOP; </span><br><span class="line">&lt;&lt;continue&gt;&gt; average :&#x3D; total &#x2F; 5; </span><br><span class="line">update student t set t.total&#x3D;total and t.average &#x3D; average where t.stdId &#x3D; stdId; </span><br><span class="line">end LOOP; </span><br><span class="line">end; </span><br><span class="line">end autocomputer; </span><br><span class="line">-- 取得学生评论信息的存储过程 </span><br><span class="line">create or replace procedure get_comment(commentArray out myPackage.myArray) is </span><br><span class="line">rs SYS_REFCURSOR ； </span><br><span class="line">record myPackage.stdInfo; </span><br><span class="line">stdId varchar(30); </span><br><span class="line">comment varchar(1); </span><br><span class="line">i number; </span><br><span class="line">begin </span><br><span class="line">open rs for select stdId,comment from out_school </span><br><span class="line">i :&#x3D; 1; </span><br><span class="line">LOOP </span><br><span class="line">fetch rs into stdId,comment; exit when rs%NOTFOUND; </span><br><span class="line">record.stdId :&#x3D; stdId; </span><br><span class="line">record.comment :&#x3D; comment; </span><br><span class="line">recommentArray(i) :&#x3D; record; </span><br><span class="line">i:&#x3D;i + 1; </span><br><span class="line">end LOOP; </span><br><span class="line">end get_comment; </span><br><span class="line">-- 定义数组类型myArray </span><br><span class="line">create or replace package myPackage is begin </span><br><span class="line">type stdInfo is record(stdId varchar(30),comment varchar(1)); </span><br><span class="line">type myArray is table of stdInfo index by binary_integer; </span><br><span class="line">end myPackage; </span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Kuang
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://isdear.github.io/2020/08/27/23/02/oracle%E7%9A%84%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/" title="oracle的存储过程">http://isdear.github.io/2020/08/27/23/02/oracle的存储过程/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/oracle/" rel="tag"># oracle</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/08/25/22/34/lag%E5%92%8Clead%E5%87%BD%E6%95%B0/" rel="prev" title="lag和lead函数">
+                  <i class="fa fa-chevron-left"></i> lag和lead函数
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+  
+  
+  
+
+
+
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kuang</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
