@@ -1,6 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>ETL</title>
+    <url>/2020/08/08/22/54/ETL/</url>
+    <content><![CDATA[<p>ETL的概念及使用场景<a id="more"></a></p>
+<h5 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h5><p>ETL 是三个单词的缩写：</p>
+<ul>
+<li>Extraction：抽取、提取；就是把数据从数据库里面取出来；</li>
+<li>Transformation：转换；包括但不限于：数据筛选校验、数据关联、数据内容及结构的修改、运算、统计等等；</li>
+<li>Loading：加载；将处理后的数据保存到目标数据库。</li>
+</ul>
+<p>从这三个单词基本可以了解 ETL 的作用：将各个业务系统的数据，通过抽取、清洗、转换之后，将加工后的数据落地到数据库中（数据仓库）；在这个过程中，ETL 可以将分散、零乱、标准不统一的数据整合到一起。</p>
+<p><img src="/2020/08/08/22/54/ETL/ETL.webp.jpg" alt></p>
+<h5 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h5><h6 id="报表、BI系统"><a href="#报表、BI系统" class="headerlink" title="报表、BI系统"></a>报表、BI系统</h6><p>在公司建设的初期，业务比较少，系统也比较少，一台数据库就搞定了；随着公司业务的增加，业务系统被拆成很多系统；随着数据量的继续增加，单个系统的数据增加到一定程度的时候，也做了分库分表；</p>
+<p>这时候领导、业务人员在用数据做分析的时候，数据来源可能是多个系统的多张表，这时候企图通过一个复杂的 SQL 跑出来结果就很困难了；通常公司会建立一个数据仓库，通过ETL工具把数据抽取到数据仓库中，再做数据的拟合和展示。</p>
+<h6 id="跨系统的数据加工或查询"><a href="#跨系统的数据加工或查询" class="headerlink" title="跨系统的数据加工或查询"></a>跨系统的数据加工或查询</h6><p>业务系统有几百个，由于业务流程比较复杂，前端系统在做业务操作的时候，在正式提交交易之前，有很多业务校验；</p>
+<p>比如要查询客户在 X 系统的交易历史，在 Y 系统的交易历史，在 Z 系统的交易历史；那么就需要分别调用 X、Y、Z 系统的接口，这个对前端系统很不友好，那么通常的解决方案是什么？</p>
+<ul>
+<li>A 方案：做一个中间服务，中间服务去调用 X、Y、Z 系统的接口，客户端直接调用这个中间服务；这种方案只是把前端要做的事情，转移到了中间服务；</li>
+<li>B 方案：整合 X、Y、Z 三个系统，建服务中台；这种方法很好，但是极为难，对于很多公司来说，别说把 X、Y、Z 三个系统整合成一个中台系统，就是其中一个系统本身进行重构，都是非常困难的；</li>
+<li>C 方案：把 X、Y、Z 三个系统中需要的数据，通过 ETL 抽取加工到一个数据仓库中，对外提供服务；这个系统最大的好处是在不改造 X、Y、Z 三个系统的前提下，又可以实现跨系统的查询。</li>
+</ul>
+<p>我们在 C 方案的基础上又往前做了一步，就是将落地后的数据又做了一次加工，将需要跨表关联的数据，提前关联好存入 MongoDB 中，对外提供查询服务；这样可以将多表关联查询，变成了单表查询。</p>
+<p><img src="/2020/08/08/22/54/ETL/ETL2.webp.jpg" alt></p>
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>oracle</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CSS3滤镜filter</title>
     <url>/2020/02/10/15/17/CSS3%E6%BB%A4%E9%95%9Cfilter/</url>
     <content><![CDATA[<p>网页图片的色彩处理<a id="more"></a></p>
@@ -72,6 +103,96 @@
       </categories>
       <tags>
         <tag>CSS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo搭建博客</title>
+    <url>/2019/11/22/10/52/Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<p> Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 <a href="http://daringfireball.net/projects/markdown/">Markdown</a>（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。 </p>
+<a id="more"></a>
+
+<p>Hexo官方文档 <a href="https://hexo.io/docs/index.html">https://hexo.io/docs/index.html</a> 。</p>
+<p>使用Hexo搭建自己的博客首先需要下列应用程序：</p>
+<ul>
+<li><a href="http://nodejs.org/">Node.js</a> (建议使用 Node.js 10.0 及以上版本，现在最新稳定版13.1)</li>
+<li><a href="http://git-scm.com/">Git</a></li>
+</ul>
+<p>所有必备的应用程序安装完成后，就可以利用npm安装Hexo。</p>
+<h5 id="Hexo安装"><a href="#Hexo安装" class="headerlink" title="Hexo安装"></a>Hexo安装</h5><p>利用命令提示符输入以下命令安装Hexo：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install -g hexo</span><br></pre></td></tr></table></figure>
+
+<p>新建一个文件夹用来部署你的博客项目，进入文件夹右键Git Bash Here打开git bush命令界面，输入下列命令初始化文件夹(以便后面部署到GitHub上)：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+
+<p>在文件夹中安装npm:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
+<p>安装git部署插件:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<h5 id="服务器端运行"><a href="#服务器端运行" class="headerlink" title="服务器端运行"></a>服务器端运行</h5><p>可以通过下面的命令在本地服务器运行，在浏览器中输入 <a href="http://localhost:4000">http://localhost:4000</a> 即可，但是需要一直保持连接不断开:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+
+<p>也可以利用SSH上传博客项目到GitHub的repository仓库上，就可以用网络直接访问仓库名即可打开博客。</p>
+<h6 id="创建GitHub账号"><a href="#创建GitHub账号" class="headerlink" title="创建GitHub账号"></a>创建GitHub账号</h6><p>在 <a href="https://github.com/">https://github.com/</a> 上注册账号，完成后，在 <a href="https://github.com">https://github.com</a> 页面点击右上角”+”的”new repository”创建自己的项目仓库，仓库名称是”自己的github名称.github.io”，例如我的github账号名称Isdear，仓库名即为”Isdear.github.io”。</p>
+<h6 id="关联本地仓库"><a href="#关联本地仓库" class="headerlink" title="关联本地仓库"></a>关联本地仓库</h6><p>右键点击Git Bash Here进入命令界面，通过命令绑定账户。</p>
+<p>配置用户名</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;yourname&quot;</span><br></pre></td></tr></table></figure>
+
+<p>配置GitHub账户邮箱</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.email &quot;youremail@example.com&quot;</span><br></pre></td></tr></table></figure>
+
+<p>输入命令生成SSH key:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;youremail@example.com&quot;</span><br></pre></td></tr></table></figure>
+
+<p>命令界面会显示生成的位置，例如我的是在”c/users/dell/.ssh/id_rsa.pub”。打开id_rsa.pub文件，里面的内容全部复制。在网页中点击GitHub账户头像选择”Settings”，再点击”SSH and GPG keys”，点击SSH右边的”new SSH key”，Title可以随便输入，Key中就将刚刚复制的密钥粘贴过去，点击”Add SSH key”，之后就会生成的16进制的SSH 密令。打开GitHub上的仓库，复制SSH地址链接，</p>
+<p>Git Bash中输入关联GitHub账户:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh git@github.com</span><br></pre></td></tr></table></figure>
+
+<p>在你的博客项目文件夹中打开”_config.yml”文件，直接拉到最下面配置项目部署环境。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: git@github.com:Isdear&#x2F;Isdear.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+
+<h6 id="部署项目"><a href="#部署项目" class="headerlink" title="部署项目"></a>部署项目</h6><p>在Git Bash界面输入下面的命令，生成博客项目的静态文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>部署到GitHub上:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>接下来就可以直接浏览器的地址栏输入你的GitHub仓库名即可访问博客。</p>
+<h5 id="主题配置"><a href="#主题配置" class="headerlink" title="主题配置"></a>主题配置</h5><p>Hexo可以在 <a href="https://hexo.io/themes/">https://hexo.io/themes/</a> 选择博客的主题，点击主题的名称，进入到主题的GitHub仓库，下载ZIP压缩包，解压后把文件夹放入到博客项目的themes目录下(文件夹名字有点长，可以重命名一下)。在博客项目主目录下打开”_config.yml”文件，修改theme属性，默认是”landscape”，你把它修改成你下载的主题的文件夹名称就可以了，重新执行生成和部署命令，就可以看到博客的新主题了。</p>
+<h5 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h5><p>这里只是提出一些常用的命令，更多命令还是到官方文档查看。</p>
+<h6 id="初始化本地文件夹为网站的根目录"><a href="#初始化本地文件夹为网站的根目录" class="headerlink" title="初始化本地文件夹为网站的根目录"></a>初始化本地文件夹为网站的根目录</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+
+<h6 id="新建文章"><a href="#新建文章" class="headerlink" title="新建文章"></a>新建文章</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new [layout] title</span><br></pre></td></tr></table></figure>
+
+<h6 id="生成静态文件"><a href="#生成静态文件" class="headerlink" title="生成静态文件"></a>生成静态文件</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo generate</span><br><span class="line">可以简写为</span><br><span class="line">hexo g</span><br></pre></td></tr></table></figure>
+
+<h6 id="启动本地服务器"><a href="#启动本地服务器" class="headerlink" title="启动本地服务器"></a>启动本地服务器</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo server</span><br><span class="line">可以简写为</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+
+<h6 id="部署网站"><a href="#部署网站" class="headerlink" title="部署网站"></a>部署网站</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo deploy</span><br><span class="line">可以简写为</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+
+<p>指定生成后部署</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo g -d </span><br></pre></td></tr></table></figure>
+
+<h6 id="清除缓存"><a href="#清除缓存" class="headerlink" title="清除缓存"></a>清除缓存</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
+
+<h5 id="撰写文章"><a href="#撰写文章" class="headerlink" title="撰写文章"></a>撰写文章</h5><p>因为Hexo是使用Markdown解析文章的，所以推荐使用Typora工具来编写文章 <a href="https://www.typora.io">https://www.typora.io</a> 。</p>
+<p>使用hexo new title命令可以在source/_posts目录下生成一个md格式的文档，使用Typora打开，开始写我们的博客。在工具内你可以右键添加图片、代码块、公式块、链接、表格、脚注、分割线、段落等，这里不再一一说明，只说明一些右键没有说明的设置。</p>
+<h6 id="文章头部设置"><a href="#文章头部设置" class="headerlink" title="文章头部设置"></a>文章头部设置</h6><p>创建文章之后，文章里的头部来自模板，默认是scaffolds目录下的post.md，你可以修改模板来对文章进行说明。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">title: Title </span><br><span class="line">date: YYYY-MM-DD HH:MM:SS </span><br><span class="line">tags: [tag1, tag2, ...] </span><br><span class="line">categories: category </span><br></pre></td></tr></table></figure>
+
+<p>属性与属性值中间必须要有一个空格，否则会解析错误。</p>
+<h6 id="首页显示"><a href="#首页显示" class="headerlink" title="首页显示"></a>首页显示</h6><p>Hexo框架搭建的博客网站中，首页显示的文章默认是显示全部内容，这样很不方便。使用<code>&lt;!--more--&gt;</code>标志，即可隐藏标志前面的内容。</p>
+<h6 id="部署发布"><a href="#部署发布" class="headerlink" title="部署发布"></a>部署发布</h6><p>每次写完文章或者修改配置后都要输入命令</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+
+<p>重新生成静态文件重新部署。</p>
+]]></content>
+      <categories>
+        <category>博客</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -341,127 +462,6 @@
       </categories>
       <tags>
         <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ETL</title>
-    <url>/2020/08/08/22/54/ETL/</url>
-    <content><![CDATA[<p>ETL的概念及使用场景<a id="more"></a></p>
-<h5 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h5><p>ETL 是三个单词的缩写：</p>
-<ul>
-<li>Extraction：抽取、提取；就是把数据从数据库里面取出来；</li>
-<li>Transformation：转换；包括但不限于：数据筛选校验、数据关联、数据内容及结构的修改、运算、统计等等；</li>
-<li>Loading：加载；将处理后的数据保存到目标数据库。</li>
-</ul>
-<p>从这三个单词基本可以了解 ETL 的作用：将各个业务系统的数据，通过抽取、清洗、转换之后，将加工后的数据落地到数据库中（数据仓库）；在这个过程中，ETL 可以将分散、零乱、标准不统一的数据整合到一起。</p>
-<p><img src="/2020/08/08/22/54/ETL/ETL.webp.jpg" alt></p>
-<h5 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h5><h6 id="报表、BI系统"><a href="#报表、BI系统" class="headerlink" title="报表、BI系统"></a>报表、BI系统</h6><p>在公司建设的初期，业务比较少，系统也比较少，一台数据库就搞定了；随着公司业务的增加，业务系统被拆成很多系统；随着数据量的继续增加，单个系统的数据增加到一定程度的时候，也做了分库分表；</p>
-<p>这时候领导、业务人员在用数据做分析的时候，数据来源可能是多个系统的多张表，这时候企图通过一个复杂的 SQL 跑出来结果就很困难了；通常公司会建立一个数据仓库，通过ETL工具把数据抽取到数据仓库中，再做数据的拟合和展示。</p>
-<h6 id="跨系统的数据加工或查询"><a href="#跨系统的数据加工或查询" class="headerlink" title="跨系统的数据加工或查询"></a>跨系统的数据加工或查询</h6><p>业务系统有几百个，由于业务流程比较复杂，前端系统在做业务操作的时候，在正式提交交易之前，有很多业务校验；</p>
-<p>比如要查询客户在 X 系统的交易历史，在 Y 系统的交易历史，在 Z 系统的交易历史；那么就需要分别调用 X、Y、Z 系统的接口，这个对前端系统很不友好，那么通常的解决方案是什么？</p>
-<ul>
-<li>A 方案：做一个中间服务，中间服务去调用 X、Y、Z 系统的接口，客户端直接调用这个中间服务；这种方案只是把前端要做的事情，转移到了中间服务；</li>
-<li>B 方案：整合 X、Y、Z 三个系统，建服务中台；这种方法很好，但是极为难，对于很多公司来说，别说把 X、Y、Z 三个系统整合成一个中台系统，就是其中一个系统本身进行重构，都是非常困难的；</li>
-<li>C 方案：把 X、Y、Z 三个系统中需要的数据，通过 ETL 抽取加工到一个数据仓库中，对外提供服务；这个系统最大的好处是在不改造 X、Y、Z 三个系统的前提下，又可以实现跨系统的查询。</li>
-</ul>
-<p>我们在 C 方案的基础上又往前做了一步，就是将落地后的数据又做了一次加工，将需要跨表关联的数据，提前关联好存入 MongoDB 中，对外提供查询服务；这样可以将多表关联查询，变成了单表查询。</p>
-<p><img src="/2020/08/08/22/54/ETL/ETL2.webp.jpg" alt></p>
-]]></content>
-      <categories>
-        <category>数据库</category>
-      </categories>
-      <tags>
-        <tag>oracle</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo搭建博客</title>
-    <url>/2019/11/22/10/52/Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<p> Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 <a href="http://daringfireball.net/projects/markdown/">Markdown</a>（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。 </p>
-<a id="more"></a>
-
-<p>Hexo官方文档 <a href="https://hexo.io/docs/index.html">https://hexo.io/docs/index.html</a> 。</p>
-<p>使用Hexo搭建自己的博客首先需要下列应用程序：</p>
-<ul>
-<li><a href="http://nodejs.org/">Node.js</a> (建议使用 Node.js 10.0 及以上版本，现在最新稳定版13.1)</li>
-<li><a href="http://git-scm.com/">Git</a></li>
-</ul>
-<p>所有必备的应用程序安装完成后，就可以利用npm安装Hexo。</p>
-<h5 id="Hexo安装"><a href="#Hexo安装" class="headerlink" title="Hexo安装"></a>Hexo安装</h5><p>利用命令提示符输入以下命令安装Hexo：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install -g hexo</span><br></pre></td></tr></table></figure>
-
-<p>新建一个文件夹用来部署你的博客项目，进入文件夹右键Git Bash Here打开git bush命令界面，输入下列命令初始化文件夹(以便后面部署到GitHub上)：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
-
-<p>在文件夹中安装npm:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
-
-<p>安装git部署插件:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-
-<h5 id="服务器端运行"><a href="#服务器端运行" class="headerlink" title="服务器端运行"></a>服务器端运行</h5><p>可以通过下面的命令在本地服务器运行，在浏览器中输入 <a href="http://localhost:4000">http://localhost:4000</a> 即可，但是需要一直保持连接不断开:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
-
-<p>也可以利用SSH上传博客项目到GitHub的repository仓库上，就可以用网络直接访问仓库名即可打开博客。</p>
-<h6 id="创建GitHub账号"><a href="#创建GitHub账号" class="headerlink" title="创建GitHub账号"></a>创建GitHub账号</h6><p>在 <a href="https://github.com/">https://github.com/</a> 上注册账号，完成后，在 <a href="https://github.com">https://github.com</a> 页面点击右上角”+”的”new repository”创建自己的项目仓库，仓库名称是”自己的github名称.github.io”，例如我的github账号名称Isdear，仓库名即为”Isdear.github.io”。</p>
-<h6 id="关联本地仓库"><a href="#关联本地仓库" class="headerlink" title="关联本地仓库"></a>关联本地仓库</h6><p>右键点击Git Bash Here进入命令界面，通过命令绑定账户。</p>
-<p>配置用户名</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;yourname&quot;</span><br></pre></td></tr></table></figure>
-
-<p>配置GitHub账户邮箱</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.email &quot;youremail@example.com&quot;</span><br></pre></td></tr></table></figure>
-
-<p>输入命令生成SSH key:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;youremail@example.com&quot;</span><br></pre></td></tr></table></figure>
-
-<p>命令界面会显示生成的位置，例如我的是在”c/users/dell/.ssh/id_rsa.pub”。打开id_rsa.pub文件，里面的内容全部复制。在网页中点击GitHub账户头像选择”Settings”，再点击”SSH and GPG keys”，点击SSH右边的”new SSH key”，Title可以随便输入，Key中就将刚刚复制的密钥粘贴过去，点击”Add SSH key”，之后就会生成的16进制的SSH 密令。打开GitHub上的仓库，复制SSH地址链接，</p>
-<p>Git Bash中输入关联GitHub账户:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh git@github.com</span><br></pre></td></tr></table></figure>
-
-<p>在你的博客项目文件夹中打开”_config.yml”文件，直接拉到最下面配置项目部署环境。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: git@github.com:Isdear&#x2F;Isdear.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-
-<h6 id="部署项目"><a href="#部署项目" class="headerlink" title="部署项目"></a>部署项目</h6><p>在Git Bash界面输入下面的命令，生成博客项目的静态文件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>部署到GitHub上:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>接下来就可以直接浏览器的地址栏输入你的GitHub仓库名即可访问博客。</p>
-<h5 id="主题配置"><a href="#主题配置" class="headerlink" title="主题配置"></a>主题配置</h5><p>Hexo可以在 <a href="https://hexo.io/themes/">https://hexo.io/themes/</a> 选择博客的主题，点击主题的名称，进入到主题的GitHub仓库，下载ZIP压缩包，解压后把文件夹放入到博客项目的themes目录下(文件夹名字有点长，可以重命名一下)。在博客项目主目录下打开”_config.yml”文件，修改theme属性，默认是”landscape”，你把它修改成你下载的主题的文件夹名称就可以了，重新执行生成和部署命令，就可以看到博客的新主题了。</p>
-<h5 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h5><p>这里只是提出一些常用的命令，更多命令还是到官方文档查看。</p>
-<h6 id="初始化本地文件夹为网站的根目录"><a href="#初始化本地文件夹为网站的根目录" class="headerlink" title="初始化本地文件夹为网站的根目录"></a>初始化本地文件夹为网站的根目录</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
-
-<h6 id="新建文章"><a href="#新建文章" class="headerlink" title="新建文章"></a>新建文章</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new [layout] title</span><br></pre></td></tr></table></figure>
-
-<h6 id="生成静态文件"><a href="#生成静态文件" class="headerlink" title="生成静态文件"></a>生成静态文件</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo generate</span><br><span class="line">可以简写为</span><br><span class="line">hexo g</span><br></pre></td></tr></table></figure>
-
-<h6 id="启动本地服务器"><a href="#启动本地服务器" class="headerlink" title="启动本地服务器"></a>启动本地服务器</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo server</span><br><span class="line">可以简写为</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-
-<h6 id="部署网站"><a href="#部署网站" class="headerlink" title="部署网站"></a>部署网站</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo deploy</span><br><span class="line">可以简写为</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-
-<p>指定生成后部署</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo g -d </span><br></pre></td></tr></table></figure>
-
-<h6 id="清除缓存"><a href="#清除缓存" class="headerlink" title="清除缓存"></a>清除缓存</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
-
-<h5 id="撰写文章"><a href="#撰写文章" class="headerlink" title="撰写文章"></a>撰写文章</h5><p>因为Hexo是使用Markdown解析文章的，所以推荐使用Typora工具来编写文章 <a href="https://www.typora.io">https://www.typora.io</a> 。</p>
-<p>使用hexo new title命令可以在source/_posts目录下生成一个md格式的文档，使用Typora打开，开始写我们的博客。在工具内你可以右键添加图片、代码块、公式块、链接、表格、脚注、分割线、段落等，这里不再一一说明，只说明一些右键没有说明的设置。</p>
-<h6 id="文章头部设置"><a href="#文章头部设置" class="headerlink" title="文章头部设置"></a>文章头部设置</h6><p>创建文章之后，文章里的头部来自模板，默认是scaffolds目录下的post.md，你可以修改模板来对文章进行说明。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">title: Title </span><br><span class="line">date: YYYY-MM-DD HH:MM:SS </span><br><span class="line">tags: [tag1, tag2, ...] </span><br><span class="line">categories: category </span><br></pre></td></tr></table></figure>
-
-<p>属性与属性值中间必须要有一个空格，否则会解析错误。</p>
-<h6 id="首页显示"><a href="#首页显示" class="headerlink" title="首页显示"></a>首页显示</h6><p>Hexo框架搭建的博客网站中，首页显示的文章默认是显示全部内容，这样很不方便。使用<code>&lt;!--more--&gt;</code>标志，即可隐藏标志前面的内容。</p>
-<h6 id="部署发布"><a href="#部署发布" class="headerlink" title="部署发布"></a>部署发布</h6><p>每次写完文章或者修改配置后都要输入命令</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
-
-<p>重新生成静态文件重新部署。</p>
-]]></content>
-      <categories>
-        <category>博客</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -865,6 +865,68 @@
       </tags>
   </entry>
   <entry>
+    <title>Java面经五</title>
+    <url>/2020/05/04/21/51/Java%E9%9D%A2%E7%BB%8F%E4%BA%94/</url>
+    <content><![CDATA[<p>Java面试总结五<a id="more"></a></p>
+<h6 id="Spring中BeanFactory和ApplicationContext的区别是什么？"><a href="#Spring中BeanFactory和ApplicationContext的区别是什么？" class="headerlink" title="Spring中BeanFactory和ApplicationContext的区别是什么？"></a>Spring中BeanFactory和ApplicationContext的区别是什么？</h6><p><strong>BeanFactory</strong>：</p>
+<p>BeanFactory是spring中比较原始，比较古老的Factory。因为比较古老，所以BeanFactory无法支持spring插件，例如：AOP、Web应用等功能。</p>
+<p><strong>ApplicationContext</strong>：</p>
+<p>ApplicationContext是BeanFactory的子类，因为古老的BeanFactory无法满足不断更新的spring的需求，于是ApplicationContext就基本上代替了BeanFactory的工作，以一种更面向框架的工作方式以及对上下文进行分层和实现继承，并在这个基础上对功能进行扩展：</p>
+<ul>
+<li>MessageSource, 提供国际化的消息访问</li>
+<li>资源访问（如URL和文件）</li>
+<li>事件传递</li>
+<li>Bean的自动装配</li>
+<li>各种不同应用层的Context实现</li>
+</ul>
+<p>区别：</p>
+<ol>
+<li>如果使用ApplicationContext，如果配置的bean是singleton，那么不管你有没有或想不想用它，它都会被实例化。好处是可以预先加载，坏处是浪费内存。</li>
+<li>BeanFactory，当使用BeanFactory实例化对象时，配置的bean不会马上被实例化，而是等到你使用该bean的时候（getBean）才会被实例化。好处是节约内存，坏处是速度比较慢。多用于移动设备的开发。</li>
+<li>没有特殊要求的情况下，应该使用ApplicationContext完成。因为BeanFactory能完成的事情，ApplicationContext都能完成，并且提供了更多接近现在开发的功能。</li>
+</ol>
+<h6 id="Spring中Bean的作用域有哪些？"><a href="#Spring中Bean的作用域有哪些？" class="headerlink" title="Spring中Bean的作用域有哪些？"></a>Spring中Bean的作用域有哪些？</h6><p>在Spring的早期版本中，仅有两个作用域：<strong>singleton</strong>和<strong>prototype</strong>，前者表示Bean以单例的方式存在；后者表示每次从容器中调用Bean时，都会返回一个新的实例，prototype通常翻译为原型。</p>
+<p>设计模式中的创建型模式中也有一个原型模式，原型模式也是一个常用的模式，例如做一个室内设计软件，所有的素材都在工具箱中，而每次从工具箱中取出的都是素材对象的一个原型，可以通过对象克隆来实现原型模式。Spring 2.x中针对WebApplicationContext新增了3个作用域，分别是：<strong>request</strong>（每次HTTP请求都会创建一个新的Bean）、<strong>session</strong>（同一个HttpSession共享同一个Bean，不同的HttpSession使用不同的Bean）和<strong>globalSession</strong>（同一个全局Session共享一个Bean）。</p>
+<p>单例模式和原型模式都是重要的设计模式。一般情况下，无状态或状态不可变的类适合使用单例模式。在传统开发中，由于DAO持有Connection这个非线程安全对象因而没有使用单例模式；但在Spring环境下，所有DAO类对可以采用单例模式，因为Spring利用AOP和Java API中的ThreadLocal对非线程安全的对象进行了特殊处理。</p>
+<h6 id="依赖注入的方式"><a href="#依赖注入的方式" class="headerlink" title="依赖注入的方式"></a>依赖注入的方式</h6><p>1、Setter注入 2、构造器(Construct)注入 3、接口注入</p>
+<h6 id="Autowired和Resource的区别"><a href="#Autowired和Resource的区别" class="headerlink" title="Autowired和Resource的区别"></a>Autowired和Resource的区别</h6><p>1.共同点</p>
+<p>两者都可以写在字段和setter方法上。两者如果都写在字段上，那么就不需要再写setter方法。</p>
+<p>2、不同点</p>
+<p>（1）@Autowired</p>
+<p>@Autowired为Spring提供的注解，需要导入包org.springframework.beans.factory.annotation.Autowired;只按照byType注入。</p>
+<p>@Autowired注解是按照类型（byType）装配依赖对象，默认情况下它要求依赖对象必须存在，如果允许null值，可以设置它的required属性为false。如果我们想使用按照名称（byName）来装配，可以结合@Qualifier注解一起使用。</p>
+<p>（2）@Resource</p>
+<p>@Resource默认按照ByName自动注入，由J2EE提供，需要导入包javax.annotation.Resource。@Resource有两个重要的属性：name和type，而Spring将@Resource注解的name属性解析为bean的名字，而type属性则解析为bean的类型。所以，如果使用name属性，则使用byName的自动注入策略，而使用type属性时则使用byType自动注入策略。如果既不制定name也不制定type属性，这时将通过反射机制使用byName自动注入策略。</p>
+<h6 id="Spring支持的事务管理类型有哪些？"><a href="#Spring支持的事务管理类型有哪些？" class="headerlink" title="Spring支持的事务管理类型有哪些？"></a>Spring支持的事务管理类型有哪些？</h6><p>Spring支持编程式事务管理和声明式事务管理。许多Spring框架的用户选择声明式事务管理，因为这种方式和应用程序的关联较少，因此更加符合轻量级容器的概念。声明式事务管理要优于编程式事务管理，尽管在灵活性方面它弱于编程式事务管理，因为编程式事务允许你通过代码控制业务。</p>
+<p>事务分为全局事务和局部事务。全局事务由应用服务器管理，需要底层服务器JTA支持（如WebLogic、WildFly等）。局部事务和底层采用的持久化方案有关，例如使用JDBC进行持久化时，需要使用Connection对象来操作事务；而采用Hibernate进行持久化时，需要使用Session对象来操作事务。</p>
+<p>这些事务的父接口都是PlatformTransactionManager。Spring的事务管理机制是一种典型的策略模式，PlatformTransactionManager代表事务管理接口，该接口定义了三个方法，该接口并不知道底层如何管理事务，但是它的实现类必须提供getTransaction()方法（开启事务）、commit()方法（提交事务）、rollback()方法（回滚事务）的多态实现，这样就可以用不同的实现类代表不同的事务管理策略。使用JTA全局事务策略时，需要底层应用服务器支持，而不同的应用服务器所提供的JTA全局事务可能存在细节上的差异，因此实际配置全局事务管理器是可能需要使用JtaTransactionManager的子类，如：WebLogicJtaTransactionManager（Oracle的WebLogic服务器提供）、UowJtaTransactionManager（IBM的WebSphere服务器提供）等。</p>
+<h6 id="你如何理解AOP中的连接点（Joinpoint）、切点（Pointcut）、增强（Advice）、引介（Introduction）、织入（Weaving）、切面（Aspect）这些概念？"><a href="#你如何理解AOP中的连接点（Joinpoint）、切点（Pointcut）、增强（Advice）、引介（Introduction）、织入（Weaving）、切面（Aspect）这些概念？" class="headerlink" title="你如何理解AOP中的连接点（Joinpoint）、切点（Pointcut）、增强（Advice）、引介（Introduction）、织入（Weaving）、切面（Aspect）这些概念？"></a>你如何理解AOP中的连接点（Joinpoint）、切点（Pointcut）、增强（Advice）、引介（Introduction）、织入（Weaving）、切面（Aspect）这些概念？</h6><p>a. 连接点（Joinpoint）：程序执行的某个特定位置（如：某个方法调用前、调用后，方法抛出异常后）。一个类或一段程序代码拥有一些具有边界性质的特定点，这些代码中的特定点就是连接点。Spring仅支持方法的连接点。</p>
+<p>b. 切点（Pointcut）：如果连接点相当于数据中的记录，那么切点相当于查询条件，一个切点可以匹配多个连接点。Spring AOP的规则解析引擎负责解析切点所设定的查询条件，找到对应的连接点。</p>
+<p>c. 增强（Advice）：增强是织入到目标类连接点上的一段程序代码。Spring提供的增强接口都是带方位名的，如：BeforeAdvice、AfterReturningAdvice、ThrowsAdvice等。</p>
+<p>d. 引介（Introduction）：引介是一种特殊的增强，它为类添加一些属性和方法。这样，即使一个业务类原本没有实现某个接口，通过引介功能，可以动态的为该业务类添加接口的实现逻辑，让业务类成为这个接口的实现类。</p>
+<p>e. 织入（Weaving）：织入是将增强添加到目标类具体连接点上的过程，AOP有三种织入方式：①编译期织入：需要特殊的Java编译期（例如AspectJ的ajc）；②装载期织入：要求使用特殊的类加载器，在装载类的时候对类进行增强；③运行时织入：在运行时为目标类生成代理实现增强。Spring采用了动态代理的方式实现了运行时织入，而AspectJ采用了编译期织入和装载期织入的方式。</p>
+<p>f. 切面（Aspect）：切面是由切点和增强（引介）组成的，它包括了对横切关注功能的定义，也包括了对连接点的定义。</p>
+<h6 id="AOP的原理"><a href="#AOP的原理" class="headerlink" title="AOP的原理"></a>AOP的原理</h6><p>AOP（Aspect Orient Programming），指面向方面（切面）编程，作为面向对象的一种补充，用于处理系统中分布于各个模块的横切关注点，比如事务管理、日志、缓存等等。AOP实现的关键在于AOP框架自动创建的AOP代理，AOP代理主要分为静态代理和动态代理，静态代理的代表为AspectJ；而动态代理则以Spring AOP为代表。通常使用AspectJ的编译时增强实现AOP，AspectJ是静态代理的增强，所谓的静态代理就是AOP框架会在编译阶段生成AOP代理类，因此也称为编译时增强。</p>
+<p>Spring AOP中的动态代理主要有两种方式，JDK动态代理和CGLIB动态代理。JDK动态代理通过反射来接收被代理的类，并且要求被代理的类必须实现一个接口。JDK动态代理的核心是InvocationHandler接口和Proxy类。</p>
+<p>如果目标类没有实现接口，那么Spring AOP会选择使用CGLIB来动态代理目标类。CGLIB（Code Generation Library），是一个代码生成的类库，可以在运行时动态的生成某个类的子类，注意，CGLIB是通过继承的方式做的动态代理，因此如果某个类被标记为final，那么它是无法使用CGLIB做动态代理的。</p>
+<h6 id="AOP的应用场景"><a href="#AOP的应用场景" class="headerlink" title="AOP的应用场景"></a>AOP的应用场景</h6><p>Authentication 权限 ，Caching 缓存 ，Context passing 内容传递 ，Error handling 错误处理 ，Lazy loading 懒加载 ，Debugging 调试 ，logging, tracing, profiling and monitoring 记录跟踪　优化　校准，Performance optimization 性能优化 ，Persistence 持久化 ，Resource pooling 资源池 ，Synchronization 同步，Transactions 事务。</p>
+<h6 id="Spring框架的优点"><a href="#Spring框架的优点" class="headerlink" title="Spring框架的优点"></a>Spring框架的优点</h6><p>Spring是一个轻量级的DI和AOP容器框架，在项目的中的使用越来越广泛，它的优点主要有以下几点：</p>
+<p>Spring是一个非侵入式框架，其目标是使应用程序代码对框架的依赖最小化，应用代码可以在没有Spring或者其他容器的情况运行。</p>
+<p>Spring提供了一个一致的编程模型，使应用直接使用POJO开发，从而可以使运行环境隔离开来。</p>
+<p>Spring推动应用的设计风格向面向对象及面向接口编程转变，提高了代码的重用性和可测试性。</p>
+<p>Spring改进了结构体系的选择，虽然作为应用平台，Spring可以帮助我们选择不同的技术实现，比如从Hibernate切换到其他的ORM工具，从Struts切换到Spring MVC,尽管我们通常不会这么做，但是我们在技术方案上选择使用Spring作为应用平台，Spring至少为我们提供了这种可能性的选择，从而降低了平台锁定风险。</p>
+<h6 id="请问持久层设计要考虑的问题有哪些？请谈一下你用过的持久层框架都有哪些？"><a href="#请问持久层设计要考虑的问题有哪些？请谈一下你用过的持久层框架都有哪些？" class="headerlink" title="请问持久层设计要考虑的问题有哪些？请谈一下你用过的持久层框架都有哪些？"></a>请问持久层设计要考虑的问题有哪些？请谈一下你用过的持久层框架都有哪些？</h6><p>所谓”持久”就是将数据保存到可掉电式存储设备中以便今后使用，简单的说，就是将内存中的数据保存到关系型数据库、文件系统、消息队列等提供持久化支持的设备中。持久层就是系统中专注于实现数据持久化的相对独立的层面。</p>
+<p>持久层设计的目标包括：<br>- 数据存储逻辑的分离，提供抽象化的数据访问接口。<br>- 数据访问底层实现的分离，可以在不修改代码的情况下切换底层实现。<br>- 资源管理和调度的分离，在数据访问层实现统一的资源调度（如缓存机制）。<br>- 数据抽象，提供更面向对象的数据操作。</p>
+<p>持久层框架有：<br>- Hibernate<br>- MyBatis<br>- TopLink<br>- Guzz<br>- jOOQ<br>- Spring Data<br>- ActiveJDBC</p>
+]]></content>
+      <categories>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java面经二</title>
     <url>/2020/05/01/08/14/Java%E9%9D%A2%E7%BB%8F%E4%BA%8C/</url>
     <content><![CDATA[<p>Java面试总结二<a id="more"></a></p>
@@ -935,65 +997,35 @@
       </tags>
   </entry>
   <entry>
-    <title>Java面经五</title>
-    <url>/2020/05/04/21/51/Java%E9%9D%A2%E7%BB%8F%E4%BA%94/</url>
-    <content><![CDATA[<p>Java面试总结五<a id="more"></a></p>
-<h6 id="Spring中BeanFactory和ApplicationContext的区别是什么？"><a href="#Spring中BeanFactory和ApplicationContext的区别是什么？" class="headerlink" title="Spring中BeanFactory和ApplicationContext的区别是什么？"></a>Spring中BeanFactory和ApplicationContext的区别是什么？</h6><p><strong>BeanFactory</strong>：</p>
-<p>BeanFactory是spring中比较原始，比较古老的Factory。因为比较古老，所以BeanFactory无法支持spring插件，例如：AOP、Web应用等功能。</p>
-<p><strong>ApplicationContext</strong>：</p>
-<p>ApplicationContext是BeanFactory的子类，因为古老的BeanFactory无法满足不断更新的spring的需求，于是ApplicationContext就基本上代替了BeanFactory的工作，以一种更面向框架的工作方式以及对上下文进行分层和实现继承，并在这个基础上对功能进行扩展：</p>
-<ul>
-<li>MessageSource, 提供国际化的消息访问</li>
-<li>资源访问（如URL和文件）</li>
-<li>事件传递</li>
-<li>Bean的自动装配</li>
-<li>各种不同应用层的Context实现</li>
-</ul>
-<p>区别：</p>
-<ol>
-<li>如果使用ApplicationContext，如果配置的bean是singleton，那么不管你有没有或想不想用它，它都会被实例化。好处是可以预先加载，坏处是浪费内存。</li>
-<li>BeanFactory，当使用BeanFactory实例化对象时，配置的bean不会马上被实例化，而是等到你使用该bean的时候（getBean）才会被实例化。好处是节约内存，坏处是速度比较慢。多用于移动设备的开发。</li>
-<li>没有特殊要求的情况下，应该使用ApplicationContext完成。因为BeanFactory能完成的事情，ApplicationContext都能完成，并且提供了更多接近现在开发的功能。</li>
-</ol>
-<h6 id="Spring中Bean的作用域有哪些？"><a href="#Spring中Bean的作用域有哪些？" class="headerlink" title="Spring中Bean的作用域有哪些？"></a>Spring中Bean的作用域有哪些？</h6><p>在Spring的早期版本中，仅有两个作用域：<strong>singleton</strong>和<strong>prototype</strong>，前者表示Bean以单例的方式存在；后者表示每次从容器中调用Bean时，都会返回一个新的实例，prototype通常翻译为原型。</p>
-<p>设计模式中的创建型模式中也有一个原型模式，原型模式也是一个常用的模式，例如做一个室内设计软件，所有的素材都在工具箱中，而每次从工具箱中取出的都是素材对象的一个原型，可以通过对象克隆来实现原型模式。Spring 2.x中针对WebApplicationContext新增了3个作用域，分别是：<strong>request</strong>（每次HTTP请求都会创建一个新的Bean）、<strong>session</strong>（同一个HttpSession共享同一个Bean，不同的HttpSession使用不同的Bean）和<strong>globalSession</strong>（同一个全局Session共享一个Bean）。</p>
-<p>单例模式和原型模式都是重要的设计模式。一般情况下，无状态或状态不可变的类适合使用单例模式。在传统开发中，由于DAO持有Connection这个非线程安全对象因而没有使用单例模式；但在Spring环境下，所有DAO类对可以采用单例模式，因为Spring利用AOP和Java API中的ThreadLocal对非线程安全的对象进行了特殊处理。</p>
-<h6 id="依赖注入的方式"><a href="#依赖注入的方式" class="headerlink" title="依赖注入的方式"></a>依赖注入的方式</h6><p>1、Setter注入 2、构造器(Construct)注入 3、接口注入</p>
-<h6 id="Autowired和Resource的区别"><a href="#Autowired和Resource的区别" class="headerlink" title="Autowired和Resource的区别"></a>Autowired和Resource的区别</h6><p>1.共同点</p>
-<p>两者都可以写在字段和setter方法上。两者如果都写在字段上，那么就不需要再写setter方法。</p>
-<p>2、不同点</p>
-<p>（1）@Autowired</p>
-<p>@Autowired为Spring提供的注解，需要导入包org.springframework.beans.factory.annotation.Autowired;只按照byType注入。</p>
-<p>@Autowired注解是按照类型（byType）装配依赖对象，默认情况下它要求依赖对象必须存在，如果允许null值，可以设置它的required属性为false。如果我们想使用按照名称（byName）来装配，可以结合@Qualifier注解一起使用。</p>
-<p>（2）@Resource</p>
-<p>@Resource默认按照ByName自动注入，由J2EE提供，需要导入包javax.annotation.Resource。@Resource有两个重要的属性：name和type，而Spring将@Resource注解的name属性解析为bean的名字，而type属性则解析为bean的类型。所以，如果使用name属性，则使用byName的自动注入策略，而使用type属性时则使用byType自动注入策略。如果既不制定name也不制定type属性，这时将通过反射机制使用byName自动注入策略。</p>
-<h6 id="Spring支持的事务管理类型有哪些？"><a href="#Spring支持的事务管理类型有哪些？" class="headerlink" title="Spring支持的事务管理类型有哪些？"></a>Spring支持的事务管理类型有哪些？</h6><p>Spring支持编程式事务管理和声明式事务管理。许多Spring框架的用户选择声明式事务管理，因为这种方式和应用程序的关联较少，因此更加符合轻量级容器的概念。声明式事务管理要优于编程式事务管理，尽管在灵活性方面它弱于编程式事务管理，因为编程式事务允许你通过代码控制业务。</p>
-<p>事务分为全局事务和局部事务。全局事务由应用服务器管理，需要底层服务器JTA支持（如WebLogic、WildFly等）。局部事务和底层采用的持久化方案有关，例如使用JDBC进行持久化时，需要使用Connection对象来操作事务；而采用Hibernate进行持久化时，需要使用Session对象来操作事务。</p>
-<p>这些事务的父接口都是PlatformTransactionManager。Spring的事务管理机制是一种典型的策略模式，PlatformTransactionManager代表事务管理接口，该接口定义了三个方法，该接口并不知道底层如何管理事务，但是它的实现类必须提供getTransaction()方法（开启事务）、commit()方法（提交事务）、rollback()方法（回滚事务）的多态实现，这样就可以用不同的实现类代表不同的事务管理策略。使用JTA全局事务策略时，需要底层应用服务器支持，而不同的应用服务器所提供的JTA全局事务可能存在细节上的差异，因此实际配置全局事务管理器是可能需要使用JtaTransactionManager的子类，如：WebLogicJtaTransactionManager（Oracle的WebLogic服务器提供）、UowJtaTransactionManager（IBM的WebSphere服务器提供）等。</p>
-<h6 id="你如何理解AOP中的连接点（Joinpoint）、切点（Pointcut）、增强（Advice）、引介（Introduction）、织入（Weaving）、切面（Aspect）这些概念？"><a href="#你如何理解AOP中的连接点（Joinpoint）、切点（Pointcut）、增强（Advice）、引介（Introduction）、织入（Weaving）、切面（Aspect）这些概念？" class="headerlink" title="你如何理解AOP中的连接点（Joinpoint）、切点（Pointcut）、增强（Advice）、引介（Introduction）、织入（Weaving）、切面（Aspect）这些概念？"></a>你如何理解AOP中的连接点（Joinpoint）、切点（Pointcut）、增强（Advice）、引介（Introduction）、织入（Weaving）、切面（Aspect）这些概念？</h6><p>a. 连接点（Joinpoint）：程序执行的某个特定位置（如：某个方法调用前、调用后，方法抛出异常后）。一个类或一段程序代码拥有一些具有边界性质的特定点，这些代码中的特定点就是连接点。Spring仅支持方法的连接点。</p>
-<p>b. 切点（Pointcut）：如果连接点相当于数据中的记录，那么切点相当于查询条件，一个切点可以匹配多个连接点。Spring AOP的规则解析引擎负责解析切点所设定的查询条件，找到对应的连接点。</p>
-<p>c. 增强（Advice）：增强是织入到目标类连接点上的一段程序代码。Spring提供的增强接口都是带方位名的，如：BeforeAdvice、AfterReturningAdvice、ThrowsAdvice等。</p>
-<p>d. 引介（Introduction）：引介是一种特殊的增强，它为类添加一些属性和方法。这样，即使一个业务类原本没有实现某个接口，通过引介功能，可以动态的为该业务类添加接口的实现逻辑，让业务类成为这个接口的实现类。</p>
-<p>e. 织入（Weaving）：织入是将增强添加到目标类具体连接点上的过程，AOP有三种织入方式：①编译期织入：需要特殊的Java编译期（例如AspectJ的ajc）；②装载期织入：要求使用特殊的类加载器，在装载类的时候对类进行增强；③运行时织入：在运行时为目标类生成代理实现增强。Spring采用了动态代理的方式实现了运行时织入，而AspectJ采用了编译期织入和装载期织入的方式。</p>
-<p>f. 切面（Aspect）：切面是由切点和增强（引介）组成的，它包括了对横切关注功能的定义，也包括了对连接点的定义。</p>
-<h6 id="AOP的原理"><a href="#AOP的原理" class="headerlink" title="AOP的原理"></a>AOP的原理</h6><p>AOP（Aspect Orient Programming），指面向方面（切面）编程，作为面向对象的一种补充，用于处理系统中分布于各个模块的横切关注点，比如事务管理、日志、缓存等等。AOP实现的关键在于AOP框架自动创建的AOP代理，AOP代理主要分为静态代理和动态代理，静态代理的代表为AspectJ；而动态代理则以Spring AOP为代表。通常使用AspectJ的编译时增强实现AOP，AspectJ是静态代理的增强，所谓的静态代理就是AOP框架会在编译阶段生成AOP代理类，因此也称为编译时增强。</p>
-<p>Spring AOP中的动态代理主要有两种方式，JDK动态代理和CGLIB动态代理。JDK动态代理通过反射来接收被代理的类，并且要求被代理的类必须实现一个接口。JDK动态代理的核心是InvocationHandler接口和Proxy类。</p>
-<p>如果目标类没有实现接口，那么Spring AOP会选择使用CGLIB来动态代理目标类。CGLIB（Code Generation Library），是一个代码生成的类库，可以在运行时动态的生成某个类的子类，注意，CGLIB是通过继承的方式做的动态代理，因此如果某个类被标记为final，那么它是无法使用CGLIB做动态代理的。</p>
-<h6 id="AOP的应用场景"><a href="#AOP的应用场景" class="headerlink" title="AOP的应用场景"></a>AOP的应用场景</h6><p>Authentication 权限 ，Caching 缓存 ，Context passing 内容传递 ，Error handling 错误处理 ，Lazy loading 懒加载 ，Debugging 调试 ，logging, tracing, profiling and monitoring 记录跟踪　优化　校准，Performance optimization 性能优化 ，Persistence 持久化 ，Resource pooling 资源池 ，Synchronization 同步，Transactions 事务。</p>
-<h6 id="Spring框架的优点"><a href="#Spring框架的优点" class="headerlink" title="Spring框架的优点"></a>Spring框架的优点</h6><p>Spring是一个轻量级的DI和AOP容器框架，在项目的中的使用越来越广泛，它的优点主要有以下几点：</p>
-<p>Spring是一个非侵入式框架，其目标是使应用程序代码对框架的依赖最小化，应用代码可以在没有Spring或者其他容器的情况运行。</p>
-<p>Spring提供了一个一致的编程模型，使应用直接使用POJO开发，从而可以使运行环境隔离开来。</p>
-<p>Spring推动应用的设计风格向面向对象及面向接口编程转变，提高了代码的重用性和可测试性。</p>
-<p>Spring改进了结构体系的选择，虽然作为应用平台，Spring可以帮助我们选择不同的技术实现，比如从Hibernate切换到其他的ORM工具，从Struts切换到Spring MVC,尽管我们通常不会这么做，但是我们在技术方案上选择使用Spring作为应用平台，Spring至少为我们提供了这种可能性的选择，从而降低了平台锁定风险。</p>
-<h6 id="请问持久层设计要考虑的问题有哪些？请谈一下你用过的持久层框架都有哪些？"><a href="#请问持久层设计要考虑的问题有哪些？请谈一下你用过的持久层框架都有哪些？" class="headerlink" title="请问持久层设计要考虑的问题有哪些？请谈一下你用过的持久层框架都有哪些？"></a>请问持久层设计要考虑的问题有哪些？请谈一下你用过的持久层框架都有哪些？</h6><p>所谓”持久”就是将数据保存到可掉电式存储设备中以便今后使用，简单的说，就是将内存中的数据保存到关系型数据库、文件系统、消息队列等提供持久化支持的设备中。持久层就是系统中专注于实现数据持久化的相对独立的层面。</p>
-<p>持久层设计的目标包括：<br>- 数据存储逻辑的分离，提供抽象化的数据访问接口。<br>- 数据访问底层实现的分离，可以在不修改代码的情况下切换底层实现。<br>- 资源管理和调度的分离，在数据访问层实现统一的资源调度（如缓存机制）。<br>- 数据抽象，提供更面向对象的数据操作。</p>
-<p>持久层框架有：<br>- Hibernate<br>- MyBatis<br>- TopLink<br>- Guzz<br>- jOOQ<br>- Spring Data<br>- ActiveJDBC</p>
+    <title>Linux程序自启动</title>
+    <url>/2019/11/22/09/39/Linux%E7%A8%8B%E5%BA%8F%E8%87%AA%E5%90%AF%E5%8A%A8/</url>
+    <content><![CDATA[<p>在Linux系统如何让程序开机时自动启动<a id="more"></a></p>
+<p><img src="/2019/11/22/09/39/Linux%E7%A8%8B%E5%BA%8F%E8%87%AA%E5%90%AF%E5%8A%A8/linuxicon.jpg" alt></p>
+<h5 id="修改启动配置文件"><a href="#修改启动配置文件" class="headerlink" title="修改启动配置文件"></a>修改启动配置文件</h5><p>新建一个sh后缀的脚本文件（例如:stratup.sh），把你所要启动的命令编写进去。然后再编辑“<strong>/etc/rc.local</strong>”启动配置文件，把<strong>脚本文件所在位置的全路径</strong>输入进去即可。</p>
+<h5 id="计划定时启动"><a href="#计划定时启动" class="headerlink" title="计划定时启动"></a>计划定时启动</h5><p>通过crontab可以设定程序的执行时间表， 例如让程序在每天的9点，或者每个星期一的9点执行一次。 </p>
+<p>crontab -l 列出时间表；<br>crontab -e编辑时间表；<br>crontab -d删除时间表；</p>
+<p>“-l”查看时间表；<br>“-e”是编辑（其实就是用vim编辑一个特定文件）；<br>“-d”删除，把该用户所有的时间表都删除，一般都是用“-e”编辑把不要了的时间表逐行删除；</p>
+<p>crontab文件的格式是：M H D m d CMD。<br>一个6个字段，其中最后一个CMD就是所要执行的程序，如haha.sh。<br>M：分钟（0-59）<br>H：小时（0-23）<br>D：日期（1-31）<br>m：月份（1-12）<br>d：一个星期中的某天（0-6，0代表周日）</p>
+<p>这5个时间字段用空格隔开，其值可以是一个数字，也可以用逗号隔开的多个数字（或其他） ，如果不需设置，则默认为“*”。</p>
+<p>例如，每天的9点0分执行startup.sh，就是“0 9 * * * /home/programs/./startup.sh”。</p>
+<h5 id="注册系统服务"><a href="#注册系统服务" class="headerlink" title="注册系统服务"></a>注册系统服务</h5><p>操作系统自带的服务，如ssh，ftp等等，开机都是自动启动的，我们也可以通过这种方式让自己开发的程序伪装成系统服务。</p>
+<p>比如我想把某个程序添加为系统服务，可以执行以下命令：</p>
+<p>chkconfig –add 程序名称(首先，添加为系统服务，<strong>注意add前面是两个横杠</strong>)</p>
+<p>chkconfig -leve 启动级别 服务名 on     </p>
+<p>（说明，3级别代表在命令行模式启动，5级别代表在图形界面启动，on表示开启）</p>
+<p>chkconfig -leve 启动级别 服务名 off（说明，off表示关闭自启动）</p>
+<p>例如：chkconfig -level 3 mysql on  (说明：让mysql服务在命令行模式，随系统启动)</p>
+<p>也可以使用  chkconfig –del 服务名称  来删除系统服务</p>
+<p>如果要查看哪些服务被添加为系统服务可以使用命令 ：</p>
+<p>  ntsysv 或者chkconfig –list</p>
+<p>如果要查看哪些程序被添加为自启动，可以使用命令 ：</p>
+<p>cat  /etc/rc.local（查看这个文件中添加了哪些程序路径）</p>
 ]]></content>
       <categories>
-        <category>面试</category>
+        <category>操作系统</category>
       </categories>
       <tags>
-        <tag>java</tag>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -1082,217 +1114,6 @@
       </categories>
       <tags>
         <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java面经六</title>
-    <url>/2020/05/05/14/55/Java%E9%9D%A2%E7%BB%8F%E5%85%AD/</url>
-    <content><![CDATA[<p>Java面试总结六<a id="more"></a></p>
-<h6 id="MyBatis中命名空间-namespace-的作用"><a href="#MyBatis中命名空间-namespace-的作用" class="headerlink" title="MyBatis中命名空间(namespace)的作用"></a>MyBatis中命名空间(namespace)的作用</h6><p>在大型项目中，可能存在大量的SQL语句，这时候为每个SQL语句起一个唯一的标识（ID）就变得并不容易了。为了解决这个问题，在MyBatis中，可以为每个映射文件起一个唯一的命名空间，这样定义在这个映射文件中的每个SQL语句就成了定义在这个命名空间中的一个ID。只要我们能够保证每个命名空间中这个ID是唯一的，即使在不同映射文件中的语句ID相同，也不会再产生冲突了。</p>
-<h6 id="SpringMVC的工作原理"><a href="#SpringMVC的工作原理" class="headerlink" title="SpringMVC的工作原理"></a>SpringMVC的工作原理</h6><p>①客户端的所有请求都交给前端控制器DispatcherServlet来处理，它会负责调用系统的其他模块来真正处理用户的请求。</p>
-<p>② DispatcherServlet收到请求后，将根据请求的信息（包括URL、HTTP协议方法、请求头、请求参数、Cookie等）以及HandlerMapping的配置找到处理该请求的Handler（任何一个对象都可以作为请求的Handler）。</p>
-<p>③在这个地方Spring会通过HandlerAdapter对该处理器进行封装。</p>
-<p>④ HandlerAdapter是一个适配器，它用统一的接口对各种Handler中的方法进行调用。</p>
-<p>⑤ Handler完成对用户请求的处理后，会返回一个ModelAndView对象给DispatcherServlet，ModelAndView顾名思义，包含了数据模型以及相应的视图的信息。</p>
-<p>⑥ ModelAndView的视图是逻辑视图，DispatcherServlet还要借助ViewResolver完成从逻辑视图到真实视图对象的解析工作。</p>
-<p>⑦ 当得到真正的视图对象后，DispatcherServlet会利用视图对象对模型数据进行渲染。</p>
-<p>⑧ 客户端得到响应，可能是一个普通的HTML页面，也可以是XML或JSON字符串，还可以是一张图片或者一个PDF文件。</p>
-<h6 id="Mybatis和Hibernate的区别"><a href="#Mybatis和Hibernate的区别" class="headerlink" title="Mybatis和Hibernate的区别"></a>Mybatis和Hibernate的区别</h6><p>1、简介</p>
-<p>Hibernate：Hibernate是当前最流行的ORM框架之一，对JDBC提供了较为完整的封装。Hibernate的O/R Mapping实现了POJO 和数据库表之间的映射，以及SQL的自动生成和执行。</p>
-<p>Mybatis：Mybatis同样也是非常流行的ORM框架，主要着力点在于 POJO 与 SQL 之间的映射关系。然后通过映射配置文件，将SQL所需的参数，以及返回的结果字段映射到指定 POJO 。相对Hibernate“O/R”而言，Mybatis 是一种“Sql Mapping”的ORM实现。</p>
-<p>2、缓存机制对比</p>
-<p>相同点</p>
-<p>Hibernate和Mybatis的二级缓存除了采用系统默认的缓存机制外，都可以通过实现你自己的缓存或为其他第三方缓存方案，创建适配器来完全覆盖缓存行为。</p>
-<p>不同点</p>
-<p>Hibernate的二级缓存配置在SessionFactory生成的配置文件中进行详细配置，然后再在具体的表-对象映射中配置是那种缓存。</p>
-<p>MyBatis的二级缓存配置都是在每个具体的表-对象映射中进行详细配置，这样针对不同的表可以自定义不同的缓存机制。并且Mybatis可以在命名空间中共享相同的缓存配置和实例，通过Cache-ref来实现。</p>
-<p>两者比较</p>
-<p>因为Hibernate对查询对象有着良好的管理机制，用户无需关心SQL。所以在使用二级缓存时如果出现脏数据，系统会报出错误并提示。而MyBatis在这一方面，使用二级缓存时需要特别小心。如果不能完全确定数据更新操作的波及范围，避免Cache的盲目使用。否则，脏数据的出现会给系统的正常运行带来很大的隐患。</p>
-<p>Mybatis：小巧、方便、高效、简单、直接、半自动化。</p>
-<p>Hibernate：强大、方便、高效、复杂、间接、全自动化。</p>
-<h6 id="1分钟之内只能处理1000个请求，你怎么实现？"><a href="#1分钟之内只能处理1000个请求，你怎么实现？" class="headerlink" title="1分钟之内只能处理1000个请求，你怎么实现？"></a>1分钟之内只能处理1000个请求，你怎么实现？</h6><p>限流的几种放大：计数器，滑动窗口漏桶法，令牌桶</p>
-<h6 id="JSP的静态包含和动态包含的区别"><a href="#JSP的静态包含和动态包含的区别" class="headerlink" title="JSP的静态包含和动态包含的区别"></a>JSP的静态包含和动态包含的区别</h6><p>静态包含是通过JSP的<code>&lt;%@include file=&quot;···&quot;&gt;</code> 指令包含页面，动态包含是通过JSP标准动作<code>&lt;jsp:include page=&quot;···&quot; flush=&quot;true&quot;&gt;</code>包含页面。</p>
-<p>静态包含是编译时包含，如果包含的页面不存在则会产生编译错误，而且两个页面的”contentType”属性应保持一致，因为两个页面会合二为一，只产生一个class文件，因此被包含页面发生的变动再包含它的页面更新前不会得到更新。</p>
-<p>动态包含是运行时包含，可以向被包含的页面传递参数，包含页面和被包含页面是独立的，会编译出两个class文件，如果被包含的页面不存在，不会产生编译错误，也不影响页面其他部分的执行。</p>
-<p>静态包含<br><code>&lt;%@ include file=&quot;...&quot; %&gt;</code></p>
-<p>动态包含</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;jsp:include page=<span class="string">&quot;...&quot;</span>&gt;</span><br><span class="line">&lt;jsp:param name=<span class="string">&quot;...&quot;</span> value=<span class="string">&quot;...&quot;</span> /&gt;</span><br><span class="line">&lt;/jsp:include&gt; </span><br></pre></td></tr></table></figure>
-
-<h6 id="Request对象的主要方法"><a href="#Request对象的主要方法" class="headerlink" title="Request对象的主要方法"></a>Request对象的主要方法</h6><p>setAttribute(String name,Object)：设置名字为name的request的参数值</p>
-<p>getAttribute(String name)：返回由name指定的属性值</p>
-<p>getAttributeNames()：返回request对象所有属性的名字集合，结果是一个枚举的实例</p>
-<p>getCookies()：返回客户端的所有Cookie对象，结果是一个Cookie数组</p>
-<p>getCharacterEncoding()：返回请求中的字符编码方式</p>
-<p>getContentLength()：返回请求的Body的长度</p>
-<p>getHeader(String name)：获得HTTP协议定义的文件头信息</p>
-<p>getHeaders(String name)：返回指定名字的request Header的所有值，结果是一个枚举的实例</p>
-<p>getHeaderNames()：返回所以request Header的名字，结果是一个枚举的实例</p>
-<p>getInputStream()：返回请求的输入流，用于获得请求中的数据</p>
-<p>getMethod()：获得客户端向服务器端传送数据的方法</p>
-<p>getParameter(String name)：获得客户端传送给服务器端的有name指定的参数值</p>
-<p>getParameterNames()：获得客户端传送给服务器端的所有参数的名字，结果是一个枚举的实例</p>
-<p>getParameterValues(String name)：获得有name指定的参数的所有值</p>
-<p>getProtocol()：获取客户端向服务器端传送数据所依据的协议名称</p>
-<p>getQueryString()：获得查询字符串</p>
-<p>getRequestURI()：获取发出请求字符串的客户端地址</p>
-<p>getRemoteAddr()：获取客户端的IP地址</p>
-<p>getRemoteHost()：获取客户端的名字</p>
-<p>getSession([Boolean create])：返回和请求相关Session</p>
-<p>getServerName()：获取服务器的名字</p>
-<p>getServletPath()：获取客户端所请求的脚本文件的路径</p>
-<p>getServerPort()：获取服务器的端口号</p>
-<p>removeAttribute(String name)：删除请求中的一个属性</p>
-<h6 id="四种会话跟踪技术"><a href="#四种会话跟踪技术" class="headerlink" title="四种会话跟踪技术"></a>四种会话跟踪技术</h6><p>会话跟踪是一种灵活、轻便的机制，它使Web上的状态编程变为可能。</p>
-<p>HTTP是一种无状态协议，每当用户发出请求时，服务器就会做出响应，客户端与服务器之间的联系是离散的、非连续的。</p>
-<p>当用户在同一网站的多个页面之间转换时，根本无法确定是否是同一个客户，会话跟踪技术就可以解决这个问题。当一个客户在多个页面间切换时，服务器会保存该用户的信息。有四种方法可以实现会话跟踪技术：URL重写、隐藏表单域、Cookie、Session。</p>
-<p>1）隐藏表单域：<input type="hidden">，非常适合步需要大量数据存储的会话应用。</p>
-<p>2）URL 重写:URL 可以在后面附加参数，和服务器的请求一起发送，这些参数为名字/值对。</p>
-<p>3）Cookie:一个 Cookie 是一个小的，已命名数据元素。服务器使用 SET-Cookie 头标将它作为 HTTP响应的一部分传送到客户端，客户端被请求保存 Cookie 值，在对同一服务器的后续请求使用一个Cookie 头标将之返回到服务器。与其它技术比较，Cookie 的一个优点是在浏览器会话结束后，甚至在客户端计算机重启后它仍可以保留其值。</p>
-<p>4）Session：使用 setAttribute(String str,Object obj)方法将对象捆绑到一个会话</p>
-<h6 id="web-xml文件中可以配置哪些内容？"><a href="#web-xml文件中可以配置哪些内容？" class="headerlink" title="web.xml文件中可以配置哪些内容？"></a>web.xml文件中可以配置哪些内容？</h6><p>web.xml用于配置Web应用的相关信息，如：监听器（listener）、过滤器（filter）、 Servlet、相关参数、会话超时时间、安全验证方式、错误页面等，下面是一些开发中常见的配置：</p>
-<p>①配置Spring上下文加载监听器加载Spring配置文件并创建IoC容器：</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">context-param</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">param-value</span>&gt;</span>classpath:applicationContext.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">context-param</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">listener</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">listener-class</span>&gt;</span></span><br><span class="line">org.springframework.web.context.ContextLoaderListener</span><br><span class="line"><span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">listener</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>②配置Spring的OpenSessionInView过滤器来解决延迟加载和Hibernate会话关闭的矛盾：</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>openSessionInView<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">filter-class</span>&gt;</span></span><br><span class="line">org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</span><br><span class="line"><span class="tag">&lt;/<span class="name">filter-class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>openSessionInView<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>③配置会话超时时间为10分钟：</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">session-config</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">session-timeout</span>&gt;</span>10<span class="tag">&lt;/<span class="name">session-timeout</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">session-config</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>④配置404和Exception的错误页面：</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">error-page</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">error-code</span>&gt;</span>404<span class="tag">&lt;/<span class="name">error-code</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">location</span>&gt;</span>/error.jsp<span class="tag">&lt;/<span class="name">location</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">error-page</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">error-page</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">exception-type</span>&gt;</span>java.lang.Exception<span class="tag">&lt;/<span class="name">exception-type</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">location</span>&gt;</span>/error.jsp<span class="tag">&lt;/<span class="name">location</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">error-page</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>⑤配置安全认证方式：</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">security-constraint</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">web-resource-collection</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">web-resource-name</span>&gt;</span>ProtectedArea<span class="tag">&lt;/<span class="name">web-resource-name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/admin/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">http-method</span>&gt;</span>GET<span class="tag">&lt;/<span class="name">http-method</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">http-method</span>&gt;</span>POST<span class="tag">&lt;/<span class="name">http-method</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">web-resource-collection</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">auth-constraint</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">role-name</span>&gt;</span>admin<span class="tag">&lt;/<span class="name">role-name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">auth-constraint</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">security-constraint</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">login-config</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">auth-method</span>&gt;</span>BASIC<span class="tag">&lt;/<span class="name">auth-method</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">login-config</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">security-role</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">role-name</span>&gt;</span>admin<span class="tag">&lt;/<span class="name">role-name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">security-role</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h6 id="Javaweb开发中的监听器的理解"><a href="#Javaweb开发中的监听器的理解" class="headerlink" title="Javaweb开发中的监听器的理解"></a>Javaweb开发中的监听器的理解</h6><p>Java Web开发中的监听器（listener）就是application、session、request三个对象创建、销毁或者往其中添加修改删除属性时自动执行代码的功能组件，如下所示：</p>
-<p>①ServletContextListener：对Servlet上下文的创建和销毁进行监听。</p>
-<p>②ServletContextAttributeListener：监听Servlet上下文属性的添加、删除和替换。</p>
-<p>③HttpSessionListener：对Session的创建和销毁进行监听。</p>
-<p>session的销毁有两种情况：</p>
-<p>1). session超时（可以在web.xml中通过<code>&lt;session-config&gt;/&lt;session-timeout&gt;</code>标签配置超时时间）；</p>
-<p>2). 通过调用session对象的invalidate()方法使session失效。</p>
-<p>④HttpSessionAttributeListener：对Session对象中属性的添加、删除和替换进行监听。</p>
-<p>⑤ServletRequestListener：对请求对象的初始化和销毁进行监听。</p>
-<p>⑥ServletRequestAttributeListener：对请求对象属性的添加、删除和替换进行监听。</p>
-<h6 id="请问过滤器有哪些作用？以及过滤器的用法又是什么呢"><a href="#请问过滤器有哪些作用？以及过滤器的用法又是什么呢" class="headerlink" title="请问过滤器有哪些作用？以及过滤器的用法又是什么呢?"></a>请问过滤器有哪些作用？以及过滤器的用法又是什么呢?</h6><p>Java Web开发中的过滤器（filter）是从Servlet 2.3规范开始增加的功能，并在Servlet 2.4规范中得到增强。对Web应用来说，过滤器是一个驻留在服务器端的Web组件，它可以截取客户端和服务器之间的请求与响应信息，并对这些信息进行过滤。当Web容器接受到一个对资源的请求时，它将判断是否有过滤器与这个资源相关联。如果有，那么容器将把请求交给过滤器进行处理。在过滤器中，你可以改变请求的内容，或者重新设置请求的报头信息，然后再将请求发送给目标资源。当目标资源对请求作出响应时候，容器同样会将响应先转发给过滤器，在过滤器中你可以对响应的内容进行转换，然后再将响应发送到客户端。</p>
-<p>常见的过滤器用途主要包括：对用户请求进行统一认证、对用户的访问请求进行记录和审核、对用户发送的数据进行过滤或替换、转换图象格式、对响应内容进行压缩以减少传输量、对请求或响应进行加解密处理、触发资源访问事件、对XML的输出应用XSLT等。<br>和过滤器相关的接口主要有：Filter、FilterConfig和FilterChain。</p>
-]]></content>
-      <categories>
-        <category>面试</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java面经四</title>
-    <url>/2020/05/03/08/21/Java%E9%9D%A2%E7%BB%8F%E5%9B%9B/</url>
-    <content><![CDATA[<p>Java面试总结四<a id="more"></a></p>
-<h6 id="synchronized和java-util-concurrent-locks-lock的区别"><a href="#synchronized和java-util-concurrent-locks-lock的区别" class="headerlink" title="synchronized和java.util.concurrent.locks.lock的区别"></a>synchronized和java.util.concurrent.locks.lock的区别</h6><p>主要相同点：Lock能完成Synchronized所实现的所有功能。</p>
-<p>主要不同点：Lock有比Synchronized更精确的线程予以和更好的性能。Synchronized会自动释放锁，但是Lock一定要求程序员手工释放，并且必须在finally从句中释放。</p>
-<p>synchronized 修饰方法时，表示同一个对象在不同的线程中表现为同步队列。</p>
-<h6 id="如何确保N个线程可以访问N个资源，但同时又不导致死锁？"><a href="#如何确保N个线程可以访问N个资源，但同时又不导致死锁？" class="headerlink" title="如何确保N个线程可以访问N个资源，但同时又不导致死锁？"></a>如何确保N个线程可以访问N个资源，但同时又不导致死锁？</h6><p>使用多线程的时候，一种非常简单的避免死锁的方式就是：指定获取锁的顺序，并强制线程按照指定的顺序获取锁。因此，如果所有的线程都是以同样的顺序加锁和释放锁，就不会出现死锁了。</p>
-<p>预防死锁，预先破坏产生死锁的四个条件。互斥不可能破坏，所以有如下三种方法：</p>
-<p>1.破坏请求和保持条件，进程必须等所有要请求的资源都空闲时才能申请资源，这种方法会使资源浪费严重(有些资源可能仅在运行初期或结束时才使用，甚至根本不使用)。允许进程获取初期所需资源后，便开始运行，运行过程中再逐步释放自己占有的资源，比如有一个进程的任务是把数据复制到磁盘中再打印，前期只需获得磁盘资源而不需要获得打印机资源，待复制完毕后再释放掉磁盘资源。这种方法比第一种方法好，会使资源利用率上升。</p>
-<p>2.破坏不可抢占条件，这种方法代价大，实现复杂。</p>
-<p>3.破坏循坏等待条件，对各进程请求资源的顺序做一个规定，避免相互等待。这种方法对资源的利用率比前两种都高，但是前期要为设备指定序号，新设备加入会有一个问题，其次对用户编程也有限制。</p>
-<h6 id="锁和同步的区别"><a href="#锁和同步的区别" class="headerlink" title="锁和同步的区别"></a>锁和同步的区别</h6><ol>
-<li><p>Lock是一个接口，而synchronized是Java中的关键字，synchronized是内置的语言实现，synchronized是在JVM层面上实现的，不但可以通过一些监控工具监控synchronized的锁定，而且在代码执行时出现异常，JVM会自动释放锁定，但是使用Lock则不行，lock是通过代码实现的，要保证锁定一定会被释放，就必须将 unLock()放到finally{} 中；</p>
-</li>
-<li><p>synchronized在发生异常时，会自动释放线程占有的锁，因此不会导致死锁现象发生；而Lock在发生异常时，如果没有主动通过unLock()去释放锁，则很可能造成死锁现象，因此使用Lock时需要在finally块中释放锁；</p>
-</li>
-<li><p>Lock可以让等待锁的线程响应中断，线程可以中断去干别的事务，而synchronized却不行，使用synchronized时，等待的线程会一直等待下去，不能够响应中断；</p>
-</li>
-<li><p>通过Lock可以知道有没有成功获取锁，而synchronized却无法办到;</p>
-</li>
-<li><p>Lock可以提高多个线程进行读操作的效率。</p>
-<p> 在性能上来说，如果竞争资源不激烈，两者的性能是差不多的，而当竞争资源非常激烈时（即有大量线程同时竞争），此时Lock的性能要远远优于synchronized。所以说，在具体使用时要根据适当情况选择。</p>
-</li>
-</ol>
-<h6 id="jdk和jre的区别"><a href="#jdk和jre的区别" class="headerlink" title="jdk和jre的区别"></a>jdk和jre的区别</h6><p>Java运行时环境(JRE)是将要执行Java程序的Java虚拟机。它同时也包含了执行applet需要的浏览器插件。Java开发工具包(JDK)是完整的Java软件开发包，包含了JRE，编译器和其他的工具(比如：JavaDoc，Java调试器)，可以让开发者开发、编译、执行Java应用程序。</p>
-<h6 id="Java内存模型"><a href="#Java内存模型" class="headerlink" title="Java内存模型"></a>Java内存模型</h6><p>Java内存模型(简称JMM)，JMM决定一个线程对共享变量的写入何时对另一个线程可见。从抽象的角度来看，JMM定义了线程和主内存之间的抽象关系：线程之间的共享变量存储在主内存（main memory）中，每个线程都有一个私有的本地内存（local memory），本地内存中存储了该线程以读/写共享变量的副本。</p>
-<p>本地内存是JMM的一个抽象概念，并不真实存在。它涵盖了缓存，写缓冲区，寄存器以及其他的硬件和编译器优化。其关系模型图如下图所示：</p>
-<p><img src="/2020/05/03/08/21/Java%E9%9D%A2%E7%BB%8F%E5%9B%9B/jvm.png" alt></p>
-<h6 id="JVM分区"><a href="#JVM分区" class="headerlink" title="JVM分区"></a>JVM分区</h6><p>java内存通常被划分为5个区域：程序计数器（Program Count Register）、本地方法栈（Native Stack）、方法区（Methon Area）、栈（Stack）、堆（Heap）。</p>
-<p><img src="/2020/05/03/08/21/Java%E9%9D%A2%E7%BB%8F%E5%9B%9B/JVM%E5%88%86%E5%8C%BA.png" alt></p>
-<h6 id="类的加载过程"><a href="#类的加载过程" class="headerlink" title="类的加载过程"></a>类的加载过程</h6><p>如下图所示，JVM类加载机制分为五个部分：加载，验证，准备，解析，初始化，下面我们就分别来看一下这五个过程。</p>
-<p><img src="/2020/05/03/08/21/Java%E9%9D%A2%E7%BB%8F%E5%9B%9B/loading.png" alt></p>
-<p><strong>加载</strong></p>
-<p>加载是类加载过程中的一个阶段，这个阶段会在内存中生成一个代表这个类的java.lang.Class对象，作为方法区这个类的各种数据的入口。注意这里不一定非得要从一个Class文件获取，这里既可以从ZIP包中读取（比如从jar包和war包中读取），也可以在运行时计算生成（动态代理），也可以由其它文件生成（比如将JSP文件转换成对应的Class类）。</p>
-<p><strong>验证</strong></p>
-<p>这一阶段的主要目的是为了确保Class文件的字节流中包含的信息是否符合当前虚拟机的要求，并且不会危害虚拟机自身的安全。</p>
-<p><strong>准备</strong></p>
-<p>准备阶段是正式为类变量分配内存并设置类变量的初始值阶段，即在方法区中分配这些变量所使用的内存空间。注意这里所说的初始值概念，比如一个类变量定义为： <code>public static int v = 8080;</code>实际上变量v在准备阶段过后的初始值为0而不是8080，将v赋值为8080的putstatic指令是程序被编译后，存放于类构造器<client>方法之中。但是注意如果声明为：<code>public static final int v = 8080;</code>在编译阶段会为v生成ConstantValue属性，在准备阶段虚拟机会根据ConstantValue属性将v赋值为8080。</client></p>
-<p><strong>解析</strong></p>
-<p>解析阶段是指虚拟机将常量池中的符号引用替换为直接引用的过程。符号引用就是class文件中的：<code>CONSTANT_Class_info</code>、<code>CONSTANT_Field_info</code>、<code>CONSTANT_Method_info</code>等类型的常量。</p>
-<p><strong>初始化</strong></p>
-<p>初始化阶段是类加载最后一个阶段，前面的类加载阶段之后，除了在加载阶段可以自定义类加载器以外，其它操作都由JVM主导。到了初始阶段，才开始真正执行类中定义的Java程序代码。</p>
-<p>初始化阶段是执行类构造器<client>方法的过程。<client>方法是由编译器自动收集类中的类变量的赋值操作和静态语句块中的语句合并而成的。虚拟机会保证<client>方法执行之前，父类的<client>方法已经执行完毕。p.s: 如果一个类中没有对静态变量赋值也没有静态语句块，那么编译器可以不为这个类生成<client>()方法。</client></client></client></client></client></p>
-<p>注意以下几种情况不会执行类初始化：</p>
-<ul>
-<li><p>通过子类引用父类的静态字段，只会触发父类的初始化，而不会触发子类的初始化。</p>
-</li>
-<li><p>定义对象数组，不会触发该类的初始化。</p>
-</li>
-<li><p>常量在编译期间会存入调用类的常量池中，本质上并没有直接引用定义常量的类，不会触发定义常量所在的类。</p>
-</li>
-<li><p>通过类名获取Class对象，不会触发类的初始化。</p>
-</li>
-<li><p>通过Class.forName加载指定类时，如果指定参数initialize为false时，也不会触发类初始化，其实这个参数是告诉虚拟机，是否要对类进行初始化。</p>
-</li>
-<li><p>通过ClassLoader默认的loadClass方法，也不会触发初始化动作。</p>
-</li>
-</ul>
-<h6 id="Spring生命周期流程图"><a href="#Spring生命周期流程图" class="headerlink" title="Spring生命周期流程图"></a>Spring生命周期流程图</h6><p><img src="/2020/05/03/08/21/Java%E9%9D%A2%E7%BB%8F%E5%9B%9B/spring.png" alt></p>
-<h6 id="什么是IoC和DI？简要说明一下DI是如何实现的？"><a href="#什么是IoC和DI？简要说明一下DI是如何实现的？" class="headerlink" title="什么是IoC和DI？简要说明一下DI是如何实现的？"></a>什么是IoC和DI？简要说明一下DI是如何实现的？</h6><p>IoC叫控制反转，是Inversion of Control的缩写，DI（Dependency Injection）叫依赖注入，是对IoC更简单的诠释。控制反转是把传统上由程序代码直接操控的对象的调用权交给容器，通过容器来实现对象组件的装配和管理。所谓的”控制反转”就是对组件对象控制权的转移，从程序代码本身转移到了外部容器，由容器来创建对象并管理对象之间的依赖关系。IoC体现了好莱坞原则 - “Don’t call me, we will call you”。依赖注入的基本原则是应用组件不应该负责查找资源或者其他依赖的协作对象。配置对象的工作应该由容器负责，查找资源的逻辑应该从应用组件的代码中抽取出来，交给容器来完成。DI是对IoC更准确的描述，即组件之间的依赖关系由容器在运行期决定，形象的来说，即由容器动态的将某种依赖关系注入到组件之中。</p>
-<p>一个类A需要用到接口B中的方法，那么就需要为类A和接口B建立关联或依赖关系，最原始的方法是在类A中创建一个接口B的实现类C的实例，但这种方法需要开发人员自行维护二者的依赖关系，也就是说当依赖关系发生变动的时候需要修改代码并重新构建整个系统。如果通过一个容器来管理这些对象以及对象的依赖关系，则只需要在类A中定义好用于关联接口B的方法（构造器或setter方法），将类A和接口B的实现类C放入容器中，通过对容器的配置来实现二者的关联。<br>依赖注入可以通过setter方法注入（设值注入）、构造器注入和接口注入三种方式来实现，Spring支持setter注入和构造器注入，通常使用构造器注入来注入必须的依赖关系，对于可选的依赖关系，则setter注入是更好的选择，setter注入需要类提供无参构造器或者无参的静态工厂方法来创建对象。</p>
-<h6 id="Spring中自动装配的方式有哪些？"><a href="#Spring中自动装配的方式有哪些？" class="headerlink" title="Spring中自动装配的方式有哪些？"></a>Spring中自动装配的方式有哪些？</h6><ul>
-<li>no：不进行自动装配，手动设置Bean的依赖关系；</li>
-<li>byName：根据Bean的名字进行自动装配；</li>
-<li>byType：根据Bean的类型进行自动装配；</li>
-<li>constructor：类似于byType，不过是应用于构造器的参数，如果正好有一个Bean与构造器的参数类型相同则可以自动装配，否则会导致错误；</li>
-<li>autodetect：如果有默认的构造器，则通过constructor的方式进行自动装配，否则使用byType的方式进行自动装配；</li>
-</ul>
-<p>自动装配没有自定义装配方式那么精确，而且不能自动装配简单属性（基本类型、字符串等），在使用时应注意。</p>
-]]></content>
-      <categories>
-        <category>面试</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux程序自启动</title>
-    <url>/2019/11/22/09/39/Linux%E7%A8%8B%E5%BA%8F%E8%87%AA%E5%90%AF%E5%8A%A8/</url>
-    <content><![CDATA[<p>在Linux系统如何让程序开机时自动启动<a id="more"></a></p>
-<p><img src="/2019/11/22/09/39/Linux%E7%A8%8B%E5%BA%8F%E8%87%AA%E5%90%AF%E5%8A%A8/linuxicon.jpg" alt></p>
-<h5 id="修改启动配置文件"><a href="#修改启动配置文件" class="headerlink" title="修改启动配置文件"></a>修改启动配置文件</h5><p>新建一个sh后缀的脚本文件（例如:stratup.sh），把你所要启动的命令编写进去。然后再编辑“<strong>/etc/rc.local</strong>”启动配置文件，把<strong>脚本文件所在位置的全路径</strong>输入进去即可。</p>
-<h5 id="计划定时启动"><a href="#计划定时启动" class="headerlink" title="计划定时启动"></a>计划定时启动</h5><p>通过crontab可以设定程序的执行时间表， 例如让程序在每天的9点，或者每个星期一的9点执行一次。 </p>
-<p>crontab -l 列出时间表；<br>crontab -e编辑时间表；<br>crontab -d删除时间表；</p>
-<p>“-l”查看时间表；<br>“-e”是编辑（其实就是用vim编辑一个特定文件）；<br>“-d”删除，把该用户所有的时间表都删除，一般都是用“-e”编辑把不要了的时间表逐行删除；</p>
-<p>crontab文件的格式是：M H D m d CMD。<br>一个6个字段，其中最后一个CMD就是所要执行的程序，如haha.sh。<br>M：分钟（0-59）<br>H：小时（0-23）<br>D：日期（1-31）<br>m：月份（1-12）<br>d：一个星期中的某天（0-6，0代表周日）</p>
-<p>这5个时间字段用空格隔开，其值可以是一个数字，也可以用逗号隔开的多个数字（或其他） ，如果不需设置，则默认为“*”。</p>
-<p>例如，每天的9点0分执行startup.sh，就是“0 9 * * * /home/programs/./startup.sh”。</p>
-<h5 id="注册系统服务"><a href="#注册系统服务" class="headerlink" title="注册系统服务"></a>注册系统服务</h5><p>操作系统自带的服务，如ssh，ftp等等，开机都是自动启动的，我们也可以通过这种方式让自己开发的程序伪装成系统服务。</p>
-<p>比如我想把某个程序添加为系统服务，可以执行以下命令：</p>
-<p>chkconfig –add 程序名称(首先，添加为系统服务，<strong>注意add前面是两个横杠</strong>)</p>
-<p>chkconfig -leve 启动级别 服务名 on     </p>
-<p>（说明，3级别代表在命令行模式启动，5级别代表在图形界面启动，on表示开启）</p>
-<p>chkconfig -leve 启动级别 服务名 off（说明，off表示关闭自启动）</p>
-<p>例如：chkconfig -level 3 mysql on  (说明：让mysql服务在命令行模式，随系统启动)</p>
-<p>也可以使用  chkconfig –del 服务名称  来删除系统服务</p>
-<p>如果要查看哪些服务被添加为系统服务可以使用命令 ：</p>
-<p>  ntsysv 或者chkconfig –list</p>
-<p>如果要查看哪些程序被添加为自启动，可以使用命令 ：</p>
-<p>cat  /etc/rc.local（查看这个文件中添加了哪些程序路径）</p>
-]]></content>
-      <categories>
-        <category>操作系统</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -1485,6 +1306,107 @@
       </tags>
   </entry>
   <entry>
+    <title>Java面经六</title>
+    <url>/2020/05/05/14/55/Java%E9%9D%A2%E7%BB%8F%E5%85%AD/</url>
+    <content><![CDATA[<p>Java面试总结六<a id="more"></a></p>
+<h6 id="MyBatis中命名空间-namespace-的作用"><a href="#MyBatis中命名空间-namespace-的作用" class="headerlink" title="MyBatis中命名空间(namespace)的作用"></a>MyBatis中命名空间(namespace)的作用</h6><p>在大型项目中，可能存在大量的SQL语句，这时候为每个SQL语句起一个唯一的标识（ID）就变得并不容易了。为了解决这个问题，在MyBatis中，可以为每个映射文件起一个唯一的命名空间，这样定义在这个映射文件中的每个SQL语句就成了定义在这个命名空间中的一个ID。只要我们能够保证每个命名空间中这个ID是唯一的，即使在不同映射文件中的语句ID相同，也不会再产生冲突了。</p>
+<h6 id="SpringMVC的工作原理"><a href="#SpringMVC的工作原理" class="headerlink" title="SpringMVC的工作原理"></a>SpringMVC的工作原理</h6><p>①客户端的所有请求都交给前端控制器DispatcherServlet来处理，它会负责调用系统的其他模块来真正处理用户的请求。</p>
+<p>② DispatcherServlet收到请求后，将根据请求的信息（包括URL、HTTP协议方法、请求头、请求参数、Cookie等）以及HandlerMapping的配置找到处理该请求的Handler（任何一个对象都可以作为请求的Handler）。</p>
+<p>③在这个地方Spring会通过HandlerAdapter对该处理器进行封装。</p>
+<p>④ HandlerAdapter是一个适配器，它用统一的接口对各种Handler中的方法进行调用。</p>
+<p>⑤ Handler完成对用户请求的处理后，会返回一个ModelAndView对象给DispatcherServlet，ModelAndView顾名思义，包含了数据模型以及相应的视图的信息。</p>
+<p>⑥ ModelAndView的视图是逻辑视图，DispatcherServlet还要借助ViewResolver完成从逻辑视图到真实视图对象的解析工作。</p>
+<p>⑦ 当得到真正的视图对象后，DispatcherServlet会利用视图对象对模型数据进行渲染。</p>
+<p>⑧ 客户端得到响应，可能是一个普通的HTML页面，也可以是XML或JSON字符串，还可以是一张图片或者一个PDF文件。</p>
+<h6 id="Mybatis和Hibernate的区别"><a href="#Mybatis和Hibernate的区别" class="headerlink" title="Mybatis和Hibernate的区别"></a>Mybatis和Hibernate的区别</h6><p>1、简介</p>
+<p>Hibernate：Hibernate是当前最流行的ORM框架之一，对JDBC提供了较为完整的封装。Hibernate的O/R Mapping实现了POJO 和数据库表之间的映射，以及SQL的自动生成和执行。</p>
+<p>Mybatis：Mybatis同样也是非常流行的ORM框架，主要着力点在于 POJO 与 SQL 之间的映射关系。然后通过映射配置文件，将SQL所需的参数，以及返回的结果字段映射到指定 POJO 。相对Hibernate“O/R”而言，Mybatis 是一种“Sql Mapping”的ORM实现。</p>
+<p>2、缓存机制对比</p>
+<p>相同点</p>
+<p>Hibernate和Mybatis的二级缓存除了采用系统默认的缓存机制外，都可以通过实现你自己的缓存或为其他第三方缓存方案，创建适配器来完全覆盖缓存行为。</p>
+<p>不同点</p>
+<p>Hibernate的二级缓存配置在SessionFactory生成的配置文件中进行详细配置，然后再在具体的表-对象映射中配置是那种缓存。</p>
+<p>MyBatis的二级缓存配置都是在每个具体的表-对象映射中进行详细配置，这样针对不同的表可以自定义不同的缓存机制。并且Mybatis可以在命名空间中共享相同的缓存配置和实例，通过Cache-ref来实现。</p>
+<p>两者比较</p>
+<p>因为Hibernate对查询对象有着良好的管理机制，用户无需关心SQL。所以在使用二级缓存时如果出现脏数据，系统会报出错误并提示。而MyBatis在这一方面，使用二级缓存时需要特别小心。如果不能完全确定数据更新操作的波及范围，避免Cache的盲目使用。否则，脏数据的出现会给系统的正常运行带来很大的隐患。</p>
+<p>Mybatis：小巧、方便、高效、简单、直接、半自动化。</p>
+<p>Hibernate：强大、方便、高效、复杂、间接、全自动化。</p>
+<h6 id="1分钟之内只能处理1000个请求，你怎么实现？"><a href="#1分钟之内只能处理1000个请求，你怎么实现？" class="headerlink" title="1分钟之内只能处理1000个请求，你怎么实现？"></a>1分钟之内只能处理1000个请求，你怎么实现？</h6><p>限流的几种放大：计数器，滑动窗口漏桶法，令牌桶</p>
+<h6 id="JSP的静态包含和动态包含的区别"><a href="#JSP的静态包含和动态包含的区别" class="headerlink" title="JSP的静态包含和动态包含的区别"></a>JSP的静态包含和动态包含的区别</h6><p>静态包含是通过JSP的<code>&lt;%@include file=&quot;···&quot;&gt;</code> 指令包含页面，动态包含是通过JSP标准动作<code>&lt;jsp:include page=&quot;···&quot; flush=&quot;true&quot;&gt;</code>包含页面。</p>
+<p>静态包含是编译时包含，如果包含的页面不存在则会产生编译错误，而且两个页面的”contentType”属性应保持一致，因为两个页面会合二为一，只产生一个class文件，因此被包含页面发生的变动再包含它的页面更新前不会得到更新。</p>
+<p>动态包含是运行时包含，可以向被包含的页面传递参数，包含页面和被包含页面是独立的，会编译出两个class文件，如果被包含的页面不存在，不会产生编译错误，也不影响页面其他部分的执行。</p>
+<p>静态包含<br><code>&lt;%@ include file=&quot;...&quot; %&gt;</code></p>
+<p>动态包含</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;jsp:include page=<span class="string">&quot;...&quot;</span>&gt;</span><br><span class="line">&lt;jsp:param name=<span class="string">&quot;...&quot;</span> value=<span class="string">&quot;...&quot;</span> /&gt;</span><br><span class="line">&lt;/jsp:include&gt; </span><br></pre></td></tr></table></figure>
+
+<h6 id="Request对象的主要方法"><a href="#Request对象的主要方法" class="headerlink" title="Request对象的主要方法"></a>Request对象的主要方法</h6><p>setAttribute(String name,Object)：设置名字为name的request的参数值</p>
+<p>getAttribute(String name)：返回由name指定的属性值</p>
+<p>getAttributeNames()：返回request对象所有属性的名字集合，结果是一个枚举的实例</p>
+<p>getCookies()：返回客户端的所有Cookie对象，结果是一个Cookie数组</p>
+<p>getCharacterEncoding()：返回请求中的字符编码方式</p>
+<p>getContentLength()：返回请求的Body的长度</p>
+<p>getHeader(String name)：获得HTTP协议定义的文件头信息</p>
+<p>getHeaders(String name)：返回指定名字的request Header的所有值，结果是一个枚举的实例</p>
+<p>getHeaderNames()：返回所以request Header的名字，结果是一个枚举的实例</p>
+<p>getInputStream()：返回请求的输入流，用于获得请求中的数据</p>
+<p>getMethod()：获得客户端向服务器端传送数据的方法</p>
+<p>getParameter(String name)：获得客户端传送给服务器端的有name指定的参数值</p>
+<p>getParameterNames()：获得客户端传送给服务器端的所有参数的名字，结果是一个枚举的实例</p>
+<p>getParameterValues(String name)：获得有name指定的参数的所有值</p>
+<p>getProtocol()：获取客户端向服务器端传送数据所依据的协议名称</p>
+<p>getQueryString()：获得查询字符串</p>
+<p>getRequestURI()：获取发出请求字符串的客户端地址</p>
+<p>getRemoteAddr()：获取客户端的IP地址</p>
+<p>getRemoteHost()：获取客户端的名字</p>
+<p>getSession([Boolean create])：返回和请求相关Session</p>
+<p>getServerName()：获取服务器的名字</p>
+<p>getServletPath()：获取客户端所请求的脚本文件的路径</p>
+<p>getServerPort()：获取服务器的端口号</p>
+<p>removeAttribute(String name)：删除请求中的一个属性</p>
+<h6 id="四种会话跟踪技术"><a href="#四种会话跟踪技术" class="headerlink" title="四种会话跟踪技术"></a>四种会话跟踪技术</h6><p>会话跟踪是一种灵活、轻便的机制，它使Web上的状态编程变为可能。</p>
+<p>HTTP是一种无状态协议，每当用户发出请求时，服务器就会做出响应，客户端与服务器之间的联系是离散的、非连续的。</p>
+<p>当用户在同一网站的多个页面之间转换时，根本无法确定是否是同一个客户，会话跟踪技术就可以解决这个问题。当一个客户在多个页面间切换时，服务器会保存该用户的信息。有四种方法可以实现会话跟踪技术：URL重写、隐藏表单域、Cookie、Session。</p>
+<p>1）隐藏表单域：<input type="hidden">，非常适合步需要大量数据存储的会话应用。</p>
+<p>2）URL 重写:URL 可以在后面附加参数，和服务器的请求一起发送，这些参数为名字/值对。</p>
+<p>3）Cookie:一个 Cookie 是一个小的，已命名数据元素。服务器使用 SET-Cookie 头标将它作为 HTTP响应的一部分传送到客户端，客户端被请求保存 Cookie 值，在对同一服务器的后续请求使用一个Cookie 头标将之返回到服务器。与其它技术比较，Cookie 的一个优点是在浏览器会话结束后，甚至在客户端计算机重启后它仍可以保留其值。</p>
+<p>4）Session：使用 setAttribute(String str,Object obj)方法将对象捆绑到一个会话</p>
+<h6 id="web-xml文件中可以配置哪些内容？"><a href="#web-xml文件中可以配置哪些内容？" class="headerlink" title="web.xml文件中可以配置哪些内容？"></a>web.xml文件中可以配置哪些内容？</h6><p>web.xml用于配置Web应用的相关信息，如：监听器（listener）、过滤器（filter）、 Servlet、相关参数、会话超时时间、安全验证方式、错误页面等，下面是一些开发中常见的配置：</p>
+<p>①配置Spring上下文加载监听器加载Spring配置文件并创建IoC容器：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">context-param</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">param-value</span>&gt;</span>classpath:applicationContext.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">context-param</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">listener</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">listener-class</span>&gt;</span></span><br><span class="line">org.springframework.web.context.ContextLoaderListener</span><br><span class="line"><span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">listener</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>②配置Spring的OpenSessionInView过滤器来解决延迟加载和Hibernate会话关闭的矛盾：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>openSessionInView<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">filter-class</span>&gt;</span></span><br><span class="line">org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</span><br><span class="line"><span class="tag">&lt;/<span class="name">filter-class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>openSessionInView<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>③配置会话超时时间为10分钟：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">session-config</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">session-timeout</span>&gt;</span>10<span class="tag">&lt;/<span class="name">session-timeout</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">session-config</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>④配置404和Exception的错误页面：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">error-page</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">error-code</span>&gt;</span>404<span class="tag">&lt;/<span class="name">error-code</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">location</span>&gt;</span>/error.jsp<span class="tag">&lt;/<span class="name">location</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">error-page</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">error-page</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">exception-type</span>&gt;</span>java.lang.Exception<span class="tag">&lt;/<span class="name">exception-type</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">location</span>&gt;</span>/error.jsp<span class="tag">&lt;/<span class="name">location</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">error-page</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>⑤配置安全认证方式：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">security-constraint</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">web-resource-collection</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">web-resource-name</span>&gt;</span>ProtectedArea<span class="tag">&lt;/<span class="name">web-resource-name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/admin/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">http-method</span>&gt;</span>GET<span class="tag">&lt;/<span class="name">http-method</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">http-method</span>&gt;</span>POST<span class="tag">&lt;/<span class="name">http-method</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">web-resource-collection</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">auth-constraint</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">role-name</span>&gt;</span>admin<span class="tag">&lt;/<span class="name">role-name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">auth-constraint</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">security-constraint</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">login-config</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">auth-method</span>&gt;</span>BASIC<span class="tag">&lt;/<span class="name">auth-method</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">login-config</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">security-role</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">role-name</span>&gt;</span>admin<span class="tag">&lt;/<span class="name">role-name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">security-role</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="Javaweb开发中的监听器的理解"><a href="#Javaweb开发中的监听器的理解" class="headerlink" title="Javaweb开发中的监听器的理解"></a>Javaweb开发中的监听器的理解</h6><p>Java Web开发中的监听器（listener）就是application、session、request三个对象创建、销毁或者往其中添加修改删除属性时自动执行代码的功能组件，如下所示：</p>
+<p>①ServletContextListener：对Servlet上下文的创建和销毁进行监听。</p>
+<p>②ServletContextAttributeListener：监听Servlet上下文属性的添加、删除和替换。</p>
+<p>③HttpSessionListener：对Session的创建和销毁进行监听。</p>
+<p>session的销毁有两种情况：</p>
+<p>1). session超时（可以在web.xml中通过<code>&lt;session-config&gt;/&lt;session-timeout&gt;</code>标签配置超时时间）；</p>
+<p>2). 通过调用session对象的invalidate()方法使session失效。</p>
+<p>④HttpSessionAttributeListener：对Session对象中属性的添加、删除和替换进行监听。</p>
+<p>⑤ServletRequestListener：对请求对象的初始化和销毁进行监听。</p>
+<p>⑥ServletRequestAttributeListener：对请求对象属性的添加、删除和替换进行监听。</p>
+<h6 id="请问过滤器有哪些作用？以及过滤器的用法又是什么呢"><a href="#请问过滤器有哪些作用？以及过滤器的用法又是什么呢" class="headerlink" title="请问过滤器有哪些作用？以及过滤器的用法又是什么呢?"></a>请问过滤器有哪些作用？以及过滤器的用法又是什么呢?</h6><p>Java Web开发中的过滤器（filter）是从Servlet 2.3规范开始增加的功能，并在Servlet 2.4规范中得到增强。对Web应用来说，过滤器是一个驻留在服务器端的Web组件，它可以截取客户端和服务器之间的请求与响应信息，并对这些信息进行过滤。当Web容器接受到一个对资源的请求时，它将判断是否有过滤器与这个资源相关联。如果有，那么容器将把请求交给过滤器进行处理。在过滤器中，你可以改变请求的内容，或者重新设置请求的报头信息，然后再将请求发送给目标资源。当目标资源对请求作出响应时候，容器同样会将响应先转发给过滤器，在过滤器中你可以对响应的内容进行转换，然后再将响应发送到客户端。</p>
+<p>常见的过滤器用途主要包括：对用户请求进行统一认证、对用户的访问请求进行记录和审核、对用户发送的数据进行过滤或替换、转换图象格式、对响应内容进行压缩以减少传输量、对请求或响应进行加解密处理、触发资源访问事件、对XML的输出应用XSLT等。<br>和过滤器相关的接口主要有：Filter、FilterConfig和FilterChain。</p>
+]]></content>
+      <categories>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Linux系统防火墙指令</title>
     <url>/2020/01/16/08/51/Linux%E7%B3%BB%E7%BB%9F%E9%98%B2%E7%81%AB%E5%A2%99%E6%8C%87%E4%BB%A4/</url>
     <content><![CDATA[<p>本文以CentOS 7为例。<a id="more"></a></p>
@@ -1547,6 +1469,84 @@
       </categories>
       <tags>
         <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java面经四</title>
+    <url>/2020/05/03/08/21/Java%E9%9D%A2%E7%BB%8F%E5%9B%9B/</url>
+    <content><![CDATA[<p>Java面试总结四<a id="more"></a></p>
+<h6 id="synchronized和java-util-concurrent-locks-lock的区别"><a href="#synchronized和java-util-concurrent-locks-lock的区别" class="headerlink" title="synchronized和java.util.concurrent.locks.lock的区别"></a>synchronized和java.util.concurrent.locks.lock的区别</h6><p>主要相同点：Lock能完成Synchronized所实现的所有功能。</p>
+<p>主要不同点：Lock有比Synchronized更精确的线程予以和更好的性能。Synchronized会自动释放锁，但是Lock一定要求程序员手工释放，并且必须在finally从句中释放。</p>
+<p>synchronized 修饰方法时，表示同一个对象在不同的线程中表现为同步队列。</p>
+<h6 id="如何确保N个线程可以访问N个资源，但同时又不导致死锁？"><a href="#如何确保N个线程可以访问N个资源，但同时又不导致死锁？" class="headerlink" title="如何确保N个线程可以访问N个资源，但同时又不导致死锁？"></a>如何确保N个线程可以访问N个资源，但同时又不导致死锁？</h6><p>使用多线程的时候，一种非常简单的避免死锁的方式就是：指定获取锁的顺序，并强制线程按照指定的顺序获取锁。因此，如果所有的线程都是以同样的顺序加锁和释放锁，就不会出现死锁了。</p>
+<p>预防死锁，预先破坏产生死锁的四个条件。互斥不可能破坏，所以有如下三种方法：</p>
+<p>1.破坏请求和保持条件，进程必须等所有要请求的资源都空闲时才能申请资源，这种方法会使资源浪费严重(有些资源可能仅在运行初期或结束时才使用，甚至根本不使用)。允许进程获取初期所需资源后，便开始运行，运行过程中再逐步释放自己占有的资源，比如有一个进程的任务是把数据复制到磁盘中再打印，前期只需获得磁盘资源而不需要获得打印机资源，待复制完毕后再释放掉磁盘资源。这种方法比第一种方法好，会使资源利用率上升。</p>
+<p>2.破坏不可抢占条件，这种方法代价大，实现复杂。</p>
+<p>3.破坏循坏等待条件，对各进程请求资源的顺序做一个规定，避免相互等待。这种方法对资源的利用率比前两种都高，但是前期要为设备指定序号，新设备加入会有一个问题，其次对用户编程也有限制。</p>
+<h6 id="锁和同步的区别"><a href="#锁和同步的区别" class="headerlink" title="锁和同步的区别"></a>锁和同步的区别</h6><ol>
+<li><p>Lock是一个接口，而synchronized是Java中的关键字，synchronized是内置的语言实现，synchronized是在JVM层面上实现的，不但可以通过一些监控工具监控synchronized的锁定，而且在代码执行时出现异常，JVM会自动释放锁定，但是使用Lock则不行，lock是通过代码实现的，要保证锁定一定会被释放，就必须将 unLock()放到finally{} 中；</p>
+</li>
+<li><p>synchronized在发生异常时，会自动释放线程占有的锁，因此不会导致死锁现象发生；而Lock在发生异常时，如果没有主动通过unLock()去释放锁，则很可能造成死锁现象，因此使用Lock时需要在finally块中释放锁；</p>
+</li>
+<li><p>Lock可以让等待锁的线程响应中断，线程可以中断去干别的事务，而synchronized却不行，使用synchronized时，等待的线程会一直等待下去，不能够响应中断；</p>
+</li>
+<li><p>通过Lock可以知道有没有成功获取锁，而synchronized却无法办到;</p>
+</li>
+<li><p>Lock可以提高多个线程进行读操作的效率。</p>
+<p> 在性能上来说，如果竞争资源不激烈，两者的性能是差不多的，而当竞争资源非常激烈时（即有大量线程同时竞争），此时Lock的性能要远远优于synchronized。所以说，在具体使用时要根据适当情况选择。</p>
+</li>
+</ol>
+<h6 id="jdk和jre的区别"><a href="#jdk和jre的区别" class="headerlink" title="jdk和jre的区别"></a>jdk和jre的区别</h6><p>Java运行时环境(JRE)是将要执行Java程序的Java虚拟机。它同时也包含了执行applet需要的浏览器插件。Java开发工具包(JDK)是完整的Java软件开发包，包含了JRE，编译器和其他的工具(比如：JavaDoc，Java调试器)，可以让开发者开发、编译、执行Java应用程序。</p>
+<h6 id="Java内存模型"><a href="#Java内存模型" class="headerlink" title="Java内存模型"></a>Java内存模型</h6><p>Java内存模型(简称JMM)，JMM决定一个线程对共享变量的写入何时对另一个线程可见。从抽象的角度来看，JMM定义了线程和主内存之间的抽象关系：线程之间的共享变量存储在主内存（main memory）中，每个线程都有一个私有的本地内存（local memory），本地内存中存储了该线程以读/写共享变量的副本。</p>
+<p>本地内存是JMM的一个抽象概念，并不真实存在。它涵盖了缓存，写缓冲区，寄存器以及其他的硬件和编译器优化。其关系模型图如下图所示：</p>
+<p><img src="/2020/05/03/08/21/Java%E9%9D%A2%E7%BB%8F%E5%9B%9B/jvm.png" alt></p>
+<h6 id="JVM分区"><a href="#JVM分区" class="headerlink" title="JVM分区"></a>JVM分区</h6><p>java内存通常被划分为5个区域：程序计数器（Program Count Register）、本地方法栈（Native Stack）、方法区（Methon Area）、栈（Stack）、堆（Heap）。</p>
+<p><img src="/2020/05/03/08/21/Java%E9%9D%A2%E7%BB%8F%E5%9B%9B/JVM%E5%88%86%E5%8C%BA.png" alt></p>
+<h6 id="类的加载过程"><a href="#类的加载过程" class="headerlink" title="类的加载过程"></a>类的加载过程</h6><p>如下图所示，JVM类加载机制分为五个部分：加载，验证，准备，解析，初始化，下面我们就分别来看一下这五个过程。</p>
+<p><img src="/2020/05/03/08/21/Java%E9%9D%A2%E7%BB%8F%E5%9B%9B/loading.png" alt></p>
+<p><strong>加载</strong></p>
+<p>加载是类加载过程中的一个阶段，这个阶段会在内存中生成一个代表这个类的java.lang.Class对象，作为方法区这个类的各种数据的入口。注意这里不一定非得要从一个Class文件获取，这里既可以从ZIP包中读取（比如从jar包和war包中读取），也可以在运行时计算生成（动态代理），也可以由其它文件生成（比如将JSP文件转换成对应的Class类）。</p>
+<p><strong>验证</strong></p>
+<p>这一阶段的主要目的是为了确保Class文件的字节流中包含的信息是否符合当前虚拟机的要求，并且不会危害虚拟机自身的安全。</p>
+<p><strong>准备</strong></p>
+<p>准备阶段是正式为类变量分配内存并设置类变量的初始值阶段，即在方法区中分配这些变量所使用的内存空间。注意这里所说的初始值概念，比如一个类变量定义为： <code>public static int v = 8080;</code>实际上变量v在准备阶段过后的初始值为0而不是8080，将v赋值为8080的putstatic指令是程序被编译后，存放于类构造器<client>方法之中。但是注意如果声明为：<code>public static final int v = 8080;</code>在编译阶段会为v生成ConstantValue属性，在准备阶段虚拟机会根据ConstantValue属性将v赋值为8080。</client></p>
+<p><strong>解析</strong></p>
+<p>解析阶段是指虚拟机将常量池中的符号引用替换为直接引用的过程。符号引用就是class文件中的：<code>CONSTANT_Class_info</code>、<code>CONSTANT_Field_info</code>、<code>CONSTANT_Method_info</code>等类型的常量。</p>
+<p><strong>初始化</strong></p>
+<p>初始化阶段是类加载最后一个阶段，前面的类加载阶段之后，除了在加载阶段可以自定义类加载器以外，其它操作都由JVM主导。到了初始阶段，才开始真正执行类中定义的Java程序代码。</p>
+<p>初始化阶段是执行类构造器<client>方法的过程。<client>方法是由编译器自动收集类中的类变量的赋值操作和静态语句块中的语句合并而成的。虚拟机会保证<client>方法执行之前，父类的<client>方法已经执行完毕。p.s: 如果一个类中没有对静态变量赋值也没有静态语句块，那么编译器可以不为这个类生成<client>()方法。</client></client></client></client></client></p>
+<p>注意以下几种情况不会执行类初始化：</p>
+<ul>
+<li><p>通过子类引用父类的静态字段，只会触发父类的初始化，而不会触发子类的初始化。</p>
+</li>
+<li><p>定义对象数组，不会触发该类的初始化。</p>
+</li>
+<li><p>常量在编译期间会存入调用类的常量池中，本质上并没有直接引用定义常量的类，不会触发定义常量所在的类。</p>
+</li>
+<li><p>通过类名获取Class对象，不会触发类的初始化。</p>
+</li>
+<li><p>通过Class.forName加载指定类时，如果指定参数initialize为false时，也不会触发类初始化，其实这个参数是告诉虚拟机，是否要对类进行初始化。</p>
+</li>
+<li><p>通过ClassLoader默认的loadClass方法，也不会触发初始化动作。</p>
+</li>
+</ul>
+<h6 id="Spring生命周期流程图"><a href="#Spring生命周期流程图" class="headerlink" title="Spring生命周期流程图"></a>Spring生命周期流程图</h6><p><img src="/2020/05/03/08/21/Java%E9%9D%A2%E7%BB%8F%E5%9B%9B/spring.png" alt></p>
+<h6 id="什么是IoC和DI？简要说明一下DI是如何实现的？"><a href="#什么是IoC和DI？简要说明一下DI是如何实现的？" class="headerlink" title="什么是IoC和DI？简要说明一下DI是如何实现的？"></a>什么是IoC和DI？简要说明一下DI是如何实现的？</h6><p>IoC叫控制反转，是Inversion of Control的缩写，DI（Dependency Injection）叫依赖注入，是对IoC更简单的诠释。控制反转是把传统上由程序代码直接操控的对象的调用权交给容器，通过容器来实现对象组件的装配和管理。所谓的”控制反转”就是对组件对象控制权的转移，从程序代码本身转移到了外部容器，由容器来创建对象并管理对象之间的依赖关系。IoC体现了好莱坞原则 - “Don’t call me, we will call you”。依赖注入的基本原则是应用组件不应该负责查找资源或者其他依赖的协作对象。配置对象的工作应该由容器负责，查找资源的逻辑应该从应用组件的代码中抽取出来，交给容器来完成。DI是对IoC更准确的描述，即组件之间的依赖关系由容器在运行期决定，形象的来说，即由容器动态的将某种依赖关系注入到组件之中。</p>
+<p>一个类A需要用到接口B中的方法，那么就需要为类A和接口B建立关联或依赖关系，最原始的方法是在类A中创建一个接口B的实现类C的实例，但这种方法需要开发人员自行维护二者的依赖关系，也就是说当依赖关系发生变动的时候需要修改代码并重新构建整个系统。如果通过一个容器来管理这些对象以及对象的依赖关系，则只需要在类A中定义好用于关联接口B的方法（构造器或setter方法），将类A和接口B的实现类C放入容器中，通过对容器的配置来实现二者的关联。<br>依赖注入可以通过setter方法注入（设值注入）、构造器注入和接口注入三种方式来实现，Spring支持setter注入和构造器注入，通常使用构造器注入来注入必须的依赖关系，对于可选的依赖关系，则setter注入是更好的选择，setter注入需要类提供无参构造器或者无参的静态工厂方法来创建对象。</p>
+<h6 id="Spring中自动装配的方式有哪些？"><a href="#Spring中自动装配的方式有哪些？" class="headerlink" title="Spring中自动装配的方式有哪些？"></a>Spring中自动装配的方式有哪些？</h6><ul>
+<li>no：不进行自动装配，手动设置Bean的依赖关系；</li>
+<li>byName：根据Bean的名字进行自动装配；</li>
+<li>byType：根据Bean的类型进行自动装配；</li>
+<li>constructor：类似于byType，不过是应用于构造器的参数，如果正好有一个Bean与构造器的参数类型相同则可以自动装配，否则会导致错误；</li>
+<li>autodetect：如果有默认的构造器，则通过constructor的方式进行自动装配，否则使用byType的方式进行自动装配；</li>
+</ul>
+<p>自动装配没有自定义装配方式那么精确，而且不能自动装配简单属性（基本类型、字符串等），在使用时应注意。</p>
+]]></content>
+      <categories>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
       </tags>
   </entry>
   <entry>
@@ -1641,35 +1641,6 @@
       </categories>
       <tags>
         <tag>mysql</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Oracle中的COALESCER函数</title>
-    <url>/2020/07/26/22/20/Oracle%E4%B8%AD%E7%9A%84COALESCER%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<p>coalesce函数的使用说明<a id="more"></a></p>
-<h5 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h5><p>返回其参数中第一个非空表达式。</p>
-<h6 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h6><p>coalesce ( 表达式1 ,…表达式n )</p>
-<h6 id="返回类型"><a href="#返回类型" class="headerlink" title="返回类型"></a>返回类型</h6><p>返回数据类型优先级最高的表达式的数据类型，如果所有参数均为null，则coalesce返回null。</p>
-<h5 id="等效的case函数"><a href="#等效的case函数" class="headerlink" title="等效的case函数"></a>等效的case函数</h5><h6 id="case语句"><a href="#case语句" class="headerlink" title="case语句"></a>case语句</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CASE</span><br><span class="line"></span><br><span class="line">   WHEN (expression1 IS NOT NULL) THEN expression1</span><br><span class="line"></span><br><span class="line">   ...</span><br><span class="line"></span><br><span class="line">   WHEN (expressionN IS NOT NULL) THEN expressionN</span><br><span class="line"></span><br><span class="line">   ELSE NULL</span><br><span class="line"></span><br><span class="line">END</span><br></pre></td></tr></table></figure>
-
-<p>尽管 IS NULL 等效于 COALESCE，但它们的行为是不同的。包含具有非空参数的 IS NULL 的表达式将视为 NOT NULL，而包含具有非空参数的 COALESCE 的表达式将视为 NULL。</p>
-<h6 id="SQL-Server的非空参数问题"><a href="#SQL-Server的非空参数问题" class="headerlink" title="SQL Server的非空参数问题"></a>SQL Server的非空参数问题</h6><p>在 SQL Server 中，若要对包含具有非空参数的 COALESCE 的表达式创建索引，可以使用 PERSISTED 列属性将计算列持久化，例如下面案例</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CREATE TABLE #CheckSumTest</span><br><span class="line"></span><br><span class="line">    (</span><br><span class="line"></span><br><span class="line">        ID int identity ,</span><br><span class="line"></span><br><span class="line">        Num int DEFAULT ( RAND() * 100 ) ,</span><br><span class="line"></span><br><span class="line">        RowCheckSum AS COALESCE( CHECKSUM( id , num ) , 0 ) PERSISTED PRIMARY KEY</span><br><span class="line"></span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
-
-<h6 id="COALESCE-使用示例"><a href="#COALESCE-使用示例" class="headerlink" title="COALESCE 使用示例"></a>COALESCE 使用示例</h6><p>在以下示例中，wages 表中包括以下三列有关雇员的年薪的信息：hourly wage、salary 和 commission。但是，每个雇员只能接受一种付款方式。若要确定支付给所有雇员的金额总数，请使用 COALESCE 函数，它只接受在 hourly_wage、salary 和 commission 中找到的非空值。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SET NOCOUNT ON;</span><br><span class="line"></span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line">USE master;</span><br><span class="line"></span><br><span class="line">IF EXISTS (SELECT name FROM sys.tables</span><br><span class="line"></span><br><span class="line">      WHERE name &#x3D; &#39;wages&#39;)</span><br><span class="line"></span><br><span class="line">   DROP TABLE wages;</span><br><span class="line"></span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line">CREATE TABLE wages</span><br><span class="line"></span><br><span class="line">(</span><br><span class="line"></span><br><span class="line">   emp_id      tinyint    identity,</span><br><span class="line"></span><br><span class="line">   hourly_wage   decimal   NULL,</span><br><span class="line"></span><br><span class="line">   salary      decimal    NULL,</span><br><span class="line"></span><br><span class="line">   commission   decimal   NULL,</span><br><span class="line"></span><br><span class="line">   num_sales   tinyint   NULL</span><br><span class="line"></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(10.00, NULL, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(20.00, NULL, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(30.00, NULL, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(40.00, NULL, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, 10000.00, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, 20000.00, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, 30000.00, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, 40000.00, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, NULL, 15000, 3);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, NULL, 25000, 2);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, NULL, 20000, 6);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, NULL, 14000, 4);</span><br><span class="line"></span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line">SET NOCOUNT OFF;</span><br><span class="line"></span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line">SELECT CAST(COALESCE(hourly_wage * 40 * 52,</span><br><span class="line"></span><br><span class="line">   salary,</span><br><span class="line"></span><br><span class="line">   commission * num_sales) AS money) AS &#39;Total Salary&#39;</span><br><span class="line"></span><br><span class="line">FROM wages;</span><br><span class="line"></span><br><span class="line">GO</span><br></pre></td></tr></table></figure>
-
-<p>结果集</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Total Salary</span><br><span class="line"></span><br><span class="line">------------</span><br><span class="line"></span><br><span class="line">20800.0000</span><br><span class="line"></span><br><span class="line">41600.0000</span><br><span class="line"></span><br><span class="line">62400.0000</span><br><span class="line"></span><br><span class="line">83200.0000</span><br><span class="line"></span><br><span class="line">10000.0000</span><br><span class="line"></span><br><span class="line">20000.0000</span><br><span class="line"></span><br><span class="line">30000.0000</span><br><span class="line"></span><br><span class="line">40000.0000</span><br><span class="line"></span><br><span class="line">45000.0000</span><br><span class="line"></span><br><span class="line">50000.0000</span><br><span class="line"></span><br><span class="line">120000.0000</span><br><span class="line"></span><br><span class="line">56000.0000</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">(12 row(s) affected)</span><br></pre></td></tr></table></figure>
-
-
-
-]]></content>
-      <categories>
-        <category>数据库</category>
-      </categories>
-      <tags>
-        <tag>oracle</tag>
       </tags>
   </entry>
   <entry>
@@ -2017,6 +1988,35 @@
       </tags>
   </entry>
   <entry>
+    <title>Oracle中的COALESCER函数</title>
+    <url>/2020/07/26/22/20/Oracle%E4%B8%AD%E7%9A%84COALESCER%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<p>coalesce函数的使用说明<a id="more"></a></p>
+<h5 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h5><p>返回其参数中第一个非空表达式。</p>
+<h6 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h6><p>coalesce ( 表达式1 ,…表达式n )</p>
+<h6 id="返回类型"><a href="#返回类型" class="headerlink" title="返回类型"></a>返回类型</h6><p>返回数据类型优先级最高的表达式的数据类型，如果所有参数均为null，则coalesce返回null。</p>
+<h5 id="等效的case函数"><a href="#等效的case函数" class="headerlink" title="等效的case函数"></a>等效的case函数</h5><h6 id="case语句"><a href="#case语句" class="headerlink" title="case语句"></a>case语句</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CASE</span><br><span class="line"></span><br><span class="line">   WHEN (expression1 IS NOT NULL) THEN expression1</span><br><span class="line"></span><br><span class="line">   ...</span><br><span class="line"></span><br><span class="line">   WHEN (expressionN IS NOT NULL) THEN expressionN</span><br><span class="line"></span><br><span class="line">   ELSE NULL</span><br><span class="line"></span><br><span class="line">END</span><br></pre></td></tr></table></figure>
+
+<p>尽管 IS NULL 等效于 COALESCE，但它们的行为是不同的。包含具有非空参数的 IS NULL 的表达式将视为 NOT NULL，而包含具有非空参数的 COALESCE 的表达式将视为 NULL。</p>
+<h6 id="SQL-Server的非空参数问题"><a href="#SQL-Server的非空参数问题" class="headerlink" title="SQL Server的非空参数问题"></a>SQL Server的非空参数问题</h6><p>在 SQL Server 中，若要对包含具有非空参数的 COALESCE 的表达式创建索引，可以使用 PERSISTED 列属性将计算列持久化，例如下面案例</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CREATE TABLE #CheckSumTest</span><br><span class="line"></span><br><span class="line">    (</span><br><span class="line"></span><br><span class="line">        ID int identity ,</span><br><span class="line"></span><br><span class="line">        Num int DEFAULT ( RAND() * 100 ) ,</span><br><span class="line"></span><br><span class="line">        RowCheckSum AS COALESCE( CHECKSUM( id , num ) , 0 ) PERSISTED PRIMARY KEY</span><br><span class="line"></span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
+
+<h6 id="COALESCE-使用示例"><a href="#COALESCE-使用示例" class="headerlink" title="COALESCE 使用示例"></a>COALESCE 使用示例</h6><p>在以下示例中，wages 表中包括以下三列有关雇员的年薪的信息：hourly wage、salary 和 commission。但是，每个雇员只能接受一种付款方式。若要确定支付给所有雇员的金额总数，请使用 COALESCE 函数，它只接受在 hourly_wage、salary 和 commission 中找到的非空值。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SET NOCOUNT ON;</span><br><span class="line"></span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line">USE master;</span><br><span class="line"></span><br><span class="line">IF EXISTS (SELECT name FROM sys.tables</span><br><span class="line"></span><br><span class="line">      WHERE name &#x3D; &#39;wages&#39;)</span><br><span class="line"></span><br><span class="line">   DROP TABLE wages;</span><br><span class="line"></span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line">CREATE TABLE wages</span><br><span class="line"></span><br><span class="line">(</span><br><span class="line"></span><br><span class="line">   emp_id      tinyint    identity,</span><br><span class="line"></span><br><span class="line">   hourly_wage   decimal   NULL,</span><br><span class="line"></span><br><span class="line">   salary      decimal    NULL,</span><br><span class="line"></span><br><span class="line">   commission   decimal   NULL,</span><br><span class="line"></span><br><span class="line">   num_sales   tinyint   NULL</span><br><span class="line"></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(10.00, NULL, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(20.00, NULL, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(30.00, NULL, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(40.00, NULL, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, 10000.00, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, 20000.00, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, 30000.00, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, 40000.00, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, NULL, 15000, 3);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, NULL, 25000, 2);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, NULL, 20000, 6);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, NULL, 14000, 4);</span><br><span class="line"></span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line">SET NOCOUNT OFF;</span><br><span class="line"></span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line">SELECT CAST(COALESCE(hourly_wage * 40 * 52,</span><br><span class="line"></span><br><span class="line">   salary,</span><br><span class="line"></span><br><span class="line">   commission * num_sales) AS money) AS &#39;Total Salary&#39;</span><br><span class="line"></span><br><span class="line">FROM wages;</span><br><span class="line"></span><br><span class="line">GO</span><br></pre></td></tr></table></figure>
+
+<p>结果集</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Total Salary</span><br><span class="line"></span><br><span class="line">------------</span><br><span class="line"></span><br><span class="line">20800.0000</span><br><span class="line"></span><br><span class="line">41600.0000</span><br><span class="line"></span><br><span class="line">62400.0000</span><br><span class="line"></span><br><span class="line">83200.0000</span><br><span class="line"></span><br><span class="line">10000.0000</span><br><span class="line"></span><br><span class="line">20000.0000</span><br><span class="line"></span><br><span class="line">30000.0000</span><br><span class="line"></span><br><span class="line">40000.0000</span><br><span class="line"></span><br><span class="line">45000.0000</span><br><span class="line"></span><br><span class="line">50000.0000</span><br><span class="line"></span><br><span class="line">120000.0000</span><br><span class="line"></span><br><span class="line">56000.0000</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">(12 row(s) affected)</span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>oracle</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python爬取电影天堂新片精品</title>
     <url>/2020/02/12/16/02/Python%E7%88%AC%E5%8F%96%E7%94%B5%E5%BD%B1%E5%A4%A9%E5%A0%82%E6%96%B0%E7%89%87%E7%B2%BE%E5%93%81/</url>
     <content><![CDATA[<p>爬取最新电影，内容包括标题、年代、产地、类别、评分、片场、导演、主演、下载链接。<a id="more"></a></p>
@@ -2028,22 +2028,6 @@
       </categories>
       <tags>
         <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>React的Ref属性</title>
-    <url>/2020/07/25/11/01/React%E7%9A%84Ref%E5%B1%9E%E6%80%A7/</url>
-    <content><![CDATA[<p>父与子组件使用ref通信<a id="more"></a></p>
-<p>props属性传值与ref的区别：</p>
-<p>输入框的value值拿到之后，还要把value值通过回调函数调用传回给外面的事件(父组件)，如果父组件想要清空输入框的话，就从父组件中传一个新的属性进来，进行重置，这样就不用与input标签进行交互，只要身上绑定一个ref，我就能拿到这个组件的任何东西，我能拿到他的状态，我就可以获取它里面<br>孩子的状态，同样的话，我还可以去修改他的状态。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; todolist</span><br><span class="line"></span><br><span class="line">import React, &#123; Component &#125; from &#39;react&#39;</span><br><span class="line"></span><br><span class="line">class Input extends Component&#123;</span><br><span class="line">  &#x2F;&#x2F; 5.定义状态</span><br><span class="line">    state &#x3D; &#123;</span><br><span class="line">        mytext:&quot;&quot;,</span><br><span class="line">        list: [&#39;111&#39;, &#39;222&#39;, &#39;333&#39;]</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	&#x2F;&#x2F; 10.定义kerwinreset方法，用来清空输入框的value值</span><br><span class="line">    kerwinreset&#x3D; ()&#x3D;&gt;&#123;</span><br><span class="line">        this.setState(&#123;</span><br><span class="line">            list: [...this.state.list, this.state.mytext],</span><br><span class="line">            mytext:&quot;&quot;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    handleDel &#x3D; (index) &#x3D;&gt; &#123;</span><br><span class="line">      var newList &#x3D; [...this.state.list]</span><br><span class="line">      newList.splice(index, 1)</span><br><span class="line">      console.log(newList)</span><br><span class="line">      this.setState(&#123;</span><br><span class="line">        list: newList</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render()&#123;</span><br><span class="line">        return (</span><br><span class="line">          &lt;div&gt;</span><br><span class="line">              &#123;&#x2F;* 1.创建组件 *&#x2F;&#125;</span><br><span class="line">              &#123;&#x2F;* 7.绑定onChange事件 *&#x2F;&#125;</span><br><span class="line">              &lt;input type&#x3D;&quot;text&quot; style&#x3D;&#123;&#123;background:&quot;yellow&quot;&#125;&#125;</span><br><span class="line">                  value&#x3D;&#123;this.state.mytext&#125; onChange&#x3D;&#123;(e)&#x3D;&gt;&#123;</span><br><span class="line">                  this.setState(&#123;</span><br><span class="line">                      &#x2F;&#x2F; 8.一点击button按钮就把输入框当前的value同步给mytext状态</span><br><span class="line">                      mytext:e.target.value</span><br><span class="line">                  &#125;)</span><br><span class="line">              &#125;&#125;&#x2F;&gt;</span><br><span class="line">              &lt;ul style&#x3D;&#123;&#123; listStyle: &quot;none&quot; &#125;&#125;&gt;</span><br><span class="line">                &#123; this.state.list.map((item, index) &#x3D;&gt; </span><br><span class="line">                    &lt;li key&#x3D;&#123;item&#125;&gt;</span><br><span class="line">                      &#123; item &#125;</span><br><span class="line">                      &lt;button onClick&#x3D; &#123; this.handleDel.bind(this, index) &#125;&gt;删除&lt;&#x2F;button&gt;</span><br><span class="line">                    &lt;&#x2F;li&gt; </span><br><span class="line">                ) &#125;</span><br><span class="line">              &lt;&#x2F;ul&gt;</span><br><span class="line">          &lt;&#x2F;div&gt;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default class App extends Component &#123;</span><br><span class="line">    state &#x3D; &#123;</span><br><span class="line">      datalist: []</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        return (</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                &#123;&#x2F;* 2.使用组件，通过ref拿到value值 *&#x2F;&#125;</span><br><span class="line">                &lt;Input ref&#x3D;&quot;myinput&quot;&#x2F;&gt;</span><br><span class="line">                &#123;&#x2F;* 3.绑定点击事件 *&#x2F;&#125;</span><br><span class="line">                &lt;button onClick&#x3D;&#123;this.handleClick&#125;&gt;添加&lt;&#x2F;button&gt;</span><br><span class="line">            &lt;&#x2F;div&gt;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F; 4.点击事件</span><br><span class="line">    handleClick &#x3D; ()&#x3D;&gt;&#123;</span><br><span class="line">        &#x2F;&#x2F; 6.拿到input的结构(状态和方法都能拿到)</span><br><span class="line">        console.log(this.refs.myinput)</span><br><span class="line">        &#x2F;&#x2F; 9.拿到拿到输入框的value值</span><br><span class="line">        console.log(this.refs.myinput.state.mytext)</span><br><span class="line">        &#x2F;&#x2F; 11.拿到输入框的value之后，调用kerwinreset方法，来清空输入框</span><br><span class="line">        this.refs.myinput.kerwinreset()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>前端</category>
-      </categories>
-      <tags>
-        <tag>React</tag>
       </tags>
   </entry>
   <entry>
@@ -2083,6 +2067,22 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var Button &#x3D; React.createClass(&#123;</span><br><span class="line">  getInitialState: function() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      data:0</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  setNewNumber: function() &#123;</span><br><span class="line">    this.setState(&#123;data: this.state.data + 1&#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  render: function () &#123;</span><br><span class="line">      return (</span><br><span class="line">         &lt;div&gt;</span><br><span class="line">            &lt;button onClick &#x3D; &#123;this.setNewNumber&#125;&gt;INCREMENT&lt;&#x2F;button&gt;</span><br><span class="line">            &lt;Content myNumber &#x3D; &#123;this.state.data&#125;&gt;&lt;&#x2F;Content&gt;</span><br><span class="line">         &lt;&#x2F;div&gt;</span><br><span class="line">      );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">var Content &#x3D; React.createClass(&#123;</span><br><span class="line">  componentWillMount:function() &#123;</span><br><span class="line">      console.log(&#39;Component WILL MOUNT!&#39;)</span><br><span class="line">  &#125;,</span><br><span class="line">  componentDidMount:function() &#123;</span><br><span class="line">       console.log(&#39;Component DID MOUNT!&#39;)</span><br><span class="line">  &#125;,</span><br><span class="line">  componentWillReceiveProps:function(newProps) &#123;</span><br><span class="line">        console.log(&#39;Component WILL RECIEVE PROPS!&#39;)</span><br><span class="line">  &#125;,</span><br><span class="line">  shouldComponentUpdate:function(newProps, newState) &#123;</span><br><span class="line">        return true;</span><br><span class="line">  &#125;,</span><br><span class="line">  componentWillUpdate:function(nextProps, nextState) &#123;</span><br><span class="line">        console.log(&#39;Component WILL UPDATE!&#39;);</span><br><span class="line">  &#125;,</span><br><span class="line">  componentDidUpdate:function(prevProps, prevState) &#123;</span><br><span class="line">        console.log(&#39;Component DID UPDATE!&#39;)</span><br><span class="line">  &#125;,</span><br><span class="line">  componentWillUnmount:function() &#123;</span><br><span class="line">         console.log(&#39;Component WILL UNMOUNT!&#39;)</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">    render: function () &#123;</span><br><span class="line">      return (</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">          &lt;h3&gt;&#123;this.props.myNumber&#125;&lt;&#x2F;h3&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line">      );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">ReactDOM.render(</span><br><span class="line">   &lt;div&gt;</span><br><span class="line">      &lt;Button &#x2F;&gt;</span><br><span class="line">   &lt;&#x2F;div&gt;,</span><br><span class="line">  document.getElementById(&#39;example&#39;)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 
 <p>以上实例初始化 state ， setNewnumber 用于更新 state。所有生命周期在 Content 组件中。</p>
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>React</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>React的Ref属性</title>
+    <url>/2020/07/25/11/01/React%E7%9A%84Ref%E5%B1%9E%E6%80%A7/</url>
+    <content><![CDATA[<p>父与子组件使用ref通信<a id="more"></a></p>
+<p>props属性传值与ref的区别：</p>
+<p>输入框的value值拿到之后，还要把value值通过回调函数调用传回给外面的事件(父组件)，如果父组件想要清空输入框的话，就从父组件中传一个新的属性进来，进行重置，这样就不用与input标签进行交互，只要身上绑定一个ref，我就能拿到这个组件的任何东西，我能拿到他的状态，我就可以获取它里面<br>孩子的状态，同样的话，我还可以去修改他的状态。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; todolist</span><br><span class="line"></span><br><span class="line">import React, &#123; Component &#125; from &#39;react&#39;</span><br><span class="line"></span><br><span class="line">class Input extends Component&#123;</span><br><span class="line">  &#x2F;&#x2F; 5.定义状态</span><br><span class="line">    state &#x3D; &#123;</span><br><span class="line">        mytext:&quot;&quot;,</span><br><span class="line">        list: [&#39;111&#39;, &#39;222&#39;, &#39;333&#39;]</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	&#x2F;&#x2F; 10.定义kerwinreset方法，用来清空输入框的value值</span><br><span class="line">    kerwinreset&#x3D; ()&#x3D;&gt;&#123;</span><br><span class="line">        this.setState(&#123;</span><br><span class="line">            list: [...this.state.list, this.state.mytext],</span><br><span class="line">            mytext:&quot;&quot;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    handleDel &#x3D; (index) &#x3D;&gt; &#123;</span><br><span class="line">      var newList &#x3D; [...this.state.list]</span><br><span class="line">      newList.splice(index, 1)</span><br><span class="line">      console.log(newList)</span><br><span class="line">      this.setState(&#123;</span><br><span class="line">        list: newList</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render()&#123;</span><br><span class="line">        return (</span><br><span class="line">          &lt;div&gt;</span><br><span class="line">              &#123;&#x2F;* 1.创建组件 *&#x2F;&#125;</span><br><span class="line">              &#123;&#x2F;* 7.绑定onChange事件 *&#x2F;&#125;</span><br><span class="line">              &lt;input type&#x3D;&quot;text&quot; style&#x3D;&#123;&#123;background:&quot;yellow&quot;&#125;&#125;</span><br><span class="line">                  value&#x3D;&#123;this.state.mytext&#125; onChange&#x3D;&#123;(e)&#x3D;&gt;&#123;</span><br><span class="line">                  this.setState(&#123;</span><br><span class="line">                      &#x2F;&#x2F; 8.一点击button按钮就把输入框当前的value同步给mytext状态</span><br><span class="line">                      mytext:e.target.value</span><br><span class="line">                  &#125;)</span><br><span class="line">              &#125;&#125;&#x2F;&gt;</span><br><span class="line">              &lt;ul style&#x3D;&#123;&#123; listStyle: &quot;none&quot; &#125;&#125;&gt;</span><br><span class="line">                &#123; this.state.list.map((item, index) &#x3D;&gt; </span><br><span class="line">                    &lt;li key&#x3D;&#123;item&#125;&gt;</span><br><span class="line">                      &#123; item &#125;</span><br><span class="line">                      &lt;button onClick&#x3D; &#123; this.handleDel.bind(this, index) &#125;&gt;删除&lt;&#x2F;button&gt;</span><br><span class="line">                    &lt;&#x2F;li&gt; </span><br><span class="line">                ) &#125;</span><br><span class="line">              &lt;&#x2F;ul&gt;</span><br><span class="line">          &lt;&#x2F;div&gt;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default class App extends Component &#123;</span><br><span class="line">    state &#x3D; &#123;</span><br><span class="line">      datalist: []</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        return (</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                &#123;&#x2F;* 2.使用组件，通过ref拿到value值 *&#x2F;&#125;</span><br><span class="line">                &lt;Input ref&#x3D;&quot;myinput&quot;&#x2F;&gt;</span><br><span class="line">                &#123;&#x2F;* 3.绑定点击事件 *&#x2F;&#125;</span><br><span class="line">                &lt;button onClick&#x3D;&#123;this.handleClick&#125;&gt;添加&lt;&#x2F;button&gt;</span><br><span class="line">            &lt;&#x2F;div&gt;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F; 4.点击事件</span><br><span class="line">    handleClick &#x3D; ()&#x3D;&gt;&#123;</span><br><span class="line">        &#x2F;&#x2F; 6.拿到input的结构(状态和方法都能拿到)</span><br><span class="line">        console.log(this.refs.myinput)</span><br><span class="line">        &#x2F;&#x2F; 9.拿到拿到输入框的value值</span><br><span class="line">        console.log(this.refs.myinput.state.mytext)</span><br><span class="line">        &#x2F;&#x2F; 11.拿到输入框的value之后，调用kerwinreset方法，来清空输入框</span><br><span class="line">        this.refs.myinput.kerwinreset()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 ]]></content>
       <categories>
         <category>前端</category>
@@ -2479,46 +2479,6 @@
       </tags>
   </entry>
   <entry>
-    <title>lag和lead函数</title>
-    <url>/2020/08/25/22/34/lag%E5%92%8Clead%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<p>oracle分析函数lag()和lead()<a id="more"></a></p>
-<h5 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h5><p>lag与lead函数是跟偏移量相关的两个分析函数，通过这两个函数可以在一次查询中取出同一字段的前N行的数据(lag)和后N行的数据(lead)作为独立的列,从而更方便地进行进行数据过滤。这种操作可以代替表的自连接，并且LAG和LEAD有更高的效率。</p>
-<p>over()表示 lag()与lead()操作的数据都在over()的范围内，它里面可以使用partition by 语句分组，order by 语句排序。partition by a order by b表示以a字段进行分组，再 以b字段进行排序，对数据进行查询。</p>
-<p>例如：lead(field, num, defaultvalue) field需要查找的字段，num往后查找的num行的数据，defaultvalue没有符合条件的默认值。</p>
-<h5 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h5><ul>
-<li>获取当前记录的id，以及下一条记录的id  </li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select t.id id ,</span><br><span class="line">       lead(t.id, 1, null) over (order by t.id)  next_record_id, t.cphm</span><br><span class="line">from tb_test t       </span><br><span class="line">  order by t.id asc</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2020/08/25/22/34/lag%E5%92%8Clead%E5%87%BD%E6%95%B0/lag.png" alt></p>
-<ul>
-<li>获取当前记录的id，以及上一条记录的id</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select t.id id ,</span><br><span class="line">       lag(t.id, 1, null) over (order by t.id)  next_record_id, t.cphm</span><br><span class="line">from tb_test t       </span><br><span class="line">  order by t.id asc</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2020/08/25/22/34/lag%E5%92%8Clead%E5%87%BD%E6%95%B0/lead.png" alt></p>
-<ul>
-<li>获取号牌号码相同的，当前记录的id与，下一条记录的id（使用partition by）</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select t.id id, </span><br><span class="line">       lead(t.id, 1, null) over(partition by cphm order by t.id) next_same_cphm_id, t.cphm</span><br><span class="line">from tb_test t</span><br><span class="line">     order by t.id asc   </span><br></pre></td></tr></table></figure>
-
-
-<p><img src="/2020/08/25/22/34/lag%E5%92%8Clead%E5%87%BD%E6%95%B0/lead2.png" alt>  </p>
-<ul>
-<li>查询 cphm的总数，当create_date与下一条记录的create_date时间间隔不超过10分钟则忽略。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select cphm, count(1) total from</span><br><span class="line">(</span><br><span class="line">select t.id,</span><br><span class="line">  t.create_date t1,</span><br><span class="line">  lead(t.create_date,1, null) over( partition by  cphm order by create_date asc ) t2,</span><br><span class="line">  ( lead(t.create_date,1, null) over(  partition by  cphm order by create_date asc )  - t.create_date ) * 86400 as itvtime,</span><br><span class="line">  t.cphm</span><br><span class="line">from tb_test t</span><br><span class="line">  order by t.cphm, t.create_date asc</span><br><span class="line">) tt</span><br><span class="line">where tt.itvtime &gt;&#x3D; 600 or  tt.itvtime  is null</span><br><span class="line">group by tt.cphm</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2020/08/25/22/34/lag%E5%92%8Clead%E5%87%BD%E6%95%B0/lead3.png" alt></p>
-]]></content>
-      <categories>
-        <category>数据库</category>
-      </categories>
-      <tags>
-        <tag>oracle</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>mysql5.7分组排序后取每组最新一条</title>
     <url>/2020/08/01/08/31/mysql5-7%E5%88%86%E7%BB%84%E6%8E%92%E5%BA%8F%E5%90%8E%E5%8F%96%E6%AF%8F%E7%BB%84%E6%9C%80%E6%96%B0%E4%B8%80%E6%9D%A1/</url>
     <content><![CDATA[<p>在mysql5.7版本上实现的，目前mysql8.0已经可以使用分析函数了，不需要那么麻烦了。<a id="more"></a></p>
@@ -2786,6 +2746,46 @@
 <h6 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h6><p>假设存在两张表，一张是学生成绩表(studnet) ，字段：stdId, math, article, language, music, sport, total, average, step；一张是学生课外成绩表(out_school),，字段为：stdId, parctice, comment。通过存储过程自动计算出每位学生的总成绩和平均成绩，同时，如果学生在课外课程中获得的评价为A ，就在总成绩上加20 分。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> </span><br><span class="line">create or replace procedure autocomputer(step in number) is </span><br><span class="line">rsCursor SYS_REFCURSOR; </span><br><span class="line">commentArray myPackage.myArray; </span><br><span class="line">math number; </span><br><span class="line">article number; </span><br><span class="line">language number; </span><br><span class="line">music number; </span><br><span class="line">sport number; </span><br><span class="line">total number; </span><br><span class="line">average number; </span><br><span class="line">stdId varchar(30); </span><br><span class="line">record myPackage.stdInfo; </span><br><span class="line">i number; </span><br><span class="line">begin </span><br><span class="line">i :&#x3D; 1; </span><br><span class="line">get_comment(commentArray); -- 调用名为get_comment() 的存储过程获取学生课外评分信息 </span><br><span class="line">OPEN rsCursor for select stdId,math,article,language,music,sport from student t where t.step &#x3D; step; </span><br><span class="line">LOOP </span><br><span class="line">fetch rsCursor into stdId,math,article,language,music,sport; exit when rsCursor%NOTFOUND; </span><br><span class="line">total :&#x3D; math + article + language + music + sport; </span><br><span class="line">for i in 1..commentArray.count LOOP </span><br><span class="line">record :&#x3D; commentArray(i); </span><br><span class="line">if stdId &#x3D; record.stdId then </span><br><span class="line">begin </span><br><span class="line">if record.comment &#x3D; &#39;A&#39; then </span><br><span class="line">begin </span><br><span class="line">total :&#x3D; total + 20; </span><br><span class="line">go to next; -- 使用go to 跳出for 循环 </span><br><span class="line">end; </span><br><span class="line">end if; </span><br><span class="line">end; </span><br><span class="line">end if; </span><br><span class="line">end LOOP; </span><br><span class="line">&lt;&lt;continue&gt;&gt; average :&#x3D; total &#x2F; 5; </span><br><span class="line">update student t set t.total&#x3D;total and t.average &#x3D; average where t.stdId &#x3D; stdId; </span><br><span class="line">end LOOP; </span><br><span class="line">end; </span><br><span class="line">end autocomputer; </span><br><span class="line">-- 取得学生评论信息的存储过程 </span><br><span class="line">create or replace procedure get_comment(commentArray out myPackage.myArray) is </span><br><span class="line">rs SYS_REFCURSOR ； </span><br><span class="line">record myPackage.stdInfo; </span><br><span class="line">stdId varchar(30); </span><br><span class="line">comment varchar(1); </span><br><span class="line">i number; </span><br><span class="line">begin </span><br><span class="line">open rs for select stdId,comment from out_school </span><br><span class="line">i :&#x3D; 1; </span><br><span class="line">LOOP </span><br><span class="line">fetch rs into stdId,comment; exit when rs%NOTFOUND; </span><br><span class="line">record.stdId :&#x3D; stdId; </span><br><span class="line">record.comment :&#x3D; comment; </span><br><span class="line">recommentArray(i) :&#x3D; record; </span><br><span class="line">i:&#x3D;i + 1; </span><br><span class="line">end LOOP; </span><br><span class="line">end get_comment; </span><br><span class="line">-- 定义数组类型myArray </span><br><span class="line">create or replace package myPackage is begin </span><br><span class="line">type stdInfo is record(stdId varchar(30),comment varchar(1)); </span><br><span class="line">type myArray is table of stdInfo index by binary_integer; </span><br><span class="line">end myPackage; </span><br></pre></td></tr></table></figure>
 
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>oracle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>lag和lead函数</title>
+    <url>/2020/08/25/22/34/lag%E5%92%8Clead%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<p>oracle分析函数lag()和lead()<a id="more"></a></p>
+<h5 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h5><p>lag与lead函数是跟偏移量相关的两个分析函数，通过这两个函数可以在一次查询中取出同一字段的前N行的数据(lag)和后N行的数据(lead)作为独立的列,从而更方便地进行进行数据过滤。这种操作可以代替表的自连接，并且LAG和LEAD有更高的效率。</p>
+<p>over()表示 lag()与lead()操作的数据都在over()的范围内，它里面可以使用partition by 语句分组，order by 语句排序。partition by a order by b表示以a字段进行分组，再 以b字段进行排序，对数据进行查询。</p>
+<p>例如：lead(field, num, defaultvalue) field需要查找的字段，num往后查找的num行的数据，defaultvalue没有符合条件的默认值。</p>
+<h5 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h5><ul>
+<li>获取当前记录的id，以及下一条记录的id  </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select t.id id ,</span><br><span class="line">       lead(t.id, 1, null) over (order by t.id)  next_record_id, t.cphm</span><br><span class="line">from tb_test t       </span><br><span class="line">  order by t.id asc</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/08/25/22/34/lag%E5%92%8Clead%E5%87%BD%E6%95%B0/lag.png" alt></p>
+<ul>
+<li>获取当前记录的id，以及上一条记录的id</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select t.id id ,</span><br><span class="line">       lag(t.id, 1, null) over (order by t.id)  next_record_id, t.cphm</span><br><span class="line">from tb_test t       </span><br><span class="line">  order by t.id asc</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/08/25/22/34/lag%E5%92%8Clead%E5%87%BD%E6%95%B0/lead.png" alt></p>
+<ul>
+<li>获取号牌号码相同的，当前记录的id与，下一条记录的id（使用partition by）</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select t.id id, </span><br><span class="line">       lead(t.id, 1, null) over(partition by cphm order by t.id) next_same_cphm_id, t.cphm</span><br><span class="line">from tb_test t</span><br><span class="line">     order by t.id asc   </span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/2020/08/25/22/34/lag%E5%92%8Clead%E5%87%BD%E6%95%B0/lead2.png" alt>  </p>
+<ul>
+<li>查询 cphm的总数，当create_date与下一条记录的create_date时间间隔不超过10分钟则忽略。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select cphm, count(1) total from</span><br><span class="line">(</span><br><span class="line">select t.id,</span><br><span class="line">  t.create_date t1,</span><br><span class="line">  lead(t.create_date,1, null) over( partition by  cphm order by create_date asc ) t2,</span><br><span class="line">  ( lead(t.create_date,1, null) over(  partition by  cphm order by create_date asc )  - t.create_date ) * 86400 as itvtime,</span><br><span class="line">  t.cphm</span><br><span class="line">from tb_test t</span><br><span class="line">  order by t.cphm, t.create_date asc</span><br><span class="line">) tt</span><br><span class="line">where tt.itvtime &gt;&#x3D; 600 or  tt.itvtime  is null</span><br><span class="line">group by tt.cphm</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/08/25/22/34/lag%E5%92%8Clead%E5%87%BD%E6%95%B0/lead3.png" alt></p>
 ]]></content>
       <categories>
         <category>数据库</category>
@@ -3071,6 +3071,26 @@
       </tags>
   </entry>
   <entry>
+    <title>时间格式化DateTimeFormatter</title>
+    <url>/2020/02/14/16/43/%E6%97%B6%E9%97%B4%E6%A0%BC%E5%BC%8F%E5%8C%96DateTimeFormatter/</url>
+    <content><![CDATA[<p>DateTimeFormatter类提供了三种时间格式化方法。<a id="more"></a></p>
+<h6 id="默认格式"><a href="#默认格式" class="headerlink" title="默认格式"></a>默认格式</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 1.新建一个DateTimeFormatter对象</span></span><br><span class="line">        DateTimeFormatter isoDate = DateTimeFormatter.ISO_DATE;</span><br><span class="line">        </span><br><span class="line">        LocalDateTime ldt1 = LocalDateTime.now();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 2.调用该对象的format方法，参数是需要格式化的LocalDateTime对象。</span></span><br><span class="line">        String format = isoDate.format(ldt1);</span><br><span class="line">        </span><br><span class="line">        System.out.println(<span class="string">&quot;时间是：&quot;</span> + format);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="自定义格式"><a href="#自定义格式" class="headerlink" title="自定义格式"></a>自定义格式</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 1.新建一个DateTimeFormatter对象，调用ofPattern方法。</span></span><br><span class="line">        DateTimeFormatter pattern = DateTimeFormatter.ofPattern(<span class="string">&quot;yyyy年MM月dd日 HH时mm分ss秒&quot;</span>, Locale.CHINA);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 2.调用该对象的format方法，参数是需要格式化的LocalDateTime对象。</span></span><br><span class="line">        String format = pattern.format(LocalDateTime.now());</span><br><span class="line">        </span><br><span class="line">        System.out.println(<span class="string">&quot;时间是：&quot;</span> + format);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="自定义格式时间解析"><a href="#自定义格式时间解析" class="headerlink" title="自定义格式时间解析"></a>自定义格式时间解析</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test3</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 1.新建一个时间的字符串对象。</span></span><br><span class="line">        String dateTime = <span class="string">&quot;2020年02月12日 22点22分22秒&quot;</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 2.新建一个DateTimeFormatter对象，调用ofPattern方法。</span></span><br><span class="line">        DateTimeFormatter pattern = DateTimeFormatter.ofPattern(<span class="string">&quot;yyyy年MM月dd日 HH点mm分ss秒&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 3.调用DateTimeFormatter对象的parse方法，进行解析，返回一个TemporalAccessor对象。</span></span><br><span class="line">        TemporalAccessor parse = pattern.parse(dateTime);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 4.调用LocalDateTime的静态方法form，将TemporalAccessor转换成LocalDateTime对象。</span></span><br><span class="line">        LocalDateTime ldt1 = LocalDateTime.from(parse);</span><br><span class="line">        </span><br><span class="line">        System.out.println(<span class="string">&quot;LocalDateTime：&quot;</span> + ldt1);</span><br><span class="line">        System.out.println(<span class="string">&quot;LocalDateTime：&quot;</span> + LocalDateTime.now());</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="输出结果"><a href="#输出结果" class="headerlink" title="输出结果"></a>输出结果</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">时间是：2020-02-14</span><br><span class="line">时间是：2020年02月14日 16时30分55秒</span><br><span class="line">LocalDateTime：2020-02-12T22:22:22</span><br><span class="line">LocalDateTime：2020-02-14T16:30:55.544</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>格式化</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>并查集</title>
     <url>/2020/02/08/15/56/%E5%B9%B6%E6%9F%A5%E9%9B%86/</url>
     <content><![CDATA[<p>建立迷宫时有所涉及，用来处理格子之间的相连问题。<a id="more"></a></p>
@@ -3119,42 +3139,6 @@
       </tags>
   </entry>
   <entry>
-    <title>时间与时间戳相互转换</title>
-    <url>/2020/01/14/09/43/%E6%97%B6%E9%97%B4%E4%B8%8E%E6%97%B6%E9%97%B4%E6%88%B3%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/</url>
-    <content><![CDATA[<p>java时间与时间戳相互转换<a id="more"></a></p>
-<h6 id="时间转换成时间戳"><a href="#时间转换成时间戳" class="headerlink" title="时间转换成时间戳"></a>时间转换成时间戳</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">dateToStamp</span><span class="params">(String s)</span> <span class="keyword">throws</span> ParaseException</span>&#123;</span><br><span class="line">    String res;</span><br><span class="line">    SimpleDateFormat simpleDateFormat = <span class="keyword">new</span> SimpleDateFormat(<span class="string">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>);</span><br><span class="line">    Date date = simpleDateFormat.parse(s);</span><br><span class="line">    <span class="keyword">long</span> ts = date.getTime();</span><br><span class="line">    res = String.valueOf(ts);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h6 id="时间戳转换成时间"><a href="#时间戳转换成时间" class="headerlink" title="时间戳转换成时间"></a>时间戳转换成时间</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">dateToStamp</span><span class="params">(String s)</span></span>&#123;</span><br><span class="line">    String res;</span><br><span class="line">    SimpleDateFormat simpleDateFormat = <span class="keyword">new</span> SimpleDateFormat(<span class="string">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>);</span><br><span class="line">    <span class="keyword">long</span> lt = <span class="keyword">new</span> Long(s);</span><br><span class="line">    Date date = <span class="keyword">new</span> Date(lt);</span><br><span class="line">    res = simpleDateFormat.format(date);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>格式化</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>时间格式化DateTimeFormatter</title>
-    <url>/2020/02/14/16/43/%E6%97%B6%E9%97%B4%E6%A0%BC%E5%BC%8F%E5%8C%96DateTimeFormatter/</url>
-    <content><![CDATA[<p>DateTimeFormatter类提供了三种时间格式化方法。<a id="more"></a></p>
-<h6 id="默认格式"><a href="#默认格式" class="headerlink" title="默认格式"></a>默认格式</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 1.新建一个DateTimeFormatter对象</span></span><br><span class="line">        DateTimeFormatter isoDate = DateTimeFormatter.ISO_DATE;</span><br><span class="line">        </span><br><span class="line">        LocalDateTime ldt1 = LocalDateTime.now();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 2.调用该对象的format方法，参数是需要格式化的LocalDateTime对象。</span></span><br><span class="line">        String format = isoDate.format(ldt1);</span><br><span class="line">        </span><br><span class="line">        System.out.println(<span class="string">&quot;时间是：&quot;</span> + format);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<h6 id="自定义格式"><a href="#自定义格式" class="headerlink" title="自定义格式"></a>自定义格式</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 1.新建一个DateTimeFormatter对象，调用ofPattern方法。</span></span><br><span class="line">        DateTimeFormatter pattern = DateTimeFormatter.ofPattern(<span class="string">&quot;yyyy年MM月dd日 HH时mm分ss秒&quot;</span>, Locale.CHINA);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 2.调用该对象的format方法，参数是需要格式化的LocalDateTime对象。</span></span><br><span class="line">        String format = pattern.format(LocalDateTime.now());</span><br><span class="line">        </span><br><span class="line">        System.out.println(<span class="string">&quot;时间是：&quot;</span> + format);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<h6 id="自定义格式时间解析"><a href="#自定义格式时间解析" class="headerlink" title="自定义格式时间解析"></a>自定义格式时间解析</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test3</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 1.新建一个时间的字符串对象。</span></span><br><span class="line">        String dateTime = <span class="string">&quot;2020年02月12日 22点22分22秒&quot;</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 2.新建一个DateTimeFormatter对象，调用ofPattern方法。</span></span><br><span class="line">        DateTimeFormatter pattern = DateTimeFormatter.ofPattern(<span class="string">&quot;yyyy年MM月dd日 HH点mm分ss秒&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 3.调用DateTimeFormatter对象的parse方法，进行解析，返回一个TemporalAccessor对象。</span></span><br><span class="line">        TemporalAccessor parse = pattern.parse(dateTime);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 4.调用LocalDateTime的静态方法form，将TemporalAccessor转换成LocalDateTime对象。</span></span><br><span class="line">        LocalDateTime ldt1 = LocalDateTime.from(parse);</span><br><span class="line">        </span><br><span class="line">        System.out.println(<span class="string">&quot;LocalDateTime：&quot;</span> + ldt1);</span><br><span class="line">        System.out.println(<span class="string">&quot;LocalDateTime：&quot;</span> + LocalDateTime.now());</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<h6 id="输出结果"><a href="#输出结果" class="headerlink" title="输出结果"></a>输出结果</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">时间是：2020-02-14</span><br><span class="line">时间是：2020年02月14日 16时30分55秒</span><br><span class="line">LocalDateTime：2020-02-12T22:22:22</span><br><span class="line">LocalDateTime：2020-02-14T16:30:55.544</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>格式化</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>比较java中Array类的两个方法：equals和deepEquals</title>
     <url>/2020/01/14/17/40/%E6%AF%94%E8%BE%83java%E4%B8%ADArray%E7%B1%BB%E7%9A%84%E4%B8%A4%E4%B8%AA%E6%96%B9%E6%B3%95%EF%BC%9Aequals%E5%92%8CdeepEquals/</url>
     <content><![CDATA[<p>举例分析equals和deepEquals的区别。<a id="more"></a></p>
@@ -3198,6 +3182,22 @@
       </categories>
       <tags>
         <tag>Math</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>时间与时间戳相互转换</title>
+    <url>/2020/01/14/09/43/%E6%97%B6%E9%97%B4%E4%B8%8E%E6%97%B6%E9%97%B4%E6%88%B3%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/</url>
+    <content><![CDATA[<p>java时间与时间戳相互转换<a id="more"></a></p>
+<h6 id="时间转换成时间戳"><a href="#时间转换成时间戳" class="headerlink" title="时间转换成时间戳"></a>时间转换成时间戳</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">dateToStamp</span><span class="params">(String s)</span> <span class="keyword">throws</span> ParaseException</span>&#123;</span><br><span class="line">    String res;</span><br><span class="line">    SimpleDateFormat simpleDateFormat = <span class="keyword">new</span> SimpleDateFormat(<span class="string">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>);</span><br><span class="line">    Date date = simpleDateFormat.parse(s);</span><br><span class="line">    <span class="keyword">long</span> ts = date.getTime();</span><br><span class="line">    res = String.valueOf(ts);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="时间戳转换成时间"><a href="#时间戳转换成时间" class="headerlink" title="时间戳转换成时间"></a>时间戳转换成时间</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">dateToStamp</span><span class="params">(String s)</span></span>&#123;</span><br><span class="line">    String res;</span><br><span class="line">    SimpleDateFormat simpleDateFormat = <span class="keyword">new</span> SimpleDateFormat(<span class="string">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>);</span><br><span class="line">    <span class="keyword">long</span> lt = <span class="keyword">new</span> Long(s);</span><br><span class="line">    Date date = <span class="keyword">new</span> Date(lt);</span><br><span class="line">    res = simpleDateFormat.format(date);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>格式化</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
       </tags>
   </entry>
   <entry>
