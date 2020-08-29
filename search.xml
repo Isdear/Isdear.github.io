@@ -75,37 +75,6 @@
       </tags>
   </entry>
   <entry>
-    <title>ETL</title>
-    <url>/2020/08/08/22/54/ETL/</url>
-    <content><![CDATA[<p>ETL的概念及使用场景<a id="more"></a></p>
-<h5 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h5><p>ETL 是三个单词的缩写：</p>
-<ul>
-<li>Extraction：抽取、提取；就是把数据从数据库里面取出来；</li>
-<li>Transformation：转换；包括但不限于：数据筛选校验、数据关联、数据内容及结构的修改、运算、统计等等；</li>
-<li>Loading：加载；将处理后的数据保存到目标数据库。</li>
-</ul>
-<p>从这三个单词基本可以了解 ETL 的作用：将各个业务系统的数据，通过抽取、清洗、转换之后，将加工后的数据落地到数据库中（数据仓库）；在这个过程中，ETL 可以将分散、零乱、标准不统一的数据整合到一起。</p>
-<p><img src="/2020/08/08/22/54/ETL/ETL.webp.jpg" alt></p>
-<h5 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h5><h6 id="报表、BI系统"><a href="#报表、BI系统" class="headerlink" title="报表、BI系统"></a>报表、BI系统</h6><p>在公司建设的初期，业务比较少，系统也比较少，一台数据库就搞定了；随着公司业务的增加，业务系统被拆成很多系统；随着数据量的继续增加，单个系统的数据增加到一定程度的时候，也做了分库分表；</p>
-<p>这时候领导、业务人员在用数据做分析的时候，数据来源可能是多个系统的多张表，这时候企图通过一个复杂的 SQL 跑出来结果就很困难了；通常公司会建立一个数据仓库，通过ETL工具把数据抽取到数据仓库中，再做数据的拟合和展示。</p>
-<h6 id="跨系统的数据加工或查询"><a href="#跨系统的数据加工或查询" class="headerlink" title="跨系统的数据加工或查询"></a>跨系统的数据加工或查询</h6><p>业务系统有几百个，由于业务流程比较复杂，前端系统在做业务操作的时候，在正式提交交易之前，有很多业务校验；</p>
-<p>比如要查询客户在 X 系统的交易历史，在 Y 系统的交易历史，在 Z 系统的交易历史；那么就需要分别调用 X、Y、Z 系统的接口，这个对前端系统很不友好，那么通常的解决方案是什么？</p>
-<ul>
-<li>A 方案：做一个中间服务，中间服务去调用 X、Y、Z 系统的接口，客户端直接调用这个中间服务；这种方案只是把前端要做的事情，转移到了中间服务；</li>
-<li>B 方案：整合 X、Y、Z 三个系统，建服务中台；这种方法很好，但是极为难，对于很多公司来说，别说把 X、Y、Z 三个系统整合成一个中台系统，就是其中一个系统本身进行重构，都是非常困难的；</li>
-<li>C 方案：把 X、Y、Z 三个系统中需要的数据，通过 ETL 抽取加工到一个数据仓库中，对外提供服务；这个系统最大的好处是在不改造 X、Y、Z 三个系统的前提下，又可以实现跨系统的查询。</li>
-</ul>
-<p>我们在 C 方案的基础上又往前做了一步，就是将落地后的数据又做了一次加工，将需要跨表关联的数据，提前关联好存入 MongoDB 中，对外提供查询服务；这样可以将多表关联查询，变成了单表查询。</p>
-<p><img src="/2020/08/08/22/54/ETL/ETL2.webp.jpg" alt></p>
-]]></content>
-      <categories>
-        <category>数据库</category>
-      </categories>
-      <tags>
-        <tag>oracle</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Docker容器</title>
     <url>/2020/05/13/11/30/Docker%E5%AE%B9%E5%99%A8/</url>
     <content><![CDATA[<p>Docker容器的简单了解，以CentOS系统为基础。<a id="more"></a></p>
@@ -372,6 +341,37 @@
       </categories>
       <tags>
         <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ETL</title>
+    <url>/2020/08/08/22/54/ETL/</url>
+    <content><![CDATA[<p>ETL的概念及使用场景<a id="more"></a></p>
+<h5 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h5><p>ETL 是三个单词的缩写：</p>
+<ul>
+<li>Extraction：抽取、提取；就是把数据从数据库里面取出来；</li>
+<li>Transformation：转换；包括但不限于：数据筛选校验、数据关联、数据内容及结构的修改、运算、统计等等；</li>
+<li>Loading：加载；将处理后的数据保存到目标数据库。</li>
+</ul>
+<p>从这三个单词基本可以了解 ETL 的作用：将各个业务系统的数据，通过抽取、清洗、转换之后，将加工后的数据落地到数据库中（数据仓库）；在这个过程中，ETL 可以将分散、零乱、标准不统一的数据整合到一起。</p>
+<p><img src="/2020/08/08/22/54/ETL/ETL.webp.jpg" alt></p>
+<h5 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h5><h6 id="报表、BI系统"><a href="#报表、BI系统" class="headerlink" title="报表、BI系统"></a>报表、BI系统</h6><p>在公司建设的初期，业务比较少，系统也比较少，一台数据库就搞定了；随着公司业务的增加，业务系统被拆成很多系统；随着数据量的继续增加，单个系统的数据增加到一定程度的时候，也做了分库分表；</p>
+<p>这时候领导、业务人员在用数据做分析的时候，数据来源可能是多个系统的多张表，这时候企图通过一个复杂的 SQL 跑出来结果就很困难了；通常公司会建立一个数据仓库，通过ETL工具把数据抽取到数据仓库中，再做数据的拟合和展示。</p>
+<h6 id="跨系统的数据加工或查询"><a href="#跨系统的数据加工或查询" class="headerlink" title="跨系统的数据加工或查询"></a>跨系统的数据加工或查询</h6><p>业务系统有几百个，由于业务流程比较复杂，前端系统在做业务操作的时候，在正式提交交易之前，有很多业务校验；</p>
+<p>比如要查询客户在 X 系统的交易历史，在 Y 系统的交易历史，在 Z 系统的交易历史；那么就需要分别调用 X、Y、Z 系统的接口，这个对前端系统很不友好，那么通常的解决方案是什么？</p>
+<ul>
+<li>A 方案：做一个中间服务，中间服务去调用 X、Y、Z 系统的接口，客户端直接调用这个中间服务；这种方案只是把前端要做的事情，转移到了中间服务；</li>
+<li>B 方案：整合 X、Y、Z 三个系统，建服务中台；这种方法很好，但是极为难，对于很多公司来说，别说把 X、Y、Z 三个系统整合成一个中台系统，就是其中一个系统本身进行重构，都是非常困难的；</li>
+<li>C 方案：把 X、Y、Z 三个系统中需要的数据，通过 ETL 抽取加工到一个数据仓库中，对外提供服务；这个系统最大的好处是在不改造 X、Y、Z 三个系统的前提下，又可以实现跨系统的查询。</li>
+</ul>
+<p>我们在 C 方案的基础上又往前做了一步，就是将落地后的数据又做了一次加工，将需要跨表关联的数据，提前关联好存入 MongoDB 中，对外提供查询服务；这样可以将多表关联查询，变成了单表查询。</p>
+<p><img src="/2020/08/08/22/54/ETL/ETL2.webp.jpg" alt></p>
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>oracle</tag>
       </tags>
   </entry>
   <entry>
@@ -1587,35 +1587,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Oracle中的COALESCER函数</title>
-    <url>/2020/07/26/22/20/Oracle%E4%B8%AD%E7%9A%84COALESCER%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<p>coalesce函数的使用说明<a id="more"></a></p>
-<h5 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h5><p>返回其参数中第一个非空表达式。</p>
-<h6 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h6><p>coalesce ( 表达式1 ,…表达式n )</p>
-<h6 id="返回类型"><a href="#返回类型" class="headerlink" title="返回类型"></a>返回类型</h6><p>返回数据类型优先级最高的表达式的数据类型，如果所有参数均为null，则coalesce返回null。</p>
-<h5 id="等效的case函数"><a href="#等效的case函数" class="headerlink" title="等效的case函数"></a>等效的case函数</h5><h6 id="case语句"><a href="#case语句" class="headerlink" title="case语句"></a>case语句</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CASE</span><br><span class="line"></span><br><span class="line">   WHEN (expression1 IS NOT NULL) THEN expression1</span><br><span class="line"></span><br><span class="line">   ...</span><br><span class="line"></span><br><span class="line">   WHEN (expressionN IS NOT NULL) THEN expressionN</span><br><span class="line"></span><br><span class="line">   ELSE NULL</span><br><span class="line"></span><br><span class="line">END</span><br></pre></td></tr></table></figure>
-
-<p>尽管 IS NULL 等效于 COALESCE，但它们的行为是不同的。包含具有非空参数的 IS NULL 的表达式将视为 NOT NULL，而包含具有非空参数的 COALESCE 的表达式将视为 NULL。</p>
-<h6 id="SQL-Server的非空参数问题"><a href="#SQL-Server的非空参数问题" class="headerlink" title="SQL Server的非空参数问题"></a>SQL Server的非空参数问题</h6><p>在 SQL Server 中，若要对包含具有非空参数的 COALESCE 的表达式创建索引，可以使用 PERSISTED 列属性将计算列持久化，例如下面案例</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CREATE TABLE #CheckSumTest</span><br><span class="line"></span><br><span class="line">    (</span><br><span class="line"></span><br><span class="line">        ID int identity ,</span><br><span class="line"></span><br><span class="line">        Num int DEFAULT ( RAND() * 100 ) ,</span><br><span class="line"></span><br><span class="line">        RowCheckSum AS COALESCE( CHECKSUM( id , num ) , 0 ) PERSISTED PRIMARY KEY</span><br><span class="line"></span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
-
-<h6 id="COALESCE-使用示例"><a href="#COALESCE-使用示例" class="headerlink" title="COALESCE 使用示例"></a>COALESCE 使用示例</h6><p>在以下示例中，wages 表中包括以下三列有关雇员的年薪的信息：hourly wage、salary 和 commission。但是，每个雇员只能接受一种付款方式。若要确定支付给所有雇员的金额总数，请使用 COALESCE 函数，它只接受在 hourly_wage、salary 和 commission 中找到的非空值。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SET NOCOUNT ON;</span><br><span class="line"></span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line">USE master;</span><br><span class="line"></span><br><span class="line">IF EXISTS (SELECT name FROM sys.tables</span><br><span class="line"></span><br><span class="line">      WHERE name &#x3D; &#39;wages&#39;)</span><br><span class="line"></span><br><span class="line">   DROP TABLE wages;</span><br><span class="line"></span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line">CREATE TABLE wages</span><br><span class="line"></span><br><span class="line">(</span><br><span class="line"></span><br><span class="line">   emp_id      tinyint    identity,</span><br><span class="line"></span><br><span class="line">   hourly_wage   decimal   NULL,</span><br><span class="line"></span><br><span class="line">   salary      decimal    NULL,</span><br><span class="line"></span><br><span class="line">   commission   decimal   NULL,</span><br><span class="line"></span><br><span class="line">   num_sales   tinyint   NULL</span><br><span class="line"></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(10.00, NULL, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(20.00, NULL, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(30.00, NULL, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(40.00, NULL, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, 10000.00, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, 20000.00, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, 30000.00, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, 40000.00, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, NULL, 15000, 3);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, NULL, 25000, 2);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, NULL, 20000, 6);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, NULL, 14000, 4);</span><br><span class="line"></span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line">SET NOCOUNT OFF;</span><br><span class="line"></span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line">SELECT CAST(COALESCE(hourly_wage * 40 * 52,</span><br><span class="line"></span><br><span class="line">   salary,</span><br><span class="line"></span><br><span class="line">   commission * num_sales) AS money) AS &#39;Total Salary&#39;</span><br><span class="line"></span><br><span class="line">FROM wages;</span><br><span class="line"></span><br><span class="line">GO</span><br></pre></td></tr></table></figure>
-
-<p>结果集</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Total Salary</span><br><span class="line"></span><br><span class="line">------------</span><br><span class="line"></span><br><span class="line">20800.0000</span><br><span class="line"></span><br><span class="line">41600.0000</span><br><span class="line"></span><br><span class="line">62400.0000</span><br><span class="line"></span><br><span class="line">83200.0000</span><br><span class="line"></span><br><span class="line">10000.0000</span><br><span class="line"></span><br><span class="line">20000.0000</span><br><span class="line"></span><br><span class="line">30000.0000</span><br><span class="line"></span><br><span class="line">40000.0000</span><br><span class="line"></span><br><span class="line">45000.0000</span><br><span class="line"></span><br><span class="line">50000.0000</span><br><span class="line"></span><br><span class="line">120000.0000</span><br><span class="line"></span><br><span class="line">56000.0000</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">(12 row(s) affected)</span><br></pre></td></tr></table></figure>
-
-
-
-]]></content>
-      <categories>
-        <category>数据库</category>
-      </categories>
-      <tags>
-        <tag>oracle</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>MySql数据库优化的八种方法</title>
     <url>/2020/05/22/19/44/MySql%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98%E5%8C%96%E7%9A%84%E5%85%AB%E7%A7%8D%E6%96%B9%E6%B3%95/</url>
     <content><![CDATA[<p>新建数据库的时候考虑优化问题就能解决很多不必要的麻烦。<a id="more"></a></p>
@@ -1673,17 +1644,32 @@
       </tags>
   </entry>
   <entry>
-    <title>Python爬取电影天堂新片精品</title>
-    <url>/2020/02/12/16/02/Python%E7%88%AC%E5%8F%96%E7%94%B5%E5%BD%B1%E5%A4%A9%E5%A0%82%E6%96%B0%E7%89%87%E7%B2%BE%E5%93%81/</url>
-    <content><![CDATA[<p>爬取最新电影，内容包括标题、年代、产地、类别、评分、片场、导演、主演、下载链接。<a id="more"></a></p>
-<h6 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h6><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">base_domain = <span class="string">&quot;https://www.dytt8.net&quot;</span></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">&quot;User-Agent&quot;</span>: <span class="string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 &quot;</span></span><br><span class="line">                  <span class="string">&quot;(KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36 Edg/80.0.361.111&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_detail_url</span>(<span class="params">url</span>):</span></span><br><span class="line">    resp = requests.get(url, headers=headers)</span><br><span class="line">    <span class="comment"># 解码出现&quot;illegal multibyte sequence&quot;，其他编码无法解决，使用ignore</span></span><br><span class="line">    <span class="comment"># text = resp.content.decode(&quot;gbk&quot;, errors=&quot;ignore&quot;)</span></span><br><span class="line">    text = resp.text</span><br><span class="line">    html = etree.HTML(text)</span><br><span class="line">    detail_urls = html.xpath(<span class="string">&quot;//table[@class=&#x27;tbspan&#x27;]//a/@href&quot;</span>)</span><br><span class="line">    detail_urls = map(<span class="keyword">lambda</span> url: base_domain + url, detail_urls)</span><br><span class="line">    <span class="keyword">return</span> detail_urls</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_html</span>(<span class="params">url</span>):</span></span><br><span class="line">    resp = requests.get(url, headers=headers)</span><br><span class="line">    text = resp.content.decode(<span class="string">&quot;gbk&quot;</span>, errors=<span class="string">&quot;ignore&quot;</span>)</span><br><span class="line">    html = etree.HTML(text)</span><br><span class="line">    <span class="keyword">return</span> html</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">parse_info</span>(<span class="params">info, rule</span>):</span></span><br><span class="line">    <span class="keyword">return</span> info.replace(rule, <span class="string">&quot;&quot;</span>).strip()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">parse_detail_page</span>(<span class="params">url</span>):</span></span><br><span class="line">    movie = &#123;&#125;</span><br><span class="line">    html = get_html(url)</span><br><span class="line">    title = html.xpath(<span class="string">&quot;//div[@class=&#x27;title_all&#x27;]//font[@color=&#x27;#07519a&#x27;]/text()&quot;</span>)[<span class="number">0</span>]</span><br><span class="line">    movie[<span class="string">&quot;title&quot;</span>] = title</span><br><span class="line">    zooms = html.xpath(<span class="string">&quot;//div[@id=&#x27;Zoom&#x27;]&quot;</span>)[<span class="number">0</span>]</span><br><span class="line">    poster = zooms.xpath(<span class="string">&quot;.//img/@src&quot;</span>)</span><br><span class="line">    movie[<span class="string">&quot;poster&quot;</span>] = poster</span><br><span class="line"></span><br><span class="line">    infos = zooms.xpath(<span class="string">&quot;.//text()&quot;</span>)</span><br><span class="line">    <span class="keyword">for</span> index, info <span class="keyword">in</span> enumerate(infos):</span><br><span class="line">        <span class="keyword">if</span> info.startswith(<span class="string">&quot;◎年　　代&quot;</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">&quot;◎年　　代&quot;</span>)</span><br><span class="line">            movie[<span class="string">&quot;year&quot;</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">&quot;◎产　　地&quot;</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">&quot;◎产　　地&quot;</span>)</span><br><span class="line">            movie[<span class="string">&quot;country&quot;</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">&quot;◎类　　别&quot;</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">&quot;◎类　　别&quot;</span>)</span><br><span class="line">            movie[<span class="string">&quot;category&quot;</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">&quot;◎豆瓣评分&quot;</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">&quot;◎豆瓣评分&quot;</span>)</span><br><span class="line">            movie[<span class="string">&quot;score&quot;</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">&quot;◎片　　长&quot;</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">&quot;◎片　　长&quot;</span>)</span><br><span class="line">            movie[<span class="string">&quot;timelength&quot;</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">&quot;◎导　　演&quot;</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">&quot;◎导　　演&quot;</span>)</span><br><span class="line">            movie[<span class="string">&quot;director&quot;</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">&quot;◎主　　演&quot;</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">&quot;◎主　　演&quot;</span>)</span><br><span class="line">            actors = [info]</span><br><span class="line">            <span class="keyword">for</span> x <span class="keyword">in</span> range(index + <span class="number">1</span>, len(infos)):</span><br><span class="line">                actor = infos[x].strip()</span><br><span class="line">                <span class="keyword">if</span> actor.startswith(<span class="string">&quot;◎&quot;</span>):</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                actors.append(actor)</span><br><span class="line">            movie[<span class="string">&quot;actors&quot;</span>] = actors</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">&quot;◎简　　介&quot;</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">&quot;◎简　　介&quot;</span>)</span><br><span class="line">            <span class="keyword">for</span> x <span class="keyword">in</span> range(index + <span class="number">1</span>, len(infos)):</span><br><span class="line">                profile = infos[x].strip()</span><br><span class="line">                <span class="keyword">if</span> profile.startswith(<span class="string">&quot;【&quot;</span>):</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">            movie[<span class="string">&quot;profile&quot;</span>] = profile</span><br><span class="line"></span><br><span class="line">    down_url = zooms.xpath(<span class="string">&quot;.//table//a/@href&quot;</span>)</span><br><span class="line">    movie[<span class="string">&quot;down_url&quot;</span>] = down_url</span><br><span class="line">    <span class="keyword">return</span> movie</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">spider</span>():</span></span><br><span class="line">    index_url = <span class="string">&quot;https://www.dytt8.net/html/gndy/dyzz/index.html&quot;</span></span><br><span class="line">    base_url = <span class="string">&quot;https://www.dytt8.net/html/gndy/dyzz/list_23_&#123;&#125;.html&quot;</span></span><br><span class="line">    html = get_html(index_url)</span><br><span class="line">    pages = html.xpath(<span class="string">&quot;//select[@name=&#x27;sldd&#x27;]/option&quot;</span>)</span><br><span class="line">    movies = []</span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">1</span>, len(pages) + <span class="number">1</span>):</span><br><span class="line">        url = base_url.format(x)</span><br><span class="line">        detail_urls = get_detail_url(url)</span><br><span class="line">        <span class="keyword">for</span> detail_url <span class="keyword">in</span> detail_urls:</span><br><span class="line">            <span class="comment"># 遍历每一页中的所有电影</span></span><br><span class="line">            movie = parse_detail_page(detail_url)</span><br><span class="line">            movies.append(movie)</span><br><span class="line">            print(movie)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    spider()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+    <title>Oracle中的COALESCER函数</title>
+    <url>/2020/07/26/22/20/Oracle%E4%B8%AD%E7%9A%84COALESCER%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<p>coalesce函数的使用说明<a id="more"></a></p>
+<h5 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h5><p>返回其参数中第一个非空表达式。</p>
+<h6 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h6><p>coalesce ( 表达式1 ,…表达式n )</p>
+<h6 id="返回类型"><a href="#返回类型" class="headerlink" title="返回类型"></a>返回类型</h6><p>返回数据类型优先级最高的表达式的数据类型，如果所有参数均为null，则coalesce返回null。</p>
+<h5 id="等效的case函数"><a href="#等效的case函数" class="headerlink" title="等效的case函数"></a>等效的case函数</h5><h6 id="case语句"><a href="#case语句" class="headerlink" title="case语句"></a>case语句</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CASE</span><br><span class="line"></span><br><span class="line">   WHEN (expression1 IS NOT NULL) THEN expression1</span><br><span class="line"></span><br><span class="line">   ...</span><br><span class="line"></span><br><span class="line">   WHEN (expressionN IS NOT NULL) THEN expressionN</span><br><span class="line"></span><br><span class="line">   ELSE NULL</span><br><span class="line"></span><br><span class="line">END</span><br></pre></td></tr></table></figure>
+
+<p>尽管 IS NULL 等效于 COALESCE，但它们的行为是不同的。包含具有非空参数的 IS NULL 的表达式将视为 NOT NULL，而包含具有非空参数的 COALESCE 的表达式将视为 NULL。</p>
+<h6 id="SQL-Server的非空参数问题"><a href="#SQL-Server的非空参数问题" class="headerlink" title="SQL Server的非空参数问题"></a>SQL Server的非空参数问题</h6><p>在 SQL Server 中，若要对包含具有非空参数的 COALESCE 的表达式创建索引，可以使用 PERSISTED 列属性将计算列持久化，例如下面案例</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CREATE TABLE #CheckSumTest</span><br><span class="line"></span><br><span class="line">    (</span><br><span class="line"></span><br><span class="line">        ID int identity ,</span><br><span class="line"></span><br><span class="line">        Num int DEFAULT ( RAND() * 100 ) ,</span><br><span class="line"></span><br><span class="line">        RowCheckSum AS COALESCE( CHECKSUM( id , num ) , 0 ) PERSISTED PRIMARY KEY</span><br><span class="line"></span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
+
+<h6 id="COALESCE-使用示例"><a href="#COALESCE-使用示例" class="headerlink" title="COALESCE 使用示例"></a>COALESCE 使用示例</h6><p>在以下示例中，wages 表中包括以下三列有关雇员的年薪的信息：hourly wage、salary 和 commission。但是，每个雇员只能接受一种付款方式。若要确定支付给所有雇员的金额总数，请使用 COALESCE 函数，它只接受在 hourly_wage、salary 和 commission 中找到的非空值。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SET NOCOUNT ON;</span><br><span class="line"></span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line">USE master;</span><br><span class="line"></span><br><span class="line">IF EXISTS (SELECT name FROM sys.tables</span><br><span class="line"></span><br><span class="line">      WHERE name &#x3D; &#39;wages&#39;)</span><br><span class="line"></span><br><span class="line">   DROP TABLE wages;</span><br><span class="line"></span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line">CREATE TABLE wages</span><br><span class="line"></span><br><span class="line">(</span><br><span class="line"></span><br><span class="line">   emp_id      tinyint    identity,</span><br><span class="line"></span><br><span class="line">   hourly_wage   decimal   NULL,</span><br><span class="line"></span><br><span class="line">   salary      decimal    NULL,</span><br><span class="line"></span><br><span class="line">   commission   decimal   NULL,</span><br><span class="line"></span><br><span class="line">   num_sales   tinyint   NULL</span><br><span class="line"></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(10.00, NULL, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(20.00, NULL, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(30.00, NULL, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(40.00, NULL, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, 10000.00, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, 20000.00, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, 30000.00, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, 40000.00, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, NULL, 15000, 3);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, NULL, 25000, 2);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, NULL, 20000, 6);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, NULL, 14000, 4);</span><br><span class="line"></span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line">SET NOCOUNT OFF;</span><br><span class="line"></span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line">SELECT CAST(COALESCE(hourly_wage * 40 * 52,</span><br><span class="line"></span><br><span class="line">   salary,</span><br><span class="line"></span><br><span class="line">   commission * num_sales) AS money) AS &#39;Total Salary&#39;</span><br><span class="line"></span><br><span class="line">FROM wages;</span><br><span class="line"></span><br><span class="line">GO</span><br></pre></td></tr></table></figure>
+
+<p>结果集</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Total Salary</span><br><span class="line"></span><br><span class="line">------------</span><br><span class="line"></span><br><span class="line">20800.0000</span><br><span class="line"></span><br><span class="line">41600.0000</span><br><span class="line"></span><br><span class="line">62400.0000</span><br><span class="line"></span><br><span class="line">83200.0000</span><br><span class="line"></span><br><span class="line">10000.0000</span><br><span class="line"></span><br><span class="line">20000.0000</span><br><span class="line"></span><br><span class="line">30000.0000</span><br><span class="line"></span><br><span class="line">40000.0000</span><br><span class="line"></span><br><span class="line">45000.0000</span><br><span class="line"></span><br><span class="line">50000.0000</span><br><span class="line"></span><br><span class="line">120000.0000</span><br><span class="line"></span><br><span class="line">56000.0000</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">(12 row(s) affected)</span><br></pre></td></tr></table></figure>
+
+
 
 ]]></content>
       <categories>
-        <category>实例</category>
+        <category>数据库</category>
       </categories>
       <tags>
-        <tag>Python</tag>
+        <tag>oracle</tag>
       </tags>
   </entry>
   <entry>
@@ -2025,6 +2011,20 @@
 ]]></content>
       <categories>
         <category>语法</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python爬取电影天堂新片精品</title>
+    <url>/2020/02/12/16/02/Python%E7%88%AC%E5%8F%96%E7%94%B5%E5%BD%B1%E5%A4%A9%E5%A0%82%E6%96%B0%E7%89%87%E7%B2%BE%E5%93%81/</url>
+    <content><![CDATA[<p>爬取最新电影，内容包括标题、年代、产地、类别、评分、片场、导演、主演、下载链接。<a id="more"></a></p>
+<h6 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h6><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">base_domain = <span class="string">&quot;https://www.dytt8.net&quot;</span></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">&quot;User-Agent&quot;</span>: <span class="string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 &quot;</span></span><br><span class="line">                  <span class="string">&quot;(KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36 Edg/80.0.361.111&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_detail_url</span>(<span class="params">url</span>):</span></span><br><span class="line">    resp = requests.get(url, headers=headers)</span><br><span class="line">    <span class="comment"># 解码出现&quot;illegal multibyte sequence&quot;，其他编码无法解决，使用ignore</span></span><br><span class="line">    <span class="comment"># text = resp.content.decode(&quot;gbk&quot;, errors=&quot;ignore&quot;)</span></span><br><span class="line">    text = resp.text</span><br><span class="line">    html = etree.HTML(text)</span><br><span class="line">    detail_urls = html.xpath(<span class="string">&quot;//table[@class=&#x27;tbspan&#x27;]//a/@href&quot;</span>)</span><br><span class="line">    detail_urls = map(<span class="keyword">lambda</span> url: base_domain + url, detail_urls)</span><br><span class="line">    <span class="keyword">return</span> detail_urls</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_html</span>(<span class="params">url</span>):</span></span><br><span class="line">    resp = requests.get(url, headers=headers)</span><br><span class="line">    text = resp.content.decode(<span class="string">&quot;gbk&quot;</span>, errors=<span class="string">&quot;ignore&quot;</span>)</span><br><span class="line">    html = etree.HTML(text)</span><br><span class="line">    <span class="keyword">return</span> html</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">parse_info</span>(<span class="params">info, rule</span>):</span></span><br><span class="line">    <span class="keyword">return</span> info.replace(rule, <span class="string">&quot;&quot;</span>).strip()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">parse_detail_page</span>(<span class="params">url</span>):</span></span><br><span class="line">    movie = &#123;&#125;</span><br><span class="line">    html = get_html(url)</span><br><span class="line">    title = html.xpath(<span class="string">&quot;//div[@class=&#x27;title_all&#x27;]//font[@color=&#x27;#07519a&#x27;]/text()&quot;</span>)[<span class="number">0</span>]</span><br><span class="line">    movie[<span class="string">&quot;title&quot;</span>] = title</span><br><span class="line">    zooms = html.xpath(<span class="string">&quot;//div[@id=&#x27;Zoom&#x27;]&quot;</span>)[<span class="number">0</span>]</span><br><span class="line">    poster = zooms.xpath(<span class="string">&quot;.//img/@src&quot;</span>)</span><br><span class="line">    movie[<span class="string">&quot;poster&quot;</span>] = poster</span><br><span class="line"></span><br><span class="line">    infos = zooms.xpath(<span class="string">&quot;.//text()&quot;</span>)</span><br><span class="line">    <span class="keyword">for</span> index, info <span class="keyword">in</span> enumerate(infos):</span><br><span class="line">        <span class="keyword">if</span> info.startswith(<span class="string">&quot;◎年　　代&quot;</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">&quot;◎年　　代&quot;</span>)</span><br><span class="line">            movie[<span class="string">&quot;year&quot;</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">&quot;◎产　　地&quot;</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">&quot;◎产　　地&quot;</span>)</span><br><span class="line">            movie[<span class="string">&quot;country&quot;</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">&quot;◎类　　别&quot;</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">&quot;◎类　　别&quot;</span>)</span><br><span class="line">            movie[<span class="string">&quot;category&quot;</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">&quot;◎豆瓣评分&quot;</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">&quot;◎豆瓣评分&quot;</span>)</span><br><span class="line">            movie[<span class="string">&quot;score&quot;</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">&quot;◎片　　长&quot;</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">&quot;◎片　　长&quot;</span>)</span><br><span class="line">            movie[<span class="string">&quot;timelength&quot;</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">&quot;◎导　　演&quot;</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">&quot;◎导　　演&quot;</span>)</span><br><span class="line">            movie[<span class="string">&quot;director&quot;</span>] = info</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">&quot;◎主　　演&quot;</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">&quot;◎主　　演&quot;</span>)</span><br><span class="line">            actors = [info]</span><br><span class="line">            <span class="keyword">for</span> x <span class="keyword">in</span> range(index + <span class="number">1</span>, len(infos)):</span><br><span class="line">                actor = infos[x].strip()</span><br><span class="line">                <span class="keyword">if</span> actor.startswith(<span class="string">&quot;◎&quot;</span>):</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                actors.append(actor)</span><br><span class="line">            movie[<span class="string">&quot;actors&quot;</span>] = actors</span><br><span class="line">        <span class="keyword">elif</span> info.startswith(<span class="string">&quot;◎简　　介&quot;</span>):</span><br><span class="line">            info = parse_info(info, <span class="string">&quot;◎简　　介&quot;</span>)</span><br><span class="line">            <span class="keyword">for</span> x <span class="keyword">in</span> range(index + <span class="number">1</span>, len(infos)):</span><br><span class="line">                profile = infos[x].strip()</span><br><span class="line">                <span class="keyword">if</span> profile.startswith(<span class="string">&quot;【&quot;</span>):</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">            movie[<span class="string">&quot;profile&quot;</span>] = profile</span><br><span class="line"></span><br><span class="line">    down_url = zooms.xpath(<span class="string">&quot;.//table//a/@href&quot;</span>)</span><br><span class="line">    movie[<span class="string">&quot;down_url&quot;</span>] = down_url</span><br><span class="line">    <span class="keyword">return</span> movie</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">spider</span>():</span></span><br><span class="line">    index_url = <span class="string">&quot;https://www.dytt8.net/html/gndy/dyzz/index.html&quot;</span></span><br><span class="line">    base_url = <span class="string">&quot;https://www.dytt8.net/html/gndy/dyzz/list_23_&#123;&#125;.html&quot;</span></span><br><span class="line">    html = get_html(index_url)</span><br><span class="line">    pages = html.xpath(<span class="string">&quot;//select[@name=&#x27;sldd&#x27;]/option&quot;</span>)</span><br><span class="line">    movies = []</span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">1</span>, len(pages) + <span class="number">1</span>):</span><br><span class="line">        url = base_url.format(x)</span><br><span class="line">        detail_urls = get_detail_url(url)</span><br><span class="line">        <span class="keyword">for</span> detail_url <span class="keyword">in</span> detail_urls:</span><br><span class="line">            <span class="comment"># 遍历每一页中的所有电影</span></span><br><span class="line">            movie = parse_detail_page(detail_url)</span><br><span class="line">            movies.append(movie)</span><br><span class="line">            print(movie)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    spider()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>实例</category>
       </categories>
       <tags>
         <tag>Python</tag>
@@ -2479,6 +2479,46 @@
       </tags>
   </entry>
   <entry>
+    <title>lag和lead函数</title>
+    <url>/2020/08/25/22/34/lag%E5%92%8Clead%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<p>oracle分析函数lag()和lead()<a id="more"></a></p>
+<h5 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h5><p>lag与lead函数是跟偏移量相关的两个分析函数，通过这两个函数可以在一次查询中取出同一字段的前N行的数据(lag)和后N行的数据(lead)作为独立的列,从而更方便地进行进行数据过滤。这种操作可以代替表的自连接，并且LAG和LEAD有更高的效率。</p>
+<p>over()表示 lag()与lead()操作的数据都在over()的范围内，它里面可以使用partition by 语句分组，order by 语句排序。partition by a order by b表示以a字段进行分组，再 以b字段进行排序，对数据进行查询。</p>
+<p>例如：lead(field, num, defaultvalue) field需要查找的字段，num往后查找的num行的数据，defaultvalue没有符合条件的默认值。</p>
+<h5 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h5><ul>
+<li>获取当前记录的id，以及下一条记录的id  </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select t.id id ,</span><br><span class="line">       lead(t.id, 1, null) over (order by t.id)  next_record_id, t.cphm</span><br><span class="line">from tb_test t       </span><br><span class="line">  order by t.id asc</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/08/25/22/34/lag%E5%92%8Clead%E5%87%BD%E6%95%B0/lag.png" alt></p>
+<ul>
+<li>获取当前记录的id，以及上一条记录的id</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select t.id id ,</span><br><span class="line">       lag(t.id, 1, null) over (order by t.id)  next_record_id, t.cphm</span><br><span class="line">from tb_test t       </span><br><span class="line">  order by t.id asc</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/08/25/22/34/lag%E5%92%8Clead%E5%87%BD%E6%95%B0/lead.png" alt></p>
+<ul>
+<li>获取号牌号码相同的，当前记录的id与，下一条记录的id（使用partition by）</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select t.id id, </span><br><span class="line">       lead(t.id, 1, null) over(partition by cphm order by t.id) next_same_cphm_id, t.cphm</span><br><span class="line">from tb_test t</span><br><span class="line">     order by t.id asc   </span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/2020/08/25/22/34/lag%E5%92%8Clead%E5%87%BD%E6%95%B0/lead2.png" alt>  </p>
+<ul>
+<li>查询 cphm的总数，当create_date与下一条记录的create_date时间间隔不超过10分钟则忽略。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select cphm, count(1) total from</span><br><span class="line">(</span><br><span class="line">select t.id,</span><br><span class="line">  t.create_date t1,</span><br><span class="line">  lead(t.create_date,1, null) over( partition by  cphm order by create_date asc ) t2,</span><br><span class="line">  ( lead(t.create_date,1, null) over(  partition by  cphm order by create_date asc )  - t.create_date ) * 86400 as itvtime,</span><br><span class="line">  t.cphm</span><br><span class="line">from tb_test t</span><br><span class="line">  order by t.cphm, t.create_date asc</span><br><span class="line">) tt</span><br><span class="line">where tt.itvtime &gt;&#x3D; 600 or  tt.itvtime  is null</span><br><span class="line">group by tt.cphm</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/08/25/22/34/lag%E5%92%8Clead%E5%87%BD%E6%95%B0/lead3.png" alt></p>
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>oracle</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>mysql5.7分组排序后取每组最新一条</title>
     <url>/2020/08/01/08/31/mysql5-7%E5%88%86%E7%BB%84%E6%8E%92%E5%BA%8F%E5%90%8E%E5%8F%96%E6%AF%8F%E7%BB%84%E6%9C%80%E6%96%B0%E4%B8%80%E6%9D%A1/</url>
     <content><![CDATA[<p>在mysql5.7版本上实现的，目前mysql8.0已经可以使用分析函数了，不需要那么麻烦了。<a id="more"></a></p>
@@ -2573,46 +2613,6 @@
 <td align="left">…</td>
 </tr>
 </tbody></table>
-]]></content>
-      <categories>
-        <category>数据库</category>
-      </categories>
-      <tags>
-        <tag>oracle</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>lag和lead函数</title>
-    <url>/2020/08/25/22/34/lag%E5%92%8Clead%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<p>oracle分析函数lag()和lead()<a id="more"></a></p>
-<h5 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h5><p>lag与lead函数是跟偏移量相关的两个分析函数，通过这两个函数可以在一次查询中取出同一字段的前N行的数据(lag)和后N行的数据(lead)作为独立的列,从而更方便地进行进行数据过滤。这种操作可以代替表的自连接，并且LAG和LEAD有更高的效率。</p>
-<p>over()表示 lag()与lead()操作的数据都在over()的范围内，它里面可以使用partition by 语句分组，order by 语句排序。partition by a order by b表示以a字段进行分组，再 以b字段进行排序，对数据进行查询。</p>
-<p>例如：lead(field, num, defaultvalue) field需要查找的字段，num往后查找的num行的数据，defaultvalue没有符合条件的默认值。</p>
-<h5 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h5><ul>
-<li>获取当前记录的id，以及下一条记录的id  </li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select t.id id ,</span><br><span class="line">       lead(t.id, 1, null) over (order by t.id)  next_record_id, t.cphm</span><br><span class="line">from tb_test t       </span><br><span class="line">  order by t.id asc</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2020/08/25/22/34/lag%E5%92%8Clead%E5%87%BD%E6%95%B0/lag.png" alt></p>
-<ul>
-<li>获取当前记录的id，以及上一条记录的id</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select t.id id ,</span><br><span class="line">       lag(t.id, 1, null) over (order by t.id)  next_record_id, t.cphm</span><br><span class="line">from tb_test t       </span><br><span class="line">  order by t.id asc</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2020/08/25/22/34/lag%E5%92%8Clead%E5%87%BD%E6%95%B0/lead.png" alt></p>
-<ul>
-<li>获取号牌号码相同的，当前记录的id与，下一条记录的id（使用partition by）</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select t.id id, </span><br><span class="line">       lead(t.id, 1, null) over(partition by cphm order by t.id) next_same_cphm_id, t.cphm</span><br><span class="line">from tb_test t</span><br><span class="line">     order by t.id asc   </span><br></pre></td></tr></table></figure>
-
-
-<p><img src="/2020/08/25/22/34/lag%E5%92%8Clead%E5%87%BD%E6%95%B0/lead2.png" alt>  </p>
-<ul>
-<li>查询 cphm的总数，当create_date与下一条记录的create_date时间间隔不超过10分钟则忽略。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select cphm, count(1) total from</span><br><span class="line">(</span><br><span class="line">select t.id,</span><br><span class="line">  t.create_date t1,</span><br><span class="line">  lead(t.create_date,1, null) over( partition by  cphm order by create_date asc ) t2,</span><br><span class="line">  ( lead(t.create_date,1, null) over(  partition by  cphm order by create_date asc )  - t.create_date ) * 86400 as itvtime,</span><br><span class="line">  t.cphm</span><br><span class="line">from tb_test t</span><br><span class="line">  order by t.cphm, t.create_date asc</span><br><span class="line">) tt</span><br><span class="line">where tt.itvtime &gt;&#x3D; 600 or  tt.itvtime  is null</span><br><span class="line">group by tt.cphm</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2020/08/25/22/34/lag%E5%92%8Clead%E5%87%BD%E6%95%B0/lead3.png" alt></p>
 ]]></content>
       <categories>
         <category>数据库</category>
@@ -2979,7 +2979,6 @@
 
 <ul>
 <li>nullifzero(expr)：如果表达式expr的值为null，则返回0，否则返回表达式expr的值。</li>
-<li></li>
 </ul>
 <h6 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h6><p>复制表(只复制结构,源表名：a 新表名：b) (Access可用)</p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">into</span> b <span class="keyword">from</span> a <span class="keyword">where</span> <span class="number">1</span>&lt;&gt;<span class="number">1</span>（仅用于SQlServer）</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> top <span class="number">0</span> * <span class="keyword">into</span> b <span class="keyword">from</span> a</span><br></pre></td></tr></table></figure>
