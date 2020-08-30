@@ -369,7 +369,7 @@ mjx-container[display="true"] + br {
         <a href="/kuang8421@qq.com" title="E-Mail → kuang8421@qq.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://space.bilibili.com/269017831" title="B站 → https:&#x2F;&#x2F;space.bilibili.com&#x2F;269017831" rel="noopener" target="_blank"><i class="fab fa-youtube-play fa-fw"></i>B站</a>
+        <a href="https://space.bilibili.com/269017831" title="B站 → https:&#x2F;&#x2F;space.bilibili.com&#x2F;269017831" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>B站</a>
       </span>
       <span class="links-of-author-item">
         <a href="/1906956615" title="QQ → 1906956615"><i class="fab fa-qq fa-fw"></i>QQ</a>
@@ -394,6 +394,7 @@ mjx-container[display="true"] + br {
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <div class="reading-progress-bar"></div>
   <a role="button" class="book-mark-link book-mark-link-fixed"></a>
 
 <noscript>
@@ -475,7 +476,7 @@ mjx-container[display="true"] + br {
                 <i class="far fa-clock"></i>
               </span>
               <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
+              <span>9 分钟</span>
             </span>
 
         </div>
@@ -505,7 +506,7 @@ mjx-container[display="true"] + br {
 </ul>
 <p>这个token必须要在每次请求时传递给服务端，它应该保存在请求头里， 另外，服务端要支持<code>CORS(跨来源资源共享)</code>策略，一般我们在服务端这么做就可以了<code>Access-Control-Allow-Origin: *</code>。</p>
 <h5 id="JWT的构成"><a href="#JWT的构成" class="headerlink" title="JWT的构成"></a>JWT的构成</h5><p>JWT是由三段信息构成的，将这三段信息文本用<code>.</code>链接一起就构成了Jwt字符串。就像这样:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ</span><br></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9</span>.eyJzdWIiOiIxMjM<span class="number">0</span>NTY<span class="number">3</span>ODkwIiwibmFtZSI<span class="number">6</span>IkpvaG<span class="number">4</span>gRG<span class="number">9</span>lIiwiYWRtaW<span class="number">4</span>iOnRydWV<span class="number">9</span>.TJVA<span class="number">95</span>OrM<span class="number">7</span>E<span class="number">2</span>cBab<span class="number">30</span>RMHrHDcEfxjoYZgeFONFh<span class="number">7</span>HgQ</span><br></pre></td></tr></table></figure>
 
 <p>第一部分我们称它为头部（header)，第二部分我们称其为载荷（payload，类似于飞机上承载的物品)，第三部分是签证（signature)。</p>
 <h6 id="header"><a href="#header" class="headerlink" title="header"></a>header</h6><p>jwt的头部承载两部分信息：</p>
@@ -551,11 +552,11 @@ mjx-container[display="true"] + br {
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// javascript</span></span><br><span class="line"><span class="keyword">var</span> encodedString = base64UrlEncode(header) + <span class="string">&#x27;.&#x27;</span> + base64UrlEncode(payload);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> signature = HMACSHA256(encodedString, <span class="string">&#x27;secret&#x27;</span>); </span><br><span class="line"><span class="comment">// TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ</span></span><br></pre></td></tr></table></figure>
 
 <p>将这三部分用<code>.</code>连接成一个完整的字符串，构成了最终的jwt:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ</span><br></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9</span>.eyJzdWIiOiIxMjM<span class="number">0</span>NTY<span class="number">3</span>ODkwIiwibmFtZSI<span class="number">6</span>IkpvaG<span class="number">4</span>gRG<span class="number">9</span>lIiwiYWRtaW<span class="number">4</span>iOnRydWV<span class="number">9</span>.TJVA<span class="number">95</span>OrM<span class="number">7</span>E<span class="number">2</span>cBab<span class="number">30</span>RMHrHDcEfxjoYZgeFONFh<span class="number">7</span>HgQ</span><br></pre></td></tr></table></figure>
 
 <p>注意：secret是保存在服务器端的，jwt的签发生成也是在服务器端的，secret就是用来进行jwt的签发和jwt的验证，所以，它就是你服务端的私钥，在任何场景都不应该流露出去。一旦客户端得知这个secret，那就意味着客户端是可以自我签发jwt了。</p>
 <h5 id="JWT应用"><a href="#JWT应用" class="headerlink" title="JWT应用"></a>JWT应用</h5><p>一般是在请求头里加入<code>Authorization</code>，并加上<code>Bearer</code>标注：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fetch(&#39;api&#x2F;user&#x2F;1&#39;, &#123;</span><br><span class="line">  headers: &#123;</span><br><span class="line">    &#39;Authorization&#39;: &#39;Bearer &#39; + token</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">fetch</span>(<span class="string">&#x27;api/user/1&#x27;</span>, &#123;</span><br><span class="line">  <span class="attribute">headers</span>: &#123;</span><br><span class="line">    <span class="string">&#x27;Authorization&#x27;</span>: <span class="string">&#x27;Bearer &#x27;</span> + token</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 <p>服务端会验证token，如果验证通过就会返回相应的资源。整个流程就是这样的:</p>
 <p><img src="/2020/06/14/20/53/JWT%E6%8E%88%E6%9D%83%E9%AA%8C%E8%AF%81/jwt.png" alt></p>
@@ -692,13 +693,13 @@ mjx-container[display="true"] + br {
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">163k</span>
+    <span title="站点总字数">162k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:16</span>
+    <span title="站点阅读时长">9:01</span>
   </span>
 </div>
 <div class="busuanzi-count">

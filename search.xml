@@ -120,31 +120,31 @@
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum remove docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-engine</span><br></pre></td></tr></table></figure>
 
 <h5 id="安装Docker-Engine-Community"><a href="#安装Docker-Engine-Community" class="headerlink" title="安装Docker Engine-Community"></a>安装Docker Engine-Community</h5><p>在安装之前，需要设置Docker仓库。之后可以进行安装和更新Docker。</p>
-<h6 id="安装所需要的安装包"><a href="#安装所需要的安装包" class="headerlink" title="安装所需要的安装包"></a>安装所需要的安装包</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install -y yum-utils device-mapper-persistent-data lvm2</span><br></pre></td></tr></table></figure>
+<h6 id="安装所需要的安装包"><a href="#安装所需要的安装包" class="headerlink" title="安装所需要的安装包"></a>安装所需要的安装包</h6><figure class="highlight gml"><table><tr><td class="code"><pre><span class="line">yum install -<span class="symbol">y</span> yum-utils device-mapper-<span class="symbol">persistent</span>-data lvm2</span><br></pre></td></tr></table></figure>
 
-<h6 id="设置稳定的仓库"><a href="#设置稳定的仓库" class="headerlink" title="设置稳定的仓库"></a>设置稳定的仓库</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum-config-manager --add-repo https:&#x2F;&#x2F;download.docker.com&#x2F;linux&#x2F;centos&#x2F;docker-ce.repo</span><br></pre></td></tr></table></figure>
+<h6 id="设置稳定的仓库"><a href="#设置稳定的仓库" class="headerlink" title="设置稳定的仓库"></a>设置稳定的仓库</h6><figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">yum-config-manager --add-repo https:<span class="regexp">//</span>download.docker.com<span class="regexp">/linux/</span>centos/docker-ce.repo</span><br></pre></td></tr></table></figure>
 
 <p>安装最新版本的 Docker Engine-Community 和 containerd，或者转到下一步安装特定版本如果没有安装成功，选择<code>--nobest</code>安装非最新版，以下类似。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install docker-ce docker-ce-cli containerd.io</span><br></pre></td></tr></table></figure>
+<figure class="highlight vim"><table><tr><td class="code"><pre><span class="line">yum install docker-<span class="keyword">ce</span> docker-<span class="keyword">ce</span>-cli containerd.io</span><br></pre></td></tr></table></figure>
 
 <p>Docker 安装完默认未启动。并且已经创建好 docker 用户组，但该用户组下没有用户。</p>
 <p>列出并排序您存储库中可用的版本。此示例按版本号（从高到低）对结果进行排序。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum list docker-ce --showduplicates | sort -r</span><br></pre></td></tr></table></figure>
+<figure class="highlight vim"><table><tr><td class="code"><pre><span class="line">yum <span class="keyword">list</span> docker-<span class="keyword">ce</span> --showduplicates | <span class="keyword">sort</span> -r</span><br></pre></td></tr></table></figure>
 
 <p>通过其完整的软件包名称安装特定版本，该软件包名称是软件包名称（docker-ce）加上版本字符串（第二列），从第一个冒号（:）一直到第一个连字符，并用连字符（-）分隔。例如：docker-ce-18.09.1。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install docker-ce-&lt;VERSION_STRING&gt; docker-ce-cli-&lt;VERSION_STRING&gt; contain</span><br></pre></td></tr></table></figure>
+<figure class="highlight vim"><table><tr><td class="code"><pre><span class="line">yum install docker-<span class="keyword">ce</span>-<span class="symbol">&lt;VERSION_STRING&gt;</span> docker-<span class="keyword">ce</span>-cli-<span class="symbol">&lt;VERSION_STRING&gt;</span> contain</span><br></pre></td></tr></table></figure>
 
-<h6 id="启动Docker"><a href="#启动Docker" class="headerlink" title="启动Docker"></a>启动Docker</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl start docker</span><br></pre></td></tr></table></figure>
+<h6 id="启动Docker"><a href="#启动Docker" class="headerlink" title="启动Docker"></a>启动Docker</h6><figure class="highlight crmsh"><table><tr><td class="code"><pre><span class="line">systemctl <span class="literal">start</span> docker</span><br></pre></td></tr></table></figure>
 
 <p>通过运行 hello-world 映像来验证是否正确安装了 Docker Engine-Community 。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run hello-world</span><br></pre></td></tr></table></figure>
+<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line">docker <span class="keyword">run</span><span class="bash"> hello-world</span></span><br></pre></td></tr></table></figure>
 
 <h5 id="镜像加速"><a href="#镜像加速" class="headerlink" title="镜像加速"></a>镜像加速</h5><p>推荐使用阿里云容器镜像加速服务，地址：<a href="https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors。按照文档要求修改`/etc/docker`目录下的`daemon.json`，修改为自己专属的地址。">https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors。按照文档要求修改`/etc/docker`目录下的`daemon.json`，修改为自己专属的地址。</a></p>
 <h5 id="Docker容器使用"><a href="#Docker容器使用" class="headerlink" title="Docker容器使用"></a>Docker容器使用</h5><h6 id="获取镜像"><a href="#获取镜像" class="headerlink" title="获取镜像"></a>获取镜像</h6><p>如果我们本地没有 ubuntu 镜像，我们可以使用 docker pull 命令来载入 ubuntu 镜像：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker pull ubuntu</span><br></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">docker pull ubuntu</span></span><br></pre></td></tr></table></figure>
 
 <h6 id="启动容器"><a href="#启动容器" class="headerlink" title="启动容器"></a>启动容器</h6><p>以下命令使用 ubuntu 镜像启动一个容器，参数为以命令行模式进入该容器：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -it ubuntu &#x2F;bin&#x2F;bash</span><br></pre></td></tr></table></figure>
+<figure class="highlight applescript"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">run</span> -<span class="keyword">it</span> ubuntu /bin/bash</span><br></pre></td></tr></table></figure>
 
 <p>参数说明：</p>
 <ul>
@@ -155,18 +155,18 @@
 </ul>
 <p>要退出终端，直接输入 <strong>exit</strong>:</p>
 <h6 id="启动已停止运行的容器"><a href="#启动已停止运行的容器" class="headerlink" title="启动已停止运行的容器"></a>启动已停止运行的容器</h6><p>查看所有的容器命令</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker ps -a</span><br></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">docker ps -a</span></span><br></pre></td></tr></table></figure>
 
 <p>启动一个已停止的容器</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker start 容器ID</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">docker <span class="keyword">start</span> 容器<span class="keyword">ID</span></span><br></pre></td></tr></table></figure>
 
-<h6 id="后台运行"><a href="#后台运行" class="headerlink" title="后台运行"></a>后台运行</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -itd --name ubuntu-test ubuntu &#x2F;bin&#x2F;bash</span><br></pre></td></tr></table></figure>
+<h6 id="后台运行"><a href="#后台运行" class="headerlink" title="后台运行"></a>后台运行</h6><figure class="highlight applescript"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">run</span> -itd <span class="comment">--name ubuntu-test ubuntu /bin/bash</span></span><br></pre></td></tr></table></figure>
 
 <p>使用<code>-d</code>参数，容器启动后会进入后台，默认不会进入容器，想要进入容器需要使用指令<code>docker exec</code>。</p>
-<h6 id="停止一个容器"><a href="#停止一个容器" class="headerlink" title="停止一个容器"></a>停止一个容器</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker stop 容器ID</span><br></pre></td></tr></table></figure>
+<h6 id="停止一个容器"><a href="#停止一个容器" class="headerlink" title="停止一个容器"></a>停止一个容器</h6><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">docker <span class="keyword">stop</span> 容器<span class="keyword">ID</span></span><br></pre></td></tr></table></figure>
 
 <p>停止的容器重启</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker restart 容器ID</span><br></pre></td></tr></table></figure>
+<figure class="highlight maxima"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">restart</span> 容器ID</span><br></pre></td></tr></table></figure>
 
 <h6 id="进入容器"><a href="#进入容器" class="headerlink" title="进入容器"></a>进入容器</h6><ul>
 <li><p>docker attach：从此容器中退出，会导致容器的停止。</p>
@@ -174,22 +174,22 @@
 <li><p>docker exec：使用此命令，退出容器终端，不会导致容器的停止。</p>
 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker attach 容器ID</span><br></pre></td></tr></table></figure>
+<figure class="highlight arduino"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">attach</span> 容器ID</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker exec -it 容器ID &#x2F;bin&#x2F;bash</span><br></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">docker exec -it 容器ID <span class="regexp">/bin/</span>bash</span><br></pre></td></tr></table></figure>
 
-<h6 id="导入和导出容器"><a href="#导入和导出容器" class="headerlink" title="导入和导出容器"></a>导入和导出容器</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker export 容器ID &gt; ubuntu.tar</span><br></pre></td></tr></table></figure>
+<h6 id="导入和导出容器"><a href="#导入和导出容器" class="headerlink" title="导入和导出容器"></a>导入和导出容器</h6><figure class="highlight elm"><table><tr><td class="code"><pre><span class="line"><span class="title">docker</span> ex<span class="keyword">port</span> 容器ID &gt; ubuntu.tar</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cat docker&#x2F;ubuntu.tar | docker import - test&#x2F;ubuntu:v1</span><br></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">cat docker<span class="regexp">/ubuntu.tar | docker import - test/u</span>buntu:v1</span><br></pre></td></tr></table></figure>
 
 <p>ubuntu.tar为导出文件，test/ubuntu:v1为镜像。</p>
-<h6 id="删除容器"><a href="#删除容器" class="headerlink" title="删除容器"></a>删除容器</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker rm -f 容器ID</span><br><span class="line"># 清除掉所有处于终止状态的容器</span><br><span class="line">docker container prune</span><br></pre></td></tr></table></figure>
+<h6 id="删除容器"><a href="#删除容器" class="headerlink" title="删除容器"></a>删除容器</h6><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">rm</span> <span class="operator">-f</span> 容器ID</span><br><span class="line"><span class="comment"># 清除掉所有处于终止状态的容器</span></span><br><span class="line">docker container prune</span><br></pre></td></tr></table></figure>
 
-<h6 id="运行一个web应用"><a href="#运行一个web应用" class="headerlink" title="运行一个web应用"></a>运行一个web应用</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 载入镜像</span><br><span class="line">docker pull training&#x2F;webapp</span><br><span class="line">docker run -d -P training&#x2F;webapp python app.py</span><br><span class="line"></span><br><span class="line">#查看进程</span><br><span class="line">docker top 容器名称</span><br><span class="line"></span><br><span class="line">#检查应用</span><br><span class="line">docker inspect 容器名称</span><br><span class="line"></span><br><span class="line">#停止web应用容器</span><br><span class="line">docker stop 容器名称</span><br><span class="line"></span><br><span class="line">#移除web应用容器，删除时容器必须停止，否则会报错</span><br><span class="line">docker rm</span><br></pre></td></tr></table></figure>
+<h6 id="运行一个web应用"><a href="#运行一个web应用" class="headerlink" title="运行一个web应用"></a>运行一个web应用</h6><figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 载入镜像</span></span><br><span class="line"><span class="attr">docker</span> <span class="string">pull training/webapp</span></span><br><span class="line"><span class="attr">docker</span> <span class="string">run -d -P training/webapp python app.py</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#查看进程</span></span><br><span class="line"><span class="attr">docker</span> <span class="string">top 容器名称</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#检查应用</span></span><br><span class="line"><span class="attr">docker</span> <span class="string">inspect 容器名称</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#停止web应用容器</span></span><br><span class="line"><span class="attr">docker</span> <span class="string">stop 容器名称</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#移除web应用容器，删除时容器必须停止，否则会报错</span></span><br><span class="line"><span class="attr">docker</span> <span class="string">rm</span></span><br></pre></td></tr></table></figure>
 
 <p><code>-P</code>将容器内部使用的网络端口映射到我们使用的主机上。</p>
 <p><code>-p</code>设置端口，可以指定映射的端口号<code>8080:8080</code></p>
-<h6 id="查看web应用程序日志"><a href="#查看web应用程序日志" class="headerlink" title="查看web应用程序日志"></a>查看web应用程序日志</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker logs -f 容器ID</span><br></pre></td></tr></table></figure>
+<h6 id="查看web应用程序日志"><a href="#查看web应用程序日志" class="headerlink" title="查看web应用程序日志"></a>查看web应用程序日志</h6><figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="attribute">docker</span> logs -f 容器ID</span><br></pre></td></tr></table></figure>
 
 <p><code>-f</code>：让<code>docker logs</code>像使用<code>tail -f</code>一样来输出容器内部的标准输出，</p>
 <h5 id="Docker镜像使用"><a href="#Docker镜像使用" class="headerlink" title="Docker镜像使用"></a>Docker镜像使用</h5><h6 id="镜像列表"><a href="#镜像列表" class="headerlink" title="镜像列表"></a>镜像列表</h6><p><code>docker images</code>可以列出本地主机上的镜像。</p>
@@ -202,7 +202,7 @@
 <li><strong>SIZE：</strong>镜像大小</li>
 </ul>
 <p>同一仓库源可以有多个 TAG，代表这个仓库源的不同个版本，如 ubuntu 仓库源里，有 15.10、14.04 等多个不同的版本，我们使用 REPOSITORY:TAG 来定义不同的镜像。</p>
-<h6 id="查找镜像"><a href="#查找镜像" class="headerlink" title="查找镜像"></a>查找镜像</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker search 镜像仓库源名称</span><br></pre></td></tr></table></figure>
+<h6 id="查找镜像"><a href="#查找镜像" class="headerlink" title="查找镜像"></a>查找镜像</h6><figure class="highlight excel"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">search</span> 镜像仓库源名称</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li><p>NAME: 镜像仓库源的名称</p>
@@ -216,17 +216,17 @@
 <li><p>AUTOMATED: 自动构建。</p>
 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 下载镜像</span><br><span class="line">docker pull 镜像仓库名称</span><br><span class="line"># 使用镜像</span><br><span class="line">docker run 镜像仓库源名称</span><br></pre></td></tr></table></figure>
+<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 下载镜像</span></span><br><span class="line">docker pull 镜像仓库名称</span><br><span class="line"><span class="comment"># 使用镜像</span></span><br><span class="line">docker <span class="keyword">run</span><span class="bash"> 镜像仓库源名称</span></span><br></pre></td></tr></table></figure>
 
-<h6 id="删除镜像"><a href="#删除镜像" class="headerlink" title="删除镜像"></a>删除镜像</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker rmi 镜像名称</span><br></pre></td></tr></table></figure>
+<h6 id="删除镜像"><a href="#删除镜像" class="headerlink" title="删除镜像"></a>删除镜像</h6><figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="attribute">docker</span> rmi 镜像名称</span><br></pre></td></tr></table></figure>
 
 <h6 id="构建镜像"><a href="#构建镜像" class="headerlink" title="构建镜像"></a>构建镜像</h6><p>我们使用命令 <code>docker build</code> ， 从零开始来创建一个新的镜像。为此，我们需要创建一个 Dockerfile 文件，其中包含一组指令来告诉 Docker 如何构建我们的镜像。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">runoob@runoob:~$ cat Dockerfile </span><br><span class="line">FROM    centos:6.7</span><br><span class="line">MAINTAINER      Fisher &quot;fisher@sudops.com&quot;</span><br><span class="line"></span><br><span class="line">RUN     &#x2F;bin&#x2F;echo &#39;root:123456&#39; |chpasswd</span><br><span class="line">RUN     useradd runoob</span><br><span class="line">RUN     &#x2F;bin&#x2F;echo &#39;runoob:123456&#39; |chpasswd</span><br><span class="line">RUN     &#x2F;bin&#x2F;echo -e &quot;LANG&#x3D;\&quot;en_US.UTF-8\&quot;&quot; &gt;&#x2F;etc&#x2F;default&#x2F;local</span><br><span class="line">EXPOSE  22</span><br><span class="line">EXPOSE  80</span><br><span class="line">CMD     &#x2F;usr&#x2F;sbin&#x2F;sshd -D</span><br></pre></td></tr></table></figure>
+<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line">runoob@runoob:~$ cat Dockerfile </span><br><span class="line"><span class="keyword">FROM</span>    centos:<span class="number">6.7</span></span><br><span class="line"><span class="keyword">MAINTAINER</span>      Fisher <span class="string">&quot;fisher@sudops.com&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="bash">     /bin/<span class="built_in">echo</span> <span class="string">&#x27;root:123456&#x27;</span> |chpasswd</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash">     useradd runoob</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash">     /bin/<span class="built_in">echo</span> <span class="string">&#x27;runoob:123456&#x27;</span> |chpasswd</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash">     /bin/<span class="built_in">echo</span> -e <span class="string">&quot;LANG=\&quot;en_US.UTF-8\&quot;&quot;</span> &gt;/etc/default/<span class="built_in">local</span></span></span><br><span class="line"><span class="keyword">EXPOSE</span>  <span class="number">22</span></span><br><span class="line"><span class="keyword">EXPOSE</span>  <span class="number">80</span></span><br><span class="line"><span class="keyword">CMD</span><span class="bash">     /usr/sbin/sshd -D</span></span><br></pre></td></tr></table></figure>
 
 <p>每一个指令都会在镜像上创建一个新的层，每一个指令的前缀都必须是大写的。</p>
 <p>FROM指定使用哪个镜像源；</p>
 <p>RUN 指令告诉docker 在镜像内执行命令，安装了什么。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">runoob@runoob:~$ docker build -t runoob&#x2F;centos:6.7 .</span><br><span class="line">Sending build context to Docker daemon 17.92 kB</span><br><span class="line">Step 1 : FROM centos:6.7</span><br><span class="line"> ---&gt; d95b5ca17cc3</span><br><span class="line">Step 2 : MAINTAINER Fisher &quot;fisher@sudops.com&quot;</span><br><span class="line"> ---&gt; Using cache</span><br><span class="line"> ---&gt; 0c92299c6f03</span><br><span class="line">Step 3 : RUN &#x2F;bin&#x2F;echo &#39;root:123456&#39; |chpasswd</span><br><span class="line"> ---&gt; Using cache</span><br><span class="line"> ---&gt; 0397ce2fbd0a</span><br><span class="line">Step 4 : RUN useradd runoob</span><br><span class="line">······</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">runoob@runoob:~$ docker build -t runoob/centos:6.7 .</span><br><span class="line">Sending build context <span class="keyword">to</span> Docker daemon 17.92 kB</span><br><span class="line"><span class="keyword">Step</span> 1 : <span class="keyword">FROM</span> centos:6.7</span><br><span class="line"> ---&amp;gt; d95b5ca17cc3</span><br><span class="line"><span class="keyword">Step</span> 2 : MAINTAINER Fisher <span class="string">&quot;fisher@sudops.com&quot;</span></span><br><span class="line"> ---&amp;gt; Using cache</span><br><span class="line"> ---&amp;gt; 0c92299c6f03</span><br><span class="line"><span class="keyword">Step</span> 3 : <span class="builtin-name">RUN</span> /bin/echo <span class="string">&#x27;root:123456&#x27;</span> |chpasswd</span><br><span class="line"> ---&amp;gt; Using cache</span><br><span class="line"> ---&amp;gt; 0397ce2fbd0a</span><br><span class="line"><span class="keyword">Step</span> 4 : <span class="builtin-name">RUN</span> useradd runoob</span><br><span class="line">······</span><br></pre></td></tr></table></figure>
 
 <p>参数说明：</p>
 <ul>
@@ -234,16 +234,16 @@
 <li><strong>.</strong> ：Dockerfile 文件所在目录，可以指定Dockerfile 的绝对路径</li>
 </ul>
 <p>使用新的镜像来创建容器</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -t -i runoob&#x2F;centos:6.7  &#x2F;bin&#x2F;bash</span><br></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">docker</span> run -t -i runoob/centos:<span class="number">6</span>.<span class="number">7</span>  /bin/bash</span><br></pre></td></tr></table></figure>
 
 <h6 id="设置镜像标签"><a href="#设置镜像标签" class="headerlink" title="设置镜像标签"></a>设置镜像标签</h6><p>使用 <code>docker tag</code> 命令，为镜像添加一个新的标签。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker tag 860c279d2fec runoob&#x2F;centos:dev</span><br></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">docker</span> tag <span class="number">860</span>c<span class="number">279</span>d<span class="number">2</span>fec runoob/centos:dev</span><br></pre></td></tr></table></figure>
 
-<h5 id="容器连接"><a href="#容器连接" class="headerlink" title="容器连接"></a>容器连接</h5><h6 id="网络端口映射"><a href="#网络端口映射" class="headerlink" title="网络端口映射"></a>网络端口映射</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -d -P training&#x2F;webapp python app.py</span><br></pre></td></tr></table></figure>
+<h5 id="容器连接"><a href="#容器连接" class="headerlink" title="容器连接"></a>容器连接</h5><h6 id="网络端口映射"><a href="#网络端口映射" class="headerlink" title="网络端口映射"></a>网络端口映射</h6><figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line">docker <span class="keyword">run</span><span class="bash"> -d -P training/webapp python app.py</span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -d -p 5000:5000 training&#x2F;webapp python app.py</span><br></pre></td></tr></table></figure>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">docker run -d -p <span class="number">5000</span>:<span class="number">5000</span> training/webapp python app.py</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 查看镜像进程</span><br><span class="line">docker ps</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND           ...           PORTS                     NAMES</span><br><span class="line">33e4523d30aa        training&#x2F;webapp     &quot;python app.py&quot;   ...   0.0.0.0:5000-&gt;5000&#x2F;tcp    berserk_bartik</span><br><span class="line">fce072cc88ce        training&#x2F;webapp     &quot;python app.py&quot;   ...   0.0.0.0:32768-&gt;5000&#x2F;tcp   grave_hopper</span><br></pre></td></tr></table></figure>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line"># 查看镜像进程</span><br><span class="line">docker ps</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND           ...           PORTS                     NAMES</span><br><span class="line"><span class="number">33e4523</span>d30aa        training/webapp     <span class="string">&quot;python app.py&quot;</span>   ...   <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>:<span class="number">5000</span>-&gt;<span class="number">5000</span>/tcp    berserk_bartik</span><br><span class="line">fce072cc88ce        training/webapp     <span class="string">&quot;python app.py&quot;</span>   ...   <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>:<span class="number">32768</span>-&gt;<span class="number">5000</span>/tcp   grave_hopper</span><br></pre></td></tr></table></figure>
 
 <p>两种方式的区别是:</p>
 <ul>
@@ -251,25 +251,25 @@
 <li><strong>-p :</strong> 是容器内部端口绑定到<strong>指定</strong>的主机端口。</li>
 </ul>
 <p>另外，我们可以指定容器绑定的网络地址，比如绑定 127.0.0.1，可以通过访问 127.0.0.1:5001 来访问容器的 5000 端口。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -d -p 127.0.0.1:5001:5000 training&#x2F;webapp python app.py</span><br></pre></td></tr></table></figure>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">docker run -d -p <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">5001</span>:<span class="number">5000</span> training/webapp python app.py</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CONTAINER ID        IMAGE               COMMAND           ...     PORTS                                NAMES</span><br><span class="line">95c6ceef88ca        training&#x2F;webapp     &quot;python app.py&quot;   ...  5000&#x2F;tcp, 127.0.0.1:5001-&gt;5000&#x2F;tcp   adoring_stonebraker</span><br></pre></td></tr></table></figure>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">CONTAINER ID        IMAGE               COMMAND           ...     PORTS                                NAMES</span><br><span class="line"><span class="number">95</span>c6ceef88ca        training/webapp     <span class="string">&quot;python app.py&quot;</span>   ...  <span class="number">5000</span>/tcp, <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">5001</span>-&gt;<span class="number">5000</span>/tcp   adoring_stonebraker</span><br></pre></td></tr></table></figure>
 
 <h6 id="容器命名"><a href="#容器命名" class="headerlink" title="容器命名"></a>容器命名</h6><p>当我们创建一个容器的时候，docker 会自动对它进行命名。另外，我们也可以使用 <code>--name</code> 标识来命名容器。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -d -P --name runoob training&#x2F;webapp python app.py</span><br></pre></td></tr></table></figure>
+<figure class="highlight applescript"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">run</span> -d -P <span class="comment">--name runoob training/webapp python app.py</span></span><br></pre></td></tr></table></figure>
 
 <h5 id="Docker容器互联"><a href="#Docker容器互联" class="headerlink" title="Docker容器互联"></a>Docker容器互联</h5><p>端口映射并不是唯一把 docker 连接到另一个容器的方法。</p>
 <p>docker 有一个连接系统允许将多个容器连接在一起，共享连接信息。</p>
 <p>docker 连接会创建一个父子关系，其中父容器可以看到子容器的信息。</p>
-<h6 id="新建网络"><a href="#新建网络" class="headerlink" title="新建网络"></a>新建网络</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker network create -d bridge test-net</span><br></pre></td></tr></table></figure>
+<h6 id="新建网络"><a href="#新建网络" class="headerlink" title="新建网络"></a>新建网络</h6><figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">docker<span class="built_in"> network </span>create -d<span class="built_in"> bridge </span>test-net</span><br></pre></td></tr></table></figure>
 
 <p>参数说明：</p>
 <p><strong>-d</strong>：参数指定 Docker 网络类型，有 bridge、overlay。</p>
 <h6 id="连接容器"><a href="#连接容器" class="headerlink" title="连接容器"></a>连接容器</h6><p>运行一个容器并连接到新建的 test-net 网络:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -itd --name test1 --network test-net ubuntu &#x2F;bin&#x2F;bash</span><br></pre></td></tr></table></figure>
+<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line">docker <span class="keyword">run</span><span class="bash"> -itd --name test1 --network <span class="built_in">test</span>-net ubuntu /bin/bash</span></span><br></pre></td></tr></table></figure>
 
 <p>打开新的终端，再运行一个容器并加入到 test-net 网络:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -itd --name test2 --network test-net ubuntu &#x2F;bin&#x2F;bash</span><br></pre></td></tr></table></figure>
+<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line">docker <span class="keyword">run</span><span class="bash"> -itd --name test2 --network <span class="built_in">test</span>-net ubuntu /bin/bash</span></span><br></pre></td></tr></table></figure>
 
 <p>可以通过ping命令来证明test1容器和test2容器建立了互联关系。</p>
 <h5 id="配置DNS"><a href="#配置DNS" class="headerlink" title="配置DNS"></a>配置DNS</h5><p>可以在宿主机的 /etc/docker/daemon.json 文件中增加以下内容来设置全部容器的 DNS：</p>
@@ -278,16 +278,16 @@
 <p>设置后，启动容器的 DNS 会自动配置为 114.114.114.114 和 8.8.8.8。</p>
 <p>配置完，需要重启 docker 才能生效。</p>
 <p>查看容器的 DNS 是否生效可以使用以下命令，它会输出容器的 DNS 信息：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -it --rm ubuntu  cat etc&#x2F;resolv.conf</span><br></pre></td></tr></table></figure>
+<figure class="highlight stata"><table><tr><td class="code"><pre><span class="line">docker <span class="keyword">run</span> -it --<span class="keyword">rm</span> ubuntu  <span class="keyword">cat</span> etc/resolv.<span class="keyword">conf</span></span><br></pre></td></tr></table></figure>
 
 <h5 id="Docker-Dockerfile"><a href="#Docker-Dockerfile" class="headerlink" title="Docker Dockerfile"></a>Docker Dockerfile</h5><p>Dockerfile 是一个用来构建镜像的文本文件，文本内容包含了一条条构建镜像所需的指令和说明。</p>
 <h6 id="FROM-和-RUN-指令的作用"><a href="#FROM-和-RUN-指令的作用" class="headerlink" title="FROM 和 RUN 指令的作用"></a>FROM 和 RUN 指令的作用</h6><p><strong>FROM</strong>：定制的镜像都是基于 FROM 的镜像，这里的 nginx 就是定制需要的基础镜像。后续的操作都是基于 nginx。</p>
 <p><strong>RUN</strong>：用于执行后面跟着的命令行命令。有以下俩种格式：</p>
 <p>shell 格式：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">RUN &lt;命令行命令&gt;</span><br><span class="line"># &lt;命令行命令&gt; 等同于，在终端操作的 shell 命令。</span><br></pre></td></tr></table></figure>
+<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line"><span class="keyword">RUN</span><span class="bash"> &lt;命令行命令&gt;</span></span><br><span class="line"><span class="comment"># &lt;命令行命令&gt; 等同于，在终端操作的 shell 命令。</span></span><br></pre></td></tr></table></figure>
 
 <p>exec 格式：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">RUN [&quot;可执行文件&quot;, &quot;参数1&quot;, &quot;参数2&quot;]</span><br><span class="line"># 例如：</span><br><span class="line"># RUN [&quot;.&#x2F;test.php&quot;, &quot;dev&quot;, &quot;offline&quot;] 等价于 RUN .&#x2F;test.php dev offline</span><br></pre></td></tr></table></figure>
+<figure class="highlight stata"><table><tr><td class="code"><pre><span class="line"><span class="keyword">RUN</span> [<span class="string">&quot;可执行文件&quot;</span>, <span class="string">&quot;参数1&quot;</span>, <span class="string">&quot;参数2&quot;</span>]</span><br><span class="line"># 例如：</span><br><span class="line"># <span class="keyword">RUN</span> [<span class="string">&quot;./test.php&quot;</span>, <span class="string">&quot;dev&quot;</span>, <span class="string">&quot;offline&quot;</span>] 等价于 <span class="keyword">RUN</span> ./<span class="keyword">test</span>.php dev offline</span><br></pre></td></tr></table></figure>
 
 <p><strong>注意</strong>：Dockerfile 的指令每执行一次都会在 docker 上新建一层。所以过多无意义的层，会造成镜像膨胀过大。例如：</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">FROM centos</span><br><span class="line">RUN yum install wget</span><br><span class="line">RUN wget -O redis.tar.gz &quot;http://download.redis.io/releases/redis-5.0.3.tar.gz&quot;</span><br><span class="line">RUN tar -xvf redis.tar.gz</span><br></pre></td></tr></table></figure>
@@ -298,7 +298,7 @@
 <p>如上，以 <strong>&amp;&amp;</strong> 符号连接命令，这样执行后，只会创建 1 层镜像。</p>
 <h6 id="开始构建镜像"><a href="#开始构建镜像" class="headerlink" title="开始构建镜像"></a>开始构建镜像</h6><p>以下示例，通过目录下的 Dockerfile 构建一个 nginx:test（镜像名称:镜像标签）。</p>
 <p><strong>注</strong>：最后的 <strong>.</strong> 代表本次执行的上下文路径.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker build -t nginx:test .</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker build -t nginx:<span class="built_in">test</span> .</span><br></pre></td></tr></table></figure>
 
 <p>使用<code>docker images</code>查看镜像是否建立成功。</p>
 <h6 id="指令详解"><a href="#指令详解" class="headerlink" title="指令详解"></a>指令详解</h6><ol>
@@ -388,72 +388,72 @@
 </ul>
 <p>所有必备的应用程序安装完成后，就可以利用npm安装Hexo。</p>
 <h5 id="Hexo安装"><a href="#Hexo安装" class="headerlink" title="Hexo安装"></a>Hexo安装</h5><p>利用命令提示符输入以下命令安装Hexo：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install -g hexo</span><br></pre></td></tr></table></figure>
+<figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">npm <span class="keyword">install</span> -g hexo</span><br></pre></td></tr></table></figure>
 
 <p>新建一个文件夹用来部署你的博客项目，进入文件夹右键Git Bash Here打开git bush命令界面，输入下列命令初始化文件夹(以便后面部署到GitHub上)：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">hexo init</span></span><br></pre></td></tr></table></figure>
 
 <p>在文件夹中安装npm:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
+<figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">npm <span class="keyword">install</span></span><br></pre></td></tr></table></figure>
 
 <p>安装git部署插件:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">npm <span class="keyword">install</span> hexo-deployer-git <span class="comment">--save</span></span><br></pre></td></tr></table></figure>
 
 <h5 id="服务器端运行"><a href="#服务器端运行" class="headerlink" title="服务器端运行"></a>服务器端运行</h5><p>可以通过下面的命令在本地服务器运行，在浏览器中输入 <a href="http://localhost:4000">http://localhost:4000</a> 即可，但是需要一直保持连接不断开:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+<figure class="highlight axapta"><table><tr><td class="code"><pre><span class="line">hexo <span class="keyword">server</span></span><br></pre></td></tr></table></figure>
 
 <p>也可以利用SSH上传博客项目到GitHub的repository仓库上，就可以用网络直接访问仓库名即可打开博客。</p>
 <h6 id="创建GitHub账号"><a href="#创建GitHub账号" class="headerlink" title="创建GitHub账号"></a>创建GitHub账号</h6><p>在 <a href="https://github.com/">https://github.com/</a> 上注册账号，完成后，在 <a href="https://github.com">https://github.com</a> 页面点击右上角”+”的”new repository”创建自己的项目仓库，仓库名称是”自己的github名称.github.io”，例如我的github账号名称Isdear，仓库名即为”Isdear.github.io”。</p>
 <h6 id="关联本地仓库"><a href="#关联本地仓库" class="headerlink" title="关联本地仓库"></a>关联本地仓库</h6><p>右键点击Git Bash Here进入命令界面，通过命令绑定账户。</p>
 <p>配置用户名</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;yourname&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">git<span class="built_in"> config </span>--global user.name <span class="string">&quot;yourname&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p>配置GitHub账户邮箱</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.email &quot;youremail@example.com&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">git<span class="built_in"> config </span>--global user.email <span class="string">&quot;youremail@example.com&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p>输入命令生成SSH key:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;youremail@example.com&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight excel"><table><tr><td class="code"><pre><span class="line">ssh-keygen -<span class="built_in">t</span> rsa -C <span class="string">&quot;youremail@example.com&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p>命令界面会显示生成的位置，例如我的是在”c/users/dell/.ssh/id_rsa.pub”。打开id_rsa.pub文件，里面的内容全部复制。在网页中点击GitHub账户头像选择”Settings”，再点击”SSH and GPG keys”，点击SSH右边的”new SSH key”，Title可以随便输入，Key中就将刚刚复制的密钥粘贴过去，点击”Add SSH key”，之后就会生成的16进制的SSH 密令。打开GitHub上的仓库，复制SSH地址链接，</p>
 <p>Git Bash中输入关联GitHub账户:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh git@github.com</span><br></pre></td></tr></table></figure>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="attribute">ssh</span> git<span class="variable">@github</span>.com</span><br></pre></td></tr></table></figure>
 
 <p>在你的博客项目文件夹中打开”_config.yml”文件，直接拉到最下面配置项目部署环境。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: git@github.com:Isdear&#x2F;Isdear.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+<figure class="highlight less"><table><tr><td class="code"><pre><span class="line"><span class="attribute">deploy</span>:</span><br><span class="line">  <span class="attribute">type</span>: git</span><br><span class="line">  <span class="attribute">repository</span>: git<span class="variable">@github</span>.<span class="attribute">com</span>:Isdear/Isdear.github.io.git</span><br><span class="line">  <span class="attribute">branch</span>: master</span><br></pre></td></tr></table></figure>
 
 <h6 id="部署项目"><a href="#部署项目" class="headerlink" title="部署项目"></a>部署项目</h6><p>在Git Bash界面输入下面的命令，生成博客项目的静态文件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure>
+<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line">hexo <span class="keyword">generate</span></span><br></pre></td></tr></table></figure>
 
 <p>部署到GitHub上:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">hexo deploy</span></span><br></pre></td></tr></table></figure>
 
 <p>接下来就可以直接浏览器的地址栏输入你的GitHub仓库名即可访问博客。</p>
 <h5 id="主题配置"><a href="#主题配置" class="headerlink" title="主题配置"></a>主题配置</h5><p>Hexo可以在 <a href="https://hexo.io/themes/">https://hexo.io/themes/</a> 选择博客的主题，点击主题的名称，进入到主题的GitHub仓库，下载ZIP压缩包，解压后把文件夹放入到博客项目的themes目录下(文件夹名字有点长，可以重命名一下)。在博客项目主目录下打开”_config.yml”文件，修改theme属性，默认是”landscape”，你把它修改成你下载的主题的文件夹名称就可以了，重新执行生成和部署命令，就可以看到博客的新主题了。</p>
 <h5 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h5><p>这里只是提出一些常用的命令，更多命令还是到官方文档查看。</p>
-<h6 id="初始化本地文件夹为网站的根目录"><a href="#初始化本地文件夹为网站的根目录" class="headerlink" title="初始化本地文件夹为网站的根目录"></a>初始化本地文件夹为网站的根目录</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+<h6 id="初始化本地文件夹为网站的根目录"><a href="#初始化本地文件夹为网站的根目录" class="headerlink" title="初始化本地文件夹为网站的根目录"></a>初始化本地文件夹为网站的根目录</h6><figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">hexo init</span></span><br></pre></td></tr></table></figure>
 
-<h6 id="新建文章"><a href="#新建文章" class="headerlink" title="新建文章"></a>新建文章</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new [layout] title</span><br></pre></td></tr></table></figure>
+<h6 id="新建文章"><a href="#新建文章" class="headerlink" title="新建文章"></a>新建文章</h6><figure class="highlight gauss"><table><tr><td class="code"><pre><span class="line">hexo <span class="keyword">new</span> [layout] <span class="built_in">title</span></span><br></pre></td></tr></table></figure>
 
-<h6 id="生成静态文件"><a href="#生成静态文件" class="headerlink" title="生成静态文件"></a>生成静态文件</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo generate</span><br><span class="line">可以简写为</span><br><span class="line">hexo g</span><br></pre></td></tr></table></figure>
+<h6 id="生成静态文件"><a href="#生成静态文件" class="headerlink" title="生成静态文件"></a>生成静态文件</h6><figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line">hexo <span class="keyword">generate</span></span><br><span class="line">可以简写为</span><br><span class="line">hexo g</span><br></pre></td></tr></table></figure>
 
-<h6 id="启动本地服务器"><a href="#启动本地服务器" class="headerlink" title="启动本地服务器"></a>启动本地服务器</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo server</span><br><span class="line">可以简写为</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+<h6 id="启动本地服务器"><a href="#启动本地服务器" class="headerlink" title="启动本地服务器"></a>启动本地服务器</h6><figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">hexo server</span><br><span class="line">可以简写为</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
 
-<h6 id="部署网站"><a href="#部署网站" class="headerlink" title="部署网站"></a>部署网站</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo deploy</span><br><span class="line">可以简写为</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<h6 id="部署网站"><a href="#部署网站" class="headerlink" title="部署网站"></a>部署网站</h6><figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">hexo</span> <span class="string">deploy</span></span><br><span class="line"><span class="attr">可以简写为</span></span><br><span class="line"><span class="attr">hexo</span> <span class="string">d</span></span><br></pre></td></tr></table></figure>
 
 <p>指定生成后部署</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo g -d </span><br></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">hexo g -d</span> </span><br></pre></td></tr></table></figure>
 
-<h6 id="清除缓存"><a href="#清除缓存" class="headerlink" title="清除缓存"></a>清除缓存</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
+<h6 id="清除缓存"><a href="#清除缓存" class="headerlink" title="清除缓存"></a>清除缓存</h6><figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">hexo clean</span></span><br></pre></td></tr></table></figure>
 
 <h5 id="撰写文章"><a href="#撰写文章" class="headerlink" title="撰写文章"></a>撰写文章</h5><p>因为Hexo是使用Markdown解析文章的，所以推荐使用Typora工具来编写文章 <a href="https://www.typora.io">https://www.typora.io</a> 。</p>
 <p>使用hexo new title命令可以在source/_posts目录下生成一个md格式的文档，使用Typora打开，开始写我们的博客。在工具内你可以右键添加图片、代码块、公式块、链接、表格、脚注、分割线、段落等，这里不再一一说明，只说明一些右键没有说明的设置。</p>
 <h6 id="文章头部设置"><a href="#文章头部设置" class="headerlink" title="文章头部设置"></a>文章头部设置</h6><p>创建文章之后，文章里的头部来自模板，默认是scaffolds目录下的post.md，你可以修改模板来对文章进行说明。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">title: Title </span><br><span class="line">date: YYYY-MM-DD HH:MM:SS </span><br><span class="line">tags: [tag1, tag2, ...] </span><br><span class="line">categories: category </span><br></pre></td></tr></table></figure>
+<figure class="highlight subunit"><table><tr><td class="code"><pre><span class="line">title: Title </span><br><span class="line">date: YYYY-MM-DD HH:MM:SS </span><br><span class="line"><span class="keyword">tags:</span> [tag1, tag2, ...] </span><br><span class="line">categories: category </span><br></pre></td></tr></table></figure>
 
 <p>属性与属性值中间必须要有一个空格，否则会解析错误。</p>
 <h6 id="首页显示"><a href="#首页显示" class="headerlink" title="首页显示"></a>首页显示</h6><p>Hexo框架搭建的博客网站中，首页显示的文章默认是显示全部内容，这样很不方便。使用<code>&lt;!--more--&gt;</code>标志，即可隐藏标志前面的内容。</p>
 <h6 id="部署发布"><a href="#部署发布" class="headerlink" title="部署发布"></a>部署发布</h6><p>每次写完文章或者修改配置后都要输入命令</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">hexo g -d</span></span><br></pre></td></tr></table></figure>
 
 <p>重新生成静态文件重新部署。</p>
 ]]></content>
@@ -535,7 +535,7 @@
 </ul>
 <p>这个token必须要在每次请求时传递给服务端，它应该保存在请求头里， 另外，服务端要支持<code>CORS(跨来源资源共享)</code>策略，一般我们在服务端这么做就可以了<code>Access-Control-Allow-Origin: *</code>。</p>
 <h5 id="JWT的构成"><a href="#JWT的构成" class="headerlink" title="JWT的构成"></a>JWT的构成</h5><p>JWT是由三段信息构成的，将这三段信息文本用<code>.</code>链接一起就构成了Jwt字符串。就像这样:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ</span><br></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9</span>.eyJzdWIiOiIxMjM<span class="number">0</span>NTY<span class="number">3</span>ODkwIiwibmFtZSI<span class="number">6</span>IkpvaG<span class="number">4</span>gRG<span class="number">9</span>lIiwiYWRtaW<span class="number">4</span>iOnRydWV<span class="number">9</span>.TJVA<span class="number">95</span>OrM<span class="number">7</span>E<span class="number">2</span>cBab<span class="number">30</span>RMHrHDcEfxjoYZgeFONFh<span class="number">7</span>HgQ</span><br></pre></td></tr></table></figure>
 
 <p>第一部分我们称它为头部（header)，第二部分我们称其为载荷（payload，类似于飞机上承载的物品)，第三部分是签证（signature)。</p>
 <h6 id="header"><a href="#header" class="headerlink" title="header"></a>header</h6><p>jwt的头部承载两部分信息：</p>
@@ -581,11 +581,11 @@
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// javascript</span></span><br><span class="line"><span class="keyword">var</span> encodedString = base64UrlEncode(header) + <span class="string">&#x27;.&#x27;</span> + base64UrlEncode(payload);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> signature = HMACSHA256(encodedString, <span class="string">&#x27;secret&#x27;</span>); </span><br><span class="line"><span class="comment">// TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ</span></span><br></pre></td></tr></table></figure>
 
 <p>将这三部分用<code>.</code>连接成一个完整的字符串，构成了最终的jwt:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ</span><br></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9</span>.eyJzdWIiOiIxMjM<span class="number">0</span>NTY<span class="number">3</span>ODkwIiwibmFtZSI<span class="number">6</span>IkpvaG<span class="number">4</span>gRG<span class="number">9</span>lIiwiYWRtaW<span class="number">4</span>iOnRydWV<span class="number">9</span>.TJVA<span class="number">95</span>OrM<span class="number">7</span>E<span class="number">2</span>cBab<span class="number">30</span>RMHrHDcEfxjoYZgeFONFh<span class="number">7</span>HgQ</span><br></pre></td></tr></table></figure>
 
 <p>注意：secret是保存在服务器端的，jwt的签发生成也是在服务器端的，secret就是用来进行jwt的签发和jwt的验证，所以，它就是你服务端的私钥，在任何场景都不应该流露出去。一旦客户端得知这个secret，那就意味着客户端是可以自我签发jwt了。</p>
 <h5 id="JWT应用"><a href="#JWT应用" class="headerlink" title="JWT应用"></a>JWT应用</h5><p>一般是在请求头里加入<code>Authorization</code>，并加上<code>Bearer</code>标注：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">fetch(&#39;api&#x2F;user&#x2F;1&#39;, &#123;</span><br><span class="line">  headers: &#123;</span><br><span class="line">    &#39;Authorization&#39;: &#39;Bearer &#39; + token</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight less"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">fetch</span>(<span class="string">&#x27;api/user/1&#x27;</span>, &#123;</span><br><span class="line">  <span class="attribute">headers</span>: &#123;</span><br><span class="line">    <span class="string">&#x27;Authorization&#x27;</span>: <span class="string">&#x27;Bearer &#x27;</span> + token</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 <p>服务端会验证token，如果验证通过就会返回相应的资源。整个流程就是这样的:</p>
 <p><img src="/2020/06/14/20/53/JWT%E6%8E%88%E6%9D%83%E9%AA%8C%E8%AF%81/jwt.png" alt></p>
@@ -1301,23 +1301,23 @@
     <content><![CDATA[<p>最简便的安装教程<a id="more"></a></p>
 <h5 id="一键安装MongoDB数据库"><a href="#一键安装MongoDB数据库" class="headerlink" title="一键安装MongoDB数据库"></a>一键安装MongoDB数据库</h5><p>使用wget命令在线一键安装MongoDB数据库，并配置密码123456。</p>
 <p><code>注意：不要在 / 目录下运行</code></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wget -c http:&#x2F;&#x2F;mirrors.linuxeye.com&#x2F;oneinstack-full.tar.gz &amp;&amp; tar xzf oneinstack-full.tar.gz &amp;&amp; .&#x2F;oneinstack&#x2F;install.sh --db_option 15 --dbinstallmethod 1 --dbrootpwd 123456 --reboot</span><br></pre></td></tr></table></figure>
+<figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line">wget -c http:<span class="string">//mirrors.linuxeye.com/oneinstack-full.tar.gz</span> &amp;&amp; tar xzf oneinstack-full.tar.gz &amp;&amp; <span class="string">./oneinstack/install.sh</span> <span class="params">--db_option</span> 15 <span class="params">--dbinstallmethod</span> 1 <span class="params">--dbrootpwd</span> 123456 <span class="params">--reboot</span></span><br></pre></td></tr></table></figure>
 
 <p>安装时间较长，请耐心等待。</p>
 <p>如果没有找到wget命令，就使用下列命令安装wget:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum -y install wget</span><br></pre></td></tr></table></figure>
+<figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">yum -y <span class="keyword">install</span> wget</span><br></pre></td></tr></table></figure>
 
 <h5 id="验证超级管理员账户"><a href="#验证超级管理员账户" class="headerlink" title="验证超级管理员账户"></a>验证超级管理员账户</h5><p>重新进入服务器后，在窗口中输入 <em>mongo</em> ，进入数据库。</p>
 <p>输入 <em>db</em> ，默认是在test数据库下，输入 <em>use admin</em> ，进入 <em>admin</em> 数据库。然后再输入<em>db.auth(‘root’,’123456’)</em>，返回1表示验证成功。注意：这个账户密码就是刚刚安装数据库时设置的。</p>
 <h5 id="创建新数据库并配置"><a href="#创建新数据库并配置" class="headerlink" title="创建新数据库并配置"></a>创建新数据库并配置</h5><p>输入<em>use newDatabase</em>，进入新的数据库，然后输入</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">db.createUser(&#123;user: &quot;username&quot;, pwd: &quot;password&quot;, roles: [&#123; role: &quot;dbOwner&quot;, db: &quot;newDatabase&quot; &#125;]&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight less"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">db</span><span class="selector-class">.createUser</span>(&#123;<span class="attribute">user</span>: <span class="string">&quot;username&quot;</span>, <span class="attribute">pwd</span>: <span class="string">&quot;password&quot;</span>, <span class="attribute">roles</span>: [&#123; <span class="attribute">role</span>: <span class="string">&quot;dbOwner&quot;</span>, <span class="attribute">db</span>: <span class="string">&quot;newDatabase&quot;</span> &#125;]&#125;)</span><br></pre></td></tr></table></figure>
 
 <p>username和password分别对应自己设定的账户和密码，db后的集合名一定要和use的名称一致。每创建一个数据库都要进行授权，否则无法访问。</p>
 <h5 id="MongoDB参数配置"><a href="#MongoDB参数配置" class="headerlink" title="MongoDB参数配置"></a>MongoDB参数配置</h5><p>进入到/usr/local/mongodb文件夹，创建data、log目录和mongo.conf文件，用来存储数据及日志文件，其中log目录下创建mongodb.log文件。mongodb.conf文件内用vim写入下列命令：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">port&#x3D;27017 #端口</span><br><span class="line">dbpath&#x3D; &#x2F;programs&#x2F;mongodb&#x2F;data #数据库存文件存放目录</span><br><span class="line">logpath&#x3D; &#x2F;programs&#x2F;mongodb&#x2F;log&#x2F;mongodb.log #日志文件存放路径</span><br><span class="line">logappend&#x3D;true #使用追加的方式写日志</span><br><span class="line">fork&#x3D;true #以守护进程的方式运行，创建服务器进程</span><br><span class="line">maxConns&#x3D;100 #最大同时连接数</span><br><span class="line">auth&#x3D;true #启用验证</span><br><span class="line">journal&#x3D;true #每次写入会记录一条操作日志（通过journal可以重新构造出写入的数据）。</span><br><span class="line">#即使宕机，启动时wiredtiger会先将数据恢复到最近一次的checkpoint点，然后重放后续的journal日志来恢复。</span><br><span class="line">storageEngine&#x3D;wiredTiger  #存储引擎有mmapv1、wiretiger、mongorocks</span><br><span class="line">bind_ip &#x3D; 0.0.0.0  #这样就可外部访问了，例如从win10中去连虚拟机中的MongoDB</span><br></pre></td></tr></table></figure>
+<figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="attr">port</span>=<span class="number">27017</span> <span class="comment">#端口</span></span><br><span class="line"><span class="attr">dbpath</span>= /programs/mongodb/data <span class="comment">#数据库存文件存放目录</span></span><br><span class="line"><span class="attr">logpath</span>= /programs/mongodb/log/mongodb.log <span class="comment">#日志文件存放路径</span></span><br><span class="line"><span class="attr">logappend</span>=<span class="literal">true</span> <span class="comment">#使用追加的方式写日志</span></span><br><span class="line"><span class="attr">fork</span>=<span class="literal">true</span> <span class="comment">#以守护进程的方式运行，创建服务器进程</span></span><br><span class="line"><span class="attr">maxConns</span>=<span class="number">100</span> <span class="comment">#最大同时连接数</span></span><br><span class="line"><span class="attr">auth</span>=<span class="literal">true</span> <span class="comment">#启用验证</span></span><br><span class="line"><span class="attr">journal</span>=<span class="literal">true</span> <span class="comment">#每次写入会记录一条操作日志（通过journal可以重新构造出写入的数据）。</span></span><br><span class="line"><span class="comment">#即使宕机，启动时wiredtiger会先将数据恢复到最近一次的checkpoint点，然后重放后续的journal日志来恢复。</span></span><br><span class="line"><span class="attr">storageEngine</span>=wiredTiger  <span class="comment">#存储引擎有mmapv1、wiretiger、mongorocks</span></span><br><span class="line"><span class="attr">bind_ip</span> = <span class="number">0.0</span>.<span class="number">0.0</span>  <span class="comment">#这样就可外部访问了，例如从win10中去连虚拟机中的MongoDB</span></span><br></pre></td></tr></table></figure>
 
 <h5 id="开机自启动"><a href="#开机自启动" class="headerlink" title="开机自启动"></a>开机自启动</h5><p>输入下列命令便可以直接在/etc/rc.local文件中写入mongodb services用于开机自启动：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">echo &quot;&#x2F;usr&#x2F;local&#x2F;mongodb&#x2F;bin&#x2F;mongod --dbpath&#x3D;&#x2F;usr&#x2F;local&#x2F;mongodb&#x2F;data -logpath&#x3D;&#x2F;usr&#x2F;local&#x2F;mongodb&#x2F;log -logappend --auth --port&#x3D;27017&quot; &gt;&gt; &#x2F;etc&#x2F;rc.local</span><br></pre></td></tr></table></figure>
+<figure class="highlight arcade"><table><tr><td class="code"><pre><span class="line">echo <span class="string">&quot;/usr/local/mongodb/bin/mongod --dbpath=/usr/local/mongodb/data -logpath=/usr/local/mongodb/log -logappend --auth --port=27017&quot;</span> &gt;&gt; <span class="regexp">/etc/</span>rc.local</span><br></pre></td></tr></table></figure>
 
 <p>配置参数含义</p>
 <table>
@@ -1489,46 +1489,46 @@
     <url>/2020/01/16/08/51/Linux%E7%B3%BB%E7%BB%9F%E9%98%B2%E7%81%AB%E5%A2%99%E6%8C%87%E4%BB%A4/</url>
     <content><![CDATA[<p>本文以CentOS 7为例。<a id="more"></a></p>
 <h5 id="防火墙常用操作"><a href="#防火墙常用操作" class="headerlink" title="防火墙常用操作"></a>防火墙常用操作</h5><p>开启防火墙</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl start firewalld.service</span><br></pre></td></tr></table></figure>
+<figure class="highlight crmsh"><table><tr><td class="code"><pre><span class="line">systemctl <span class="literal">start</span> firewalld.service</span><br></pre></td></tr></table></figure>
 
 <p>关闭防火墙</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl stop firewalld.service</span><br></pre></td></tr></table></figure>
+<figure class="highlight arduino"><table><tr><td class="code"><pre><span class="line">systemctl <span class="built_in">stop</span> firewalld.service</span><br></pre></td></tr></table></figure>
 
 <p>开机自启动</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl enable firewalld.service</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">systemctl <span class="builtin-name">enable</span> firewalld.service</span><br></pre></td></tr></table></figure>
 
 <p>关闭开机自启动</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl disabel firewalld.service</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">systemctl</span> <span class="selector-tag">disabel</span> <span class="selector-tag">firewalld</span><span class="selector-class">.service</span></span><br></pre></td></tr></table></figure>
 
 <p>查看开放的端口</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --list-all</span><br><span class="line">or</span><br><span class="line">firewall-cmd --list-ports</span><br></pre></td></tr></table></figure>
+<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line">firewall-<span class="keyword">cmd</span><span class="bash"> --list-all</span></span><br><span class="line">or</span><br><span class="line">firewall-<span class="keyword">cmd</span><span class="bash"> --list-ports</span></span><br></pre></td></tr></table></figure>
 
 <p>添加永久开放端口</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --zone&#x3D;public --add-port&#x3D;3306&#x2F;tcp --permanent</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">firewall-cmd <span class="attribute">--zone</span>=public <span class="attribute">--add-port</span>=3306/tcp --permanent</span><br></pre></td></tr></table></figure>
 
 <p>移除开放端口</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --remove-port&#x3D;3306&#x2F;tcp --permanent</span><br></pre></td></tr></table></figure>
+<figure class="highlight brainfuck"><table><tr><td class="code"><pre><span class="line"><span class="comment">firewall</span><span class="literal">-</span><span class="comment">cmd</span> --<span class="comment">remove</span><span class="literal">-</span><span class="comment">port=3306/tcp</span> --<span class="comment">permanent</span></span><br></pre></td></tr></table></figure>
 
 <p>重启防火墙生效</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line">firewall-<span class="keyword">cmd</span><span class="bash"> --reload</span></span><br></pre></td></tr></table></figure>
 
 <p>查看规则</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">iptables -L -n</span><br></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">iptables -L -n</span></span><br></pre></td></tr></table></figure>
 
 <p>查看开放的服务</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --list-services</span><br></pre></td></tr></table></figure>
+<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line">firewall-<span class="keyword">cmd</span><span class="bash"> --list-services</span></span><br></pre></td></tr></table></figure>
 
 <p>查看防火墙状态</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --state</span><br></pre></td></tr></table></figure>
+<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line">firewall-<span class="keyword">cmd</span><span class="bash"> --state</span></span><br></pre></td></tr></table></figure>
 
 <h5 id="伪装IP"><a href="#伪装IP" class="headerlink" title="伪装IP"></a>伪装IP</h5><p>检查是否允许伪装IP</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --query-masquerade</span><br></pre></td></tr></table></figure>
+<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line">firewall-<span class="keyword">cmd</span><span class="bash"> --query-masquerade</span></span><br></pre></td></tr></table></figure>
 
 <p>允许防火墙伪装IP</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --add-masquerade</span><br></pre></td></tr></table></figure>
+<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line">firewall-<span class="keyword">cmd</span><span class="bash"> --add-masquerade</span></span><br></pre></td></tr></table></figure>
 
 <p>禁止防火墙伪装IP</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --remove-masquerade</span><br></pre></td></tr></table></figure>
+<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line">firewall-<span class="keyword">cmd</span><span class="bash"> --remove-masquerade</span></span><br></pre></td></tr></table></figure>
 
 <h5 id="端口映射"><a href="#端口映射" class="headerlink" title="端口映射"></a>端口映射</h5><p>转发的目的不指定 IP 的话就默认为本机，如果指定了 IP 却没指定端口，则默认使用来源端口。如果配置好端口转发之后不能用，可以检查以下两个方面的问题：</p>
 <ol>
@@ -1536,10 +1536,10 @@
 <li>检查是否允许伪装 IP，没允许的话要开启伪装 IP。</li>
 </ol>
 <p>添加映射</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --add-forward-port&#x3D;proto&#x3D;80:proto&#x3D;tcp:toaddr&#x3D;192.168.0.1:toport&#x3D;8080</span><br></pre></td></tr></table></figure>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">firewall-cmd --add-forward-port=proto=<span class="number">80</span>:proto=tcp:toaddr=<span class="number">192.168</span><span class="number">.0</span><span class="number">.1</span>:toport=<span class="number">8080</span></span><br></pre></td></tr></table></figure>
 
 <p>删除映射</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --remove-forward-port&#x3D;proto&#x3D;80:proto&#x3D;tcp:toaddr&#x3D;192.168.0.1:toport&#x3D;8080</span><br></pre></td></tr></table></figure>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">firewall-cmd --remove-forward-port=proto=<span class="number">80</span>:proto=tcp:toaddr=<span class="number">192.168</span><span class="number">.0</span><span class="number">.1</span>:toport=<span class="number">8080</span></span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
@@ -1904,7 +1904,7 @@
 </tbody></table>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">print(re.match(<span class="string">&#x27;www&#x27;</span>, <span class="string">&#x27;www.runoob.com&#x27;</span>).span())  <span class="comment"># 在起始位置匹配</span></span><br><span class="line">print(re.match(<span class="string">&#x27;com&#x27;</span>, <span class="string">&#x27;www.runoob.com&#x27;</span>))         <span class="comment"># 不在起始位置匹配</span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(0,3)</span><br><span class="line">None</span><br></pre></td></tr></table></figure>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">(<span class="number">0</span>,<span class="number">3</span>)</span><br><span class="line">None</span><br></pre></td></tr></table></figure>
 
 <p>&emsp;&emsp;使用group(num) 或 groups()可以匹配对象函数来获取匹配表达式</p>
 <table>
@@ -1932,15 +1932,15 @@
 
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"> </span><br><span class="line">print(re.search(<span class="string">&#x27;www&#x27;</span>, <span class="string">&#x27;www.runoob.com&#x27;</span>).span())  <span class="comment"># 在起始位置匹配</span></span><br><span class="line">print(re.search(<span class="string">&#x27;com&#x27;</span>, <span class="string">&#x27;www.runoob.com&#x27;</span>).span())         <span class="comment"># 不在起始位置匹配</span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(0, 3)</span><br><span class="line">(11, 14)</span><br></pre></td></tr></table></figure>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">(<span class="number">0</span>, <span class="number">3</span>)</span><br><span class="line">(<span class="number">11</span>, <span class="number">14</span>)</span><br></pre></td></tr></table></figure>
 
 <h6 id="re-match与re-search的区别"><a href="#re-match与re-search的区别" class="headerlink" title="re.match与re.search的区别"></a>re.match与re.search的区别</h6><p>&emsp;&emsp;re.match 只匹配字符串的开始，如果字符串开始不符合正则表达式，则匹配失败，函数返回 None，而 re.search 匹配整个字符串，直到找到一个匹配。</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"> </span><br><span class="line">line = <span class="string">&quot;Cats are smarter than dogs&quot;</span></span><br><span class="line"> </span><br><span class="line">matchObj = re.match( <span class="string">r&#x27;dogs&#x27;</span>, line, re.M|re.I)</span><br><span class="line"><span class="keyword">if</span> matchObj:</span><br><span class="line">   <span class="keyword">print</span> (<span class="string">&quot;match --&gt; matchObj.group() : &quot;</span>, matchObj.group())</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">   <span class="keyword">print</span> (<span class="string">&quot;No match!!&quot;</span>)</span><br><span class="line"> </span><br><span class="line">matchObj = re.search( <span class="string">r&#x27;dogs&#x27;</span>, line, re.M|re.I)</span><br><span class="line"><span class="keyword">if</span> matchObj:</span><br><span class="line">   <span class="keyword">print</span> (<span class="string">&quot;search --&gt; matchObj.group() : &quot;</span>, matchObj.group())</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">   <span class="keyword">print</span> (<span class="string">&quot;No match!!&quot;</span>)</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">No match!!</span><br><span class="line">search --&gt; matchObj.group() :  dogs</span><br></pre></td></tr></table></figure>
+<figure class="highlight erlang-repl"><table><tr><td class="code"><pre><span class="line">No match!!</span><br><span class="line">search --&gt; matchObj.group() :  dogs</span><br></pre></td></tr></table></figure>
 
 <h6 id="re-sub函数"><a href="#re-sub函数" class="headerlink" title="re.sub函数"></a>re.sub函数</h6><p>&emsp;&emsp;re.sub用于替换字符串中匹配项。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">re.sub(pattern, repl, string, count&#x3D;0, flags&#x3D;0)</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">re.sub(pattern, repl, string, <span class="attribute">count</span>=0, <span class="attribute">flags</span>=0)</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>pattern : 正则中的模式字符串。</li>
@@ -1951,15 +1951,15 @@
 </ul>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"> </span><br><span class="line">phone = <span class="string">&quot;2004-959-559 # 这是一个电话号码&quot;</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># 删除注释</span></span><br><span class="line">num = re.sub(<span class="string">r&#x27;#.*$&#x27;</span>, <span class="string">&quot;&quot;</span>, phone)</span><br><span class="line"><span class="keyword">print</span> (<span class="string">&quot;电话号码 : &quot;</span>, num)</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 移除非数字的内容</span></span><br><span class="line">num = re.sub(<span class="string">r&#x27;\D&#x27;</span>, <span class="string">&quot;&quot;</span>, phone)</span><br><span class="line"><span class="keyword">print</span> (<span class="string">&quot;电话号码 : &quot;</span>, num)</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">电话号码 :  2004-959-559 </span><br><span class="line">电话号码 :  2004959559</span><br></pre></td></tr></table></figure>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">电话号码 :  <span class="number">2004</span><span class="number">-959</span><span class="number">-559</span> </span><br><span class="line">电话号码 :  <span class="number">2004959559</span></span><br></pre></td></tr></table></figure>
 
 <p>repl参数也可以是一个函数</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 将匹配的数字乘于 2</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">double</span>(<span class="params">matched</span>):</span></span><br><span class="line">    value = int(matched.group(<span class="string">&#x27;value&#x27;</span>))</span><br><span class="line">    <span class="keyword">return</span> str(value * <span class="number">2</span>)</span><br><span class="line"> </span><br><span class="line">s = <span class="string">&#x27;A23G4HFD567&#x27;</span></span><br><span class="line"><span class="comment"># ?P&lt;value&gt;的意思是命名一个名字为value的组，匹配规则符合后面的/d+</span></span><br><span class="line">print(re.sub(<span class="string">&#x27;(?P&lt;value&gt;\d+)&#x27;</span>, double, s))</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">A46G8HFD1134</span><br></pre></td></tr></table></figure>
+<figure class="highlight gcode"><table><tr><td class="code"><pre><span class="line">A<span class="number">46</span><span class="name">G8</span>HFD<span class="number">1134</span></span><br></pre></td></tr></table></figure>
 
 <h6 id="complie函数"><a href="#complie函数" class="headerlink" title="complie函数"></a>complie函数</h6><p>&emsp;&emsp;compile 函数用于编译正则表达式，生成一个正则表达式 (Pattern) 对象，供 match() 和 search() 这两个函数使用。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">re.compile(pattern, flags)</span><br></pre></td></tr></table></figure>
+<figure class="highlight coq"><table><tr><td class="code"><pre><span class="line">re.compile(<span class="built_in">pattern</span>, flags)</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li><p>pattern : 一个字符串形式的正则表达式</p>
@@ -1985,7 +1985,7 @@
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt;<span class="keyword">import</span> re</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>pattern = re.compile(<span class="string">r&#x27;\d+&#x27;</span>)                    <span class="comment"># 用于匹配至少一个数字</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m = pattern.match(<span class="string">&#x27;one12twothree34four&#x27;</span>)        <span class="comment"># 查找头部，没有匹配</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print( m )</span><br><span class="line"><span class="literal">None</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m = pattern.match(<span class="string">&#x27;one12twothree34four&#x27;</span>, <span class="number">2</span>, <span class="number">10</span>) <span class="comment"># 从&#x27;e&#x27;的位置开始匹配，没有匹配</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print( m )</span><br><span class="line"><span class="literal">None</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m = pattern.match(<span class="string">&#x27;one12twothree34four&#x27;</span>, <span class="number">3</span>, <span class="number">10</span>) <span class="comment"># 从&#x27;1&#x27;的位置开始匹配，正好匹配</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print( m )                                        <span class="comment"># 返回一个 Match 对象</span></span><br><span class="line">&lt;_sre.SRE_Match object at <span class="number">0x10a42aac0</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m.group(<span class="number">0</span>)   <span class="comment"># 可省略 0</span></span><br><span class="line"><span class="string">&#x27;12&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m.start(<span class="number">0</span>)   <span class="comment"># 可省略 0</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m.end(<span class="number">0</span>)     <span class="comment"># 可省略 0</span></span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m.span(<span class="number">0</span>)    <span class="comment"># 可省略 0</span></span><br><span class="line">(<span class="number">3</span>, <span class="number">5</span>)</span><br></pre></td></tr></table></figure>
 
 <h6 id="re-findall"><a href="#re-findall" class="headerlink" title="re.findall"></a>re.findall</h6><p>&emsp;&emsp;在字符串中找到正则表达式所匹配的所有子串，并返回一个列表，如果没有找到匹配的，则返回空列表。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">re.findall(string, pos, endpos)</span><br></pre></td></tr></table></figure>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">re.findall(<span class="built_in">string</span>, pos, endpos)</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li><strong>string</strong> 待匹配的字符串。</li>
@@ -1994,17 +1994,17 @@
 </ul>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"> </span><br><span class="line">pattern = re.compile(<span class="string">r&#x27;\d+&#x27;</span>)   <span class="comment"># 查找数字</span></span><br><span class="line">result1 = pattern.findall(<span class="string">&#x27;runoob 123 google 456&#x27;</span>)</span><br><span class="line">result2 = pattern.findall(<span class="string">&#x27;run88oob123google456&#x27;</span>, <span class="number">0</span>, <span class="number">10</span>)</span><br><span class="line"> </span><br><span class="line">print(result1)</span><br><span class="line">print(result2)</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[&#39;123&#39;, &#39;456&#39;]</span><br><span class="line">[&#39;88&#39;, &#39;12&#39;]</span><br></pre></td></tr></table></figure>
+<figure class="highlight scheme"><table><tr><td class="code"><pre><span class="line">[<span class="symbol">&#x27;123</span>&#x27;, <span class="symbol">&#x27;456</span>&#x27;]</span><br><span class="line">[<span class="symbol">&#x27;88</span>&#x27;, <span class="symbol">&#x27;12</span>&#x27;]</span><br></pre></td></tr></table></figure>
 
 <h6 id="re-finditer"><a href="#re-finditer" class="headerlink" title="re.finditer"></a>re.finditer</h6><p>&emsp;&emsp;和 findall 类似，在字符串中找到正则表达式所匹配的所有子串，并把它们作为一个迭代器返回。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">re.finditer(pattern, string, flags&#x3D;0)</span><br></pre></td></tr></table></figure>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">re.finditer(pattern, <span class="built_in">string</span>, flags=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"> </span><br><span class="line">it = re.finditer(<span class="string">r&quot;\d+&quot;</span>,<span class="string">&quot;12a32bc43jf3&quot;</span>) </span><br><span class="line"><span class="keyword">for</span> match <span class="keyword">in</span> it: </span><br><span class="line">    <span class="keyword">print</span> (match.group() )</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">12 </span><br><span class="line">32 </span><br><span class="line">43 </span><br><span class="line">3</span><br></pre></td></tr></table></figure>
+<figure class="highlight basic"><table><tr><td class="code"><pre><span class="line"><span class="symbol">12 </span></span><br><span class="line"><span class="symbol">32 </span></span><br><span class="line"><span class="symbol">43 </span></span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
 
 <h6 id="re-split"><a href="#re-split" class="headerlink" title="re.split"></a>re.split</h6><p>&emsp;&emsp;split 方法按照能够匹配的子串将字符串分割后返回列表。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">re.split(pattern, string, maxsplit&#x3D;0, flags&#x3D;0)</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">re.split(pattern, string, <span class="attribute">maxsplit</span>=0, <span class="attribute">flags</span>=0)</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt;<span class="keyword">import</span> re</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>re.split(<span class="string">&#x27;\W+&#x27;</span>, <span class="string">&#x27;runoob, runoob, runoob.&#x27;</span>)</span><br><span class="line">[<span class="string">&#x27;runoob&#x27;</span>, <span class="string">&#x27;runoob&#x27;</span>, <span class="string">&#x27;runoob&#x27;</span>, <span class="string">&#x27;&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>re.split(<span class="string">&#x27;(\W+)&#x27;</span>, <span class="string">&#x27; runoob, runoob, runoob.&#x27;</span>) </span><br><span class="line">[<span class="string">&#x27;&#x27;</span>, <span class="string">&#x27; &#x27;</span>, <span class="string">&#x27;runoob&#x27;</span>, <span class="string">&#x27;, &#x27;</span>, <span class="string">&#x27;runoob&#x27;</span>, <span class="string">&#x27;, &#x27;</span>, <span class="string">&#x27;runoob&#x27;</span>, <span class="string">&#x27;.&#x27;</span>, <span class="string">&#x27;&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>re.split(<span class="string">&#x27;\W+&#x27;</span>, <span class="string">&#x27; runoob, runoob, runoob.&#x27;</span>, <span class="number">1</span>) </span><br><span class="line">[<span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;runoob, runoob, runoob.&#x27;</span>]</span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>re.split(<span class="string">&#x27;a*&#x27;</span>, <span class="string">&#x27;hello world&#x27;</span>)   <span class="comment"># 对于一个找不到匹配的字符串而言，split 不会对其作出分割</span></span><br><span class="line">[<span class="string">&#x27;hello world&#x27;</span>]</span><br></pre></td></tr></table></figure>
 
@@ -2356,7 +2356,7 @@
 
 <h6 id="获取网卡地址"><a href="#获取网卡地址" class="headerlink" title="获取网卡地址:"></a>获取网卡地址:</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getMACAddress</span><span class="params">()</span></span>&#123;</span><br><span class="line">    String address = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    String os = System.getProperty(<span class="string">&quot;os.name&quot;</span>);</span><br><span class="line">    String osUser = System.getProperty(<span class="string">&quot;user.name&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span>(os != <span class="keyword">null</span> &amp;&amp; os.startsWith(<span class="string">&quot;Windows&quot;</span>))&#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            String command = <span class="string">&quot;cmd.exe /c ipconfig /all&quot;</span>;</span><br><span class="line">            Process  p = Runtime.getRuntime().exec(command);</span><br><span class="line">            BufferedReader buffer = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(p.getInputStream()));</span><br><span class="line">            String line;</span><br><span class="line">            <span class="keyword">while</span>((line = buffer.readLine()) != <span class="keyword">null</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(line.indexOf(<span class="string">&quot;Physical Address&quot;</span>) &gt; <span class="number">0</span>)&#123;</span><br><span class="line">                    <span class="keyword">int</span> index = line.indexOf(<span class="string">&quot;:&quot;</span>);</span><br><span class="line">                    index += <span class="number">2</span>;</span><br><span class="line">                    address = line.substring(index);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            buffer.close();</span><br><span class="line">            <span class="keyword">return</span> address.trim();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span>(IOException e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> address;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h6 id="获取操作系统账号"><a href="#获取操作系统账号" class="headerlink" title="获取操作系统账号"></a>获取操作系统账号</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">String osUser &#x3D; System.getProperty(&quot;user.name&quot;);</span><br></pre></td></tr></table></figure>
+<h6 id="获取操作系统账号"><a href="#获取操作系统账号" class="headerlink" title="获取操作系统账号"></a>获取操作系统账号</h6><figure class="highlight reasonml"><table><tr><td class="code"><pre><span class="line">String osUser = <span class="module-access"><span class="module"><span class="identifier">System</span>.</span></span>get<span class="constructor">Property(<span class="string">&quot;user.name&quot;</span>)</span>;</span><br></pre></td></tr></table></figure>
 
 <h6 id="获取操作系统版本"><a href="#获取操作系统版本" class="headerlink" title="获取操作系统版本:"></a>获取操作系统版本:</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Properties; </span><br><span class="line"></span><br><span class="line">Properties props=System.getProperties(); <span class="comment">//获得系统属性集    </span></span><br><span class="line">String osName = props.getProperty(<span class="string">&quot;os.name&quot;</span>); <span class="comment">//操作系统名称    </span></span><br><span class="line">String osArch = props.getProperty(<span class="string">&quot;os.arch&quot;</span>); <span class="comment">//操作系统构架    </span></span><br><span class="line">String osVersion = props.getProperty(<span class="string">&quot;os.version&quot;</span>); <span class="comment">//操作系统版本</span></span><br></pre></td></tr></table></figure>
 
@@ -3097,7 +3097,7 @@
 <p>&emsp;&emsp;我们可以给每个人建立一个集合，集合的元素值有它自己，表示最开始时它不知道任何人是它的亲戚。以后每次给出一个亲戚关系a, b，则a和它的亲戚与b和它的亲戚就互为亲戚了，将a所在集合与b所在集合合并。对于样例数据的操作全过程如下：</p>
 <p>&emsp;&emsp;初始状态：{1} {2} {3} {4} {5} {6} {7} {8} {9}</p>
 <p>&emsp;&emsp;输入关系 分离集合</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(2,4) &#123;2,4&#125;&#123;1&#125; &#123;3&#125; &#123;5&#125; &#123;6&#125; &#123;7&#125; &#123;8&#125; &#123;9&#125;</span><br><span class="line"></span><br><span class="line">(5,7) &#123;2,4&#125; &#123;5,7&#125; &#123;1&#125; &#123;3&#125; &#123;6&#125; &#123;8&#125; &#123;9&#125;</span><br><span class="line"></span><br><span class="line">(1,3) &#123;1,3&#125; &#123;2,4&#125; &#123;5,7&#125;&#123;6&#125; &#123;8&#125; &#123;9&#125;</span><br><span class="line"></span><br><span class="line">(8,9) &#123;1,3&#125; &#123;2,4&#125; &#123;5,7&#125; &#123;8,9&#125;&#123;6&#125;</span><br><span class="line"></span><br><span class="line">(1,2) &#123;1,2,3,4&#125; &#123;5,7&#125; &#123;8,9&#125;&#123;6&#125;</span><br><span class="line"></span><br><span class="line">(5,6) &#123;1,2,3,4&#125; &#123;5,6,7&#125; &#123;8,9&#125;</span><br><span class="line"></span><br><span class="line">(2,3) &#123;1,2,3,4&#125; &#123;5,6,7&#125; &#123;8,9&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">(<span class="number">2</span>,<span class="number">4</span>) &#123;<span class="number">2</span>,<span class="number">4</span>&#125;&#123;<span class="number">1</span>&#125; &#123;<span class="number">3</span>&#125; &#123;<span class="number">5</span>&#125; &#123;<span class="number">6</span>&#125; &#123;<span class="number">7</span>&#125; &#123;<span class="number">8</span>&#125; &#123;<span class="number">9</span>&#125;</span><br><span class="line"></span><br><span class="line">(<span class="number">5</span>,<span class="number">7</span>) &#123;<span class="number">2</span>,<span class="number">4</span>&#125; &#123;<span class="number">5</span>,<span class="number">7</span>&#125; &#123;<span class="number">1</span>&#125; &#123;<span class="number">3</span>&#125; &#123;<span class="number">6</span>&#125; &#123;<span class="number">8</span>&#125; &#123;<span class="number">9</span>&#125;</span><br><span class="line"></span><br><span class="line">(<span class="number">1</span>,<span class="number">3</span>) &#123;<span class="number">1</span>,<span class="number">3</span>&#125; &#123;<span class="number">2</span>,<span class="number">4</span>&#125; &#123;<span class="number">5</span>,<span class="number">7</span>&#125;&#123;<span class="number">6</span>&#125; &#123;<span class="number">8</span>&#125; &#123;<span class="number">9</span>&#125;</span><br><span class="line"></span><br><span class="line">(<span class="number">8</span>,<span class="number">9</span>) &#123;<span class="number">1</span>,<span class="number">3</span>&#125; &#123;<span class="number">2</span>,<span class="number">4</span>&#125; &#123;<span class="number">5</span>,<span class="number">7</span>&#125; &#123;<span class="number">8</span>,<span class="number">9</span>&#125;&#123;<span class="number">6</span>&#125;</span><br><span class="line"></span><br><span class="line">(<span class="number">1</span>,<span class="number">2</span>) &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125; &#123;<span class="number">5</span>,<span class="number">7</span>&#125; &#123;<span class="number">8</span>,<span class="number">9</span>&#125;&#123;<span class="number">6</span>&#125;</span><br><span class="line"></span><br><span class="line">(<span class="number">5</span>,<span class="number">6</span>) &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125; &#123;<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>&#125; &#123;<span class="number">8</span>,<span class="number">9</span>&#125;</span><br><span class="line"></span><br><span class="line">(<span class="number">2</span>,<span class="number">3</span>) &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125; &#123;<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>&#125; &#123;<span class="number">8</span>,<span class="number">9</span>&#125;</span><br></pre></td></tr></table></figure>
 
 <p>判断亲戚关系</p>
 <p>(1,9)，因为1,9不在同一集合内，所以输出”NO”。</p>
@@ -3144,7 +3144,7 @@
 
 <h6 id="自定义格式时间解析"><a href="#自定义格式时间解析" class="headerlink" title="自定义格式时间解析"></a>自定义格式时间解析</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test3</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 1.新建一个时间的字符串对象。</span></span><br><span class="line">        String dateTime = <span class="string">&quot;2020年02月12日 22点22分22秒&quot;</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 2.新建一个DateTimeFormatter对象，调用ofPattern方法。</span></span><br><span class="line">        DateTimeFormatter pattern = DateTimeFormatter.ofPattern(<span class="string">&quot;yyyy年MM月dd日 HH点mm分ss秒&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 3.调用DateTimeFormatter对象的parse方法，进行解析，返回一个TemporalAccessor对象。</span></span><br><span class="line">        TemporalAccessor parse = pattern.parse(dateTime);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 4.调用LocalDateTime的静态方法form，将TemporalAccessor转换成LocalDateTime对象。</span></span><br><span class="line">        LocalDateTime ldt1 = LocalDateTime.from(parse);</span><br><span class="line">        </span><br><span class="line">        System.out.println(<span class="string">&quot;LocalDateTime：&quot;</span> + ldt1);</span><br><span class="line">        System.out.println(<span class="string">&quot;LocalDateTime：&quot;</span> + LocalDateTime.now());</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
-<h6 id="输出结果"><a href="#输出结果" class="headerlink" title="输出结果"></a>输出结果</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">时间是：2020-02-14</span><br><span class="line">时间是：2020年02月14日 16时30分55秒</span><br><span class="line">LocalDateTime：2020-02-12T22:22:22</span><br><span class="line">LocalDateTime：2020-02-14T16:30:55.544</span><br></pre></td></tr></table></figure>
+<h6 id="输出结果"><a href="#输出结果" class="headerlink" title="输出结果"></a>输出结果</h6><figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">时间是：<span class="number">2020</span><span class="number">-02</span><span class="number">-14</span></span><br><span class="line">时间是：<span class="number">2020</span>年<span class="number">02</span>月<span class="number">14</span>日 <span class="number">16</span>时<span class="number">30</span>分<span class="number">55</span>秒</span><br><span class="line">LocalDateTime：<span class="number">2020</span><span class="number">-02</span><span class="number">-12</span>T22:<span class="number">22</span>:<span class="number">22</span></span><br><span class="line">LocalDateTime：<span class="number">2020</span><span class="number">-02</span><span class="number">-14</span>T16:<span class="number">30</span>:<span class="number">55.544</span></span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
@@ -4086,11 +4086,11 @@
 <ol>
 <li>下面哪个说法正确的( <strong>D</strong> )</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ConcurrentHashMap使用synchronized关键字保证线程安全</span><br></pre></td></tr></table></figure>
+<figure class="highlight ada"><table><tr><td class="code"><pre><span class="line">ConcurrentHashMap使用<span class="keyword">synchronized</span>关键字保证线程安全</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">HashMap实现了Collction接口</span><br></pre></td></tr></table></figure>
+<figure class="highlight processing"><table><tr><td class="code"><pre><span class="line"><span class="keyword">HashMap</span>实现了Collction接口</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Array.asList方法返回java.util.ArrayList对象</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">Array</span><span class="selector-class">.asList</span>方法返回<span class="selector-tag">java</span><span class="selector-class">.util</span><span class="selector-class">.ArrayList</span>对象</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SimpleDateFormat是线程不安全的</span><br></pre></td></tr></table></figure>
 
@@ -4100,17 +4100,17 @@
 
 <p>C中，应该是Arrays.asList()，其将一个数组转化为一个List对象，这个方法返回一个ArrayList类型的对象， 这个<font color="red">ArrayList类并非java.util.ArrayList类，而是Arrays类的内部类</font>。</p>
 <p>2.下面哪些具体实现类可以用于存储键值对，并且方法调用提供了基本的多线程安全支持：(<strong>AE</strong>)</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">java.util.ConcurrentHashMap</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">java</span><span class="selector-class">.util</span><span class="selector-class">.ConcurrentHashMap</span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">java.util.Map</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">java</span><span class="selector-class">.util</span><span class="selector-class">.Map</span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">java.util.TreeMap</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">java</span><span class="selector-class">.util</span><span class="selector-class">.TreeMap</span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">java.util.SortMap</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">java</span><span class="selector-class">.util</span><span class="selector-class">.SortMap</span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">java.util.Hashtable</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">java</span><span class="selector-class">.util</span><span class="selector-class">.Hashtable</span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">java.util.HashMap</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">java</span><span class="selector-class">.util</span><span class="selector-class">.HashMap</span></span><br></pre></td></tr></table></figure>
 
 <p>解析：线程安全的类有hashtable、concurrentHashMap、synchronizedMap。</p>
 <p>3.以下描述错误的是( C )</p>
@@ -4154,23 +4154,23 @@
 <p><strong>特点：1、随着类的加载而加载；  2、优先于对象存在；  3、被类的所有对象共享；    4、可以通过类名直接调用。</strong></p>
 <p>注意事项：1.在静态方法中是没有this关键字的；    2.静态方法只能访问静态的成员变量和静态的成员方法。</p>
 <p>5.列表(List)和集合(Set)下面说法正确的是？  ( A )</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Set中至多只能有一个空元素</span><br></pre></td></tr></table></figure>
+<figure class="highlight avrasm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">Set</span>中至多只能有一个空元素</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">List中至多只能有一个空元素</span><br></pre></td></tr></table></figure>
+<figure class="highlight capnproto"><table><tr><td class="code"><pre><span class="line"><span class="built_in">List</span>中至多只能有一个空元素</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">List和Set都可以包含重复元素的有序集合</span><br></pre></td></tr></table></figure>
+<figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line"><span class="keyword">List</span>和<span class="keyword">Set</span>都可以包含重复元素的有序集合</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">List和Set都是有序集合</span><br></pre></td></tr></table></figure>
+<figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line"><span class="keyword">List</span>和<span class="keyword">Set</span>都是有序集合</span><br></pre></td></tr></table></figure>
 
 <p>解析：<font color="red">Set 不能有重复的元素，且是无序的，要有空值也就只能有一个。因为它不允许重复</font>。 L ist 可以有重复元素，且是有序的，要有空值也可以有多个，因为它可重复。</p>
 <p>6.在JAVA中，假设A有构造方法A(int a)，则在类A的其他构造方法中调用该构造方法和语句格式应该为（ B ）</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">this.A(X)</span><br></pre></td></tr></table></figure>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.A(X)</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">this(X)</span><br></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">this</span><span class="params">(X)</span></span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">super(X)</span><br></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">super</span><span class="params">(X)</span></span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">A(X)</span><br></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">A</span><span class="params">(X)</span></span></span><br></pre></td></tr></table></figure>
 
 <p>解析：<font color="red">this的作用其中一个就是在一个构造方法中调用另一个构造方法，格式为this(参数)；super是调用父类的方法；</font>A(a)这种形式是在new一个类时使用。</p>
 <p>7.A 是抽象父类或接口， B ， C 派生自 A ，或实现 A ，现在 Java 源代码中有如下声明：</p>
@@ -4185,17 +4185,17 @@
 <p>问以下哪个说法是正确的？（ A ）</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">第一行不能通过编译</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">第1、2行能通过编译，但第3行编译出错</span><br></pre></td></tr></table></figure>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">第<span class="number">1</span>、<span class="number">2</span>行能通过编译，但第<span class="number">3</span>行编译出错</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">第1、2、3行能通过编译，但第2、3行运行时出错</span><br></pre></td></tr></table></figure>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">第<span class="number">1</span>、<span class="number">2</span>、<span class="number">3</span>行能通过编译，但第<span class="number">2</span>、<span class="number">3</span>行运行时出错</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">第1行、第2行和第3行的声明都是正确的</span><br></pre></td></tr></table></figure>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">第<span class="number">1</span>行、第<span class="number">2</span>行和第<span class="number">3</span>行的声明都是正确的</span><br></pre></td></tr></table></figure>
 
 <p>解析：<font color="red">抽象类不能实例化</font>。抽象类除了不能实例化对象之外，类的其它功能依然存在，成员变量、成员方法和构造方法的访问方式和普通类一样。由于不能实例化对象，所以抽象类必须被继承，才能被使用。父类包含了子类集合的常见的方法，但是由于父类本身是抽象的，所以不能使用这些方法。</p>
 <p>8.对于子类的构造函数说明，下列叙述中错误的是（ D ）</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">子类不能继承父类的无参构造函数。</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">子类可以在自己的构造函数中使用super关键字来调用父类的含参数构造函数，但这个调用语句必须是子类构造函数的第一个可执行语句。</span><br></pre></td></tr></table></figure>
+<figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line">子类可以在自己的构造函数中使用<span class="keyword">super</span>关键字来调用父类的含参数构造函数，但这个调用语句必须是子类构造函数的第一个可执行语句。</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">在创建子类的对象时，若不含带参构造函数，将先执行父类的无参构造函数，然后再执行自己的无参构造函数。</span><br></pre></td></tr></table></figure>
 
@@ -4233,13 +4233,13 @@
 <p>11.下面代码运行结果是（ C ）</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;   </span><br><span class="line">         <span class="keyword">try</span> &#123;</span><br><span class="line">             <span class="keyword">return</span> a+b;      </span><br><span class="line">         &#125; </span><br><span class="line">        <span class="keyword">catch</span> (Exception e) &#123;  </span><br><span class="line">            System.out.println(<span class="string">&quot;catch语句块&quot;</span>);</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">finally</span>&#123; </span><br><span class="line">             System.out.println(<span class="string">&quot;finally语句块&quot;</span>);</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125; </span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String argv[])</span></span>&#123; </span><br><span class="line">         Test test =<span class="keyword">new</span> Test(); </span><br><span class="line">         System.out.println(<span class="string">&quot;和是：&quot;</span>+test.add(<span class="number">9</span>, <span class="number">34</span>)); </span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">catch语句块</span><br><span class="line">和是：43</span><br></pre></td></tr></table></figure>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">catch</span>语句块</span><br><span class="line">和是：<span class="number">43</span></span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">编译异常</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">finally语句块</span><br><span class="line">和是：43</span><br></pre></td></tr></table></figure>
+<figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">finally</span>语句块</span><br><span class="line">和是：<span class="number">43</span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">和是：43</span><br><span class="line">finally语句块</span><br></pre></td></tr></table></figure>
+<figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line">和是：<span class="number">43</span></span><br><span class="line"><span class="keyword">finally</span>语句块</span><br></pre></td></tr></table></figure>
 
 <p>解析：举一个例子</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(beforeFinally());</span><br><span class="line">    &#125;</span><br><span class="line">     </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">beforeFinally</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> a = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            a = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">return</span> a;</span><br><span class="line">        &#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">            a = <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -4249,13 +4249,13 @@
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">float</span> f= <span class="number">1.0f</span>;</span><br><span class="line">  <span class="keyword">int</span> m= <span class="number">12</span>;</span><br><span class="line">  <span class="keyword">static</span> <span class="keyword">int</span> n= <span class="number">1</span>;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line">    Test t= <span class="keyword">new</span> Test();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>如下哪些使用是正确的( D )</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">A t.f &#x3D; 1.0</span><br><span class="line">B this.n</span><br><span class="line">C Test.m</span><br><span class="line">D Test.n</span><br></pre></td></tr></table></figure>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">A</span> <span class="string">t.f = 1.0</span></span><br><span class="line"><span class="attr">B</span> <span class="string">this.n</span></span><br><span class="line"><span class="attr">C</span> <span class="string">Test.m</span></span><br><span class="line"><span class="attr">D</span> <span class="string">Test.n</span></span><br></pre></td></tr></table></figure>
 
 <p>解析：A项，编译不成功，因为float浮点类型默认是double，所以<code>float f = 1.0f</code>。选项没有加 <code>&#39;f&#39;</code>，<font color="red">由高精度(double)向低精度(float)转换会丢失精度</font>，所以报错。</p>
 <p>B项，this使用时，在方法内部使局部变量等值于实例变量而使用的一个关键字，此处的n是静态变量而非实例变量 所以this的调用会出错（试想一下，static本来是全类中可以使用的，是全局的，你非得this去调用，这不是区分局部变量和实例变量的分水线吗？但是此处是全局的，不需要区分）</p>
 <p>C项，m是实例变量，什么是实例变量：就是需要new 一个对象出来才能使用的，这里直接用类名就调用了，jvm怎么知道m是谁？</p>
 <p>13.下列关于Java并发的说法中正确的是（ B ）</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CopyOnWriteArrayList适用于写多读少的并发场景</span><br><span class="line"></span><br><span class="line">ReadWriteLock适用于读多写少的并发场景</span><br><span class="line"></span><br><span class="line">ConcurrentHashMap的写操作不需要加锁，读操作需要加锁</span><br><span class="line"></span><br><span class="line">只要在定义int类型的成员变量i的时候加上volatile关键字，那么多线程并发执行i++这样的操作的时候就是线程安全的了</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">CopyOnWriteArrayList适用于写多读少的并发场景</span><br><span class="line"></span><br><span class="line">ReadWriteLock适用于读多写少的并发场景</span><br><span class="line"></span><br><span class="line">ConcurrentHashMap的写操作不需要加锁，读操作需要加锁</span><br><span class="line"></span><br><span class="line">只要在定义<span class="keyword">int</span>类型的成员变量i的时候加上<span class="keyword">volatile</span>关键字，那么多线程并发执行i++这样的操作的时候就是线程安全的了</span><br></pre></td></tr></table></figure>
 
 <p>解析：A，CopyOnWriteArrayList适用于<strong>写少读多</strong>的并发场景；B，ReadWriteLock即为读写锁，他要求写与写之间互斥，读与写之间互斥，读与读之间可以并发执行。在读多写少的情况下可以提高效率；C，ConcurrentHashMap是同步的HashMap，读写都加锁；D，volatile只保证多线程操作的可见性，不保证原子性。</p>
 <p>14.以下代码的输出结果是？</p>
@@ -4276,7 +4276,7 @@
 <p>17.如下语句通过算术运算和逻辑运算之后i和 j的结果是（ D ）</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> j=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">if</span>((++i&gt;<span class="number">0</span>)||(++j&gt;<span class="number">0</span>))</span><br><span class="line">&#123;</span><br><span class="line"><span class="comment">//打印出i和j的值。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">A	i&#x3D;0;j&#x3D;0</span><br><span class="line"></span><br><span class="line">B	i&#x3D;1;j&#x3D;1</span><br><span class="line"></span><br><span class="line">C	i&#x3D;0;j&#x3D;1</span><br><span class="line"></span><br><span class="line">D	i&#x3D;1;j&#x3D;0</span><br></pre></td></tr></table></figure>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">A	i=<span class="number">0</span>;j=<span class="number">0</span></span><br><span class="line"></span><br><span class="line">B	i=<span class="number">1</span>;j=<span class="number">1</span></span><br><span class="line"></span><br><span class="line">C	i=<span class="number">0</span>;j=<span class="number">1</span></span><br><span class="line"></span><br><span class="line">D	i=<span class="number">1</span>;j=<span class="number">0</span></span><br></pre></td></tr></table></figure>
 
 <p>解析：<strong>&amp;&amp; 和 || 为短路与和短路或</strong>。&amp;&amp; 若前面的表达式为false,整个逻辑表达式为false,所以后面的表达式无论true和false都无法影响整个表达式的逻辑结果，所以为了提高代码执行速率，这里后面的表达式就不会执行。同理， || 若前面表达式为true,则后面的表达式无需计算。<strong>&amp; 和 | 为不短路与不短路或</strong>。无论什么情况，前面的和后面的都要执行。</p>
 <p>18.关于JVM的垃圾回收机制：</p>
@@ -4300,7 +4300,7 @@
 <p>20.假设 a 是一个由线程 1 和线程 2 共享的初始值为 0 的全局变量，则线程 1 和线程 2 同时执行下面的代码，最终 a 的结果不可能是（ D ）</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">boolean</span> isOdd = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">2</span>;++i)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span>（i%<span class="number">2</span>==<span class="number">1</span>）</span><br><span class="line">        isOdd = <span class="keyword">true</span>；</span><br><span class="line">	<span class="keyword">else</span> </span><br><span class="line">        isOdd = <span class="keyword">false</span>；</span><br><span class="line">	a+=i*(isOdd?<span class="number">1</span>:-<span class="number">1</span>)；</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">A	-1</span><br><span class="line"></span><br><span class="line">B	-2</span><br><span class="line"></span><br><span class="line">C	0</span><br><span class="line"></span><br><span class="line">D	1</span><br></pre></td></tr></table></figure>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">A	<span class="number">-1</span></span><br><span class="line"></span><br><span class="line">B	<span class="number">-2</span></span><br><span class="line"></span><br><span class="line">C	<span class="number">0</span></span><br><span class="line"></span><br><span class="line">D	<span class="number">1</span></span><br></pre></td></tr></table></figure>
 
 <p>解析：每个线程对a 均做了两次读写操作，分别是 “ +1 ” 和 “ -2 ”。</p>
 <p>而题目问了是最终a 的结果，所以 a 的结果取决于各自线程对 a 的先后读写的顺序。</p>

@@ -369,7 +369,7 @@ mjx-container[display="true"] + br {
         <a href="/kuang8421@qq.com" title="E-Mail → kuang8421@qq.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://space.bilibili.com/269017831" title="B站 → https:&#x2F;&#x2F;space.bilibili.com&#x2F;269017831" rel="noopener" target="_blank"><i class="fab fa-youtube-play fa-fw"></i>B站</a>
+        <a href="https://space.bilibili.com/269017831" title="B站 → https:&#x2F;&#x2F;space.bilibili.com&#x2F;269017831" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>B站</a>
       </span>
       <span class="links-of-author-item">
         <a href="/1906956615" title="QQ → 1906956615"><i class="fab fa-qq fa-fw"></i>QQ</a>
@@ -394,6 +394,7 @@ mjx-container[display="true"] + br {
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <div class="reading-progress-bar"></div>
   <a role="button" class="book-mark-link book-mark-link-fixed"></a>
 
 <noscript>
@@ -475,7 +476,7 @@ mjx-container[display="true"] + br {
                 <i class="far fa-clock"></i>
               </span>
               <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
+              <span>11 分钟</span>
             </span>
 
         </div>
@@ -509,7 +510,7 @@ mjx-container[display="true"] + br {
 <p>&emsp;&emsp;我们可以给每个人建立一个集合，集合的元素值有它自己，表示最开始时它不知道任何人是它的亲戚。以后每次给出一个亲戚关系a, b，则a和它的亲戚与b和它的亲戚就互为亲戚了，将a所在集合与b所在集合合并。对于样例数据的操作全过程如下：</p>
 <p>&emsp;&emsp;初始状态：{1} {2} {3} {4} {5} {6} {7} {8} {9}</p>
 <p>&emsp;&emsp;输入关系 分离集合</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">(2,4) &#123;2,4&#125;&#123;1&#125; &#123;3&#125; &#123;5&#125; &#123;6&#125; &#123;7&#125; &#123;8&#125; &#123;9&#125;</span><br><span class="line"></span><br><span class="line">(5,7) &#123;2,4&#125; &#123;5,7&#125; &#123;1&#125; &#123;3&#125; &#123;6&#125; &#123;8&#125; &#123;9&#125;</span><br><span class="line"></span><br><span class="line">(1,3) &#123;1,3&#125; &#123;2,4&#125; &#123;5,7&#125;&#123;6&#125; &#123;8&#125; &#123;9&#125;</span><br><span class="line"></span><br><span class="line">(8,9) &#123;1,3&#125; &#123;2,4&#125; &#123;5,7&#125; &#123;8,9&#125;&#123;6&#125;</span><br><span class="line"></span><br><span class="line">(1,2) &#123;1,2,3,4&#125; &#123;5,7&#125; &#123;8,9&#125;&#123;6&#125;</span><br><span class="line"></span><br><span class="line">(5,6) &#123;1,2,3,4&#125; &#123;5,6,7&#125; &#123;8,9&#125;</span><br><span class="line"></span><br><span class="line">(2,3) &#123;1,2,3,4&#125; &#123;5,6,7&#125; &#123;8,9&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">2</span>,<span class="number">4</span>) &#123;<span class="number">2</span>,<span class="number">4</span>&#125;&#123;<span class="number">1</span>&#125; &#123;<span class="number">3</span>&#125; &#123;<span class="number">5</span>&#125; &#123;<span class="number">6</span>&#125; &#123;<span class="number">7</span>&#125; &#123;<span class="number">8</span>&#125; &#123;<span class="number">9</span>&#125;</span><br><span class="line"></span><br><span class="line">(<span class="number">5</span>,<span class="number">7</span>) &#123;<span class="number">2</span>,<span class="number">4</span>&#125; &#123;<span class="number">5</span>,<span class="number">7</span>&#125; &#123;<span class="number">1</span>&#125; &#123;<span class="number">3</span>&#125; &#123;<span class="number">6</span>&#125; &#123;<span class="number">8</span>&#125; &#123;<span class="number">9</span>&#125;</span><br><span class="line"></span><br><span class="line">(<span class="number">1</span>,<span class="number">3</span>) &#123;<span class="number">1</span>,<span class="number">3</span>&#125; &#123;<span class="number">2</span>,<span class="number">4</span>&#125; &#123;<span class="number">5</span>,<span class="number">7</span>&#125;&#123;<span class="number">6</span>&#125; &#123;<span class="number">8</span>&#125; &#123;<span class="number">9</span>&#125;</span><br><span class="line"></span><br><span class="line">(<span class="number">8</span>,<span class="number">9</span>) &#123;<span class="number">1</span>,<span class="number">3</span>&#125; &#123;<span class="number">2</span>,<span class="number">4</span>&#125; &#123;<span class="number">5</span>,<span class="number">7</span>&#125; &#123;<span class="number">8</span>,<span class="number">9</span>&#125;&#123;<span class="number">6</span>&#125;</span><br><span class="line"></span><br><span class="line">(<span class="number">1</span>,<span class="number">2</span>) &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125; &#123;<span class="number">5</span>,<span class="number">7</span>&#125; &#123;<span class="number">8</span>,<span class="number">9</span>&#125;&#123;<span class="number">6</span>&#125;</span><br><span class="line"></span><br><span class="line">(<span class="number">5</span>,<span class="number">6</span>) &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125; &#123;<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>&#125; &#123;<span class="number">8</span>,<span class="number">9</span>&#125;</span><br><span class="line"></span><br><span class="line">(<span class="number">2</span>,<span class="number">3</span>) &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125; &#123;<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>&#125; &#123;<span class="number">8</span>,<span class="number">9</span>&#125;</span><br></pre></td></tr></table></figure>
 
 <p>判断亲戚关系</p>
 <p>(1,9)，因为1,9不在同一集合内，所以输出”NO”。</p>
@@ -622,13 +623,13 @@ mjx-container[display="true"] + br {
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">163k</span>
+    <span title="站点总字数">162k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:16</span>
+    <span title="站点阅读时长">9:01</span>
   </span>
 </div>
 <div class="busuanzi-count">
