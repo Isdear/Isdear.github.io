@@ -24,21 +24,21 @@
     var CONFIG = {"hostname":"isdear.github.io","root":"/","scheme":"Pisces","version":"8.0.0-rc.5","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
 
-  <meta name="description" content="XPath使用语法">
+  <meta name="description" content="for update的作用和用法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="XPath语法">
-<meta property="og:url" content="http://isdear.github.io/2020/02/11/18/53/XPath%E8%AF%AD%E6%B3%95/index.html">
+<meta property="og:title" content="forupdate的用法">
+<meta property="og:url" content="http://isdear.github.io/2020/08/30/16/30/forupdate%E7%9A%84%E7%94%A8%E6%B3%95/index.html">
 <meta property="og:site_name" content="Welcome to my Hexo">
-<meta property="og:description" content="XPath使用语法">
+<meta property="og:description" content="for update的作用和用法">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-02-11T10:53:41.000Z">
-<meta property="article:modified_time" content="2020-08-01T01:46:45.621Z">
+<meta property="article:published_time" content="2020-08-30T08:30:23.000Z">
+<meta property="article:modified_time" content="2020-08-30T14:37:58.976Z">
 <meta property="article:author" content="Kuang">
-<meta property="article:tag" content="Python">
+<meta property="article:tag" content="mysql">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://isdear.github.io/2020/02/11/18/53/XPath%E8%AF%AD%E6%B3%95/">
+<link rel="canonical" href="http://isdear.github.io/2020/08/30/16/30/forupdate%E7%9A%84%E7%94%A8%E6%B3%95/">
 
 
 <script class="page-configurations">
@@ -51,7 +51,7 @@
   };
 </script>
 
-  <title>XPath语法 | Welcome to my Hexo</title>
+  <title>forupdate的用法 | Welcome to my Hexo</title>
   
 
 
@@ -328,7 +328,7 @@ mjx-container[display="true"] + br {
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E9%80%89%E5%8F%96%E8%8A%82%E7%82%B9"><span class="nav-number">1.</span> <span class="nav-text">选取节点</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E8%B0%93%E8%AF%AD"><span class="nav-number">2.</span> <span class="nav-text">谓语</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E9%80%9A%E9%85%8D%E7%AC%A6"><span class="nav-number">3.</span> <span class="nav-text">通配符</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E9%80%89%E5%8F%96%E5%A4%9A%E4%B8%AA%E8%B7%AF%E5%BE%84"><span class="nav-number">4.</span> <span class="nav-text">选取多个路径</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">5.</span> <span class="nav-text">运算符</span></a></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%94%A8%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">用法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E9%9C%80%E8%A6%81%E4%BD%BF%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">什么时候需要使用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#for-update%E6%82%B2%E8%A7%82%E9%94%81"><span class="nav-number">4.</span> <span class="nav-text">for update悲观锁</span></a></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -409,7 +409,7 @@ mjx-container[display="true"] + br {
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://isdear.github.io/2020/02/11/18/53/XPath%E8%AF%AD%E6%B3%95/">
+    <link itemprop="mainEntityOfPage" href="http://isdear.github.io/2020/08/30/16/30/forupdate%E7%9A%84%E7%94%A8%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/kenan.jpg">
@@ -425,7 +425,7 @@ mjx-container[display="true"] + br {
     
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          XPath语法
+          forupdate的用法
         </h1>
 
         <div class="post-meta">
@@ -434,23 +434,17 @@ mjx-container[display="true"] + br {
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-02-11 18:53:41" itemprop="dateCreated datePublished" datetime="2020-02-11T18:53:41+08:00">2020-02-11</time>
+              <time title="创建时间：2020-08-30 16:30:23 / 修改时间：22:37:58" itemprop="dateCreated datePublished" datetime="2020-08-30T16:30:23+08:00">2020-08-30</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-01 09:46:45" itemprop="dateModified" datetime="2020-08-01T09:46:45+08:00">2020-08-01</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AF%AD%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">语法</span></a>
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
                 </span>
             </span>
 
@@ -467,14 +461,14 @@ mjx-container[display="true"] + br {
                 <i class="far fa-file-word"></i>
               </span>
               <span class="post-meta-item-text">本文字数：</span>
-              <span>1.2k</span>
+              <span>1.6k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
               <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>4 分钟</span>
+              <span>5 分钟</span>
             </span>
 
         </div>
@@ -484,194 +478,36 @@ mjx-container[display="true"] + br {
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>XPath使用语法<a id="more"></a></p>
-<h6 id="选取节点"><a href="#选取节点" class="headerlink" title="选取节点"></a>选取节点</h6><table>
-<thead>
-<tr>
-<th align="center">表达式</th>
-<th align="center">描述</th>
-<th align="center">示例</th>
-<th align="center">结果</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">nodename</td>
-<td align="center">选取此节点的所有子节点</td>
-<td align="center">html</td>
-<td align="center">选取html下所有的子节点</td>
-</tr>
-<tr>
-<td align="center">/</td>
-<td align="center">如果是在最前面，代表从根节点选取。否则选择某节点下的某个节点</td>
-<td align="center">/html</td>
-<td align="center">选取整个html节点</td>
-</tr>
-<tr>
-<td align="center">//</td>
-<td align="center">从全局节点中选择节点，随便在哪个位置</td>
-<td align="center">//div</td>
-<td align="center">选取所有的div节点</td>
-</tr>
-<tr>
-<td align="center">@</td>
-<td align="center">选取某个节点中的属性</td>
-<td align="center">//div[@class]</td>
-<td align="center">选取所有div节点下的class属性</td>
-</tr>
-</tbody></table>
-<h6 id="谓语"><a href="#谓语" class="headerlink" title="谓语"></a>谓语</h6><p>谓语用来查找某个特定的节点或者包含某个制定的值的节点，被嵌在方括号里。</p>
-<p>在下面的表格中，我们列出了带有谓语的一些路径表达式，以及表达式的结果：</p>
-<table>
-<thead>
-<tr>
-<th align="center">路径表达式</th>
-<th align="center">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">//body/div[1]</td>
-<td align="center">获取body节点下的第一个div(下标从1开始)</td>
-</tr>
-<tr>
-<td align="center">//body/div[last()]</td>
-<td align="center">获取body节点下最后一个div元素</td>
-</tr>
-<tr>
-<td align="center">//body/div[position()&lt;3]</td>
-<td align="center">获取body节点下前两个div元素</td>
-</tr>
-<tr>
-<td align="center">//div[@class]</td>
-<td align="center">获取div节点下拥有class属性的元素</td>
-</tr>
-<tr>
-<td align="center">//div[@price=10]</td>
-<td align="center">获取div节点下属性为price=10的元素</td>
-</tr>
-<tr>
-<td align="center">//div[contains(@class,”fl”)]</td>
-<td align="center">模糊匹配，选取div节点下包含fl的class元素</td>
-</tr>
-</tbody></table>
-<h6 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h6><table>
-<thead>
-<tr>
-<th align="center">通配符</th>
-<th align="center">描述</th>
-<th align="center">示例</th>
-<th align="center">结果</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">*</td>
-<td align="center">匹配任意节点</td>
-<td align="center">//body/*</td>
-<td align="center">body下的额所有节点</td>
-</tr>
-<tr>
-<td align="center">@*</td>
-<td align="center">匹配节点中的任何属性</td>
-<td align="center">//div[@*]</td>
-<td align="center">div下的所有属性节点</td>
-</tr>
-</tbody></table>
-<h6 id="选取多个路径"><a href="#选取多个路径" class="headerlink" title="选取多个路径"></a>选取多个路径</h6><p>通过在路径表达式中使用”|”运算符，可以选取若干个路径</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">//dd[@class=&quot;job_bt&quot;] | //dd[@class=&quot;job-advant-age&quot;]</span><br></pre></td></tr></table></figure>
+        <p>for update的作用和用法<a id="more"></a></p>
+<h5 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h5><p>for update是一种行级锁，又叫排它锁，一旦用户对某个行施加了行级加锁，则该用户可以查询也可以更新被加锁的数据行，其它用户只能查询但不能更新被加锁的数据行．如果其它用户想更新该表中的数据行，则也必须对该表施加行级锁．即使多个用户对一个表均使用了共享更新，但也不允许两个事务同时对一个表进行更新，真正对表进行更新时，是以独占方式锁表，一直到提交或复原该事务为止。行锁永远是独占方式锁。</p>
+<p>只有当出现如下之一的条件，才会释放共享更新锁：</p>
+<p>1、执行提交（COMMIT）语句</p>
+<p>2、退出数据库（LOG　OFF）</p>
+<p>3、程序停止运行</p>
+<h5 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h5><p>通常情况下，select语句是不会对数据加锁，妨碍影响其他的DML和DDL操作。同时，在多版本一致读机制的支持下，select语句也不会被其他类型语句所阻碍。</p>
+<p>而select … for update 语句是我们经常使用手工加锁语句。在数据库中执行select … for update ,大家会发现会对数据库中的表或某些行数据进行锁表，在mysql中，如果查询条件带有主键，会锁行数据，如果没有，会锁表。</p>
+<p> 由于InnoDB预设是Row-Level Lock，所以只有「明确」的指定主键，MySQL才会执行Row lock (只锁住被选取的资料例) ，否则MySQL将会执行Table Lock (将整个资料表单给锁住)。</p>
+<p>举个例子: 假设有张表user ，里面有 id 和 name 两列，id是主键。</p>
+<p> 例1: (明确指定主键，并且数据真实存在，row lock)</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">user</span> <span class="keyword">WHERE</span> <span class="keyword">id</span>=<span class="number">3</span> <span class="keyword">FOR</span> <span class="keyword">UPDATE</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">user</span> <span class="keyword">WHERE</span> <span class="keyword">id</span>=<span class="number">3</span> <span class="keyword">and</span> <span class="keyword">name</span>=<span class="string">&#x27;Tom&#x27;</span> <span class="keyword">FOR</span> <span class="keyword">UPDATE</span>;</span><br></pre></td></tr></table></figure>
 
-<h6 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h6><table>
-<thead>
-<tr>
-<th align="center">运算符</th>
-<th align="center">描述</th>
-<th align="center">实例</th>
-<th align="center">返回值</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">|</td>
-<td align="center">计算两个节点集</td>
-<td align="center">//book | //cd</td>
-<td align="center">返回所有拥有 book 和 cd 元素的节点集</td>
-</tr>
-<tr>
-<td align="center">+</td>
-<td align="center">加法</td>
-<td align="center">6 + 4</td>
-<td align="center">10</td>
-</tr>
-<tr>
-<td align="center">-</td>
-<td align="center">减法</td>
-<td align="center">6 - 4</td>
-<td align="center">2</td>
-</tr>
-<tr>
-<td align="center">*</td>
-<td align="center">乘法</td>
-<td align="center">6 * 4</td>
-<td align="center">24</td>
-</tr>
-<tr>
-<td align="center">div</td>
-<td align="center">除法</td>
-<td align="center">8 div 4</td>
-<td align="center">2</td>
-</tr>
-<tr>
-<td align="center">=</td>
-<td align="center">等于</td>
-<td align="center">price=9.80</td>
-<td align="center">如果 price 是 9.80，则返回 true，否则 false。</td>
-</tr>
-<tr>
-<td align="center">!=</td>
-<td align="center">不等于</td>
-<td align="center">price!=9.80</td>
-<td align="center">如果 price 是 9.90，则返回 true，否则 false。</td>
-</tr>
-<tr>
-<td align="center">&lt;</td>
-<td align="center">小于</td>
-<td align="center">price&lt;9.80</td>
-<td align="center">如果 price 是 9.00，则返回 true，否则 false。</td>
-</tr>
-<tr>
-<td align="center">&lt;=</td>
-<td align="center">小于或等于</td>
-<td align="center">price&lt;=9.80</td>
-<td align="center">如果 price 是 9.00，则返回 true，否则 false。</td>
-</tr>
-<tr>
-<td align="center">&gt;</td>
-<td align="center">大于</td>
-<td align="center">price&gt;9.80</td>
-<td align="center">如果 price 是 9.90，则返回 true，否则 false。</td>
-</tr>
-<tr>
-<td align="center">&gt;=</td>
-<td align="center">大于或等于</td>
-<td align="center">price&gt;=9.80</td>
-<td align="center">如果 price 是 9.90，则返回 true，否则 false。</td>
-</tr>
-<tr>
-<td align="center">or</td>
-<td align="center">或</td>
-<td align="center">price=9.80 or price=9.70</td>
-<td align="center">如果 price 是 9.80，则返回 true，否则 false。</td>
-</tr>
-<tr>
-<td align="center">and</td>
-<td align="center">与</td>
-<td align="center">price&gt;9.00 and price&lt;9.90</td>
-<td align="center">如果 price 是 9.80，则返回 true，否则 false。</td>
-</tr>
-<tr>
-<td align="center">mod</td>
-<td align="center">计算除法的余数</td>
-<td align="center">5 mod 2</td>
-<td align="center">1</td>
-</tr>
-</tbody></table>
+<p>例2: (明确指定主键，但数据不存在，无lock)</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">user</span> <span class="keyword">WHERE</span> <span class="keyword">id</span>=<span class="number">0</span> <span class="keyword">FOR</span> <span class="keyword">UPDATE</span>;</span><br></pre></td></tr></table></figure>
+
+<p>例3: (主键不明确，table lock)</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">user</span> <span class="keyword">WHERE</span> <span class="keyword">id</span>&lt;&gt;<span class="number">3</span> <span class="keyword">FOR</span> <span class="keyword">UPDATE</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">user</span> <span class="keyword">WHERE</span> <span class="keyword">id</span> <span class="keyword">LIKE</span> <span class="string">&#x27;%3%&#x27;</span> <span class="keyword">FOR</span> <span class="keyword">UPDATE</span>;</span><br></pre></td></tr></table></figure>
+
+<p>例4: (无主键，table lock)</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">user</span> <span class="keyword">WHERE</span> <span class="keyword">name</span>=<span class="string">&#x27;Tom&#x27;</span> <span class="keyword">FOR</span> <span class="keyword">UPDATE</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong>：</p>
+<p>1、FOR UPDATE仅适用于InnoDB，且必须在事务处理模块(BEGIN/COMMIT)中才能生效。</p>
+<p>2、要测试锁定的状况，可以利用MySQL的Command Mode(命令模式) ，开两个视窗来做测试。</p>
+<p>3、Myisam 只支持表级锁，InnerDB支持行级锁 添加了(行级锁/表级锁)锁的数据不能被其它事务再锁定，也不被其它事务修改。是表级锁时，不管是否查询到记录，都会锁定表。</p>
+<h5 id="什么时候需要使用"><a href="#什么时候需要使用" class="headerlink" title="什么时候需要使用"></a>什么时候需要使用</h5><p>借助for update语句，我们可以在应用程序的层面手工实现数据加锁保护操作。就是那些需要业务层面数据独占时，可以考虑使用for update。</p>
+<p>场景上，比如火车票订票，在屏幕上显示有票，而真正进行出票时，需要重新确定一下这个数据没有被其他客户端修改。所以，在这个确认过程中，可以使用for update。</p>
+<h5 id="for-update悲观锁"><a href="#for-update悲观锁" class="headerlink" title="for update悲观锁"></a>for update悲观锁</h5><p>悲观锁：总是假设最坏的情况，每次去拿数据的时候都认为别人会修改，所以每次在拿数据的时候都会上锁，这样别人想拿这个数据就会阻塞直到它解锁。传统的关系型数据库里边就用到了很多这种锁机制，比如行锁，表锁等，读锁，写锁等，都是在做操作之前先上锁。就像for update，再比如Java里面的同步原语synchronized关键字的实现也是悲观锁。</p>
+<p>乐观锁：顾名思义，就是很乐观，每次去拿数据的时候都认为别人不会修改，所以不会上锁，但是在更新的时候会判断一下在此期间别人有没有去更新这个数据，可以使用版本号等机制。乐观锁适用于多读的应用类型，这样可以提高吞吐量，像数据库提供的类似于write_condition机制，其实都是提供的乐观锁。</p>
 
     </div>
 
@@ -682,10 +518,13 @@ mjx-container[display="true"] + br {
   <div class="popular-posts-header">相关文章</div>
   <ul class="popular-posts">
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2020\02\13\17\06\Python3的正则表达式\" rel="bookmark">Python3的正则表达式</a></div>
+      <div class="popular-posts-title"><a href="\2020\05\22\19\44\MySql数据库优化的八种方法\" rel="bookmark">MySql数据库优化的八种方法</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2020\02\12\16\02\Python爬取电影天堂新片精品\" rel="bookmark">Python爬取电影天堂新片精品</a></div>
+      <div class="popular-posts-title"><a href="\2020\08\01\08\31\mysql5-7分组排序后取每组最新一条\" rel="bookmark">mysql5.7分组排序后取每组最新一条</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2020\08\02\10\34\sql函数\" rel="bookmark">sql函数</a></div>
     </li>
   </ul>
 
@@ -700,7 +539,7 @@ mjx-container[display="true"] + br {
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="http://isdear.github.io/2020/02/11/18/53/XPath%E8%AF%AD%E6%B3%95/" title="XPath语法">http://isdear.github.io/2020/02/11/18/53/XPath语法/</a>
+      <a href="http://isdear.github.io/2020/08/30/16/30/forupdate%E7%9A%84%E7%94%A8%E6%B3%95/" title="forupdate的用法">http://isdear.github.io/2020/08/30/16/30/forupdate的用法/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -709,21 +548,18 @@ mjx-container[display="true"] + br {
 </div>
 
           <div class="post-tags">
-              <a href="/tags/Python/" rel="tag"># Python</a>
+              <a href="/tags/mysql/" rel="tag"># mysql</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2020/02/10/15/17/CSS3%E6%BB%A4%E9%95%9Cfilter/" rel="prev" title="CSS3滤镜filter">
-                  <i class="fa fa-chevron-left"></i> CSS3滤镜filter
+                <a href="/2020/08/27/23/02/oracle%E7%9A%84%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/" rel="prev" title="oracle的存储过程">
+                  <i class="fa fa-chevron-left"></i> oracle的存储过程
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2020/02/12/16/02/Python%E7%88%AC%E5%8F%96%E7%94%B5%E5%BD%B1%E5%A4%A9%E5%A0%82%E6%96%B0%E7%89%87%E7%B2%BE%E5%93%81/" rel="next" title="Python爬取电影天堂新片精品">
-                  Python爬取电影天堂新片精品 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
