@@ -2740,7 +2740,7 @@ mjx-container[display="true"] + br {
   }
 }
 .site-brand-container {
-  background: url("../images/violetevengarden.jpg");
+  background: #fff;
 }
 @media (max-width: 991px) {
   .site-nav-on .site-brand-container {
