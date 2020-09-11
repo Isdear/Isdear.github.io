@@ -2740,7 +2740,7 @@ mjx-container[display="true"] + br {
   }
 }
 .site-brand-container {
-  background: #fff;
+  background: #222;
 }
 @media (max-width: 991px) {
   .site-nav-on .site-brand-container {
