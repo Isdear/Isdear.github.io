@@ -2794,7 +2794,7 @@
   <entry>
     <title>sql函数</title>
     <url>/2020/08/02/10/34/sql%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<p>工作中所遇到的SQL函数。<a id="more"></a></p>
+    <content><![CDATA[<p>常用的SQL函数<a id="more"></a></p>
 <p>top关键字属性SQL Server，平常并没有使用SQL Server。</p>
 <h6 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h6><ul>
 <li><p>upper(str)/ucase(str)：返回字符串str，将所有字符改为大写</p>
@@ -2846,149 +2846,20 @@
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> ENAME,JOB,SAL,NVL(COMM,<span class="number">100</span>) <span class="keyword">FROM</span> EMP <span class="keyword">WHERE</span> SAL&lt;<span class="number">2000</span>;</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li><p>to_number()：将字符型数据转换成数字型    </p>
-</li>
-<li><p>to_date()：将字符型数据转换成日期型</p>
-</li>
-<li><p>ceil()：向上取整，结果为124。<code>select ceil(123.123) from dual;</code></p>
-</li>
-<li><p>floor()：向下取整，结果为123。<code>select floor(123.123) from dual;</code></p>
-</li>
-<li><p>trunc(n1,n2)取整函数,n1代表字符串，n2代表小数位数，结果为123.12。<br>  <code>select trunc(123.125,2) from dual;</code></p>
-</li>
-<li><p>round(n1,n2)四舍五入，n1代表字符串,n2代表小数位数，结果为123.57。<code>select round(123.567) from dual;</code></p>
-</li>
-</ul>
-<h6 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h6><ul>
-<li>except(sql server)：通过包括所有在 TABLE1 中但不在 TABLE2 中的行并消除所有重复行而派生出一个结果表</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	reg_num </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	dq_list <span class="keyword">except</span></span><br><span class="line"><span class="keyword">EXCEPT</span></span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	reg_num </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	dq_result</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>minus(oracle)：先找出第一个 SQL 语句所产生的结果，然后看这些结果有没有在第二个 SQL 语句的结果中。如果有的话，那这一笔资料就被去除，而不会在最后的结果中出现。如果第二个 SQL 语句所产生的结果并没有存在于第一个 SQL 语句所产生的结果内，那这笔资料就被抛弃。</li>
-</ul>
-<p><strong><em>Store_Information</em></strong> 表格</p>
-<table>
-<thead>
-<tr>
-<th>Store_Name</th>
-<th>Sales</th>
-<th>Txn_Date</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Los Angeles</td>
-<td>1500</td>
-<td>05-Jan-1999</td>
-</tr>
-<tr>
-<td>San Diego</td>
-<td>250</td>
-<td>07-Jan-1999</td>
-</tr>
-<tr>
-<td>Los Angeles</td>
-<td>300</td>
-<td>08-Jan-1999</td>
-</tr>
-<tr>
-<td>Boston</td>
-<td>700</td>
-<td>08-Jan-1999</td>
-</tr>
-</tbody></table>
-<p><strong><em>Internet Sales</em></strong> 表格</p>
-<table>
-<thead>
-<tr>
-<th>Txn_Date</th>
-<th>Sales</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>07-Jan-1999</td>
-<td>250</td>
-</tr>
-<tr>
-<td>10-Jan-1999</td>
-<td>535</td>
-</tr>
-<tr>
-<td>11-Jan-1999</td>
-<td>320</td>
-</tr>
-<tr>
-<td>12-Jan-1999</td>
-<td>750</td>
-</tr>
-</tbody></table>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Txn_Date <span class="keyword">FROM</span> Store_Information</span><br><span class="line"><span class="keyword">MINUS</span></span><br><span class="line"><span class="keyword">SELECT</span> Txn_Date <span class="keyword">FROM</span> Internet_Sales;</span><br></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th>Txn_Date</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Jan-05-1999</td>
-</tr>
-<tr>
-<td>Jan-08-1999</td>
-</tr>
-</tbody></table>
-<ul>
-<li><p>intersect：通过只包括 TABLE1 和 TABLE2 中都有的行并消除所有重复行而派生出一个结果表。</p>
-</li>
-<li><p>zeroifnull(expr)：如果表达式expr的值为0，则返回null，否则返回表达式expr的值。</p>
-</li>
+<li>to_number()：将字符型数据转换成数字型    </li>
+<li>to_date()：将字符型数据转换成日期型</li>
+<li>to_char()：将日期转换成字符串</li>
+<li>ceil()：向上取整，结果为124。<code>select ceil(123.123) from dual;</code></li>
+<li>floor()：向下取整，结果为123。<code>select floor(123.123) from dual;</code></li>
+<li>trunc(n1,n2)取整函数,n1代表字符串，n2代表小数位数，结果为123.12。<br>  <code>select trunc(123.125,2) from dual;</code></li>
+<li>round(n1,n2)四舍五入，n1代表字符串,n2代表小数位数，结果为123.57。<code>select round(123.567) from dual;</code></li>
+<li>zeroifnull(expr)：如果表达式expr的值为0，则返回null，否则返回表达式expr的值。</li>
 </ul>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> zeroifnull(<span class="keyword">count</span>(<span class="keyword">DISTINCT</span> userid)) <span class="keyword">from</span> table_name;</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>nullifzero(expr)：如果表达式expr的值为null，则返回0，否则返回表达式expr的值。</li>
 </ul>
-<h6 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h6><p>复制表(只复制结构,源表名：a 新表名：b) (Access可用)</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">into</span> b <span class="keyword">from</span> a <span class="keyword">where</span> <span class="number">1</span>&lt;&gt;<span class="number">1</span>（仅用于SQlServer）</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> top <span class="number">0</span> * <span class="keyword">into</span> b <span class="keyword">from</span> a</span><br></pre></td></tr></table></figure>
-
-<p>显示文章、提交人和最后回复时间</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> a.title,a.username,b.adddate <span class="keyword">from</span> <span class="keyword">table</span> a,(<span class="keyword">select</span> <span class="keyword">max</span>(adddate) adddate <span class="keyword">from</span> <span class="keyword">table</span> <span class="keyword">where</span> table.title=a.title) b</span><br></pre></td></tr></table></figure>
-
-<p>两张关联表，删除主表中已经在副表中没有的信息 </p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> table1 <span class="keyword">where</span> <span class="keyword">not</span> <span class="keyword">exists</span> ( <span class="keyword">select</span> * <span class="keyword">from</span> table2 <span class="keyword">where</span> table1.field1=table2.field1 )</span><br></pre></td></tr></table></figure>
-
-<p>日程安排提前五分钟提醒</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> 日程安排 <span class="keyword">where</span> <span class="keyword">datediff</span>(<span class="string">&#x27;minute&#x27;</span>,f开始时间,<span class="keyword">getdate</span>())&gt;<span class="number">5</span></span><br></pre></td></tr></table></figure>
-
-<p>一条sql语句搞定数据库分页</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> top <span class="number">10</span> b.* <span class="keyword">from</span> (<span class="keyword">select</span> top <span class="number">20</span> 主键字段,排序字段 <span class="keyword">from</span> 表名 <span class="keyword">order</span> <span class="keyword">by</span> 排序字段 <span class="keyword">desc</span>) a,表名 b <span class="keyword">where</span> b.主键字段 = a.主键字段 <span class="keyword">order</span> <span class="keyword">by</span> a.排序字段</span><br></pre></td></tr></table></figure>
-
-<p>前10条记录</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> top <span class="number">10</span> * <span class="keyword">from</span> table1 <span class="keyword">where</span> 范围</span><br></pre></td></tr></table></figure>
-
-<p>选择在每一组b值相同的数据中对应的a最大的记录的所有信息(类似这样的用法可以用于论坛每月排行榜,每月热销产品分析,按科目成绩排名,等等.)</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> a,b,c <span class="keyword">from</span> tablename ta <span class="keyword">where</span> a=(<span class="keyword">select</span> <span class="keyword">max</span>(a) <span class="keyword">from</span> tablename tb <span class="keyword">where</span> tb.b=ta.b)</span><br></pre></td></tr></table></figure>
-
-<p>包括所有在TableA中但不在TableB和TableC中的行并消除所有重复行而派生出一个结果表</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">(<span class="keyword">select</span> a <span class="keyword">from</span> tableA ) <span class="keyword">except</span> (<span class="keyword">select</span> a <span class="keyword">from</span> tableB) <span class="keyword">except</span> (<span class="keyword">select</span> a <span class="keyword">from</span> tableC)</span><br></pre></td></tr></table></figure>
-
-<p>随机取出10条数据</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> top <span class="number">10</span> * <span class="keyword">from</span> tablename <span class="keyword">order</span> <span class="keyword">by</span> newid()</span><br></pre></td></tr></table></figure>
-
-<p>随机选择记录</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> newid()</span><br></pre></td></tr></table></figure>
-
-<p>列出数据库里所有的表名</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">name</span> <span class="keyword">from</span> sysobjects <span class="keyword">where</span> <span class="keyword">type</span>=<span class="string">&#x27;U&#x27;</span> // U代表用户</span><br></pre></td></tr></table></figure>
-
-<p>列出表里的所有的列名</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">name</span> <span class="keyword">from</span> syscolumns <span class="keyword">where</span> <span class="keyword">id</span>=object_id(<span class="string">&#x27;TableName&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<p>选择从10到15的记录</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> top <span class="number">5</span> * <span class="keyword">from</span> (<span class="keyword">select</span> top <span class="number">15</span> * <span class="keyword">from</span> <span class="keyword">table</span> <span class="keyword">order</span> <span class="keyword">by</span> <span class="keyword">id</span> <span class="keyword">asc</span>) table_别名 <span class="keyword">order</span> <span class="keyword">by</span> <span class="keyword">id</span> <span class="keyword">desc</span></span><br></pre></td></tr></table></figure>
-
-
-
 ]]></content>
       <categories>
         <category>数据库</category>
@@ -4773,6 +4644,236 @@
       </categories>
       <tags>
         <tag>paper</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>sql关键字</title>
+    <url>/2020/08/03/20/24/sql%E5%85%B3%E9%94%AE%E5%AD%97/</url>
+    <content><![CDATA[<p>常用的sql关键字<a id="more"></a></p>
+<h6 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h6><ul>
+<li>except(sql server)：通过包括所有在 TABLE1 中但不在 TABLE2 中的行并消除所有重复行而派生出一个结果表</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	reg_num </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	dq_list <span class="keyword">except</span></span><br><span class="line"><span class="keyword">EXCEPT</span></span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	reg_num </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	dq_result</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>minus(oracle)：先找出第一个 SQL 语句所产生的结果，然后看这些结果有没有在第二个 SQL 语句的结果中。如果有的话，那这一笔资料就被去除，而不会在最后的结果中出现。如果第二个 SQL 语句所产生的结果并没有存在于第一个 SQL 语句所产生的结果内，那这笔资料就被抛弃。</li>
+</ul>
+<p><strong><em>Store_Information</em></strong> 表格</p>
+<table>
+<thead>
+<tr>
+<th>Store_Name</th>
+<th>Sales</th>
+<th>Txn_Date</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Los Angeles</td>
+<td>1500</td>
+<td>05-Jan-1999</td>
+</tr>
+<tr>
+<td>San Diego</td>
+<td>250</td>
+<td>07-Jan-1999</td>
+</tr>
+<tr>
+<td>Los Angeles</td>
+<td>300</td>
+<td>08-Jan-1999</td>
+</tr>
+<tr>
+<td>Boston</td>
+<td>700</td>
+<td>08-Jan-1999</td>
+</tr>
+</tbody></table>
+<p><strong><em>Internet Sales</em></strong> 表格</p>
+<table>
+<thead>
+<tr>
+<th>Txn_Date</th>
+<th>Sales</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>07-Jan-1999</td>
+<td>250</td>
+</tr>
+<tr>
+<td>10-Jan-1999</td>
+<td>535</td>
+</tr>
+<tr>
+<td>11-Jan-1999</td>
+<td>320</td>
+</tr>
+<tr>
+<td>12-Jan-1999</td>
+<td>750</td>
+</tr>
+</tbody></table>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Txn_Date <span class="keyword">FROM</span> Store_Information</span><br><span class="line"><span class="keyword">MINUS</span></span><br><span class="line"><span class="keyword">SELECT</span> Txn_Date <span class="keyword">FROM</span> Internet_Sales;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>Txn_Date</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Jan-05-1999</td>
+</tr>
+<tr>
+<td>Jan-08-1999</td>
+</tr>
+</tbody></table>
+<ul>
+<li>intersect：通过只包括 TABLE1 和 TABLE2 中都有的行并消除所有重复行而派生出一个结果表。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>sql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>oracle日期格式</title>
+    <url>/2020/08/05/21/02/oracle%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F/</url>
+    <content><![CDATA[<p>不同格式日期之间转换<a id="more"></a></p>
+<h5 id="TO-DATE"><a href="#TO-DATE" class="headerlink" title="TO_DATE"></a>TO_DATE</h5><p>TO_DATE的日期格式参数中，如果24小时显示，需要使用<code>HH24</code></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">to_date</span>(<span class="string">&#x27;2020-07-12 10:00:00&#x27;</span>, <span class="string">&#x27;yyyy-mm-dd hh24:mi:ss&#x27;</span>) <span class="keyword">from</span> dual;</span><br></pre></td></tr></table></figure>
+
+<p>参数省略HH、MM、SS时，oracle默认取值为0，即只显示到日。</p>
+<p>同样，省略DD参数，oracle默认取值为1，取整到当前月；但是省略MM并不会取整到年。</p>
+<h5 id="TO-CHAR"><a href="#TO-CHAR" class="headerlink" title="TO_CHAR"></a>TO_CHAR</h5><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> to_char(<span class="keyword">sysdate</span>,<span class="string">&#x27;W&#x27;</span>) <span class="keyword">from</span> dual;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="center">参数</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Q</td>
+<td align="center">当年季度</td>
+</tr>
+<tr>
+<td align="center">W</td>
+<td align="center">当月第几周</td>
+</tr>
+<tr>
+<td align="center">WW</td>
+<td align="center">当年第几周</td>
+</tr>
+<tr>
+<td align="center">D</td>
+<td align="center">一周的第几天(周日为第一天)</td>
+</tr>
+<tr>
+<td align="center">DD</td>
+<td align="center">当月第几天</td>
+</tr>
+<tr>
+<td align="center">DDD</td>
+<td align="center">当年第几天</td>
+</tr>
+<tr>
+<td align="center">DY</td>
+<td align="center">星期几简写</td>
+</tr>
+<tr>
+<td align="center">DAY</td>
+<td align="center">星期几全称</td>
+</tr>
+</tbody></table>
+<p>可以在参数后设置日期语言</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> to_char(<span class="keyword">to_date</span>(<span class="string">&#x27;2002-08-26&#x27;</span>,<span class="string">&#x27;yyyy-mm-dd&#x27;</span>),<span class="string">&#x27;day&#x27;</span>,<span class="string">&#x27;NLS_DATE_LANGUAGE = American&#x27;</span>) </span><br><span class="line"><span class="keyword">from</span> dual;</span><br></pre></td></tr></table></figure>
+
+<p>得到当天凌晨0点0分0秒的日期</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> trunc(<span class="keyword">sysdate</span>) <span class="keyword">from</span> dual;</span><br></pre></td></tr></table></figure>
+
+<p>得到这天的最后一秒</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> trunc(<span class="keyword">sysdate</span>) + <span class="number">0.99999</span> <span class="keyword">from</span> dual;</span><br></pre></td></tr></table></figure>
+
+<p>得到小时的具体数值</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> trunc(<span class="keyword">sysdate</span>) + <span class="number">1</span>/<span class="number">24</span> <span class="keyword">from</span> dual;</span><br></pre></td></tr></table></figure>
+
+<p>得到明天凌晨0点0分0秒的日期</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> trunc(<span class="keyword">sysdate</span>+<span class="number">1</span>) <span class="keyword">from</span> dual;</span><br></pre></td></tr></table></figure>
+
+<p>本月一日的日期</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> trunc(<span class="keyword">sysdate</span>,<span class="string">&#x27;mm&#x27;</span>) <span class="keyword">from</span> dual;</span><br></pre></td></tr></table></figure>
+
+<p>得到下月一日的日期</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> trunc(add_months(<span class="keyword">sysdate</span>,<span class="number">1</span>),<span class="string">&#x27;mm&#x27;</span>) <span class="keyword">from</span> dual;</span><br></pre></td></tr></table></figure>
+
+<p>返回当前月的最后一天</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">last_day</span>(<span class="keyword">sysdate</span>) <span class="keyword">from</span> dual; </span><br><span class="line"><span class="keyword">select</span> <span class="keyword">last_day</span>(trunc(<span class="keyword">sysdate</span>)) <span class="keyword">from</span> dual; </span><br><span class="line"><span class="keyword">select</span> trunc(<span class="keyword">last_day</span>(<span class="keyword">sysdate</span>)) <span class="keyword">from</span> dual;</span><br><span class="line"><span class="keyword">select</span> trunc(add_months(<span class="keyword">sysdate</span>,<span class="number">1</span>),<span class="string">&#x27;mm&#x27;</span>) - <span class="number">1</span> <span class="keyword">from</span> dual;</span><br></pre></td></tr></table></figure>
+
+<p>得到一年的每一天</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> trunc(<span class="keyword">sysdate</span>,<span class="string">&#x27;yyyy&#x27;</span>)+ rn <span class="number">-1</span> date0 </span><br><span class="line"><span class="keyword">from</span> </span><br><span class="line">(<span class="keyword">select</span> <span class="keyword">rownum</span> rn <span class="keyword">from</span> all_objects <span class="keyword">where</span> <span class="keyword">rownum</span>&lt;<span class="number">366</span>);</span><br></pre></td></tr></table></figure>
+
+<p>判断某一日子所在年分是否为润年</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">decode</span>(to_char(<span class="keyword">last_day</span>(trunc(<span class="keyword">sysdate</span>,<span class="string">&#x27;y&#x27;</span>)+<span class="number">31</span>),<span class="string">&#x27;dd&#x27;</span>),<span class="string">&#x27;29&#x27;</span>,<span class="string">&#x27;闰年&#x27;</span>,<span class="string">&#x27;平年&#x27;</span>) <span class="keyword">from</span> dual;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>oracle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>sql技巧</title>
+    <url>/2020/08/04/20/24/sql%E6%8A%80%E5%B7%A7/</url>
+    <content><![CDATA[<p>遇到的一些sql技巧<a id="more"></a></p>
+<h6 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h6><p>复制表(只复制结构,源表名：a 新表名：b) (Access可用)</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">into</span> b <span class="keyword">from</span> a <span class="keyword">where</span> <span class="number">1</span>&lt;&gt;<span class="number">1</span>（仅用于SQlServer）</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> top <span class="number">0</span> * <span class="keyword">into</span> b <span class="keyword">from</span> a</span><br></pre></td></tr></table></figure>
+
+<p>显示文章、提交人和最后回复时间</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> a.title,a.username,b.adddate <span class="keyword">from</span> <span class="keyword">table</span> a,(<span class="keyword">select</span> <span class="keyword">max</span>(adddate) adddate <span class="keyword">from</span> <span class="keyword">table</span> <span class="keyword">where</span> table.title=a.title) b</span><br></pre></td></tr></table></figure>
+
+<p>两张关联表，删除主表中已经在副表中没有的信息 </p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> table1 <span class="keyword">where</span> <span class="keyword">not</span> <span class="keyword">exists</span> ( <span class="keyword">select</span> * <span class="keyword">from</span> table2 <span class="keyword">where</span> table1.field1=table2.field1 )</span><br></pre></td></tr></table></figure>
+
+<p>日程安排提前五分钟提醒</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> 日程安排 <span class="keyword">where</span> <span class="keyword">datediff</span>(<span class="string">&#x27;minute&#x27;</span>,f开始时间,<span class="keyword">getdate</span>())&gt;<span class="number">5</span></span><br></pre></td></tr></table></figure>
+
+<p>一条sql语句搞定数据库分页</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> top <span class="number">10</span> b.* <span class="keyword">from</span> (<span class="keyword">select</span> top <span class="number">20</span> 主键字段,排序字段 <span class="keyword">from</span> 表名 <span class="keyword">order</span> <span class="keyword">by</span> 排序字段 <span class="keyword">desc</span>) a,表名 b <span class="keyword">where</span> b.主键字段 = a.主键字段 <span class="keyword">order</span> <span class="keyword">by</span> a.排序字段</span><br></pre></td></tr></table></figure>
+
+<p>前10条记录</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> top <span class="number">10</span> * <span class="keyword">from</span> table1 <span class="keyword">where</span> 范围</span><br></pre></td></tr></table></figure>
+
+<p>选择在每一组b值相同的数据中对应的a最大的记录的所有信息(类似这样的用法可以用于论坛每月排行榜,每月热销产品分析,按科目成绩排名,等等.)</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> a,b,c <span class="keyword">from</span> tablename ta <span class="keyword">where</span> a=(<span class="keyword">select</span> <span class="keyword">max</span>(a) <span class="keyword">from</span> tablename tb <span class="keyword">where</span> tb.b=ta.b)</span><br></pre></td></tr></table></figure>
+
+<p>包括所有在TableA中但不在TableB和TableC中的行并消除所有重复行而派生出一个结果表</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">(<span class="keyword">select</span> a <span class="keyword">from</span> tableA ) <span class="keyword">except</span> (<span class="keyword">select</span> a <span class="keyword">from</span> tableB) <span class="keyword">except</span> (<span class="keyword">select</span> a <span class="keyword">from</span> tableC)</span><br></pre></td></tr></table></figure>
+
+<p>随机取出10条数据</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> top <span class="number">10</span> * <span class="keyword">from</span> tablename <span class="keyword">order</span> <span class="keyword">by</span> newid()</span><br></pre></td></tr></table></figure>
+
+<p>随机选择记录</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> newid()</span><br></pre></td></tr></table></figure>
+
+<p>列出数据库里所有的表名</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">name</span> <span class="keyword">from</span> sysobjects <span class="keyword">where</span> <span class="keyword">type</span>=<span class="string">&#x27;U&#x27;</span> // U代表用户</span><br></pre></td></tr></table></figure>
+
+<p>列出表里的所有的列名</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">name</span> <span class="keyword">from</span> syscolumns <span class="keyword">where</span> <span class="keyword">id</span>=object_id(<span class="string">&#x27;TableName&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>选择从10到15的记录</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> top <span class="number">5</span> * <span class="keyword">from</span> (<span class="keyword">select</span> top <span class="number">15</span> * <span class="keyword">from</span> <span class="keyword">table</span> <span class="keyword">order</span> <span class="keyword">by</span> <span class="keyword">id</span> <span class="keyword">asc</span>) table_别名 <span class="keyword">order</span> <span class="keyword">by</span> <span class="keyword">id</span> <span class="keyword">desc</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>sql</tag>
       </tags>
   </entry>
 </search>
