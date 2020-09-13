@@ -1817,6 +1817,9 @@ pre code {
   z-index: 1500;
   top: 0;
 }
+body {
+  opacity: 0.9;
+}
 .rtl.post-body p,
 .rtl.post-body a,
 .rtl.post-body h1,
@@ -2683,6 +2686,13 @@ mjx-container[display="true"] + br {
 .use-motion .sidebar .animated {
   animation-fill-mode: both;
 }
+body {
+  background-image: url("../images/violetevengarden.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 50% 50%;
+  background-size: 100% 100%;
+}
 .header-inner {
   background: var(--content-bg-color);
   border-radius: initial;
@@ -2740,7 +2750,7 @@ mjx-container[display="true"] + br {
   }
 }
 .site-brand-container {
-  background: #222;
+  background: #fff;
 }
 @media (max-width: 991px) {
   .site-nav-on .site-brand-container {
