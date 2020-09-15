@@ -2687,11 +2687,11 @@ mjx-container[display="true"] + br {
   animation-fill-mode: both;
 }
 body {
-  background-image: url("../images/violetevengarden.jpg");
+  background-image: url("../images/08cb832.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: 50% 50%;
-  background-size: 100% 100%;
+  background-size: auto 100%;
 }
 .header-inner {
   background: var(--content-bg-color);
@@ -2750,7 +2750,7 @@ body {
   }
 }
 .site-brand-container {
-  background: #fff;
+  background: #eee;
 }
 @media (max-width: 991px) {
   .site-nav-on .site-brand-container {
