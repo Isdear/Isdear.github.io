@@ -3112,6 +3112,10 @@
 
 <ul>
 <li>nullifzero(expr)：如果表达式expr的值为null，则返回0，否则返回表达式expr的值。</li>
+<li>ln(y)：以e为底的y的对数，y &gt; 0。</li>
+<li>log(x,y)：以x为底的y的对数。</li>
+<li>exp(y)：e的y次幂。</li>
+<li>greatest(express1, express2…)：取得值最大值，数字按大小排列，字符按首字符比较，结果相等比较下一位。</li>
 </ul>
 ]]></content>
       <categories>
