@@ -4990,4 +4990,213 @@
         <tag>wireshark</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Mybatis的映射参数</title>
+    <url>/2020/10/22/23/14/Mybatis%E7%9A%84%E6%98%A0%E5%B0%84%E5%8F%82%E6%95%B0/</url>
+    <content><![CDATA[<p>Mybatis的jdbcType映射<a id="more"></a></p>
+<p>jdbcType在Oracle和MySQL数据库之间的映射关系</p>
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="left">JdbcType</th>
+<th align="left">Oracle</th>
+<th align="left">MySql</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">JdbcType</td>
+<td align="left">ARRAY</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">JdbcType</td>
+<td align="left">BIGINT</td>
+<td align="left"></td>
+<td align="left">BIGINT</td>
+</tr>
+<tr>
+<td align="left">JdbcType</td>
+<td align="left">BINARY</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">JdbcType</td>
+<td align="left">BIT</td>
+<td align="left"></td>
+<td align="left">BIT</td>
+</tr>
+<tr>
+<td align="left">JdbcType</td>
+<td align="left">BLOB</td>
+<td align="left">BLOB</td>
+<td align="left">BLOB</td>
+</tr>
+<tr>
+<td align="left">JdbcType</td>
+<td align="left">BOOLEAN</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">JdbcType</td>
+<td align="left">CHAR</td>
+<td align="left">CHAR</td>
+<td align="left">CHAR</td>
+</tr>
+<tr>
+<td align="left">JdbcType</td>
+<td align="left">CLOB</td>
+<td align="left">CLOB</td>
+<td align="left">TEXT</td>
+</tr>
+<tr>
+<td align="left">JdbcType</td>
+<td align="left">CURSOR</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">JdbcType</td>
+<td align="left">DATE</td>
+<td align="left">DATE</td>
+<td align="left">DATE</td>
+</tr>
+<tr>
+<td align="left">JdbcType</td>
+<td align="left">DECIMAL</td>
+<td align="left">DECIMAL</td>
+<td align="left">DECIMAL</td>
+</tr>
+<tr>
+<td align="left">JdbcType</td>
+<td align="left">DOUBLE</td>
+<td align="left">NUMBER</td>
+<td align="left">DOUBLE</td>
+</tr>
+<tr>
+<td align="left">JdbcType</td>
+<td align="left">FLOAT</td>
+<td align="left">FLOAT</td>
+<td align="left">FLOAT</td>
+</tr>
+<tr>
+<td align="left">JdbcType</td>
+<td align="left">INTEGER</td>
+<td align="left">INTEGER</td>
+<td align="left">INTEGER</td>
+</tr>
+<tr>
+<td align="left">JdbcType</td>
+<td align="left">LONGVARBINARY</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">JdbcType</td>
+<td align="left">LONGVARCHAR</td>
+<td align="left">LONG VARCHAR</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">JdbcType</td>
+<td align="left">NCHAR</td>
+<td align="left">NCHAR</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">JdbcType</td>
+<td align="left">NCLOB</td>
+<td align="left">NCLOB</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">JdbcType</td>
+<td align="left">NULL</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">JdbcType</td>
+<td align="left">NUMERIC</td>
+<td align="left">NUMERIC/NUMBER</td>
+<td align="left">NUMERIC</td>
+</tr>
+<tr>
+<td align="left">JdbcType</td>
+<td align="left">NVARCHAR</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">JdbcType</td>
+<td align="left">OTHER</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">JdbcType</td>
+<td align="left">REAL</td>
+<td align="left">REAL</td>
+<td align="left">REAL</td>
+</tr>
+<tr>
+<td align="left">JdbcType</td>
+<td align="left">SMALLINT</td>
+<td align="left">SMALLINT</td>
+<td align="left">SMALLINT</td>
+</tr>
+<tr>
+<td align="left">JdbcType</td>
+<td align="left">STRUCT</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">JdbcType</td>
+<td align="left">TIME</td>
+<td align="left"></td>
+<td align="left">TIME</td>
+</tr>
+<tr>
+<td align="left">JdbcType</td>
+<td align="left">TIMESTAMP</td>
+<td align="left">TIMESTAMP</td>
+<td align="left">TIMESTAMP/DATETIME</td>
+</tr>
+<tr>
+<td align="left">JdbcType</td>
+<td align="left">TINYINT</td>
+<td align="left"></td>
+<td align="left">TINYINT</td>
+</tr>
+<tr>
+<td align="left">JdbcType</td>
+<td align="left">UNDEFINED</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">JdbcType</td>
+<td align="left">VARBINARY</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">JdbcType</td>
+<td align="left">VARCHAR</td>
+<td align="left">VARCHAR</td>
+<td align="left">VARCHAR</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>框架</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
 </search>
