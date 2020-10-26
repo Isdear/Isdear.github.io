@@ -5199,4 +5199,89 @@
         <tag>java</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Java取消Double类型显示科学计数法</title>
+    <url>/2020/10/26/23/26/Java%E5%8F%96%E6%B6%88Double%E7%B1%BB%E5%9E%8B%E6%98%BE%E7%A4%BA%E7%A7%91%E5%AD%A6%E8%AE%A1%E6%95%B0%E6%B3%95/</url>
+    <content><![CDATA[<p>取消Double类型输出时显示科学计数法问题<a id="more"></a></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Double d = <span class="keyword">new</span> Double(<span class="string">&quot;1234567890.12&quot;</span>);   </span><br><span class="line">System.out.println(<span class="string">&quot;d:=&quot;</span>+d);  </span><br><span class="line">java.text.NumberFormat NF = java.text.NumberFormat.getInstance();   </span><br><span class="line">NF.setGroupingUsed(<span class="keyword">false</span>);<span class="comment">//去掉科学计数法显示</span></span><br><span class="line">System.out.println(<span class="string">&quot;d:=&quot;</span>+NF.format(d));</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java的Date类型计算</title>
+    <url>/2020/10/26/23/27/Java%E7%9A%84Date%E7%B1%BB%E5%9E%8B%E8%AE%A1%E7%AE%97/</url>
+    <content><![CDATA[<p>Date类型时间的计算<a id="more"></a></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Date endDate = <span class="keyword">new</span> Date();</span><br><span class="line">Date startDate = <span class="keyword">new</span> Date(endDate.getTime() - <span class="number">30</span> * <span class="number">24</span> * <span class="number">60</span> * <span class="number">60</span> * <span class="number">1000</span>);</span><br></pre></td></tr></table></figure>
+
+<h6 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Returns the number of milliseconds since January 1, 1970, 00:00:00 GMT</span></span><br><span class="line"><span class="comment"> * represented by this &lt;tt&gt;Date&lt;/tt&gt; object.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span>  the number of milliseconds since January 1, 1970, 00:00:00 GMT</span></span><br><span class="line"><span class="comment"> *          represented by this date.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">getTime</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> getTimeImpl();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">long</span> <span class="title">getTimeImpl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (cdate != <span class="keyword">null</span> &amp;&amp; !cdate.isNormalized()) &#123;</span><br><span class="line">        normalize();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> fastTime;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>方法返回日期对象是从1970年1月1日00:00:00 GMT以来的毫秒数。所以，后面数字的单位是天、小时、分钟、秒、毫秒。</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mysql中explain的用法和结果分析</title>
+    <url>/2020/10/26/23/10/Mysql%E4%B8%ADexplain%E7%9A%84%E7%94%A8%E6%B3%95%E5%92%8C%E7%BB%93%E6%9E%9C%E5%88%86%E6%9E%90/</url>
+    <content><![CDATA[<p>EXPLAIN可以模拟优化器执行SQL语句，从而知道mysql是如何处理你的sql语句。<a id="more"></a></p>
+<h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>EXPLAIN可以模拟优化器执行SQL语句，从而知道mysql是如何处理你的sql语句。分析你的查询语句或是表结构的性能瓶颈。</p>
+<p>通过explain，我们可以分析出以下结果：</p>
+<ul>
+<li>表的读取顺序</li>
+<li>数据读取操作的操作类型</li>
+<li>哪些索引可以使用</li>
+<li>哪些索引被实际使用</li>
+<li>表之间的引用</li>
+<li>每张表有多少行被优化器查询</li>
+</ul>
+<p>使用方式</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">explain</span>  <span class="keyword">select</span> * <span class="keyword">from</span> t</span><br></pre></td></tr></table></figure>
+
+<p>执行计划包含的信息</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>select_type</th>
+<th>table</th>
+<th>type</th>
+<th>possible_keys</th>
+<th>key</th>
+<th>key_len</th>
+<th>ref</th>
+<th>rows</th>
+<th>Extra</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>mysql</tag>
+      </tags>
+  </entry>
 </search>
