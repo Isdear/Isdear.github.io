@@ -6310,4 +6310,20 @@
         <tag>java</tag>
       </tags>
   </entry>
+  <entry>
+    <title>java不同操作系统的路径写法</title>
+    <url>/2020/11/20/22/43/java%E4%B8%8D%E5%90%8C%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%B7%AF%E5%BE%84%E5%86%99%E6%B3%95/</url>
+    <content><![CDATA[<p>Windows和Linux系统上不同文件路径使用Java方法来代替。<a id="more"></a></p>
+<h6 id="具体路径写法"><a href="#具体路径写法" class="headerlink" title="具体路径写法"></a>具体路径写法</h6><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">&quot;C:\\a.txt&quot;//windows写法</span><br><span class="line">&quot;/mnt/a.txt&quot;//linux写法</span><br></pre></td></tr></table></figure>
+
+<h6 id="使用Java的File-separator方法"><a href="#使用Java的File-separator方法" class="headerlink" title="使用Java的File.separator方法"></a>使用Java的File.separator方法</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="comment">//路径分隔符示例</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SeparatorDemo</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		String path1=<span class="string">&quot;C:&quot;</span>+File.separator+<span class="string">&quot;Program Files&quot;</span>+File.separator+<span class="string">&quot;a.txt&quot;</span>;</span><br><span class="line">		System.out.println(path1);<span class="comment">//输出C:\Program Files\a.txt</span></span><br><span class="line">		</span><br><span class="line">		String path2=<span class="string">&quot;C:\\Program Files\\a.txt&quot;</span>;<span class="comment">//第一个\表示转义</span></span><br><span class="line">		System.out.println(path2);<span class="comment">//输出C:\Program Files\a.txt</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
 </search>
