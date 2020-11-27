@@ -6352,4 +6352,21 @@
         <tag>mybatis</tag>
       </tags>
   </entry>
+  <entry>
+    <title>mybatis调用oracle方法</title>
+    <url>/2020/11/27/21/08/mybatis%E8%B0%83%E7%94%A8oracle%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<p>mybatis调用oracle方法或者存储过程时，如果无输入和输出参数，直接把函数当做查询字段即可输出。本次主要说明有输入参数和输出参数。<a id="more"></a></p>
+<p>存储过程代码忽略，只需知道输入参数类型和输出参数类型即可。</p>
+<p>xml映射文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;select id&#x3D;&quot;getFhYeild&quot; statementType&#x3D;&quot;CALLABLE&quot; parameterType&#x3D;&quot;java.util.Map&quot; resultType&#x3D;&quot;Double&quot;&gt;</span><br><span class="line">	&#123;#&#123;result,mode&#x3D;OUT,jdbcType&#x3D;VARCHAR&#125;&#x3D;call get_fh_yeild(#&#123;fndCd,mode&#x3D;IN,jdbcType&#x3D;VARCHAR&#125;)&#125;</span><br><span class="line">&lt;&#x2F;select&gt;</span><br></pre></td></tr></table></figure>
+
+<p>mapper层代码和一般的查询接口一样，没有特殊的改变。</p>
+<p>Controller层在进行调用的时候，只需使用map调用即可取值。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Map&lt;String,Object&gt; map = <span class="keyword">new</span> HashMap&lt;String,Object&gt;();</span><br><span class="line">getFhYeild(map);</span><br><span class="line">map.get(<span class="string">&quot;result&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>mybatis</tag>
+      </tags>
+  </entry>
 </search>
