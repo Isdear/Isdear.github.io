@@ -2773,6 +2773,7 @@
 <h5 id="TO-DATE"><a href="#TO-DATE" class="headerlink" title="TO_DATE"></a>TO_DATE</h5><p>TO_DATE的日期格式参数中，如果24小时显示，需要使用<code>HH24</code></p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">to_date</span>(<span class="string">&#x27;2020-07-12 10:00:00&#x27;</span>, <span class="string">&#x27;yyyy-mm-dd hh24:mi:ss&#x27;</span>) <span class="keyword">from</span> dual;</span><br></pre></td></tr></table></figure>
 
+<p><strong>由于oracle中不区分大小写问题，所以分钟使用mi表示；如果使用mm，则会和月份冲突，引起错误。</strong></p>
 <p>参数省略HH、MM、SS时，oracle默认取值为0，即只显示到日。</p>
 <p>同样，省略DD参数，oracle默认取值为1，取整到当前月；但是省略MM并不会取整到年。</p>
 <h5 id="TO-CHAR"><a href="#TO-CHAR" class="headerlink" title="TO_CHAR"></a>TO_CHAR</h5><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> to_char(<span class="keyword">sysdate</span>,<span class="string">&#x27;W&#x27;</span>) <span class="keyword">from</span> dual;</span><br></pre></td></tr></table></figure>
@@ -6388,6 +6389,123 @@
       </categories>
       <tags>
         <tag>SpringBoot</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>List转map、分组、过滤</title>
+    <url>/2020/12/12/15/36/List%E8%BD%ACmap%E3%80%81%E5%88%86%E7%BB%84%E3%80%81%E8%BF%87%E6%BB%A4/</url>
+    <content><![CDATA[<p>java8的List新特性，可以用简洁高效的代码来实现一些数据处理。<a id="more"></a></p>
+<h6 id="创建一个对象"><a href="#创建一个对象" class="headerlink" title="创建一个对象"></a>创建一个对象</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Apple</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Integer id;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> BigDecimal money;</span><br><span class="line">    <span class="keyword">private</span> Integer num;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Apple</span><span class="params">(Integer id, String name, BigDecimal money, Integer num)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.money = money;</span><br><span class="line">        <span class="keyword">this</span>.num = num;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="添加测试数据"><a href="#添加测试数据" class="headerlink" title="添加测试数据"></a>添加测试数据</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;Apple&gt; appleList = <span class="keyword">new</span> ArrayList&lt;&gt;();<span class="comment">//存放apple对象集合</span></span><br><span class="line"> </span><br><span class="line">Apple apple1 =  <span class="keyword">new</span> Apple(<span class="number">1</span>,<span class="string">&quot;苹果1&quot;</span>,<span class="keyword">new</span> BigDecimal(<span class="string">&quot;3.25&quot;</span>),<span class="number">10</span>);</span><br><span class="line">Apple apple12 = <span class="keyword">new</span> Apple(<span class="number">1</span>,<span class="string">&quot;苹果2&quot;</span>,<span class="keyword">new</span> BigDecimal(<span class="string">&quot;1.35&quot;</span>),<span class="number">20</span>);</span><br><span class="line">Apple apple2 =  <span class="keyword">new</span> Apple(<span class="number">2</span>,<span class="string">&quot;香蕉&quot;</span>,<span class="keyword">new</span> BigDecimal(<span class="string">&quot;2.89&quot;</span>),<span class="number">30</span>);</span><br><span class="line">Apple apple3 =  <span class="keyword">new</span> Apple(<span class="number">3</span>,<span class="string">&quot;荔枝&quot;</span>,<span class="keyword">new</span> BigDecimal(<span class="string">&quot;9.99&quot;</span>),<span class="number">40</span>);</span><br><span class="line"> </span><br><span class="line">appleList.add(apple1);</span><br><span class="line">appleList.add(apple12);</span><br><span class="line">appleList.add(apple2);</span><br><span class="line">appleList.add(apple3);</span><br></pre></td></tr></table></figure>
+
+<h6 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h6><p>List里面的对象元素，以某个属性来分组，例如，以id分组，将id相同的放在一起：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//List 以ID分组 Map&lt;Integer,List&lt;Apple&gt;&gt;</span></span><br><span class="line">Map&lt;Integer, List&lt;Apple&gt;&gt; groupBy = appleList.stream().collect(Collectors.groupingBy(Apple::getId));</span><br><span class="line"> </span><br><span class="line">System.err.println(<span class="string">&quot;groupBy:&quot;</span>+groupBy);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&#123;1=[Apple&#123;id=1, name=&#x27;苹果1&#x27;, money=3.25, num=10&#125;, Apple&#123;id=1, name=&#x27;苹果2&#x27;, money=1.35, num=20&#125;], 2=[Apple&#123;id=2, name=&#x27;香蕉&#x27;, money=2.89, num=30&#125;], 3=[Apple&#123;id=3, name=&#x27;荔枝&#x27;, money=9.99, num=40&#125;]&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="List转Map"><a href="#List转Map" class="headerlink" title="List转Map"></a>List转Map</h6><p>id为key，apple对象为value，可以这么做：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * List -&gt; Map</span></span><br><span class="line"><span class="comment"> * 需要注意的是：</span></span><br><span class="line"><span class="comment"> * toMap 如果集合对象有重复的key，会报错Duplicate key ....</span></span><br><span class="line"><span class="comment"> *  apple1,apple12的id都为1。</span></span><br><span class="line"><span class="comment"> *  可以用 (k1,k2)-&gt;k1 来设置，如果有重复的key,则保留key1,舍弃key2</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">Map&lt;Integer, Apple&gt; appleMap = appleList.stream().collect(Collectors.toMap(Apple::getId, a -&gt; a,(k1,k2)-&gt;k1));</span><br></pre></td></tr></table></figure>
+
+<p>打印appleMap</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&#123;1=Apple&#123;id=1, name=&#x27;苹果1&#x27;, money=3.25, num=10&#125;, 2=Apple&#123;id=2, name=&#x27;香蕉&#x27;, money=2.89, num=30&#125;, 3=Apple&#123;id=3, name=&#x27;荔枝&#x27;, money=9.99, num=40&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="过滤Filter"><a href="#过滤Filter" class="headerlink" title="过滤Filter"></a>过滤Filter</h6><p>从集合中过滤出来符合条件的元素：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//过滤出符合条件的数据</span></span><br><span class="line">List&lt;Apple&gt; filterList = appleList.stream().filter(a -&gt; a.getName().equals(<span class="string">&quot;香蕉&quot;</span>)).collect(Collectors.toList());</span><br><span class="line"> </span><br><span class="line">System.err.println(<span class="string">&quot;filterList:&quot;</span>+filterList);</span><br><span class="line">[Apple&#123;id=<span class="number">2</span>, name=<span class="string">&#x27;香蕉&#x27;</span>, money=<span class="number">2.89</span>, num=<span class="number">30</span>&#125;]</span><br></pre></td></tr></table></figure>
+
+<h6 id="求和"><a href="#求和" class="headerlink" title="求和"></a>求和</h6><p>将集合中的数据按照某个属性求和:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//计算 总金额</span></span><br><span class="line">BigDecimal totalMoney = appleList.stream().map(Apple::getMoney).reduce(BigDecimal.ZERO, BigDecimal::add);</span><br><span class="line"></span><br><span class="line">System.err.println(<span class="string">&quot;totalMoney:&quot;</span>+totalMoney);  <span class="comment">//totalMoney:17.48</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="查找流中最大-最小值"><a href="#查找流中最大-最小值" class="headerlink" title="查找流中最大 最小值"></a>查找流中最大 最小值</h6><p>Collectors.maxBy 和 Collectors.minBy 来计算流中的最大或最小值。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Optional&lt;Dish&gt; maxDish = Dish.menu.stream().</span><br><span class="line">      collect(Collectors.maxBy(Comparator.comparing(Dish::getCalories)));</span><br><span class="line">maxDish.ifPresent(System.out::println);</span><br><span class="line"> </span><br><span class="line">Optional&lt;Dish&gt; minDish = Dish.menu.stream().</span><br><span class="line">      collect(Collectors.minBy(Comparator.comparing(Dish::getCalories)));</span><br><span class="line">minDish.ifPresent(System.out::println);</span><br></pre></td></tr></table></figure>
+
+<h6 id="去重"><a href="#去重" class="headerlink" title="去重"></a>去重</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> java.util.Comparator.comparingLong;</span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> java.util.stream.Collectors.collectingAndThen;</span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> java.util.stream.Collectors.toCollection;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 根据id去重</span></span><br><span class="line">     List&lt;Person&gt; unique = appleList.stream().collect(</span><br><span class="line">                collectingAndThen(</span><br><span class="line">                        toCollection(() -&gt; <span class="keyword">new</span> TreeSet&lt;&gt;(comparingLong(Apple::getId))), ArrayList::<span class="keyword">new</span>)</span><br><span class="line">        );</span><br></pre></td></tr></table></figure>
+
+<h6 id="下表展示-Collectors-类的静态工厂方法。"><a href="#下表展示-Collectors-类的静态工厂方法。" class="headerlink" title="下表展示 Collectors 类的静态工厂方法。"></a>下表展示 Collectors 类的静态工厂方法。</h6><table>
+<thead>
+<tr>
+<th align="left">工厂方法</th>
+<th align="left">返回类型</th>
+<th align="left">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">toList</td>
+<td align="left"><code>List&lt;T&gt;</code></td>
+<td align="left">把流中所有项目收集到一个 List</td>
+</tr>
+<tr>
+<td align="left">toSet</td>
+<td align="left"><code>Set&lt;T&gt;</code></td>
+<td align="left">把流中所有项目收集到一个 Set，删除重复项</td>
+</tr>
+<tr>
+<td align="left">toCollection</td>
+<td align="left"><code>Collection&lt;T&gt;</code></td>
+<td align="left">把流中所有项目收集到给定的供应源创建的集合<code>menuStream.collect(toCollection(), ArrayList::new)</code></td>
+</tr>
+<tr>
+<td align="left">counting</td>
+<td align="left">Long</td>
+<td align="left">计算流中元素的个数</td>
+</tr>
+<tr>
+<td align="left">sumInt</td>
+<td align="left">Integer</td>
+<td align="left">对流中项目的一个整数属性求和</td>
+</tr>
+<tr>
+<td align="left">averagingInt</td>
+<td align="left">Double</td>
+<td align="left">计算流中项目 Integer 属性的平均值</td>
+</tr>
+<tr>
+<td align="left">summarizingInt</td>
+<td align="left">IntSummaryStatistics</td>
+<td align="left">收集关于流中项目 Integer 属性的统计值，例如最大、最小、 总和与平均值</td>
+</tr>
+<tr>
+<td align="left">joining</td>
+<td align="left">String</td>
+<td align="left">连接对流中每个项目调用 toString 方法所生成的字符串<code>collect(joining(&quot;, &quot;))</code></td>
+</tr>
+<tr>
+<td align="left">maxBy</td>
+<td align="left"><code>Optional&lt;T&gt;</code></td>
+<td align="left">一个包裹了流中按照给定比较器选出的最大元素的 Optional， 或如果流为空则为 Optional.empty()</td>
+</tr>
+<tr>
+<td align="left">minBy</td>
+<td align="left"><code>Optional&lt;T&gt;</code></td>
+<td align="left">一个包裹了流中按照给定比较器选出的最小元素的 Optional， 或如果流为空则为 Optional.empty()</td>
+</tr>
+<tr>
+<td align="left">reducing</td>
+<td align="left">归约操作产生的类型</td>
+<td align="left">从一个作为累加器的初始值开始，利用 BinaryOperator 与流 中的元素逐个结合，从而将流归约为单个值<code>累加int totalCalories = menuStream.collect(reducing(0, Dish::getCalories, Integer::sum));</code></td>
+</tr>
+<tr>
+<td align="left">collectingAndThen</td>
+<td align="left">转换函数返回的类型</td>
+<td align="left">包裹另一个收集器，对其结果应用转换函数<code>int howManyDishes = menuStream.collect(collectingAndThen(toList(), List::size))</code></td>
+</tr>
+<tr>
+<td align="left">groupingBy</td>
+<td align="left"><code>Map&lt;K, List&lt;T&gt;&gt;</code></td>
+<td align="left">根据项目的一个属性的值对流中的项目作问组，并将属性值作 为结果 Map 的键</td>
+</tr>
+<tr>
+<td align="left">partitioningBy</td>
+<td align="left"><code>Map&lt;Boolean,List&lt;T&gt;&gt;</code></td>
+<td align="left">根据对流中每个项目应用谓词的结果来对项目进行分区</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
       </tags>
   </entry>
 </search>
