@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1.0.2/themes/blue/pace-theme-minimal.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"isdear.github.io","root":"/","scheme":"Pisces","version":"8.0.0-rc.5","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+
+  <meta name="description" content="StringUtils 方法的操作对象是 java.lang.String 类型的对象，是 JDK 提供的 String 类型操作方法的补充，并且是 null 安全的(即如果输入参数 String 为 null 则不会抛出 NullPointerException ，而是做了相应处理。例如，如果输入为 null 则返回也是 null 等)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="StringUtils判断非空问题">
+<meta property="og:url" content="http://isdear.github.io/2021/01/16/22/43/StringUtils%E5%88%A4%E6%96%AD%E9%9D%9E%E7%A9%BA%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:site_name" content="Welcome to my hexo">
+<meta property="og:description" content="StringUtils 方法的操作对象是 java.lang.String 类型的对象，是 JDK 提供的 String 类型操作方法的补充，并且是 null 安全的(即如果输入参数 String 为 null 则不会抛出 NullPointerException ，而是做了相应处理。例如，如果输入为 null 则返回也是 null 等)">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-01-16T14:43:38.000Z">
+<meta property="article:modified_time" content="2021-01-16T15:08:07.805Z">
+<meta property="article:author" content="Kuang">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://isdear.github.io/2021/01/16/22/43/StringUtils%E5%88%A4%E6%96%AD%E9%9D%9E%E7%A9%BA%E9%97%AE%E9%A2%98/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>StringUtils判断非空问题 | Welcome to my hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Welcome to my hexo</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-首页">
+
+    <a href="/" rel="section"><i class="home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-关于">
+
+    <a href="/about/" rel="section"><i class="user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-标签">
+
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-类别">
+
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>类别</a>
+
+  </li>
+        <li class="menu-item menu-item-档案">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>档案</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#isEmpty-String-str"><span class="nav-number">1.</span> <span class="nav-text">isEmpty(String str)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#isNotEmpty-String-str"><span class="nav-number">2.</span> <span class="nav-text">isNotEmpty(String str)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#isBlank-String-str"><span class="nav-number">3.</span> <span class="nav-text">isBlank(String str)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#isNotBlank-String-str"><span class="nav-number">4.</span> <span class="nav-text">isNotBlank(String str)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#trim-String-str"><span class="nav-number">5.</span> <span class="nav-text">trim(String str)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#trimToNull-String-str"><span class="nav-number">6.</span> <span class="nav-text">trimToNull(String str)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#trimToEmpty-String-str"><span class="nav-number">7.</span> <span class="nav-text">trimToEmpty(String str)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#strip-String-str"><span class="nav-number">8.</span> <span class="nav-text">strip(String str)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#stripToNull-String-str"><span class="nav-number">9.</span> <span class="nav-text">stripToNull(String str)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#stripToEmpty-String-str"><span class="nav-number">10.</span> <span class="nav-text">stripToEmpty(String str)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%A5%E4%B8%8B%E6%96%B9%E6%B3%95%E5%8F%AA%E4%BB%8B%E7%BB%8D%E5%85%B6%E5%8A%9F%E8%83%BD%EF%BC%8C%E4%B8%8D%E5%86%8D%E4%B8%BE%E4%BE%8B%EF%BC%9A"><span class="nav-number">11.</span> <span class="nav-text">以下方法只介绍其功能，不再举例：</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#strip-String-str-String-stripChars"><span class="nav-number">11.1.</span> <span class="nav-text">strip(String str, String stripChars)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#stripStart-String-str-String-stripChars"><span class="nav-number">11.2.</span> <span class="nav-text">stripStart(String str, String stripChars)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#stripEnd-String-str-String-stripChars"><span class="nav-number">11.3.</span> <span class="nav-text">stripEnd(String str, String stripChars)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#stripAll-String-strs"><span class="nav-number">11.4.</span> <span class="nav-text">stripAll(String[] strs)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#stripAll-String-strs-String-stripChars"><span class="nav-number">11.5.</span> <span class="nav-text">stripAll(String[] strs, String stripChars)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#equals-String-str1-String-str2"><span class="nav-number">11.6.</span> <span class="nav-text">equals(String str1, String str2)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#equalsIgnoreCase-String-str1-String-str2"><span class="nav-number">11.7.</span> <span class="nav-text">equalsIgnoreCase(String str1, String str2)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#indexOf-String-str-char-searchChar"><span class="nav-number">11.8.</span> <span class="nav-text">indexOf(String str, char searchChar)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#indexOf-String-str-char-searchChar-int-startPos"><span class="nav-number">11.9.</span> <span class="nav-text">indexOf(String str, char searchChar, int startPos)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#indexOf-String-str-String-searchStr"><span class="nav-number">11.10.</span> <span class="nav-text">indexOf(String str, String searchStr)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#ordinalIndexOf-String-str-String-searchStr-int-ordinal"><span class="nav-number">11.11.</span> <span class="nav-text">ordinalIndexOf(String str, String searchStr, int ordinal)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#indexOf-String-str-String-searchStr-int-startPos"><span class="nav-number">11.12.</span> <span class="nav-text">indexOf(String str, String searchStr, int startPos)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#lastIndexOf-String-str-char-searchChar"><span class="nav-number">11.13.</span> <span class="nav-text">lastIndexOf(String str, char searchChar)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#lastIndexOf-String-str-char-searchChar-int-startPos"><span class="nav-number">11.14.</span> <span class="nav-text">lastIndexOf(String str, char searchChar, int startPos)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#lastIndexOf-String-str-String-searchStr"><span class="nav-number">11.15.</span> <span class="nav-text">lastIndexOf(String str, String searchStr)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#lastIndexOf-String-str-String-searchStr-int-startPos"><span class="nav-number">11.16.</span> <span class="nav-text">lastIndexOf(String str, String searchStr, int startPos)</span></a></li></ol></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Kuang"
+      src="/images/kenan.jpg">
+  <p class="site-author-name" itemprop="name">Kuang</p>
+  <div class="site-description" itemprop="description">个人博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">72</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Isdear" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Isdear" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/kuang8421@qq.com" title="E-Mail → kuang8421@qq.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/269017831" title="B站 → https:&#x2F;&#x2F;space.bilibili.com&#x2F;269017831" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>B站</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/1906956615" title="QQ → 1906956615"><i class="fab fa-qq fa-fw"></i>QQ</a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://isdear.github.io/2021/01/16/22/43/StringUtils%E5%88%A4%E6%96%AD%E9%9D%9E%E7%A9%BA%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/kenan.jpg">
+      <meta itemprop="name" content="Kuang">
+      <meta itemprop="description" content="个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to my hexo">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          StringUtils判断非空问题
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-01-16 22:43:38 / 修改时间：23:08:07" itemprop="dateCreated datePublished" datetime="2021-01-16T22:43:38+08:00">2021-01-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="far fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span class="post-meta-item-text">本文字数：</span>
+              <span>9k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>30 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>StringUtils 方法的操作对象是 java.lang.String 类型的对象，是 JDK 提供的 String 类型操作方法的补充，并且是 null 安全的(即如果输入参数 String 为 null 则不会抛出 NullPointerException ，而是做了相应处理。例如，如果输入为 null 则返回也是 null 等)<a id="more"></a></p>
+<h5 id="isEmpty-String-str"><a href="#isEmpty-String-str" class="headerlink" title="isEmpty(String str)"></a>isEmpty(String str)</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">(String str)</span></span></span><br></pre></td></tr></table></figure>
+<p>判断某字符串是否为空，为空的标准是 <code>str==null</code>或 <code>str.length()==0</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">StringUtils.isEmpty(<span class="keyword">null</span>) = <span class="keyword">true</span></span><br><span class="line"></span><br><span class="line">StringUtils.isEmpty(<span class="string">&quot;&quot;</span>) = <span class="keyword">true</span></span><br><span class="line"></span><br><span class="line">StringUtils.isEmpty(<span class="string">&quot; &quot;</span>) = <span class="keyword">false</span> <span class="comment">//注意在 StringUtils 中空格作非空处理</span></span><br><span class="line"></span><br><span class="line">StringUtils.isEmpty(<span class="string">&quot;  &quot;</span>) = <span class="keyword">false</span></span><br><span class="line"></span><br><span class="line">StringUtils.isEmpty(<span class="string">&quot;bob&quot;</span>) = <span class="keyword">false</span></span><br><span class="line"></span><br><span class="line">StringUtils.isEmpty(<span class="string">&quot; bob &quot;</span>) = <span class="keyword">false</span></span><br></pre></td></tr></table></figure>
+<h5 id="isNotEmpty-String-str"><a href="#isNotEmpty-String-str" class="headerlink" title="isNotEmpty(String str)"></a>isNotEmpty(String str)</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isNotEmpty</span><span class="params">(String str)</span></span></span><br></pre></td></tr></table></figure>
+<p>判断某字符串是否非空，等于 <code>!isEmpty(String str)</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">StringUtils.isNotEmpty(<span class="keyword">null</span>) = <span class="keyword">false</span></span><br><span class="line"></span><br><span class="line">StringUtils.isNotEmpty(<span class="string">&quot;&quot;</span>) = <span class="keyword">false</span></span><br><span class="line">      </span><br><span class="line">StringUtils.isNotEmpty(<span class="string">&quot; &quot;</span>) = <span class="keyword">true</span></span><br><span class="line"></span><br><span class="line">StringUtils.isNotEmpty(<span class="string">&quot;         &quot;</span>) = <span class="keyword">true</span></span><br><span class="line"></span><br><span class="line">StringUtils.isNotEmpty(<span class="string">&quot;bob&quot;</span>) = <span class="keyword">true</span></span><br><span class="line"></span><br><span class="line">StringUtils.isNotEmpty(<span class="string">&quot; bob &quot;</span>) = <span class="keyword">true</span></span><br></pre></td></tr></table></figure>
+<h5 id="isBlank-String-str"><a href="#isBlank-String-str" class="headerlink" title="isBlank(String str)"></a>isBlank(String str)</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isBlank</span><span class="params">(String str)</span></span></span><br></pre></td></tr></table></figure>
+<p>  判断某字符串是否为空或长度为0或由空白符(whitespace) 构成</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">StringUtils.isBlank(<span class="keyword">null</span>) = <span class="keyword">true</span></span><br><span class="line"></span><br><span class="line">StringUtils.isBlank(<span class="string">&quot;&quot;</span>) = <span class="keyword">true</span></span><br><span class="line"></span><br><span class="line">StringUtils.isBlank(<span class="string">&quot; &quot;</span>) = <span class="keyword">true</span></span><br><span class="line"></span><br><span class="line">StringUtils.isBlank(<span class="string">&quot;    &quot;</span>) = <span class="keyword">true</span></span><br><span class="line"></span><br><span class="line">StringUtils.isBlank(<span class="string">&quot;\t \n \f \r&quot;</span>) = <span class="keyword">true</span>  <span class="comment">//对于制表符、换行符、换页符和回车符</span></span><br><span class="line"></span><br><span class="line">StringUtils.isBlank()  <span class="comment">//均识为空白符</span></span><br><span class="line"></span><br><span class="line">StringUtils.isBlank(<span class="string">&quot;\b&quot;</span>) = <span class="keyword">false</span>  <span class="comment">//&quot;\b&quot;为单词边界符</span></span><br><span class="line">  </span><br><span class="line">StringUtils.isBlank(<span class="string">&quot;bob&quot;</span>) = <span class="keyword">false</span></span><br><span class="line"></span><br><span class="line">StringUtils.isBlank(<span class="string">&quot; bob &quot;</span>) = <span class="keyword">false</span>   </span><br></pre></td></tr></table></figure>
+<h5 id="isNotBlank-String-str"><a href="#isNotBlank-String-str" class="headerlink" title="isNotBlank(String str)"></a>isNotBlank(String str)</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isNotBlank</span><span class="params">(String str)</span></span></span><br></pre></td></tr></table></figure>
+
+<p>判断某字符串是否不为空且长度不为0且不由空白符(whitespace) 构成，等于 <code>!isBlank(String str)</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">StringUtils.isNotBlank(<span class="keyword">null</span>) = <span class="keyword">false</span></span><br><span class="line"></span><br><span class="line">StringUtils.isNotBlank(<span class="string">&quot;&quot;</span>) = <span class="keyword">false</span></span><br><span class="line"></span><br><span class="line">StringUtils.isNotBlank(<span class="string">&quot; &quot;</span>) = <span class="keyword">false</span></span><br><span class="line"></span><br><span class="line">StringUtils.isNotBlank(<span class="string">&quot;     &quot;</span>) = <span class="keyword">false</span></span><br><span class="line"></span><br><span class="line">StringUtils.isNotBlank(<span class="string">&quot;\t \n \f \r&quot;</span>) = <span class="keyword">false</span></span><br><span class="line"></span><br><span class="line">StringUtils.isNotBlank(<span class="string">&quot;\b&quot;</span>) = <span class="keyword">true</span></span><br><span class="line"></span><br><span class="line">StringUtils.isNotBlank(<span class="string">&quot;bob&quot;</span>) = <span class="keyword">true</span></span><br><span class="line"></span><br><span class="line">StringUtils.isNotBlank(<span class="string">&quot; bob &quot;</span>) = <span class="keyword">true</span></span><br></pre></td></tr></table></figure>
+<h5 id="trim-String-str"><a href="#trim-String-str" class="headerlink" title="trim(String str)"></a>trim(String str)</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">trim</span><span class="params">(String str)</span></span></span><br></pre></td></tr></table></figure>
+<p>去掉字符串两端的控制符(control characters, char &lt;= 32) , 如果输入为 null 则返回null</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">StringUtils.<span class="built_in">trim</span>(<span class="keyword">null</span>) <span class="operator">=</span> <span class="keyword">null</span></span><br><span class="line"></span><br><span class="line">StringUtils.<span class="built_in">trim</span>(&quot;&quot;) <span class="operator">=</span> &quot;&quot;</span><br><span class="line"></span><br><span class="line">StringUtils.<span class="built_in">trim</span>(&quot; &quot;) <span class="operator">=</span> &quot;&quot;</span><br><span class="line"></span><br><span class="line">StringUtils.<span class="built_in">trim</span>(&quot; \b \t \n \f \r  &quot;) <span class="operator">=</span> &quot;&quot;</span><br><span class="line"></span><br><span class="line">StringUtils.<span class="built_in">trim</span>(&quot;   \n\tss  \b&quot;) <span class="operator">=</span> &quot;ss&quot;</span><br><span class="line"></span><br><span class="line">StringUtils.<span class="built_in">trim</span>(&quot; d  d dd   &quot;) <span class="operator">=</span> &quot;d  d dd&quot;</span><br><span class="line"></span><br><span class="line">StringUtils.<span class="built_in">trim</span>(&quot;dd   &quot;) <span class="operator">=</span> &quot;dd&quot;</span><br><span class="line"></span><br><span class="line">StringUtils.<span class="built_in">trim</span>(&quot;   dd    &quot;) <span class="operator">=</span> &quot;dd&quot;</span><br></pre></td></tr></table></figure>
+<h5 id="trimToNull-String-str"><a href="#trimToNull-String-str" class="headerlink" title="trimToNull(String str)"></a>trimToNull(String str)</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">trimToNull</span><span class="params">(String str)</span></span></span><br></pre></td></tr></table></figure>
+<p>去掉字符串两端的控制符(control characters, char &lt;= 32) ,如果变为 null 或””，则返回 null</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">StringUtils.trimToNull(<span class="keyword">null</span>) = <span class="keyword">null</span></span><br><span class="line"></span><br><span class="line">StringUtils.trimToNull(<span class="string">&quot;&quot;</span>) = <span class="keyword">null</span></span><br><span class="line"></span><br><span class="line">StringUtils.trimToNull(<span class="string">&quot; &quot;</span>) = <span class="keyword">null</span></span><br><span class="line"></span><br><span class="line">StringUtils.trimToNull(<span class="string">&quot;   \b \t \n \f \r  &quot;</span>) = <span class="keyword">null</span></span><br><span class="line"></span><br><span class="line">StringUtils.trimToNull(<span class="string">&quot;   \n\tss  \b&quot;</span>) = <span class="string">&quot;ss&quot;</span></span><br><span class="line"></span><br><span class="line">StringUtils.trimToNull(<span class="string">&quot; d  d dd   &quot;</span>) = <span class="string">&quot;d  d dd&quot;</span></span><br><span class="line"></span><br><span class="line">StringUtils.trimToNull(<span class="string">&quot;dd   &quot;</span>) = <span class="string">&quot;dd&quot;</span></span><br><span class="line"></span><br><span class="line">StringUtils.trimToNull(<span class="string">&quot;   dd    &quot;</span>) = <span class="string">&quot;dd&quot;</span></span><br></pre></td></tr></table></figure>
+<h5 id="trimToEmpty-String-str"><a href="#trimToEmpty-String-str" class="headerlink" title="trimToEmpty(String str)"></a>trimToEmpty(String str)</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">trimToEmpty</span><span class="params">(String str)</span></span></span><br></pre></td></tr></table></figure>
+<p>去掉字符串两端的控制符(control characters, char &lt;= 32) ,如果变为 null 或 “” ，则返回 “”</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">StringUtils.trimToEmpty(<span class="keyword">null</span>) = <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">StringUtils.trimToEmpty(<span class="string">&quot;&quot;</span>) = <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">StringUtils.trimToEmpty(<span class="string">&quot; &quot;</span>) = <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">StringUtils.trimToEmpty(<span class="string">&quot;   \b \t \n \f \r  &quot;</span>) = <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">StringUtils.trimToEmpty(<span class="string">&quot;   \n\tss  \b&quot;</span>) = <span class="string">&quot;ss&quot;</span></span><br><span class="line"></span><br><span class="line">StringUtils.trimToEmpty(<span class="string">&quot; d  d dd   &quot;</span>) = <span class="string">&quot;d  d dd&quot;</span></span><br><span class="line"></span><br><span class="line">StringUtils.trimToEmpty(<span class="string">&quot;dd   &quot;</span>) = <span class="string">&quot;dd&quot;</span></span><br><span class="line"></span><br><span class="line">StringUtils.trimToEmpty(<span class="string">&quot;   dd    &quot;</span>) = <span class="string">&quot;dd&quot;</span></span><br></pre></td></tr></table></figure>
+<h5 id="strip-String-str"><a href="#strip-String-str" class="headerlink" title="strip(String str)"></a>strip(String str)</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">strip</span><span class="params">(String str)</span></span></span><br></pre></td></tr></table></figure>
+<p>去掉字符串两端的空白符(whitespace) ，如果输入为 null 则返回 null</p>
+<p>下面是示例(注意和 trim() 的区别)：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">StringUtils.strip(<span class="keyword">null</span>) = <span class="keyword">null</span></span><br><span class="line"></span><br><span class="line">StringUtils.strip(<span class="string">&quot;&quot;</span>) = <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">StringUtils.strip(<span class="string">&quot; &quot;</span>) = <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">StringUtils.strip(<span class="string">&quot;   \b \t \n \f \r  &quot;</span>) = <span class="string">&quot;\b&quot;</span></span><br><span class="line"></span><br><span class="line">StringUtils.strip(<span class="string">&quot;   \n\tss  \b&quot;</span>) = <span class="string">&quot;ss  \b&quot;</span></span><br><span class="line"> </span><br><span class="line">StringUtils.strip(<span class="string">&quot; d  d dd   &quot;</span>) = <span class="string">&quot;d  d dd&quot;</span></span><br><span class="line"></span><br><span class="line">StringUtils.strip(<span class="string">&quot;dd   &quot;</span>) = <span class="string">&quot;dd&quot;</span></span><br><span class="line"></span><br><span class="line">StringUtils.strip(<span class="string">&quot;   dd    &quot;</span>) = <span class="string">&quot;dd&quot;</span></span><br></pre></td></tr></table></figure>
+<h5 id="stripToNull-String-str"><a href="#stripToNull-String-str" class="headerlink" title="stripToNull(String str)"></a>stripToNull(String str)</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">stripToNull</span><span class="params">(String str)</span></span></span><br></pre></td></tr></table></figure>
+<p>去掉字符串两端的空白符(whitespace) ，如果变为 null 或””，则返回 null</p>
+<p>下面是示例(注意和 trimToNull() 的区别)：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">StringUtils.stripToNull(<span class="keyword">null</span>) = <span class="keyword">null</span></span><br><span class="line"></span><br><span class="line">StringUtils.stripToNull(<span class="string">&quot;&quot;</span>) = <span class="keyword">null</span></span><br><span class="line"></span><br><span class="line">StringUtils.stripToNull(<span class="string">&quot; &quot;</span>) = <span class="keyword">null</span></span><br><span class="line"></span><br><span class="line">StringUtils.stripToNull(<span class="string">&quot;   \b \t \n \f \r  &quot;</span>) = <span class="string">&quot;\b&quot;</span></span><br><span class="line"></span><br><span class="line">StringUtils.stripToNull(<span class="string">&quot;   \n\tss  \b&quot;</span>) = <span class="string">&quot;ss  \b&quot;</span></span><br><span class="line"></span><br><span class="line">StringUtils.stripToNull(<span class="string">&quot; d  d dd   &quot;</span>) = <span class="string">&quot;d  d dd&quot;</span></span><br><span class="line"></span><br><span class="line">StringUtils.stripToNull(<span class="string">&quot;dd   &quot;</span>) = <span class="string">&quot;dd&quot;</span></span><br><span class="line"> </span><br><span class="line">StringUtils.stripToNull(<span class="string">&quot;   dd    &quot;</span>) = <span class="string">&quot;dd&quot;</span></span><br></pre></td></tr></table></figure>
+<h5 id="stripToEmpty-String-str"><a href="#stripToEmpty-String-str" class="headerlink" title="stripToEmpty(String str)"></a>stripToEmpty(String str)</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">stripToEmpty</span><span class="params">(String str)</span></span></span><br></pre></td></tr></table></figure>
+<p>去掉字符串两端的空白符(whitespace) ，如果变为 null 或”” ，则返回””</p>
+<p>下面是示例(注意和 trimToEmpty() 的区别)：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">StringUtils.stripToNull(<span class="keyword">null</span>) = <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">StringUtils.stripToNull(<span class="string">&quot;&quot;</span>) = <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">StringUtils.stripToNull(<span class="string">&quot; &quot;</span>) = <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">StringUtils.stripToNull(<span class="string">&quot;   \b \t \n \f \r  &quot;</span>) = <span class="string">&quot;\b&quot;</span></span><br><span class="line"></span><br><span class="line">StringUtils.stripToNull(<span class="string">&quot;   \n\tss  \b&quot;</span>) = <span class="string">&quot;ss  \b&quot;</span></span><br><span class="line"></span><br><span class="line">StringUtils.stripToNull(<span class="string">&quot; d  d dd   &quot;</span>) = <span class="string">&quot;d  d dd&quot;</span></span><br><span class="line"></span><br><span class="line">StringUtils.stripToNull(<span class="string">&quot;dd   &quot;</span>) = <span class="string">&quot;dd&quot;</span></span><br><span class="line"></span><br><span class="line">StringUtils.stripToNull(<span class="string">&quot;   dd    &quot;</span>) = <span class="string">&quot;dd&quot;</span></span><br></pre></td></tr></table></figure>
+<h5 id="以下方法只介绍其功能，不再举例："><a href="#以下方法只介绍其功能，不再举例：" class="headerlink" title="以下方法只介绍其功能，不再举例："></a>以下方法只介绍其功能，不再举例：</h5><h6 id="strip-String-str-String-stripChars"><a href="#strip-String-str-String-stripChars" class="headerlink" title="strip(String str, String stripChars)"></a>strip(String str, String stripChars)</h6><p>public static String strip(String str, String stripChars)</p>
+<p>去掉 str 两端的在 stripChars 中的字符。</p>
+<p>如果 str 为 null 或等于”” ，则返回它本身；</p>
+<p>如果 stripChars 为 null 或”” ，则返回 strip(String str) 。</p>
+<h6 id="stripStart-String-str-String-stripChars"><a href="#stripStart-String-str-String-stripChars" class="headerlink" title="stripStart(String str, String stripChars)"></a>stripStart(String str, String stripChars)</h6><p>public static String stripStart(String str, String stripChars)</p>
+<p>和strip(String str, String stripChars)相似，去掉 str 前端的在 stripChars 中的字符。</p>
+<h6 id="stripEnd-String-str-String-stripChars"><a href="#stripEnd-String-str-String-stripChars" class="headerlink" title="stripEnd(String str, String stripChars)"></a>stripEnd(String str, String stripChars)</h6><p>public static String stripEnd(String str, String stripChars)</p>
+<p>和strip(String str, String stripChars)相似，去掉 str 末端的在 stripChars 中的字符。</p>
+<h6 id="stripAll-String-strs"><a href="#stripAll-String-strs" class="headerlink" title="stripAll(String[] strs)"></a>stripAll(String[] strs)</h6><p>public static String[] stripAll(String[] strs)</p>
+<p>对字符串数组中的每个字符串进行 strip(String str) ，然后返回。</p>
+<p>如果 strs 为 null 或 strs 长度为0，则返回 strs 本身</p>
+<h6 id="stripAll-String-strs-String-stripChars"><a href="#stripAll-String-strs-String-stripChars" class="headerlink" title="stripAll(String[] strs, String stripChars)"></a>stripAll(String[] strs, String stripChars)</h6><p>public static String[] stripAll(String[] strs, String stripChars)</p>
+<p>对字符串数组中的每个字符串进行 strip(String str, String stripChars) ，然后返回。</p>
+<p>如果 strs 为 null 或 strs 长度为0，则返回 strs 本身</p>
+<h6 id="equals-String-str1-String-str2"><a href="#equals-String-str1-String-str2" class="headerlink" title="equals(String str1, String str2)"></a>equals(String str1, String str2)</h6><p>public static boolean equals(String str1, String str2)</p>
+<p>比较两个字符串是否相等，如果两个均为空则也认为相等。</p>
+<h6 id="equalsIgnoreCase-String-str1-String-str2"><a href="#equalsIgnoreCase-String-str1-String-str2" class="headerlink" title="equalsIgnoreCase(String str1, String str2)"></a>equalsIgnoreCase(String str1, String str2)</h6><p>public static boolean equalsIgnoreCase(String str1, String str2)</p>
+<p>比较两个字符串是否相等，不区分大小写，如果两个均为空则也认为相等。</p>
+<h6 id="indexOf-String-str-char-searchChar"><a href="#indexOf-String-str-char-searchChar" class="headerlink" title="indexOf(String str, char searchChar)"></a>indexOf(String str, char searchChar)</h6><p>public static int indexOf(String str, char searchChar)</p>
+<p>返回字符 searchChar 在字符串 str 中第一次出现的位置。</p>
+<p>如果 searchChar 没有在 str 中出现则返回-1，</p>
+<p>如果 str 为 null 或 “” ，则也返回-1</p>
+<h6 id="indexOf-String-str-char-searchChar-int-startPos"><a href="#indexOf-String-str-char-searchChar-int-startPos" class="headerlink" title="indexOf(String str, char searchChar, int startPos)"></a>indexOf(String str, char searchChar, int startPos)</h6><p>public static int indexOf(String str, char searchChar, int startPos)</p>
+<p>返回字符 searchChar 从 startPos 开始在字符串 str 中第一次出现的位置。</p>
+<p>如果从 startPos 开始 searchChar 没有在 str 中出现则返回-1，</p>
+<p>如果 str 为 null 或 “” ，则也返回-1</p>
+<h6 id="indexOf-String-str-String-searchStr"><a href="#indexOf-String-str-String-searchStr" class="headerlink" title="indexOf(String str, String searchStr)"></a>indexOf(String str, String searchStr)</h6><p>public static int indexOf(String str, String searchStr)</p>
+<p>返回字符串 searchStr 在字符串 str 中第一次出现的位置。</p>
+<p>如果 str 为 null 或 searchStr 为 null 则返回-1，</p>
+<p>如果 searchStr 为 “” ,且 str 为不为 null ，则返回0，</p>
+<p>如果 searchStr 不在 str 中，则返回-1</p>
+<h6 id="ordinalIndexOf-String-str-String-searchStr-int-ordinal"><a href="#ordinalIndexOf-String-str-String-searchStr-int-ordinal" class="headerlink" title="ordinalIndexOf(String str, String searchStr, int ordinal)"></a>ordinalIndexOf(String str, String searchStr, int ordinal)</h6><p>public static int ordinalIndexOf(String str, String searchStr, int ordinal)</p>
+<p>返回字符串 searchStr 在字符串 str 中第 ordinal 次出现的位置。</p>
+<p>如果 str=null 或 searchStr=null 或 ordinal&lt;=0 则返回-1</p>
+<p>举例(*代表任意字符串)：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">StringUtils.ordinalIndexOf(<span class="keyword">null</span>, *, *) = -<span class="number">1</span></span><br><span class="line"></span><br><span class="line">StringUtils.ordinalIndexOf(*, <span class="keyword">null</span>, *) = -<span class="number">1</span></span><br><span class="line"></span><br><span class="line">StringUtils.ordinalIndexOf(<span class="string">&quot;&quot;</span>, <span class="string">&quot;&quot;</span>, *) = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">StringUtils.ordinalIndexOf(<span class="string">&quot;aabaabaa&quot;</span>, <span class="string">&quot;a&quot;</span>, <span class="number">1</span>) = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">StringUtils.ordinalIndexOf(<span class="string">&quot;aabaabaa&quot;</span>, <span class="string">&quot;a&quot;</span>, <span class="number">2</span>) = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">StringUtils.ordinalIndexOf(<span class="string">&quot;aabaabaa&quot;</span>, <span class="string">&quot;b&quot;</span>, <span class="number">1</span>) = <span class="number">2</span></span><br><span class="line"></span><br><span class="line">StringUtils.ordinalIndexOf(<span class="string">&quot;aabaabaa&quot;</span>, <span class="string">&quot;b&quot;</span>, <span class="number">2</span>) = <span class="number">5</span></span><br><span class="line"></span><br><span class="line">StringUtils.ordinalIndexOf(<span class="string">&quot;aabaabaa&quot;</span>, <span class="string">&quot;ab&quot;</span>, <span class="number">1</span>) = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">StringUtils.ordinalIndexOf(<span class="string">&quot;aabaabaa&quot;</span>, <span class="string">&quot;ab&quot;</span>, <span class="number">2</span>) = <span class="number">4</span></span><br><span class="line"></span><br><span class="line">StringUtils.ordinalIndexOf(<span class="string">&quot;aabaabaa&quot;</span>, <span class="string">&quot;bc&quot;</span>, <span class="number">1</span>) = -<span class="number">1</span></span><br><span class="line"></span><br><span class="line">StringUtils.ordinalIndexOf(<span class="string">&quot;aabaabaa&quot;</span>, <span class="string">&quot;&quot;</span>, <span class="number">1</span>) = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">StringUtils.ordinalIndexOf(<span class="string">&quot;aabaabaa&quot;</span>, <span class="string">&quot;&quot;</span>, <span class="number">2</span>) = <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<h6 id="indexOf-String-str-String-searchStr-int-startPos"><a href="#indexOf-String-str-String-searchStr-int-startPos" class="headerlink" title="indexOf(String str, String searchStr, int startPos)"></a>indexOf(String str, String searchStr, int startPos)</h6><p>public static int indexOf(String str, String searchStr, int startPos)</p>
+<p>返回字符串 searchStr 从 startPos 开始在字符串 str 中第一次出现的位置。</p>
+<p>举例(*代表任意字符串)：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">StringUtils.indexOf(<span class="keyword">null</span>, *, *) = -<span class="number">1</span></span><br><span class="line"></span><br><span class="line">StringUtils.indexOf(*, <span class="keyword">null</span>, *) = -<span class="number">1</span></span><br><span class="line"></span><br><span class="line">StringUtils.indexOf(<span class="string">&quot;&quot;</span>, <span class="string">&quot;&quot;</span>, <span class="number">0</span>) = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">StringUtils.indexOf(<span class="string">&quot;aabaabaa&quot;</span>, <span class="string">&quot;a&quot;</span>, <span class="number">0</span>) = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">StringUtils.indexOf(<span class="string">&quot;aabaabaa&quot;</span>, <span class="string">&quot;b&quot;</span>, <span class="number">0</span>) = <span class="number">2</span></span><br><span class="line"></span><br><span class="line">StringUtils.indexOf(<span class="string">&quot;aabaabaa&quot;</span>, <span class="string">&quot;ab&quot;</span>, <span class="number">0</span>) = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">StringUtils.indexOf(<span class="string">&quot;aabaabaa&quot;</span>, <span class="string">&quot;b&quot;</span>, <span class="number">3</span>) = <span class="number">5</span></span><br><span class="line"></span><br><span class="line">StringUtils.indexOf(<span class="string">&quot;aabaabaa&quot;</span>, <span class="string">&quot;b&quot;</span>, <span class="number">9</span>) = -<span class="number">1</span></span><br><span class="line"></span><br><span class="line">StringUtils.indexOf(<span class="string">&quot;aabaabaa&quot;</span>, <span class="string">&quot;b&quot;</span>, -<span class="number">1</span>) = <span class="number">2</span></span><br><span class="line"></span><br><span class="line">StringUtils.indexOf(<span class="string">&quot;aabaabaa&quot;</span>, <span class="string">&quot;&quot;</span>, <span class="number">2</span>) = <span class="number">2</span></span><br><span class="line"></span><br><span class="line">StringUtils.indexOf(<span class="string">&quot;abc&quot;</span>, <span class="string">&quot;&quot;</span>, <span class="number">9</span>) = <span class="number">3</span></span><br></pre></td></tr></table></figure>
+<h6 id="lastIndexOf-String-str-char-searchChar"><a href="#lastIndexOf-String-str-char-searchChar" class="headerlink" title="lastIndexOf(String str, char searchChar)"></a>lastIndexOf(String str, char searchChar)</h6><p>public static int lastIndexOf(String str, char searchChar)</p>
+<p>基本原理同indexOf(String str, char searchChar)</p>
+<h6 id="lastIndexOf-String-str-char-searchChar-int-startPos"><a href="#lastIndexOf-String-str-char-searchChar-int-startPos" class="headerlink" title="lastIndexOf(String str, char searchChar, int startPos)"></a>lastIndexOf(String str, char searchChar, int startPos)</h6><p>public static int lastIndexOf(String str, char searchChar, int startPos)</p>
+<p>基本原理同indexOf(String str, char searchChar, int startPos)</p>
+<h6 id="lastIndexOf-String-str-String-searchStr"><a href="#lastIndexOf-String-str-String-searchStr" class="headerlink" title="lastIndexOf(String str, String searchStr)"></a>lastIndexOf(String str, String searchStr)</h6><p>public static int lastIndexOf(String str, String searchStr)</p>
+<p>基本原理同indexOf(String str, String searchStr)</p>
+<h6 id="lastIndexOf-String-str-String-searchStr-int-startPos"><a href="#lastIndexOf-String-str-String-searchStr-int-startPos" class="headerlink" title="lastIndexOf(String str, String searchStr, int startPos)"></a>lastIndexOf(String str, String searchStr, int startPos)</h6><p>public static int lastIndexOf(String str, String searchStr, int startPos)</p>
+
+    </div>
+
+    
+    
+    
+      
+  <div class="popular-posts-header">相关文章</div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2020\06\14\20\53\JWT授权验证\" rel="bookmark">JWT授权验证</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2020\04\26\16\27\Java小知识\" rel="bookmark">Java小知识</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2020\05\02\16\35\Java面经三\" rel="bookmark">Java面经三</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2020\05\04\21\51\Java面经五\" rel="bookmark">Java面经五</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2020\05\01\08\14\Java面经二\" rel="bookmark">Java面经二</a></div>
+    </li>
+  </ul>
+
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Kuang
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://isdear.github.io/2021/01/16/22/43/StringUtils%E5%88%A4%E6%96%AD%E9%9D%9E%E7%A9%BA%E9%97%AE%E9%A2%98/" title="StringUtils判断非空问题">http://isdear.github.io/2021/01/16/22/43/StringUtils判断非空问题/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/java/" rel="tag"># java</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/01/16/18/35/java%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%A8%A1%E7%B3%8A%E5%8C%B9%E9%85%8D/" rel="prev" title="java字符串模糊匹配">
+                  <i class="fa fa-chevron-left"></i> java字符串模糊匹配
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+  
+  
+  
+
+
+
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kuang</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">240k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">13:18</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8.6.4/dist/mermaid.min.js', () => {
+    mermaid.init({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    }, '.mermaid');
+  }, window.mermaid);
+}
+</script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
