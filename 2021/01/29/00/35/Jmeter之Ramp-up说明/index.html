@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1.0.2/themes/blue/pace-theme-minimal.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"isdear.github.io","root":"/","scheme":"Pisces","version":"8.0.0-rc.5","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+
+  <meta name="description" content="Jmeter的Ramp-up Period(in seconds)说明。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Jmeter之Ramp-up说明">
+<meta property="og:url" content="http://isdear.github.io/2021/01/29/00/35/Jmeter%E4%B9%8BRamp-up%E8%AF%B4%E6%98%8E/index.html">
+<meta property="og:site_name" content="Welcome to my hexo">
+<meta property="og:description" content="Jmeter的Ramp-up Period(in seconds)说明。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://isdear.github.io/2021/01/29/00/35/Jmeter%E4%B9%8BRamp-up%E8%AF%B4%E6%98%8E/616773-20180616095558954-348224490.png">
+<meta property="og:image" content="http://isdear.github.io/2021/01/29/00/35/Jmeter%E4%B9%8BRamp-up%E8%AF%B4%E6%98%8E/20151119183549134.png">
+<meta property="og:image" content="http://isdear.github.io/2021/01/29/00/35/Jmeter%E4%B9%8BRamp-up%E8%AF%B4%E6%98%8E/616773-20180616105219007-1762447488.png">
+<meta property="article:published_time" content="2021-01-28T16:35:25.000Z">
+<meta property="article:modified_time" content="2021-01-28T16:42:09.417Z">
+<meta property="article:author" content="Kuang">
+<meta property="article:tag" content="Jmeter">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://isdear.github.io/2021/01/29/00/35/Jmeter%E4%B9%8BRamp-up%E8%AF%B4%E6%98%8E/616773-20180616095558954-348224490.png">
+
+
+<link rel="canonical" href="http://isdear.github.io/2021/01/29/00/35/Jmeter%E4%B9%8BRamp-up%E8%AF%B4%E6%98%8E/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Jmeter之Ramp-up说明 | Welcome to my hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Welcome to my hexo</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-首页">
+
+    <a href="/" rel="section"><i class="home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-关于">
+
+    <a href="/about/" rel="section"><i class="user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-标签">
+
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-类别">
+
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>类别</a>
+
+  </li>
+        <li class="menu-item menu-item-档案">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>档案</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#Ramp-up-Period%EF%BC%88in-seconds%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">Ramp-up Period（in seconds）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Delay-Thread-creation-until-needed"><span class="nav-number">2.</span> <span class="nav-text">Delay Thread creation until needed</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%B0%83%E5%BA%A6%E5%99%A8"><span class="nav-number">3.</span> <span class="nav-text">调度器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E9%80%82%E5%BD%93%E7%9A%84%E5%80%BC%E5%B9%B6%E4%B8%8D%E8%BD%BB%E6%98%93%E3%80%82"><span class="nav-number">4.</span> <span class="nav-text">如何设置适当的值并不轻易。</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E9%A6%96%E5%85%88%EF%BC%8C%E5%81%87%E5%A6%82%E8%A6%81%E4%BD%BF%E7%94%A8%E5%A4%A7%E9%87%8F%E7%BA%BF%E7%A8%8B%E7%9A%84%E8%AF%9D%EF%BC%8Cramp-up-period-%E4%B8%80%E8%88%AC%E4%B8%8D%E8%A6%81%E8%AE%BE%E7%BD%AE%E6%88%90%E9%9B%B6%E3%80%82"><span class="nav-number">4.1.</span> <span class="nav-text">首先，假如要使用大量线程的话，ramp-up period 一般不要设置成零。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%85%B6%E6%AC%A1%EF%BC%8C-%E5%9C%A8%E6%B5%8B%E8%AF%95%E8%AE%A1%E5%88%92%EF%BC%88test-plan%EF%BC%89%E4%B8%AD%E5%A2%9E%E5%8A%A0%E4%B8%80%E4%B8%AA%E8%81%9A%E5%90%88%E6%8A%A5%E5%91%8A%E7%9B%91%E5%90%AC%E5%99%A8%EF%BC%8C"><span class="nav-number">4.2.</span> <span class="nav-text">其次， 在测试计划（test plan）中增加一个聚合报告监听器，</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%EF%BC%8C-%E6%9F%A5%E9%AA%8C%E4%B8%80%E4%B8%8BJmeter%E6%97%A5%E5%BF%97"><span class="nav-number">4.3.</span> <span class="nav-text">第三， 查验一下Jmeter日志</span></a></li></ol></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Kuang"
+      src="/images/kenan.jpg">
+  <p class="site-author-name" itemprop="name">Kuang</p>
+  <div class="site-description" itemprop="description">个人博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">73</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Isdear" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Isdear" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/kuang8421@qq.com" title="E-Mail → kuang8421@qq.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/269017831" title="B站 → https:&#x2F;&#x2F;space.bilibili.com&#x2F;269017831" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>B站</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/1906956615" title="QQ → 1906956615"><i class="fab fa-qq fa-fw"></i>QQ</a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://isdear.github.io/2021/01/29/00/35/Jmeter%E4%B9%8BRamp-up%E8%AF%B4%E6%98%8E/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/kenan.jpg">
+      <meta itemprop="name" content="Kuang">
+      <meta itemprop="description" content="个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to my hexo">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Jmeter之Ramp-up说明
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-01-29 00:35:25 / 修改时间：00:42:09" itemprop="dateCreated datePublished" datetime="2021-01-29T00:35:25+08:00">2021-01-29</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">测试</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="far fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span class="post-meta-item-text">本文字数：</span>
+              <span>2.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>8 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>Jmeter的Ramp-up Period(in seconds)说明。<a id="more"></a></p>
+<h5 id="Ramp-up-Period（in-seconds）"><a href="#Ramp-up-Period（in-seconds）" class="headerlink" title="Ramp-up Period（in seconds）"></a>Ramp-up Period（in seconds）</h5><p>【1】决定多长时间启动所有线程。如果使用10个线程，ramp-up period是100秒，那么JMeter用100秒使所有10个线程启动并运行。每个线程会在上一个线程启动后10秒（100/10）启动。Ramp-up需要要充足长以避免在启动测试时有一个太大的工作负载，并且要充足小以至于最后一个线程在第一个完成前启动。  一般设置ramp-up=线程数启动，并上下调整到所需的。</p>
+<p>【2】用于告知JMeter 要在多长时间内建立全部的线程。默认值是0。如果未指定ramp-up period ，也就是说ramp-up period 为零， JMeter 将立即建立所有线程。假设ramp-up period 设置成T 秒， 全部线程数设置成N个， JMeter 将每隔T/N秒建立一个线程。</p>
+<p>【3】Ramp-Up Period(in-seconds)代表隔多长时间执行，0代表同时并发</p>
+<h5 id="Delay-Thread-creation-until-needed"><a href="#Delay-Thread-creation-until-needed" class="headerlink" title="Delay Thread creation until needed"></a>Delay Thread creation until needed</h5><p>延迟创建线程，直到该线程开始采样，即之后的任何线程组延迟和加速时间为线程本身。这样可以支持更多的线程，但不会有太多是同时处于活动状态。</p>
+<p>​     </p>
+<h5 id="调度器"><a href="#调度器" class="headerlink" title="调度器"></a>调度器</h5><p>选中调度器后，需要输入启动和结束时间。当测试启动时，如果必须JMeter会等待启动时间到达。在每个周期 结束，JMeter检验结束时间是否到达，如果是，运行停止，如果不是测试被允许继续，直到迭代限制到达。 </p>
+<p>另外你可以使用启动延迟和持续时间文本域。注意启动延迟会覆盖启动时间，持续时间会覆盖结束时间。</p>
+<p> <img src="/2021/01/29/00/35/Jmeter%E4%B9%8BRamp-up%E8%AF%B4%E6%98%8E/616773-20180616095558954-348224490.png" alt></p>
+<h5 id="如何设置适当的值并不轻易。"><a href="#如何设置适当的值并不轻易。" class="headerlink" title="如何设置适当的值并不轻易。"></a>如何设置适当的值并不轻易。</h5><h6 id="首先，假如要使用大量线程的话，ramp-up-period-一般不要设置成零。"><a href="#首先，假如要使用大量线程的话，ramp-up-period-一般不要设置成零。" class="headerlink" title="首先，假如要使用大量线程的话，ramp-up period 一般不要设置成零。"></a>首先，假如要使用大量线程的话，ramp-up period 一般不要设置成零。</h6><p>因为假如设置成零，Jmeter将会在测试的开始就建立全部线程并立即发送访问请求， 这样一来就很轻易使服务器饱和，更重要的是会隐性地增加了负载，这就意味着服务器将可能过载，不是因为平均访问率高而是因为所有线程的第一次并发访问而引起的不正常的初始访问峰值，可以通过Jmeter的聚合报告监听器看到这种现象。<br>这种异常不是我们需要的，因此，确定一个合理的ramp-up period 的规则就是让初始点击率接近平均点击率。当然，也许需要运行一些测试来确定合理访问量。</p>
+<p>基于同样的原因，过大的ramp-up period 也是不恰当的，因为将会降低访问峰值的负载，换句话说，在一些线程还未启动时，初期启动的部分线程可能已经结束了。</p>
+<p>那么，如何检验ramp-up period I太小了或者太大了呢？首先，初始的ramp-up period=平均点击率并用总线程/点击率。 例如，假设线程数为100， 估计的点击率为每秒10次， 那么估计的理想ramp-up period 就是 100/10 = 10 秒。 那么，应怎样来提出一个合理的平均点击率呢？没有什么好办法，必须通过运行一次测试脚本来获得。</p>
+<h6 id="其次，-在测试计划（test-plan）中增加一个聚合报告监听器，"><a href="#其次，-在测试计划（test-plan）中增加一个聚合报告监听器，" class="headerlink" title="其次， 在测试计划（test plan）中增加一个聚合报告监听器，"></a>其次， 在测试计划（test plan）中增加一个聚合报告监听器，</h6><p>如图2所示，其中包含了所有独立的访问请求（一个samplers）的平均点击率。 第一次取样的点击率（如http请求）与ramp-up period 和线程数量密切相关。通过调整ramp-up period 可以使首次取样的点击率接近平均取样的点击率。</p>
+<h6 id="第三，-查验一下Jmeter日志"><a href="#第三，-查验一下Jmeter日志" class="headerlink" title="第三， 查验一下Jmeter日志"></a>第三， 查验一下Jmeter日志</h6><p>Jmeter日志(文件位置：JMeter_Home_Directory/bin) 的最后一个线程开始时第一个线程是否真正结束了，二者的时间差是否正常。</p>
+<p>总之，是否能确定一个适当的ramp-up time 取决于以下两条规则:<br>　* 第一个取样器的点击率（hit rate）是否接近其他取样器的平均值，从而能否避免ramp-up period 过小。<br>　* 在最后一个线程启动时，第一个线程是否在真正结束了，最好二者的时间要尽可能的长，以避免ramp-up period过大。</p>
+<p>有时，这两条规则的结论会互相冲突。 这就意味着无法找到同时满足两条规则的合适的ramp-up period。 糟糕的测试计划通常会导致这些问题，这是因为在这样的测试计划里，取样器将不能充分地采集数据，可能因为测试计划执行时间太短并且线程会很快的运行结束</p>
+<p>假设：</p>
+<p>线程数：n</p>
+<p>Ramp-Up Period：T （有人称之为启动时间，有人说是准备时长，看个人喜好）</p>
+<p>循环次数：a </p>
+<p>若每个循环运行时间是 t</p>
+<p>当时间到 S = (T- T/n)时，最后一个线程启动，若要使所有线程同时运作，则需要在最后一个线程启动的时候第一个线程仍未关闭，为达到这个要求，需满足 a·t &gt; S及a &gt; S/t</p>
+<p>每一个个线程运行时间既是R = a·t(此处的a是大于S/t的某一值)，则第一个线程在时间点为R 的时候停止，整个测试理论运行时间则是 ：S + R = (1-1/n)·T + a·t</p>
+<p>总结：</p>
+<p>测试中变量是 线程数 n ，每个循环时间 t 是个实践值，循环次数 a 只是为了延长单个线程的运行时间，从而保证当最后一个线程启动时，所有线程都在运行中，达到压测效果。</p>
+<p>以上是我个人的总结，额，什么？看不懂！其实笔者写完了也晕了，下面我们用确切的数值进行试验</p>
+<p>我们设置线程数 n = 5，循环次数a = 1000，请求<a href="http://www.google.com，得到聚合报告如图：">www.google.com，得到聚合报告如图：</a></p>
+<p><img src="/2021/01/29/00/35/Jmeter%E4%B9%8BRamp-up%E8%AF%B4%E6%98%8E/20151119183549134.png" alt></p>
+<p>图中得到谷歌首页的平均请求时间大约为t = 0.2秒</p>
+<p>这里，我们为了方便分析，将Ramp-Up Period 设置为T = 10秒（实际合理的时间后面会说明）</p>
+<p>依然是n = 5，得到 S = (T- T/n) = 8 ，也就是说，从第一个线程启动到第8秒的时候，最后一个线程开始启动，若需要在最后一个线程启动的时候第一个线程仍未关闭，则需要满足 a·t &gt; S ，已知S = 8,t = 0.2，得到 a &gt; 40 。</p>
+<p>OK，既然循环次数要大于40，我们不妨把循环设置成100，那么单个线程运行时间就是R = a·t = 20秒，也就是说第一个线程会在第20秒的时候停止，整个测试的理论运行时间为 S + R = (1-1/n)·T + a·t = 28秒</p>
+<p>我们用一张图来直观的看看每个线程的运行情况</p>
+<p> <img src="/2021/01/29/00/35/Jmeter%E4%B9%8BRamp-up%E8%AF%B4%E6%98%8E/616773-20180616105219007-1762447488.png" alt></p>
+<p>从图中可以得到从第8秒开始，到第20秒，5个线程同时在运行中，此时才是真正的模拟5个用户同时并发</p>
+
+    </div>
+
+    
+    
+    
+      
+
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Kuang
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://isdear.github.io/2021/01/29/00/35/Jmeter%E4%B9%8BRamp-up%E8%AF%B4%E6%98%8E/" title="Jmeter之Ramp-up说明">http://isdear.github.io/2021/01/29/00/35/Jmeter之Ramp-up说明/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Jmeter/" rel="tag"># Jmeter</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/01/16/22/43/StringUtils%E5%88%A4%E6%96%AD%E9%9D%9E%E7%A9%BA%E9%97%AE%E9%A2%98/" rel="prev" title="StringUtils判断非空问题">
+                  <i class="fa fa-chevron-left"></i> StringUtils判断非空问题
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+  
+  
+  
+
+
+
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kuang</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">242k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">13:27</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8.6.4/dist/mermaid.min.js', () => {
+    mermaid.init({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    }, '.mermaid');
+  }, window.mermaid);
+}
+</script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

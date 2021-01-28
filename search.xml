@@ -6756,4 +6756,50 @@
         <tag>java</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Jmeter之Ramp-up说明</title>
+    <url>/2021/01/29/00/35/Jmeter%E4%B9%8BRamp-up%E8%AF%B4%E6%98%8E/</url>
+    <content><![CDATA[<p>Jmeter的Ramp-up Period(in seconds)说明。<a id="more"></a></p>
+<h5 id="Ramp-up-Period（in-seconds）"><a href="#Ramp-up-Period（in-seconds）" class="headerlink" title="Ramp-up Period（in seconds）"></a>Ramp-up Period（in seconds）</h5><p>【1】决定多长时间启动所有线程。如果使用10个线程，ramp-up period是100秒，那么JMeter用100秒使所有10个线程启动并运行。每个线程会在上一个线程启动后10秒（100/10）启动。Ramp-up需要要充足长以避免在启动测试时有一个太大的工作负载，并且要充足小以至于最后一个线程在第一个完成前启动。  一般设置ramp-up=线程数启动，并上下调整到所需的。</p>
+<p>【2】用于告知JMeter 要在多长时间内建立全部的线程。默认值是0。如果未指定ramp-up period ，也就是说ramp-up period 为零， JMeter 将立即建立所有线程。假设ramp-up period 设置成T 秒， 全部线程数设置成N个， JMeter 将每隔T/N秒建立一个线程。</p>
+<p>【3】Ramp-Up Period(in-seconds)代表隔多长时间执行，0代表同时并发</p>
+<h5 id="Delay-Thread-creation-until-needed"><a href="#Delay-Thread-creation-until-needed" class="headerlink" title="Delay Thread creation until needed"></a>Delay Thread creation until needed</h5><p>延迟创建线程，直到该线程开始采样，即之后的任何线程组延迟和加速时间为线程本身。这样可以支持更多的线程，但不会有太多是同时处于活动状态。</p>
+<p>​     </p>
+<h5 id="调度器"><a href="#调度器" class="headerlink" title="调度器"></a>调度器</h5><p>选中调度器后，需要输入启动和结束时间。当测试启动时，如果必须JMeter会等待启动时间到达。在每个周期 结束，JMeter检验结束时间是否到达，如果是，运行停止，如果不是测试被允许继续，直到迭代限制到达。 </p>
+<p>另外你可以使用启动延迟和持续时间文本域。注意启动延迟会覆盖启动时间，持续时间会覆盖结束时间。</p>
+<p> <img src="/2021/01/29/00/35/Jmeter%E4%B9%8BRamp-up%E8%AF%B4%E6%98%8E/616773-20180616095558954-348224490.png" alt></p>
+<h5 id="如何设置适当的值并不轻易。"><a href="#如何设置适当的值并不轻易。" class="headerlink" title="如何设置适当的值并不轻易。"></a>如何设置适当的值并不轻易。</h5><h6 id="首先，假如要使用大量线程的话，ramp-up-period-一般不要设置成零。"><a href="#首先，假如要使用大量线程的话，ramp-up-period-一般不要设置成零。" class="headerlink" title="首先，假如要使用大量线程的话，ramp-up period 一般不要设置成零。"></a>首先，假如要使用大量线程的话，ramp-up period 一般不要设置成零。</h6><p>因为假如设置成零，Jmeter将会在测试的开始就建立全部线程并立即发送访问请求， 这样一来就很轻易使服务器饱和，更重要的是会隐性地增加了负载，这就意味着服务器将可能过载，不是因为平均访问率高而是因为所有线程的第一次并发访问而引起的不正常的初始访问峰值，可以通过Jmeter的聚合报告监听器看到这种现象。<br>这种异常不是我们需要的，因此，确定一个合理的ramp-up period 的规则就是让初始点击率接近平均点击率。当然，也许需要运行一些测试来确定合理访问量。</p>
+<p>基于同样的原因，过大的ramp-up period 也是不恰当的，因为将会降低访问峰值的负载，换句话说，在一些线程还未启动时，初期启动的部分线程可能已经结束了。</p>
+<p>那么，如何检验ramp-up period I太小了或者太大了呢？首先，初始的ramp-up period=平均点击率并用总线程/点击率。 例如，假设线程数为100， 估计的点击率为每秒10次， 那么估计的理想ramp-up period 就是 100/10 = 10 秒。 那么，应怎样来提出一个合理的平均点击率呢？没有什么好办法，必须通过运行一次测试脚本来获得。</p>
+<h6 id="其次，-在测试计划（test-plan）中增加一个聚合报告监听器，"><a href="#其次，-在测试计划（test-plan）中增加一个聚合报告监听器，" class="headerlink" title="其次， 在测试计划（test plan）中增加一个聚合报告监听器，"></a>其次， 在测试计划（test plan）中增加一个聚合报告监听器，</h6><p>如图2所示，其中包含了所有独立的访问请求（一个samplers）的平均点击率。 第一次取样的点击率（如http请求）与ramp-up period 和线程数量密切相关。通过调整ramp-up period 可以使首次取样的点击率接近平均取样的点击率。</p>
+<h6 id="第三，-查验一下Jmeter日志"><a href="#第三，-查验一下Jmeter日志" class="headerlink" title="第三， 查验一下Jmeter日志"></a>第三， 查验一下Jmeter日志</h6><p>Jmeter日志(文件位置：JMeter_Home_Directory/bin) 的最后一个线程开始时第一个线程是否真正结束了，二者的时间差是否正常。</p>
+<p>总之，是否能确定一个适当的ramp-up time 取决于以下两条规则:<br>　* 第一个取样器的点击率（hit rate）是否接近其他取样器的平均值，从而能否避免ramp-up period 过小。<br>　* 在最后一个线程启动时，第一个线程是否在真正结束了，最好二者的时间要尽可能的长，以避免ramp-up period过大。</p>
+<p>有时，这两条规则的结论会互相冲突。 这就意味着无法找到同时满足两条规则的合适的ramp-up period。 糟糕的测试计划通常会导致这些问题，这是因为在这样的测试计划里，取样器将不能充分地采集数据，可能因为测试计划执行时间太短并且线程会很快的运行结束</p>
+<p>假设：</p>
+<p>线程数：n</p>
+<p>Ramp-Up Period：T （有人称之为启动时间，有人说是准备时长，看个人喜好）</p>
+<p>循环次数：a </p>
+<p>若每个循环运行时间是 t</p>
+<p>当时间到 S = (T- T/n)时，最后一个线程启动，若要使所有线程同时运作，则需要在最后一个线程启动的时候第一个线程仍未关闭，为达到这个要求，需满足 a·t &gt; S及a &gt; S/t</p>
+<p>每一个个线程运行时间既是R = a·t(此处的a是大于S/t的某一值)，则第一个线程在时间点为R 的时候停止，整个测试理论运行时间则是 ：S + R = (1-1/n)·T + a·t</p>
+<p>总结：</p>
+<p>测试中变量是 线程数 n ，每个循环时间 t 是个实践值，循环次数 a 只是为了延长单个线程的运行时间，从而保证当最后一个线程启动时，所有线程都在运行中，达到压测效果。</p>
+<p>以上是我个人的总结，额，什么？看不懂！其实笔者写完了也晕了，下面我们用确切的数值进行试验</p>
+<p>我们设置线程数 n = 5，循环次数a = 1000，请求<a href="http://www.google.com，得到聚合报告如图：">www.google.com，得到聚合报告如图：</a></p>
+<p><img src="/2021/01/29/00/35/Jmeter%E4%B9%8BRamp-up%E8%AF%B4%E6%98%8E/20151119183549134.png" alt></p>
+<p>图中得到谷歌首页的平均请求时间大约为t = 0.2秒</p>
+<p>这里，我们为了方便分析，将Ramp-Up Period 设置为T = 10秒（实际合理的时间后面会说明）</p>
+<p>依然是n = 5，得到 S = (T- T/n) = 8 ，也就是说，从第一个线程启动到第8秒的时候，最后一个线程开始启动，若需要在最后一个线程启动的时候第一个线程仍未关闭，则需要满足 a·t &gt; S ，已知S = 8,t = 0.2，得到 a &gt; 40 。</p>
+<p>OK，既然循环次数要大于40，我们不妨把循环设置成100，那么单个线程运行时间就是R = a·t = 20秒，也就是说第一个线程会在第20秒的时候停止，整个测试的理论运行时间为 S + R = (1-1/n)·T + a·t = 28秒</p>
+<p>我们用一张图来直观的看看每个线程的运行情况</p>
+<p> <img src="/2021/01/29/00/35/Jmeter%E4%B9%8BRamp-up%E8%AF%B4%E6%98%8E/616773-20180616105219007-1762447488.png" alt></p>
+<p>从图中可以得到从第8秒开始，到第20秒，5个线程同时在运行中，此时才是真正的模拟5个用户同时并发</p>
+]]></content>
+      <categories>
+        <category>测试</category>
+      </categories>
+      <tags>
+        <tag>Jmeter</tag>
+      </tags>
+  </entry>
 </search>
