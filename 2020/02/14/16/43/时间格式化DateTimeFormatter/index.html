@@ -312,6 +312,8 @@
         </h1>
 
         <div class="post-meta">
+
+          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
@@ -369,13 +371,9 @@
     <div class="post-body" itemprop="articleBody">
         <p>DateTimeFormatter类提供了三种时间格式化方法。<a id="more"></a></p>
 <h6 id="默认格式"><a href="#默认格式" class="headerlink" title="默认格式"></a>默认格式</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 1.新建一个DateTimeFormatter对象</span></span><br><span class="line">        DateTimeFormatter isoDate = DateTimeFormatter.ISO_DATE;</span><br><span class="line">        </span><br><span class="line">        LocalDateTime ldt1 = LocalDateTime.now();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 2.调用该对象的format方法，参数是需要格式化的LocalDateTime对象。</span></span><br><span class="line">        String format = isoDate.format(ldt1);</span><br><span class="line">        </span><br><span class="line">        System.out.println(<span class="string">&quot;时间是：&quot;</span> + format);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
 <h6 id="自定义格式"><a href="#自定义格式" class="headerlink" title="自定义格式"></a>自定义格式</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 1.新建一个DateTimeFormatter对象，调用ofPattern方法。</span></span><br><span class="line">        DateTimeFormatter pattern = DateTimeFormatter.ofPattern(<span class="string">&quot;yyyy年MM月dd日 HH时mm分ss秒&quot;</span>, Locale.CHINA);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 2.调用该对象的format方法，参数是需要格式化的LocalDateTime对象。</span></span><br><span class="line">        String format = pattern.format(LocalDateTime.now());</span><br><span class="line">        </span><br><span class="line">        System.out.println(<span class="string">&quot;时间是：&quot;</span> + format);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
 <h6 id="自定义格式时间解析"><a href="#自定义格式时间解析" class="headerlink" title="自定义格式时间解析"></a>自定义格式时间解析</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test3</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 1.新建一个时间的字符串对象。</span></span><br><span class="line">        String dateTime = <span class="string">&quot;2020年02月12日 22点22分22秒&quot;</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 2.新建一个DateTimeFormatter对象，调用ofPattern方法。</span></span><br><span class="line">        DateTimeFormatter pattern = DateTimeFormatter.ofPattern(<span class="string">&quot;yyyy年MM月dd日 HH点mm分ss秒&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 3.调用DateTimeFormatter对象的parse方法，进行解析，返回一个TemporalAccessor对象。</span></span><br><span class="line">        TemporalAccessor parse = pattern.parse(dateTime);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 4.调用LocalDateTime的静态方法form，将TemporalAccessor转换成LocalDateTime对象。</span></span><br><span class="line">        LocalDateTime ldt1 = LocalDateTime.from(parse);</span><br><span class="line">        </span><br><span class="line">        System.out.println(<span class="string">&quot;LocalDateTime：&quot;</span> + ldt1);</span><br><span class="line">        System.out.println(<span class="string">&quot;LocalDateTime：&quot;</span> + LocalDateTime.now());</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<h6 id="输出结果"><a href="#输出结果" class="headerlink" title="输出结果"></a>输出结果</h6><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">时间是：<span class="number">2020</span><span class="number">-02</span><span class="number">-14</span></span><br><span class="line">时间是：<span class="number">2020</span>年<span class="number">02</span>月<span class="number">14</span>日 <span class="number">16</span>时<span class="number">30</span>分<span class="number">55</span>秒</span><br><span class="line">LocalDateTime：<span class="number">2020</span><span class="number">-02</span><span class="number">-12</span>T22:<span class="number">22</span>:<span class="number">22</span></span><br><span class="line">LocalDateTime：<span class="number">2020</span><span class="number">-02</span><span class="number">-14</span>T16:<span class="number">30</span>:<span class="number">55.544</span></span><br></pre></td></tr></table></figure>
-
+<h6 id="输出结果"><a href="#输出结果" class="headerlink" title="输出结果"></a>输出结果</h6><figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">时间是：2020<span class="string">-02</span><span class="string">-14</span></span><br><span class="line">时间是：2020年02月14日 16时30分55秒</span><br><span class="line">LocalDateTime：2020<span class="string">-02</span><span class="string">-12</span>T22:22:22</span><br><span class="line">LocalDateTime：2020<span class="string">-02</span><span class="string">-14</span>T16:30:55.544</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -386,19 +384,19 @@
   <div class="popular-posts-header">相关文章</div>
   <ul class="popular-posts">
     <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2020\11\16\22\42\JAVA设置Excel单元格格式\" rel="bookmark">JAVA设置Excel单元格格式</a></div>
+    </li>
+    <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="\2020\06\14\20\53\JWT授权验证\" rel="bookmark">JWT授权验证</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2020\10\26\23\26\Java取消Double类型显示科学计数法\" rel="bookmark">Java取消Double类型显示科学计数法</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="\2020\04\26\16\27\Java小知识\" rel="bookmark">Java小知识</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2020\05\02\16\35\Java面经三\" rel="bookmark">Java面经三</a></div>
-    </li>
-    <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2020\05\04\21\51\Java面经五\" rel="bookmark">Java面经五</a></div>
-    </li>
-    <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2020\05\01\08\14\Java面经二\" rel="bookmark">Java面经二</a></div>
+      <div class="popular-posts-title"><a href="\2020\10\26\23\27\Java的Date类型计算\" rel="bookmark">Java的Date类型计算</a></div>
     </li>
   </ul>
 

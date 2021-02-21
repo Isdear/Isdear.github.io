@@ -312,6 +312,8 @@
         </h1>
 
         <div class="post-meta">
+
+          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
@@ -379,72 +381,51 @@
 <p>所有必备的应用程序安装完成后，就可以利用npm安装Hexo。</p>
 <h5 id="Hexo安装"><a href="#Hexo安装" class="headerlink" title="Hexo安装"></a>Hexo安装</h5><p>利用命令提示符输入以下命令安装Hexo：</p>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span> -g hexo</span><br></pre></td></tr></table></figure>
-
 <p>新建一个文件夹用来部署你的博客项目，进入文件夹右键Git Bash Here打开git bush命令界面，输入下列命令初始化文件夹(以便后面部署到GitHub上)：</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">hexo init</span></span><br></pre></td></tr></table></figure>
-
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo <span class="keyword">init</span></span><br></pre></td></tr></table></figure>
 <p>在文件夹中安装npm:</p>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span></span><br></pre></td></tr></table></figure>
-
 <p>安装git部署插件:</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span> hexo-deployer-git <span class="comment">--save</span></span><br></pre></td></tr></table></figure>
-
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git <span class="comment">--save</span></span><br></pre></td></tr></table></figure>
 <h5 id="服务器端运行"><a href="#服务器端运行" class="headerlink" title="服务器端运行"></a>服务器端运行</h5><p>可以通过下面的命令在本地服务器运行，在浏览器中输入 <a target="_blank" rel="noopener" href="http://localhost:4000">http://localhost:4000</a> 即可，但是需要一直保持连接不断开:</p>
 <figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo <span class="keyword">server</span></span><br></pre></td></tr></table></figure>
-
 <p>也可以利用SSH上传博客项目到GitHub的repository仓库上，就可以用网络直接访问仓库名即可打开博客。</p>
 <h6 id="创建GitHub账号"><a href="#创建GitHub账号" class="headerlink" title="创建GitHub账号"></a>创建GitHub账号</h6><p>在 <a target="_blank" rel="noopener" href="https://github.com/">https://github.com/</a> 上注册账号，完成后，在 <a target="_blank" rel="noopener" href="https://github.com">https://github.com</a> 页面点击右上角”+”的”new repository”创建自己的项目仓库，仓库名称是”自己的github名称.github.io”，例如我的github账号名称Isdear，仓库名即为”Isdear.github.io”。</p>
 <h6 id="关联本地仓库"><a href="#关联本地仓库" class="headerlink" title="关联本地仓库"></a>关联本地仓库</h6><p>右键点击Git Bash Here进入命令界面，通过命令绑定账户。</p>
 <p>配置用户名</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git<span class="built_in"> config </span>--global user.name <span class="string">&quot;yourname&quot;</span></span><br></pre></td></tr></table></figure>
-
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">config</span> --<span class="keyword">global</span> user<span class="variable">.name</span> <span class="string">&quot;yourname&quot;</span></span><br></pre></td></tr></table></figure>
 <p>配置GitHub账户邮箱</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git<span class="built_in"> config </span>--global user.email <span class="string">&quot;youremail@example.com&quot;</span></span><br></pre></td></tr></table></figure>
-
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">config</span> --<span class="keyword">global</span> user<span class="variable">.email</span> <span class="string">&quot;youremail@example.com&quot;</span></span><br></pre></td></tr></table></figure>
 <p>输入命令生成SSH key:</p>
 <figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -<span class="built_in">t</span> rsa -C <span class="string">&quot;youremail@example.com&quot;</span></span><br></pre></td></tr></table></figure>
-
 <p>命令界面会显示生成的位置，例如我的是在”c/users/dell/.ssh/id_rsa.pub”。打开id_rsa.pub文件，里面的内容全部复制。在网页中点击GitHub账户头像选择”Settings”，再点击”SSH and GPG keys”，点击SSH右边的”new SSH key”，Title可以随便输入，Key中就将刚刚复制的密钥粘贴过去，点击”Add SSH key”，之后就会生成的16进制的SSH 密令。打开GitHub上的仓库，复制SSH地址链接，</p>
 <p>Git Bash中输入关联GitHub账户:</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ssh</span> git<span class="variable">@github</span>.com</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh <span class="symbol">git@</span>github.com</span><br></pre></td></tr></table></figure>
 <p>在你的博客项目文件夹中打开”_config.yml”文件，直接拉到最下面配置项目部署环境。</p>
 <figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">deploy</span>:</span><br><span class="line">  <span class="attribute">type</span>: git</span><br><span class="line">  <span class="attribute">repository</span>: git<span class="variable">@github</span>.<span class="attribute">com</span>:Isdear/Isdear.github.io.git</span><br><span class="line">  <span class="attribute">branch</span>: master</span><br></pre></td></tr></table></figure>
-
 <h6 id="部署项目"><a href="#部署项目" class="headerlink" title="部署项目"></a>部署项目</h6><p>在Git Bash界面输入下面的命令，生成博客项目的静态文件</p>
 <figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo <span class="keyword">generate</span></span><br></pre></td></tr></table></figure>
-
 <p>部署到GitHub上:</p>
 <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">hexo deploy</span></span><br></pre></td></tr></table></figure>
-
 <p>接下来就可以直接浏览器的地址栏输入你的GitHub仓库名即可访问博客。</p>
 <h5 id="主题配置"><a href="#主题配置" class="headerlink" title="主题配置"></a>主题配置</h5><p>Hexo可以在 <a target="_blank" rel="noopener" href="https://hexo.io/themes/">https://hexo.io/themes/</a> 选择博客的主题，点击主题的名称，进入到主题的GitHub仓库，下载ZIP压缩包，解压后把文件夹放入到博客项目的themes目录下(文件夹名字有点长，可以重命名一下)。在博客项目主目录下打开”_config.yml”文件，修改theme属性，默认是”landscape”，你把它修改成你下载的主题的文件夹名称就可以了，重新执行生成和部署命令，就可以看到博客的新主题了。</p>
 <h5 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h5><p>这里只是提出一些常用的命令，更多命令还是到官方文档查看。</p>
-<h6 id="初始化本地文件夹为网站的根目录"><a href="#初始化本地文件夹为网站的根目录" class="headerlink" title="初始化本地文件夹为网站的根目录"></a>初始化本地文件夹为网站的根目录</h6><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">hexo init</span></span><br></pre></td></tr></table></figure>
-
+<h6 id="初始化本地文件夹为网站的根目录"><a href="#初始化本地文件夹为网站的根目录" class="headerlink" title="初始化本地文件夹为网站的根目录"></a>初始化本地文件夹为网站的根目录</h6><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo <span class="keyword">init</span></span><br></pre></td></tr></table></figure>
 <h6 id="新建文章"><a href="#新建文章" class="headerlink" title="新建文章"></a>新建文章</h6><figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo <span class="keyword">new</span> [layout] <span class="built_in">title</span></span><br></pre></td></tr></table></figure>
-
 <h6 id="生成静态文件"><a href="#生成静态文件" class="headerlink" title="生成静态文件"></a>生成静态文件</h6><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo <span class="keyword">generate</span></span><br><span class="line">可以简写为</span><br><span class="line">hexo g</span><br></pre></td></tr></table></figure>
-
-<h6 id="启动本地服务器"><a href="#启动本地服务器" class="headerlink" title="启动本地服务器"></a>启动本地服务器</h6><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br><span class="line">可以简写为</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-
-<h6 id="部署网站"><a href="#部署网站" class="headerlink" title="部署网站"></a>部署网站</h6><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">hexo</span> <span class="string">deploy</span></span><br><span class="line"><span class="attr">可以简写为</span></span><br><span class="line"><span class="attr">hexo</span> <span class="string">d</span></span><br></pre></td></tr></table></figure>
-
+<h6 id="启动本地服务器"><a href="#启动本地服务器" class="headerlink" title="启动本地服务器"></a>启动本地服务器</h6><figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo <span class="keyword">server</span></span><br><span class="line">可以简写为</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+<h6 id="部署网站"><a href="#部署网站" class="headerlink" title="部署网站"></a>部署网站</h6><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo <span class="keyword">deploy</span></span><br><span class="line">可以简写为</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
 <p>指定生成后部署</p>
 <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">hexo g -d</span> </span><br></pre></td></tr></table></figure>
-
 <h6 id="清除缓存"><a href="#清除缓存" class="headerlink" title="清除缓存"></a>清除缓存</h6><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">hexo clean</span></span><br></pre></td></tr></table></figure>
-
 <h5 id="撰写文章"><a href="#撰写文章" class="headerlink" title="撰写文章"></a>撰写文章</h5><p>因为Hexo是使用Markdown解析文章的，所以推荐使用Typora工具来编写文章 <a target="_blank" rel="noopener" href="https://www.typora.io">https://www.typora.io</a> 。</p>
 <p>使用hexo new title命令可以在source/_posts目录下生成一个md格式的文档，使用Typora打开，开始写我们的博客。在工具内你可以右键添加图片、代码块、公式块、链接、表格、脚注、分割线、段落等，这里不再一一说明，只说明一些右键没有说明的设置。</p>
 <h6 id="文章头部设置"><a href="#文章头部设置" class="headerlink" title="文章头部设置"></a>文章头部设置</h6><p>创建文章之后，文章里的头部来自模板，默认是scaffolds目录下的post.md，你可以修改模板来对文章进行说明。</p>
 <figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">title: Title </span><br><span class="line">date: YYYY-MM-DD HH:MM:SS </span><br><span class="line"><span class="keyword">tags:</span> [tag1, tag2, ...] </span><br><span class="line">categories: category </span><br></pre></td></tr></table></figure>
-
 <p>属性与属性值中间必须要有一个空格，否则会解析错误。</p>
 <h6 id="首页显示"><a href="#首页显示" class="headerlink" title="首页显示"></a>首页显示</h6><p>Hexo框架搭建的博客网站中，首页显示的文章默认是显示全部内容，这样很不方便。使用<code>&lt;!--more--&gt;</code>标志，即可隐藏标志前面的内容。</p>
 <h6 id="部署发布"><a href="#部署发布" class="headerlink" title="部署发布"></a>部署发布</h6><p>每次写完文章或者修改配置后都要输入命令</p>
 <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">hexo g -d</span></span><br></pre></td></tr></table></figure>
-
 <p>重新生成静态文件重新部署。</p>
 
     </div>

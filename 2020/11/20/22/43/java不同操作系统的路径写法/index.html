@@ -312,6 +312,8 @@
         </h1>
 
         <div class="post-meta">
+
+          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
@@ -363,9 +365,7 @@
     <div class="post-body" itemprop="articleBody">
         <p>Windows和Linux系统上不同文件路径使用Java方法来代替。<a id="more"></a></p>
 <h6 id="具体路径写法"><a href="#具体路径写法" class="headerlink" title="具体路径写法"></a>具体路径写法</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;C:\\a.txt&quot;//windows写法</span><br><span class="line">&quot;/mnt/a.txt&quot;//linux写法</span><br></pre></td></tr></table></figure>
-
 <h6 id="使用Java的File-separator方法"><a href="#使用Java的File-separator方法" class="headerlink" title="使用Java的File.separator方法"></a>使用Java的File.separator方法</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="comment">//路径分隔符示例</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SeparatorDemo</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		String path1=<span class="string">&quot;C:&quot;</span>+File.separator+<span class="string">&quot;Program Files&quot;</span>+File.separator+<span class="string">&quot;a.txt&quot;</span>;</span><br><span class="line">		System.out.println(path1);<span class="comment">//输出C:\Program Files\a.txt</span></span><br><span class="line">		</span><br><span class="line">		String path2=<span class="string">&quot;C:\\Program Files\\a.txt&quot;</span>;<span class="comment">//第一个\表示转义</span></span><br><span class="line">		System.out.println(path2);<span class="comment">//输出C:\Program Files\a.txt</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 
     </div>
 
@@ -376,19 +376,19 @@
   <div class="popular-posts-header">相关文章</div>
   <ul class="popular-posts">
     <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2020\11\16\22\42\JAVA设置Excel单元格格式\" rel="bookmark">JAVA设置Excel单元格格式</a></div>
+    </li>
+    <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="\2020\06\14\20\53\JWT授权验证\" rel="bookmark">JWT授权验证</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2020\10\26\23\26\Java取消Double类型显示科学计数法\" rel="bookmark">Java取消Double类型显示科学计数法</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="\2020\04\26\16\27\Java小知识\" rel="bookmark">Java小知识</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2020\05\02\16\35\Java面经三\" rel="bookmark">Java面经三</a></div>
-    </li>
-    <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2020\05\04\21\51\Java面经五\" rel="bookmark">Java面经五</a></div>
-    </li>
-    <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2020\05\01\08\14\Java面经二\" rel="bookmark">Java面经二</a></div>
+      <div class="popular-posts-title"><a href="\2020\10\26\23\27\Java的Date类型计算\" rel="bookmark">Java的Date类型计算</a></div>
     </li>
   </ul>
 

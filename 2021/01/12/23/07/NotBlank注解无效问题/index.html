@@ -312,6 +312,8 @@
         </h1>
 
         <div class="post-meta">
+
+          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
@@ -364,14 +366,11 @@
         <p>@NotBlank使用时无效问题解决。<a id="more"></a></p>
 <h5 id="引入依赖"><a href="#引入依赖" class="headerlink" title="引入依赖"></a>引入依赖</h5><p>问题解决之前一直调试都没有发现依赖的问题，后来也是看评论中有人遇到同样的问题，才发现依赖不对。</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-validation<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
 <h5 id="实体类注解"><a href="#实体类注解" class="headerlink" title="实体类注解"></a>实体类注解</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1L</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@TableId(value = &quot;id&quot;, type = IdType.AUTO)</span></span><br><span class="line">    <span class="keyword">private</span> Long id;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@NotBlank(message=&quot;昵称不能为空&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String username;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String avatar;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@NotBlank(message = &quot;邮箱不能为空&quot;)</span></span><br><span class="line">    <span class="meta">@Email(message = &quot;邮箱格式不正确&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String email;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h6 id="判断字段为空的三种注解："><a href="#判断字段为空的三种注解：" class="headerlink" title="判断字段为空的三种注解："></a>判断字段为空的三种注解：</h6><p>@NotBlank：只用在String上，表示传进来的值不能为null，而且调用trim()后，长度必须大于0</p>
 <p>@NotNull：不能为null，但可以为empty(分配了内存空间，但值为空)</p>
 <p>@NotEmpty：不能为null，而且长度必须大于0</p>
 <h5 id="参数注解"><a href="#参数注解" class="headerlink" title="参数注解"></a>参数注解</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@PostMapping(&quot;/save&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Result <span class="title">save</span><span class="params">(<span class="meta">@Validated</span> <span class="meta">@RequestBody</span> User user)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> Result.succ(user);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>也可以使用<code>@Valid</code>注解参数，<code>@Validated</code>注解Service层。经试验同样有效。</p>
 
     </div>
@@ -383,10 +382,10 @@
   <div class="popular-posts-header">相关文章</div>
   <ul class="popular-posts">
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2020\01\25\20\48\Swagger2自动生成API文档\" rel="bookmark">Swagger2自动生成API文档</a></div>
+      <div class="popular-posts-title"><a href="\2020\12\01\23\43\SpringBoot打印Myabtis的sql日志\" rel="bookmark">SpringBoot打印Myabtis的sql日志</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2020\12\01\23\43\SpringBoot打印Myabtis的sql日志\" rel="bookmark">SpringBoot打印Myabtis的sql日志</a></div>
+      <div class="popular-posts-title"><a href="\2020\01\25\20\48\Swagger2自动生成API文档\" rel="bookmark">Swagger2自动生成API文档</a></div>
     </li>
   </ul>
 

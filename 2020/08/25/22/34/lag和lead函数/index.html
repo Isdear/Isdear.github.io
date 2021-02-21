@@ -317,6 +317,8 @@
         </h1>
 
         <div class="post-meta">
+
+          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
@@ -374,26 +376,22 @@
 <li>获取当前记录的id，以及下一条记录的id  </li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select t.id id ,</span><br><span class="line">       lead(t.id, 1, null) over (order by t.id)  next_record_id, t.cphm</span><br><span class="line">from tb_test t       </span><br><span class="line">  order by t.id asc</span><br></pre></td></tr></table></figure>
-
 <p><img src="/2020/08/25/22/34/lag%E5%92%8Clead%E5%87%BD%E6%95%B0/lag.png" alt></p>
 <ul>
 <li>获取当前记录的id，以及上一条记录的id</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select t.id id ,</span><br><span class="line">       lag(t.id, 1, null) over (order by t.id)  next_record_id, t.cphm</span><br><span class="line">from tb_test t       </span><br><span class="line">  order by t.id asc</span><br></pre></td></tr></table></figure>
-
 <p><img src="/2020/08/25/22/34/lag%E5%92%8Clead%E5%87%BD%E6%95%B0/lead.png" alt></p>
 <ul>
 <li>获取号牌号码相同的，当前记录的id与，下一条记录的id（使用partition by）</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select t.id id, </span><br><span class="line">       lead(t.id, 1, null) over(partition by cphm order by t.id) next_same_cphm_id, t.cphm</span><br><span class="line">from tb_test t</span><br><span class="line">     order by t.id asc   </span><br></pre></td></tr></table></figure>
 
-
 <p><img src="/2020/08/25/22/34/lag%E5%92%8Clead%E5%87%BD%E6%95%B0/lead2.png" alt>  </p>
 <ul>
 <li>查询 cphm的总数，当create_date与下一条记录的create_date时间间隔不超过10分钟则忽略。</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">select cphm, count(1) total from</span><br><span class="line">(</span><br><span class="line">select t.id,</span><br><span class="line">  t.create_date t1,</span><br><span class="line">  lead(t.create_date,1, null) over( partition by  cphm order by create_date asc ) t2,</span><br><span class="line">  ( lead(t.create_date,1, null) over(  partition by  cphm order by create_date asc )  - t.create_date ) * 86400 as itvtime,</span><br><span class="line">  t.cphm</span><br><span class="line">from tb_test t</span><br><span class="line">  order by t.cphm, t.create_date asc</span><br><span class="line">) tt</span><br><span class="line">where tt.itvtime &gt;&#x3D; 600 or  tt.itvtime  is null</span><br><span class="line">group by tt.cphm</span><br></pre></td></tr></table></figure>
-
 <p><img src="/2020/08/25/22/34/lag%E5%92%8Clead%E5%87%BD%E6%95%B0/lead3.png" alt></p>
 
     </div>
@@ -411,13 +409,13 @@
       <div class="popular-posts-title"><a href="\2020\07\26\22\20\Oracle中的COALESCER函数\" rel="bookmark">Oracle中的COALESCER函数</a></div>
     </li>
     <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2020\11\03\23\12\exists的使用方法\" rel="bookmark">exists的使用方法</a></div>
+    </li>
+    <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="\2020\08\22\18\26\oracle中的数学公式\" rel="bookmark">oracle中的数学公式</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="\2020\07\28\23\49\oracle分析函数over\" rel="bookmark">oracle分析函数over</a></div>
-    </li>
-    <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2020\08\05\21\02\oracle日期格式\" rel="bookmark">oracle日期格式</a></div>
     </li>
   </ul>
 

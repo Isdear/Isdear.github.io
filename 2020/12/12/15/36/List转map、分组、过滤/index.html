@@ -312,6 +312,8 @@
         </h1>
 
         <div class="post-meta">
+
+          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
@@ -369,31 +371,21 @@
     <div class="post-body" itemprop="articleBody">
         <p>java8的List新特性，可以用简洁高效的代码来实现一些数据处理。<a id="more"></a></p>
 <h6 id="创建一个对象"><a href="#创建一个对象" class="headerlink" title="创建一个对象"></a>创建一个对象</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Apple</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Integer id;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> BigDecimal money;</span><br><span class="line">    <span class="keyword">private</span> Integer num;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Apple</span><span class="params">(Integer id, String name, BigDecimal money, Integer num)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.money = money;</span><br><span class="line">        <span class="keyword">this</span>.num = num;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h6 id="添加测试数据"><a href="#添加测试数据" class="headerlink" title="添加测试数据"></a>添加测试数据</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Apple&gt; appleList = <span class="keyword">new</span> ArrayList&lt;&gt;();<span class="comment">//存放apple对象集合</span></span><br><span class="line"> </span><br><span class="line">Apple apple1 =  <span class="keyword">new</span> Apple(<span class="number">1</span>,<span class="string">&quot;苹果1&quot;</span>,<span class="keyword">new</span> BigDecimal(<span class="string">&quot;3.25&quot;</span>),<span class="number">10</span>);</span><br><span class="line">Apple apple12 = <span class="keyword">new</span> Apple(<span class="number">1</span>,<span class="string">&quot;苹果2&quot;</span>,<span class="keyword">new</span> BigDecimal(<span class="string">&quot;1.35&quot;</span>),<span class="number">20</span>);</span><br><span class="line">Apple apple2 =  <span class="keyword">new</span> Apple(<span class="number">2</span>,<span class="string">&quot;香蕉&quot;</span>,<span class="keyword">new</span> BigDecimal(<span class="string">&quot;2.89&quot;</span>),<span class="number">30</span>);</span><br><span class="line">Apple apple3 =  <span class="keyword">new</span> Apple(<span class="number">3</span>,<span class="string">&quot;荔枝&quot;</span>,<span class="keyword">new</span> BigDecimal(<span class="string">&quot;9.99&quot;</span>),<span class="number">40</span>);</span><br><span class="line"> </span><br><span class="line">appleList.add(apple1);</span><br><span class="line">appleList.add(apple12);</span><br><span class="line">appleList.add(apple2);</span><br><span class="line">appleList.add(apple3);</span><br></pre></td></tr></table></figure>
-
 <h6 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h6><p>List里面的对象元素，以某个属性来分组，例如，以id分组，将id相同的放在一起：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//List 以ID分组 Map&lt;Integer,List&lt;Apple&gt;&gt;</span></span><br><span class="line">Map&lt;Integer, List&lt;Apple&gt;&gt; groupBy = appleList.stream().collect(Collectors.groupingBy(Apple::getId));</span><br><span class="line"> </span><br><span class="line">System.err.println(<span class="string">&quot;groupBy:&quot;</span>+groupBy);</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;1=[Apple&#123;id=1, name=&#x27;苹果1&#x27;, money=3.25, num=10&#125;, Apple&#123;id=1, name=&#x27;苹果2&#x27;, money=1.35, num=20&#125;], 2=[Apple&#123;id=2, name=&#x27;香蕉&#x27;, money=2.89, num=30&#125;], 3=[Apple&#123;id=3, name=&#x27;荔枝&#x27;, money=9.99, num=40&#125;]&#125;</span><br></pre></td></tr></table></figure>
-
 <h6 id="List转Map"><a href="#List转Map" class="headerlink" title="List转Map"></a>List转Map</h6><p>id为key，apple对象为value，可以这么做：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * List -&gt; Map</span></span><br><span class="line"><span class="comment"> * 需要注意的是：</span></span><br><span class="line"><span class="comment"> * toMap 如果集合对象有重复的key，会报错Duplicate key ....</span></span><br><span class="line"><span class="comment"> *  apple1,apple12的id都为1。</span></span><br><span class="line"><span class="comment"> *  可以用 (k1,k2)-&gt;k1 来设置，如果有重复的key,则保留key1,舍弃key2</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">Map&lt;Integer, Apple&gt; appleMap = appleList.stream().collect(Collectors.toMap(Apple::getId, a -&gt; a,(k1,k2)-&gt;k1));</span><br></pre></td></tr></table></figure>
-
 <p>打印appleMap</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;1=Apple&#123;id=1, name=&#x27;苹果1&#x27;, money=3.25, num=10&#125;, 2=Apple&#123;id=2, name=&#x27;香蕉&#x27;, money=2.89, num=30&#125;, 3=Apple&#123;id=3, name=&#x27;荔枝&#x27;, money=9.99, num=40&#125;&#125;</span><br></pre></td></tr></table></figure>
-
 <h6 id="过滤Filter"><a href="#过滤Filter" class="headerlink" title="过滤Filter"></a>过滤Filter</h6><p>从集合中过滤出来符合条件的元素：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//过滤出符合条件的数据</span></span><br><span class="line">List&lt;Apple&gt; filterList = appleList.stream().filter(a -&gt; a.getName().equals(<span class="string">&quot;香蕉&quot;</span>)).collect(Collectors.toList());</span><br><span class="line"> </span><br><span class="line">System.err.println(<span class="string">&quot;filterList:&quot;</span>+filterList);</span><br><span class="line">[Apple&#123;id=<span class="number">2</span>, name=<span class="string">&#x27;香蕉&#x27;</span>, money=<span class="number">2.89</span>, num=<span class="number">30</span>&#125;]</span><br></pre></td></tr></table></figure>
-
 <h6 id="求和"><a href="#求和" class="headerlink" title="求和"></a>求和</h6><p>将集合中的数据按照某个属性求和:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//计算 总金额</span></span><br><span class="line">BigDecimal totalMoney = appleList.stream().map(Apple::getMoney).reduce(BigDecimal.ZERO, BigDecimal::add);</span><br><span class="line"></span><br><span class="line">System.err.println(<span class="string">&quot;totalMoney:&quot;</span>+totalMoney);  <span class="comment">//totalMoney:17.48</span></span><br></pre></td></tr></table></figure>
-
 <h6 id="查找流中最大-最小值"><a href="#查找流中最大-最小值" class="headerlink" title="查找流中最大 最小值"></a>查找流中最大 最小值</h6><p>Collectors.maxBy 和 Collectors.minBy 来计算流中的最大或最小值。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Optional&lt;Dish&gt; maxDish = Dish.menu.stream().</span><br><span class="line">      collect(Collectors.maxBy(Comparator.comparing(Dish::getCalories)));</span><br><span class="line">maxDish.ifPresent(System.out::println);</span><br><span class="line"> </span><br><span class="line">Optional&lt;Dish&gt; minDish = Dish.menu.stream().</span><br><span class="line">      collect(Collectors.minBy(Comparator.comparing(Dish::getCalories)));</span><br><span class="line">minDish.ifPresent(System.out::println);</span><br></pre></td></tr></table></figure>
-
 <h6 id="去重"><a href="#去重" class="headerlink" title="去重"></a>去重</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> java.util.Comparator.comparingLong;</span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> java.util.stream.Collectors.collectingAndThen;</span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> java.util.stream.Collectors.toCollection;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 根据id去重</span></span><br><span class="line">     List&lt;Person&gt; unique = appleList.stream().collect(</span><br><span class="line">                collectingAndThen(</span><br><span class="line">                        toCollection(() -&gt; <span class="keyword">new</span> TreeSet&lt;&gt;(comparingLong(Apple::getId))), ArrayList::<span class="keyword">new</span>)</span><br><span class="line">        );</span><br></pre></td></tr></table></figure>
-
 <h6 id="下表展示-Collectors-类的静态工厂方法。"><a href="#下表展示-Collectors-类的静态工厂方法。" class="headerlink" title="下表展示 Collectors 类的静态工厂方法。"></a>下表展示 Collectors 类的静态工厂方法。</h6><table>
 <thead>
 <tr>
@@ -483,19 +475,19 @@
   <div class="popular-posts-header">相关文章</div>
   <ul class="popular-posts">
     <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2020\11\16\22\42\JAVA设置Excel单元格格式\" rel="bookmark">JAVA设置Excel单元格格式</a></div>
+    </li>
+    <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="\2020\06\14\20\53\JWT授权验证\" rel="bookmark">JWT授权验证</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2020\10\26\23\26\Java取消Double类型显示科学计数法\" rel="bookmark">Java取消Double类型显示科学计数法</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="\2020\04\26\16\27\Java小知识\" rel="bookmark">Java小知识</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2020\05\02\16\35\Java面经三\" rel="bookmark">Java面经三</a></div>
-    </li>
-    <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2020\05\04\21\51\Java面经五\" rel="bookmark">Java面经五</a></div>
-    </li>
-    <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2020\05\01\08\14\Java面经二\" rel="bookmark">Java面经二</a></div>
+      <div class="popular-posts-title"><a href="\2020\10\26\23\27\Java的Date类型计算\" rel="bookmark">Java的Date类型计算</a></div>
     </li>
   </ul>
 

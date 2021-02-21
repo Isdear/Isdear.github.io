@@ -312,6 +312,8 @@
         </h1>
 
         <div class="post-meta">
+
+          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
@@ -369,12 +371,9 @@
     <div class="post-body" itemprop="articleBody">
         <p>npm安装依赖速度太慢，把镜像源切换成国内<a id="more"></a></p>
 <h5 id="配置仓库地址"><a href="#配置仓库地址" class="headerlink" title="配置仓库地址"></a>配置仓库地址</h5><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="built_in">config</span> <span class="built_in">set</span> registry https:<span class="comment">//registry.npm.taobao.org</span></span><br></pre></td></tr></table></figure>
-
 <p>查看配置地址</p>
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm<span class="built_in"> config </span><span class="builtin-name">get</span> registry</span><br><span class="line">或者</span><br><span class="line">npm <span class="builtin-name">info</span> express</span><br></pre></td></tr></table></figure>
-
 <h5 id="使用cnpm命令"><a href="#使用cnpm命令" class="headerlink" title="使用cnpm命令"></a>使用cnpm命令</h5><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm --registry=https:<span class="regexp">//</span>registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
-
 <p>在使用npm安装依赖时，只需换成cnpm即可。淘宝镜像为阿里云产物，服务器架设在国内，当cnpm上没有你需要的插件时，它会自动去npm服务器上寻找同时在保存至cnpm服务器上。</p>
 
     </div>

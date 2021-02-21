@@ -314,6 +314,8 @@
         </h1>
 
         <div class="post-meta">
+
+          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
@@ -766,62 +768,46 @@
 </tr>
 </tbody></table>
 <h5 id="发送get或post请求"><a href="#发送get或post请求" class="headerlink" title="发送get或post请求"></a>发送get或post请求</h5><h6 id="get请求"><a href="#get请求" class="headerlink" title="get请求"></a>get请求</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl http://baidu.com</span><br></pre></td></tr></table></figure>
-
 <p>效果如下：</p>
 <p><img src="/2020/11/10/23/02/%E4%BD%BF%E7%94%A8curl%E8%B0%83%E7%94%A8%E5%90%8E%E5%8F%B0%E6%8E%A5%E5%8F%A3/get%E8%AF%B7%E6%B1%82.png" alt></p>
 <h6 id="post请求"><a href="#post请求" class="headerlink" title="post请求"></a>post请求</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -d &quot;pagenum=1&amp;pagesize=2&quot; http://localhost:8080/zz/transfer/getNearInfoList -X POST</span><br></pre></td></tr></table></figure>
-
 <p><strong>-X 指定请求的方法，POST外还可以指定PUT等请求方法**</strong></p>
 <p><strong>-d 请求携带的参数，多个参数使用&amp;分隔</strong></p>
 <h5 id="带有Header的请求头"><a href="#带有Header的请求头" class="headerlink" title="带有Header的请求头"></a>带有Header的请求头</h5><p>有些请求需要携带请求头，例如指定Content-type=application/json</p>
 <p>-H 指定请求头，例如 -H “Content-type:application/json”</p>
 <p>多个请求头传递多-H即可</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -H ‘Host: appqa.zhuaninc.com‘ -H ‘Upgrade-Insecure-Requests: 1‘ -H ‘Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8‘ -H ‘User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/11.1 Safari/605.1.15‘ -H ‘Accept-Language: zh-cn‘ --compressed ‘http://appqa.zhuaninc.com/appdatastructure/message/sendPushOrSysMsg?uid=71779969887312512&amp;msgtitle=$&#123;pushtitle&#125;&amp;msgcontent=checkPushContent&amp;pushimg=https://img.58cdn.com.cn/zhuanzhuan/images/iwantBuyTitle2x.png&amp;msgprotocol=&amp;envtype=0&amp;msgtype=0&amp;luodiye=%E6%99%AE%E9%80%9A%E7%B3%BB%E7%BB%9F%E6%B6%88%E6%81%AF‘</span><br></pre></td></tr></table></figure>
-
 <h5 id="JSON格式请求"><a href="#JSON格式请求" class="headerlink" title="JSON格式请求"></a>JSON格式请求</h5><p>-d可以指定入参为json格式，此时需要-H指定application/json的请求头</p>
 <p>json格式入参：使用单引号‘‘括起json格式的入参，单引号中的内容是可以json解析的内容</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -i -X POST -H &quot;Content-type:application/json&quot;-d ‘&#123;&quot;to_user”:&quot;meitian&quot;,&quot;msg&quot;:&quot;‘$&#123;errorMsg&#125;‘&quot;&#125;‘ http://wxmsg.zhuaninc.com/api/message/send</span><br></pre></td></tr></table></figure>
-
 <h5 id="文件下载"><a href="#文件下载" class="headerlink" title="文件下载"></a>文件下载</h5><p>curl命令可以用来执行下载、发送各种HTTP请求，指定HTTP头部等操作。如果系统没有curl可以使用<code>yum install curl</code>安装，也可以下载安装。curl是将下载文件输出到stdout，将进度信息输出到stderr，不显示进度信息使用<code>--silent</code>选项。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl URL --silent</span><br></pre></td></tr></table></figure>
-
 <p>这条命令是将下载文件输出到终端，所有下载的数据都被写入到stdout。</p>
 <p>使用选项<code>-O</code>将下载的数据写入到文件，必须使用文件的绝对地址：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl http://man.linuxde.net/text.iso --silent -O</span><br></pre></td></tr></table></figure>
-
 <p>选项<code>-o</code>将下载数据写入到指定名称的文件中，并使用<code>--progress</code>显示进度条：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl http://man.linuxde.net/test.iso -o filename.iso --progress</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">######################################## 100.0%</span></span></span><br></pre></td></tr></table></figure>
-
 <h5 id="断点续传"><a href="#断点续传" class="headerlink" title="断点续传"></a>断点续传</h5><p>curl能够从特定的文件偏移处继续下载，它可以通过指定一个便移量来下载部分文件：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">curl URL/File -C 偏移量</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">偏移量是以字节为单位的整数，如果让curl自动推断出正确的续传位置使用-C -：</span></span><br><span class="line">curl -C -URL</span><br></pre></td></tr></table></figure>
-
 <h5 id="使用curl设置参照页字符串"><a href="#使用curl设置参照页字符串" class="headerlink" title="使用curl设置参照页字符串"></a>使用curl设置参照页字符串</h5><p>参照页是位于HTTP头部中的一个字符串，用来表示用户是从哪个页面到达当前页面的，如果用户点击网页A中的某个连接，那么用户就会跳转到B网页，网页B头部的参照页字符串就包含网页A的URL。</p>
 <p>使用<code>--referer</code>选项指定参照页字符串：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl --referer http://www.google.com http://man.linuxde.net</span><br></pre></td></tr></table></figure>
-
 <h5 id="用curl设置cookies"><a href="#用curl设置cookies" class="headerlink" title="用curl设置cookies"></a>用curl设置cookies</h5><p>使用<code>--cookie &quot;COKKIES&quot;</code>选项来指定cookie，多个cookie使用分号分隔：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl http://man.linuxde.net --cookie &quot;user=root;pass=123456&quot;</span><br></pre></td></tr></table></figure>
-
 <p>将cookie另存为一个文件，使用<code>--cookie-jar</code>选项：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl URL --cookie-jar cookie_file</span><br></pre></td></tr></table></figure>
-
 <h5 id="用curl设置用户代理字符串"><a href="#用curl设置用户代理字符串" class="headerlink" title="用curl设置用户代理字符串"></a>用curl设置用户代理字符串</h5><p>有些网站访问会提示只能使用IE浏览器来访问，这是因为这些网站设置了检查用户代理，可以使用curl把用户代理设置为IE，这样就可以访问了。使用<code>--user-agent</code>或者<code>-A</code>选项：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl URL --user-agent &quot;Mozilla/5.0&quot;</span><br><span class="line">curl URL -A &quot;Mozilla/5.0&quot;</span><br></pre></td></tr></table></figure>
-
 <p>其他HTTP头部信息也可以使用curl来发送，使用<code>-H</code>“头部信息” 传递多个头部信息，例如：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -H &quot;Host:man.linuxde.net&quot; -H &quot;accept-language:zh-cn&quot; URL</span><br></pre></td></tr></table></figure>
-
 <h5 id="curl的带宽控制和下载配额"><a href="#curl的带宽控制和下载配额" class="headerlink" title="curl的带宽控制和下载配额"></a>curl的带宽控制和下载配额</h5><p>使用<code>--limit-rate</code>限制curl的下载速度：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl URL --limit-rate 50k</span><br></pre></td></tr></table></figure>
-
 <p>命令中用k（千字节）和m（兆字节）指定下载速度限制。</p>
 <p>使用<code>--max-filesize</code>指定可下载的最大文件大小：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl URL --max-filesize bytes</span><br></pre></td></tr></table></figure>
-
 <p>如果文件大小超出限制，命令则返回一个非0退出码，如果命令正常则返回0。</p>
 <h5 id="用curl进行认证"><a href="#用curl进行认证" class="headerlink" title="用curl进行认证"></a>用curl进行认证</h5><p>使用curl选项 -u 可以完成HTTP或者FTP的认证，可以指定密码，也可以不指定密码在后续操作中输入密码：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -u user:pwd http://man.linuxde.net</span><br><span class="line">curl -u user http://man.linuxde.net</span><br></pre></td></tr></table></figure>
-
 <h5 id="只打印响应头部信息"><a href="#只打印响应头部信息" class="headerlink" title="只打印响应头部信息"></a>只打印响应头部信息</h5><p>通过<code>-I</code>或者<code>-head</code>可以只打印出HTTP头部信息：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost text]# curl -I http://man.linuxde.net</span><br><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Server: nginx/1.2.5</span><br><span class="line">date: Mon, 10 Dec 2012 09:24:34 GMT</span><br><span class="line">Content-Type: text/html; charset=UTF-8</span><br><span class="line">Connection: keep-alive</span><br><span class="line">Vary: Accept-Encoding</span><br><span class="line">X-Pingback: http://man.linuxde.net/xmlrpc.php</span><br></pre></td></tr></table></figure>
     </div>

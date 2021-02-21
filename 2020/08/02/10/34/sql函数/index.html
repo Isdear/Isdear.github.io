@@ -312,6 +312,8 @@
         </h1>
 
         <div class="post-meta">
+
+          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
@@ -385,8 +387,7 @@
 <li><p>format(column_name,format)：</p>
 </li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> ProductName, UnitPrice, <span class="keyword">FORMAT</span>(<span class="keyword">Now</span>(),<span class="string">&#x27;YYYY-MM-DD&#x27;</span>) <span class="keyword">as</span> PerDate</span><br><span class="line"><span class="keyword">FROM</span> Products</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> ProductName, UnitPrice, FORMAT(Now(),<span class="string">&#x27;YYYY-MM-DD&#x27;</span>) <span class="keyword">as</span> PerDate</span><br><span class="line"><span class="keyword">FROM</span> Products</span><br></pre></td></tr></table></figure>
 <ul>
 <li><p>replace(X,old,new) n：在X中查找old，并替换成new</p>
 </li>
@@ -406,18 +407,15 @@
 <li><p>add_months(d,n)，在某一个日期 d 上，加上指定的月数 n，返回计算后的新日期。d 表示日期，n 表示要加的月数</p>
 </li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">SYSDATE</span>,add_months(<span class="keyword">SYSDATE</span>,<span class="number">5</span>) <span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> SYSDATE,add_months(SYSDATE,<span class="number">5</span>) <span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>last_day(d)，返回指定日期当月的最后一天</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">SYSDATE</span>,<span class="keyword">last_day</span>(<span class="keyword">SYSDATE</span>) <span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> SYSDATE,last_day(SYSDATE) <span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>nvl(X,VALUE)：如果X为空，返回value，否则返回X</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> ENAME,JOB,SAL,NVL(COMM,<span class="number">100</span>) <span class="keyword">FROM</span> EMP <span class="keyword">WHERE</span> SAL&lt;<span class="number">2000</span>;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> ENAME,JOB,SAL,NVL(COMM,<span class="number">100</span>) <span class="keyword">FROM</span> EMP <span class="keyword">WHERE</span> SAL<span class="operator">&lt;</span><span class="number">2000</span>;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>to_number()：将字符型数据转换成数字型    </li>
 <li>to_date()：将字符型数据转换成日期型</li>
@@ -428,8 +426,7 @@
 <li>round(n1,n2)四舍五入，n1代表字符串,n2代表小数位数，结果为123.57。<code>select round(123.567) from dual;</code></li>
 <li>zeroifnull(expr)：如果表达式expr的值为0，则返回null，否则返回表达式expr的值。</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> zeroifnull(<span class="keyword">count</span>(<span class="keyword">DISTINCT</span> userid)) <span class="keyword">from</span> table_name;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> zeroifnull(<span class="built_in">count</span>(<span class="keyword">DISTINCT</span> userid)) <span class="keyword">from</span> table_name;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>nullifzero(expr)：如果表达式expr的值为null，则返回0，否则返回表达式expr的值。</li>
 <li>ln(y)：以e为底的y的对数，y &gt; 0。</li>
@@ -450,13 +447,13 @@
       <div class="popular-posts-title"><a href="\2020\05\22\19\44\MySql数据库优化的八种方法\" rel="bookmark">MySql数据库优化的八种方法</a></div>
     </li>
     <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2020\10\26\23\10\Mysql中explain的用法和结果分析\" rel="bookmark">Mysql中explain的用法和结果分析</a></div>
+    </li>
+    <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="\2020\08\30\16\30\forupdate的用法\" rel="bookmark">forupdate的用法</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="\2020\08\01\08\31\mysql5-7分组排序后取每组最新一条\" rel="bookmark">mysql5.7分组排序后取每组最新一条</a></div>
-    </li>
-    <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2020\10\26\23\10\Mysql中explain的用法和结果分析\" rel="bookmark">Mysql中explain的用法和结果分析</a></div>
     </li>
   </ul>
 

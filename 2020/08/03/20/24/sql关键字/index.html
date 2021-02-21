@@ -312,6 +312,8 @@
         </h1>
 
         <div class="post-meta">
+
+          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
@@ -372,7 +374,6 @@
 <li>except(sql server)：通过包括所有在 TABLE1 中但不在 TABLE2 中的行并消除所有重复行而派生出一个结果表</li>
 </ul>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	reg_num </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	dq_list <span class="keyword">except</span></span><br><span class="line"><span class="keyword">EXCEPT</span></span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	reg_num </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	dq_result</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>minus(oracle)：先找出第一个 SQL 语句所产生的结果，然后看这些结果有没有在第二个SQL语句的结果中。如果有的话，那这一笔资料就被去除，而不会在最后的结果中出现。如果第二个 SQL 语句所产生的结果并没有存在于第一个 SQL 语句所产生的结果内，那这笔资料就被抛弃。</li>
 </ul>
@@ -431,8 +432,7 @@
 <td>750</td>
 </tr>
 </tbody></table>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Txn_Date <span class="keyword">FROM</span> Store_Information</span><br><span class="line"><span class="keyword">MINUS</span></span><br><span class="line"><span class="keyword">SELECT</span> Txn_Date <span class="keyword">FROM</span> Internet_Sales;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Txn_Date <span class="keyword">FROM</span> Store_Information</span><br><span class="line">MINUS</span><br><span class="line"><span class="keyword">SELECT</span> Txn_Date <span class="keyword">FROM</span> Internet_Sales;</span><br></pre></td></tr></table></figure>
 <table>
 <thead>
 <tr>

@@ -312,6 +312,8 @@
         </h1>
 
         <div class="post-meta">
+
+          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
@@ -370,57 +372,41 @@
         <p>本文以CentOS 7为例。<a id="more"></a></p>
 <h5 id="防火墙常用操作"><a href="#防火墙常用操作" class="headerlink" title="防火墙常用操作"></a>防火墙常用操作</h5><p>开启防火墙</p>
 <figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="literal">start</span> firewalld.service</span><br></pre></td></tr></table></figure>
-
 <p>关闭防火墙</p>
 <figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">stop</span> firewalld.service</span><br></pre></td></tr></table></figure>
-
 <p>开机自启动</p>
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="builtin-name">enable</span> firewalld.service</span><br></pre></td></tr></table></figure>
-
 <p>关闭开机自启动</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">systemctl</span> <span class="selector-tag">disabel</span> <span class="selector-tag">firewalld</span><span class="selector-class">.service</span></span><br></pre></td></tr></table></figure>
-
 <p>查看开放的端口</p>
 <figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">firewall-<span class="keyword">cmd</span><span class="bash"> --list-all</span></span><br><span class="line">or</span><br><span class="line">firewall-<span class="keyword">cmd</span><span class="bash"> --list-ports</span></span><br></pre></td></tr></table></figure>
-
 <p>添加永久开放端口</p>
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd <span class="attribute">--zone</span>=public <span class="attribute">--add-port</span>=3306/tcp --permanent</span><br></pre></td></tr></table></figure>
-
 <p>移除开放端口</p>
 <figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">firewall</span><span class="literal">-</span><span class="comment">cmd</span> --<span class="comment">remove</span><span class="literal">-</span><span class="comment">port=3306/tcp</span> --<span class="comment">permanent</span></span><br></pre></td></tr></table></figure>
-
 <p>重启防火墙生效</p>
 <figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-<span class="keyword">cmd</span><span class="bash"> --reload</span></span><br></pre></td></tr></table></figure>
-
 <p>查看规则</p>
 <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">iptables -L -n</span></span><br></pre></td></tr></table></figure>
-
 <p>查看开放的服务</p>
 <figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-<span class="keyword">cmd</span><span class="bash"> --list-services</span></span><br></pre></td></tr></table></figure>
-
 <p>查看防火墙状态</p>
 <figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-<span class="keyword">cmd</span><span class="bash"> --state</span></span><br></pre></td></tr></table></figure>
-
 <h5 id="伪装IP"><a href="#伪装IP" class="headerlink" title="伪装IP"></a>伪装IP</h5><p>检查是否允许伪装IP</p>
 <figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-<span class="keyword">cmd</span><span class="bash"> --query-masquerade</span></span><br></pre></td></tr></table></figure>
-
 <p>允许防火墙伪装IP</p>
 <figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-<span class="keyword">cmd</span><span class="bash"> --add-masquerade</span></span><br></pre></td></tr></table></figure>
-
 <p>禁止防火墙伪装IP</p>
 <figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-<span class="keyword">cmd</span><span class="bash"> --remove-masquerade</span></span><br></pre></td></tr></table></figure>
-
 <h5 id="端口映射"><a href="#端口映射" class="headerlink" title="端口映射"></a>端口映射</h5><p>转发的目的不指定 IP 的话就默认为本机，如果指定了 IP 却没指定端口，则默认使用来源端口。如果配置好端口转发之后不能用，可以检查以下两个方面的问题：</p>
 <ol>
 <li>比如我将 80 端口转发至 8080 端口，首先检查本地的 80 端口和目标的 8080 端口是否开放监听了（也就是监听程序是否运行了）；</li>
 <li>检查是否允许伪装 IP，没允许的话要开启伪装 IP。</li>
 </ol>
 <p>添加映射</p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --add-forward-port=proto=<span class="number">80</span>:proto=tcp:toaddr=<span class="number">192.168</span><span class="number">.0</span><span class="number">.1</span>:toport=<span class="number">8080</span></span><br></pre></td></tr></table></figure>
-
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --add-forward-port=proto=<span class="number">80</span><span class="symbol">:proto=tcp</span><span class="symbol">:toaddr=</span><span class="number">192.168</span>.0.<span class="number">1</span><span class="symbol">:toport=</span><span class="number">8080</span></span><br></pre></td></tr></table></figure>
 <p>删除映射</p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --remove-forward-port=proto=<span class="number">80</span>:proto=tcp:toaddr=<span class="number">192.168</span><span class="number">.0</span><span class="number">.1</span>:toport=<span class="number">8080</span></span><br></pre></td></tr></table></figure>
-
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --remove-forward-port=proto=<span class="number">80</span><span class="symbol">:proto=tcp</span><span class="symbol">:toaddr=</span><span class="number">192.168</span>.0.<span class="number">1</span><span class="symbol">:toport=</span><span class="number">8080</span></span><br></pre></td></tr></table></figure>
 
     </div>
 

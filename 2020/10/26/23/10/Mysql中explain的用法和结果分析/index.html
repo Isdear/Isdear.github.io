@@ -53,7 +53,7 @@
 <meta property="og:image" content="http://isdear.github.io/2020/10/26/23/10/Mysql%E4%B8%ADexplain%E7%9A%84%E7%94%A8%E6%B3%95%E5%92%8C%E7%BB%93%E6%9E%9C%E5%88%86%E6%9E%90/index2.png">
 <meta property="og:image" content="http://isdear.github.io/2020/10/26/23/10/Mysql%E4%B8%ADexplain%E7%9A%84%E7%94%A8%E6%B3%95%E5%92%8C%E7%BB%93%E6%9E%9C%E5%88%86%E6%9E%90/exp.png">
 <meta property="article:published_time" content="2020-10-26T15:10:34.000Z">
-<meta property="article:modified_time" content="2020-10-29T15:22:12.459Z">
+<meta property="article:modified_time" content="2020-10-31T04:12:31.142Z">
 <meta property="article:author" content="Kuang">
 <meta property="article:tag" content="mysql">
 <meta name="twitter:card" content="summary">
@@ -334,6 +334,8 @@
         </h1>
 
         <div class="post-meta">
+
+          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
@@ -347,7 +349,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-29 23:22:12" itemprop="dateModified" datetime="2020-10-29T23:22:12+08:00">2020-10-29</time>
+                <time title="修改时间：2020-10-31 12:12:31" itemprop="dateModified" datetime="2020-10-31T12:12:31+08:00">2020-10-31</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -399,8 +401,7 @@
 <li>表之间的引用</li>
 <li>每张表有多少行被优化器查询</li>
 </ul>
-<h5 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">explain</span>  <span class="keyword">select</span> * <span class="keyword">from</span> t</span><br></pre></td></tr></table></figure>
-
+<h5 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">explain  <span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> t</span><br></pre></td></tr></table></figure>
 <h5 id="执行计划包含的信息"><a href="#执行计划包含的信息" class="headerlink" title="执行计划包含的信息"></a>执行计划包含的信息</h5><table>
 <thead>
 <tr>
@@ -464,7 +465,6 @@
 <p><img src="/2020/10/26/23/10/Mysql%E4%B8%ADexplain%E7%9A%84%E7%94%A8%E6%B3%95%E5%92%8C%E7%BB%93%E6%9E%9C%E5%88%86%E6%9E%90/type.png" alt></p>
 <p> 从最好到最差依次是：</p>
 <figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">system</span> &gt; const &gt; eq_ref &gt; <span class="keyword">ref</span> &gt; range &gt; <span class="keyword">index</span> &gt; <span class="keyword">all</span></span><br></pre></td></tr></table></figure>
-
 <p><strong>一般来说，得保证查询至少达到range级别，最好能达到ref</strong></p>
 <ul>
 <li><code>system</code> 表只有一行记录（等于系统表），这是const类型的特列，平时不会出现，这个也可以忽略不计</li>
@@ -518,8 +518,7 @@
 <h5 id="Using-where"><a href="#Using-where" class="headerlink" title="Using where"></a>Using where</h5><p>表明使用了where过滤</p>
 <h5 id="Using-join-buffer"><a href="#Using-join-buffer" class="headerlink" title="Using join buffer"></a>Using join buffer</h5><p>表明使用了连接缓存,比如说在查询的时候，多表join的次数非常多，那么将配置文件中的缓冲区的join buffer调大一些。</p>
 <h5 id="impossible-where"><a href="#impossible-where" class="headerlink" title="impossible where"></a>impossible where</h5><p>where子句的值<code>总是false</code>，不能用来获取任何元组</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> t_user <span class="keyword">WHERE</span> <span class="keyword">id</span> = <span class="string">&#x27;1&#x27;</span> <span class="keyword">and</span> <span class="keyword">id</span> = <span class="string">&#x27;2&#x27;</span></span><br></pre></td></tr></table></figure>
-
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> t_user <span class="keyword">WHERE</span> id <span class="operator">=</span> <span class="string">&#x27;1&#x27;</span> <span class="keyword">and</span> id <span class="operator">=</span> <span class="string">&#x27;2&#x27;</span></span><br></pre></td></tr></table></figure>
 <h5 id="select-tables-optimized-away"><a href="#select-tables-optimized-away" class="headerlink" title="select tables optimized away"></a>select tables optimized away</h5><p>在没有GROUPBY子句的情况下，基于索引优化MIN/MAX操作或者对于MyISAM存储引擎优化COUNT(*)操作，不必等到执行阶段再进行计算，查询执行计划生成的阶段即完成优化。</p>
 <h5 id="distinct"><a href="#distinct" class="headerlink" title="distinct"></a>distinct</h5><p>优化distinct操作，在找到第一匹配的元组后即停止找同样值的动作</p>
 <h5 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h5><p><img src="/2020/10/26/23/10/Mysql%E4%B8%ADexplain%E7%9A%84%E7%94%A8%E6%B3%95%E5%92%8C%E7%BB%93%E6%9E%9C%E5%88%86%E6%9E%90/exp.png" alt></p>
