@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 5.3.0">
+
+
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -14,17 +16,16 @@
 
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1.0.2/themes/blue/pace-theme-minimal.css">
-  <script src="//cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css">
+  <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"isdear.github.io","root":"/","scheme":"Pisces","version":"8.0.0-rc.5","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+    var CONFIG = {"hostname":"isdear.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
-
-  <meta name="description" content="curl命令是一个利用URL规则在命令行下工作的文件传输工具。它支持文件的上传和下载，所以是综合传输工具，但按传统，习惯称curl为下载工具。作为一款强力工具，curl支持包括HTTP、HTTPS、FTP等众多协议，还支持POST、cookies、认证、从指定偏移处下载部分文件、用户代理字符串、限速、文件大小、进度条等特征。做网页处理流程和数据检索自动化，curl可以祝一臂之力。">
+<meta name="description" content="curl命令是一个利用URL规则在命令行下工作的文件传输工具。它支持文件的上传和下载，所以是综合传输工具，但按传统，习惯称curl为下载工具。作为一款强力工具，curl支持包括HTTP、HTTPS、FTP等众多协议，还支持POST、cookies、认证、从指定偏移处下载部分文件、用户代理字符串、限速、文件大小、进度条等特征。做网页处理流程和数据检索自动化，curl可以祝一臂之力。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用curl调用后台接口">
 <meta property="og:url" content="http://isdear.github.io/2020/11/10/23/02/%E4%BD%BF%E7%94%A8curl%E8%B0%83%E7%94%A8%E5%90%8E%E5%8F%B0%E6%8E%A5%E5%8F%A3/index.html">
@@ -52,11 +53,8 @@
     lang   : 'zh-CN'
   };
 </script>
-
-  <title>使用curl调用后台接口 | Welcome to my hexo</title>
+<title>使用curl调用后台接口 | Welcome to my hexo</title>
   
-
-
 
 
 
@@ -105,7 +103,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="切换导航栏" role="button">
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
@@ -132,31 +130,11 @@
 
 <nav class="site-nav">
   <ul class="main-menu menu">
-        <li class="menu-item menu-item-首页">
-
-    <a href="/" rel="section"><i class="home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-标签">
-
-    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a>
-
-  </li>
-        <li class="menu-item menu-item-类别">
-
-    <a href="/categories/" rel="section"><i class="categories fa-fw"></i>类别</a>
-
-  </li>
-        <li class="menu-item menu-item-档案">
-
-    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>档案</a>
-
-  </li>
-        <li class="menu-item menu-item-特效">
-
-    <a href="/personality/" rel="section"><i class="about fa-fw"></i>特效</a>
-
-  </li>
+        <li class="menu-item menu-item-首页"><a href="/" rel="section"><i class="home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-标签"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-类别"><a href="/categories/" rel="section"><i class="categories fa-fw"></i>类别</a></li>
+        <li class="menu-item menu-item-档案"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>档案</a></li>
+        <li class="menu-item menu-item-特效"><a href="/personality/" rel="section"><i class="about fa-fw"></i>特效</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -167,8 +145,7 @@
 
 
   <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
+    <div class="popup search-popup"><div class="search-header">
   <span class="search-icon">
     <i class="fa fa-search"></i>
   </span>
@@ -177,11 +154,11 @@
            placeholder="搜索..." spellcheck="false"
            type="search" class="search-input">
   </div>
-  <span class="popup-btn-close">
+  <span class="popup-btn-close" role="button">
     <i class="fa fa-times-circle"></i>
   </span>
 </div>
-<div class="search-result-container">
+<div class="search-result-container no-result">
   <div class="search-result-icon">
     <i class="fa fa-spinner fa-pulse fa-5x"></i>
   </div>
@@ -193,7 +170,7 @@
 </div>
         
   
-  <div class="toggle sidebar-toggle">
+  <div class="toggle sidebar-toggle" role="button">
     <span class="toggle-line"></span>
     <span class="toggle-line"></span>
     <span class="toggle-line"></span>
@@ -211,20 +188,21 @@
         </li>
       </ul>
 
-      <!--noindex-->
-      <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">语法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E9%80%89%E9%A1%B9"><span class="nav-number">1.1.</span> <span class="nav-text">选项</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8F%91%E9%80%81get%E6%88%96post%E8%AF%B7%E6%B1%82"><span class="nav-number">2.</span> <span class="nav-text">发送get或post请求</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#get%E8%AF%B7%E6%B1%82"><span class="nav-number">2.1.</span> <span class="nav-text">get请求</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#post%E8%AF%B7%E6%B1%82"><span class="nav-number">2.2.</span> <span class="nav-text">post请求</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B8%A6%E6%9C%89Header%E7%9A%84%E8%AF%B7%E6%B1%82%E5%A4%B4"><span class="nav-number">3.</span> <span class="nav-text">带有Header的请求头</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#JSON%E6%A0%BC%E5%BC%8F%E8%AF%B7%E6%B1%82"><span class="nav-number">4.</span> <span class="nav-text">JSON格式请求</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD"><span class="nav-number">5.</span> <span class="nav-text">文件下载</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%96%AD%E7%82%B9%E7%BB%AD%E4%BC%A0"><span class="nav-number">6.</span> <span class="nav-text">断点续传</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8curl%E8%AE%BE%E7%BD%AE%E5%8F%82%E7%85%A7%E9%A1%B5%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">7.</span> <span class="nav-text">使用curl设置参照页字符串</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%94%A8curl%E8%AE%BE%E7%BD%AEcookies"><span class="nav-number">8.</span> <span class="nav-text">用curl设置cookies</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%94%A8curl%E8%AE%BE%E7%BD%AE%E7%94%A8%E6%88%B7%E4%BB%A3%E7%90%86%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">9.</span> <span class="nav-text">用curl设置用户代理字符串</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#curl%E7%9A%84%E5%B8%A6%E5%AE%BD%E6%8E%A7%E5%88%B6%E5%92%8C%E4%B8%8B%E8%BD%BD%E9%85%8D%E9%A2%9D"><span class="nav-number">10.</span> <span class="nav-text">curl的带宽控制和下载配额</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%94%A8curl%E8%BF%9B%E8%A1%8C%E8%AE%A4%E8%AF%81"><span class="nav-number">11.</span> <span class="nav-text">用curl进行认证</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8F%AA%E6%89%93%E5%8D%B0%E5%93%8D%E5%BA%94%E5%A4%B4%E9%83%A8%E4%BF%A1%E6%81%AF"><span class="nav-number">12.</span> <span class="nav-text">只打印响应头部信息</span></a></li></ol></div>
-      </section>
-      <!--/noindex-->
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">语法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E9%80%89%E9%A1%B9"><span class="nav-number">1.1.</span> <span class="nav-text">选项</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8F%91%E9%80%81get%E6%88%96post%E8%AF%B7%E6%B1%82"><span class="nav-number">2.</span> <span class="nav-text">发送get或post请求</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#get%E8%AF%B7%E6%B1%82"><span class="nav-number">2.1.</span> <span class="nav-text">get请求</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#post%E8%AF%B7%E6%B1%82"><span class="nav-number">2.2.</span> <span class="nav-text">post请求</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B8%A6%E6%9C%89Header%E7%9A%84%E8%AF%B7%E6%B1%82%E5%A4%B4"><span class="nav-number">3.</span> <span class="nav-text">带有Header的请求头</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#JSON%E6%A0%BC%E5%BC%8F%E8%AF%B7%E6%B1%82"><span class="nav-number">4.</span> <span class="nav-text">JSON格式请求</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD"><span class="nav-number">5.</span> <span class="nav-text">文件下载</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%96%AD%E7%82%B9%E7%BB%AD%E4%BC%A0"><span class="nav-number">6.</span> <span class="nav-text">断点续传</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8curl%E8%AE%BE%E7%BD%AE%E5%8F%82%E7%85%A7%E9%A1%B5%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">7.</span> <span class="nav-text">使用curl设置参照页字符串</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%94%A8curl%E8%AE%BE%E7%BD%AEcookies"><span class="nav-number">8.</span> <span class="nav-text">用curl设置cookies</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%94%A8curl%E8%AE%BE%E7%BD%AE%E7%94%A8%E6%88%B7%E4%BB%A3%E7%90%86%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">9.</span> <span class="nav-text">用curl设置用户代理字符串</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#curl%E7%9A%84%E5%B8%A6%E5%AE%BD%E6%8E%A7%E5%88%B6%E5%92%8C%E4%B8%8B%E8%BD%BD%E9%85%8D%E9%A2%9D"><span class="nav-number">10.</span> <span class="nav-text">curl的带宽控制和下载配额</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%94%A8curl%E8%BF%9B%E8%A1%8C%E8%AE%A4%E8%AF%81"><span class="nav-number">11.</span> <span class="nav-text">用curl进行认证</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8F%AA%E6%89%93%E5%8D%B0%E5%93%8D%E5%BA%94%E5%A4%B4%E9%83%A8%E4%BF%A1%E6%81%AF"><span class="nav-number">12.</span> <span class="nav-text">只打印响应头部信息</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
 
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="Kuang"
       src="/images/kenan.jpg">
   <p class="site-author-name" itemprop="name">Kuang</p>
   <div class="site-description" itemprop="description">个人博客</div>
 </div>
-<div class="site-state-wrap animated">
+<div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
@@ -244,7 +222,7 @@
       </div>
   </nav>
 </div>
-  <div class="links-of-author animated">
+  <div class="links-of-author site-overview-item animated">
       <span class="links-of-author-item">
         <a href="https://github.com/Isdear" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Isdear" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
@@ -258,13 +236,14 @@
         <a href="/1906956615" title="QQ → 1906956615"><i class="fab fa-qq fa-fw"></i>QQ</a>
       </span>
   </div>
-  <div class="cc-license animated" itemprop="license">
+  <div class="cc-license site-overview-item animated" itemprop="license">
     <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
   </div>
 
 
 
-      </section>
+        </div>
+      </div>
     </div>
   </aside>
   <div class="sidebar-dimmer"></div>
@@ -273,7 +252,7 @@
     </header>
 
     
-  <div class="back-to-top">
+  <div class="back-to-top" role="button">
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
@@ -286,14 +265,16 @@
 
 
     <div class="main-inner post posts-expand">
-      
 
-      
 
-    
+  
+
+
+<div class="post-block">
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://isdear.github.io/2020/11/10/23/02/%E4%BD%BF%E7%94%A8curl%E8%B0%83%E7%94%A8%E5%90%8E%E5%8F%B0%E6%8E%A5%E5%8F%A3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -305,64 +286,63 @@
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Welcome to my hexo">
     </span>
-
-    
-    
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           使用curl调用后台接口
         </h1>
 
-        <div class="post-meta">
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
 
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
+      <time title="创建时间：2020-11-10 23:02:07" itemprop="dateCreated datePublished" datetime="2020-11-10T23:02:07+08:00">2020-11-10</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-11-15 20:52:43" itemprop="dateModified" datetime="2020-11-15T20:52:43+08:00">2020-11-15</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AF%AD%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">语法</span></a>
+        </span>
+    </span>
 
-              <time title="创建时间：2020-11-10 23:02:07" itemprop="dateCreated datePublished" datetime="2020-11-10T23:02:07+08:00">2020-11-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-15 20:52:43" itemprop="dateModified" datetime="2020-11-15T20:52:43+08:00">2020-11-15</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AF%AD%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">语法</span></a>
-                </span>
-            </span>
-
-          
-            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
-              <span class="post-meta-item-icon">
-                <i class="far fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span id="busuanzi_value_page_pv"></span>
-            </span><br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-              <span class="post-meta-item-text">本文字数：</span>
-              <span>5.9k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-              <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>20 分钟</span>
-            </span>
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>5.9k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>20 分钟</span>
+    </span>
+</div>
 
         </div>
       </header>
@@ -868,13 +848,13 @@
           </div>
     </footer>
   </article>
-  
-  
-  
+</div>
 
 
 
-      
+
+
+
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -897,18 +877,14 @@
     });
   }
 </script>
-
-    </div>
+</div>
   </main>
 
   <footer class="footer">
     <div class="footer-inner">
-      
 
-      
 
 <div class="copyright">
-  
   &copy; 2019 – 
   <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
@@ -955,28 +931,18 @@
   </footer>
 
   
-  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
 <script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
 
   
-
-
-
-
-  <script src="/js/local-search.js"></script>
-
-
-
-
-
-
+<script src="/js/local-search.js"></script>
 
 
 
 
 <script>
 if (document.querySelectorAll('.mermaid').length) {
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8.6.4/dist/mermaid.min.js', () => {
+  NexT.utils.getScript('https://cdn.jsdelivr.net/npm/mermaid@8.9.0/dist/mermaid.min.js', () => {
     mermaid.init({
       theme    : 'forest',
       logLevel : 3,
@@ -988,6 +954,26 @@ if (document.querySelectorAll('.mermaid').length) {
 }
 </script>
 
+  <script>
+    NProgress.configure({
+      showSpinner: true
+    });
+    NProgress.start();
+    document.addEventListener('readystatechange', () => {
+      if (document.readyState === 'interactive') {
+        NProgress.inc(0.8);
+      }
+      if (document.readyState === 'complete') {
+        NProgress.done();
+      }
+    });
+    document.addEventListener('pjax:send', () => {
+      NProgress.start();
+    });
+    document.addEventListener('pjax:success', () => {
+      NProgress.done();
+    });
+  </script>
 
   
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
@@ -995,15 +981,39 @@ if (document.querySelectorAll('.mermaid').length) {
 
 
 
+  <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'none'
+      },
+      options: {
+        renderActions: {
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
 
 
-
-
-  
-
-  
-
-  
 
 </body>
 </html>

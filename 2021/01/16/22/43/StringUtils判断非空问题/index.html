@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 5.3.0">
+
+
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -14,17 +16,16 @@
 
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1.0.2/themes/blue/pace-theme-minimal.css">
-  <script src="//cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css">
+  <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"isdear.github.io","root":"/","scheme":"Pisces","version":"8.0.0-rc.5","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+    var CONFIG = {"hostname":"isdear.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
-
-  <meta name="description" content="StringUtils 方法的操作对象是 java.lang.String 类型的对象，是 JDK 提供的 String 类型操作方法的补充，并且是 null 安全的(即如果输入参数 String 为 null 则不会抛出 NullPointerException ，而是做了相应处理。例如，如果输入为 null 则返回也是 null 等)">
+<meta name="description" content="StringUtils 方法的操作对象是 java.lang.String 类型的对象，是 JDK 提供的 String 类型操作方法的补充，并且是 null 安全的(即如果输入参数 String 为 null 则不会抛出 NullPointerException ，而是做了相应处理。例如，如果输入为 null 则返回也是 null 等)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="StringUtils判断非空问题">
 <meta property="og:url" content="http://isdear.github.io/2021/01/16/22/43/StringUtils%E5%88%A4%E6%96%AD%E9%9D%9E%E7%A9%BA%E9%97%AE%E9%A2%98/index.html">
@@ -50,11 +51,8 @@
     lang   : 'zh-CN'
   };
 </script>
-
-  <title>StringUtils判断非空问题 | Welcome to my hexo</title>
+<title>StringUtils判断非空问题 | Welcome to my hexo</title>
   
-
-
 
 
 
@@ -103,7 +101,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="切换导航栏" role="button">
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
@@ -130,31 +128,11 @@
 
 <nav class="site-nav">
   <ul class="main-menu menu">
-        <li class="menu-item menu-item-首页">
-
-    <a href="/" rel="section"><i class="home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-标签">
-
-    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a>
-
-  </li>
-        <li class="menu-item menu-item-类别">
-
-    <a href="/categories/" rel="section"><i class="categories fa-fw"></i>类别</a>
-
-  </li>
-        <li class="menu-item menu-item-档案">
-
-    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>档案</a>
-
-  </li>
-        <li class="menu-item menu-item-特效">
-
-    <a href="/personality/" rel="section"><i class="about fa-fw"></i>特效</a>
-
-  </li>
+        <li class="menu-item menu-item-首页"><a href="/" rel="section"><i class="home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-标签"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-类别"><a href="/categories/" rel="section"><i class="categories fa-fw"></i>类别</a></li>
+        <li class="menu-item menu-item-档案"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>档案</a></li>
+        <li class="menu-item menu-item-特效"><a href="/personality/" rel="section"><i class="about fa-fw"></i>特效</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -165,8 +143,7 @@
 
 
   <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
+    <div class="popup search-popup"><div class="search-header">
   <span class="search-icon">
     <i class="fa fa-search"></i>
   </span>
@@ -175,11 +152,11 @@
            placeholder="搜索..." spellcheck="false"
            type="search" class="search-input">
   </div>
-  <span class="popup-btn-close">
+  <span class="popup-btn-close" role="button">
     <i class="fa fa-times-circle"></i>
   </span>
 </div>
-<div class="search-result-container">
+<div class="search-result-container no-result">
   <div class="search-result-icon">
     <i class="fa fa-spinner fa-pulse fa-5x"></i>
   </div>
@@ -191,7 +168,7 @@
 </div>
         
   
-  <div class="toggle sidebar-toggle">
+  <div class="toggle sidebar-toggle" role="button">
     <span class="toggle-line"></span>
     <span class="toggle-line"></span>
     <span class="toggle-line"></span>
@@ -209,20 +186,21 @@
         </li>
       </ul>
 
-      <!--noindex-->
-      <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#isEmpty-String-str"><span class="nav-number">1.</span> <span class="nav-text">isEmpty(String str)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#isNotEmpty-String-str"><span class="nav-number">2.</span> <span class="nav-text">isNotEmpty(String str)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#isBlank-String-str"><span class="nav-number">3.</span> <span class="nav-text">isBlank(String str)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#isNotBlank-String-str"><span class="nav-number">4.</span> <span class="nav-text">isNotBlank(String str)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#trim-String-str"><span class="nav-number">5.</span> <span class="nav-text">trim(String str)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#trimToNull-String-str"><span class="nav-number">6.</span> <span class="nav-text">trimToNull(String str)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#trimToEmpty-String-str"><span class="nav-number">7.</span> <span class="nav-text">trimToEmpty(String str)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#strip-String-str"><span class="nav-number">8.</span> <span class="nav-text">strip(String str)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#stripToNull-String-str"><span class="nav-number">9.</span> <span class="nav-text">stripToNull(String str)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#stripToEmpty-String-str"><span class="nav-number">10.</span> <span class="nav-text">stripToEmpty(String str)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%A5%E4%B8%8B%E6%96%B9%E6%B3%95%E5%8F%AA%E4%BB%8B%E7%BB%8D%E5%85%B6%E5%8A%9F%E8%83%BD%EF%BC%8C%E4%B8%8D%E5%86%8D%E4%B8%BE%E4%BE%8B%EF%BC%9A"><span class="nav-number">11.</span> <span class="nav-text">以下方法只介绍其功能，不再举例：</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#strip-String-str-String-stripChars"><span class="nav-number">11.1.</span> <span class="nav-text">strip(String str, String stripChars)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#stripStart-String-str-String-stripChars"><span class="nav-number">11.2.</span> <span class="nav-text">stripStart(String str, String stripChars)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#stripEnd-String-str-String-stripChars"><span class="nav-number">11.3.</span> <span class="nav-text">stripEnd(String str, String stripChars)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#stripAll-String-strs"><span class="nav-number">11.4.</span> <span class="nav-text">stripAll(String[] strs)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#stripAll-String-strs-String-stripChars"><span class="nav-number">11.5.</span> <span class="nav-text">stripAll(String[] strs, String stripChars)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#equals-String-str1-String-str2"><span class="nav-number">11.6.</span> <span class="nav-text">equals(String str1, String str2)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#equalsIgnoreCase-String-str1-String-str2"><span class="nav-number">11.7.</span> <span class="nav-text">equalsIgnoreCase(String str1, String str2)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#indexOf-String-str-char-searchChar"><span class="nav-number">11.8.</span> <span class="nav-text">indexOf(String str, char searchChar)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#indexOf-String-str-char-searchChar-int-startPos"><span class="nav-number">11.9.</span> <span class="nav-text">indexOf(String str, char searchChar, int startPos)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#indexOf-String-str-String-searchStr"><span class="nav-number">11.10.</span> <span class="nav-text">indexOf(String str, String searchStr)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#ordinalIndexOf-String-str-String-searchStr-int-ordinal"><span class="nav-number">11.11.</span> <span class="nav-text">ordinalIndexOf(String str, String searchStr, int ordinal)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#indexOf-String-str-String-searchStr-int-startPos"><span class="nav-number">11.12.</span> <span class="nav-text">indexOf(String str, String searchStr, int startPos)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#lastIndexOf-String-str-char-searchChar"><span class="nav-number">11.13.</span> <span class="nav-text">lastIndexOf(String str, char searchChar)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#lastIndexOf-String-str-char-searchChar-int-startPos"><span class="nav-number">11.14.</span> <span class="nav-text">lastIndexOf(String str, char searchChar, int startPos)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#lastIndexOf-String-str-String-searchStr"><span class="nav-number">11.15.</span> <span class="nav-text">lastIndexOf(String str, String searchStr)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#lastIndexOf-String-str-String-searchStr-int-startPos"><span class="nav-number">11.16.</span> <span class="nav-text">lastIndexOf(String str, String searchStr, int startPos)</span></a></li></ol></li></ol></div>
-      </section>
-      <!--/noindex-->
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#isEmpty-String-str"><span class="nav-number">1.</span> <span class="nav-text">isEmpty(String str)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#isNotEmpty-String-str"><span class="nav-number">2.</span> <span class="nav-text">isNotEmpty(String str)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#isBlank-String-str"><span class="nav-number">3.</span> <span class="nav-text">isBlank(String str)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#isNotBlank-String-str"><span class="nav-number">4.</span> <span class="nav-text">isNotBlank(String str)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#trim-String-str"><span class="nav-number">5.</span> <span class="nav-text">trim(String str)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#trimToNull-String-str"><span class="nav-number">6.</span> <span class="nav-text">trimToNull(String str)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#trimToEmpty-String-str"><span class="nav-number">7.</span> <span class="nav-text">trimToEmpty(String str)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#strip-String-str"><span class="nav-number">8.</span> <span class="nav-text">strip(String str)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#stripToNull-String-str"><span class="nav-number">9.</span> <span class="nav-text">stripToNull(String str)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#stripToEmpty-String-str"><span class="nav-number">10.</span> <span class="nav-text">stripToEmpty(String str)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%A5%E4%B8%8B%E6%96%B9%E6%B3%95%E5%8F%AA%E4%BB%8B%E7%BB%8D%E5%85%B6%E5%8A%9F%E8%83%BD%EF%BC%8C%E4%B8%8D%E5%86%8D%E4%B8%BE%E4%BE%8B%EF%BC%9A"><span class="nav-number">11.</span> <span class="nav-text">以下方法只介绍其功能，不再举例：</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#strip-String-str-String-stripChars"><span class="nav-number">11.1.</span> <span class="nav-text">strip(String str, String stripChars)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#stripStart-String-str-String-stripChars"><span class="nav-number">11.2.</span> <span class="nav-text">stripStart(String str, String stripChars)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#stripEnd-String-str-String-stripChars"><span class="nav-number">11.3.</span> <span class="nav-text">stripEnd(String str, String stripChars)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#stripAll-String-strs"><span class="nav-number">11.4.</span> <span class="nav-text">stripAll(String[] strs)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#stripAll-String-strs-String-stripChars"><span class="nav-number">11.5.</span> <span class="nav-text">stripAll(String[] strs, String stripChars)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#equals-String-str1-String-str2"><span class="nav-number">11.6.</span> <span class="nav-text">equals(String str1, String str2)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#equalsIgnoreCase-String-str1-String-str2"><span class="nav-number">11.7.</span> <span class="nav-text">equalsIgnoreCase(String str1, String str2)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#indexOf-String-str-char-searchChar"><span class="nav-number">11.8.</span> <span class="nav-text">indexOf(String str, char searchChar)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#indexOf-String-str-char-searchChar-int-startPos"><span class="nav-number">11.9.</span> <span class="nav-text">indexOf(String str, char searchChar, int startPos)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#indexOf-String-str-String-searchStr"><span class="nav-number">11.10.</span> <span class="nav-text">indexOf(String str, String searchStr)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#ordinalIndexOf-String-str-String-searchStr-int-ordinal"><span class="nav-number">11.11.</span> <span class="nav-text">ordinalIndexOf(String str, String searchStr, int ordinal)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#indexOf-String-str-String-searchStr-int-startPos"><span class="nav-number">11.12.</span> <span class="nav-text">indexOf(String str, String searchStr, int startPos)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#lastIndexOf-String-str-char-searchChar"><span class="nav-number">11.13.</span> <span class="nav-text">lastIndexOf(String str, char searchChar)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#lastIndexOf-String-str-char-searchChar-int-startPos"><span class="nav-number">11.14.</span> <span class="nav-text">lastIndexOf(String str, char searchChar, int startPos)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#lastIndexOf-String-str-String-searchStr"><span class="nav-number">11.15.</span> <span class="nav-text">lastIndexOf(String str, String searchStr)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#lastIndexOf-String-str-String-searchStr-int-startPos"><span class="nav-number">11.16.</span> <span class="nav-text">lastIndexOf(String str, String searchStr, int startPos)</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
 
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="Kuang"
       src="/images/kenan.jpg">
   <p class="site-author-name" itemprop="name">Kuang</p>
   <div class="site-description" itemprop="description">个人博客</div>
 </div>
-<div class="site-state-wrap animated">
+<div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
@@ -242,7 +220,7 @@
       </div>
   </nav>
 </div>
-  <div class="links-of-author animated">
+  <div class="links-of-author site-overview-item animated">
       <span class="links-of-author-item">
         <a href="https://github.com/Isdear" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Isdear" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
@@ -256,13 +234,14 @@
         <a href="/1906956615" title="QQ → 1906956615"><i class="fab fa-qq fa-fw"></i>QQ</a>
       </span>
   </div>
-  <div class="cc-license animated" itemprop="license">
+  <div class="cc-license site-overview-item animated" itemprop="license">
     <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
   </div>
 
 
 
-      </section>
+        </div>
+      </div>
     </div>
   </aside>
   <div class="sidebar-dimmer"></div>
@@ -271,7 +250,7 @@
     </header>
 
     
-  <div class="back-to-top">
+  <div class="back-to-top" role="button">
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
@@ -284,14 +263,16 @@
 
 
     <div class="main-inner post posts-expand">
-      
 
-      
 
-    
+  
+
+
+<div class="post-block">
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://isdear.github.io/2021/01/16/22/43/StringUtils%E5%88%A4%E6%96%AD%E9%9D%9E%E7%A9%BA%E9%97%AE%E9%A2%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -303,58 +284,57 @@
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Welcome to my hexo">
     </span>
-
-    
-    
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           StringUtils判断非空问题
         </h1>
 
-        <div class="post-meta">
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
 
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
+      <time title="创建时间：2021-01-16 22:43:38 / 修改时间：23:08:07" itemprop="dateCreated datePublished" datetime="2021-01-16T22:43:38+08:00">2021-01-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
 
-              <time title="创建时间：2021-01-16 22:43:38 / 修改时间：23:08:07" itemprop="dateCreated datePublished" datetime="2021-01-16T22:43:38+08:00">2021-01-16</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-                </span>
-            </span>
-
-          
-            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
-              <span class="post-meta-item-icon">
-                <i class="far fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span id="busuanzi_value_page_pv"></span>
-            </span><br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-              <span class="post-meta-item-text">本文字数：</span>
-              <span>9k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-              <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>30 分钟</span>
-            </span>
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>9k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>30 分钟</span>
+    </span>
+</div>
 
         </div>
       </header>
@@ -510,13 +490,13 @@
           </div>
     </footer>
   </article>
-  
-  
-  
+</div>
 
 
 
-      
+
+
+
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -539,18 +519,14 @@
     });
   }
 </script>
-
-    </div>
+</div>
   </main>
 
   <footer class="footer">
     <div class="footer-inner">
-      
 
-      
 
 <div class="copyright">
-  
   &copy; 2019 – 
   <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
@@ -597,28 +573,18 @@
   </footer>
 
   
-  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
 <script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
 
   
-
-
-
-
-  <script src="/js/local-search.js"></script>
-
-
-
-
-
-
+<script src="/js/local-search.js"></script>
 
 
 
 
 <script>
 if (document.querySelectorAll('.mermaid').length) {
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8.6.4/dist/mermaid.min.js', () => {
+  NexT.utils.getScript('https://cdn.jsdelivr.net/npm/mermaid@8.9.0/dist/mermaid.min.js', () => {
     mermaid.init({
       theme    : 'forest',
       logLevel : 3,
@@ -630,6 +596,26 @@ if (document.querySelectorAll('.mermaid').length) {
 }
 </script>
 
+  <script>
+    NProgress.configure({
+      showSpinner: true
+    });
+    NProgress.start();
+    document.addEventListener('readystatechange', () => {
+      if (document.readyState === 'interactive') {
+        NProgress.inc(0.8);
+      }
+      if (document.readyState === 'complete') {
+        NProgress.done();
+      }
+    });
+    document.addEventListener('pjax:send', () => {
+      NProgress.start();
+    });
+    document.addEventListener('pjax:success', () => {
+      NProgress.done();
+    });
+  </script>
 
   
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
@@ -637,15 +623,39 @@ if (document.querySelectorAll('.mermaid').length) {
 
 
 
+  <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'none'
+      },
+      options: {
+        renderActions: {
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
 
 
-
-
-  
-
-  
-
-  
 
 </body>
 </html>
