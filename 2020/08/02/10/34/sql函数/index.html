@@ -353,14 +353,14 @@
                 <i class="far fa-file-word"></i>
               </span>
               <span class="post-meta-item-text">本文字数：</span>
-              <span>1.7k</span>
+              <span>1.6k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
               <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>6 分钟</span>
+              <span>5 分钟</span>
             </span>
 
         </div>
@@ -388,7 +388,8 @@
 <li><p>format(column_name,format)：</p>
 </li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> ProductName, UnitPrice, FORMAT(Now(),<span class="string">&#x27;YYYY-MM-DD&#x27;</span>) <span class="keyword">as</span> PerDate</span><br><span class="line"><span class="keyword">FROM</span> Products</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> ProductName<span class="token punctuation">,</span> UnitPrice<span class="token punctuation">,</span> <span class="token function">FORMAT</span><span class="token punctuation">(</span><span class="token function">Now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'YYYY-MM-DD'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> PerDate
+<span class="token keyword">FROM</span> Products<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <ul>
 <li><p>replace(X,old,new) n：在X中查找old，并替换成new</p>
 </li>
@@ -408,15 +409,15 @@
 <li><p>add_months(d,n)，在某一个日期 d 上，加上指定的月数 n，返回计算后的新日期。d 表示日期，n 表示要加的月数</p>
 </li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> SYSDATE,add_months(SYSDATE,<span class="number">5</span>) <span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> SYSDATE<span class="token punctuation">,</span>add_months<span class="token punctuation">(</span>SYSDATE<span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token keyword">FROM</span> dual<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ul>
 <li>last_day(d)，返回指定日期当月的最后一天</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> SYSDATE,last_day(SYSDATE) <span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> SYSDATE<span class="token punctuation">,</span>last_day<span class="token punctuation">(</span>SYSDATE<span class="token punctuation">)</span> <span class="token keyword">FROM</span> dual<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ul>
 <li>nvl(X,VALUE)：如果X为空，返回value，否则返回X</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> ENAME,JOB,SAL,NVL(COMM,<span class="number">100</span>) <span class="keyword">FROM</span> EMP <span class="keyword">WHERE</span> SAL<span class="operator">&lt;</span><span class="number">2000</span>;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> ENAME<span class="token punctuation">,</span>JOB<span class="token punctuation">,</span>SAL<span class="token punctuation">,</span>NVL<span class="token punctuation">(</span>COMM<span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">)</span> <span class="token keyword">FROM</span> EMP <span class="token keyword">WHERE</span> SAL<span class="token operator">&lt;</span><span class="token number">2000</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ul>
 <li>to_number()：将字符型数据转换成数字型    </li>
 <li>to_date()：将字符型数据转换成日期型</li>
@@ -427,7 +428,7 @@
 <li>round(n1,n2)四舍五入，n1代表字符串,n2代表小数位数，结果为123.57。<code>select round(123.567) from dual;</code></li>
 <li>zeroifnull(expr)：如果表达式expr的值为0，则返回null，否则返回表达式expr的值。</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> zeroifnull(<span class="built_in">count</span>(<span class="keyword">DISTINCT</span> userid)) <span class="keyword">from</span> table_name;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> zeroifnull<span class="token punctuation">(</span><span class="token function">count</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> userid<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">from</span> table_name<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ul>
 <li>nullifzero(expr)：如果表达式expr的值为null，则返回0，否则返回表达式expr的值。</li>
 <li>ln(y)：以e为底的y的对数，y &gt; 0。</li>
@@ -550,13 +551,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">247k</span>
+    <span title="站点总字数">233k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:43</span>
+    <span title="站点阅读时长">12:56</span>
   </span>
 </div>
 <div class="busuanzi-count">

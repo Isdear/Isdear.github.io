@@ -353,7 +353,7 @@
                 <i class="far fa-file-word"></i>
               </span>
               <span class="post-meta-item-text">本文字数：</span>
-              <span>3k</span>
+              <span>2.9k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -398,9 +398,95 @@
 <li>componentWillReceiveProps(object nextProps)：在组件接收到一个新的prop时被调用。这个方法在初始化render时不会被调用。</li>
 <li>shouldComponentUpdate(object nextProps, object nextState)：返回一个布尔值。在组件接收到新的props或者state时被调用。在初始化时或者使用forceUpdate时不被调用。<br>  可以在你确认不需要更新组件时使用。</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">var Hello &#x3D; React.createClass(&#123;</span><br><span class="line">  getInitialState: function () &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      opacity: 1.0</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  componentDidMount: function () &#123;</span><br><span class="line">    this.timer &#x3D; setInterval(function () &#123;</span><br><span class="line">      var opacity &#x3D; this.state.opacity;</span><br><span class="line">      opacity -&#x3D; .05;</span><br><span class="line">      if (opacity &lt; 0.1) &#123;</span><br><span class="line">        opacity &#x3D; 1.0;</span><br><span class="line">      &#125;</span><br><span class="line">      this.setState(&#123;</span><br><span class="line">        opacity: opacity</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;.bind(this), 100);</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  render: function () &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;div style&#x3D;&#123;&#123;opacity: this.state.opacity&#125;&#125;&gt;</span><br><span class="line">        Hello &#123;this.props.name&#125;</span><br><span class="line">      &lt;&#x2F;div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">React.render(</span><br><span class="line">  &lt;Hello name&#x3D;&quot;world&quot;&#x2F;&gt;,</span><br><span class="line">  document.body</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-react" data-language="react"><code class="language-react">var Hello &#x3D; React.createClass(&#123;
+  getInitialState: function () &#123;
+    return &#123;
+      opacity: 1.0
+    &#125;;
+  &#125;,
+
+  componentDidMount: function () &#123;
+    this.timer &#x3D; setInterval(function () &#123;
+      var opacity &#x3D; this.state.opacity;
+      opacity -&#x3D; .05;
+      if (opacity &lt; 0.1) &#123;
+        opacity &#x3D; 1.0;
+      &#125;
+      this.setState(&#123;
+        opacity: opacity
+      &#125;);
+    &#125;.bind(this), 100);
+  &#125;,
+
+  render: function () &#123;
+    return (
+      &lt;div style&#x3D;&#123;&#123;opacity: this.state.opacity&#125;&#125;&gt;
+        Hello &#123;this.props.name&#125;
+      &lt;&#x2F;div&gt;
+    );
+  &#125;
+&#125;);
+
+React.render(
+  &lt;Hello name&#x3D;&quot;world&quot;&#x2F;&gt;,
+  document.body
+);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>上面代码在hello组件加载以后，通过 componentDidMount 方法设置一个定时器，每隔100毫秒，就重新设置组件的透明度，从而引发重新渲染。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">var Button &#x3D; React.createClass(&#123;</span><br><span class="line">  getInitialState: function() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      data:0</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  setNewNumber: function() &#123;</span><br><span class="line">    this.setState(&#123;data: this.state.data + 1&#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  render: function () &#123;</span><br><span class="line">      return (</span><br><span class="line">         &lt;div&gt;</span><br><span class="line">            &lt;button onClick &#x3D; &#123;this.setNewNumber&#125;&gt;INCREMENT&lt;&#x2F;button&gt;</span><br><span class="line">            &lt;Content myNumber &#x3D; &#123;this.state.data&#125;&gt;&lt;&#x2F;Content&gt;</span><br><span class="line">         &lt;&#x2F;div&gt;</span><br><span class="line">      );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">var Content &#x3D; React.createClass(&#123;</span><br><span class="line">  componentWillMount:function() &#123;</span><br><span class="line">      console.log(&#39;Component WILL MOUNT!&#39;)</span><br><span class="line">  &#125;,</span><br><span class="line">  componentDidMount:function() &#123;</span><br><span class="line">       console.log(&#39;Component DID MOUNT!&#39;)</span><br><span class="line">  &#125;,</span><br><span class="line">  componentWillReceiveProps:function(newProps) &#123;</span><br><span class="line">        console.log(&#39;Component WILL RECIEVE PROPS!&#39;)</span><br><span class="line">  &#125;,</span><br><span class="line">  shouldComponentUpdate:function(newProps, newState) &#123;</span><br><span class="line">        return true;</span><br><span class="line">  &#125;,</span><br><span class="line">  componentWillUpdate:function(nextProps, nextState) &#123;</span><br><span class="line">        console.log(&#39;Component WILL UPDATE!&#39;);</span><br><span class="line">  &#125;,</span><br><span class="line">  componentDidUpdate:function(prevProps, prevState) &#123;</span><br><span class="line">        console.log(&#39;Component DID UPDATE!&#39;)</span><br><span class="line">  &#125;,</span><br><span class="line">  componentWillUnmount:function() &#123;</span><br><span class="line">         console.log(&#39;Component WILL UNMOUNT!&#39;)</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">    render: function () &#123;</span><br><span class="line">      return (</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">          &lt;h3&gt;&#123;this.props.myNumber&#125;&lt;&#x2F;h3&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line">      );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">ReactDOM.render(</span><br><span class="line">   &lt;div&gt;</span><br><span class="line">      &lt;Button &#x2F;&gt;</span><br><span class="line">   &lt;&#x2F;div&gt;,</span><br><span class="line">  document.getElementById(&#39;example&#39;)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-react" data-language="react"><code class="language-react">var Button &#x3D; React.createClass(&#123;
+  getInitialState: function() &#123;
+    return &#123;
+      data:0
+    &#125;;
+  &#125;,
+  setNewNumber: function() &#123;
+    this.setState(&#123;data: this.state.data + 1&#125;)
+  &#125;,
+  render: function () &#123;
+      return (
+         &lt;div&gt;
+            &lt;button onClick &#x3D; &#123;this.setNewNumber&#125;&gt;INCREMENT&lt;&#x2F;button&gt;
+            &lt;Content myNumber &#x3D; &#123;this.state.data&#125;&gt;&lt;&#x2F;Content&gt;
+         &lt;&#x2F;div&gt;
+      );
+    &#125;
+&#125;)
+var Content &#x3D; React.createClass(&#123;
+  componentWillMount:function() &#123;
+      console.log(&#39;Component WILL MOUNT!&#39;)
+  &#125;,
+  componentDidMount:function() &#123;
+       console.log(&#39;Component DID MOUNT!&#39;)
+  &#125;,
+  componentWillReceiveProps:function(newProps) &#123;
+        console.log(&#39;Component WILL RECIEVE PROPS!&#39;)
+  &#125;,
+  shouldComponentUpdate:function(newProps, newState) &#123;
+        return true;
+  &#125;,
+  componentWillUpdate:function(nextProps, nextState) &#123;
+        console.log(&#39;Component WILL UPDATE!&#39;);
+  &#125;,
+  componentDidUpdate:function(prevProps, prevState) &#123;
+        console.log(&#39;Component DID UPDATE!&#39;)
+  &#125;,
+  componentWillUnmount:function() &#123;
+         console.log(&#39;Component WILL UNMOUNT!&#39;)
+  &#125;,
+
+    render: function () &#123;
+      return (
+        &lt;div&gt;
+          &lt;h3&gt;&#123;this.props.myNumber&#125;&lt;&#x2F;h3&gt;
+        &lt;&#x2F;div&gt;
+      );
+    &#125;
+&#125;);
+ReactDOM.render(
+   &lt;div&gt;
+      &lt;Button &#x2F;&gt;
+   &lt;&#x2F;div&gt;,
+  document.getElementById(&#39;example&#39;)
+);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>以上实例初始化 state ， setNewnumber 用于更新 state。所有生命周期在 Content 组件中。</p>
 
     </div>
@@ -511,13 +597,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">247k</span>
+    <span title="站点总字数">233k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:43</span>
+    <span title="站点阅读时长">12:56</span>
   </span>
 </div>
 <div class="busuanzi-count">

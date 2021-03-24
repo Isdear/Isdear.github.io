@@ -347,7 +347,7 @@
                 <i class="far fa-file-word"></i>
               </span>
               <span class="post-meta-item-text">本文字数：</span>
-              <span>561</span>
+              <span>538</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -365,8 +365,25 @@
     
     <div class="post-body" itemprop="articleBody">
         <p>Date类型时间的计算<a id="more"></a></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Date endDate = <span class="keyword">new</span> Date();</span><br><span class="line">Date startDate = <span class="keyword">new</span> Date(endDate.getTime() - <span class="number">30</span> * <span class="number">24</span> * <span class="number">60</span> * <span class="number">60</span> * <span class="number">1000</span>);</span><br></pre></td></tr></table></figure>
-<h6 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Returns the number of milliseconds since January 1, 1970, 00:00:00 GMT</span></span><br><span class="line"><span class="comment"> * represented by this &lt;tt&gt;Date&lt;/tt&gt; object.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span>  the number of milliseconds since January 1, 1970, 00:00:00 GMT</span></span><br><span class="line"><span class="comment"> *          represented by this date.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">getTime</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> getTimeImpl();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">long</span> <span class="title">getTimeImpl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (cdate != <span class="keyword">null</span> &amp;&amp; !cdate.isNormalized()) &#123;</span><br><span class="line">        normalize();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> fastTime;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-Java" data-language="Java"><code class="language-Java">Date endDate &#x3D; new Date();
+Date startDate &#x3D; new Date(endDate.getTime() - 30 * 24 * 60 * 60 * 1000);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h6 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h6><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+ * Returns the number of milliseconds since January 1, 1970, 00:00:00 GMT
+ * represented by this &lt;tt>Date&lt;/tt> object.
+ *
+ * @return  the number of milliseconds since January 1, 1970, 00:00:00 GMT
+ *          represented by this date.
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">long</span> <span class="token function">getTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token function">getTimeImpl</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token keyword">long</span> <span class="token function">getTimeImpl</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>cdate <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>cdate<span class="token punctuation">.</span><span class="token function">isNormalized</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">normalize</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> fastTime<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>方法返回日期对象是从1970年1月1日00:00:00 GMT以来的毫秒数。所以，后面数字的单位是天、小时、分钟、秒、毫秒。</p>
 
     </div>
@@ -378,6 +395,9 @@
   <div class="popular-posts-header">相关文章</div>
   <ul class="popular-posts">
     <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2021\03\21\23\55\AOP实现系统操作日志记录\" rel="bookmark">AOP实现系统操作日志记录</a></div>
+    </li>
+    <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="\2020\11\16\22\42\JAVA设置Excel单元格格式\" rel="bookmark">JAVA设置Excel单元格格式</a></div>
     </li>
     <li class="popular-posts-item">
@@ -388,9 +408,6 @@
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="\2020\04\26\16\27\Java小知识\" rel="bookmark">Java小知识</a></div>
-    </li>
-    <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2020\05\02\16\35\Java面经三\" rel="bookmark">Java面经三</a></div>
     </li>
   </ul>
 
@@ -486,13 +503,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">247k</span>
+    <span title="站点总字数">233k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:43</span>
+    <span title="站点阅读时长">12:56</span>
   </span>
 </div>
 <div class="busuanzi-count">

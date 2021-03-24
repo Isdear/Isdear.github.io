@@ -353,7 +353,7 @@
                 <i class="far fa-file-word"></i>
               </span>
               <span class="post-meta-item-text">本文字数：</span>
-              <span>1.3k</span>
+              <span>1.2k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -371,10 +371,46 @@
     
     <div class="post-body" itemprop="articleBody">
         <p>DateTimeFormatter类提供了三种时间格式化方法。<a id="more"></a></p>
-<h6 id="默认格式"><a href="#默认格式" class="headerlink" title="默认格式"></a>默认格式</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 1.新建一个DateTimeFormatter对象</span></span><br><span class="line">        DateTimeFormatter isoDate = DateTimeFormatter.ISO_DATE;</span><br><span class="line">        </span><br><span class="line">        LocalDateTime ldt1 = LocalDateTime.now();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 2.调用该对象的format方法，参数是需要格式化的LocalDateTime对象。</span></span><br><span class="line">        String format = isoDate.format(ldt1);</span><br><span class="line">        </span><br><span class="line">        System.out.println(<span class="string">&quot;时间是：&quot;</span> + format);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h6 id="自定义格式"><a href="#自定义格式" class="headerlink" title="自定义格式"></a>自定义格式</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 1.新建一个DateTimeFormatter对象，调用ofPattern方法。</span></span><br><span class="line">        DateTimeFormatter pattern = DateTimeFormatter.ofPattern(<span class="string">&quot;yyyy年MM月dd日 HH时mm分ss秒&quot;</span>, Locale.CHINA);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 2.调用该对象的format方法，参数是需要格式化的LocalDateTime对象。</span></span><br><span class="line">        String format = pattern.format(LocalDateTime.now());</span><br><span class="line">        </span><br><span class="line">        System.out.println(<span class="string">&quot;时间是：&quot;</span> + format);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h6 id="自定义格式时间解析"><a href="#自定义格式时间解析" class="headerlink" title="自定义格式时间解析"></a>自定义格式时间解析</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test3</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 1.新建一个时间的字符串对象。</span></span><br><span class="line">        String dateTime = <span class="string">&quot;2020年02月12日 22点22分22秒&quot;</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 2.新建一个DateTimeFormatter对象，调用ofPattern方法。</span></span><br><span class="line">        DateTimeFormatter pattern = DateTimeFormatter.ofPattern(<span class="string">&quot;yyyy年MM月dd日 HH点mm分ss秒&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 3.调用DateTimeFormatter对象的parse方法，进行解析，返回一个TemporalAccessor对象。</span></span><br><span class="line">        TemporalAccessor parse = pattern.parse(dateTime);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 4.调用LocalDateTime的静态方法form，将TemporalAccessor转换成LocalDateTime对象。</span></span><br><span class="line">        LocalDateTime ldt1 = LocalDateTime.from(parse);</span><br><span class="line">        </span><br><span class="line">        System.out.println(<span class="string">&quot;LocalDateTime：&quot;</span> + ldt1);</span><br><span class="line">        System.out.println(<span class="string">&quot;LocalDateTime：&quot;</span> + LocalDateTime.now());</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h6 id="输出结果"><a href="#输出结果" class="headerlink" title="输出结果"></a>输出结果</h6><figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">时间是：2020<span class="string">-02</span><span class="string">-14</span></span><br><span class="line">时间是：2020年02月14日 16时30分55秒</span><br><span class="line">LocalDateTime：2020<span class="string">-02</span><span class="string">-12</span>T22:22:22</span><br><span class="line">LocalDateTime：2020<span class="string">-02</span><span class="string">-14</span>T16:30:55.544</span><br></pre></td></tr></table></figure>
+<h6 id="默认格式"><a href="#默认格式" class="headerlink" title="默认格式"></a>默认格式</h6><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// 1.新建一个DateTimeFormatter对象</span>
+        <span class="token class-name">DateTimeFormatter</span> isoDate <span class="token operator">=</span> <span class="token class-name">DateTimeFormatter</span><span class="token punctuation">.</span>ISO_DATE<span class="token punctuation">;</span>
+        
+        <span class="token class-name">LocalDateTime</span> ldt1 <span class="token operator">=</span> <span class="token class-name">LocalDateTime</span><span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        <span class="token comment">// 2.调用该对象的format方法，参数是需要格式化的LocalDateTime对象。</span>
+        <span class="token class-name">String</span> format <span class="token operator">=</span> isoDate<span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span>ldt1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"时间是："</span> <span class="token operator">+</span> format<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h6 id="自定义格式"><a href="#自定义格式" class="headerlink" title="自定义格式"></a>自定义格式</h6><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// 1.新建一个DateTimeFormatter对象，调用ofPattern方法。</span>
+        <span class="token class-name">DateTimeFormatter</span> pattern <span class="token operator">=</span> <span class="token class-name">DateTimeFormatter</span><span class="token punctuation">.</span><span class="token function">ofPattern</span><span class="token punctuation">(</span><span class="token string">"yyyy年MM月dd日 HH时mm分ss秒"</span><span class="token punctuation">,</span> <span class="token class-name">Locale</span><span class="token punctuation">.</span>CHINA<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        <span class="token comment">// 2.调用该对象的format方法，参数是需要格式化的LocalDateTime对象。</span>
+        <span class="token class-name">String</span> format <span class="token operator">=</span> pattern<span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token class-name">LocalDateTime</span><span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"时间是："</span> <span class="token operator">+</span> format<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h6 id="自定义格式时间解析"><a href="#自定义格式时间解析" class="headerlink" title="自定义格式时间解析"></a>自定义格式时间解析</h6><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test3</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// 1.新建一个时间的字符串对象。</span>
+        <span class="token class-name">String</span> dateTime <span class="token operator">=</span> <span class="token string">"2020年02月12日 22点22分22秒"</span><span class="token punctuation">;</span>
+        
+        <span class="token comment">// 2.新建一个DateTimeFormatter对象，调用ofPattern方法。</span>
+        <span class="token class-name">DateTimeFormatter</span> pattern <span class="token operator">=</span> <span class="token class-name">DateTimeFormatter</span><span class="token punctuation">.</span><span class="token function">ofPattern</span><span class="token punctuation">(</span><span class="token string">"yyyy年MM月dd日 HH点mm分ss秒"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// 3.调用DateTimeFormatter对象的parse方法，进行解析，返回一个TemporalAccessor对象。</span>
+        <span class="token class-name">TemporalAccessor</span> parse <span class="token operator">=</span> pattern<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>dateTime<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// 4.调用LocalDateTime的静态方法form，将TemporalAccessor转换成LocalDateTime对象。</span>
+        <span class="token class-name">LocalDateTime</span> ldt1 <span class="token operator">=</span> <span class="token class-name">LocalDateTime</span><span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span>parse<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"LocalDateTime："</span> <span class="token operator">+</span> ldt1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"LocalDateTime："</span> <span class="token operator">+</span> <span class="token class-name">LocalDateTime</span><span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h6 id="输出结果"><a href="#输出结果" class="headerlink" title="输出结果"></a>输出结果</h6><pre class="line-numbers language-none"><code class="language-none">时间是：2020-02-14
+时间是：2020年02月14日 16时30分55秒
+LocalDateTime：2020-02-12T22:22:22
+LocalDateTime：2020-02-14T16:30:55.544<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
     </div>
 
@@ -384,6 +420,9 @@
       
   <div class="popular-posts-header">相关文章</div>
   <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2021\03\21\23\55\AOP实现系统操作日志记录\" rel="bookmark">AOP实现系统操作日志记录</a></div>
+    </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="\2020\11\16\22\42\JAVA设置Excel单元格格式\" rel="bookmark">JAVA设置Excel单元格格式</a></div>
     </li>
@@ -395,9 +434,6 @@
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="\2020\04\26\16\27\Java小知识\" rel="bookmark">Java小知识</a></div>
-    </li>
-    <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2020\10\26\23\27\Java的Date类型计算\" rel="bookmark">Java的Date类型计算</a></div>
     </li>
   </ul>
 
@@ -493,13 +529,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">247k</span>
+    <span title="站点总字数">233k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:43</span>
+    <span title="站点阅读时长">12:56</span>
   </span>
 </div>
 <div class="busuanzi-count">

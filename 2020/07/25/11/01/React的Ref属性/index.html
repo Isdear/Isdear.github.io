@@ -352,7 +352,7 @@
                 <i class="far fa-file-word"></i>
               </span>
               <span class="post-meta-item-text">本文字数：</span>
-              <span>2.2k</span>
+              <span>2.1k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -372,7 +372,85 @@
         <p>父与子组件使用ref通信<a id="more"></a></p>
 <p>props属性传值与ref的区别：</p>
 <p>输入框的value值拿到之后，还要把value值通过回调函数调用传回给外面的事件(父组件)，如果父组件想要清空输入框的话，就从父组件中传一个新的属性进来，进行重置，这样就不用与input标签进行交互，只要身上绑定一个ref，我就能拿到这个组件的任何东西，我能拿到他的状态，我就可以获取它里面<br>孩子的状态，同样的话，我还可以去修改他的状态。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; todolist</span><br><span class="line"></span><br><span class="line">import React, &#123; Component &#125; from &#39;react&#39;</span><br><span class="line"></span><br><span class="line">class Input extends Component&#123;</span><br><span class="line">  &#x2F;&#x2F; 5.定义状态</span><br><span class="line">    state &#x3D; &#123;</span><br><span class="line">        mytext:&quot;&quot;,</span><br><span class="line">        list: [&#39;111&#39;, &#39;222&#39;, &#39;333&#39;]</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	&#x2F;&#x2F; 10.定义kerwinreset方法，用来清空输入框的value值</span><br><span class="line">    kerwinreset&#x3D; ()&#x3D;&gt;&#123;</span><br><span class="line">        this.setState(&#123;</span><br><span class="line">            list: [...this.state.list, this.state.mytext],</span><br><span class="line">            mytext:&quot;&quot;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    handleDel &#x3D; (index) &#x3D;&gt; &#123;</span><br><span class="line">      var newList &#x3D; [...this.state.list]</span><br><span class="line">      newList.splice(index, 1)</span><br><span class="line">      console.log(newList)</span><br><span class="line">      this.setState(&#123;</span><br><span class="line">        list: newList</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render()&#123;</span><br><span class="line">        return (</span><br><span class="line">          &lt;div&gt;</span><br><span class="line">              &#123;&#x2F;* 1.创建组件 *&#x2F;&#125;</span><br><span class="line">              &#123;&#x2F;* 7.绑定onChange事件 *&#x2F;&#125;</span><br><span class="line">              &lt;input type&#x3D;&quot;text&quot; style&#x3D;&#123;&#123;background:&quot;yellow&quot;&#125;&#125;</span><br><span class="line">                  value&#x3D;&#123;this.state.mytext&#125; onChange&#x3D;&#123;(e)&#x3D;&gt;&#123;</span><br><span class="line">                  this.setState(&#123;</span><br><span class="line">                      &#x2F;&#x2F; 8.一点击button按钮就把输入框当前的value同步给mytext状态</span><br><span class="line">                      mytext:e.target.value</span><br><span class="line">                  &#125;)</span><br><span class="line">              &#125;&#125;&#x2F;&gt;</span><br><span class="line">              &lt;ul style&#x3D;&#123;&#123; listStyle: &quot;none&quot; &#125;&#125;&gt;</span><br><span class="line">                &#123; this.state.list.map((item, index) &#x3D;&gt; </span><br><span class="line">                    &lt;li key&#x3D;&#123;item&#125;&gt;</span><br><span class="line">                      &#123; item &#125;</span><br><span class="line">                      &lt;button onClick&#x3D; &#123; this.handleDel.bind(this, index) &#125;&gt;删除&lt;&#x2F;button&gt;</span><br><span class="line">                    &lt;&#x2F;li&gt; </span><br><span class="line">                ) &#125;</span><br><span class="line">              &lt;&#x2F;ul&gt;</span><br><span class="line">          &lt;&#x2F;div&gt;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default class App extends Component &#123;</span><br><span class="line">    state &#x3D; &#123;</span><br><span class="line">      datalist: []</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        return (</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                &#123;&#x2F;* 2.使用组件，通过ref拿到value值 *&#x2F;&#125;</span><br><span class="line">                &lt;Input ref&#x3D;&quot;myinput&quot;&#x2F;&gt;</span><br><span class="line">                &#123;&#x2F;* 3.绑定点击事件 *&#x2F;&#125;</span><br><span class="line">                &lt;button onClick&#x3D;&#123;this.handleClick&#125;&gt;添加&lt;&#x2F;button&gt;</span><br><span class="line">            &lt;&#x2F;div&gt;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F; 4.点击事件</span><br><span class="line">    handleClick &#x3D; ()&#x3D;&gt;&#123;</span><br><span class="line">        &#x2F;&#x2F; 6.拿到input的结构(状态和方法都能拿到)</span><br><span class="line">        console.log(this.refs.myinput)</span><br><span class="line">        &#x2F;&#x2F; 9.拿到拿到输入框的value值</span><br><span class="line">        console.log(this.refs.myinput.state.mytext)</span><br><span class="line">        &#x2F;&#x2F; 11.拿到输入框的value之后，调用kerwinreset方法，来清空输入框</span><br><span class="line">        this.refs.myinput.kerwinreset()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-react" data-language="react"><code class="language-react">&#x2F;&#x2F; todolist
+
+import React, &#123; Component &#125; from &#39;react&#39;
+
+class Input extends Component&#123;
+  &#x2F;&#x2F; 5.定义状态
+    state &#x3D; &#123;
+        mytext:&quot;&quot;,
+        list: [&#39;111&#39;, &#39;222&#39;, &#39;333&#39;]
+    &#125;
+
+	&#x2F;&#x2F; 10.定义kerwinreset方法，用来清空输入框的value值
+    kerwinreset&#x3D; ()&#x3D;&gt;&#123;
+        this.setState(&#123;
+            list: [...this.state.list, this.state.mytext],
+            mytext:&quot;&quot;
+        &#125;)
+    &#125;
+
+    handleDel &#x3D; (index) &#x3D;&gt; &#123;
+      var newList &#x3D; [...this.state.list]
+      newList.splice(index, 1)
+      console.log(newList)
+      this.setState(&#123;
+        list: newList
+      &#125;)
+    &#125;
+
+    render()&#123;
+        return (
+          &lt;div&gt;
+              &#123;&#x2F;* 1.创建组件 *&#x2F;&#125;
+              &#123;&#x2F;* 7.绑定onChange事件 *&#x2F;&#125;
+              &lt;input type&#x3D;&quot;text&quot; style&#x3D;&#123;&#123;background:&quot;yellow&quot;&#125;&#125;
+                  value&#x3D;&#123;this.state.mytext&#125; onChange&#x3D;&#123;(e)&#x3D;&gt;&#123;
+                  this.setState(&#123;
+                      &#x2F;&#x2F; 8.一点击button按钮就把输入框当前的value同步给mytext状态
+                      mytext:e.target.value
+                  &#125;)
+              &#125;&#125;&#x2F;&gt;
+              &lt;ul style&#x3D;&#123;&#123; listStyle: &quot;none&quot; &#125;&#125;&gt;
+                &#123; this.state.list.map((item, index) &#x3D;&gt; 
+                    &lt;li key&#x3D;&#123;item&#125;&gt;
+                      &#123; item &#125;
+                      &lt;button onClick&#x3D; &#123; this.handleDel.bind(this, index) &#125;&gt;删除&lt;&#x2F;button&gt;
+                    &lt;&#x2F;li&gt; 
+                ) &#125;
+              &lt;&#x2F;ul&gt;
+          &lt;&#x2F;div&gt;
+        )
+    &#125;
+&#125;
+
+export default class App extends Component &#123;
+    state &#x3D; &#123;
+      datalist: []
+    &#125;
+
+    render() &#123;
+        return (
+            &lt;div&gt;
+                &#123;&#x2F;* 2.使用组件，通过ref拿到value值 *&#x2F;&#125;
+                &lt;Input ref&#x3D;&quot;myinput&quot;&#x2F;&gt;
+                &#123;&#x2F;* 3.绑定点击事件 *&#x2F;&#125;
+                &lt;button onClick&#x3D;&#123;this.handleClick&#125;&gt;添加&lt;&#x2F;button&gt;
+            &lt;&#x2F;div&gt;
+        )
+    &#125;
+    &#x2F;&#x2F; 4.点击事件
+    handleClick &#x3D; ()&#x3D;&gt;&#123;
+        &#x2F;&#x2F; 6.拿到input的结构(状态和方法都能拿到)
+        console.log(this.refs.myinput)
+        &#x2F;&#x2F; 9.拿到拿到输入框的value值
+        console.log(this.refs.myinput.state.mytext)
+        &#x2F;&#x2F; 11.拿到输入框的value之后，调用kerwinreset方法，来清空输入框
+        this.refs.myinput.kerwinreset()
+    &#125;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
     </div>
 
@@ -482,13 +560,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">247k</span>
+    <span title="站点总字数">233k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:43</span>
+    <span title="站点阅读时长">12:56</span>
   </span>
 </div>
 <div class="busuanzi-count">

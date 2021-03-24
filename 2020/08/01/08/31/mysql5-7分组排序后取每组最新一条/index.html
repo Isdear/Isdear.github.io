@@ -347,7 +347,7 @@
                 <i class="far fa-file-word"></i>
               </span>
               <span class="post-meta-item-text">本文字数：</span>
-              <span>492</span>
+              <span>458</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -368,9 +368,31 @@
 <h6 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h6><p>一张表内有ID、时间、描述信息等，依据ID找出最新时间的一条描述信息。</p>
 <h6 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h6><p>先按照ID进行分组，然后对时间进行倒序排序，选出最新的一条记录。</p>
 <h6 id="测试表结构"><a href="#测试表结构" class="headerlink" title="测试表结构"></a>测试表结构</h6><p>与实现有关的字段有task_id、dl_time、dl_dscr。</p>
-<h6 id="Mysql实现方法"><a href="#Mysql实现方法" class="headerlink" title="Mysql实现方法"></a>Mysql实现方法</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">SELECT</span><br><span class="line">	* </span><br><span class="line">FROM</span><br><span class="line">	dq_ld_log AS b </span><br><span class="line">WHERE</span><br><span class="line">	NOT EXISTS (</span><br><span class="line">	SELECT</span><br><span class="line">		1 </span><br><span class="line">	FROM</span><br><span class="line">		dq_dl_log </span><br><span class="line">	WHERE</span><br><span class="line">	task_id &#x3D; b.task_id </span><br><span class="line">	AND b.dl_time &lt; dl_time)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SELECT</span><br><span class="line">	* </span><br><span class="line">FROM</span><br><span class="line">	( SELECT dl_time, task_id, dl_dscr FROM dq_dl_log GROUP BY task_id DESC ) t </span><br><span class="line">ORDER BY</span><br><span class="line">	t.dl_time</span><br></pre></td></tr></table></figure>
-<h6 id="Oracle实现方法"><a href="#Oracle实现方法" class="headerlink" title="Oracle实现方法"></a>Oracle实现方法</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SELECT</span><br><span class="line">	row_number() over ( PARTITION BY task_id ORDER BY dl_time ) rank </span><br><span class="line">FROM</span><br><span class="line">	dq_dl_log </span><br><span class="line">WHERE</span><br><span class="line">	rank &#x3D; 1</span><br></pre></td></tr></table></figure>
+<h6 id="Mysql实现方法"><a href="#Mysql实现方法" class="headerlink" title="Mysql实现方法"></a>Mysql实现方法</h6><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">SELECT
+	* 
+FROM
+	dq_ld_log AS b 
+WHERE
+	NOT EXISTS (
+	SELECT
+		1 
+	FROM
+		dq_dl_log 
+	WHERE
+	task_id &#x3D; b.task_id 
+	AND b.dl_time &lt; dl_time)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">SELECT
+	* 
+FROM
+	( SELECT dl_time, task_id, dl_dscr FROM dq_dl_log GROUP BY task_id DESC ) t 
+ORDER BY
+	t.dl_time<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h6 id="Oracle实现方法"><a href="#Oracle实现方法" class="headerlink" title="Oracle实现方法"></a>Oracle实现方法</h6><pre class="line-numbers language-plsql" data-language="plsql"><code class="language-plsql"><span class="token keyword">SELECT</span>
+	row_number<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">over</span> <span class="token punctuation">(</span> <span class="token keyword">PARTITION</span> <span class="token keyword">BY</span> task_id <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> dl_time <span class="token punctuation">)</span> rank 
+<span class="token keyword">FROM</span>
+	dq_dl_log 
+<span class="token keyword">WHERE</span>
+	rank <span class="token operator">=</span> <span class="token number">1</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
     </div>
 
     
@@ -485,13 +507,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">247k</span>
+    <span title="站点总字数">233k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:43</span>
+    <span title="站点阅读时长">12:56</span>
   </span>
 </div>
 <div class="busuanzi-count">

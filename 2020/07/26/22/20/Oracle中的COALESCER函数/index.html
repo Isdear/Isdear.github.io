@@ -353,14 +353,14 @@
                 <i class="far fa-file-word"></i>
               </span>
               <span class="post-meta-item-text">本文字数：</span>
-              <span>2.1k</span>
+              <span>1.9k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
               <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>7 分钟</span>
+              <span>6 分钟</span>
             </span>
 
         </div>
@@ -374,17 +374,140 @@
 <h5 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h5><p>返回其参数中第一个非空表达式。</p>
 <h6 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h6><p>coalesce ( 表达式1 ,…表达式n )</p>
 <h6 id="返回类型"><a href="#返回类型" class="headerlink" title="返回类型"></a>返回类型</h6><p>返回数据类型优先级最高的表达式的数据类型，如果所有参数均为null，则coalesce返回null。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">COALESCE</span>(<span class="keyword">NULL</span>,<span class="number">1</span>)</span><br><span class="line"><span class="keyword">SELECT</span> <span class="built_in">COALESCE</span>(<span class="keyword">NULL</span>,<span class="keyword">NULL</span>,<span class="keyword">NULL</span>)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token keyword">COALESCE</span><span class="token punctuation">(</span><span class="token boolean">NULL</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token keyword">SELECT</span> <span class="token keyword">COALESCE</span><span class="token punctuation">(</span><span class="token boolean">NULL</span><span class="token punctuation">,</span><span class="token boolean">NULL</span><span class="token punctuation">,</span><span class="token boolean">NULL</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>第一行，由于第一个表达式为<code>null</code>，依次寻找不为null的结果，所以返回值应该是1。</p>
 <p>第二行，由于所有的表达式都为<code>null</code>，所以返回值为null。</p>
-<h5 id="等效的case函数"><a href="#等效的case函数" class="headerlink" title="等效的case函数"></a>等效的case函数</h5><h6 id="case语句"><a href="#case语句" class="headerlink" title="case语句"></a>case语句</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">SELECT COALESCE(expression1,expression2,...expressionN)</span><br><span class="line"></span><br><span class="line">CASE</span><br><span class="line"></span><br><span class="line">   WHEN (expression1 IS NOT NULL) THEN expression1</span><br><span class="line"></span><br><span class="line">   ...</span><br><span class="line"></span><br><span class="line">   WHEN (expressionN IS NOT NULL) THEN expressionN</span><br><span class="line"></span><br><span class="line">   ELSE NULL</span><br><span class="line"></span><br><span class="line">END</span><br></pre></td></tr></table></figure>
+<h5 id="等效的case函数"><a href="#等效的case函数" class="headerlink" title="等效的case函数"></a>等效的case函数</h5><h6 id="case语句"><a href="#case语句" class="headerlink" title="case语句"></a>case语句</h6><pre class="line-numbers language-plsql" data-language="plsql"><code class="language-plsql"><span class="token keyword">SELECT</span> <span class="token keyword">COALESCE</span><span class="token punctuation">(</span>expression1<span class="token punctuation">,</span>expression2<span class="token punctuation">,</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>expressionN<span class="token punctuation">)</span>
+
+<span class="token keyword">CASE</span>
+
+   <span class="token keyword">WHEN</span> <span class="token punctuation">(</span>expression1 <span class="token operator">IS</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">)</span> <span class="token keyword">THEN</span> expression1
+
+   <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+
+   <span class="token keyword">WHEN</span> <span class="token punctuation">(</span>expressionN <span class="token operator">IS</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">)</span> <span class="token keyword">THEN</span> expressionN
+
+   <span class="token keyword">ELSE</span> <span class="token boolean">NULL</span>
+
+<span class="token keyword">END</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>尽管 IS NULL 等效于 COALESCE，但它们的行为是不同的。包含具有非空参数的 IS NULL 的表达式将视为 NOT NULL，而包含具有非空参数的 COALESCE 的表达式将视为 NULL。</p>
 <h6 id="SQL-Server的非空参数问题"><a href="#SQL-Server的非空参数问题" class="headerlink" title="SQL Server的非空参数问题"></a>SQL Server的非空参数问题</h6><p>在 SQL Server 中，若要对包含具有非空参数的 COALESCE 的表达式创建索引，可以使用 PERSISTED 列属性将计算列持久化，例如下面案例</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE #CheckSumTest</span><br><span class="line"></span><br><span class="line">    (</span><br><span class="line"></span><br><span class="line">        ID int identity ,</span><br><span class="line"></span><br><span class="line">        Num int DEFAULT ( RAND() * 100 ) ,</span><br><span class="line"></span><br><span class="line">        RowCheckSum AS COALESCE( CHECKSUM( id , num ) , 0 ) PERSISTED PRIMARY KEY</span><br><span class="line"></span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-plsql" data-language="plsql"><code class="language-plsql"><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> #CheckSumTest
+
+    <span class="token punctuation">(</span>
+
+        ID <span class="token keyword">int</span> <span class="token keyword">identity</span> <span class="token punctuation">,</span>
+
+        Num <span class="token keyword">int</span> <span class="token keyword">DEFAULT</span> <span class="token punctuation">(</span> RAND<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">100</span> <span class="token punctuation">)</span> <span class="token punctuation">,</span>
+
+        RowCheckSum <span class="token keyword">AS</span> <span class="token keyword">COALESCE</span><span class="token punctuation">(</span> CHECKSUM<span class="token punctuation">(</span> id <span class="token punctuation">,</span> num <span class="token punctuation">)</span> <span class="token punctuation">,</span> <span class="token number">0</span> <span class="token punctuation">)</span> PERSISTED <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span>
+
+    <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h6 id="COALESCE-使用示例"><a href="#COALESCE-使用示例" class="headerlink" title="COALESCE 使用示例"></a>COALESCE 使用示例</h6><p>在以下示例中，wages 表中包括以下三列有关雇员的年薪的信息：hourly wage、salary 和 commission。但是，每个雇员只能接受一种付款方式。若要确定支付给所有雇员的金额总数，请使用 COALESCE 函数，它只接受在 hourly_wage、salary 和 commission 中找到的非空值。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">SET NOCOUNT ON;</span><br><span class="line"></span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line">USE master;</span><br><span class="line"></span><br><span class="line">IF EXISTS (SELECT name FROM sys.tables</span><br><span class="line"></span><br><span class="line">      WHERE name &#x3D; &#39;wages&#39;)</span><br><span class="line"></span><br><span class="line">   DROP TABLE wages;</span><br><span class="line"></span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line">CREATE TABLE wages</span><br><span class="line"></span><br><span class="line">(</span><br><span class="line"></span><br><span class="line">   emp_id      tinyint    identity,</span><br><span class="line"></span><br><span class="line">   hourly_wage   decimal   NULL,</span><br><span class="line"></span><br><span class="line">   salary      decimal    NULL,</span><br><span class="line"></span><br><span class="line">   commission   decimal   NULL,</span><br><span class="line"></span><br><span class="line">   num_sales   tinyint   NULL</span><br><span class="line"></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(10.00, NULL, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(20.00, NULL, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(30.00, NULL, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(40.00, NULL, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, 10000.00, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, 20000.00, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, 30000.00, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, 40000.00, NULL, NULL);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, NULL, 15000, 3);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, NULL, 25000, 2);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, NULL, 20000, 6);</span><br><span class="line"></span><br><span class="line">INSERT wages VALUES(NULL, NULL, 14000, 4);</span><br><span class="line"></span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line">SET NOCOUNT OFF;</span><br><span class="line"></span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line">SELECT CAST(COALESCE(hourly_wage * 40 * 52,</span><br><span class="line"></span><br><span class="line">   salary,</span><br><span class="line"></span><br><span class="line">   commission * num_sales) AS money) AS &#39;Total Salary&#39;</span><br><span class="line"></span><br><span class="line">FROM wages;</span><br><span class="line"></span><br><span class="line">GO</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-plsql" data-language="plsql"><code class="language-plsql"><span class="token keyword">SET</span> NOCOUNT <span class="token keyword">ON</span><span class="token punctuation">;</span>
+
+GO
+
+<span class="token keyword">USE</span> master<span class="token punctuation">;</span>
+
+<span class="token keyword">IF</span> <span class="token keyword">EXISTS</span> <span class="token punctuation">(</span><span class="token keyword">SELECT</span> <span class="token keyword">name</span> <span class="token keyword">FROM</span> sys<span class="token punctuation">.</span><span class="token keyword">tables</span>
+
+      <span class="token keyword">WHERE</span> <span class="token keyword">name</span> <span class="token operator">=</span> <span class="token string">'wages'</span><span class="token punctuation">)</span>
+
+   <span class="token keyword">DROP</span> <span class="token keyword">TABLE</span> wages<span class="token punctuation">;</span>
+
+GO
+
+<span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> wages
+
+<span class="token punctuation">(</span>
+
+   emp_id      <span class="token keyword">tinyint</span>    <span class="token keyword">identity</span><span class="token punctuation">,</span>
+
+   hourly_wage   <span class="token keyword">decimal</span>   <span class="token boolean">NULL</span><span class="token punctuation">,</span>
+
+   salary      <span class="token keyword">decimal</span>    <span class="token boolean">NULL</span><span class="token punctuation">,</span>
+
+   commission   <span class="token keyword">decimal</span>   <span class="token boolean">NULL</span><span class="token punctuation">,</span>
+
+   num_sales   <span class="token keyword">tinyint</span>   <span class="token boolean">NULL</span>
+
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+GO
+
+<span class="token keyword">INSERT</span> wages <span class="token keyword">VALUES</span><span class="token punctuation">(</span><span class="token number">10.00</span><span class="token punctuation">,</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span> <span class="token boolean">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">INSERT</span> wages <span class="token keyword">VALUES</span><span class="token punctuation">(</span><span class="token number">20.00</span><span class="token punctuation">,</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span> <span class="token boolean">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">INSERT</span> wages <span class="token keyword">VALUES</span><span class="token punctuation">(</span><span class="token number">30.00</span><span class="token punctuation">,</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span> <span class="token boolean">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">INSERT</span> wages <span class="token keyword">VALUES</span><span class="token punctuation">(</span><span class="token number">40.00</span><span class="token punctuation">,</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span> <span class="token boolean">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">INSERT</span> wages <span class="token keyword">VALUES</span><span class="token punctuation">(</span><span class="token boolean">NULL</span><span class="token punctuation">,</span> <span class="token number">10000.00</span><span class="token punctuation">,</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span> <span class="token boolean">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">INSERT</span> wages <span class="token keyword">VALUES</span><span class="token punctuation">(</span><span class="token boolean">NULL</span><span class="token punctuation">,</span> <span class="token number">20000.00</span><span class="token punctuation">,</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span> <span class="token boolean">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">INSERT</span> wages <span class="token keyword">VALUES</span><span class="token punctuation">(</span><span class="token boolean">NULL</span><span class="token punctuation">,</span> <span class="token number">30000.00</span><span class="token punctuation">,</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span> <span class="token boolean">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">INSERT</span> wages <span class="token keyword">VALUES</span><span class="token punctuation">(</span><span class="token boolean">NULL</span><span class="token punctuation">,</span> <span class="token number">40000.00</span><span class="token punctuation">,</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span> <span class="token boolean">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">INSERT</span> wages <span class="token keyword">VALUES</span><span class="token punctuation">(</span><span class="token boolean">NULL</span><span class="token punctuation">,</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span> <span class="token number">15000</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">INSERT</span> wages <span class="token keyword">VALUES</span><span class="token punctuation">(</span><span class="token boolean">NULL</span><span class="token punctuation">,</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span> <span class="token number">25000</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">INSERT</span> wages <span class="token keyword">VALUES</span><span class="token punctuation">(</span><span class="token boolean">NULL</span><span class="token punctuation">,</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span> <span class="token number">20000</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">INSERT</span> wages <span class="token keyword">VALUES</span><span class="token punctuation">(</span><span class="token boolean">NULL</span><span class="token punctuation">,</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span> <span class="token number">14000</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+GO
+
+<span class="token keyword">SET</span> NOCOUNT <span class="token keyword">OFF</span><span class="token punctuation">;</span>
+
+GO
+
+<span class="token keyword">SELECT</span> CAST<span class="token punctuation">(</span><span class="token keyword">COALESCE</span><span class="token punctuation">(</span>hourly_wage <span class="token operator">*</span> <span class="token number">40</span> <span class="token operator">*</span> <span class="token number">52</span><span class="token punctuation">,</span>
+
+   salary<span class="token punctuation">,</span>
+
+   commission <span class="token operator">*</span> num_sales<span class="token punctuation">)</span> <span class="token keyword">AS</span> money<span class="token punctuation">)</span> <span class="token keyword">AS</span> <span class="token string">'Total Salary'</span>
+
+<span class="token keyword">FROM</span> wages<span class="token punctuation">;</span>
+
+GO<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>结果集</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">Total Salary</span><br><span class="line"></span><br><span class="line">------------</span><br><span class="line"></span><br><span class="line">20800.0000</span><br><span class="line"></span><br><span class="line">41600.0000</span><br><span class="line"></span><br><span class="line">62400.0000</span><br><span class="line"></span><br><span class="line">83200.0000</span><br><span class="line"></span><br><span class="line">10000.0000</span><br><span class="line"></span><br><span class="line">20000.0000</span><br><span class="line"></span><br><span class="line">30000.0000</span><br><span class="line"></span><br><span class="line">40000.0000</span><br><span class="line"></span><br><span class="line">45000.0000</span><br><span class="line"></span><br><span class="line">50000.0000</span><br><span class="line"></span><br><span class="line">120000.0000</span><br><span class="line"></span><br><span class="line">56000.0000</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">(12 row(s) affected)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-plsql" data-language="plsql"><code class="language-plsql">Total Salary
+
+<span class="token comment">------------</span>
+
+<span class="token number">20800.0000</span>
+
+<span class="token number">41600.0000</span>
+
+<span class="token number">62400.0000</span>
+
+<span class="token number">83200.0000</span>
+
+<span class="token number">10000.0000</span>
+
+<span class="token number">20000.0000</span>
+
+<span class="token number">30000.0000</span>
+
+<span class="token number">40000.0000</span>
+
+<span class="token number">45000.0000</span>
+
+<span class="token number">50000.0000</span>
+
+<span class="token number">120000.0000</span>
+
+<span class="token number">56000.0000</span>
+
+ 
+
+<span class="token punctuation">(</span><span class="token number">12</span> <span class="token keyword">row</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> affected<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
@@ -505,13 +628,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">247k</span>
+    <span title="站点总字数">233k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:43</span>
+    <span title="站点阅读时长">12:56</span>
   </span>
 </div>
 <div class="busuanzi-count">

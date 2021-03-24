@@ -353,14 +353,14 @@
                 <i class="far fa-file-word"></i>
               </span>
               <span class="post-meta-item-text">本文字数：</span>
-              <span>2.1k</span>
+              <span>1.9k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
               <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>7 分钟</span>
+              <span>6 分钟</span>
             </span>
 
         </div>
@@ -371,11 +371,45 @@
     
     <div class="post-body" itemprop="articleBody">
         <p>常用操作系统信息获取<a id="more"></a></p>
-<h6 id="获取本机的IP地址"><a href="#获取本机的IP地址" class="headerlink" title="获取本机的IP地址:"></a>获取本机的IP地址:</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">getIpAddress</span><span class="params">()</span> <span class="keyword">throws</span> UnknownHostException </span>&#123; </span><br><span class="line">    InetAddress address = InetAddress.getLocalHost(); </span><br><span class="line">    <span class="keyword">return</span> address.getHostAddress(); </span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-<h6 id="获取网卡地址"><a href="#获取网卡地址" class="headerlink" title="获取网卡地址:"></a>获取网卡地址:</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getMACAddress</span><span class="params">()</span></span>&#123;</span><br><span class="line">    String address = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    String os = System.getProperty(<span class="string">&quot;os.name&quot;</span>);</span><br><span class="line">    String osUser = System.getProperty(<span class="string">&quot;user.name&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span>(os != <span class="keyword">null</span> &amp;&amp; os.startsWith(<span class="string">&quot;Windows&quot;</span>))&#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            String command = <span class="string">&quot;cmd.exe /c ipconfig /all&quot;</span>;</span><br><span class="line">            Process  p = Runtime.getRuntime().exec(command);</span><br><span class="line">            BufferedReader buffer = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(p.getInputStream()));</span><br><span class="line">            String line;</span><br><span class="line">            <span class="keyword">while</span>((line = buffer.readLine()) != <span class="keyword">null</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(line.indexOf(<span class="string">&quot;Physical Address&quot;</span>) &gt; <span class="number">0</span>)&#123;</span><br><span class="line">                    <span class="keyword">int</span> index = line.indexOf(<span class="string">&quot;:&quot;</span>);</span><br><span class="line">                    index += <span class="number">2</span>;</span><br><span class="line">                    address = line.substring(index);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            buffer.close();</span><br><span class="line">            <span class="keyword">return</span> address.trim();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span>(IOException e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> address;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h6 id="获取操作系统账号"><a href="#获取操作系统账号" class="headerlink" title="获取操作系统账号"></a>获取操作系统账号</h6><figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String osUser = <span class="module-access"><span class="module"><span class="identifier">System</span>.</span></span>get<span class="constructor">Property(<span class="string">&quot;user.name&quot;</span>)</span>;</span><br></pre></td></tr></table></figure>
-<h6 id="获取操作系统版本"><a href="#获取操作系统版本" class="headerlink" title="获取操作系统版本:"></a>获取操作系统版本:</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Properties; </span><br><span class="line"></span><br><span class="line">Properties props=System.getProperties(); <span class="comment">//获得系统属性集    </span></span><br><span class="line">String osName = props.getProperty(<span class="string">&quot;os.name&quot;</span>); <span class="comment">//操作系统名称    </span></span><br><span class="line">String osArch = props.getProperty(<span class="string">&quot;os.arch&quot;</span>); <span class="comment">//操作系统构架    </span></span><br><span class="line">String osVersion = props.getProperty(<span class="string">&quot;os.version&quot;</span>); <span class="comment">//操作系统版本</span></span><br></pre></td></tr></table></figure>
-<h6 id="一些常用信息获得"><a href="#一些常用信息获得" class="headerlink" title="一些常用信息获得"></a>一些常用信息获得</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getProperty</span><span class="params">(String key)</span></span></span><br></pre></td></tr></table></figure>
+<h6 id="获取本机的IP地址"><a href="#获取本机的IP地址" class="headerlink" title="获取本机的IP地址:"></a>获取本机的IP地址:</h6><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token class-name">String</span> <span class="token function">getIpAddress</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">UnknownHostException</span> <span class="token punctuation">&#123;</span> 
+    <span class="token class-name">InetAddress</span> address <span class="token operator">=</span> <span class="token class-name">InetAddress</span><span class="token punctuation">.</span><span class="token function">getLocalHost</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    <span class="token keyword">return</span> address<span class="token punctuation">.</span><span class="token function">getHostAddress</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+<span class="token punctuation">&#125;</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h6 id="获取网卡地址"><a href="#获取网卡地址" class="headerlink" title="获取网卡地址:"></a>获取网卡地址:</h6><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">String</span> <span class="token function">getMACAddress</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token class-name">String</span> address <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
+    <span class="token class-name">String</span> os <span class="token operator">=</span> <span class="token class-name">System</span><span class="token punctuation">.</span><span class="token function">getProperty</span><span class="token punctuation">(</span><span class="token string">"os.name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">String</span> osUser <span class="token operator">=</span> <span class="token class-name">System</span><span class="token punctuation">.</span><span class="token function">getProperty</span><span class="token punctuation">(</span><span class="token string">"user.name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>os <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> os<span class="token punctuation">.</span><span class="token function">startsWith</span><span class="token punctuation">(</span><span class="token string">"Windows"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">try</span><span class="token punctuation">&#123;</span>
+            <span class="token class-name">String</span> command <span class="token operator">=</span> <span class="token string">"cmd.exe /c ipconfig /all"</span><span class="token punctuation">;</span>
+            <span class="token class-name">Process</span>  p <span class="token operator">=</span> <span class="token class-name">Runtime</span><span class="token punctuation">.</span><span class="token function">getRuntime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span>command<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token class-name">BufferedReader</span> buffer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BufferedReader</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">InputStreamReader</span><span class="token punctuation">(</span>p<span class="token punctuation">.</span><span class="token function">getInputStream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token class-name">String</span> line<span class="token punctuation">;</span>
+            <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token punctuation">(</span>line <span class="token operator">=</span> buffer<span class="token punctuation">.</span><span class="token function">readLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                <span class="token keyword">if</span><span class="token punctuation">(</span>line<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">"Physical Address"</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                    <span class="token keyword">int</span> index <span class="token operator">=</span> line<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">":"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    index <span class="token operator">+=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+                    address <span class="token operator">=</span> line<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token keyword">break</span><span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span>
+            <span class="token punctuation">&#125;</span>
+            buffer<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> address<span class="token punctuation">.</span><span class="token function">trim</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">catch</span><span class="token punctuation">(</span><span class="token class-name">IOException</span> e<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> address<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h6 id="获取操作系统账号"><a href="#获取操作系统账号" class="headerlink" title="获取操作系统账号"></a>获取操作系统账号</h6><pre class="line-numbers language-none"><code class="language-none">String osUser &#x3D; System.getProperty(&quot;user.name&quot;);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h6 id="获取操作系统版本"><a href="#获取操作系统版本" class="headerlink" title="获取操作系统版本:"></a>获取操作系统版本:</h6><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Properties</span><span class="token punctuation">;</span> 
+
+<span class="token class-name">Properties</span> props<span class="token operator">=</span><span class="token class-name">System</span><span class="token punctuation">.</span><span class="token function">getProperties</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//获得系统属性集    </span>
+<span class="token class-name">String</span> osName <span class="token operator">=</span> props<span class="token punctuation">.</span><span class="token function">getProperty</span><span class="token punctuation">(</span><span class="token string">"os.name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//操作系统名称    </span>
+<span class="token class-name">String</span> osArch <span class="token operator">=</span> props<span class="token punctuation">.</span><span class="token function">getProperty</span><span class="token punctuation">(</span><span class="token string">"os.arch"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//操作系统构架    </span>
+<span class="token class-name">String</span> osVersion <span class="token operator">=</span> props<span class="token punctuation">.</span><span class="token function">getProperty</span><span class="token punctuation">(</span><span class="token string">"os.version"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//操作系统版本</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h6 id="一些常用信息获得"><a href="#一些常用信息获得" class="headerlink" title="一些常用信息获得"></a>一些常用信息获得</h6><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">String</span> <span class="token function">getProperty</span><span class="token punctuation">(</span><span class="token class-name">String</span> key<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <table>
 <thead>
 <tr>
@@ -494,6 +528,9 @@
   <div class="popular-posts-header">相关文章</div>
   <ul class="popular-posts">
     <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2021\03\21\23\55\AOP实现系统操作日志记录\" rel="bookmark">AOP实现系统操作日志记录</a></div>
+    </li>
+    <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="\2020\11\16\22\42\JAVA设置Excel单元格格式\" rel="bookmark">JAVA设置Excel单元格格式</a></div>
     </li>
     <li class="popular-posts-item">
@@ -504,9 +541,6 @@
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="\2020\04\26\16\27\Java小知识\" rel="bookmark">Java小知识</a></div>
-    </li>
-    <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2020\10\26\23\27\Java的Date类型计算\" rel="bookmark">Java的Date类型计算</a></div>
     </li>
   </ul>
 
@@ -602,13 +636,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">247k</span>
+    <span title="站点总字数">233k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:43</span>
+    <span title="站点阅读时长">12:56</span>
   </span>
 </div>
 <div class="busuanzi-count">

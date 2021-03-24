@@ -353,7 +353,7 @@
                 <i class="far fa-file-word"></i>
               </span>
               <span class="post-meta-item-text">本文字数：</span>
-              <span>279</span>
+              <span>299</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -371,10 +371,12 @@
     
     <div class="post-body" itemprop="articleBody">
         <p>npm安装依赖速度太慢，把镜像源切换成国内<a id="more"></a></p>
-<h5 id="配置仓库地址"><a href="#配置仓库地址" class="headerlink" title="配置仓库地址"></a>配置仓库地址</h5><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="built_in">config</span> <span class="built_in">set</span> registry https:<span class="comment">//registry.npm.taobao.org</span></span><br></pre></td></tr></table></figure>
+<h5 id="配置仓库地址"><a href="#配置仓库地址" class="headerlink" title="配置仓库地址"></a>配置仓库地址</h5><pre class="line-numbers language-none"><code class="language-none">npm config set registry https:&#x2F;&#x2F;registry.npm.taobao.org<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>查看配置地址</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm<span class="built_in"> config </span><span class="builtin-name">get</span> registry</span><br><span class="line">或者</span><br><span class="line">npm <span class="builtin-name">info</span> express</span><br></pre></td></tr></table></figure>
-<h5 id="使用cnpm命令"><a href="#使用cnpm命令" class="headerlink" title="使用cnpm命令"></a>使用cnpm命令</h5><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm --registry=https:<span class="regexp">//</span>registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">npm config get registry
+或者
+npm info express<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h5 id="使用cnpm命令"><a href="#使用cnpm命令" class="headerlink" title="使用cnpm命令"></a>使用cnpm命令</h5><pre class="line-numbers language-none"><code class="language-none">npm install -g cnpm --registry&#x3D;https:&#x2F;&#x2F;registry.npm.taobao.org<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>在使用npm安装依赖时，只需换成cnpm即可。淘宝镜像为阿里云产物，服务器架设在国内，当cnpm上没有你需要的插件时，它会自动去npm服务器上寻找同时在保存至cnpm服务器上。</p>
 
     </div>
@@ -476,13 +478,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">247k</span>
+    <span title="站点总字数">233k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:43</span>
+    <span title="站点阅读时长">12:56</span>
   </span>
 </div>
 <div class="busuanzi-count">
