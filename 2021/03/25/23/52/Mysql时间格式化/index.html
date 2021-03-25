@@ -24,21 +24,21 @@
     var CONFIG = {"hostname":"isdear.github.io","root":"/","scheme":"Pisces","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
 
-  <meta name="description" content="Windows和Linux系统上不同文件路径使用Java方法来代替。">
+  <meta name="description" content="mysql中常用的时间格式化方法统计。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java不同操作系统的路径写法">
-<meta property="og:url" content="http://isdear.github.io/2020/11/20/22/43/java%E4%B8%8D%E5%90%8C%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%B7%AF%E5%BE%84%E5%86%99%E6%B3%95/index.html">
+<meta property="og:title" content="Mysql时间格式化">
+<meta property="og:url" content="http://isdear.github.io/2021/03/25/23/52/Mysql%E6%97%B6%E9%97%B4%E6%A0%BC%E5%BC%8F%E5%8C%96/index.html">
 <meta property="og:site_name" content="记忆随笔">
-<meta property="og:description" content="Windows和Linux系统上不同文件路径使用Java方法来代替。">
+<meta property="og:description" content="mysql中常用的时间格式化方法统计。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-11-20T14:43:02.000Z">
-<meta property="article:modified_time" content="2020-11-20T14:47:55.446Z">
+<meta property="article:published_time" content="2021-03-25T15:52:31.000Z">
+<meta property="article:modified_time" content="2021-03-25T16:13:22.799Z">
 <meta property="article:author" content="Kuang">
-<meta property="article:tag" content="java">
+<meta property="article:tag" content="mysql">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://isdear.github.io/2020/11/20/22/43/java%E4%B8%8D%E5%90%8C%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%B7%AF%E5%BE%84%E5%86%99%E6%B3%95/">
+<link rel="canonical" href="http://isdear.github.io/2021/03/25/23/52/Mysql%E6%97%B6%E9%97%B4%E6%A0%BC%E5%BC%8F%E5%8C%96/">
 
 
 <script class="page-configurations">
@@ -51,7 +51,7 @@
   };
 </script>
 
-  <title>java不同操作系统的路径写法 | 记忆随笔</title>
+  <title>Mysql时间格式化 | 记忆随笔</title>
   
 
 
@@ -212,7 +212,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E8%B7%AF%E5%BE%84%E5%86%99%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">具体路径写法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8Java%E7%9A%84File-separator%E6%96%B9%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">使用Java的File.separator方法</span></a></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#format%E7%9A%84%E5%90%84%E7%A7%8D%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">format的各种格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E7%9A%84%E6%97%B6%E9%97%B4"><span class="nav-number">2.</span> <span class="nav-text">获取当前的时间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E6%9F%90%E4%B8%AA%E9%83%A8%E5%88%86%E7%9A%84%E6%97%B6%E9%97%B4%E4%BF%A1%E6%81%AF"><span class="nav-number">3.</span> <span class="nav-text">获取某个部分的时间信息</span></a></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -293,7 +293,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://isdear.github.io/2020/11/20/22/43/java%E4%B8%8D%E5%90%8C%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%B7%AF%E5%BE%84%E5%86%99%E6%B3%95/">
+    <link itemprop="mainEntityOfPage" href="http://isdear.github.io/2021/03/25/23/52/Mysql%E6%97%B6%E9%97%B4%E6%A0%BC%E5%BC%8F%E5%8C%96/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/kenan.jpg">
@@ -309,7 +309,7 @@
     
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          java不同操作系统的路径写法
+          Mysql时间格式化
         </h1>
 
         <div class="post-meta">
@@ -320,17 +320,23 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-11-20 22:43:02 / 修改时间：22:47:55" itemprop="dateCreated datePublished" datetime="2020-11-20T22:43:02+08:00">2020-11-20</time>
+              <time title="创建时间：2021-03-25 23:52:31" itemprop="dateCreated datePublished" datetime="2021-03-25T23:52:31+08:00">2021-03-25</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-03-26 00:13:22" itemprop="dateModified" datetime="2021-03-26T00:13:22+08:00">2021-03-26</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
                 </span>
             </span>
 
@@ -347,14 +353,14 @@
                 <i class="far fa-file-word"></i>
               </span>
               <span class="post-meta-item-text">本文字数：</span>
-              <span>486</span>
+              <span>1.3k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
               <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
+              <span>4 分钟</span>
             </span>
 
         </div>
@@ -364,21 +370,77 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>Windows和Linux系统上不同文件路径使用Java方法来代替。<a id="more"></a></p>
-<h6 id="具体路径写法"><a href="#具体路径写法" class="headerlink" title="具体路径写法"></a>具体路径写法</h6><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">&quot;C:\\a.txt&quot;&#x2F;&#x2F;windows写法
-&quot;&#x2F;mnt&#x2F;a.txt&quot;&#x2F;&#x2F;linux写法<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h6 id="使用Java的File-separator方法"><a href="#使用Java的File-separator方法" class="headerlink" title="使用Java的File.separator方法"></a>使用Java的File.separator方法</h6><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">File</span><span class="token punctuation">;</span>
-<span class="token comment">//路径分隔符示例</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SeparatorDemo</span> <span class="token punctuation">&#123;</span>
-	<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-		<span class="token class-name">String</span> path1<span class="token operator">=</span><span class="token string">"C:"</span><span class="token operator">+</span><span class="token class-name">File</span><span class="token punctuation">.</span>separator<span class="token operator">+</span><span class="token string">"Program Files"</span><span class="token operator">+</span><span class="token class-name">File</span><span class="token punctuation">.</span>separator<span class="token operator">+</span><span class="token string">"a.txt"</span><span class="token punctuation">;</span>
-		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>path1<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//输出C:\Program Files\a.txt</span>
-		
-		<span class="token class-name">String</span> path2<span class="token operator">=</span><span class="token string">"C:\\Program Files\\a.txt"</span><span class="token punctuation">;</span><span class="token comment">//第一个\表示转义</span>
-		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>path2<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//输出C:\Program Files\a.txt</span>
-	<span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        <p>mysql中常用的时间格式化方法统计。<a id="more"></a></p>
+<p>如果要查询订单时间在5月1号到5月12号之间的数据</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">Select</span> <span class="token operator">*</span> <span class="token keyword">From</span> <span class="token keyword">order</span> <span class="token keyword">Where</span> DATE_FORMAT<span class="token punctuation">(</span>createTime<span class="token punctuation">,</span><span class="token string">'%m-%d'</span><span class="token punctuation">)</span> <span class="token operator">>=</span> <span class="token string">'05-01'</span> 
+<span class="token operator">and</span> DATE_FORMAT<span class="token punctuation">(</span>createTime<span class="token punctuation">,</span><span class="token string">'%m-%d'</span><span class="token punctuation">)</span> <span class="token operator">&lt;=</span> <span class="token string">'05-12'</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><strong>DATE_FORMAT(date,format)</strong>函数用于以不同的格式显示日期/时间数据。 date是日期列,format是格式</p>
+<p><strong>STR_TO_DATE(str,format)</strong> 将字符串转成日期</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> STR_TO_DATE<span class="token punctuation">(</span><span class="token string">'2018-06-01'</span><span class="token punctuation">,</span><span class="token string">'%Y-%m-%d'</span><span class="token punctuation">)</span>
+<span class="token operator">>></span> <span class="token number">2018</span><span class="token operator">-</span><span class="token number">06</span><span class="token operator">-</span><span class="token number">01</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h4 id="format的各种格式"><a href="#format的各种格式" class="headerlink" title="format的各种格式"></a>format的各种格式</h4><pre class="line-numbers language-apl" data-language="apl"><code class="language-apl">%W 星期名字<span class="token punctuation">(</span>Sunday……Saturday<span class="token punctuation">)</span> 
+%D 有英语前缀的月份的日期<span class="token punctuation">(</span><span class="token number">1</span>st<span class="token function">,</span> <span class="token number">2</span>nd<span class="token function">,</span> <span class="token number">3</span>rd<span class="token function">,</span> 等等。） 
+%Y 年<span class="token function">,</span> 数字<span class="token function">,</span> <span class="token number">4</span> 位 
+%y 年<span class="token function">,</span> 数字<span class="token function">,</span> <span class="token number">2</span> 位 
+%a 缩写的星期名字<span class="token punctuation">(</span>Sun……Sat<span class="token punctuation">)</span> 
+%d 月份中的天数<span class="token function">,</span> 数字<span class="token punctuation">(</span><span class="token number">00</span>……<span class="token number">31</span><span class="token punctuation">)</span> 
+%e 月份中的天数<span class="token function">,</span> 数字<span class="token punctuation">(</span><span class="token number">0</span>……<span class="token number">31</span><span class="token punctuation">)</span> 
+%m 月<span class="token function">,</span> 数字<span class="token punctuation">(</span><span class="token number">01</span>……<span class="token number">12</span><span class="token punctuation">)</span> 
+%c 月<span class="token function">,</span> 数字<span class="token punctuation">(</span><span class="token number">1</span>……<span class="token number">12</span><span class="token punctuation">)</span> 
+%b 缩写的月份名字<span class="token punctuation">(</span>Jan……Dec<span class="token punctuation">)</span> 
+%j 一年中的天数<span class="token punctuation">(</span><span class="token number">001</span>……<span class="token number">366</span><span class="token punctuation">)</span> 
+%H 小时<span class="token punctuation">(</span><span class="token number">00</span>……<span class="token number">23</span><span class="token punctuation">)</span> 
+%k 小时<span class="token punctuation">(</span><span class="token number">0</span>……<span class="token number">23</span><span class="token punctuation">)</span> 
+%h 小时<span class="token punctuation">(</span><span class="token number">01</span>……<span class="token number">12</span><span class="token punctuation">)</span> 
+%I 小时<span class="token punctuation">(</span><span class="token number">01</span>……<span class="token number">12</span><span class="token punctuation">)</span> 
+%l 小时<span class="token punctuation">(</span><span class="token number">1</span>……<span class="token number">12</span><span class="token punctuation">)</span> 
+%i 分钟<span class="token function">,</span> 数字<span class="token punctuation">(</span><span class="token number">00</span>……<span class="token number">59</span><span class="token punctuation">)</span> 
+%r 时间<span class="token function">,</span><span class="token number">12</span> 小时<span class="token punctuation">(</span>hh<span class="token dfn builtin">:</span>mm<span class="token dfn builtin">:</span>ss <span class="token punctuation">[</span>AP<span class="token punctuation">]</span>M<span class="token punctuation">)</span> 
+%T 时间<span class="token function">,</span><span class="token number">24</span> 小时<span class="token punctuation">(</span>hh<span class="token dfn builtin">:</span>mm<span class="token dfn builtin">:</span>ss<span class="token punctuation">)</span> 
+%S 秒<span class="token punctuation">(</span><span class="token number">00</span>……<span class="token number">59</span><span class="token punctuation">)</span> 
+%s 秒<span class="token punctuation">(</span><span class="token number">00</span>……<span class="token number">59</span><span class="token punctuation">)</span> 
+%p AM或PM 
+%w 一个星期中的天数<span class="token punctuation">(</span><span class="token number">0</span><span class="token function">=</span>Sunday ……<span class="token number">6</span><span class="token function">=</span>Saturday ） 
+%U 星期<span class="token punctuation">(</span><span class="token number">0</span>……<span class="token number">52</span><span class="token punctuation">)</span><span class="token function">,</span> 这里星期天是星期的第一天 
+%u 星期<span class="token punctuation">(</span><span class="token number">0</span>……<span class="token number">52</span><span class="token punctuation">)</span><span class="token function">,</span> 这里星期一是星期的第一天 
+%% 一个文字“%”。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="获取当前的时间"><a href="#获取当前的时间" class="headerlink" title="获取当前的时间"></a>获取当前的时间</h4><pre class="line-numbers language-apl" data-language="apl"><code class="language-apl">NOW<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token function">,</span>							当前时间戳
+CURDATE<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token function">,</span>						当前日期
+CURTIME<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token function">,</span>						当前时间<span class="token function">,</span>可选参数<span class="token function">,</span>为时间精度
+CURRENT_DATE<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token function">,</span>					当前日期
+CURRENT_TIME<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token function">,</span>				当前时间<span class="token function">,</span>可选参数<span class="token function">,</span>为时间精度
+CURRENT_TIMESTAMP<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token function">,</span>			当前时间戳
+CURRENT_DATE<span class="token function">,</span>					当前日期
+CURRENT_TIME<span class="token function">,</span>					当前时间
+CURRENT_TIMESTAMP				当前时间戳<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="获取某个部分的时间信息"><a href="#获取某个部分的时间信息" class="headerlink" title="获取某个部分的时间信息"></a>获取某个部分的时间信息</h4><p>DATE(date) 只获取日期信息如:2018-06-01</p>
+<p>EXTRACT(unit FROM date)函数用于返回日期/时间的单独部分，比如年、月、日、小时、分钟等等。</p>
+<p>Unit 值:</p>
+<pre class="line-numbers language-apl" data-language="apl"><code class="language-apl">MICROSECOND
+SECOND
+MINUTE
+HOUR
+DAY
+WEEK
+MONTH
+QUARTER
+YEAR
+SECOND_MICROSECOND
+MINUTE_MICROSECOND
+MINUTE_SECOND
+HOUR_MICROSECOND
+HOUR_SECOND
+HOUR_MINUTE
+DAY_MICROSECOND
+DAY_SECOND
+DAY_MINUTE
+DAY_HOUR
+YEAR_MONTH<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>比如想知道6月1号是哪个季度</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> EXTRACT<span class="token punctuation">(</span>QUARTER <span class="token keyword">FROM</span>  STR_TO_DATE<span class="token punctuation">(</span><span class="token string">'2018-06-01'</span><span class="token punctuation">,</span><span class="token string">'%Y-%m-%d'</span><span class="token punctuation">)</span> <span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span><span class="token number">2</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
 
     </div>
 
@@ -389,19 +451,19 @@
   <div class="popular-posts-header">相关文章</div>
   <ul class="popular-posts">
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2021\03\21\23\55\AOP实现系统操作日志记录\" rel="bookmark">AOP实现系统操作日志记录</a></div>
+      <div class="popular-posts-title"><a href="\2020\05\22\19\44\MySql数据库优化的八种方法\" rel="bookmark">MySql数据库优化的八种方法</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2020\11\16\22\42\JAVA设置Excel单元格格式\" rel="bookmark">JAVA设置Excel单元格格式</a></div>
+      <div class="popular-posts-title"><a href="\2020\10\26\23\10\Mysql中explain的用法和结果分析\" rel="bookmark">Mysql中explain的用法和结果分析</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2020\06\14\20\53\JWT授权验证\" rel="bookmark">JWT授权验证</a></div>
+      <div class="popular-posts-title"><a href="\2020\08\30\16\30\forupdate的用法\" rel="bookmark">forupdate的用法</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2020\10\26\23\26\Java取消Double类型显示科学计数法\" rel="bookmark">Java取消Double类型显示科学计数法</a></div>
+      <div class="popular-posts-title"><a href="\2020\08\01\08\31\mysql5-7分组排序后取每组最新一条\" rel="bookmark">mysql5.7分组排序后取每组最新一条</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2020\04\26\16\27\Java小知识\" rel="bookmark">Java小知识</a></div>
+      <div class="popular-posts-title"><a href="\2020\08\02\10\34\sql函数\" rel="bookmark">sql函数</a></div>
     </li>
   </ul>
 
@@ -416,7 +478,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="http://isdear.github.io/2020/11/20/22/43/java%E4%B8%8D%E5%90%8C%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%B7%AF%E5%BE%84%E5%86%99%E6%B3%95/" title="java不同操作系统的路径写法">http://isdear.github.io/2020/11/20/22/43/java不同操作系统的路径写法/</a>
+      <a href="http://isdear.github.io/2021/03/25/23/52/Mysql%E6%97%B6%E9%97%B4%E6%A0%BC%E5%BC%8F%E5%8C%96/" title="Mysql时间格式化">http://isdear.github.io/2021/03/25/23/52/Mysql时间格式化/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -425,21 +487,18 @@
 </div>
 
           <div class="post-tags">
-              <a href="/tags/java/" rel="tag"># java</a>
+              <a href="/tags/mysql/" rel="tag"># mysql</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2020/11/16/22/42/JAVA%E8%AE%BE%E7%BD%AEExcel%E5%8D%95%E5%85%83%E6%A0%BC%E6%A0%BC%E5%BC%8F/" rel="prev" title="JAVA设置Excel单元格格式">
-                  <i class="fa fa-chevron-left"></i> JAVA设置Excel单元格格式
+                <a href="/2021/03/25/22/44/ThreadLocal%E5%BA%94%E7%94%A8/" rel="prev" title="ThreadLocal应用">
+                  <i class="fa fa-chevron-left"></i> ThreadLocal应用
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2020/11/26/22/45/Mybatis%E7%9A%84statementType%E4%BB%8B%E7%BB%8D/" rel="next" title="Mybatis的statementType介绍">
-                  Mybatis的statementType介绍 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
