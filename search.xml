@@ -10026,4 +10026,28 @@ YEAR_MONTH<span aria-hidden="true" class="line-numbers-rows"><span></span><span>
         <tag>mysql</tag>
       </tags>
   </entry>
+  <entry>
+    <title>StringJoiner字符串拼接</title>
+    <url>/2021/03/28/00/52/StringJoiner%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8B%BC%E6%8E%A5/</url>
+    <content><![CDATA[<p>StringJoiner属于Java8中的处理字符串拼接的工具类，极大节省的代码量。<a id="more"></a></p>
+<h4 id="待分割的字符串转List"><a href="#待分割的字符串转List" class="headerlink" title="待分割的字符串转List"></a>待分割的字符串转List</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">String</span> value <span class="token operator">=</span> <span class="token string">"lint lint lnit ln"</span><span class="token punctuation">;</span>
+<span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> stringList <span class="token operator">=</span> <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span>value<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h4 id="新建StringJoiner类"><a href="#新建StringJoiner类" class="headerlink" title="新建StringJoiner类"></a>新建StringJoiner类</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">StringJoiner</span> joiner <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StringJoiner</span><span class="token punctuation">(</span><span class="token string">","</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>StringJoiner类有三个参数(按顺序)：</p>
+<ul>
+<li>分隔符</li>
+<li>前缀</li>
+<li>后缀</li>
+</ul>
+<p>分隔符是拼接字符串之间的分隔符，前缀和后缀是拼接完成之后字符串的前缀和后缀，不需用我们重新去拼接了。</p>
+<h4 id="遍历集合拼接字符串"><a href="#遍历集合拼接字符串" class="headerlink" title="遍历集合拼接字符串"></a>遍历集合拼接字符串</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//stringList.forEach(s -> joiner.add(s));</span>
+stringList<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>joiner<span class="token operator">::</span><span class="token function">add</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
 </search>
