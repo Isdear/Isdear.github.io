@@ -10068,4 +10068,30 @@ X-Pingback: http:&#x2F;&#x2F;man.linuxde.net&#x2F;xmlrpc.php<span aria-hidden="t
         <tag>paper</tag>
       </tags>
   </entry>
+  <entry>
+    <title>专项训练错误合集</title>
+    <url>/2021/03/30/23/18/%E4%B8%93%E9%A1%B9%E8%AE%AD%E7%BB%83%E9%94%99%E8%AF%AF%E5%90%88%E9%9B%86/</url>
+    <content><![CDATA[<p> 专项训练题目错误问题记录。<a id="more"></a></p>
+<ul>
+<li><p>时间片调度属于<strong>并发</strong>，多线程分别绑定CPU属于<strong>并行</strong></p>
+<p>  [^注解]: 在单CPU系统中，系统调度在某一时刻只能让一个线程运行，虽然这种调试机制有多种形式(大多数是时间片轮巡为主)，但无论如何，要通过不断切换需要运行的线程让其运行的方式就叫并发(concurrent)。而在多CPU系统中，可以让两个以上的线程同时运行，这种可以同时让两个以上线程同时运行的方式叫做并行(parallel)</p>
+</li>
+<li><p><img src="/2021/03/30/23/18/%E4%B8%93%E9%A1%B9%E8%AE%AD%E7%BB%83%E9%94%99%E8%AF%AF%E5%90%88%E9%9B%86/8955099_1521189690989_0BB28C2A1ECCC47EC020E89E8A554BBC.png" alt></p>
+</li>
+<li><p>  类变量指的是用static修饰的属性</p>
+</li>
+<li></li>
+</ul>
+<p><img src="/2021/03/30/23/18/%E4%B8%93%E9%A1%B9%E8%AE%AD%E7%BB%83%E9%94%99%E8%AF%AF%E5%90%88%E9%9B%86/291053_1559812298987_4E467FB794A7AF7967F62555B4F0B6A6.png" alt></p>
+<ul>
+<li>threadlocalmap使用开放定址法解决haah冲突，hashmap使用链地址法解决hash冲突</li>
+</ul>
+]]></content>
+      <categories>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
 </search>
