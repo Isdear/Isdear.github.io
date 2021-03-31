@@ -34,7 +34,7 @@
 <meta property="og:image" content="http://isdear.github.io/2021/03/30/23/18/%E4%B8%93%E9%A1%B9%E8%AE%AD%E7%BB%83%E9%94%99%E8%AF%AF%E5%90%88%E9%9B%86/8955099_1521189690989_0BB28C2A1ECCC47EC020E89E8A554BBC.png">
 <meta property="og:image" content="http://isdear.github.io/2021/03/30/23/18/%E4%B8%93%E9%A1%B9%E8%AE%AD%E7%BB%83%E9%94%99%E8%AF%AF%E5%90%88%E9%9B%86/291053_1559812298987_4E467FB794A7AF7967F62555B4F0B6A6.png">
 <meta property="article:published_time" content="2021-03-30T15:18:39.000Z">
-<meta property="article:modified_time" content="2021-03-30T16:47:52.153Z">
+<meta property="article:modified_time" content="2021-03-31T15:49:04.375Z">
 <meta property="article:author" content="Kuang">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
@@ -330,7 +330,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-31 00:47:52" itemprop="dateModified" datetime="2021-03-31T00:47:52+08:00">2021-03-31</time>
+                <time title="修改时间：2021-03-31 23:49:04" itemprop="dateModified" datetime="2021-03-31T23:49:04+08:00">2021-03-31</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -355,14 +355,14 @@
                 <i class="far fa-file-word"></i>
               </span>
               <span class="post-meta-item-text">本文字数：</span>
-              <span>270</span>
+              <span>1.9k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
               <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>6 分钟</span>
             </span>
 
         </div>
@@ -385,7 +385,40 @@
 </ul>
 <p><img src="/2021/03/30/23/18/%E4%B8%93%E9%A1%B9%E8%AE%AD%E7%BB%83%E9%94%99%E8%AF%AF%E5%90%88%E9%9B%86/291053_1559812298987_4E467FB794A7AF7967F62555B4F0B6A6.png" alt></p>
 <ul>
-<li>threadlocalmap使用开放定址法解决haah冲突，hashmap使用链地址法解决hash冲突</li>
+<li><p>threadlocalmap使用开放定址法解决haah冲突，hashmap使用链地址法解决hash冲突</p>
+</li>
+<li><p>接口中的变量默认是public static final 的，方法默认是public abstract 的。</p>
+</li>
+<li><p>HttpServlet容器响应Web客户请求流程如下：</p>
+<p>  1）Web客户向Servlet容器发出Http请求；</p>
+<p>  2）Servlet容器解析Web客户的Http请求；</p>
+<p>  3）Servlet容器创建一个HttpRequest对象，在这个对象中封装Http请求信息；</p>
+<p>  4）Servlet容器创建一个HttpResponse对象；</p>
+<p>  5）Servlet容器调用HttpServlet的service方法，这个方法中会根据request的Method来判断具体是执行doGet还是doPost，把HttpRequest和HttpResponse对象作为service方法的参数传给HttpServlet对象；</p>
+<p>  6）HttpServlet调用HttpRequest的有关方法，获取HTTP请求信息；</p>
+<p>  7）HttpServlet调用HttpResponse的有关方法，生成响应数据；</p>
+<p>  8）Servlet容器把HttpServlet的响应结果传给Web客户。</p>
+<p>  doGet() 或 doPost() 是创建HttpServlet时需要覆盖的方法.</p>
+</li>
+<li><p>JVM配置参数：</p>
+<p>  Xms 起始内存</p>
+<p>  Xmx 最大内存</p>
+<p>  Xmn 新生代内存</p>
+<p>  Xss 栈大小。 就是创建线程后，分配给每一个线程的内存大小</p>
+<p>  -XX:NewRatio=n:设置年轻代和年老代的比值。如:为3，表示年轻代与年老代比值为1：3，年轻代占整个年轻代年老代和的1/4</p>
+<p>  -XX:SurvivorRatio=n:年轻代中Eden区与两个Survivor区的比值。注意Survivor区有两个。如：3，表示Eden：Survivor=3：2，一个Survivor区占整个年轻代的1/5</p>
+<p>  -XX:MaxPermSize=n:设置持久代大小</p>
+<p>  收集器设置<br>  -XX:+UseSerialGC:设置串行收集器<br>  -XX:+UseParallelGC:设置并行收集器<br>  -XX:+UseParalledlOldGC:设置并行年老代收集器<br>  -XX:+UseConcMarkSweepGC:设置并发收集器<br>  垃圾回收统计信息<br>  -XX:+PrintGC<br>  -XX:+PrintGCDetails<br>  -XX:+PrintGCTimeStamps<br>  -Xloggc:filename<br>  并行收集器设置<br>  -XX:ParallelGCThreads=n:设置并行收集器收集时使用的CPU数。并行收集线程数。<br>  -XX:MaxGCPauseMillis=n:设置并行收集最大暂停时间<br>  -XX:GCTimeRatio=n:设置垃圾回收时间占程序运行时间的百分比。公式为1/(1+n)<br>  并发收集器设置<br>  -XX:+CMSIncrementalMode:设置为增量模式。适用于单CPU情况。<br>  -XX:ParallelGCThreads=n:设置并发收集器年轻代收集方式为并行收集时，使用的CPU数。并行收集线程数。</p>
+</li>
+<li><p>byte类型的变量在做运算时被会转换为int类型的值；+=会自动强转（自动装箱功能），但是+必须要手动强转b=(byte)(a+b)；</p>
+</li>
+<li><p>类之间存在以下几种常见的关系：</p>
+<p>  <strong>USES-A：</strong>依赖关系，A类会用到B类，这种关系具有偶然性，临时性。但B类的变化会影响A类。这种在代码中的体现为：A类方法中的参数包含了B类。</p>
+<p>  <strong>关联关系：</strong>A类会用到B类，这是一种强依赖关系，是长期的并非偶然。在代码中的表现为：A类的成员变量中含有B类。</p>
+<p>  <strong>HAS-A：</strong>聚合关系，拥有关系，是<strong>关联关系</strong>的一种特例，是整体和部分的关系。比如鸟群和鸟的关系是聚合关系，鸟群中每个部分都是鸟。</p>
+<p>  <strong>IS-A：</strong>表示继承。父类与子类，这个就不解释了。</p>
+<p>  要注意：还有一种关系：<strong>组合关系</strong>也是关联关系的一种特例，它体现一种contains-a的关系，这种关系比聚合更强，也称为强聚合。它同样体现整体与部分的关系，但这种整体和部分是不可分割的。</p>
+</li>
 </ul>
 
     </div>
@@ -502,13 +535,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">237k</span>
+    <span title="站点总字数">239k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:10</span>
+    <span title="站点阅读时长">13:15</span>
   </span>
 </div>
 <div class="busuanzi-count">
