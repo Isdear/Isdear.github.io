@@ -10118,6 +10118,18 @@ X-Pingback: http:&#x2F;&#x2F;man.linuxde.net&#x2F;xmlrpc.php<span aria-hidden="t
 <p>  <strong>IS-A：</strong>表示继承。父类与子类，这个就不解释了。</p>
 <p>  要注意：还有一种关系：<strong>组合关系</strong>也是关联关系的一种特例，它体现一种contains-a的关系，这种关系比聚合更强，也称为强聚合。它同样体现整体与部分的关系，但这种整体和部分是不可分割的。</p>
 </li>
+<li><p>Hashtable 和 HashMap 的区别是：</p>
+<ul>
+<li><p>HashMap 是内部基于哈希表实现，该类继承AbstractMap，实现Map接口</p>
+</li>
+<li><p>  Hashtable 线程安全的，而 HashMap 是线程不安全的</p>
+</li>
+<li><p>  Properties 类 继承了 Hashtable 类，而 Hashtable 类则继承Dictionary 类</p>
+</li>
+<li><p>  HashMap允许将 null 作为一个 entry 的 key 或者 value，而 Hashtable 不允许</p>
+</li>
+</ul>
+</li>
 </ul>
 ]]></content>
       <categories>
