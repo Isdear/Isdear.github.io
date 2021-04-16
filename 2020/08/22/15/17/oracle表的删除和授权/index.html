@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/memory.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/memory.png">
@@ -227,7 +227,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">80</span>
+          <span class="site-state-item-count">81</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -370,7 +370,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>表的快速删除和授权操作<a id="more"></a></p>
+        <p>表的快速删除和授权操作<span id="more"></span></p>
 <h5 id="truncate"><a href="#truncate" class="headerlink" title="truncate"></a>truncate</h5><p>TRUNCATE TABLE 一次性地从表中删除所有的数据并不把单独的删除操作记录记入日志保存，删除行是不能恢复的。并且在删除的过程中不会激活与表有关的删除触发器。执行速度快。</p>
 <p>DELETE语句执行删除的过程是每次从表中删除一行，并且同时将该行的删除操作作为事务记录在日志中保存以便进行进行回滚操作。</p>
 <p>如果只想清空含有大量数据的表时，直接使用TRUNCATE。当表被TRUNCATE 后，这个表和索引所占用的空间会恢复到初始大小。</p>
@@ -512,7 +512,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:16</span>
+    <span title="站点阅读时长">13:18</span>
   </span>
 </div>
 <div class="busuanzi-count">

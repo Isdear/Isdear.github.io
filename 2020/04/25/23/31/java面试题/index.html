@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/memory.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/memory.png">
@@ -231,7 +231,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">80</span>
+          <span class="site-state-item-count">81</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -374,33 +374,48 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>Java面试理论题目<a id="more"></a></p>
+        <p>Java面试理论题目<span id="more"></span></p>
 <ol>
 <li>下面哪个说法正确的( <strong>D</strong> )</li>
 </ol>
 <pre class="line-numbers language-none"><code class="language-none">ConcurrentHashMap使用synchronized关键字保证线程安全<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">HashMap实现了Collction接口<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">Array.asList方法返回java.util.ArrayList对象<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">SimpleDateFormat是线程不安全的<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>解析：A选项中，ConcurrentHashMap 使用segment来分段和管理锁，segment继承自ReentrantLock，因此ConcurrentHashMap使用ReentrantLock来保证线程安全。</p>
 <p>B中，HashMap定义规则如下：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">K</span><span class="token punctuation">,</span><span class="token class-name">V</span><span class="token punctuation">></span></span>
     <span class="token keyword">extends</span> <span class="token class-name">AbstractMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">K</span><span class="token punctuation">,</span><span class="token class-name">V</span><span class="token punctuation">></span></span>
     <span class="token keyword">implements</span> <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">K</span><span class="token punctuation">,</span><span class="token class-name">V</span><span class="token punctuation">></span></span><span class="token punctuation">,</span> <span class="token class-name">Cloneable</span><span class="token punctuation">,</span> <span class="token class-name">Serializable</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <p>C中，应该是Arrays.asList()，其将一个数组转化为一个List对象，这个方法返回一个ArrayList类型的对象， 这个<font color="red">ArrayList类并非java.util.ArrayList类，而是Arrays类的内部类</font>。</p>
 <p>2.下面哪些具体实现类可以用于存储键值对，并且方法调用提供了基本的多线程安全支持：(<strong>AE</strong>)</p>
 <pre class="line-numbers language-none"><code class="language-none">java.util.ConcurrentHashMap<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">java.util.Map<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">java.util.TreeMap<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">java.util.SortMap<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">java.util.Hashtable<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">java.util.HashMap<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>解析：线程安全的类有hashtable、concurrentHashMap、synchronizedMap。</p>
 <p>3.以下描述错误的是( C )</p>
 <pre class="line-numbers language-none"><code class="language-none">程序计数器是一个比较小的内存区域，用于指示当前线程所执行的字节码执行到了第几行，是线程隔离的<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">原则上讲，所有的对象都是在堆区上分配内存，是线程之间共享的<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">方法区用于存储JVM加载的类信息、常量、静态变量，即时编译器编译后的代码等数据，是线程隔离的<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">Java方法执行内存模型，用于存储局部变量，操作数栈，动态链接，方法出口等信息，是线程隔离的<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>解析：</p>
 <p><img src="/2020/04/25/23/31/java%E9%9D%A2%E8%AF%95%E9%A2%98/JavaMemory.png" alt></p>
 <p>JAVA的JVM的内存可分为3个区：堆(heap)、栈(stack)和方法区(method)</p>
@@ -433,21 +448,30 @@
 <span class="token keyword">public</span>
 
 <span class="token keyword">final</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>解析：sleep方法能被类直接调用，说明是静态的，随着类的加载而加载。</p>
 <p><strong>static关键字：针对多个对象共有的成员变量值时所提出的。</strong></p>
 <p><strong>特点：1、随着类的加载而加载；  2、优先于对象存在；  3、被类的所有对象共享；    4、可以通过类名直接调用。</strong></p>
 <p>注意事项：1.在静态方法中是没有this关键字的；    2.静态方法只能访问静态的成员变量和静态的成员方法。</p>
 <p>5.列表(List)和集合(Set)下面说法正确的是？  ( A )</p>
 <pre class="line-numbers language-none"><code class="language-none">Set中至多只能有一个空元素<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">List中至多只能有一个空元素<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">List和Set都可以包含重复元素的有序集合<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">List和Set都是有序集合<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>解析：<font color="red">Set 不能有重复的元素，且是无序的，要有空值也就只能有一个。因为它不允许重复</font>。 L ist 可以有重复元素，且是有序的，要有空值也可以有多个，因为它可重复。</p>
 <p>6.在JAVA中，假设A有构造方法A(int a)，则在类A的其他构造方法中调用该构造方法和语句格式应该为（ B ）</p>
 <pre class="line-numbers language-none"><code class="language-none">this.A(X)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">this(X)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">super(X)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">A(X)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>解析：<font color="red">this的作用其中一个就是在一个构造方法中调用另一个构造方法，格式为this(参数)；super是调用父类的方法；</font>A(a)这种形式是在new一个类时使用。</p>
 <p>7.A 是抽象父类或接口， B ， C 派生自 A ，或实现 A ，现在 Java 源代码中有如下声明：</p>
 <ol>
@@ -460,21 +484,33 @@
 </ol>
 <p>问以下哪个说法是正确的？（ A ）</p>
 <pre class="line-numbers language-none"><code class="language-none">第一行不能通过编译<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">第1、2行能通过编译，但第3行编译出错<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">第1、2、3行能通过编译，但第2、3行运行时出错<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">第1行、第2行和第3行的声明都是正确的<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>解析：<font color="red">抽象类不能实例化</font>。抽象类除了不能实例化对象之外，类的其它功能依然存在，成员变量、成员方法和构造方法的访问方式和普通类一样。由于不能实例化对象，所以抽象类必须被继承，才能被使用。父类包含了子类集合的常见的方法，但是由于父类本身是抽象的，所以不能使用这些方法。</p>
 <p>8.对于子类的构造函数说明，下列叙述中错误的是（ D ）</p>
 <pre class="line-numbers language-none"><code class="language-none">子类不能继承父类的无参构造函数。<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">子类可以在自己的构造函数中使用super关键字来调用父类的含参数构造函数，但这个调用语句必须是子类构造函数的第一个可执行语句。<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">在创建子类的对象时，若不含带参构造函数，将先执行父类的无参构造函数，然后再执行自己的无参构造函数。<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">子类不但可以继承父类的无参构造函数，也可以继承父类的有参构造函数。<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>解析：<font color="red">构造函数不能被继承，只能被调用</font>。</p>
 <p>9.在一个基于分布式的游戏服务器系统中，不同的服务器之间，哪种通信方式是不可行的（ A ）？</p>
 <pre class="line-numbers language-none"><code class="language-none">管道<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">消息队列<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">高速缓冲数据库<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">套接字<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>解析：对于管道，有下面这几种类型：</p>
 <p>①普通管道（PIPE）：通常有两种限制，一是单工，即只能单向传输；二是血缘，即常用于父子进程间（或有血缘关系的进程间）。</p>
 <p>②流管道（s_pipe）：去除了上述的第一种限制，实现了双向传输。</p>
@@ -521,18 +557,23 @@
         <span class="token punctuation">&#125;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Sub</span><span class="token operator">:</span>collection
 <span class="token class-name">Sub</span><span class="token operator">:</span>collection
 <span class="token class-name">Sub</span><span class="token operator">:</span>collection<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Sub</span><span class="token operator">:</span>hashSet
 <span class="token class-name">Sub</span><span class="token operator">:</span>arrayList
 <span class="token class-name">Sub</span><span class="token operator">:</span>collection<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Super</span><span class="token operator">:</span>collection
 <span class="token class-name">Super</span><span class="token operator">:</span>collection
 <span class="token class-name">Super</span><span class="token operator">:</span>collection<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Super</span><span class="token operator">:</span>hashSet
 <span class="token class-name">Super</span><span class="token operator">:</span>arrayList
 <span class="token class-name">Super</span><span class="token operator">:</span>collection<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <p>解析：这是静态分派的过程，在编译时已经决定了使用super的方法，因为subToSuper 是指super对象，可是为什么会选择collection呢，for循环出来他们实际上指的是collection对象表示的，即类似于Collection   col = new  HashSet&lt;&gt;();这样传入方法getType()中的参数就是col，左边是静态类型，右边是实际类型。由于重载实际上是使用静态分派的，重载时是通过参数的静态类型而不是实际类型作为判定依据的。</p>
 <p>11.下面代码运行结果是（ C ）</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Test</span><span class="token punctuation">&#123;</span> 
@@ -554,13 +595,18 @@
      <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">catch语句块
 和是：43<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">编译异常<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">finally语句块
 和是：43<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">和是：43
 finally语句块<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <p>解析：举一个例子</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">Test</span> <span class="token punctuation">&#123;</span>
     <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
@@ -577,6 +623,7 @@ finally语句块<span aria-hidden="true" class="line-numbers-rows"><span></span>
         <span class="token punctuation">&#125;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p><font color="red">当程序执行到try{}语句中的return方法时，它会干这么一件事，将要返回的结果存储到一个临时栈中，然后程序不会立即返回，而是去执行finally{}中的程序</font>， 在执行<code>a = 2</code>时，程序仅仅是覆盖了a的值，但不会去更新临时栈中的那个要返回的值 。执行完之后，就会通知主程序“finally的程序执行完毕，可以请求返回了”，这时，就会将临时栈中的值取出来返回。这下应该清楚了，要返回的值是保存至临时栈中的。</p>
 <p>12.</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Test</span><span class="token punctuation">&#123;</span>
@@ -587,11 +634,13 @@ finally语句块<span aria-hidden="true" class="line-numbers-rows"><span></span>
     <span class="token class-name">Test</span> t<span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>如下哪些使用是正确的( D )</p>
 <pre class="line-numbers language-none"><code class="language-none">A t.f &#x3D; 1.0
 B this.n
 C Test.m
 D Test.n<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>解析：A项，编译不成功，因为float浮点类型默认是double，所以<code>float f = 1.0f</code>。选项没有加 <code>&#39;f&#39;</code>，<font color="red">由高精度(double)向低精度(float)转换会丢失精度</font>，所以报错。</p>
 <p>B项，this使用时，在方法内部使局部变量等值于实例变量而使用的一个关键字，此处的n是静态变量而非实例变量 所以this的调用会出错（试想一下，static本来是全类中可以使用的，是全局的，你非得this去调用，这不是区分局部变量和实例变量的分水线吗？但是此处是全局的，不需要区分）</p>
 <p>C项，m是实例变量，什么是实例变量：就是需要new 一个对象出来才能使用的，这里直接用类名就调用了，jvm怎么知道m是谁？</p>
@@ -603,6 +652,7 @@ ReadWriteLock适用于读多写少的并发场景
 ConcurrentHashMap的写操作不需要加锁，读操作需要加锁
 
 只要在定义int类型的成员变量i的时候加上volatile关键字，那么多线程并发执行i++这样的操作的时候就是线程安全的了<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>解析：A，CopyOnWriteArrayList适用于<strong>写少读多</strong>的并发场景；B，ReadWriteLock即为读写锁，他要求写与写之间互斥，读与写之间互斥，读与读之间可以并发执行。在读多写少的情况下可以提高效率；C，ConcurrentHashMap是同步的HashMap，读写都加锁；D，volatile只保证多线程操作的可见性，不保证原子性。</p>
 <p>14.以下代码的输出结果是？</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">B</span>
@@ -621,6 +671,7 @@ ConcurrentHashMap的写操作不需要加锁，读操作需要加锁
         <span class="token class-name">B</span> t <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">B</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>解析： 1.程序入口main方法要执行首先要加载类B ;</p>
 <p>2.<strong>静态域：分为静态变量，静态方法，静态块。这里面涉及到的是静态变量和静态块，当执行到静态域时，按照静态域的顺序加载，并且静态域只在类的第一次加载时执行 ；</strong></p>
 <p>3.每次new对象时，会执行一次构造块和构造方法，构造块总是在构造方法前执行(当然，第一次new时，会先执行静态域，静态域&gt;构造块&gt;构造方法) 注意：加载类时并不会调用构造块和构造方法，只有静态域会执行 ；</p>
@@ -630,8 +681,10 @@ ConcurrentHashMap的写操作不需要加锁，读操作需要加锁
 <p>16.JDBC连接数据库</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Statement</span> sta<span class="token operator">=</span>con<span class="token punctuation">.</span><span class="token function">createStatement</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token class-name">ResultSet</span> rst<span class="token operator">=</span>sta<span class="token punctuation">.</span><span class="token function">executeQuery</span><span class="token punctuation">(</span>“select <span class="token operator">*</span> from book”<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">PreparedStatement</span> pst<span class="token operator">=</span>con<span class="token punctuation">.</span><span class="token function">prepareStatement</span><span class="token punctuation">(</span>“select <span class="token operator">*</span> from book”<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token class-name">ResultSet</span> rst<span class="token operator">=</span>pst<span class="token punctuation">.</span><span class="token function">executeQuery</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <p>解析：<strong>PreparedStatement</strong>有预编译的过程，已经绑定sql，之后无论执行多少遍，都不会再去进行编译，执行速度要比statement 快，<strong>安全性高，可以防止SQL注入</strong>。而 statement 不同，如果执行多遍，则相应的就要编译多少遍sql。</p>
 <p>17.如下语句通过算术运算和逻辑运算之后i和 j的结果是（ D ）</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
@@ -640,6 +693,7 @@ ConcurrentHashMap的写操作不需要加锁，读操作需要加锁
 <span class="token punctuation">&#123;</span>
 <span class="token comment">//打印出i和j的值。</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">A	i&#x3D;0;j&#x3D;0
 
 B	i&#x3D;1;j&#x3D;1
@@ -647,6 +701,7 @@ B	i&#x3D;1;j&#x3D;1
 C	i&#x3D;0;j&#x3D;1
 
 D	i&#x3D;1;j&#x3D;0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>解析：<strong>&amp;&amp; 和 || 为短路与和短路或</strong>。&amp;&amp; 若前面的表达式为false,整个逻辑表达式为false,所以后面的表达式无论true和false都无法影响整个表达式的逻辑结果，所以为了提高代码执行速率，这里后面的表达式就不会执行。同理， || 若前面表达式为true,则后面的表达式无需计算。<strong>&amp; 和 | 为不短路与不短路或</strong>。无论什么情况，前面的和后面的都要执行。</p>
 <p>18.关于JVM的垃圾回收机制：</p>
 <ul>
@@ -664,6 +719,7 @@ D	i&#x3D;1;j&#x3D;0<span aria-hidden="true" class="line-numbers-rows"><span></sp
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span> args<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
     <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token number">17</span><span class="token operator">^</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <p>解析：<font color="red">“^”是位异运算符号</font>。</p>
 <p>运算规则是：两个数转为二进制，然后从高位开始比较，如果相同则为0，不相同则为1。</p>
 <p>17：<code>0001 0001</code>  5：<code>0000 0101</code>结果：<code>0001 0100</code> 转10进制：20。</p>
@@ -678,6 +734,7 @@ D	i&#x3D;1;j&#x3D;0<span aria-hidden="true" class="line-numbers-rows"><span></sp
         isOdd <span class="token operator">=</span> <span class="token boolean">false</span>；
 	a<span class="token operator">+=</span>i<span class="token operator">*</span><span class="token punctuation">(</span>isOdd<span class="token operator">?</span><span class="token number">1</span><span class="token operator">:</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>；
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">A	-1
 
 B	-2
@@ -685,6 +742,7 @@ B	-2
 C	0
 
 D	1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>解析：每个线程对a 均做了两次读写操作，分别是 “ +1 ” 和 “ -2 ”。</p>
 <p>而题目问了是最终a 的结果，所以 a 的结果取决于各自线程对 a 的先后读写的顺序。</p>
 <p>结论：a的可能取值为-1、0、-2。<img src="/2020/04/25/23/31/java%E9%9D%A2%E8%AF%95%E9%A2%98/Thread.png" alt></p>
@@ -704,10 +762,10 @@ D	1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
       <div class="popular-posts-title"><a href="\2020\11\16\22\42\JAVA设置Excel单元格格式\" rel="bookmark">JAVA设置Excel单元格格式</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2020\10\26\23\26\Java取消Double类型显示科学计数法\" rel="bookmark">Java取消Double类型显示科学计数法</a></div>
+      <div class="popular-posts-title"><a href="\2020\06\14\20\53\JWT授权验证\" rel="bookmark">JWT授权验证</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2020\06\14\20\53\JWT授权验证\" rel="bookmark">JWT授权验证</a></div>
+      <div class="popular-posts-title"><a href="\2020\10\26\23\26\Java取消Double类型显示科学计数法\" rel="bookmark">Java取消Double类型显示科学计数法</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="\2020\04\26\16\27\Java小知识\" rel="bookmark">Java小知识</a></div>
@@ -812,7 +870,7 @@ D	1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:16</span>
+    <span title="站点阅读时长">13:18</span>
   </span>
 </div>
 <div class="busuanzi-count">

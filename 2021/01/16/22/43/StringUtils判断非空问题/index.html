@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/memory.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/memory.png">
@@ -227,7 +227,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">80</span>
+          <span class="site-state-item-count">81</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -364,8 +364,9 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>StringUtils 方法的操作对象是 java.lang.String 类型的对象，是 JDK 提供的 String 类型操作方法的补充，并且是 null 安全的(即如果输入参数 String 为 null 则不会抛出 NullPointerException ，而是做了相应处理。例如，如果输入为 null 则返回也是 null 等)<a id="more"></a></p>
+        <p>StringUtils 方法的操作对象是 java.lang.String 类型的对象，是 JDK 提供的 String 类型操作方法的补充，并且是 null 安全的(即如果输入参数 String 为 null 则不会抛出 NullPointerException ，而是做了相应处理。例如，如果输入为 null 则返回也是 null 等)<span id="more"></span></p>
 <h5 id="isEmpty-String-str"><a href="#isEmpty-String-str" class="headerlink" title="isEmpty(String str)"></a>isEmpty(String str)</h5><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">boolean</span> <span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token class-name">String</span> str<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>判断某字符串是否为空，为空的标准是 <code>str==null</code>或 <code>str.length()==0</code></p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">StringUtils</span><span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token boolean">true</span>
 
@@ -378,7 +379,9 @@
 <span class="token class-name">StringUtils</span><span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token string">"bob"</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token boolean">false</span>
 
 <span class="token class-name">StringUtils</span><span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token string">" bob "</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token boolean">false</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h5 id="isNotEmpty-String-str"><a href="#isNotEmpty-String-str" class="headerlink" title="isNotEmpty(String str)"></a>isNotEmpty(String str)</h5><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">boolean</span> <span class="token function">isNotEmpty</span><span class="token punctuation">(</span><span class="token class-name">String</span> str<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>判断某字符串是否非空，等于 <code>!isEmpty(String str)</code></p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">StringUtils</span><span class="token punctuation">.</span><span class="token function">isNotEmpty</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token boolean">false</span>
 
@@ -391,7 +394,9 @@
 <span class="token class-name">StringUtils</span><span class="token punctuation">.</span><span class="token function">isNotEmpty</span><span class="token punctuation">(</span><span class="token string">"bob"</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token boolean">true</span>
 
 <span class="token class-name">StringUtils</span><span class="token punctuation">.</span><span class="token function">isNotEmpty</span><span class="token punctuation">(</span><span class="token string">" bob "</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token boolean">true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h5 id="isBlank-String-str"><a href="#isBlank-String-str" class="headerlink" title="isBlank(String str)"></a>isBlank(String str)</h5><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">boolean</span> <span class="token function">isBlank</span><span class="token punctuation">(</span><span class="token class-name">String</span> str<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>  判断某字符串是否为空或长度为0或由空白符(whitespace) 构成</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">StringUtils</span><span class="token punctuation">.</span><span class="token function">isBlank</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token boolean">true</span>
 
@@ -410,7 +415,9 @@
 <span class="token class-name">StringUtils</span><span class="token punctuation">.</span><span class="token function">isBlank</span><span class="token punctuation">(</span><span class="token string">"bob"</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token boolean">false</span>
 
 <span class="token class-name">StringUtils</span><span class="token punctuation">.</span><span class="token function">isBlank</span><span class="token punctuation">(</span><span class="token string">" bob "</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token boolean">false</span>   <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h5 id="isNotBlank-String-str"><a href="#isNotBlank-String-str" class="headerlink" title="isNotBlank(String str)"></a>isNotBlank(String str)</h5><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">boolean</span> <span class="token function">isNotBlank</span><span class="token punctuation">(</span><span class="token class-name">String</span> str<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 
 <p>判断某字符串是否不为空且长度不为0且不由空白符(whitespace) 构成，等于 <code>!isBlank(String str)</code></p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">StringUtils</span><span class="token punctuation">.</span><span class="token function">isNotBlank</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token boolean">false</span>
@@ -428,7 +435,9 @@
 <span class="token class-name">StringUtils</span><span class="token punctuation">.</span><span class="token function">isNotBlank</span><span class="token punctuation">(</span><span class="token string">"bob"</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token boolean">true</span>
 
 <span class="token class-name">StringUtils</span><span class="token punctuation">.</span><span class="token function">isNotBlank</span><span class="token punctuation">(</span><span class="token string">" bob "</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token boolean">true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h5 id="trim-String-str"><a href="#trim-String-str" class="headerlink" title="trim(String str)"></a>trim(String str)</h5><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">String</span> <span class="token function">trim</span><span class="token punctuation">(</span><span class="token class-name">String</span> str<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>去掉字符串两端的控制符(control characters, char &lt;= 32) , 如果输入为 null 则返回null</p>
 <pre class="line-numbers language-none"><code class="language-none">StringUtils.trim(null) &#x3D; null
 
@@ -445,7 +454,9 @@ StringUtils.trim(&quot; d  d dd   &quot;) &#x3D; &quot;d  d dd&quot;
 StringUtils.trim(&quot;dd   &quot;) &#x3D; &quot;dd&quot;
 
 StringUtils.trim(&quot;   dd    &quot;) &#x3D; &quot;dd&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h5 id="trimToNull-String-str"><a href="#trimToNull-String-str" class="headerlink" title="trimToNull(String str)"></a>trimToNull(String str)</h5><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">String</span> <span class="token function">trimToNull</span><span class="token punctuation">(</span><span class="token class-name">String</span> str<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>去掉字符串两端的控制符(control characters, char &lt;= 32) ,如果变为 null 或””，则返回 null</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">StringUtils</span><span class="token punctuation">.</span><span class="token function">trimToNull</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token keyword">null</span>
 
@@ -462,7 +473,9 @@ StringUtils.trim(&quot;   dd    &quot;) &#x3D; &quot;dd&quot;<span aria-hidden="
 <span class="token class-name">StringUtils</span><span class="token punctuation">.</span><span class="token function">trimToNull</span><span class="token punctuation">(</span><span class="token string">"dd   "</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token string">"dd"</span>
 
 <span class="token class-name">StringUtils</span><span class="token punctuation">.</span><span class="token function">trimToNull</span><span class="token punctuation">(</span><span class="token string">"   dd    "</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token string">"dd"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h5 id="trimToEmpty-String-str"><a href="#trimToEmpty-String-str" class="headerlink" title="trimToEmpty(String str)"></a>trimToEmpty(String str)</h5><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">String</span> <span class="token function">trimToEmpty</span><span class="token punctuation">(</span><span class="token class-name">String</span> str<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>去掉字符串两端的控制符(control characters, char &lt;= 32) ,如果变为 null 或 “” ，则返回 “”</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">StringUtils</span><span class="token punctuation">.</span><span class="token function">trimToEmpty</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token string">""</span>
 
@@ -479,7 +492,9 @@ StringUtils.trim(&quot;   dd    &quot;) &#x3D; &quot;dd&quot;<span aria-hidden="
 <span class="token class-name">StringUtils</span><span class="token punctuation">.</span><span class="token function">trimToEmpty</span><span class="token punctuation">(</span><span class="token string">"dd   "</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token string">"dd"</span>
 
 <span class="token class-name">StringUtils</span><span class="token punctuation">.</span><span class="token function">trimToEmpty</span><span class="token punctuation">(</span><span class="token string">"   dd    "</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token string">"dd"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h5 id="strip-String-str"><a href="#strip-String-str" class="headerlink" title="strip(String str)"></a>strip(String str)</h5><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">String</span> <span class="token function">strip</span><span class="token punctuation">(</span><span class="token class-name">String</span> str<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>去掉字符串两端的空白符(whitespace) ，如果输入为 null 则返回 null</p>
 <p>下面是示例(注意和 trim() 的区别)：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">StringUtils</span><span class="token punctuation">.</span><span class="token function">strip</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token keyword">null</span>
@@ -497,7 +512,9 @@ StringUtils.trim(&quot;   dd    &quot;) &#x3D; &quot;dd&quot;<span aria-hidden="
 <span class="token class-name">StringUtils</span><span class="token punctuation">.</span><span class="token function">strip</span><span class="token punctuation">(</span><span class="token string">"dd   "</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token string">"dd"</span>
 
 <span class="token class-name">StringUtils</span><span class="token punctuation">.</span><span class="token function">strip</span><span class="token punctuation">(</span><span class="token string">"   dd    "</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token string">"dd"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h5 id="stripToNull-String-str"><a href="#stripToNull-String-str" class="headerlink" title="stripToNull(String str)"></a>stripToNull(String str)</h5><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">String</span> <span class="token function">stripToNull</span><span class="token punctuation">(</span><span class="token class-name">String</span> str<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>去掉字符串两端的空白符(whitespace) ，如果变为 null 或””，则返回 null</p>
 <p>下面是示例(注意和 trimToNull() 的区别)：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">StringUtils</span><span class="token punctuation">.</span><span class="token function">stripToNull</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token keyword">null</span>
@@ -515,7 +532,9 @@ StringUtils.trim(&quot;   dd    &quot;) &#x3D; &quot;dd&quot;<span aria-hidden="
 <span class="token class-name">StringUtils</span><span class="token punctuation">.</span><span class="token function">stripToNull</span><span class="token punctuation">(</span><span class="token string">"dd   "</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token string">"dd"</span>
  
 <span class="token class-name">StringUtils</span><span class="token punctuation">.</span><span class="token function">stripToNull</span><span class="token punctuation">(</span><span class="token string">"   dd    "</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token string">"dd"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h5 id="stripToEmpty-String-str"><a href="#stripToEmpty-String-str" class="headerlink" title="stripToEmpty(String str)"></a>stripToEmpty(String str)</h5><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">String</span> <span class="token function">stripToEmpty</span><span class="token punctuation">(</span><span class="token class-name">String</span> str<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>去掉字符串两端的空白符(whitespace) ，如果变为 null 或”” ，则返回””</p>
 <p>下面是示例(注意和 trimToEmpty() 的区别)：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">StringUtils</span><span class="token punctuation">.</span><span class="token function">stripToNull</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token string">""</span>
@@ -533,6 +552,7 @@ StringUtils.trim(&quot;   dd    &quot;) &#x3D; &quot;dd&quot;<span aria-hidden="
 <span class="token class-name">StringUtils</span><span class="token punctuation">.</span><span class="token function">stripToNull</span><span class="token punctuation">(</span><span class="token string">"dd   "</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token string">"dd"</span>
 
 <span class="token class-name">StringUtils</span><span class="token punctuation">.</span><span class="token function">stripToNull</span><span class="token punctuation">(</span><span class="token string">"   dd    "</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token string">"dd"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h5 id="以下方法只介绍其功能，不再举例："><a href="#以下方法只介绍其功能，不再举例：" class="headerlink" title="以下方法只介绍其功能，不再举例："></a>以下方法只介绍其功能，不再举例：</h5><h6 id="strip-String-str-String-stripChars"><a href="#strip-String-str-String-stripChars" class="headerlink" title="strip(String str, String stripChars)"></a>strip(String str, String stripChars)</h6><p>public static String strip(String str, String stripChars)</p>
 <p>去掉 str 两端的在 stripChars 中的字符。</p>
 <p>如果 str 为 null 或等于”” ，则返回它本身；</p>
@@ -591,6 +611,7 @@ StringUtils.trim(&quot;   dd    &quot;) &#x3D; &quot;dd&quot;<span aria-hidden="
 <span class="token class-name">StringUtils</span><span class="token punctuation">.</span><span class="token function">ordinalIndexOf</span><span class="token punctuation">(</span><span class="token string">"aabaabaa"</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">0</span>
 
 <span class="token class-name">StringUtils</span><span class="token punctuation">.</span><span class="token function">ordinalIndexOf</span><span class="token punctuation">(</span><span class="token string">"aabaabaa"</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">0</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h6 id="indexOf-String-str-String-searchStr-int-startPos"><a href="#indexOf-String-str-String-searchStr-int-startPos" class="headerlink" title="indexOf(String str, String searchStr, int startPos)"></a>indexOf(String str, String searchStr, int startPos)</h6><p>public static int indexOf(String str, String searchStr, int startPos)</p>
 <p>返回字符串 searchStr 从 startPos 开始在字符串 str 中第一次出现的位置。</p>
 <p>举例(*代表任意字符串)：</p>
@@ -615,6 +636,7 @@ StringUtils.trim(&quot;   dd    &quot;) &#x3D; &quot;dd&quot;<span aria-hidden="
 <span class="token class-name">StringUtils</span><span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">"aabaabaa"</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">2</span>
 
 <span class="token class-name">StringUtils</span><span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">"abc"</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">3</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h6 id="lastIndexOf-String-str-char-searchChar"><a href="#lastIndexOf-String-str-char-searchChar" class="headerlink" title="lastIndexOf(String str, char searchChar)"></a>lastIndexOf(String str, char searchChar)</h6><p>public static int lastIndexOf(String str, char searchChar)</p>
 <p>基本原理同indexOf(String str, char searchChar)</p>
 <h6 id="lastIndexOf-String-str-char-searchChar-int-startPos"><a href="#lastIndexOf-String-str-char-searchChar-int-startPos" class="headerlink" title="lastIndexOf(String str, char searchChar, int startPos)"></a>lastIndexOf(String str, char searchChar, int startPos)</h6><p>public static int lastIndexOf(String str, char searchChar, int startPos)</p>
@@ -638,10 +660,10 @@ StringUtils.trim(&quot;   dd    &quot;) &#x3D; &quot;dd&quot;<span aria-hidden="
       <div class="popular-posts-title"><a href="\2020\11\16\22\42\JAVA设置Excel单元格格式\" rel="bookmark">JAVA设置Excel单元格格式</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2020\10\26\23\26\Java取消Double类型显示科学计数法\" rel="bookmark">Java取消Double类型显示科学计数法</a></div>
+      <div class="popular-posts-title"><a href="\2020\06\14\20\53\JWT授权验证\" rel="bookmark">JWT授权验证</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2020\06\14\20\53\JWT授权验证\" rel="bookmark">JWT授权验证</a></div>
+      <div class="popular-posts-title"><a href="\2020\10\26\23\26\Java取消Double类型显示科学计数法\" rel="bookmark">Java取消Double类型显示科学计数法</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="\2020\04\26\16\27\Java小知识\" rel="bookmark">Java小知识</a></div>
@@ -746,7 +768,7 @@ StringUtils.trim(&quot;   dd    &quot;) &#x3D; &quot;dd&quot;<span aria-hidden="
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:16</span>
+    <span title="站点阅读时长">13:18</span>
   </span>
 </div>
 <div class="busuanzi-count">

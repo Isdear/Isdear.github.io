@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/memory.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/memory.png">
@@ -229,7 +229,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">80</span>
+          <span class="site-state-item-count">81</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -372,7 +372,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>建立迷宫时有所涉及，用来处理格子之间的相连问题。<a id="more"></a></p>
+        <p>建立迷宫时有所涉及，用来处理格子之间的相连问题。<span id="more"></span></p>
 <h5 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h5><p>&emsp;&emsp;并查集，在一些有N个元素的集合应用问题中，我们通常是在开始时让每个元素构成一个单元素的集合，然后按一定顺序将属于同一组的元素所在的集合合并，其间要反复查找一个元素在哪个集合中。这一类问题近几年来反复出现在信息学的国际国内赛题中，其特点是看似并不复杂，但数据量极大，若用正常的数据结构来描述的话，往往在空间上过大，计算机无法承受；即使在空间上勉强通过，运行的时间复杂度也极高，根本就不可能在比赛规定的运行时间（1～3秒）内计算出试题需要的结果，只能用并查集来描述。</p>
 <p>&emsp;&emsp;并查集是一种树型的数据结构，用于处理一些不相交集合（Disjoint Sets）的合并及查询问题。常常在使用中以森林来表示。</p>
 <h5 id="主要操作"><a href="#主要操作" class="headerlink" title="主要操作"></a>主要操作</h5><ul>
@@ -402,6 +402,7 @@
 <span class="token number">2</span> <span class="token number">3</span>
 
 <span class="token number">1</span> <span class="token number">9</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>&emsp;&emsp;我们可以给每个人建立一个集合，集合的元素值有它自己，表示最开始时它不知道任何人是它的亲戚。以后每次给出一个亲戚关系a, b，则a和它的亲戚与b和它的亲戚就互为亲戚了，将a所在集合与b所在集合合并。对于样例数据的操作全过程如下：</p>
 <p>&emsp;&emsp;初始状态：{1} {2} {3} {4} {5} {6} {7} {8} {9}</p>
 <p>&emsp;&emsp;输入关系 分离集合</p>
@@ -418,6 +419,7 @@
 (5,6) &#123;1,2,3,4&#125; &#123;5,6,7&#125; &#123;8,9&#125;
 
 (2,3) &#123;1,2,3,4&#125; &#123;5,6,7&#125; &#123;8,9&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>判断亲戚关系</p>
 <p>(1,9)，因为1,9不在同一集合内，所以输出”NO”。</p>
 <p>&emsp;&emsp;最后我们得到3个集合{1,2,3,4}、{5,6,7}、{8,9}，于是判断两个人是否亲戚的问题就变成判断两个数是否在同一个集合中的问题。</p>
@@ -488,6 +490,7 @@
         <span class="token keyword">return</span> f<span class="token punctuation">;</span>
 	<span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 
     </div>
 
@@ -594,7 +597,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:16</span>
+    <span title="站点阅读时长">13:18</span>
   </span>
 </div>
 <div class="busuanzi-count">

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/memory.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/memory.png">
@@ -227,7 +227,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">80</span>
+          <span class="site-state-item-count">81</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -370,36 +370,44 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>java导出Excel时设置单元格的文本显示格式<a id="more"></a></p>
+        <p>java导出Excel时设置单元格的文本显示格式<span id="more"></span></p>
 <p>创建单元格</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">HSSFWorkbook</span> demoWorkBook <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HSSFWorkbook</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   
 <span class="token class-name">HSSFSheet</span> demoSheet <span class="token operator">=</span> demoWorkBook<span class="token punctuation">.</span><span class="token function">createSheet</span><span class="token punctuation">(</span><span class="token string">"The World's 500 Enterprises"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   
 <span class="token class-name">HSSFCell</span> cell <span class="token operator">=</span> demoSheet<span class="token punctuation">.</span><span class="token function">createRow</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">createCell</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <h6 id="文本格式"><a href="#文本格式" class="headerlink" title="文本格式"></a>文本格式</h6><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">HSSFCellStyle</span> cellStyle2 <span class="token operator">=</span> demoWorkBook<span class="token punctuation">.</span><span class="token function">createCellStyle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token class-name">HSSFDataFormat</span> format <span class="token operator">=</span> demoWorkBook<span class="token punctuation">.</span><span class="token function">createDataFormat</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 cellStyle2<span class="token punctuation">.</span><span class="token function">setDataFormat</span><span class="token punctuation">(</span>format<span class="token punctuation">.</span><span class="token function">getFormat</span><span class="token punctuation">(</span><span class="token string">"@"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 cell<span class="token punctuation">.</span><span class="token function">setCellStyle</span><span class="token punctuation">(</span>cellStyle2<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h6 id="日期格式"><a href="#日期格式" class="headerlink" title="日期格式"></a>日期格式</h6><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">HSSFCellStyle</span> cellStyle <span class="token operator">=</span> demoWorkBook<span class="token punctuation">.</span><span class="token function">createCellStyle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token class-name">HSSFDataFormat</span> format<span class="token operator">=</span> demoWorkBook<span class="token punctuation">.</span><span class="token function">createDataFormat</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 cellStyle<span class="token punctuation">.</span><span class="token function">setDataFormat</span><span class="token punctuation">(</span>format<span class="token punctuation">.</span><span class="token function">getFormat</span><span class="token punctuation">(</span><span class="token string">"yyyy-MM-dd"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 cell<span class="token punctuation">.</span><span class="token function">setCellStyle</span><span class="token punctuation">(</span>cellStyle<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h6 id="保留两位小数"><a href="#保留两位小数" class="headerlink" title="保留两位小数"></a>保留两位小数</h6><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">HSSFCellStyle</span> cellStyle <span class="token operator">=</span> demoWorkBook<span class="token punctuation">.</span><span class="token function">createCellStyle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    
 cellStyle<span class="token punctuation">.</span><span class="token function">setDataFormat</span><span class="token punctuation">(</span><span class="token class-name">HSSFDataFormat</span><span class="token punctuation">.</span><span class="token function">getBuiltinFormat</span><span class="token punctuation">(</span><span class="token string">"0.00"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 cell<span class="token punctuation">.</span><span class="token function">setCellStyle</span><span class="token punctuation">(</span>cellStyle<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <h6 id="货币格式"><a href="#货币格式" class="headerlink" title="货币格式"></a>货币格式</h6><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">HSSFCellStyle</span> cellStyle <span class="token operator">=</span> demoWorkBook<span class="token punctuation">.</span><span class="token function">createCellStyle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token class-name">HSSFDataFormat</span> format<span class="token operator">=</span> demoWorkBook<span class="token punctuation">.</span><span class="token function">createDataFormat</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 cellStyle<span class="token punctuation">.</span><span class="token function">setDataFormat</span><span class="token punctuation">(</span>format<span class="token punctuation">.</span><span class="token function">getFormat</span><span class="token punctuation">(</span><span class="token string">"¥#,##0"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 cell<span class="token punctuation">.</span><span class="token function">setCellStyle</span><span class="token punctuation">(</span>cellStyle<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h6 id="百分比格式"><a href="#百分比格式" class="headerlink" title="百分比格式"></a>百分比格式</h6><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">HSSFCellStyle</span> cellStyle <span class="token operator">=</span> demoWorkBook<span class="token punctuation">.</span><span class="token function">createCellStyle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 cellStyle<span class="token punctuation">.</span><span class="token function">setDataFormat</span><span class="token punctuation">(</span><span class="token class-name">HSSFDataFormat</span><span class="token punctuation">.</span><span class="token function">getBuiltinFormat</span><span class="token punctuation">(</span><span class="token string">"0.00%"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 cell<span class="token punctuation">.</span><span class="token function">setCellStyle</span><span class="token punctuation">(</span>cellStyle<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <h6 id="中文大写"><a href="#中文大写" class="headerlink" title="中文大写"></a>中文大写</h6><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">HSSFCellStyle</span> cellStyle <span class="token operator">=</span> demoWorkBook<span class="token punctuation">.</span><span class="token function">createCellStyle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token class-name">HSSFDataFormat</span> format<span class="token operator">=</span> demoWorkBook<span class="token punctuation">.</span><span class="token function">createDataFormat</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 cellStyle<span class="token punctuation">.</span><span class="token function">setDataFormat</span><span class="token punctuation">(</span>format<span class="token punctuation">.</span><span class="token function">getFormat</span><span class="token punctuation">(</span><span class="token string">"[DbNum2][$-804]0"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 cell<span class="token punctuation">.</span><span class="token function">setCellStyle</span><span class="token punctuation">(</span>cellStyle<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h6 id="科学计数法"><a href="#科学计数法" class="headerlink" title="科学计数法"></a>科学计数法</h6><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">HSSFCellStyle</span> cellStyle <span class="token operator">=</span> demoWorkBook<span class="token punctuation">.</span><span class="token function">createCellStyle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 cellStyle<span class="token punctuation">.</span><span class="token function">setDataFormat</span><span class="token punctuation">(</span> <span class="token class-name">HSSFDataFormat</span><span class="token punctuation">.</span><span class="token function">getBuiltinFormat</span><span class="token punctuation">(</span><span class="token string">"0.00E+00"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 cell<span class="token punctuation">.</span><span class="token function">setCellStyle</span><span class="token punctuation">(</span>cellStyle<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 
     </div>
 
@@ -413,10 +421,10 @@ cell<span class="token punctuation">.</span><span class="token function">setCell
       <div class="popular-posts-title"><a href="\2021\03\21\23\55\AOP实现系统操作日志记录\" rel="bookmark">AOP实现系统操作日志记录</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2020\10\26\23\26\Java取消Double类型显示科学计数法\" rel="bookmark">Java取消Double类型显示科学计数法</a></div>
+      <div class="popular-posts-title"><a href="\2020\06\14\20\53\JWT授权验证\" rel="bookmark">JWT授权验证</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2020\06\14\20\53\JWT授权验证\" rel="bookmark">JWT授权验证</a></div>
+      <div class="popular-posts-title"><a href="\2020\10\26\23\26\Java取消Double类型显示科学计数法\" rel="bookmark">Java取消Double类型显示科学计数法</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="\2020\04\26\16\27\Java小知识\" rel="bookmark">Java小知识</a></div>
@@ -524,7 +532,7 @@ cell<span class="token punctuation">.</span><span class="token function">setCell
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:16</span>
+    <span title="站点阅读时长">13:18</span>
   </span>
 </div>
 <div class="busuanzi-count">

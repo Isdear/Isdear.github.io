@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/memory.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/memory.png">
@@ -227,7 +227,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">80</span>
+          <span class="site-state-item-count">81</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -370,7 +370,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>主要介绍 Python 中常用的正则表达式处理函数。<a id="more"></a></p>
+        <p>主要介绍 Python 中常用的正则表达式处理函数。<span id="more"></span></p>
 <h6 id="正则表达式模式"><a href="#正则表达式模式" class="headerlink" title="正则表达式模式"></a>正则表达式模式</h6><p>&emsp;&emsp;字母和数字代表它们自身，标点符号只有被转义时才匹配自身，反斜杠本身需要使用反斜杠转义。</p>
 <table>
 <thead>
@@ -576,6 +576,7 @@
 </ol>
 <h6 id="re-match函数"><a href="#re-match函数" class="headerlink" title="re.match函数"></a>re.match函数</h6><p>&emsp;&emsp;re.match尝试从字符串的起始位置匹配一个模式，如果不是起始位置匹配成功的话，match()就返回none。</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">re<span class="token punctuation">.</span>match<span class="token punctuation">(</span>pattern<span class="token punctuation">,</span> string<span class="token punctuation">,</span> flag<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <table>
 <thead>
 <tr>
@@ -599,8 +600,10 @@
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> re
 <span class="token keyword">print</span><span class="token punctuation">(</span>re<span class="token punctuation">.</span>match<span class="token punctuation">(</span><span class="token string">'www'</span><span class="token punctuation">,</span> <span class="token string">'www.runoob.com'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>span<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># 在起始位置匹配</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>re<span class="token punctuation">.</span>match<span class="token punctuation">(</span><span class="token string">'com'</span><span class="token punctuation">,</span> <span class="token string">'www.runoob.com'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>         <span class="token comment"># 不在起始位置匹配</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">(0,3)
 None<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <p>&emsp;&emsp;使用group(num) 或 groups()可以匹配对象函数来获取匹配表达式</p>
 <table>
 <thead>
@@ -630,17 +633,22 @@ matchObj <span class="token operator">=</span> re<span class="token punctuation"
    <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">"matchObj.group(2) : "</span><span class="token punctuation">,</span> matchObj<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token keyword">else</span><span class="token punctuation">:</span>
    <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">"No match!!"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">matchObj<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">:</span>  Cats are smarter than dogs
 matchObj<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">:</span>  Cats
 matchObj<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">:</span>  smarter<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <h6 id="re-search方法"><a href="#re-search方法" class="headerlink" title="re.search方法"></a>re.search方法</h6><p>&emsp;&emsp;re.search扫描整个字符串并返回第一个成功的匹配，否则返回None。</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">re<span class="token punctuation">.</span>search<span class="token punctuation">(</span>pattern<span class="token punctuation">,</span> string<span class="token punctuation">,</span> flags<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> re
  
 <span class="token keyword">print</span><span class="token punctuation">(</span>re<span class="token punctuation">.</span>search<span class="token punctuation">(</span><span class="token string">'www'</span><span class="token punctuation">,</span> <span class="token string">'www.runoob.com'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>span<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># 在起始位置匹配</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>re<span class="token punctuation">.</span>search<span class="token punctuation">(</span><span class="token string">'com'</span><span class="token punctuation">,</span> <span class="token string">'www.runoob.com'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>span<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>         <span class="token comment"># 不在起始位置匹配</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">(0, 3)
 (11, 14)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <h6 id="re-match与re-search的区别"><a href="#re-match与re-search的区别" class="headerlink" title="re.match与re.search的区别"></a>re.match与re.search的区别</h6><p>&emsp;&emsp;re.match 只匹配字符串的开始，如果字符串开始不符合正则表达式，则匹配失败，函数返回 None，而 re.search 匹配整个字符串，直到找到一个匹配。</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> re
  
@@ -657,10 +665,13 @@ matchObj <span class="token operator">=</span> re<span class="token punctuation"
    <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">"search --> matchObj.group() : "</span><span class="token punctuation">,</span> matchObj<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token keyword">else</span><span class="token punctuation">:</span>
    <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">"No match!!"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">No match!!
 search --&gt; matchObj.group() :  dogs<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <h6 id="re-sub函数"><a href="#re-sub函数" class="headerlink" title="re.sub函数"></a>re.sub函数</h6><p>&emsp;&emsp;re.sub用于替换字符串中匹配项。</p>
 <pre class="line-numbers language-none"><code class="language-none">re.sub(pattern, repl, string, count&#x3D;0, flags&#x3D;0)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <ul>
 <li>pattern : 正则中的模式字符串。</li>
 <li>repl : 替换的字符串，也可为一个函数。</li>
@@ -679,8 +690,10 @@ num <span class="token operator">=</span> re<span class="token punctuation">.</s
 <span class="token comment"># 移除非数字的内容</span>
 num <span class="token operator">=</span> re<span class="token punctuation">.</span>sub<span class="token punctuation">(</span><span class="token string">r'\D'</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">,</span> phone<span class="token punctuation">)</span>
 <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">"电话号码 : "</span><span class="token punctuation">,</span> num<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">电话号码 :  2004-959-559 
 电话号码 :  2004959559<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <p>repl参数也可以是一个函数</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> re
  
@@ -692,9 +705,12 @@ num <span class="token operator">=</span> re<span class="token punctuation">.</s
 s <span class="token operator">=</span> <span class="token string">'A23G4HFD567'</span>
 <span class="token comment"># ?P&lt;value>的意思是命名一个名字为value的组，匹配规则符合后面的/d+</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>re<span class="token punctuation">.</span>sub<span class="token punctuation">(</span><span class="token string">'(?P&lt;value>\d+)'</span><span class="token punctuation">,</span> double<span class="token punctuation">,</span> s<span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">A46G8HFD1134<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h6 id="complie函数"><a href="#complie函数" class="headerlink" title="complie函数"></a>complie函数</h6><p>&emsp;&emsp;compile 函数用于编译正则表达式，生成一个正则表达式 (Pattern) 对象，供 match() 和 search() 这两个函数使用。</p>
 <pre class="line-numbers language-none"><code class="language-none">re.compile(pattern, flags)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <ul>
 <li><p>pattern : 一个字符串形式的正则表达式</p>
 </li>
@@ -735,8 +751,10 @@ s <span class="token operator">=</span> <span class="token string">'A23G4HFD567'
 <span class="token number">5</span>
 <span class="token operator">>></span><span class="token operator">></span> m<span class="token punctuation">.</span>span<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>    <span class="token comment"># 可省略 0</span>
 <span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h6 id="re-findall"><a href="#re-findall" class="headerlink" title="re.findall"></a>re.findall</h6><p>&emsp;&emsp;在字符串中找到正则表达式所匹配的所有子串，并返回一个列表，如果没有找到匹配的，则返回空列表。</p>
 <pre class="line-numbers language-none"><code class="language-none">re.findall(string, pos, endpos)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <ul>
 <li><strong>string</strong> 待匹配的字符串。</li>
 <li><strong>pos</strong> 可选参数，指定字符串的起始位置，默认为 0。</li>
@@ -750,21 +768,27 @@ result2 <span class="token operator">=</span> pattern<span class="token punctuat
  
 <span class="token keyword">print</span><span class="token punctuation">(</span>result1<span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>result2<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">[&#39;123&#39;, &#39;456&#39;]
 [&#39;88&#39;, &#39;12&#39;]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <h6 id="re-finditer"><a href="#re-finditer" class="headerlink" title="re.finditer"></a>re.finditer</h6><p>&emsp;&emsp;和 findall 类似，在字符串中找到正则表达式所匹配的所有子串，并把它们作为一个迭代器返回。</p>
 <pre class="line-numbers language-none"><code class="language-none">re.finditer(pattern, string, flags&#x3D;0)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> re
  
 it <span class="token operator">=</span> re<span class="token punctuation">.</span>finditer<span class="token punctuation">(</span><span class="token string">r"\d+"</span><span class="token punctuation">,</span><span class="token string">"12a32bc43jf3"</span><span class="token punctuation">)</span> 
 <span class="token keyword">for</span> match <span class="token keyword">in</span> it<span class="token punctuation">:</span> 
     <span class="token keyword">print</span> <span class="token punctuation">(</span>match<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">12 
 32 
 43 
 3<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h6 id="re-split"><a href="#re-split" class="headerlink" title="re.split"></a>re.split</h6><p>&emsp;&emsp;split 方法按照能够匹配的子串将字符串分割后返回列表。</p>
 <pre class="line-numbers language-none"><code class="language-none">re.split(pattern, string, maxsplit&#x3D;0, flags&#x3D;0)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span><span class="token keyword">import</span> re
 <span class="token operator">>></span><span class="token operator">></span> re<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'\W+'</span><span class="token punctuation">,</span> <span class="token string">'runoob, runoob, runoob.'</span><span class="token punctuation">)</span>
 <span class="token punctuation">[</span><span class="token string">'runoob'</span><span class="token punctuation">,</span> <span class="token string">'runoob'</span><span class="token punctuation">,</span> <span class="token string">'runoob'</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">]</span>
@@ -775,6 +799,7 @@ it <span class="token operator">=</span> re<span class="token punctuation">.</sp
  
 <span class="token operator">>></span><span class="token operator">></span> re<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'a*'</span><span class="token punctuation">,</span> <span class="token string">'hello world'</span><span class="token punctuation">)</span>   <span class="token comment"># 对于一个找不到匹配的字符串而言，split 不会对其作出分割</span>
 <span class="token punctuation">[</span><span class="token string">'hello world'</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 
     </div>
 
@@ -890,7 +915,7 @@ it <span class="token operator">=</span> re<span class="token punctuation">.</sp
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:16</span>
+    <span title="站点阅读时长">13:18</span>
   </span>
 </div>
 <div class="busuanzi-count">

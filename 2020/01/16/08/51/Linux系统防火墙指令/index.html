@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/memory.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/memory.png">
@@ -227,7 +227,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">80</span>
+          <span class="site-state-item-count">81</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -370,37 +370,51 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>本文以CentOS 7为例。<a id="more"></a></p>
+        <p>本文以CentOS 7为例。<span id="more"></span></p>
 <h5 id="防火墙常用操作"><a href="#防火墙常用操作" class="headerlink" title="防火墙常用操作"></a>防火墙常用操作</h5><p>开启防火墙</p>
 <pre class="line-numbers language-none"><code class="language-none">systemctl start firewalld.service<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>关闭防火墙</p>
 <pre class="line-numbers language-none"><code class="language-none">systemctl stop firewalld.service<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>开机自启动</p>
 <pre class="line-numbers language-none"><code class="language-none">systemctl enable firewalld.service<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>关闭开机自启动</p>
 <pre class="line-numbers language-none"><code class="language-none">systemctl disabel firewalld.service<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>查看开放的端口</p>
 <pre class="line-numbers language-none"><code class="language-none">firewall-cmd --list-all
 or
 firewall-cmd --list-ports<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <p>添加永久开放端口</p>
 <pre class="line-numbers language-none"><code class="language-none">firewall-cmd --zone&#x3D;public --add-port&#x3D;3306&#x2F;tcp --permanent<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>移除开放端口</p>
 <pre class="line-numbers language-none"><code class="language-none">firewall-cmd --remove-port&#x3D;3306&#x2F;tcp --permanent<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>重启防火墙生效</p>
 <pre class="line-numbers language-none"><code class="language-none">firewall-cmd --reload<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>查看规则</p>
 <pre class="line-numbers language-none"><code class="language-none">iptables -L -n<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>查看开放的服务</p>
 <pre class="line-numbers language-none"><code class="language-none">firewall-cmd --list-services<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>查看防火墙状态</p>
 <pre class="line-numbers language-none"><code class="language-none">firewall-cmd --state<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h5 id="伪装IP"><a href="#伪装IP" class="headerlink" title="伪装IP"></a>伪装IP</h5><p>检查是否允许伪装IP</p>
 <pre class="line-numbers language-none"><code class="language-none">firewall-cmd --query-masquerade<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>允许防火墙伪装IP</p>
 <pre class="line-numbers language-none"><code class="language-none">firewall-cmd --add-masquerade<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>禁止防火墙伪装IP</p>
 <pre class="line-numbers language-none"><code class="language-none">firewall-cmd --remove-masquerade<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h5 id="端口映射"><a href="#端口映射" class="headerlink" title="端口映射"></a>端口映射</h5><p>转发的目的不指定 IP 的话就默认为本机，如果指定了 IP 却没指定端口，则默认使用来源端口。如果配置好端口转发之后不能用，可以检查以下两个方面的问题：</p>
 <ol>
 <li>比如我将 80 端口转发至 8080 端口，首先检查本地的 80 端口和目标的 8080 端口是否开放监听了（也就是监听程序是否运行了）；</li>
@@ -408,8 +422,10 @@ firewall-cmd --list-ports<span aria-hidden="true" class="line-numbers-rows"><spa
 </ol>
 <p>添加映射</p>
 <pre class="line-numbers language-none"><code class="language-none">firewall-cmd --add-forward-port&#x3D;proto&#x3D;80:proto&#x3D;tcp:toaddr&#x3D;192.168.0.1:toport&#x3D;8080<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>删除映射</p>
 <pre class="line-numbers language-none"><code class="language-none">firewall-cmd --remove-forward-port&#x3D;proto&#x3D;80:proto&#x3D;tcp:toaddr&#x3D;192.168.0.1:toport&#x3D;8080<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 
     </div>
 
@@ -528,7 +544,7 @@ firewall-cmd --list-ports<span aria-hidden="true" class="line-numbers-rows"><spa
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:16</span>
+    <span title="站点阅读时长">13:18</span>
   </span>
 </div>
 <div class="busuanzi-count">

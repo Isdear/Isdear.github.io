@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/memory.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/memory.png">
@@ -227,7 +227,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">80</span>
+          <span class="site-state-item-count">81</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -364,13 +364,14 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>EXISTS用于检查子查询是否至少会返回一行数据，该子查询实际上并不返回任何数据，而是返回值True或False<a id="more"></a></p>
+        <p>EXISTS用于检查子查询是否至少会返回一行数据，该子查询实际上并不返回任何数据，而是返回值True或False<span id="more"></span></p>
 <h5 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h5><p>有一个查询如下：</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> c<span class="token punctuation">.</span>CustomerId<span class="token punctuation">,</span> CompanyName
 <span class="token keyword">FROM</span> Customers c
 <span class="token keyword">WHERE</span> <span class="token keyword">EXISTS</span><span class="token punctuation">(</span>
 <span class="token keyword">SELECT</span> OrderID <span class="token keyword">FROM</span> Orders o
 <span class="token keyword">WHERE</span> o<span class="token punctuation">.</span>CustomerID <span class="token operator">=</span> cu<span class="token punctuation">.</span>CustomerID<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>这里面的EXISTS是如何运作呢？子查询返回的是OrderId字段，可是外面的查询要找的是CustomerID和CompanyName字段，这两个字段肯定不在OrderID里面啊，这是如何匹配的呢？</p>
 <p>EXISTS用于检查子查询是否至少会返回一行数据，该子查询实际上并不返回任何数据，而是返回值True或False。</p>
 <p>EXISTS 指定一个子查询，检测行的存在。</p>
@@ -383,6 +384,7 @@
 <span class="token keyword">FROM</span> Categories
 <span class="token keyword">WHERE</span> <span class="token keyword">EXISTS</span> <span class="token punctuation">(</span><span class="token keyword">SELECT</span> <span class="token boolean">NULL</span><span class="token punctuation">)</span>
 <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> CategoryName <span class="token keyword">ASC</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h5 id="比较使用-EXISTS-和-IN-的查询"><a href="#比较使用-EXISTS-和-IN-的查询" class="headerlink" title="比较使用 EXISTS 和 IN 的查询"></a>比较使用 EXISTS 和 IN 的查询</h5><p>这个例子比较了两个语义类似的查询。第一个查询使用 EXISTS 而第二个查询使用 IN。</p>
 <p>注意两个查询返回相同的信息。</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token keyword">DISTINCT</span> pub_name
@@ -392,12 +394,14 @@
 <span class="token keyword">FROM</span> titles
 <span class="token keyword">WHERE</span> pub_id <span class="token operator">=</span> publishers<span class="token punctuation">.</span>pub_id
 <span class="token operator">AND</span> <span class="token keyword">type</span> <span class="token operator">=</span> \'business\'<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token keyword">distinct</span> pub_name
 <span class="token keyword">FROM</span> publishers
 <span class="token keyword">WHERE</span> pub_id <span class="token operator">IN</span>
 <span class="token punctuation">(</span><span class="token keyword">SELECT</span> pub_id
 <span class="token keyword">FROM</span> titles
 <span class="token keyword">WHERE</span> <span class="token keyword">type</span> <span class="token operator">=</span> \'business\'<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h5 id="比较使用-EXISTS-和-ANY-的查询"><a href="#比较使用-EXISTS-和-ANY-的查询" class="headerlink" title="比较使用 EXISTS 和 = ANY 的查询"></a>比较使用 EXISTS 和 = ANY 的查询</h5><p>本示例显示查找与出版商住在同一城市中的作者的两种查询方法：第一种方法使用 = ANY，第二种方法使用 EXISTS。</p>
 <p>注意这两种方法返回相同的信息。</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> au_lname<span class="token punctuation">,</span> au_fname
@@ -406,11 +410,13 @@
 <span class="token punctuation">(</span><span class="token keyword">SELECT</span> <span class="token operator">*</span>
 <span class="token keyword">FROM</span> publishers
 <span class="token keyword">WHERE</span> authors<span class="token punctuation">.</span>city <span class="token operator">=</span> publishers<span class="token punctuation">.</span>city<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> au_lname<span class="token punctuation">,</span> au_fname
 <span class="token keyword">FROM</span> authors
 <span class="token keyword">WHERE</span> city <span class="token operator">=</span> <span class="token keyword">ANY</span>
 <span class="token punctuation">(</span><span class="token keyword">SELECT</span> city
 <span class="token keyword">FROM</span> publishers<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h5 id="比较使用-EXISTS-和-IN-的查询-1"><a href="#比较使用-EXISTS-和-IN-的查询-1" class="headerlink" title="比较使用 EXISTS 和 IN 的查询"></a>比较使用 EXISTS 和 IN 的查询</h5><p>本示例所示查询查找由位于以字母 B 开头的城市中的任一出版商出版的书名：</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> title
 <span class="token keyword">FROM</span> titles
@@ -419,12 +425,14 @@
 <span class="token keyword">FROM</span> publishers
 <span class="token keyword">WHERE</span> pub_id <span class="token operator">=</span> titles<span class="token punctuation">.</span>pub_id
 <span class="token operator">AND</span> city <span class="token operator">LIKE</span> \'B<span class="token operator">%</span>\'<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> title
 <span class="token keyword">FROM</span> titles
 <span class="token keyword">WHERE</span> pub_id <span class="token operator">IN</span>
 <span class="token punctuation">(</span><span class="token keyword">SELECT</span> pub_id
 <span class="token keyword">FROM</span> publishers
 <span class="token keyword">WHERE</span> city <span class="token operator">LIKE</span> \'B<span class="token operator">%</span>\'<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h5 id="使用-NOT-EXISTS"><a href="#使用-NOT-EXISTS" class="headerlink" title="使用 NOT EXISTS"></a>使用 NOT EXISTS</h5><p>NOT EXISTS 的作用与 EXISTS 正相反。如果子查询没有返回行，则满足 NOT EXISTS 中的 WHERE 子句。</p>
 <p>本示例查找不出版商业书籍的出版商的名称：</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> pub_name
@@ -435,6 +443,7 @@
 <span class="token keyword">WHERE</span> pub_id <span class="token operator">=</span> publishers<span class="token punctuation">.</span>pub_id
 <span class="token operator">AND</span> <span class="token keyword">type</span> <span class="token operator">=</span> \'business\'<span class="token punctuation">)</span>
 <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> pub_name<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>又比如以下 SQL 语句：</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token keyword">distinct</span> 姓名 <span class="token keyword">from</span> xs
 <span class="token keyword">where</span> <span class="token operator">not</span> <span class="token keyword">exists</span> <span class="token punctuation">(</span>
@@ -443,11 +452,13 @@
 <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> xs_kc
 <span class="token keyword">where</span> 学号<span class="token operator">=</span>xs<span class="token punctuation">.</span>学号 <span class="token operator">and</span> 课程号<span class="token operator">=</span>kc<span class="token punctuation">.</span>课程号
 <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>把最外层的查询xs里的数据一行一行的做里层的子查询。</p>
 <p>中间的 exists 语句只做出对上一层的返回 true 或 false，因为查询的条件都在 <code>where 学号=xs.学号 and 课程号=kc</code>.课程号这句话里。每一个 exists 都会有一行值。它只是告诉一层，最外层的查询条件在这里成立或都不成立，返回的时候值也一样回返回上去。直到最高层的时候如果是 true（真）就返回到结果集。为 false（假）丢弃。</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">where</span> <span class="token operator">not</span> <span class="token keyword">exists</span>
 <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> xs_kc
 <span class="token keyword">where</span> 学号<span class="token operator">=</span>xs<span class="token punctuation">.</span>学号 <span class="token operator">and</span> 课程号<span class="token operator">=</span>kc<span class="token punctuation">.</span>课程号<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <p>这个 exists 就是告诉上一层，这一行语句在我这里不成立。因为他不是最高层，所以还要继续向上返回。</p>
 <p><code>select distinct 姓名 from xs where not exists</code>（这里的 exists 语句收到上一个为 false 的值。他在判断一下，结果就是为 true（成立），由于是最高层所以就会把这行的结果（这里指的是查询条件）返回到结果集。</p>
 <p>几个重要的点：</p>
@@ -578,7 +589,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:16</span>
+    <span title="站点阅读时长">13:18</span>
   </span>
 </div>
 <div class="busuanzi-count">

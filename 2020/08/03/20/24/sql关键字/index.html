@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/memory.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/memory.png">
@@ -227,7 +227,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">80</span>
+          <span class="site-state-item-count">81</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -370,7 +370,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>常用的sql关键字<a id="more"></a></p>
+        <p>常用的sql关键字<span id="more"></span></p>
 <h6 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h6><ul>
 <li>except(sql server)：通过包括所有在 TABLE1 中但不在 TABLE2 中的行并消除所有重复行而派生出一个结果表</li>
 </ul>
@@ -383,6 +383,7 @@
 	reg_num 
 <span class="token keyword">FROM</span>
 	dq_result<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <ul>
 <li>minus(oracle)：先找出第一个 SQL 语句所产生的结果，然后看这些结果有没有在第二个SQL语句的结果中。如果有的话，那这一笔资料就被去除，而不会在最后的结果中出现。如果第二个 SQL 语句所产生的结果并没有存在于第一个 SQL 语句所产生的结果内，那这笔资料就被抛弃。</li>
 </ul>
@@ -444,6 +445,7 @@
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> Txn_Date <span class="token keyword">FROM</span> Store_Information
 MINUS
 <span class="token keyword">SELECT</span> Txn_Date <span class="token keyword">FROM</span> Internet_Sales<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <table>
 <thead>
 <tr>
@@ -572,7 +574,7 @@ MINUS
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:16</span>
+    <span title="站点阅读时长">13:18</span>
   </span>
 </div>
 <div class="busuanzi-count">

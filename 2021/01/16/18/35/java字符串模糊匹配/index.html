@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/memory.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/memory.png">
@@ -227,7 +227,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">80</span>
+          <span class="site-state-item-count">81</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -364,22 +364,27 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p> 在java中使用字符串模糊查询，可以调用方法也可以使用正则表达式。现在介绍三种解决方案。<a id="more"></a></p>
+        <p> 在java中使用字符串模糊查询，可以调用方法也可以使用正则表达式。现在介绍三种解决方案。<span id="more"></span></p>
 <h5 id="indexOf"><a href="#indexOf" class="headerlink" title="indexOf"></a>indexOf</h5><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">indexOf</span><span class="token punctuation">(</span> <span class="token class-name">String</span> str<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>​    返回指定子字符串在此字符串中第一次出现处的索引。返回的整数是</p>
 <p>   this.startsWith(str, <em>k</em>)为 <code>true</code> 的最小 <em>k</em> 值。</p>
 <p><strong>参数：</strong> <code>str</code> - 任意字符串。</p>
 <p><strong>返回：</strong>如果字符串参数作为一个子字符串在此对象中出现，则返回第一个这种子字符串的第一个字符的索引；如果它不作为一个子字符串出现，则返回 <code>-1</code>。</p>
 <h5 id="contains"><a href="#contains" class="headerlink" title="contains()"></a>contains()</h5><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">contains</span><span class="token punctuation">(</span><span class="token class-name">CharSequence</span> s<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>当且仅当此字符串包含指定的 char 值序列时，返回 true。</p>
 <p>  <strong>参数：</strong><code>s</code> - 要搜索的序列（注意：String 类是实现CharSequence(接口的一个实体类） </p>
 <p>  <strong>返回：</strong>如果此字符串包含 <code>s</code>，则返回 true，否则返回 false</p>
   <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Str</span><span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span><span class="token string">"12334"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>​    注意：Str字符串中出现字符串“12345”五个字符中的任何一个，那么则返回true;</p>
 <h5 id="match"><a href="#match" class="headerlink" title="match()"></a>match()</h5><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">matches</span><span class="token punctuation">(</span><span class="token class-name">String</span> regex<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>告知此字符串是否匹配给定的正则表达式</p>
 <p> 调用此方法的 <code>str.matches(regex)</code> 形式与以下表达式产生的结果完全相同：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Pattern</span><span class="token punctuation">.</span><span class="token function">matches</span><span class="token punctuation">(</span>regex<span class="token punctuation">,</span>str<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>参数：<code>regex</code> - 用来匹配此字符串的正则表达式</p>
 <p>返回：当且仅当此字符串匹配给定的正则表达式时，返回 <code>true</code></p>
 
@@ -398,10 +403,10 @@
       <div class="popular-posts-title"><a href="\2020\11\16\22\42\JAVA设置Excel单元格格式\" rel="bookmark">JAVA设置Excel单元格格式</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2020\10\26\23\26\Java取消Double类型显示科学计数法\" rel="bookmark">Java取消Double类型显示科学计数法</a></div>
+      <div class="popular-posts-title"><a href="\2020\06\14\20\53\JWT授权验证\" rel="bookmark">JWT授权验证</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2020\06\14\20\53\JWT授权验证\" rel="bookmark">JWT授权验证</a></div>
+      <div class="popular-posts-title"><a href="\2020\10\26\23\26\Java取消Double类型显示科学计数法\" rel="bookmark">Java取消Double类型显示科学计数法</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="\2020\04\26\16\27\Java小知识\" rel="bookmark">Java小知识</a></div>
@@ -506,7 +511,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:16</span>
+    <span title="站点阅读时长">13:18</span>
   </span>
 </div>
 <div class="busuanzi-count">

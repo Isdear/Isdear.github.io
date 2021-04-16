@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/memory.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/memory.png">
@@ -226,7 +226,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">80</span>
+          <span class="site-state-item-count">81</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -369,7 +369,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>StreamTokenizer的用法<a id="more"></a></p>
+        <p>StreamTokenizer的用法<span id="more"></span></p>
 <p>Java联系解题一般使用Scanner类进行输入，但对时间要求严格的题目，用它可能会超时。使用StreamTokenizer类进行输入的效率比Scanner高一点。</p>
 <p>StreamTokenizer的使用小结：</p>
 <ol>
@@ -378,7 +378,8 @@
 <li><p>默认情况下，StreamTokenizer认为下列内容是Token：字母、数字、除C和C++注释符号以外的其他符号。如符号“/”(中文双引号)不是Token，注释后的内容也不是，而”/“(英文双引号)是Token。单引号和双引号以及其他的内容，只能算是一个Token。</p>
 </li>
 <li><p>为了提高效率，使用BufferedReader读取数据。如下，创建StreamTokenizer对象</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">StreamTokenizer</span> st <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StreamTokenizer</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">BufferedReader</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">InputStreamReader</span><span class="token punctuation">(</span><span class="token class-name">System</span><span class="token punctuation">.</span>in<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">StreamTokenizer</span> st <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StreamTokenizer</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">BufferedReader</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">InputStreamReader</span><span class="token punctuation">(</span><span class="token class-name">System</span><span class="token punctuation">.</span>in<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
 <li><p>为了从数据流中获取标记，可以调用StreamTokenizer的nextToken()方法。调用nextToken()方法以后，如果标记是字符串，可以用String s = st.sval，如果是整数用int n = (int)st.nval得到。</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">st<span class="token punctuation">.</span><span class="token function">nextToken</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment">//st.nval默认解析出的格式是double</span>
@@ -386,7 +387,8 @@
 st<span class="token punctuation">.</span><span class="token function">nextToken</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span>st<span class="token punctuation">.</span>nval<span class="token punctuation">;</span>
 st<span class="token punctuation">.</span><span class="token function">nextToken</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token class-name">String</span> s <span class="token operator">=</span> st<span class="token punctuation">.</span>sval<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<span class="token class-name">String</span> s <span class="token operator">=</span> st<span class="token punctuation">.</span>sval<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
 <li><p>要统计文件的字符数，不能简单地统计Token数，因为字符数不等于Token，按照Token的规定，引号中的内容就算是10页也算是一个Token。如果希望引号和引号中的内容都算作Token，应该通过StreamTokenizer的ordinaryCha()方法将单引号和双引号当做普通字符处理。</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//直接在程序中指定了文件输入路径：String fileName = "d:/ceshi.txt";</span>
 
@@ -490,6 +492,7 @@ st<span class="token punctuation">.</span><span class="token function">nextToken
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
+
 </li>
 </ol>
 
@@ -508,10 +511,10 @@ st<span class="token punctuation">.</span><span class="token function">nextToken
       <div class="popular-posts-title"><a href="\2020\11\16\22\42\JAVA设置Excel单元格格式\" rel="bookmark">JAVA设置Excel单元格格式</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2020\10\26\23\26\Java取消Double类型显示科学计数法\" rel="bookmark">Java取消Double类型显示科学计数法</a></div>
+      <div class="popular-posts-title"><a href="\2020\06\14\20\53\JWT授权验证\" rel="bookmark">JWT授权验证</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2020\06\14\20\53\JWT授权验证\" rel="bookmark">JWT授权验证</a></div>
+      <div class="popular-posts-title"><a href="\2020\10\26\23\26\Java取消Double类型显示科学计数法\" rel="bookmark">Java取消Double类型显示科学计数法</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="\2020\04\26\16\27\Java小知识\" rel="bookmark">Java小知识</a></div>
@@ -616,7 +619,7 @@ st<span class="token punctuation">.</span><span class="token function">nextToken
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:16</span>
+    <span title="站点阅读时长">13:18</span>
   </span>
 </div>
 <div class="busuanzi-count">

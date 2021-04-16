@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/memory.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/memory.png">
@@ -229,7 +229,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">80</span>
+          <span class="site-state-item-count">81</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -372,7 +372,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>Docker容器的简单了解，以CentOS系统为基础。<a id="more"></a></p>
+        <p>Docker容器的简单了解，以CentOS系统为基础。<span id="more"></span></p>
 <h5 id="Docker架构"><a href="#Docker架构" class="headerlink" title="Docker架构"></a>Docker架构</h5><p><strong>镜像(Image)：</strong>Docker 镜像（Image），就相当于是一个 root 文件系统。比如官方镜像 ubuntu:16.04 就包含了完整的一套 Ubuntu16.04 最小系统的 root 文件系统。</p>
 <p><strong>容器(Container)：</strong>镜像（Image）和容器（Container）的关系，就像是面向对象程序设计中的类和实例一样，镜像是静态的定义，容器是镜像运行时的实体。容器可以被创建、启动、停止、删除、暂停等。</p>
 <p><strong>仓库(Repository)：</strong>仓库可看着一个代码控制中心，用来保存镜像。</p>
@@ -413,24 +413,34 @@
 </tbody></table>
 <h5 id="Docker卸载旧版本"><a href="#Docker卸载旧版本" class="headerlink" title="Docker卸载旧版本"></a>Docker卸载旧版本</h5><p>必须切换成root才可以卸载旧版本，然后执行下列命令。</p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">yum remove docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-engine<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h5 id="安装Docker-Engine-Community"><a href="#安装Docker-Engine-Community" class="headerlink" title="安装Docker Engine-Community"></a>安装Docker Engine-Community</h5><p>在安装之前，需要设置Docker仓库。之后可以进行安装和更新Docker。</p>
 <h6 id="安装所需要的安装包"><a href="#安装所需要的安装包" class="headerlink" title="安装所需要的安装包"></a>安装所需要的安装包</h6><pre class="line-numbers language-none"><code class="language-none">yum install -y yum-utils device-mapper-persistent-data lvm2<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h6 id="设置稳定的仓库"><a href="#设置稳定的仓库" class="headerlink" title="设置稳定的仓库"></a>设置稳定的仓库</h6><pre class="line-numbers language-none"><code class="language-none">yum-config-manager --add-repo https:&#x2F;&#x2F;download.docker.com&#x2F;linux&#x2F;centos&#x2F;docker-ce.repo<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>安装最新版本的 Docker Engine-Community 和 containerd，或者转到下一步安装特定版本如果没有安装成功，选择<code>--nobest</code>安装非最新版，以下类似。</p>
 <pre class="line-numbers language-none"><code class="language-none">yum install docker-ce docker-ce-cli containerd.io<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>Docker 安装完默认未启动。并且已经创建好 docker 用户组，但该用户组下没有用户。</p>
 <p>列出并排序您存储库中可用的版本。此示例按版本号（从高到低）对结果进行排序。</p>
 <pre class="line-numbers language-none"><code class="language-none">yum list docker-ce --showduplicates | sort -r<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>通过其完整的软件包名称安装特定版本，该软件包名称是软件包名称（docker-ce）加上版本字符串（第二列），从第一个冒号（:）一直到第一个连字符，并用连字符（-）分隔。例如：docker-ce-18.09.1。</p>
 <pre class="line-numbers language-none"><code class="language-none">yum install docker-ce-&lt;VERSION_STRING&gt; docker-ce-cli-&lt;VERSION_STRING&gt; contain<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h6 id="启动Docker"><a href="#启动Docker" class="headerlink" title="启动Docker"></a>启动Docker</h6><pre class="line-numbers language-none"><code class="language-none">systemctl start docker<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>通过运行 hello-world 映像来验证是否正确安装了 Docker Engine-Community 。</p>
 <pre class="line-numbers language-none"><code class="language-none">docker run hello-world<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h5 id="镜像加速"><a href="#镜像加速" class="headerlink" title="镜像加速"></a>镜像加速</h5><p>推荐使用阿里云容器镜像加速服务，地址：<a target="_blank" rel="noopener" href="https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors。按照文档要求修改`/etc/docker`目录下的`daemon.json`，修改为自己专属的地址。">https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors。按照文档要求修改`/etc/docker`目录下的`daemon.json`，修改为自己专属的地址。</a></p>
 <h5 id="Docker容器使用"><a href="#Docker容器使用" class="headerlink" title="Docker容器使用"></a>Docker容器使用</h5><h6 id="获取镜像"><a href="#获取镜像" class="headerlink" title="获取镜像"></a>获取镜像</h6><p>如果我们本地没有 ubuntu 镜像，我们可以使用 docker pull 命令来载入 ubuntu 镜像：</p>
 <pre class="line-numbers language-none"><code class="language-none">docker pull ubuntu<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h6 id="启动容器"><a href="#启动容器" class="headerlink" title="启动容器"></a>启动容器</h6><p>以下命令使用 ubuntu 镜像启动一个容器，参数为以命令行模式进入该容器：</p>
 <pre class="line-numbers language-none"><code class="language-none">docker run -it ubuntu &#x2F;bin&#x2F;bash<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>参数说明：</p>
 <ul>
 <li><strong>-i</strong>: 交互式操作。</li>
@@ -441,13 +451,18 @@
 <p>要退出终端，直接输入 <strong>exit</strong>:</p>
 <h6 id="启动已停止运行的容器"><a href="#启动已停止运行的容器" class="headerlink" title="启动已停止运行的容器"></a>启动已停止运行的容器</h6><p>查看所有的容器命令</p>
 <pre class="line-numbers language-none"><code class="language-none">docker ps -a<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>启动一个已停止的容器</p>
 <pre class="line-numbers language-none"><code class="language-none">docker start 容器ID<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h6 id="后台运行"><a href="#后台运行" class="headerlink" title="后台运行"></a>后台运行</h6><pre class="line-numbers language-none"><code class="language-none">docker run -itd --name ubuntu-test ubuntu &#x2F;bin&#x2F;bash<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>使用<code>-d</code>参数，容器启动后会进入后台，默认不会进入容器，想要进入容器需要使用指令<code>docker exec</code>。</p>
 <h6 id="停止一个容器"><a href="#停止一个容器" class="headerlink" title="停止一个容器"></a>停止一个容器</h6><pre class="line-numbers language-none"><code class="language-none">docker stop 容器ID<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>停止的容器重启</p>
 <pre class="line-numbers language-none"><code class="language-none">docker restart 容器ID<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h6 id="进入容器"><a href="#进入容器" class="headerlink" title="进入容器"></a>进入容器</h6><ul>
 <li><p>docker attach：从此容器中退出，会导致容器的停止。</p>
 </li>
@@ -455,13 +470,18 @@
 </li>
 </ul>
 <pre class="line-numbers language-none"><code class="language-none">docker attach 容器ID<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">docker exec -it 容器ID &#x2F;bin&#x2F;bash<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h6 id="导入和导出容器"><a href="#导入和导出容器" class="headerlink" title="导入和导出容器"></a>导入和导出容器</h6><pre class="line-numbers language-none"><code class="language-none">docker export 容器ID &gt; ubuntu.tar<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">cat docker&#x2F;ubuntu.tar | docker import - test&#x2F;ubuntu:v1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>ubuntu.tar为导出文件，test/ubuntu:v1为镜像。</p>
 <h6 id="删除容器"><a href="#删除容器" class="headerlink" title="删除容器"></a>删除容器</h6><pre class="line-numbers language-none"><code class="language-none">docker rm -f 容器ID
 # 清除掉所有处于终止状态的容器
 docker container prune<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <h6 id="运行一个web应用"><a href="#运行一个web应用" class="headerlink" title="运行一个web应用"></a>运行一个web应用</h6><pre class="line-numbers language-none"><code class="language-none"># 载入镜像
 docker pull training&#x2F;webapp
 docker run -d -P training&#x2F;webapp python app.py
@@ -477,9 +497,11 @@ docker stop 容器名称
 
 #移除web应用容器，删除时容器必须停止，否则会报错
 docker rm<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p><code>-P</code>将容器内部使用的网络端口映射到我们使用的主机上。</p>
 <p><code>-p</code>设置端口，可以指定映射的端口号<code>8080:8080</code></p>
 <h6 id="查看web应用程序日志"><a href="#查看web应用程序日志" class="headerlink" title="查看web应用程序日志"></a>查看web应用程序日志</h6><pre class="line-numbers language-none"><code class="language-none">docker logs -f 容器ID<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><code>-f</code>：让<code>docker logs</code>像使用<code>tail -f</code>一样来输出容器内部的标准输出，</p>
 <h5 id="Docker镜像使用"><a href="#Docker镜像使用" class="headerlink" title="Docker镜像使用"></a>Docker镜像使用</h5><h6 id="镜像列表"><a href="#镜像列表" class="headerlink" title="镜像列表"></a>镜像列表</h6><p><code>docker images</code>可以列出本地主机上的镜像。</p>
 <p>各个选项说明:</p>
@@ -492,6 +514,7 @@ docker rm<span aria-hidden="true" class="line-numbers-rows"><span></span><span><
 </ul>
 <p>同一仓库源可以有多个 TAG，代表这个仓库源的不同个版本，如 ubuntu 仓库源里，有 15.10、14.04 等多个不同的版本，我们使用 REPOSITORY:TAG 来定义不同的镜像。</p>
 <h6 id="查找镜像"><a href="#查找镜像" class="headerlink" title="查找镜像"></a>查找镜像</h6><pre class="line-numbers language-none"><code class="language-none">docker search 镜像仓库源名称<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <ul>
 <li><p>NAME: 镜像仓库源的名称</p>
 </li>
@@ -508,7 +531,9 @@ docker rm<span aria-hidden="true" class="line-numbers-rows"><span></span><span><
 docker pull 镜像仓库名称
 # 使用镜像
 docker run 镜像仓库源名称<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h6 id="删除镜像"><a href="#删除镜像" class="headerlink" title="删除镜像"></a>删除镜像</h6><pre class="line-numbers language-none"><code class="language-none">docker rmi 镜像名称<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h6 id="构建镜像"><a href="#构建镜像" class="headerlink" title="构建镜像"></a>构建镜像</h6><p>我们使用命令 <code>docker build</code> ， 从零开始来创建一个新的镜像。为此，我们需要创建一个 Dockerfile 文件，其中包含一组指令来告诉 Docker 如何构建我们的镜像。</p>
 <pre class="line-numbers language-none"><code class="language-none">runoob@runoob:~$ cat Dockerfile 
 FROM    centos:6.7
@@ -521,6 +546,7 @@ RUN     &#x2F;bin&#x2F;echo -e &quot;LANG&#x3D;\&quot;en_US.UTF-8\&quot;&quot; &
 EXPOSE  22
 EXPOSE  80
 CMD     &#x2F;usr&#x2F;sbin&#x2F;sshd -D<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>每一个指令都会在镜像上创建一个新的层，每一个指令的前缀都必须是大写的。</p>
 <p>FROM指定使用哪个镜像源；</p>
 <p>RUN 指令告诉docker 在镜像内执行命令，安装了什么。</p>
@@ -536,6 +562,7 @@ Step 3 : RUN &#x2F;bin&#x2F;echo &#39;root:123456&#39; |chpasswd
  ---&gt; 0397ce2fbd0a
 Step 4 : RUN useradd runoob
 ······<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>参数说明：</p>
 <ul>
 <li><strong>-t</strong> ：指定要创建的目标镜像名</li>
@@ -543,15 +570,20 @@ Step 4 : RUN useradd runoob
 </ul>
 <p>使用新的镜像来创建容器</p>
 <pre class="line-numbers language-none"><code class="language-none">docker run -t -i runoob&#x2F;centos:6.7  &#x2F;bin&#x2F;bash<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h6 id="设置镜像标签"><a href="#设置镜像标签" class="headerlink" title="设置镜像标签"></a>设置镜像标签</h6><p>使用 <code>docker tag</code> 命令，为镜像添加一个新的标签。</p>
 <pre class="line-numbers language-none"><code class="language-none">docker tag 860c279d2fec runoob&#x2F;centos:dev<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h5 id="容器连接"><a href="#容器连接" class="headerlink" title="容器连接"></a>容器连接</h5><h6 id="网络端口映射"><a href="#网络端口映射" class="headerlink" title="网络端口映射"></a>网络端口映射</h6><pre class="line-numbers language-none"><code class="language-none">docker run -d -P training&#x2F;webapp python app.py<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">docker run -d -p 5000:5000 training&#x2F;webapp python app.py<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none"># 查看镜像进程
 docker ps
 CONTAINER ID        IMAGE               COMMAND           ...           PORTS                     NAMES
 33e4523d30aa        training&#x2F;webapp     &quot;python app.py&quot;   ...   0.0.0.0:5000-&gt;5000&#x2F;tcp    berserk_bartik
 fce072cc88ce        training&#x2F;webapp     &quot;python app.py&quot;   ...   0.0.0.0:32768-&gt;5000&#x2F;tcp   grave_hopper<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>两种方式的区别是:</p>
 <ul>
 <li><strong>-P :</strong>是容器内部端口<strong>随机</strong>映射到主机的高端口。</li>
@@ -559,20 +591,26 @@ fce072cc88ce        training&#x2F;webapp     &quot;python app.py&quot;   ...   0
 </ul>
 <p>另外，我们可以指定容器绑定的网络地址，比如绑定 127.0.0.1，可以通过访问 127.0.0.1:5001 来访问容器的 5000 端口。</p>
 <pre class="line-numbers language-none"><code class="language-none">docker run -d -p 127.0.0.1:5001:5000 training&#x2F;webapp python app.py<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">CONTAINER ID        IMAGE               COMMAND           ...     PORTS                                NAMES
 95c6ceef88ca        training&#x2F;webapp     &quot;python app.py&quot;   ...  5000&#x2F;tcp, 127.0.0.1:5001-&gt;5000&#x2F;tcp   adoring_stonebraker<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <h6 id="容器命名"><a href="#容器命名" class="headerlink" title="容器命名"></a>容器命名</h6><p>当我们创建一个容器的时候，docker 会自动对它进行命名。另外，我们也可以使用 <code>--name</code> 标识来命名容器。</p>
 <pre class="line-numbers language-none"><code class="language-none">docker run -d -P --name runoob training&#x2F;webapp python app.py<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h5 id="Docker容器互联"><a href="#Docker容器互联" class="headerlink" title="Docker容器互联"></a>Docker容器互联</h5><p>端口映射并不是唯一把 docker 连接到另一个容器的方法。</p>
 <p>docker 有一个连接系统允许将多个容器连接在一起，共享连接信息。</p>
 <p>docker 连接会创建一个父子关系，其中父容器可以看到子容器的信息。</p>
 <h6 id="新建网络"><a href="#新建网络" class="headerlink" title="新建网络"></a>新建网络</h6><pre class="line-numbers language-none"><code class="language-none">docker network create -d bridge test-net<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>参数说明：</p>
 <p><strong>-d</strong>：参数指定 Docker 网络类型，有 bridge、overlay。</p>
 <h6 id="连接容器"><a href="#连接容器" class="headerlink" title="连接容器"></a>连接容器</h6><p>运行一个容器并连接到新建的 test-net 网络:</p>
 <pre class="line-numbers language-none"><code class="language-none">docker run -itd --name test1 --network test-net ubuntu &#x2F;bin&#x2F;bash<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>打开新的终端，再运行一个容器并加入到 test-net 网络:</p>
 <pre class="line-numbers language-none"><code class="language-none">docker run -itd --name test2 --network test-net ubuntu &#x2F;bin&#x2F;bash<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>可以通过ping命令来证明test1容器和test2容器建立了互联关系。</p>
 <h5 id="配置DNS"><a href="#配置DNS" class="headerlink" title="配置DNS"></a>配置DNS</h5><p>可以在宿主机的 /etc/docker/daemon.json 文件中增加以下内容来设置全部容器的 DNS：</p>
 <pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
@@ -581,34 +619,41 @@ fce072cc88ce        training&#x2F;webapp     &quot;python app.py&quot;   ...   0
     <span class="token string">"8.8.8.8"</span>
   <span class="token punctuation">]</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>设置后，启动容器的 DNS 会自动配置为 114.114.114.114 和 8.8.8.8。</p>
 <p>配置完，需要重启 docker 才能生效。</p>
 <p>查看容器的 DNS 是否生效可以使用以下命令，它会输出容器的 DNS 信息：</p>
 <pre class="line-numbers language-none"><code class="language-none">docker run -it --rm ubuntu  cat etc&#x2F;resolv.conf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h5 id="Docker-Dockerfile"><a href="#Docker-Dockerfile" class="headerlink" title="Docker Dockerfile"></a>Docker Dockerfile</h5><p>Dockerfile 是一个用来构建镜像的文本文件，文本内容包含了一条条构建镜像所需的指令和说明。</p>
 <h6 id="FROM-和-RUN-指令的作用"><a href="#FROM-和-RUN-指令的作用" class="headerlink" title="FROM 和 RUN 指令的作用"></a>FROM 和 RUN 指令的作用</h6><p><strong>FROM</strong>：定制的镜像都是基于 FROM 的镜像，这里的 nginx 就是定制需要的基础镜像。后续的操作都是基于 nginx。</p>
 <p><strong>RUN</strong>：用于执行后面跟着的命令行命令。有以下俩种格式：</p>
 <p>shell 格式：</p>
 <pre class="line-numbers language-none"><code class="language-none">RUN &lt;命令行命令&gt;
 # &lt;命令行命令&gt; 等同于，在终端操作的 shell 命令。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <p>exec 格式：</p>
 <pre class="line-numbers language-none"><code class="language-none">RUN [&quot;可执行文件&quot;, &quot;参数1&quot;, &quot;参数2&quot;]
 # 例如：
 # RUN [&quot;.&#x2F;test.php&quot;, &quot;dev&quot;, &quot;offline&quot;] 等价于 RUN .&#x2F;test.php dev offline<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <p><strong>注意</strong>：Dockerfile 的指令每执行一次都会在 docker 上新建一层。所以过多无意义的层，会造成镜像膨胀过大。例如：</p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">FROM centos
 RUN yum install wget
 RUN wget -O redis.tar.gz &quot;http:&#x2F;&#x2F;download.redis.io&#x2F;releases&#x2F;redis-5.0.3.tar.gz&quot;
 RUN tar -xvf redis.tar.gz<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>以上执行会创建 3 层镜像。可简化为以下格式：</p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">FROM centos
 RUN yum install wget \
   &amp;&amp; wget -O redis.tar.gz &quot;http:&#x2F;&#x2F;download.redis.io&#x2F;releases&#x2F;redis-5.0.3.tar.gz&quot; \
   &amp;&amp; tar -xvf redis.tar.gz<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>如上，以 <strong>&amp;&amp;</strong> 符号连接命令，这样执行后，只会创建 1 层镜像。</p>
 <h6 id="开始构建镜像"><a href="#开始构建镜像" class="headerlink" title="开始构建镜像"></a>开始构建镜像</h6><p>以下示例，通过目录下的 Dockerfile 构建一个 nginx:test（镜像名称:镜像标签）。</p>
 <p><strong>注</strong>：最后的 <strong>.</strong> 代表本次执行的上下文路径.</p>
 <pre class="line-numbers language-none"><code class="language-none">docker build -t nginx:test .<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>使用<code>docker images</code>查看镜像是否建立成功。</p>
 <h6 id="指令详解"><a href="#指令详解" class="headerlink" title="指令详解"></a>指令详解</h6><ol>
 <li><p>COPY: 复制指令<code>COPY 原路径 目标路径</code></p>
@@ -642,7 +687,8 @@ RUN yum install wget \
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">HEALTHCHECK [选项] CMD &lt;命令&gt;：设置检查容器健康状况的命令
 HEALTHCHECK NONE：如果基础镜像有健康检查指令，使用这行可以屏蔽掉其健康检查指令
 
-HEALTHCHECK [选项] CMD &lt;命令&gt; : 这边 CMD 后面跟随的命令使用，可以参考 CMD 的用法。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></li>
+HEALTHCHECK [选项] CMD &lt;命令&gt; : 这边 CMD 后面跟随的命令使用，可以参考 CMD 的用法。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
 <li><p>ONBUILD: 用于延迟构建命令的执行。简单的说，就是 Dockerfile 里用 ONBUILD 指定的命令，在本次构建镜像的过程中不会执行（假设镜像为 test-build）。当有新的 Dockerfile 使用了之前构建的镜像 FROM test-build ，这是执行新镜像的 Dockerfile 构建时候，会执行 test-build 的 Dockerfile 里的 ONBUILD 指定的命令。<code>ONBUILD &lt;其它指令&gt;</code></p>
 </li>
 </ol>
@@ -752,7 +798,7 @@ HEALTHCHECK [选项] CMD &lt;命令&gt; : 这边 CMD 后面跟随的命令使用
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:16</span>
+    <span title="站点阅读时长">13:18</span>
   </span>
 </div>
 <div class="busuanzi-count">

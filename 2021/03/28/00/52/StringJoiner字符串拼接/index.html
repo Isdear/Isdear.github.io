@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/memory.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/memory.png">
@@ -227,7 +227,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">80</span>
+          <span class="site-state-item-count">81</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -364,10 +364,12 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>StringJoiner属于Java8中的处理字符串拼接的工具类，极大节省的代码量。<a id="more"></a></p>
+        <p>StringJoiner属于Java8中的处理字符串拼接的工具类，极大节省的代码量。<span id="more"></span></p>
 <h4 id="待分割的字符串转List"><a href="#待分割的字符串转List" class="headerlink" title="待分割的字符串转List"></a>待分割的字符串转List</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">String</span> value <span class="token operator">=</span> <span class="token string">"lint lint lnit ln"</span><span class="token punctuation">;</span>
 <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> stringList <span class="token operator">=</span> <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span>value<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <h4 id="新建StringJoiner类"><a href="#新建StringJoiner类" class="headerlink" title="新建StringJoiner类"></a>新建StringJoiner类</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">StringJoiner</span> joiner <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StringJoiner</span><span class="token punctuation">(</span><span class="token string">","</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>StringJoiner类有三个参数(按顺序)：</p>
 <ul>
 <li>分隔符</li>
@@ -377,6 +379,7 @@
 <p>分隔符是拼接字符串之间的分隔符，前缀和后缀是拼接完成之后字符串的前缀和后缀，不需用我们重新去拼接了。</p>
 <h4 id="遍历集合拼接字符串"><a href="#遍历集合拼接字符串" class="headerlink" title="遍历集合拼接字符串"></a>遍历集合拼接字符串</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//stringList.forEach(s -> joiner.add(s));</span>
 stringList<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>joiner<span class="token operator">::</span><span class="token function">add</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 
     </div>
 
@@ -393,10 +396,10 @@ stringList<span class="token punctuation">.</span><span class="token function">f
       <div class="popular-posts-title"><a href="\2020\11\16\22\42\JAVA设置Excel单元格格式\" rel="bookmark">JAVA设置Excel单元格格式</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2020\10\26\23\26\Java取消Double类型显示科学计数法\" rel="bookmark">Java取消Double类型显示科学计数法</a></div>
+      <div class="popular-posts-title"><a href="\2020\06\14\20\53\JWT授权验证\" rel="bookmark">JWT授权验证</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2020\06\14\20\53\JWT授权验证\" rel="bookmark">JWT授权验证</a></div>
+      <div class="popular-posts-title"><a href="\2020\10\26\23\26\Java取消Double类型显示科学计数法\" rel="bookmark">Java取消Double类型显示科学计数法</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="\2020\04\26\16\27\Java小知识\" rel="bookmark">Java小知识</a></div>
@@ -435,8 +438,8 @@ stringList<span class="token punctuation">.</span><span class="token function">f
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/03/28/15/20/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8C%89%E7%85%A7%E9%A6%96%E4%B8%AA%E5%AD%97%E7%AC%A6%E6%8E%92%E5%BA%8F/" rel="next" title="字符串按照首个字符排序">
-                  字符串按照首个字符排序 <i class="fa fa-chevron-right"></i>
+                <a href="/2021/03/28/15/20/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8C%89%E7%85%A7%E9%A6%96%E4%B8%AA%E5%AD%97%E7%AC%A6%E6%8E%92%E5%BA%8F/" rel="next" title="字符串按照收个字符排序">
+                  字符串按照收个字符排序 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -501,7 +504,7 @@ stringList<span class="token punctuation">.</span><span class="token function">f
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:16</span>
+    <span title="站点阅读时长">13:18</span>
   </span>
 </div>
 <div class="busuanzi-count">

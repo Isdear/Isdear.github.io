@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/memory.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/memory.png">
@@ -227,7 +227,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">80</span>
+          <span class="site-state-item-count">81</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -370,12 +370,13 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>coalesce函数的使用说明<a id="more"></a></p>
+        <p>coalesce函数的使用说明<span id="more"></span></p>
 <h5 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h5><p>返回其参数中第一个非空表达式。</p>
 <h6 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h6><p>coalesce ( 表达式1 ,…表达式n )</p>
 <h6 id="返回类型"><a href="#返回类型" class="headerlink" title="返回类型"></a>返回类型</h6><p>返回数据类型优先级最高的表达式的数据类型，如果所有参数均为null，则coalesce返回null。</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token keyword">COALESCE</span><span class="token punctuation">(</span><span class="token boolean">NULL</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>
 <span class="token keyword">SELECT</span> <span class="token keyword">COALESCE</span><span class="token punctuation">(</span><span class="token boolean">NULL</span><span class="token punctuation">,</span><span class="token boolean">NULL</span><span class="token punctuation">,</span><span class="token boolean">NULL</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <p>第一行，由于第一个表达式为<code>null</code>，依次寻找不为null的结果，所以返回值应该是1。</p>
 <p>第二行，由于所有的表达式都为<code>null</code>，所以返回值为null。</p>
 <h5 id="等效的case函数"><a href="#等效的case函数" class="headerlink" title="等效的case函数"></a>等效的case函数</h5><h6 id="case语句"><a href="#case语句" class="headerlink" title="case语句"></a>case语句</h6><pre class="line-numbers language-plsql" data-language="plsql"><code class="language-plsql"><span class="token keyword">SELECT</span> <span class="token keyword">COALESCE</span><span class="token punctuation">(</span>expression1<span class="token punctuation">,</span>expression2<span class="token punctuation">,</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>expressionN<span class="token punctuation">)</span>
@@ -391,6 +392,7 @@
    <span class="token keyword">ELSE</span> <span class="token boolean">NULL</span>
 
 <span class="token keyword">END</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>尽管 IS NULL 等效于 COALESCE，但它们的行为是不同的。包含具有非空参数的 IS NULL 的表达式将视为 NOT NULL，而包含具有非空参数的 COALESCE 的表达式将视为 NULL。</p>
 <h6 id="SQL-Server的非空参数问题"><a href="#SQL-Server的非空参数问题" class="headerlink" title="SQL Server的非空参数问题"></a>SQL Server的非空参数问题</h6><p>在 SQL Server 中，若要对包含具有非空参数的 COALESCE 的表达式创建索引，可以使用 PERSISTED 列属性将计算列持久化，例如下面案例</p>
 <pre class="line-numbers language-plsql" data-language="plsql"><code class="language-plsql"><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> #CheckSumTest
@@ -404,6 +406,7 @@
         RowCheckSum <span class="token keyword">AS</span> <span class="token keyword">COALESCE</span><span class="token punctuation">(</span> CHECKSUM<span class="token punctuation">(</span> id <span class="token punctuation">,</span> num <span class="token punctuation">)</span> <span class="token punctuation">,</span> <span class="token number">0</span> <span class="token punctuation">)</span> PERSISTED <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span>
 
     <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h6 id="COALESCE-使用示例"><a href="#COALESCE-使用示例" class="headerlink" title="COALESCE 使用示例"></a>COALESCE 使用示例</h6><p>在以下示例中，wages 表中包括以下三列有关雇员的年薪的信息：hourly wage、salary 和 commission。但是，每个雇员只能接受一种付款方式。若要确定支付给所有雇员的金额总数，请使用 COALESCE 函数，它只接受在 hourly_wage、salary 和 commission 中找到的非空值。</p>
 <pre class="line-numbers language-plsql" data-language="plsql"><code class="language-plsql"><span class="token keyword">SET</span> NOCOUNT <span class="token keyword">ON</span><span class="token punctuation">;</span>
 
@@ -476,6 +479,7 @@ GO
 <span class="token keyword">FROM</span> wages<span class="token punctuation">;</span>
 
 GO<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>结果集</p>
 <pre class="line-numbers language-plsql" data-language="plsql"><code class="language-plsql">Total Salary
 
@@ -508,6 +512,7 @@ GO<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><
  
 
 <span class="token punctuation">(</span><span class="token number">12</span> <span class="token keyword">row</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> affected<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 
 
 
@@ -634,7 +639,7 @@ GO<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:16</span>
+    <span title="站点阅读时长">13:18</span>
   </span>
 </div>
 <div class="busuanzi-count">

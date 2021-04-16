@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/memory.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/memory.png">
@@ -226,7 +226,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">80</span>
+          <span class="site-state-item-count">81</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -354,17 +354,19 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>mybatis调用oracle方法或者存储过程时，如果无输入和输出参数，直接把函数当做查询字段即可输出。本次主要说明有输入参数和输出参数。<a id="more"></a></p>
+        <p>mybatis调用oracle方法或者存储过程时，如果无输入和输出参数，直接把函数当做查询字段即可输出。本次主要说明有输入参数和输出参数。<span id="more"></span></p>
 <p>存储过程代码忽略，只需知道输入参数类型和输出参数类型即可。</p>
 <p>xml映射文件</p>
 <pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">&lt;select id&#x3D;&quot;getFhYeild&quot; statementType&#x3D;&quot;CALLABLE&quot; parameterType&#x3D;&quot;java.util.Map&quot; resultType&#x3D;&quot;Double&quot;&gt;
 	&#123;#&#123;result,mode&#x3D;OUT,jdbcType&#x3D;VARCHAR&#125;&#x3D;call get_fh_yeild(#&#123;fndCd,mode&#x3D;IN,jdbcType&#x3D;VARCHAR&#125;)&#125;
 &lt;&#x2F;select&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <p>mapper层代码和一般的查询接口一样，没有特殊的改变。</p>
 <p>Controller层在进行调用的时候，只需使用map调用即可取值。</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span><span class="token class-name">Object</span><span class="token punctuation">></span></span> map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span><span class="token class-name">Object</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token function">getFhYeild</span><span class="token punctuation">(</span>map<span class="token punctuation">)</span><span class="token punctuation">;</span>
 map<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"result"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 
     </div>
 
@@ -477,7 +479,7 @@ map<span class="token punctuation">.</span><span class="token function">get</spa
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:16</span>
+    <span title="站点阅读时长">13:18</span>
   </span>
 </div>
 <div class="busuanzi-count">

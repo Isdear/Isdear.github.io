@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/memory.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/memory.png">
@@ -229,7 +229,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">80</span>
+          <span class="site-state-item-count">81</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -372,12 +372,13 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>关于MQTT的回调类的实现<a id="more"></a></p>
+        <p>关于MQTT的回调类的实现<span id="more"></span></p>
 <h5 id="在使用回调方式前，先通过MQTT获取回调链接"><a href="#在使用回调方式前，先通过MQTT获取回调链接" class="headerlink" title="在使用回调方式前，先通过MQTT获取回调链接"></a>在使用回调方式前，先通过MQTT获取回调链接</h5><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">MQTT</span> mqtt <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">MQTT</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token comment">//此处省略设置MQTT的属性</span>
 
 <span class="token class-name">CallbackConnection</span> connection <span class="token operator">=</span> mqtt<span class="token punctuation">.</span><span class="token function">callbackConnection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h5 id="调用CallbackConnection的方法实现业务逻辑"><a href="#调用CallbackConnection的方法实现业务逻辑" class="headerlink" title="调用CallbackConnection的方法实现业务逻辑"></a>调用CallbackConnection的方法实现业务逻辑</h5><h6 id="connect-连接方法-："><a href="#connect-连接方法-：" class="headerlink" title="connect(连接方法)："></a>connect(连接方法)：</h6><pre class="line-numbers language-java" data-language="java"><code class="language-java">connection<span class="token punctuation">.</span><span class="token function">connect</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Callback</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Void</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
 	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onSuccess</span><span class="token punctuation">(</span><span class="token class-name">Void</span> arg0<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
 		<span class="token comment">//进入该方法表示连接成功连接成功</span>
@@ -386,6 +387,7 @@
 		<span class="token comment">//进入该方法表示连接失败</span>
 	<span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>一般可以在connect的onSuccess方法中发布(publish)和订阅(subscribe)相应的主题(topic)，在其onError方法中作相应的断开连接等操作。</p>
 <h6 id="listener-监听方法"><a href="#listener-监听方法" class="headerlink" title="listener(监听方法):"></a>listener(监听方法):</h6><pre class="line-numbers language-java" data-language="java"><code class="language-java">connection<span class="token punctuation">.</span><span class="token function">listener</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Listener</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
 	<span class="token annotation punctuation">@Override</span>
@@ -411,6 +413,7 @@
 		<span class="token comment">//表示监听到连接成功</span>
 		<span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>onpublish表示发布成功，可以获取到订阅的主题(topic)和订阅的内容(UTF8Buffer topicmsg 表示订阅的主题,Buffer msg表示订阅的内容)，一般的可以在这个方法中获取订阅的主题和内容然后进行相应的判断和其他业务逻辑操作；</p>
 <p>onConneted表示监听到连接建立，该方法只在建立连接成功时执行一次，表示连接成功建立，如果有必要可以在该方法中进行相应的订阅操作； </p>
 <p> onDisconnected表示监听到连接断开，该方法只在断开连接时执行一次，如有必要可以进行相应的资源回收操作。 </p>
@@ -424,6 +427,7 @@
 		<span class="token comment">//状态主题订阅失败</span>
 	<span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p> onSuccess方法表示订阅成功，onError方法表示订阅失败；方法中Topic[] topics表示定于的主题数组，注意只有在改方法订阅的主题时，才能够在监听方法中接收到。 </p>
 <h6 id="publish-发布主题-topic-方法"><a href="#publish-发布主题-topic-方法" class="headerlink" title="publish(发布主题(topic)方法):"></a>publish(发布主题(topic)方法):</h6><pre class="line-numbers language-java" data-language="java"><code class="language-java">connection<span class="token punctuation">.</span><span class="token function">publish</span><span class="token punctuation">(</span>topic<span class="token punctuation">,</span> payload<span class="token punctuation">.</span><span class="token function">getBytes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> qos<span class="token punctuation">,</span> retain<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">Callback</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Void</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
 	<span class="token annotation punctuation">@Override</span>
@@ -435,6 +439,7 @@
 		<span class="token comment">//表示发布主题失败</span>
 	<span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p> publish方法用于发布响应的主题，以便订阅者订阅；onSuccess表示发布成功，onError表示发布失败。 </p>
 <h6 id="disconnect-断开连接方法"><a href="#disconnect-断开连接方法" class="headerlink" title="disconnect(断开连接方法):"></a>disconnect(断开连接方法):</h6><pre class="line-numbers language-java" data-language="java"><code class="language-java">connection<span class="token punctuation">.</span><span class="token function">disconnect</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Callback</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Void</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
 		<span class="token annotation punctuation">@Override</span>
@@ -446,6 +451,7 @@
 			<span class="token comment">//与服务器断开连接失败</span>
 		<span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p> disconnect表示断开与代理服务器的连接，调用该方法后只是表示断开连接但是实际的connect依然存在并没有为null，再次调用connect方法又能够连接成功。 </p>
 <p>注意：</p>
 <p>1、在上面的五个方法中一般先调用connect和listener方法</p>
@@ -456,6 +462,7 @@ connection<span class="token punctuation">.</span><span class="token function">g
 		<span class="token comment">//在这里进行相应的订阅、发布、停止连接等等操作			</span>
 	<span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p><img src="http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/152377/156838966242265_zh-CN.png" alt="MQTT应用场景" title="MQTT应用场景"></p>
 
     </div>
@@ -560,7 +567,7 @@ connection<span class="token punctuation">.</span><span class="token function">g
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:16</span>
+    <span title="站点阅读时长">13:18</span>
   </span>
 </div>
 <div class="busuanzi-count">

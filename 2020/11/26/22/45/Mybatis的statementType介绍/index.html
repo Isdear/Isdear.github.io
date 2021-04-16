@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/memory.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/memory.png">
@@ -226,7 +226,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">80</span>
+          <span class="site-state-item-count">81</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -363,7 +363,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>statementType：标记操作SQL的对象。<a id="more"></a></p>
+        <p>statementType：标记操作SQL的对象。<span id="more"></span></p>
 <p>mapper文件中可以使用statementType标记使用什么的对象操作SQL语句。</p>
 <p>取值参数：</p>
 <ul>
@@ -381,6 +381,7 @@
 &lt;update id&#x3D;&quot;update5&quot; statementType&#x3D;&quot;PREPARED&quot;&gt;
     update tb_car set xh&#x3D;#&#123;xh&#125; where id&#x3D;#&#123;id&#125;my
 &lt;&#x2F;update&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>注意：如果只为STATEMENT，那么sql就是直接进行的字符串拼接，这样如果为字符串需要加上引号，如果为PREPARED，是使用的参数替换，也就是索引占位符，我们的#会转换为?再设置对应的参数的值。</p>
 
     </div>
@@ -494,7 +495,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:16</span>
+    <span title="站点阅读时长">13:18</span>
   </span>
 </div>
 <div class="busuanzi-count">

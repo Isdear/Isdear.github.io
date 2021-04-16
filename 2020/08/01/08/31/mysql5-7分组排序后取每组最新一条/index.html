@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/memory.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/memory.png">
@@ -227,7 +227,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">80</span>
+          <span class="site-state-item-count">81</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -364,7 +364,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>在mysql5.7版本上实现的，目前mysql8.0已经可以使用分析函数了，不需要那么麻烦了。<a id="more"></a></p>
+        <p>在mysql5.7版本上实现的，目前mysql8.0已经可以使用分析函数了，不需要那么麻烦了。<span id="more"></span></p>
 <h6 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h6><p>一张表内有ID、时间、描述信息等，依据ID找出最新时间的一条描述信息。</p>
 <h6 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h6><p>先按照ID进行分组，然后对时间进行倒序排序，选出最新的一条记录。</p>
 <h6 id="测试表结构"><a href="#测试表结构" class="headerlink" title="测试表结构"></a>测试表结构</h6><p>与实现有关的字段有task_id、dl_time、dl_dscr。</p>
@@ -381,12 +381,14 @@ WHERE
 	WHERE
 	task_id &#x3D; b.task_id 
 	AND b.dl_time &lt; dl_time)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">SELECT
 	* 
 FROM
 	( SELECT dl_time, task_id, dl_dscr FROM dq_dl_log GROUP BY task_id DESC ) t 
 ORDER BY
 	t.dl_time<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h6 id="Oracle实现方法"><a href="#Oracle实现方法" class="headerlink" title="Oracle实现方法"></a>Oracle实现方法</h6><pre class="line-numbers language-plsql" data-language="plsql"><code class="language-plsql"><span class="token keyword">SELECT</span>
 	row_number<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">over</span> <span class="token punctuation">(</span> <span class="token keyword">PARTITION</span> <span class="token keyword">BY</span> task_id <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> dl_time <span class="token punctuation">)</span> rank 
 <span class="token keyword">FROM</span>
@@ -516,7 +518,7 @@ ORDER BY
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:16</span>
+    <span title="站点阅读时长">13:18</span>
   </span>
 </div>
 <div class="busuanzi-count">

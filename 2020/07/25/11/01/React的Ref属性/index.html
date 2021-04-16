@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/memory.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/memory.png">
@@ -226,7 +226,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">80</span>
+          <span class="site-state-item-count">81</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -369,7 +369,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>父与子组件使用ref通信<a id="more"></a></p>
+        <p>父与子组件使用ref通信<span id="more"></span></p>
 <p>props属性传值与ref的区别：</p>
 <p>输入框的value值拿到之后，还要把value值通过回调函数调用传回给外面的事件(父组件)，如果父组件想要清空输入框的话，就从父组件中传一个新的属性进来，进行重置，这样就不用与input标签进行交互，只要身上绑定一个ref，我就能拿到这个组件的任何东西，我能拿到他的状态，我就可以获取它里面<br>孩子的状态，同样的话，我还可以去修改他的状态。</p>
 <pre class="line-numbers language-react" data-language="react"><code class="language-react">&#x2F;&#x2F; todolist
@@ -451,6 +451,7 @@ export default class App extends Component &#123;
     &#125;
 &#125;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 
     </div>
 
@@ -566,7 +567,7 @@ export default class App extends Component &#123;
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:16</span>
+    <span title="站点阅读时长">13:18</span>
   </span>
 </div>
 <div class="busuanzi-count">

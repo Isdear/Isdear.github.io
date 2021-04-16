@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/memory.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/memory.png">
@@ -229,7 +229,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">80</span>
+          <span class="site-state-item-count">81</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -372,7 +372,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>Jwt(Json web token)网络令牌<a id="more"></a></p>
+        <p>Jwt(Json web token)网络令牌<span id="more"></span></p>
 <h5 id="传统的session验证"><a href="#传统的session验证" class="headerlink" title="传统的session验证"></a>传统的session验证</h5><p>传统的基于session验证将用户信息保存为cookie存到服务器中，每次用户发起的请求都会验证cookie中的用户信息，这样服务器才能判断请求来自哪个用户。随着不同客户端用户的增加，独立的服务器无法承载更多的用户。</p>
 <p>用户认证之后，服务端做认证记录，如果认证的记录被保存在内存中的话，这意味着用户下次请求还必须要请求在这台服务器上，这样才能拿到授权的资源，这样在分布式的应用上，相应的限制了负载均衡器的能力。这也意味着限制了应用的扩展能力。</p>
 <p>因为是基于cookie来进行用户识别的，cookie如果被截获，用户就会很容易受到跨站请求伪造的攻击。</p>
@@ -393,6 +393,7 @@
 <p>这个token必须要在每次请求时传递给服务端，它应该保存在请求头里， 另外，服务端要支持<code>CORS(跨来源资源共享)</code>策略，一般我们在服务端这么做就可以了<code>Access-Control-Allow-Origin: *</code>。</p>
 <h5 id="JWT的构成"><a href="#JWT的构成" class="headerlink" title="JWT的构成"></a>JWT的构成</h5><p>JWT是由三段信息构成的，将这三段信息文本用<code>.</code>链接一起就构成了Jwt字符串。就像这样:</p>
 <pre class="line-numbers language-none"><code class="language-none">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>第一部分我们称它为头部（header)，第二部分我们称其为载荷（payload，类似于飞机上承载的物品)，第三部分是签证（signature)。</p>
 <h6 id="header"><a href="#header" class="headerlink" title="header"></a>header</h6><p>jwt的头部承载两部分信息：</p>
 <ul>
@@ -406,6 +407,7 @@
 	'typ'<span class="token operator">:</span> 'JWT'<span class="token punctuation">,</span>
 	'alg'<span class="token operator">:</span> 'HS256'
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>然后将头部进行base64加密，构成第一部分<code>eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9</code>。</p>
 <h6 id="playload"><a href="#playload" class="headerlink" title="playload"></a>playload</h6><p>载荷就是存放有效信息的地方。这个名字像是特指飞机上承载的货品，这些有效信息包含三个部分</p>
 <ul>
@@ -431,6 +433,7 @@
   <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"John Doe"</span><span class="token punctuation">,</span>
   <span class="token property">"admin"</span><span class="token operator">:</span> <span class="token boolean">true</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>然后将其进行base64加密，得到Jwt的第二部分<code>eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9</code>。</p>
 <h6 id="signature"><a href="#signature" class="headerlink" title="signature"></a>signature</h6><p>jwt的第三部分是一个签证信息，这个签证信息由三部分组成：</p>
 <ul>
@@ -444,8 +447,10 @@
 
 <span class="token keyword">var</span> signature <span class="token operator">=</span> <span class="token constant">HMACSHA256</span><span class="token punctuation">(</span>encodedString<span class="token punctuation">,</span> <span class="token string">'secret'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
 <span class="token comment">// TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>将这三部分用<code>.</code>连接成一个完整的字符串，构成了最终的jwt:</p>
 <pre class="line-numbers language-none"><code class="language-none">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>注意：secret是保存在服务器端的，jwt的签发生成也是在服务器端的，secret就是用来进行jwt的签发和jwt的验证，所以，它就是你服务端的私钥，在任何场景都不应该流露出去。一旦客户端得知这个secret，那就意味着客户端是可以自我签发jwt了。</p>
 <h5 id="JWT应用"><a href="#JWT应用" class="headerlink" title="JWT应用"></a>JWT应用</h5><p>一般是在请求头里加入<code>Authorization</code>，并加上<code>Bearer</code>标注：</p>
 <pre class="line-numbers language-none"><code class="language-none">fetch(&#39;api&#x2F;user&#x2F;1&#39;, &#123;
@@ -453,6 +458,7 @@
     &#39;Authorization&#39;: &#39;Bearer &#39; + token
   &#125;
 &#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>服务端会验证token，如果验证通过就会返回相应的资源。整个流程就是这样的:</p>
 <p><img src="/2020/06/14/20/53/JWT%E6%8E%88%E6%9D%83%E9%AA%8C%E8%AF%81/jwt.png" alt></p>
 <h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><h6 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h6><ul>
@@ -594,7 +600,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:16</span>
+    <span title="站点阅读时长">13:18</span>
   </span>
 </div>
 <div class="busuanzi-count">

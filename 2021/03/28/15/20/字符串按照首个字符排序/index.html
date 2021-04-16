@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/memory.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/memory.png">
@@ -26,7 +26,7 @@
 
   <meta name="description" content="String数组和List集合排序">
 <meta property="og:type" content="article">
-<meta property="og:title" content="字符串按照首个字符排序">
+<meta property="og:title" content="字符串按照收个字符排序">
 <meta property="og:url" content="http://isdear.github.io/2021/03/28/15/20/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8C%89%E7%85%A7%E9%A6%96%E4%B8%AA%E5%AD%97%E7%AC%A6%E6%8E%92%E5%BA%8F/index.html">
 <meta property="og:site_name" content="记忆随笔">
 <meta property="og:description" content="String数组和List集合排序">
@@ -51,7 +51,7 @@
   };
 </script>
 
-  <title>字符串按照首个字符排序 | 记忆随笔</title>
+  <title>字符串按照收个字符排序 | 记忆随笔</title>
   
 
 
@@ -227,7 +227,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">80</span>
+          <span class="site-state-item-count">81</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -309,7 +309,7 @@
     
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          字符串按照首个字符排序
+          字符串按照收个字符排序
         </h1>
 
         <div class="post-meta">
@@ -364,13 +364,19 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>String数组和List集合排序<a id="more"></a></p>
+        <p>String数组和List集合排序<span id="more"></span></p>
 <h4 id="字符串数组"><a href="#字符串数组" class="headerlink" title="字符串数组"></a>字符串数组</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> tokenizer <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token string">"abcd"</span><span class="token punctuation">,</span><span class="token string">"bacd"</span><span class="token punctuation">,</span><span class="token string">"bbcd"</span><span class="token punctuation">,</span><span class="token string">"cadb"</span><span class="token punctuation">,</span><span class="token string">"cbda"</span><span class="token punctuation">,</span><span class="token string">"caaa"</span><span class="token punctuation">,</span><span class="token string">"1234"</span><span class="token punctuation">,</span><span class="token string">"2134"</span><span class="token punctuation">,</span><span class="token string">"2231"</span><span class="token punctuation">,</span><span class="token string">"2131"</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h4 id="首个字符排序"><a href="#首个字符排序" class="headerlink" title="首个字符排序"></a>首个字符排序</h4><h5 id="正序"><a href="#正序" class="headerlink" title="正序"></a>正序</h5><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> collect <span class="token operator">=</span> <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span>tokenizer<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">sorted</span><span class="token punctuation">(</span><span class="token class-name">Comparator</span><span class="token punctuation">.</span><span class="token function">comparing</span><span class="token punctuation">(</span>item <span class="token operator">-></span> item<span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toCharArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">collect</span><span class="token punctuation">(</span><span class="token class-name">Collectors</span><span class="token punctuation">.</span><span class="token function">toList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h5 id="倒序"><a href="#倒序" class="headerlink" title="倒序"></a>倒序</h5><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> collect <span class="token operator">=</span> <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span>tokenizer<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">sorted</span><span class="token punctuation">(</span><span class="token class-name">Comparator</span><span class="token punctuation">.</span><span class="token function">comparing</span><span class="token punctuation">(</span>item <span class="token operator">-></span> item<span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toCharArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">collect</span><span class="token punctuation">(</span><span class="token class-name">Collectors</span><span class="token punctuation">.</span><span class="token function">toList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h4 id="全字符排序"><a href="#全字符排序" class="headerlink" title="全字符排序"></a>全字符排序</h4><h5 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h5><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> collect <span class="token operator">=</span> <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span>tokenizer<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">sorted</span><span class="token punctuation">(</span><span class="token class-name">Comparator</span><span class="token punctuation">.</span><span class="token function">naturalOrder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">collect</span><span class="token punctuation">(</span><span class="token class-name">Collectors</span><span class="token punctuation">.</span><span class="token function">toList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span>tokenizer<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h5 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h5><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Collections</span><span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span>collect<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 
     </div>
 
@@ -387,10 +393,10 @@
       <div class="popular-posts-title"><a href="\2020\11\16\22\42\JAVA设置Excel单元格格式\" rel="bookmark">JAVA设置Excel单元格格式</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2020\10\26\23\26\Java取消Double类型显示科学计数法\" rel="bookmark">Java取消Double类型显示科学计数法</a></div>
+      <div class="popular-posts-title"><a href="\2020\06\14\20\53\JWT授权验证\" rel="bookmark">JWT授权验证</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2020\06\14\20\53\JWT授权验证\" rel="bookmark">JWT授权验证</a></div>
+      <div class="popular-posts-title"><a href="\2020\10\26\23\26\Java取消Double类型显示科学计数法\" rel="bookmark">Java取消Double类型显示科学计数法</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="\2020\04\26\16\27\Java小知识\" rel="bookmark">Java小知识</a></div>
@@ -408,7 +414,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="http://isdear.github.io/2021/03/28/15/20/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8C%89%E7%85%A7%E9%A6%96%E4%B8%AA%E5%AD%97%E7%AC%A6%E6%8E%92%E5%BA%8F/" title="字符串按照首个字符排序">http://isdear.github.io/2021/03/28/15/20/字符串按照首个字符排序/</a>
+      <a href="http://isdear.github.io/2021/03/28/15/20/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8C%89%E7%85%A7%E9%A6%96%E4%B8%AA%E5%AD%97%E7%AC%A6%E6%8E%92%E5%BA%8F/" title="字符串按照收个字符排序">http://isdear.github.io/2021/03/28/15/20/字符串按照首个字符排序/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -495,7 +501,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:16</span>
+    <span title="站点阅读时长">13:18</span>
   </span>
 </div>
 <div class="busuanzi-count">

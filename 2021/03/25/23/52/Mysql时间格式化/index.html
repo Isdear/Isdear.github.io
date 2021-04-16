@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/memory.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/memory.png">
@@ -227,7 +227,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">80</span>
+          <span class="site-state-item-count">81</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -370,14 +370,16 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>mysql中常用的时间格式化方法统计。<a id="more"></a></p>
+        <p>mysql中常用的时间格式化方法统计。<span id="more"></span></p>
 <p>如果要查询订单时间在5月1号到5月12号之间的数据</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">Select</span> <span class="token operator">*</span> <span class="token keyword">From</span> <span class="token keyword">order</span> <span class="token keyword">Where</span> DATE_FORMAT<span class="token punctuation">(</span>createTime<span class="token punctuation">,</span><span class="token string">'%m-%d'</span><span class="token punctuation">)</span> <span class="token operator">>=</span> <span class="token string">'05-01'</span> 
 <span class="token operator">and</span> DATE_FORMAT<span class="token punctuation">(</span>createTime<span class="token punctuation">,</span><span class="token string">'%m-%d'</span><span class="token punctuation">)</span> <span class="token operator">&lt;=</span> <span class="token string">'05-12'</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <p><strong>DATE_FORMAT(date,format)</strong>函数用于以不同的格式显示日期/时间数据。 date是日期列,format是格式</p>
 <p><strong>STR_TO_DATE(str,format)</strong> 将字符串转成日期</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> STR_TO_DATE<span class="token punctuation">(</span><span class="token string">'2018-06-01'</span><span class="token punctuation">,</span><span class="token string">'%Y-%m-%d'</span><span class="token punctuation">)</span>
 <span class="token operator">>></span> <span class="token number">2018</span><span class="token operator">-</span><span class="token number">06</span><span class="token operator">-</span><span class="token number">01</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <h4 id="format的各种格式"><a href="#format的各种格式" class="headerlink" title="format的各种格式"></a>format的各种格式</h4><pre class="line-numbers language-apl" data-language="apl"><code class="language-apl">%W 星期名字<span class="token punctuation">(</span>Sunday……Saturday<span class="token punctuation">)</span> 
 %D 有英语前缀的月份的日期<span class="token punctuation">(</span><span class="token number">1</span>st<span class="token function">,</span> <span class="token number">2</span>nd<span class="token function">,</span> <span class="token number">3</span>rd<span class="token function">,</span> 等等。） 
 %Y 年<span class="token function">,</span> 数字<span class="token function">,</span> <span class="token number">4</span> 位 
@@ -404,6 +406,7 @@
 %U 星期<span class="token punctuation">(</span><span class="token number">0</span>……<span class="token number">52</span><span class="token punctuation">)</span><span class="token function">,</span> 这里星期天是星期的第一天 
 %u 星期<span class="token punctuation">(</span><span class="token number">0</span>……<span class="token number">52</span><span class="token punctuation">)</span><span class="token function">,</span> 这里星期一是星期的第一天 
 %% 一个文字“%”。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h4 id="获取当前的时间"><a href="#获取当前的时间" class="headerlink" title="获取当前的时间"></a>获取当前的时间</h4><pre class="line-numbers language-apl" data-language="apl"><code class="language-apl">NOW<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token function">,</span>							当前时间戳
 CURDATE<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token function">,</span>						当前日期
 CURTIME<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token function">,</span>						当前时间<span class="token function">,</span>可选参数<span class="token function">,</span>为时间精度
@@ -413,6 +416,7 @@ CURRENT_TIMESTAMP<span class="token punctuation">(</span><span class="token numb
 CURRENT_DATE<span class="token function">,</span>					当前日期
 CURRENT_TIME<span class="token function">,</span>					当前时间
 CURRENT_TIMESTAMP				当前时间戳<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h4 id="获取某个部分的时间信息"><a href="#获取某个部分的时间信息" class="headerlink" title="获取某个部分的时间信息"></a>获取某个部分的时间信息</h4><p>DATE(date) 只获取日期信息如:2018-06-01</p>
 <p>EXTRACT(unit FROM date)函数用于返回日期/时间的单独部分，比如年、月、日、小时、分钟等等。</p>
 <p>Unit 值:</p>
@@ -436,9 +440,11 @@ DAY_SECOND
 DAY_MINUTE
 DAY_HOUR
 YEAR_MONTH<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>比如想知道6月1号是哪个季度</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> EXTRACT<span class="token punctuation">(</span>QUARTER <span class="token keyword">FROM</span>  STR_TO_DATE<span class="token punctuation">(</span><span class="token string">'2018-06-01'</span><span class="token punctuation">,</span><span class="token string">'%Y-%m-%d'</span><span class="token punctuation">)</span> <span class="token punctuation">)</span>
 <span class="token operator">>></span><span class="token operator">></span><span class="token number">2</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 
 
 
@@ -565,7 +571,7 @@ YEAR_MONTH<span aria-hidden="true" class="line-numbers-rows"><span></span><span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:16</span>
+    <span title="站点阅读时长">13:18</span>
   </span>
 </div>
 <div class="busuanzi-count">

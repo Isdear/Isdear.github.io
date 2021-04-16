@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/memory.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/memory.png">
@@ -249,7 +249,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">80</span>
+          <span class="site-state-item-count">81</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -392,7 +392,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>EXPLAIN可以模拟优化器执行SQL语句，从而知道mysql是如何处理你的sql语句。<a id="more"></a></p>
+        <p>EXPLAIN可以模拟优化器执行SQL语句，从而知道mysql是如何处理你的sql语句。<span id="more"></span></p>
 <h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>EXPLAIN可以模拟优化器执行SQL语句，从而知道mysql是如何处理你的sql语句。分析你的查询语句或是表结构的性能瓶颈。</p>
 <h5 id="通过explain，我们可以分析出以下结果："><a href="#通过explain，我们可以分析出以下结果：" class="headerlink" title="通过explain，我们可以分析出以下结果："></a>通过explain，我们可以分析出以下结果：</h5><ul>
 <li>表的读取顺序</li>
@@ -403,6 +403,7 @@
 <li>每张表有多少行被优化器查询</li>
 </ul>
 <h5 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h5><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">explain</span>  <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> t<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h5 id="执行计划包含的信息"><a href="#执行计划包含的信息" class="headerlink" title="执行计划包含的信息"></a>执行计划包含的信息</h5><table>
 <thead>
 <tr>
@@ -466,6 +467,7 @@
 <p><img src="/2020/10/26/23/10/Mysql%E4%B8%ADexplain%E7%9A%84%E7%94%A8%E6%B3%95%E5%92%8C%E7%BB%93%E6%9E%9C%E5%88%86%E6%9E%90/type.png" alt></p>
 <p> 从最好到最差依次是：</p>
 <pre class="line-numbers language-none"><code class="language-none">system &gt; const &gt; eq_ref &gt; ref &gt; range &gt; index &gt; all<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><strong>一般来说，得保证查询至少达到range级别，最好能达到ref</strong></p>
 <ul>
 <li><code>system</code> 表只有一行记录（等于系统表），这是const类型的特列，平时不会出现，这个也可以忽略不计</li>
@@ -520,6 +522,7 @@
 <h5 id="Using-join-buffer"><a href="#Using-join-buffer" class="headerlink" title="Using join buffer"></a>Using join buffer</h5><p>表明使用了连接缓存,比如说在查询的时候，多表join的次数非常多，那么将配置文件中的缓冲区的join buffer调大一些。</p>
 <h5 id="impossible-where"><a href="#impossible-where" class="headerlink" title="impossible where"></a>impossible where</h5><p>where子句的值<code>总是false</code>，不能用来获取任何元组</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> t_user <span class="token keyword">WHERE</span> id <span class="token operator">=</span> <span class="token string">'1'</span> <span class="token operator">and</span> id <span class="token operator">=</span> <span class="token string">'2'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h5 id="select-tables-optimized-away"><a href="#select-tables-optimized-away" class="headerlink" title="select tables optimized away"></a>select tables optimized away</h5><p>在没有GROUPBY子句的情况下，基于索引优化MIN/MAX操作或者对于MyISAM存储引擎优化COUNT(*)操作，不必等到执行阶段再进行计算，查询执行计划生成的阶段即完成优化。</p>
 <h5 id="distinct"><a href="#distinct" class="headerlink" title="distinct"></a>distinct</h5><p>优化distinct操作，在找到第一匹配的元组后即停止找同样值的动作</p>
 <h5 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h5><p><img src="/2020/10/26/23/10/Mysql%E4%B8%ADexplain%E7%9A%84%E7%94%A8%E6%B3%95%E5%92%8C%E7%BB%93%E6%9E%9C%E5%88%86%E6%9E%90/exp.png" alt></p>
@@ -654,7 +657,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:16</span>
+    <span title="站点阅读时长">13:18</span>
   </span>
 </div>
 <div class="busuanzi-count">

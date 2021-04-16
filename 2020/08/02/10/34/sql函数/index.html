@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/memory.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/memory.png">
@@ -227,7 +227,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">80</span>
+          <span class="site-state-item-count">81</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -370,7 +370,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>常用的SQL函数<a id="more"></a></p>
+        <p>常用的SQL函数<span id="more"></span></p>
 <p>top关键字属性SQL Server，平常并没有使用SQL Server。</p>
 <h6 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h6><ul>
 <li><p>upper(str)/ucase(str)：返回字符串str，将所有字符改为大写</p>
@@ -390,6 +390,7 @@
 </ul>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> ProductName<span class="token punctuation">,</span> UnitPrice<span class="token punctuation">,</span> <span class="token function">FORMAT</span><span class="token punctuation">(</span><span class="token function">Now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'YYYY-MM-DD'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> PerDate
 <span class="token keyword">FROM</span> Products<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <ul>
 <li><p>replace(X,old,new) n：在X中查找old，并替换成new</p>
 </li>
@@ -410,14 +411,17 @@
 </li>
 </ul>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> SYSDATE<span class="token punctuation">,</span>add_months<span class="token punctuation">(</span>SYSDATE<span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token keyword">FROM</span> dual<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <ul>
 <li>last_day(d)，返回指定日期当月的最后一天</li>
 </ul>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> SYSDATE<span class="token punctuation">,</span>last_day<span class="token punctuation">(</span>SYSDATE<span class="token punctuation">)</span> <span class="token keyword">FROM</span> dual<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <ul>
 <li>nvl(X,VALUE)：如果X为空，返回value，否则返回X</li>
 </ul>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> ENAME<span class="token punctuation">,</span>JOB<span class="token punctuation">,</span>SAL<span class="token punctuation">,</span>NVL<span class="token punctuation">(</span>COMM<span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">)</span> <span class="token keyword">FROM</span> EMP <span class="token keyword">WHERE</span> SAL<span class="token operator">&lt;</span><span class="token number">2000</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <ul>
 <li>to_number()：将字符型数据转换成数字型    </li>
 <li>to_date()：将字符型数据转换成日期型</li>
@@ -429,6 +433,7 @@
 <li>zeroifnull(expr)：如果表达式expr的值为0，则返回null，否则返回表达式expr的值。</li>
 </ul>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> zeroifnull<span class="token punctuation">(</span><span class="token function">count</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> userid<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">from</span> table_name<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <ul>
 <li>nullifzero(expr)：如果表达式expr的值为null，则返回0，否则返回表达式expr的值。</li>
 <li>ln(y)：以e为底的y的对数，y &gt; 0。</li>
@@ -560,7 +565,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:16</span>
+    <span title="站点阅读时长">13:18</span>
   </span>
 </div>
 <div class="busuanzi-count">
