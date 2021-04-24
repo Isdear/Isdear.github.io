@@ -10679,4 +10679,35 @@ X-Pingback: http:&#x2F;&#x2F;man.linuxde.net&#x2F;xmlrpc.php<span aria-hidden="t
         <tag>paper</tag>
       </tags>
   </entry>
+  <entry>
+    <title>JSON有序化</title>
+    <url>/2021/04/24/16/25/JSON%E6%9C%89%E5%BA%8F%E5%8C%96/</url>
+    <content><![CDATA[<p>将实体类转化为有序的Map。<span id="more"></span></p>
+<p>使用LinkedHashMap可以将Map变成有序的key-value类型。</p>
+<p>实体类：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Apple</span> apple <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Apple</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+apple<span class="token punctuation">.</span><span class="token function">setName</span><span class="token punctuation">(</span><span class="token string">"红富士"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+apple<span class="token punctuation">.</span><span class="token function">setColor</span><span class="token punctuation">(</span><span class="token string">"红色"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+apple<span class="token punctuation">.</span><span class="token function">setCount</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>转化：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">></span></span> map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedHashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">Field</span><span class="token punctuation">[</span><span class="token punctuation">]</span> fields <span class="token operator">=</span> apple<span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getDeclaredFields</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">Field</span> field <span class="token operator">:</span> fields<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    field<span class="token punctuation">.</span><span class="token function">setAccessible</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">String</span> name <span class="token operator">=</span> field<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> field<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>apple<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>结果：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">实体类转<span class="token class-name">Map</span>：<span class="token punctuation">&#123;</span>name<span class="token operator">=</span>红富士<span class="token punctuation">,</span> color<span class="token operator">=</span>红色<span class="token punctuation">,</span> count<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
 </search>
