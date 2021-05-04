@@ -10739,4 +10739,190 @@ apple<span class="token punctuation">.</span><span class="token function">setCou
         <tag>java</tag>
       </tags>
   </entry>
+  <entry>
+    <title>java生成docx模板</title>
+    <url>/2021/05/04/23/04/java%E7%94%9F%E6%88%90docx%E6%A8%A1%E6%9D%BF/</url>
+    <content><![CDATA[<p>java生成文档(docx)模板，设置各种属性。<span id="more"></span></p>
+<h3 id="引入依赖"><a href="#引入依赖" class="headerlink" title="引入依赖"></a>引入依赖</h3><p>保持jar版本一致</p>
+<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.apache.poi<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>poi<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>5.0.0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.apache.poi<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>poi-ooxml<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>5.0.0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="poi中各个jar包的作用"><a href="#poi中各个jar包的作用" class="headerlink" title="poi中各个jar包的作用"></a>poi中各个jar包的作用</h4><table>
+<thead>
+<tr>
+<th>Maven artifactId</th>
+<th>Prerequisites</th>
+<th>JAR</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>poi</td>
+<td>commons-logging, commons-codec, log4j</td>
+<td>poi-version-yyyymmdd.jar</td>
+</tr>
+<tr>
+<td>poi-scratchpad</td>
+<td>poi</td>
+<td>poi-scratchpad-version-yyyymmdd.jar</td>
+</tr>
+<tr>
+<td>poi-ooxml</td>
+<td>poi, poi-ooxml-schemas</td>
+<td>poi-ooxml-version-yyyymmdd.jar</td>
+</tr>
+<tr>
+<td>poi-ooxml-schemas</td>
+<td>xmlbeans</td>
+<td>poi-ooxml-schemas-version-yyyymmdd.jar</td>
+</tr>
+<tr>
+<td>poi-examples</td>
+<td>poi, poi-scratchpad, poi-ooxml</td>
+<td>poi-examples-version-yyyymmdd.jar</td>
+</tr>
+<tr>
+<td>ooxml-schemas</td>
+<td>xmlbeans</td>
+<td>ooxml-schemas-1.1.jar</td>
+</tr>
+</tbody></table>
+<h4 id="实际应用"><a href="#实际应用" class="headerlink" title="实际应用"></a>实际应用</h4><table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Application type</th>
+<th>Maven artifactId</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="http://poi.apache.org/poifs/index.html">POIFS</a></td>
+<td>OLE2 Filesystem</td>
+<td><em>poi</em></td>
+</tr>
+<tr>
+<td><a href="http://poi.apache.org/hpsf/index.html">HPSF</a></td>
+<td>OLE2 Property Sets</td>
+<td>poi</td>
+</tr>
+<tr>
+<td><a href="http://poi.apache.org/spreadsheet/index.html">HSSF</a></td>
+<td>Excel XLS</td>
+<td>poi</td>
+</tr>
+<tr>
+<td><a href="http://poi.apache.org/slideshow/index.html">HSLF</a></td>
+<td>PowerPoint PPT</td>
+<td>poi-scratchpad</td>
+</tr>
+<tr>
+<td><a href="http://poi.apache.org/document/index.html">HWPF</a></td>
+<td>Word DOC</td>
+<td>poi-scratchpad</td>
+</tr>
+<tr>
+<td><a href="http://poi.apache.org/hdgf/index.html">HDGF</a></td>
+<td>Visio VSD</td>
+<td>poi-scratchpad</td>
+</tr>
+<tr>
+<td><a href="http://poi.apache.org/hpbf/index.html">HPBF</a></td>
+<td>Publisher PUB</td>
+<td>poi-scratchpad</td>
+</tr>
+<tr>
+<td><a href="http://poi.apache.org/hsmf/index.html">HSMF</a></td>
+<td>Outlook MSG</td>
+<td>poi-scratchpad</td>
+</tr>
+<tr>
+<td><a href="http://poi.apache.org/oxml4j/index.html">OpenXML4J</a></td>
+<td>OOXML</td>
+<td>poi-ooxml plus one of poi-ooxml-schemas, ooxml-schemas</td>
+</tr>
+<tr>
+<td><a href="http://poi.apache.org/spreadsheet/index.html">XSSF</a></td>
+<td>Excel XLSX</td>
+<td>poi-ooxml</td>
+</tr>
+<tr>
+<td><a href="http://poi.apache.org/slideshow/index.html">XSLF</a></td>
+<td>PowerPoint PPTX</td>
+<td>poi-ooxml</td>
+</tr>
+<tr>
+<td><a href="http://poi.apache.org/document/index.html">XWPF</a></td>
+<td>Word DOCX</td>
+<td>poi-ooxml</td>
+</tr>
+<tr>
+<td><a href="http://poi.apache.org/spreadsheet/index.html">Common SS</a></td>
+<td>Excel XLS and XLSX</td>
+<td>poi-ooxml</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//文档对象</span>
+<span class="token class-name">XWPFDocument</span> xwpfd <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">XWPFDocument</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//创建段落</span>
+<span class="token class-name">XWPFParagraph</span> xwpfP <span class="token operator">=</span> xwpfd<span class="token punctuation">.</span><span class="token function">createParagraph</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//创建文本对象</span>
+<span class="token class-name">XWPFRun</span> xwpfRun <span class="token operator">=</span> xwpfP<span class="token punctuation">.</span><span class="token function">createRun</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="文本属性"><a href="#文本属性" class="headerlink" title="文本属性"></a>文本属性</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//默认：宋体（wps）/等线（office2016） 5号 两端对齐 单倍间距</span>
+xwpfRun<span class="token punctuation">.</span><span class="token function">setText</span><span class="token punctuation">(</span><span class="token string">"舜发于畎亩之中， 傅说举于版筑之间， 胶鬲举于鱼盐之中， 管夷吾举于士..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+xwpfRun<span class="token punctuation">.</span><span class="token function">setBold</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//加粗</span>
+xwpfRun<span class="token punctuation">.</span><span class="token function">setColor</span><span class="token punctuation">(</span><span class="token string">"BED4F1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//设置颜色--十六进制</span>
+xwpfRun<span class="token punctuation">.</span><span class="token function">setDoubleStrikethrough</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//双删除线</span>
+xwpfRun<span class="token punctuation">.</span><span class="token function">setEmbossed</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//浮雕字体----效果和印记（悬浮阴影）类似</span>
+xwpfRun<span class="token punctuation">.</span><span class="token function">setFontFamily</span><span class="token punctuation">(</span><span class="token string">"宋体"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//字体</span>
+xwpfRun<span class="token punctuation">.</span><span class="token function">setFontFamily</span><span class="token punctuation">(</span><span class="token string">"华文新魏"</span><span class="token punctuation">,</span> <span class="token class-name">FontCharRange</span><span class="token punctuation">.</span>cs<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//字体，范围----效果不详</span>
+xwpfRun<span class="token punctuation">.</span><span class="token function">setFontSize</span><span class="token punctuation">(</span><span class="token number">14</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//字体大小</span>
+xwpfRun<span class="token punctuation">.</span><span class="token function">setImprinted</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//印迹（悬浮阴影）---效果和浮雕类似</span>
+xwpfRun<span class="token punctuation">.</span><span class="token function">setItalic</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//斜体（字体倾斜）</span>
+xwpfRun<span class="token punctuation">.</span><span class="token function">setStrikeThrough</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//单删除线（新的替换Strike）</span>
+xwpfRun<span class="token punctuation">.</span><span class="token function">setSubscript</span><span class="token punctuation">(</span><span class="token class-name">VerticalAlign</span><span class="token punctuation">.</span>SUBSCRIPT<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//下标(吧当前这个run变成下标)---枚举</span>
+xwpfRun<span class="token punctuation">.</span><span class="token function">setTextPosition</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//设置两行之间的行间距</span>
+xwpfRun<span class="token punctuation">.</span><span class="token function">setUnderline</span><span class="token punctuation">(</span><span class="token class-name">UnderlinePatterns</span><span class="token punctuation">.</span>DASH_LONG<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//各种类型的下划线（枚举）</span>
+xwpfRun<span class="token punctuation">.</span><span class="token function">addBreak</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 类似换行的操作（html的  br标签）</span>
+xwpfRun<span class="token punctuation">.</span><span class="token function">addTab</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// tab键</span>
+xwpfRun<span class="token punctuation">.</span><span class="token function">addCarriageReturn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 回车键注意：addTab()和addCarriageReturn() 对setText()的使用先后顺序有关：比如先执行addTab,再写Text这是对当前这个Text的Table，反之是对下一个run的Text的Tab效果</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="写入"><a href="#写入" class="headerlink" title="写入"></a>写入</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">String</span> path <span class="token operator">=</span> <span class="token string">"F:\\WordTest"</span><span class="token punctuation">;</span>
+<span class="token class-name">String</span> fileName <span class="token operator">=</span> <span class="token string">"WordWrite.docx"</span><span class="token punctuation">;</span>
+<span class="token class-name">File</span> file <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span>path<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">OutputStream</span> stream <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+<span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
+    stream <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FileOutputStream</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span>file<span class="token punctuation">,</span> fileName<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    xwpfd<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>stream<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">IOException</span> e<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span> <span class="token keyword">finally</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>stream <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            stream<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">IOException</span> e<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
 </search>
