@@ -11006,4 +11006,185 @@ xwpfRun<span class="token punctuation">.</span><span class="token function">addC
         <tag>java</tag>
       </tags>
   </entry>
+  <entry>
+    <title>java生成word表格文档</title>
+    <url>/2021/05/16/21/14/java%E7%94%9F%E6%88%90word%E8%A1%A8%E6%A0%BC%E6%96%87%E6%A1%A3/</url>
+    <content><![CDATA[<p>Java通过POI创建表格文档写入数据。<span id="more"></span></p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">XWPFTable</span> xwpfT <span class="token operator">=</span> xwpfd<span class="token punctuation">.</span><span class="token function">createTable</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+xwpfT<span class="token punctuation">.</span><span class="token function">setWidthType</span><span class="token punctuation">(</span><span class="token class-name">TableWidthType</span><span class="token punctuation">.</span>AUTO<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> <span class="token number">2</span><span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    	xwpfT<span class="token punctuation">.</span><span class="token function">getRow</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getCell</span><span class="token punctuation">(</span>j<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setText</span><span class="token punctuation">(</span><span class="token string">"第"</span> <span class="token operator">+</span> i <span class="token operator">+</span> <span class="token string">"行"</span> <span class="token operator">+</span> <span class="token string">"第"</span> <span class="token operator">+</span> j <span class="token operator">+</span> <span class="token string">"列"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+xwpfd<span class="token punctuation">.</span><span class="token function">setTable</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> xwpfT<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>通过带有参数的函数创建一个表格，如果没有参数，默认创建一行一列的表格。</p>
+<p>设置表格列的宽度，<code>setWidthType()</code>是根据内容自动扩展，<code>setWidth()</code>直接数值表示宽度。</p>
+<p>获取对应的行和列输入内容。在表格指定位置新增一行<code>insertNewTableRow()</code>，<code>addRow()</code>在最后一行增加一行。</p>
+<p>最后将表格加入文档中。</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>office所有后缀对应的content-type</title>
+    <url>/2021/05/16/21/52/office%E6%89%80%E6%9C%89%E5%90%8E%E7%BC%80%E5%AF%B9%E5%BA%94%E7%9A%84content-type/</url>
+    <content><![CDATA[<p>office对应文档后缀类型<span id="more"></span></p>
+<table>
+<thead>
+<tr>
+<th align="left">后缀</th>
+<th align="left">MIME Type</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">.doc</td>
+<td align="left">application/msword</td>
+</tr>
+<tr>
+<td align="left">.dot</td>
+<td align="left">application/msword</td>
+</tr>
+<tr>
+<td align="left">.docx</td>
+<td align="left">application/vnd.openxmlformats-officedocument.wordprocessingml.document</td>
+</tr>
+<tr>
+<td align="left">.dotx</td>
+<td align="left">application/vnd.openxmlformats-officedocument.wordprocessingml.template</td>
+</tr>
+<tr>
+<td align="left">.docm</td>
+<td align="left">application/vnd.ms-word.document.macroEnabled.12</td>
+</tr>
+<tr>
+<td align="left">.dotm</td>
+<td align="left">application/vnd.ms-word.template.macroEnabled.12</td>
+</tr>
+<tr>
+<td align="left">.xls</td>
+<td align="left">application/vnd.ms-excel</td>
+</tr>
+<tr>
+<td align="left">.xlt</td>
+<td align="left">application/vnd.ms-excel</td>
+</tr>
+<tr>
+<td align="left">.xla</td>
+<td align="left">application/vnd.ms-excel</td>
+</tr>
+<tr>
+<td align="left">.xlsx</td>
+<td align="left">application/vnd.openxmlformats-officedocument.spreadsheetml.sheet</td>
+</tr>
+<tr>
+<td align="left">.xltx</td>
+<td align="left">application/vnd.openxmlformats-officedocument.spreadsheetml.template</td>
+</tr>
+<tr>
+<td align="left">.xlsm</td>
+<td align="left">application/vnd.ms-excel.sheet.macroEnabled.12</td>
+</tr>
+<tr>
+<td align="left">.xltm</td>
+<td align="left">application/vnd.ms-excel.template.macroEnabled.12</td>
+</tr>
+<tr>
+<td align="left">.xlam</td>
+<td align="left">application/vnd.ms-excel.addin.macroEnabled.12</td>
+</tr>
+<tr>
+<td align="left">.xlsb</td>
+<td align="left">application/vnd.ms-excel.sheet.binary.macroEnabled.12</td>
+</tr>
+<tr>
+<td align="left">.ppt</td>
+<td align="left">application/vnd.ms-powerpoint</td>
+</tr>
+<tr>
+<td align="left">.pot</td>
+<td align="left">application/vnd.ms-powerpoint</td>
+</tr>
+<tr>
+<td align="left">.pps</td>
+<td align="left">application/vnd.ms-powerpoint</td>
+</tr>
+<tr>
+<td align="left">.ppa</td>
+<td align="left">application/vnd.ms-powerpoint</td>
+</tr>
+<tr>
+<td align="left">.pptx</td>
+<td align="left">application/vnd.openxmlformats-officedocument.presentationml.presentation</td>
+</tr>
+<tr>
+<td align="left">.potx</td>
+<td align="left">application/vnd.openxmlformats-officedocument.presentationml.template</td>
+</tr>
+<tr>
+<td align="left">.ppsx</td>
+<td align="left">application/vnd.openxmlformats-officedocument.presentationml.slideshow</td>
+</tr>
+<tr>
+<td align="left">.ppam</td>
+<td align="left">application/vnd.ms-powerpoint.addin.macroEnabled.12</td>
+</tr>
+<tr>
+<td align="left">.pptm</td>
+<td align="left">application/vnd.ms-powerpoint.presentation.macroEnabled.12</td>
+</tr>
+<tr>
+<td align="left">.potm</td>
+<td align="left">application/vnd.ms-powerpoint.presentation.macroEnabled.12</td>
+</tr>
+<tr>
+<td align="left">.ppsm</td>
+<td align="left">application/vnd.ms-powerpoint.slideshow.macroEnabled.12</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>代码优化</title>
+    <url>/2021/05/11/21/47/%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/</url>
+    <content><![CDATA[<p> 日常代码优化<span id="more"></span></p>
+<ul>
+<li><p>把一个基本数据类型转为字符串，<code>基本数据类型.toString()</code>是最快的方式、<code>String.valueOf(数据)</code>次之、<code>数据+&quot;&quot;</code>最慢</p>
+</li>
+<li><p>遍历Map的方式有很多，通常场景下我们需要的是遍历Map中的Key和Value，那么推荐使用的、效率最高的方式是：</p>
+  <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">></span></span> hm <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    hm<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"111"</span><span class="token punctuation">,</span> <span class="token string">"222"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">Set</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Map<span class="token punctuation">.</span>Entry</span><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">></span><span class="token punctuation">></span></span> entrySet <span class="token operator">=</span> hm<span class="token punctuation">.</span><span class="token function">entrySet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">Iterator</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Map<span class="token punctuation">.</span>Entry</span><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">></span><span class="token punctuation">></span></span> iter <span class="token operator">=</span> entrySet<span class="token punctuation">.</span><span class="token function">iterator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>iter<span class="token punctuation">.</span><span class="token function">hasNext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token class-name">Map<span class="token punctuation">.</span>Entry</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">></span></span> entry <span class="token operator">=</span> iter<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>entry<span class="token punctuation">.</span><span class="token function">getKey</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"\t"</span> <span class="token operator">+</span> entry<span class="token punctuation">.</span><span class="token function">getValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>  如果你只是想遍历一下这个Map的key值，那用<code>Set&lt;String&gt; keySet = hm.keySet();</code>会比较合适一些</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
 </search>
