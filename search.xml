@@ -243,9 +243,38 @@
       </tags>
   </entry>
   <entry>
-    <title>SpringBoot</title>
+    <title>ConfigurationProperties注解</title>
     <url>/2021/06/09/23/42/ConfigurationProperties%E6%B3%A8%E8%A7%A3/</url>
-    <content><![CDATA[<p>@ConfigurationProperties注解在SpringBoot中的使用方法。<span id="more"></span></p>
+    <content><![CDATA[<p>@ConfigurationProperties注解在SpringBoot中的使用。在配置多数据源时用到了这个注释，详细了解一下。<span id="more"></span></p>
+<h3 id="基本使用方式"><a href="#基本使用方式" class="headerlink" title="基本使用方式"></a>基本使用方式</h3><p>获取配置文件的数据时，我们通常使用自带的@Value注解，在使用的类中声明一个final类型的常量，就可以随意是使用了。除了这一个还有一个注解，就是@ConfigurationProperties。不过这个注解是加在Bean上使用，指定配置数据的前缀，对应的配置数据就会自动加载到Bean中。</p>
+<p>示例：多数据源的数据库配置</p>
+<pre class="line-numbers language-properties" data-language="properties"><code class="language-properties"><span class="token comment">#主数据库</span>
+<span class="token attr-name">primary.spring.datasource.driver-class-name</span><span class="token punctuation">=</span><span class="token attr-value">com.mysql.cj.jdbc.Driver</span>
+<span class="token attr-name">primary.spring.datasource.jdbc-url</span><span class="token punctuation">=</span><span class="token attr-value">jdbc:mysql://localhost:3306/vueblog?useUnicode=true&amp;characterEncoding=utf8&amp;serverTimezone=GMT%2B8&amp;useSSL=false&amp;allowPublicKeyRetrieval=true</span>
+<span class="token attr-name">primary.spring.datasource.username</span><span class="token punctuation">=</span><span class="token attr-value">root</span>
+<span class="token attr-name">primary.spring.datasource.password</span><span class="token punctuation">=</span><span class="token attr-value">root</span>
+<span class="token comment">#备数据库</span>
+<span class="token attr-name">secondary.spring.datasource.driver-class-name</span><span class="token punctuation">=</span><span class="token attr-value">com.mysql.cj.jdbc.Driver</span>
+<span class="token attr-name">secondary.spring.datasource.jdbc-url</span><span class="token punctuation">=</span><span class="token attr-value">jdbc:mysql://localhost:3306/vueuser?useUnicode=true&amp;characterEncoding=utf8&amp;serverTimezone=GMT%2B8&amp;useSSL=false&amp;allowPublicKeyRetrieval=true</span>
+<span class="token attr-name">secondary.spring.datasource.username</span><span class="token punctuation">=</span><span class="token attr-value">root</span>
+<span class="token attr-name">secondary.spring.datasource.password</span><span class="token punctuation">=</span><span class="token attr-value">root</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>使用方式：在Bean方法上加上注解，在使用时，配置数据就会自动注入。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//主数据源配置</span>
+<span class="token annotation punctuation">@Primary</span>
+<span class="token annotation punctuation">@Bean</span><span class="token punctuation">(</span><span class="token string">"primary"</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@ConfigurationProperties</span><span class="token punctuation">(</span>prefix <span class="token operator">=</span> <span class="token string">"primary.spring.datasource"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token class-name">DataSource</span> <span class="token function">primaryDataSourceProperties</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	<span class="token keyword">return</span> <span class="token class-name">DataSourceBuilder</span><span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h3><p>在源码中，SpringBoot主要帮助我们做了两件事情：</p>
+<ul>
+<li><p>获取到使用@ConfigurationProperties的类。</p>
+</li>
+<li><p>解析配置文件，并把对应的值设置到我们的Bean中。</p>
+</li>
+</ul>
 ]]></content>
       <categories>
         <category>技术</category>
@@ -2611,8 +2640,7 @@ CREATE TABLE salesinfo( salesid int not null,customerid int not null, primary ke
   <entry>
     <title>Mybatis源码分析与技术原理</title>
     <url>/2021/05/30/22/28/Mybatis%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E4%B8%8E%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86/</url>
-    <content><![CDATA[<h1 id="Mybatis源码分析与技术原理"><a href="#Mybatis源码分析与技术原理" class="headerlink" title="Mybatis源码分析与技术原理"></a>Mybatis源码分析与技术原理</h1><span id="more"></span>
-
+    <content><![CDATA[<p>Mybatis源码分析与技术原理<span id="more"></span></p>
 <h2 id="Mybatis源码分析"><a href="#Mybatis源码分析" class="headerlink" title="Mybatis源码分析"></a>Mybatis源码分析</h2><h3 id="如何获取数据"><a href="#如何获取数据" class="headerlink" title="如何获取数据"></a>如何获取数据</h3><h4 id="mappers的加载方式"><a href="#mappers的加载方式" class="headerlink" title="mappers的加载方式"></a>mappers的加载方式</h4><h5 id="4中加载方式"><a href="#4中加载方式" class="headerlink" title="4中加载方式"></a>4中加载方式</h5><ul>
 <li>resource</li>
 <li>url</li>
@@ -11694,9 +11722,9 @@ X-Pingback: http:&#x2F;&#x2F;man.linuxde.net&#x2F;xmlrpc.php<span aria-hidden="t
     <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Timestamp</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><code>newFixedThreadPool</code>创建一个线程池，重复使用固定数量的线程在共享的无界队列上操作。</p>
-<p><code>supplyAsync</code>返回一个新的CompletableFuture，该CompletableFuture由在给定执行器中运行的任务异步完成，该任务的值通过调用给定的Supplier获得。</p>
-<p><code>thenAcceptAsync</code>返回一个新的CompletionStage，当此阶段正常完成时，使用此阶段的默认异步执行工具执行该阶段，并将此阶段的结果作为所提供函数的参数。</p>
+<p><code>newFixedThreadPool()</code>创建一个线程池，重复使用固定数量的线程在共享的无界队列上操作。</p>
+<p><code>supplyAsync()</code>返回一个新的CompletableFuture，该CompletableFuture由在给定执行器中运行的任务异步完成，该任务的值通过调用给定的Supplier获得。</p>
+<p><code>thenAcceptAsync()</code>返回一个新的CompletionStage，当此阶段正常完成时，使用此阶段的默认异步执行工具执行该阶段，并将此阶段的结果作为所提供函数的参数。</p>
 <h4 id="异步结果"><a href="#异步结果" class="headerlink" title="异步结果"></a>异步结果</h4><pre class="line-numbers language-none"><code class="language-none">main start
 task start execute
 2021-06-27 23:52:22.558
@@ -11740,6 +11768,108 @@ task executed
 4
 4<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>解析MongoDB中的Excel文件</title>
+    <url>/2021/06/29/00/39/%E8%A7%A3%E6%9E%90MongoDB%E4%B8%AD%E7%9A%84Excel%E6%96%87%E4%BB%B6/</url>
+    <content><![CDATA[<p>因为某些规定，所以导致必须绕一圈才能处理上传的文件。整个流程是前端上传文件到MongoDB数据库，获取到文件的MongoID，然后将ID传递给后端；后端获取ID之后读取MongoDB数据库获取文件，再获取文件的字节流，根据字节流创建Excel表格。<span id="more"></span></p>
+<h3 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h3><pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span> 
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span> 
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter-data-mongodb<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span> 
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><pre class="line-numbers language-properties" data-language="properties"><code class="language-properties"><span class="token attr-name">mongo.address</span><span class="token punctuation">=</span><span class="token attr-value">localhost:27001,localhost:27002,localhost:27003 </span>
+<span class="token attr-name">mongo.replica-set</span><span class="token punctuation">=</span><span class="token attr-value">reolicaName </span>
+<span class="token attr-name">mongo.database</span><span class="token punctuation">=</span><span class="token attr-value">databaseName </span>
+<span class="token attr-name">mongo.username</span><span class="token punctuation">=</span><span class="token attr-value">sherry </span>
+<span class="token attr-name">mongo.password</span><span class="token punctuation">=</span><span class="token attr-value">123456 </span>
+<span class="token attr-name">mongo.options.min-connections-per-host</span><span class="token punctuation">=</span><span class="token attr-value">20 </span>
+<span class="token attr-name">mongo.options.max-connections-per-host</span><span class="token punctuation">=</span><span class="token attr-value">20 </span>
+<span class="token attr-name">mongo.options.threads-allowed-to-block-for-connection-multiplier</span><span class="token punctuation">=</span><span class="token attr-value">5 </span>
+<span class="token attr-name">mongo.options.server-selection-timeout</span><span class="token punctuation">=</span><span class="token attr-value">30000 </span>
+<span class="token attr-name">mongo.options.max-wait-time</span><span class="token punctuation">=</span><span class="token attr-value">120000 </span>
+<span class="token attr-name">mongo.options.max-connection-idel-time</span><span class="token punctuation">=</span><span class="token attr-value">0 </span>
+<span class="token attr-name">mongo.options.max-connection-life-time</span><span class="token punctuation">=</span><span class="token attr-value">0 </span>
+<span class="token attr-name">mongo.options.connect-timeout</span><span class="token punctuation">=</span><span class="token attr-value">10000 </span>
+<span class="token attr-name">mongo.options.socket-timeout</span><span class="token punctuation">=</span><span class="token attr-value">0 </span>
+<span class="token attr-name">mongo.options.socket-keep-alive</span><span class="token punctuation">=</span><span class="token attr-value">false </span>
+<span class="token attr-name">mongo.options.ssl-enabled</span><span class="token punctuation">=</span><span class="token attr-value">false </span>
+<span class="token attr-name">mongo.options.ssl-invalid-host-name-allowed</span><span class="token punctuation">=</span><span class="token attr-value">false </span>
+<span class="token attr-name">mongo.options.always-use-m-beans</span><span class="token punctuation">=</span><span class="token attr-value">false </span>
+<span class="token attr-name">mongo.options.heartbeat-socket-timeout</span><span class="token punctuation">=</span><span class="token attr-value">20000 </span>
+<span class="token attr-name">mongo.options.heartbeat-connect-timeout</span><span class="token punctuation">=</span><span class="token attr-value">20000 </span>
+<span class="token attr-name">mongo.options.min-heartbeat-frequency</span><span class="token punctuation">=</span><span class="token attr-value">500 </span>
+<span class="token attr-name">mongo.options.heartbeat-frequency</span><span class="token punctuation">=</span><span class="token attr-value">10000 </span>
+<span class="token attr-name">mongo.options.local-threshold</span><span class="token punctuation">=</span><span class="token attr-value">15</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="根据ID获取文件"><a href="#根据ID获取文件" class="headerlink" title="根据ID获取文件"></a>根据ID获取文件</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">GridFS</span> gridFs <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">GridsFS</span><span class="token punctuation">(</span>mongoDbFactory<span class="token punctuation">.</span><span class="token function">getDb</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">DBObject</span> query <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BasicDBObject</span><span class="token punctuation">(</span><span class="token string">"_id"</span><span class="token punctuation">,</span><span class="token keyword">new</span> <span class="token class-name">ObjectId</span><span class="token punctuation">(</span>mongoid<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">GridFSDBFile</span> gridFSFile <span class="token operator">=</span> gridFs<span class="token punctuation">.</span><span class="token function">findOne</span><span class="token punctuation">(</span>query<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="通过字节流建立Excel表格"><a href="#通过字节流建立Excel表格" class="headerlink" title="通过字节流建立Excel表格"></a>通过字节流建立Excel表格</h3><pre class="line-numbers language-none"><code class="language-none">InputStream in &#x3D; gridFSFile.getInputStream();
+XSSFWorkbook wb &#x3D; new XSSFWorkbook(in);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>后面Excel的解析就不再赘述了。</p>
+<h3 id="GridFsTemplate说明"><a href="#GridFsTemplate说明" class="headerlink" title="GridFsTemplate说明"></a>GridFsTemplate说明</h3><p>GridFsTemplate是MongDB的一种构建模式，<strong>桶模式</strong>，意思就是吧所有的文档放到一起，没有集合。</p>
+<p><img src="/2021/06/29/00/39/%E8%A7%A3%E6%9E%90MongoDB%E4%B8%AD%E7%9A%84Excel%E6%96%87%E4%BB%B6/20190626162750903.png" alt></p>
+<p>这种模式在处理物联网（IOT）、实时分析或通用时间序列数据时特别有效。通过将数据放在一起，我们可以更容易地将数据组织成特定的组，提高发现历史趋势或提供未来预测的能力，同时还能对存储进行优化。</p>
+<h4 id="增删查操作"><a href="#增删查操作" class="headerlink" title="增删查操作"></a>增删查操作</h4><ul>
+<li><p>存储文件</p>
+  <pre class="line-numbers language-java" data-language="java"><code class="language-java"> <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">saveFile</span><span class="token punctuation">(</span><span class="token class-name">MultipartFile</span> file<span class="token punctuation">,</span> <span class="token class-name">String</span> fileName<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">DBObject</span> metaData <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BasicDBObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        metaData<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"createdDate"</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">InputStream</span> inputStream <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
+            inputStream <span class="token operator">=</span> file<span class="token punctuation">.</span><span class="token function">getInputStream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//            文件流：inputStream</span>
+<span class="token comment">//            fileName：文件的唯一标识id</span>
+<span class="token comment">//            file.getContentType():内容类型</span>
+<span class="token comment">//            metaData：元数据</span>
+            gridFsTemplate<span class="token punctuation">.</span><span class="token function">store</span><span class="token punctuation">(</span>inputStream<span class="token punctuation">,</span> fileName<span class="token punctuation">,</span> file<span class="token punctuation">.</span><span class="token function">getContentType</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> metaData<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">IOException</span> e<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            logger<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"mongDb上传原图错误"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> fileName<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>查询文件</p>
+  <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//根据文件的唯一标识检索对应的文件</span>
+<span class="token keyword">public</span> <span class="token class-name">GridFSFile</span> <span class="token function">getFile</span><span class="token punctuation">(</span><span class="token class-name">String</span> fileName<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span> <span class="token punctuation">&#123;</span>
+        logger<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"Getting file.."</span> <span class="token operator">+</span> fileName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">GridFSFile</span> result <span class="token operator">=</span> gridFsTemplate
+                <span class="token punctuation">.</span><span class="token function">findOne</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Query</span><span class="token punctuation">(</span><span class="token class-name">Criteria</span><span class="token punctuation">.</span><span class="token function">where</span><span class="token punctuation">(</span><span class="token string">"filename"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">is</span><span class="token punctuation">(</span>fileName<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>result <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>下载文件</p>
+  <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">GridFS</span> gridFs <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">GridsFS</span><span class="token punctuation">(</span>mongoDbFactory<span class="token punctuation">.</span><span class="token function">getDb</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">DBObject</span> query <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BasicDBObject</span><span class="token punctuation">(</span><span class="token string">"_id"</span><span class="token punctuation">,</span><span class="token keyword">new</span> <span class="token class-name">ObjectId</span><span class="token punctuation">(</span>mongoid<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">GridFSDBFile</span> gridFSFile <span class="token operator">=</span> gridFs<span class="token punctuation">.</span><span class="token function">findOne</span><span class="token punctuation">(</span>query<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">String</span> filePath <span class="token operator">=</span> <span class="token string">"D:"</span> <span class="token operator">+</span> <span class="token class-name">File</span><span class="token punctuation">.</span>separator<span class="token punctuation">;</span>
+<span class="token class-name">File</span> file <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span>filePath<span class="token punctuation">)</span><span class="token punctuation">;</span>
+gridFSFile<span class="token punctuation">.</span><span class="token function">writeTo</span><span class="token punctuation">(</span>file<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>删除文件</p>
+  <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//根据文件的唯一标识删除对应的文件</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">delete</span><span class="token punctuation">(</span><span class="token class-name">String</span> fileName<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        gridFsTemplate<span class="token punctuation">.</span><span class="token function">delete</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Query</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addCriteria</span><span class="token punctuation">(</span><span class="token class-name">Criteria</span><span class="token punctuation">.</span><span class="token function">where</span><span class="token punctuation">(</span><span class="token string">"filename"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">is</span><span class="token punctuation">(</span>fileName<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>  详情请参考<a href="https://docs.spring.io/spring-data/mongodb/docs/1.8.0.M1/api/org/springframework/data/mongodb/gridfs/GridFsTemplate.html">GridFsTemplate文档</a></p>
+</li>
+</ul>
+<h3 id="MongoDbFactory"><a href="#MongoDbFactory" class="headerlink" title="MongoDbFactory"></a>MongoDbFactory</h3><p>用于创建DB实例，连接MongoDB数据库。</p>
+<p>详情请参考<a href="https://docs.spring.io/spring-data/mongodb/docs/1.8.0.M1/api/org/springframework/data/mongodb/MongoDbFactory.html">MongoDbFactory</a></p>
 ]]></content>
       <categories>
         <category>技术</category>
