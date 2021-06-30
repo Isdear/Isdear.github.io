@@ -11785,36 +11785,23 @@ task executed
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter-data-mongodb<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span> 
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><pre class="line-numbers language-properties" data-language="properties"><code class="language-properties"><span class="token attr-name">mongo.address</span><span class="token punctuation">=</span><span class="token attr-value">localhost:27001,localhost:27002,localhost:27003 </span>
-<span class="token attr-name">mongo.replica-set</span><span class="token punctuation">=</span><span class="token attr-value">reolicaName </span>
-<span class="token attr-name">mongo.database</span><span class="token punctuation">=</span><span class="token attr-value">databaseName </span>
-<span class="token attr-name">mongo.username</span><span class="token punctuation">=</span><span class="token attr-value">sherry </span>
-<span class="token attr-name">mongo.password</span><span class="token punctuation">=</span><span class="token attr-value">123456 </span>
-<span class="token attr-name">mongo.options.min-connections-per-host</span><span class="token punctuation">=</span><span class="token attr-value">20 </span>
-<span class="token attr-name">mongo.options.max-connections-per-host</span><span class="token punctuation">=</span><span class="token attr-value">20 </span>
-<span class="token attr-name">mongo.options.threads-allowed-to-block-for-connection-multiplier</span><span class="token punctuation">=</span><span class="token attr-value">5 </span>
-<span class="token attr-name">mongo.options.server-selection-timeout</span><span class="token punctuation">=</span><span class="token attr-value">30000 </span>
-<span class="token attr-name">mongo.options.max-wait-time</span><span class="token punctuation">=</span><span class="token attr-value">120000 </span>
-<span class="token attr-name">mongo.options.max-connection-idel-time</span><span class="token punctuation">=</span><span class="token attr-value">0 </span>
-<span class="token attr-name">mongo.options.max-connection-life-time</span><span class="token punctuation">=</span><span class="token attr-value">0 </span>
-<span class="token attr-name">mongo.options.connect-timeout</span><span class="token punctuation">=</span><span class="token attr-value">10000 </span>
-<span class="token attr-name">mongo.options.socket-timeout</span><span class="token punctuation">=</span><span class="token attr-value">0 </span>
-<span class="token attr-name">mongo.options.socket-keep-alive</span><span class="token punctuation">=</span><span class="token attr-value">false </span>
-<span class="token attr-name">mongo.options.ssl-enabled</span><span class="token punctuation">=</span><span class="token attr-value">false </span>
-<span class="token attr-name">mongo.options.ssl-invalid-host-name-allowed</span><span class="token punctuation">=</span><span class="token attr-value">false </span>
-<span class="token attr-name">mongo.options.always-use-m-beans</span><span class="token punctuation">=</span><span class="token attr-value">false </span>
-<span class="token attr-name">mongo.options.heartbeat-socket-timeout</span><span class="token punctuation">=</span><span class="token attr-value">20000 </span>
-<span class="token attr-name">mongo.options.heartbeat-connect-timeout</span><span class="token punctuation">=</span><span class="token attr-value">20000 </span>
-<span class="token attr-name">mongo.options.min-heartbeat-frequency</span><span class="token punctuation">=</span><span class="token attr-value">500 </span>
-<span class="token attr-name">mongo.options.heartbeat-frequency</span><span class="token punctuation">=</span><span class="token attr-value">10000 </span>
-<span class="token attr-name">mongo.options.local-threshold</span><span class="token punctuation">=</span><span class="token attr-value">15</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><pre class="line-numbers language-properties" data-language="properties"><code class="language-properties"><span class="token attr-name">spring.data.mongodb.authentication-database</span> <span class="token attr-value">身份认证数据库名</span>
+<span class="token attr-name">spring.data.mongodb.database</span> <span class="token attr-value">数据库名</span>
+<span class="token attr-name">spring.data.mongodb.field-naming-strategy</span> <span class="token attr-value">要使用的 FieldNamingStrategy 的全限定名。</span>
+<span class="token attr-name">spring.data.mongodb.grid.fs.database</span> <span class="token attr-value">GridFS 数据库名称</span>
+<span class="token attr-name">spring.data.mongodb.host</span> <span class="token attr-value">MongoDB 服务器地址</span>
+<span class="token attr-name">spring.data.mongodb.username</span> <span class="token attr-value">MongoDB 账号</span>
+<span class="token attr-name">spring.data.mongodb.passwordMongoDB</span> <span class="token attr-value">密码</span>
+<span class="token attr-name">spring.data.mongodb.port</span> <span class="token attr-value">端口号</span>
+<span class="token attr-name">spring.data.mongodb.repositories.enabled</span> <span class="token attr-value">开启 Mongo 仓库（默认值：true）</span>
+<span class="token attr-name">spring.data.mongodb.uri</span> <span class="token attr-value">Mongo 数据库 URI。设置了该属性后就主机和端口号会被忽略。（默认值： mongodb:// localhost/test）</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="根据ID获取文件"><a href="#根据ID获取文件" class="headerlink" title="根据ID获取文件"></a>根据ID获取文件</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">GridFS</span> gridFs <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">GridsFS</span><span class="token punctuation">(</span>mongoDbFactory<span class="token punctuation">.</span><span class="token function">getDb</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token class-name">DBObject</span> query <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BasicDBObject</span><span class="token punctuation">(</span><span class="token string">"_id"</span><span class="token punctuation">,</span><span class="token keyword">new</span> <span class="token class-name">ObjectId</span><span class="token punctuation">(</span>mongoid<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token class-name">GridFSDBFile</span> gridFSFile <span class="token operator">=</span> gridFs<span class="token punctuation">.</span><span class="token function">findOne</span><span class="token punctuation">(</span>query<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="通过字节流建立Excel表格"><a href="#通过字节流建立Excel表格" class="headerlink" title="通过字节流建立Excel表格"></a>通过字节流建立Excel表格</h3><pre class="line-numbers language-none"><code class="language-none">InputStream in &#x3D; gridFSFile.getInputStream();
-XSSFWorkbook wb &#x3D; new XSSFWorkbook(in);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h3 id="通过字节流建立Excel表格"><a href="#通过字节流建立Excel表格" class="headerlink" title="通过字节流建立Excel表格"></a>通过字节流建立Excel表格</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">InputStream</span> in <span class="token operator">=</span> gridFSFile<span class="token punctuation">.</span><span class="token function">getInputStream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">XSSFWorkbook</span> wb <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">XSSFWorkbook</span><span class="token punctuation">(</span>in<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>后面Excel的解析就不再赘述了。</p>
 <h3 id="GridFsTemplate说明"><a href="#GridFsTemplate说明" class="headerlink" title="GridFsTemplate说明"></a>GridFsTemplate说明</h3><p>GridFsTemplate是MongDB的一种构建模式，<strong>桶模式</strong>，意思就是吧所有的文档放到一起，没有集合。</p>
