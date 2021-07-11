@@ -687,11 +687,11 @@ HEALTHCHECK [选项] CMD &lt;命令&gt; : 这边 CMD 后面跟随的命令使用
 <p>安装git部署插件:</p>
 <pre class="line-numbers language-none"><code class="language-none">npm install hexo-deployer-git --save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h5 id="服务器端运行"><a href="#服务器端运行" class="headerlink" title="服务器端运行"></a>服务器端运行</h5><p>可以通过下面的命令在本地服务器运行，在浏览器中输入 <a href="http://localhost:4000">http://localhost:4000</a> 即可，但是需要一直保持连接不断开:</p>
+<h5 id="服务器端运行"><a href="#服务器端运行" class="headerlink" title="服务器端运行"></a>服务器端运行</h5><p>可以通过下面的命令在本地服务器运行，在浏览器中输入 <a href="http://localhost:4000/">http://localhost:4000</a> 即可，但是需要一直保持连接不断开:</p>
 <pre class="line-numbers language-none"><code class="language-none">hexo server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>也可以利用SSH上传博客项目到GitHub的repository仓库上，就可以用网络直接访问仓库名即可打开博客。</p>
-<h6 id="创建GitHub账号"><a href="#创建GitHub账号" class="headerlink" title="创建GitHub账号"></a>创建GitHub账号</h6><p>在 <a href="https://github.com/">https://github.com/</a> 上注册账号，完成后，在 <a href="https://github.com">https://github.com</a> 页面点击右上角”+”的”new repository”创建自己的项目仓库，仓库名称是”自己的github名称.github.io”，例如我的github账号名称Isdear，仓库名即为”Isdear.github.io”。</p>
+<h6 id="创建GitHub账号"><a href="#创建GitHub账号" class="headerlink" title="创建GitHub账号"></a>创建GitHub账号</h6><p>在 <a href="https://github.com/">https://github.com/</a> 上注册账号，完成后，在 <a href="https://github.com/">https://github.com</a> 页面点击右上角”+”的”new repository”创建自己的项目仓库，仓库名称是”自己的github名称.github.io”，例如我的github账号名称Isdear，仓库名即为”Isdear.github.io”。</p>
 <h6 id="关联本地仓库"><a href="#关联本地仓库" class="headerlink" title="关联本地仓库"></a>关联本地仓库</h6><p>右键点击Git Bash Here进入命令界面，通过命令绑定账户。</p>
 <p>配置用户名</p>
 <pre class="line-numbers language-none"><code class="language-none">git config --global user.name &quot;yourname&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -742,7 +742,7 @@ hexo d<span aria-hidden="true" class="line-numbers-rows"><span></span><span></sp
 
 <h6 id="清除缓存"><a href="#清除缓存" class="headerlink" title="清除缓存"></a>清除缓存</h6><pre class="line-numbers language-none"><code class="language-none">hexo clean<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h5 id="撰写文章"><a href="#撰写文章" class="headerlink" title="撰写文章"></a>撰写文章</h5><p>因为Hexo是使用Markdown解析文章的，所以推荐使用Typora工具来编写文章 <a href="https://www.typora.io">https://www.typora.io</a> 。</p>
+<h5 id="撰写文章"><a href="#撰写文章" class="headerlink" title="撰写文章"></a>撰写文章</h5><p>因为Hexo是使用Markdown解析文章的，所以推荐使用Typora工具来编写文章 <a href="https://www.typora.io/">https://www.typora.io</a> 。</p>
 <p>使用hexo new title命令可以在source/_posts目录下生成一个md格式的文档，使用Typora打开，开始写我们的博客。在工具内你可以右键添加图片、代码块、公式块、链接、表格、脚注、分割线、段落等，这里不再一一说明，只说明一些右键没有说明的设置。</p>
 <h6 id="文章头部设置"><a href="#文章头部设置" class="headerlink" title="文章头部设置"></a>文章头部设置</h6><p>创建文章之后，文章里的头部来自模板，默认是scaffolds目录下的post.md，你可以修改模板来对文章进行说明。</p>
 <pre class="line-numbers language-none"><code class="language-none">title: Title 
@@ -756,6 +756,19 @@ categories: category <span aria-hidden="true" class="line-numbers-rows"><span></
 <pre class="line-numbers language-none"><code class="language-none">hexo g -d<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>重新生成静态文件重新部署。</p>
+<h5 id="Hexo版本升级"><a href="#Hexo版本升级" class="headerlink" title="Hexo版本升级"></a>Hexo版本升级</h5><h6 id="检查版本"><a href="#检查版本" class="headerlink" title="检查版本"></a>检查版本</h6><pre class="line-numbers language-none"><code class="language-none">hexo version<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h6 id="版本检查命令"><a href="#版本检查命令" class="headerlink" title="版本检查命令"></a>版本检查命令</h6><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">##安装检查命令
+npm install -g npm-check
+##检查
+npm-check<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h6 id="版本升级详情"><a href="#版本升级详情" class="headerlink" title="版本升级详情"></a>版本升级详情</h6><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">##安装检查命令
+npm install -g npm-upgrade
+##检查
+npm-upgrade<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这个命令执行完之后，就会出现当前版本与可升级版本的比较，然后让你选择是否升级，一直yes就行了。</p>
 ]]></content>
       <categories>
         <category>博客</category>
