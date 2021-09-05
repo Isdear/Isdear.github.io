@@ -6950,7 +6950,7 @@ npm info express<span aria-hidden="true" class="line-numbers-rows"><span></span>
 <span class="token keyword">WHERE</span> E<span class="token punctuation">.</span>RANK <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>对比查询结果：左边的是用一般的方法查询结果，右边的是分析函数查询结果（两种方法结果相同）</p>
-<p><img src="/2020/07/28/23/49/oracle%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/sql.jpg" alt></p>
+<p><img src="/2020/07/28/23/49/oracle%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/sql.jpg"></p>
 <h5 id="min-max-over-partition-by-…"><a href="#min-max-over-partition-by-…" class="headerlink" title="min()/max() over(partition by …)"></a>min()/max() over(partition by …)</h5><p>查询员工信息的同时，查询员工工资与所在部门最低、最高工资的差额</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> E<span class="token punctuation">.</span>ENAME<span class="token punctuation">,</span>
        E<span class="token punctuation">.</span>JOB<span class="token punctuation">,</span>
@@ -6995,7 +6995,7 @@ npm info express<span aria-hidden="true" class="line-numbers-rows"><span></span>
   <span class="token keyword">FROM</span> EMP E<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>结果如下：</p>
-<p><img src="/2020/07/28/23/49/oracle%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/oracle.jpg" alt></p>
+<p><img src="/2020/07/28/23/49/oracle%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/oracle.jpg"></p>
 <h5 id="lead-lag-over-partition-by-…-order-by-…-取前面-后面第n行记录"><a href="#lead-lag-over-partition-by-…-order-by-…-取前面-后面第n行记录" class="headerlink" title="lead()/lag() over(partition by … order by …) 取前面/后面第n行记录"></a>lead()/lag() over(partition by … order by …) 取前面/后面第n行记录</h5><p>说明：</p>
 <p>lead(列名,n,m): 当前记录后面第n行记录的&lt;列名&gt;的值，没有则默认值为m；如果不带参数n,m，则查找当前记录后面第一行的记录&lt;列名&gt;的值，没有则默认值为null。<br>lag(列名,n,m): 当前记录前面第n行记录的&lt;列名&gt;的值，没有则默认值为m；如果不带参数n,m，则查找当前记录前面第一行的记录&lt;列名&gt;的值，没有则默认值为null。</p>
 <p>示例：查询个人工资与比自己高一位、第一位的工资的差额</p>
@@ -7013,7 +7013,7 @@ npm info express<span aria-hidden="true" class="line-numbers-rows"><span></span>
    <span class="token keyword">FROM</span> EMP E<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>查询结果：</p>
-<p><img src="/2020/07/28/23/49/oracle%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/lead.jpg" alt></p>
+<p><img src="/2020/07/28/23/49/oracle%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/lead.jpg"></p>
 <h5 id="FIRST-VALUE-LAST-VALUE-OVER-PARTITION-BY-…-取首尾记录"><a href="#FIRST-VALUE-LAST-VALUE-OVER-PARTITION-BY-…-取首尾记录" class="headerlink" title="FIRST_VALUE/LAST_VALUE() OVER(PARTITION BY …) 取首尾记录"></a>FIRST_VALUE/LAST_VALUE() OVER(PARTITION BY …) 取首尾记录</h5><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> E<span class="token punctuation">.</span>EMPNO<span class="token punctuation">,</span>
         E<span class="token punctuation">.</span>ENAME<span class="token punctuation">,</span>
         E<span class="token punctuation">.</span>JOB<span class="token punctuation">,</span>
@@ -7036,7 +7036,7 @@ npm info express<span aria-hidden="true" class="line-numbers-rows"><span></span>
   <span class="token keyword">WHERE</span> E<span class="token punctuation">.</span>ROW_NUM <span class="token operator">></span> <span class="token number">3</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>查询结果：</p>
-<p><img src="/2020/07/28/23/49/oracle%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/row.jpg" alt></p>
+<p><img src="/2020/07/28/23/49/oracle%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/row.jpg"></p>
 <p>补充：</p>
 <p>类似分页的操作还可以用rownum、fetch(Oracle12C后的新特性)实现</p>
 <h5 id="sum-avg-count-over-partition-by"><a href="#sum-avg-count-over-partition-by" class="headerlink" title="sum/avg/count() over(partition by ..)"></a>sum/avg/count() over(partition by ..)</h5><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> E<span class="token punctuation">.</span>ENAME<span class="token punctuation">,</span>
@@ -7049,7 +7049,7 @@ npm info express<span aria-hidden="true" class="line-numbers-rows"><span></span>
   <span class="token keyword">FROM</span> EMP E<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>查询结果：</p>
-<p><img src="/2020/07/28/23/49/oracle%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/sum.jpg" alt></p>
+<p><img src="/2020/07/28/23/49/oracle%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/sum.jpg"></p>
 <p>示例2（全统计）：为数据集统计部门销售总和，全公司销售总和，部门销售均值，全公司销售均值</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> A<span class="token punctuation">.</span>DEPT_ID<span class="token punctuation">,</span>
        A<span class="token punctuation">.</span>SALE_DATE<span class="token punctuation">,</span>
@@ -7077,7 +7077,7 @@ npm info express<span aria-hidden="true" class="line-numbers-rows"><span></span>
   <span class="token keyword">FROM</span> EMP E<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>结果如下：</p>
-<p><img src="/2020/07/28/23/49/oracle%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/rows.jpg" alt></p>
+<p><img src="/2020/07/28/23/49/oracle%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/rows.jpg"></p>
 <p>写法二:</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> E<span class="token punctuation">.</span>DEPTNO<span class="token punctuation">,</span>
        E<span class="token punctuation">.</span>EMPNO<span class="token punctuation">,</span>
@@ -7099,7 +7099,7 @@ npm info express<span aria-hidden="true" class="line-numbers-rows"><span></span>
   <span class="token keyword">FROM</span> SCOTT<span class="token punctuation">.</span>EMP<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>结果如下：</p>
-<p><img src="/2020/07/28/23/49/oracle%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/rows2.jpg" alt></p>
+<p><img src="/2020/07/28/23/49/oracle%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/rows2.jpg"></p>
 <p>示例3：当前行至最后一行的汇总</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> EMPNO<span class="token punctuation">,</span>
        ENAME<span class="token punctuation">,</span>
@@ -7112,7 +7112,7 @@ npm info express<span aria-hidden="true" class="line-numbers-rows"><span></span>
   <span class="token keyword">FROM</span> SCOTT<span class="token punctuation">.</span>EMP<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>结果如下：</p>
-<p><img src="https://images2015.cnblogs.com/blog/540755/201706/540755-20170621140513538-1201638924.png" alt="img"></p>
+<p><img src="/2020/07/28/23/49/oracle%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/1201638924.png" alt="img"></p>
 <p>示例4：当前行的上一行(rownum-1)到当前行的汇总</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> EMPNO<span class="token punctuation">,</span>
        ENAME<span class="token punctuation">,</span>
@@ -7125,7 +7125,7 @@ npm info express<span aria-hidden="true" class="line-numbers-rows"><span></span>
   <span class="token keyword">FROM</span> SCOTT<span class="token punctuation">.</span>EMP<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>结果如下：</p>
-<p><img src="https://images2015.cnblogs.com/blog/540755/201706/540755-20170621140746882-1940488481.png" alt="img"></p>
+<p><img src="/2020/07/28/23/49/oracle%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/540755-20170621140746882-1940488481.png" alt="img"></p>
 <p>示例5：当前行的上一行(rownum-1)到当前行的下两行(rownum+2)的汇总 </p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> EMPNO<span class="token punctuation">,</span>
        ENAME<span class="token punctuation">,</span>
@@ -7138,7 +7138,7 @@ npm info express<span aria-hidden="true" class="line-numbers-rows"><span></span>
   <span class="token keyword">FROM</span> SCOTT<span class="token punctuation">.</span>EMP<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>结果如下：</p>
-<p><img src="https://images2015.cnblogs.com/blog/540755/201706/540755-20170621140921382-538208257.png" alt="img"></p>
+<p><img src="/2020/07/28/23/49/oracle%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/540755-20170621140921382-538208257.png" alt="img"></p>
 ]]></content>
       <categories>
         <category>数据库</category>
@@ -7810,23 +7810,6 @@ a<span class="token operator">=</span><span class="token punctuation">(</span><s
       </categories>
       <tags>
         <tag>sql</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>wireshark抓取微信小程序请求</title>
-    <url>/2020/09/27/20/00/wireshark%E6%8A%93%E5%8F%96%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E8%AF%B7%E6%B1%82/</url>
-    <content><![CDATA[<p>wireshark版本3.2.7<span id="more"></span></p>
-<h5 id="同一网络"><a href="#同一网络" class="headerlink" title="同一网络"></a>同一网络</h5><p>为了监控请求，请保证电脑与手机处以同一网络内。本次使用电脑连接无线网，开启热点，手机连接电脑热点。手机连接热点后，点击WiFi查看详情，切换下方的代理为<code>手动</code>，主机名为电脑的IP地址，端口号本次设置为8888，端口号不是固定的，可以随意设定，抓包的时候会用到，不要使用有冲突的端口号。</p>
-<h5 id="wireshark设置"><a href="#wireshark设置" class="headerlink" title="wireshark设置"></a>wireshark设置</h5><p>打开wireshark，选择<code>WLAN</code>捕获过滤器。在软件的输入过滤端口</p>
-<pre class="line-numbers language-none"><code class="language-none">tcp.port &#x3D;&#x3D; 8888<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>下方显示的分组即使所有的请求，点击任意分组，就可以看到分组的详细信息。</p>
-]]></content>
-      <categories>
-        <category>wireshark</category>
-      </categories>
-      <tags>
-        <tag>wireshark</tag>
       </tags>
   </entry>
   <entry>
@@ -11374,427 +11357,6 @@ X-Pingback: http:&#x2F;&#x2F;man.linuxde.net&#x2F;xmlrpc.php<span aria-hidden="t
       </tags>
   </entry>
   <entry>
-    <title>使用信念-愿望-意图模型在室内社交机器人中增加主动性的案例研究</title>
-    <url>/2019/12/24/23/26/%E4%BD%BF%E7%94%A8%E4%BF%A1%E5%BF%B5-%E6%84%BF%E6%9C%9B-%E6%84%8F%E5%9B%BE%E6%A8%A1%E5%9E%8B%E5%9C%A8%E5%AE%A4%E5%86%85%E7%A4%BE%E4%BA%A4%E6%9C%BA%E5%99%A8%E4%BA%BA%E4%B8%AD%E5%A2%9E%E5%8A%A0%E4%B8%BB%E5%8A%A8%E6%80%A7%E7%9A%84%E6%A1%88%E4%BE%8B%E7%A0%94%E7%A9%B6/</url>
-    <content><![CDATA[<p><strong>摘要</strong>：事实证明，机器人和机器人技术的兴起在不同方面都对人类有益。机器人技术从一个简单的按钮进化而来，多年来得到了大规模的发展。因此，它已经成为人类生活的一个组成部分，因为机器人被广泛应用，从室内使用到行星际任务。<span id="more"></span>最近，在商业室内空间使用社交机器人提供帮助或与人进行社交互动已经相当流行。因此，考虑到越来越多的社交机器人的使用，人们已经实施了许多工作来开发机器人，使他们能够像人类一样行动。这一发展背后的理念是，需要机器人在没有被要求的情况下提供服务。社交机器人应该更像人类那样思考，通过分析他们所处的环境，提出可能的、适合的行动建议。信念-愿望-意图是开发基于人类如何基于环境中获得的信息而行动的理性代理的最流行的模型之一。因此，这项工作定义于一个基础框架，将BDI集成到一个社交机器人中以添加主动行为的“像人一样”功能。该工作通过在由机器人操作系统(ROS)操纵的室内社交机器人Waldo中使用PROFETA BDI框架开发基于视觉的主动行动，从而验证了所提议的体系结构。</p>
-<p>关键字：社交机器人；积极主动性；信念-愿望-意图模型(BDI)；机器人操纵系统(ROS)</p>
-<h5 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h5><p>在这部分里，我们首先讨论社交机器人和主动性的概念以及在我们日常生活中的意义。然后，我们将这些概念融合在一起，从而通过使用信念-愿望-意图(BDI)模型在由机器人操作系统(ROS)驱动的室内社交机器人中增加主动性，从而形成创造附加价值的主要目标。</p>
-<h6 id="社交机器人"><a href="#社交机器人" class="headerlink" title="社交机器人"></a>社交机器人</h6><p>机器人的概念给人一种类似人类的机器的印象，主要是为他们的创造者服务的。机器人为人类服务的方式有着更广阔的范围。机器人可以用于日常的家务劳动和太空探索任务，这取决于他们是如何被制造的，以及他们身上安装了多少智能设备。随着时间的推移，一定机器人的方式从“一个为工厂组装产品而建造的机械人”转变为“一个人类能与之社交互动的实体”。社交机器人的诞生受到了生物学的启发，社交机器人最初是被用于学习蜂群或昆虫的行为[1]。后来，社交机器人被用于和人类互动。</p>
-<p>根据社交科学家Kate Darling称，”社交机器人是 一种身体上的体现，是一种在情感层面上与人类交流和互动的自主智能体“[2]。在这篇文章中区分社交机器人和无生命的计算机以及工业或服务机器人是很重要的（不是为了激发人类的情感和模仿社交线索设计的）。社交机器人也遵循社交行为模式，具有各种“心里状态”，并适应他们通过互动学习的内容。通常，社交机器人是以类人或类动物的形式与人类建立情感联系的，因为社交机器人的形式和形状非常重要。社会互动被期望类似于视觉和触觉感知的言语交流。根据这些交互作用，社交机器人可以分为以下几类[3]。</p>
-<ol>
-<li>社会唤起。这些机器人依靠人类的动作来产生一组特定的感受[4]。</li>
-<li>社会地位。这些机器人对来自它们所处的社会环境的感知做出反应。机器人能够区分环境中的社会主体和对象[1]。</li>
-<li>善于交际。这些机器人具有社会认知的模型，并且为了一些社会目标主动与人类接触[4]。</li>
-<li>社交智慧。这些机器人尝试头基于认知和社交能力模型来复制人类的社会职能[5]。</li>
-</ol>
-<p>对老年人的个人护理的需求的增长和技术的进步使得社交机器人可以广泛地用于老年人护理。社交机器人形式的辅助技术帮助老年人在家中独立生活。社交机器人可以提供广泛的互动服务，如远程护理和机器人辅助治疗。这种机器人也可以用于老年人的心理和认知障碍的病人护理[6]。一些社交机器人可以监测运动、血压、呼吸或心脏问题，并在出现任何危险或风险时向相关人员发出警告[7]。社交机器人也已广泛用于与儿童的互动。一个名为Arash的社交同伴机器人被建造来为儿科医院提供治疗干预[8]。社交机器人也被用来帮助患有癌症的儿童[8]。最近有报道称，社交机器人被用于教育和照顾发育障碍儿童[9]。主动机器人已被用作家教和同伴学习者，以提供教育[10]。因此，社交机器人目前被用于医院、家庭、购物中心和会议中心，与人们互动，以欢迎、交谈或照顾人们[11]。社交机器人在与人类互动、协助、服务和探索方面都面临挑战，它们以不同的方式帮助人类。对于这些应用程序，主动行为对于社交机器人是必要的。</p>
-<h6 id="主动性"><a href="#主动性" class="headerlink" title="主动性"></a>主动性</h6><p>社交机器人是自主的机器人，它按照一套为人类定义的社交规则与人类交流[12]。这些机器人使用三种不同的控制体系结构来决定对环境做出反应所需的动作——协商、反应和混合。在协商式控制中，机器人在决策时具有深思熟虑的能力，因为除了当前的传感器输入和刺激之外，机器人还具有与过去或未来状态相关的能力，可以采取相关的行动。反应控制类似于“刺激-反应”控制机制，在这种机制中，机器人通过紧密耦合感官输入和效应器输出，对不断变化的非结构化环境做出快速反应。在混合控制中，一个组件处理计划动作，而另一个组件处理通常不需要学习能力的即时反应。在混合架构中，两个不同的机制之间的耦合可能很困难，因为两个控制机制必须连续地相互通信。</p>
-<p>基于这些控制架构，一个社交机器人可以通过两种方式与人类互动。机器人可以被要求为人类做事，在这种情况下，机器人是被动的。相反，机器人能够在不被要求的情况下自动帮助用户，在这些案情况下，机器人是主动的。社交机器人中的主动性概念可能是有用的实用程序，因为社交机器人主要是为了以更人性化的方式与人类互动。附录A中包含了一个示例（从[13]中采用）来理解社交机器人的反应性行为与主动性行为之间的区别。</p>
-<h6 id="机器人操纵系统-ROS"><a href="#机器人操纵系统-ROS" class="headerlink" title="机器人操纵系统(ROS)"></a>机器人操纵系统(ROS)</h6><p>ROS是基于C ++的开源软件，它是用于机器人软件开发的通用软件框架，具有操作系统功能[14]。这些功能包括硬件抽象，底层设备控制，常用功能的实现，进程之间的消息传递以及程序包管理。它基于图形架构，其中每个节点从传感器，执行器接收/处理有关其状态的多个消息。 该操作系统在Linux（Ubuntu）上运行，并且可以在Windows中使用，但功能有所减少。 ROS创建了一个生态系统，其中称为节点的不同组件之间使用消息通信系统互连。 ROS是驱动商用室内机器人的关键驱动组件之一。</p>
-<h6 id="信念-愿望-意图模型-BDI"><a href="#信念-愿望-意图模型-BDI" class="headerlink" title="信念-愿望-意图模型(BDI)"></a>信念-愿望-意图模型(BDI)</h6><p>BDI是通过智能编程代理构建多代理系统的主要方法之一。 该模型受人类推理的启发，并基于三个实体，即信念，愿望和意图[15]。 它提供了一种机制，用于将选择行动的活动与当前活动计划的执行分开。 系统中的代理是根据这些实体定义的。 该模型还考虑了资源限制，以便在代理进行推理后产生意图。 BDI模型希望代理在动态环境中行动，以便代理的推理应考虑环境变化以采取行动。BDI模型的三个实体解释如下：</p>
-<ol>
-<li>信念。 信念是代表代理人信息状态的实体。 信念反映了机器人的知识。 信念存储在信念集中。</li>
-<li>愿望。 愿望是代表代理人的激励状态或代理人想要实现的目标，目的或情况的实体。 愿望是代理商想要完成的。</li>
-<li>意图。 意图是代表代理的审议状态的实体。 计划是代理为实现目标而采取的一系列动作。</li>
-</ol>
-<p>&emsp;&emsp;对于社交机器人，传感器输出会构建置信集，以根据不同参数的不同值来表示机器人周围的环境。 特定的信念集描述了机器人在特定时间所在的特定情况。 根据位置，为机器人定义一个目标，该目标可以称为“期望”。 BDI解释器或引擎根据情况从计划库中选择特定的行动（意图），该计划是意图的集合。</p>
-<h6 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h6><p>社交机器人已经成为我们生活中不可或缺的部分。从医院到像家一样的会议商店，都广泛使用社交机器人以一种或另一种方式与人类互动。现在，无论何时何地无法在特定任务中出现人员，社交机器人都可以替代人员。因此，希望机器人能够像人类一样发挥更多作用，而主动性可以成为此类机器人中的功能，它将使这种功能成为可能。许多研究试图发展机器人的主动行为。但是，当谈到由ROS提供动力的商业室内社交机器人时，还没有明确定义的系统架构和实现。考虑到此类机器人在商用室内环境中的影响，本研究试图探索增强此类商用室内社交机器人主动性的可能性。这项工作定义了一种清晰的方法，通过将基于人类推理的BDI框架集成到系统体系结构中，将社交机器人的不同活动实现为主动行为。这项工作通过在ROS操作的室内社交机器人Waldo中开发由PROFETA（BDI）框架实现的基于视觉的主动行为来验证实施。该研究的具体贡献如下：</p>
-<ol>
-<li>一个经过验证的模块化系统架构，具有模块化、灵活性和合理的工作分布等特点，有利于不同的逻辑块与ROS所控制的机器人集成，用于主动行为。</li>
-<li>为在日常生活应用的罗斯控制机器人中开发类人行为奠定了基础。</li>
-</ol>
-<p>&emsp;&emsp;论文的其余部分组织如下:第2节讨论相关工作，第3节解释案例研究的建立以及系统概述。第4节讨论结果，第5节总结论文。</p>
-<h5 id="相关工作"><a href="#相关工作" class="headerlink" title="相关工作"></a>相关工作</h5><p>在这一部分中，我们将描述不同BDI模型的背景，以及为集成机器人中的行为模型而构建的不同框架。此外，我们提出了不同的工作，研究人员试图将这些模型纳入机器人的各种日常生活应用。</p>
-<h6 id="BDI模型"><a href="#BDI模型" class="headerlink" title="BDI模型"></a>BDI模型</h6><p>&emsp;&emsp;当软件代理认知模型的设计开始发挥作用时，BDI模型是最流行的体系结构选择之一。BDI模型提供了信息态度、动机态度和协商承诺的显式和说明性表示。Myers等人将BDI模型分为两大类:B-DOING和Delegative模型。在B-DOING模型中，动机态度是高度适应的，而愿望与代理人的愿望相对应。此外，义务与其他代理人的责任相对应，规范与代理人在环境中所起作用的公约相对应。为代理创建的目标需要一致且可实现的[17]。根据目标的定义，计划执行的意图。在Delegative模型中，目标被定义为候选目标和采用目标[18]。候选目标是那些内部不一致的目标，而采用的目标是BDI模型中一致和连贯的目标。该模型甚至可以将用户指定的指导和来自用户的首选项合并为建议的形式。B-DOING框架缺乏主动性帮助目标类型之间的区别，而Delegative BDI框架缺乏动机态度类型之间的区别。</p>
-<h6 id="BDI框架"><a href="#BDI框架" class="headerlink" title="BDI框架"></a>BDI框架</h6><p>Russel等人开发了代理工厂框架，作为各种工具、平台和语言的开源集合，这些工具、平台和语言最终促进了多代理系统的开发和开发。Winikoff [20]构建了一个高度可移植、健壮和跨平台的环境，称为JACK，用于构建、运行和集成商用级的多代理系统。在称为JADE[21]的BDI框架中，代理平台可以分布在不同的独立机器之间，可以进行远程控制。甚至可以在运行时通过在实现期间将代理从一台机器移动到另一台机器来更改配置。Braubach 和 Pokahr [22]开发了一个基于XML和Java的JADEX框架，该框架遵循BDI模型，从工程角度简化了智能代理系统的构建。JASON是作为[24]AgentSpeak [23]的扩展而开发的超灵活平台，实现了该语言的语义，并为开发具有许多可定制特性的多代理系统提供了一个良好的平台。不同行为模型平台的比较如表1所示。</p>
-<p>​                                                        表1 不同信念-愿望-意图 (BDI)平台的比较。</p>
-<table>
-<thead>
-<tr>
-<th align="center">名称</th>
-<th align="center">主要领域</th>
-<th align="center">资源开放</th>
-<th align="center">学习能力</th>
-<th align="center">程序语言</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">AgentFactory</td>
-<td align="center">基于通用代理</td>
-<td align="center">是</td>
-<td align="center">平均</td>
-<td align="center">Java,AgentSpeak</td>
-</tr>
-<tr>
-<td align="center">JACK</td>
-<td align="center">动态复杂环境</td>
-<td align="center">否</td>
-<td align="center">容易</td>
-<td align="center">Java</td>
-</tr>
-<tr>
-<td align="center">JADE</td>
-<td align="center">由自治实体组成的分布式应用程序</td>
-<td align="center">是</td>
-<td align="center">容易</td>
-<td align="center">Java</td>
-</tr>
-<tr>
-<td align="center">JADEX</td>
-<td align="center">由自治BDI实体组成的分布式应用程序</td>
-<td align="center">是</td>
-<td align="center">容易</td>
-<td align="center">Java</td>
-</tr>
-<tr>
-<td align="center">BDI4JADE</td>
-<td align="center">企业应用程序</td>
-<td align="center">是</td>
-<td align="center">平均</td>
-<td align="center">Java</td>
-</tr>
-<tr>
-<td align="center">JASON</td>
-<td align="center">由自治BDI实体组成的分布式应用程序</td>
-<td align="center">是</td>
-<td align="center">容易</td>
-<td align="center">Java</td>
-</tr>
-<tr>
-<td align="center">PROFETA</td>
-<td align="center">由自主BDI实体和AI应用组成的分布式应用</td>
-<td align="center">是</td>
-<td align="center">容易</td>
-<td align="center">Python</td>
-</tr>
-<tr>
-<td align="center">SPYSE</td>
-<td align="center">分布式人工智能应用</td>
-<td align="center">是</td>
-<td align="center">平均</td>
-<td align="center">Python</td>
-</tr>
-<tr>
-<td align="center">SPADE</td>
-<td align="center">分布式多代理</td>
-<td align="center">否</td>
-<td align="center">平均</td>
-<td align="center">Python</td>
-</tr>
-</tbody></table>
-<p>ROS支持C++和Python编程语言，用于在其生态系统中的不同分布式节点之间进行通信。由于Python中有各种BDI框架，本研究考虑了pythonic框架。</p>
-<h6 id="BDI模型在机器人中的应用"><a href="#BDI模型在机器人中的应用" class="headerlink" title="BDI模型在机器人中的应用"></a>BDI模型在机器人中的应用</h6><p>该行为模型适用于研究机器人与人类的自然互动，以显示出主动行为。可以想象，机器人的前瞻性行为可以增加人机交互和使用机器人的实用价值。因此，与机器人主动行为有关的工作是采用混合启动方法启动的。 Finzi和Orlandini [25]为搜索和营救行动中使用的机器人开发了一种基于计划者混合启动方法的架构。该研究具有用于执行任务的基于模型的执行监视和反应性计划程序。亚当斯等人[26]提出了一种基于效果的人机交互的混合启动交互方法。机器人会主动检测人类的情绪变化，例如检测睡意和注意力不集中。由Acosta等人开发的机器人[27]通过监视活动并将任务定义为时间表来显示一些主动行为。 Satake等人[28]提出了一种行为模型来发起与在街上行走的行人的对话。 Shi等人的工作研究了开始与人交谈或互动的适当时间。 [29]。此外，Garrel等人 [30]提出了一种主动模型的行为模型，该模型试图说服人们以不同的行为和情感发起对话。由Araiza-Illan等进行的研究[31]提出使用BDI模型来提高机器人的逼真度和类人仿真水平。实现了一个自动测试台，用于模拟人形机器人与机器人操作系统和凉亭中的人员之间的协作任务组装。 Gottifredi等人开发了一种基于BDI架构的足球比赛机器人。 [32]允许在需要时基于高层推理和反应性来规范声明性目标驱动行为。 Duffy等人的工作[33]开发了一种以自我为中心的机器人控制策略的多层BDI架构，以使机器人能够进行明确的社交行为。 Pereira等人[34]提出了BDI体系结构的扩展，以情感BDI体系结构的形式支持人工情感。</p>
-<p>鉴于社交机器人主动性的现状，本研究试图扩展此类机器人的能力，将基于视觉的活动纳入社交机器人中。集成基于一个模块化架构，其他逻辑块可以很容易地集成到该架构上，以类似于人类思维的方式实现更高级的主动行为。</p>
-<h5 id="案例研究设置"><a href="#案例研究设置" class="headerlink" title="案例研究设置"></a>案例研究设置</h5><p>&emsp;&emsp;在本节中，我们将解释为开发社交机器人Waldo中的主动行为而创建的用例场景。此外，我们定义了一个基于现有技术的系统框架，将OpenCV和BDI推理的模块模块与ROS生态系统集成在一起，每一步的详细说明如下。</p>
-<h6 id="用例场景"><a href="#用例场景" class="headerlink" title="用例场景"></a>用例场景</h6><p>&emsp;&emsp;在本研究中，我们考虑在社交机器人中加入一种主动行为的基于视觉图像的活动。室内机器人Waldo的眼睛里安装了摄像头，从环境中收集图像。这些图像反馈有助于建立一种关于情况的信念。使用OpenCV中的人员检测模块处理摄像机提要。这个模块为机器人建立了一个关于环境中是否有人存在的信念。如果OpenCV模块检测到一个人，Waldo将设置一个目标，即在没有来自该人的任何显式命令的情况下问候该人。在这个实验中，机器人可以执行两个精确的动作。在检测到人之后，使用BDI框架，机器人用一句话问候被检测到的人。在一段固定的时间内，机器人不断地检测到这个人，它就会改变自己的信念，通过说出不同的句子来为这个人提供额外的帮助。对于这项工作，Waldo可以执行的操作仅限于语音，但是高级服务可以轻松地替换这些操作。这个规定是在实验中提出的，目的是为了展示信念是如何随着环境的变化而改变的，从而使机器人所采取的行动具有相关性和互动性。</p>
-<h6 id="社交室内机器人Waldo"><a href="#社交室内机器人Waldo" class="headerlink" title="社交室内机器人Waldo"></a>社交室内机器人Waldo</h6><p>&emsp;&emsp;本研究考虑的机器人是Waldo，它是浸入式机器人[35]制造的多服务机器人。Waldo是一款具有先进视觉能力的远程呈现服务机器人。机器人有一个Arduino卡用于基本的控制功能，还有一个安装了ROS的Linux卡作为操作系统，用于更高级和复杂的功能。Waldo的可调高度为130至170厘米。这个机器人可以自主操作激光雷达、声纳、麦克风和照相机。Waldo是一个人形的室内社交机器人，用于欢迎、交谈、理解和与人交流。Waldo的移动可以通过鼠标、键盘、操纵杆、平板电脑、智能手机、平板电脑或任何其他需要的外设进行远程控制。Waldo如图1所示。<img src="/2019/12/24/23/26/%E4%BD%BF%E7%94%A8%E4%BF%A1%E5%BF%B5-%E6%84%BF%E6%9C%9B-%E6%84%8F%E5%9B%BE%E6%A8%A1%E5%9E%8B%E5%9C%A8%E5%AE%A4%E5%86%85%E7%A4%BE%E4%BA%A4%E6%9C%BA%E5%99%A8%E4%BA%BA%E4%B8%AD%E5%A2%9E%E5%8A%A0%E4%B8%BB%E5%8A%A8%E6%80%A7%E7%9A%84%E6%A1%88%E4%BE%8B%E7%A0%94%E7%A9%B6/1.png" alt="图1 Waldo"></p>
-<h6 id="系统概述"><a href="#系统概述" class="headerlink" title="系统概述"></a>系统概述</h6><p>&emsp;&emsp;本研究的主要目的是利用现有的技术，开发一个灵活和模块化的框架，可以方便地将不同的模块集成到框架中，<br>这最终有助于ROS控制的社交机器人主动行为的发展。在室内模型中实现环境行为模型的整体系统概况如图2所示。安装在室内机器人Waldo上的不同传感器收集环境信息。摄像头、激光雷达和Kinect传感器帮助收集特定时刻的环境信息。信息被中继到Waldo PC，它通过无线连接连接到监控PC。由于Waldo PC的功能有限，计算密集型逻辑模块可以在功能更强大的监视PC上运行。逻辑模型负责从机器人传感器收集的环境数据中获取各种知识。基于这个知识库，BDI框架为任何给定的时刻建立信念和目标。框架还从预定义的计划列表中选择一组操作来实现目标。这些动作通过无线连接转发到Waldo PC，并指导Waldo中的不同执行器执行广泛的动作。ROS中的内部机制管理节点与Waldo PC之间的通信。安装了Linux和ROS的Waldo PC可以安装几个逻辑模块，或者监视PC以建立一个或多个关于环境的信念。逻辑层中的模块可以是BDI框架、用于视觉处理的OpenCV，以及用于建立关于环境的重要信念的其他智能模块。BDI框架响应已建立的信念，并为任何时刻设置目标。框架中的引擎从预定义的库中选择一个行动计划来实现目标。计划执行转发给Waldo PC，它在机器人中产生实际的动作来响应环境。可以使用通过无线网络连接到Waldo PC的监视PC来监视流操作。<img src="/2019/12/24/23/26/%E4%BD%BF%E7%94%A8%E4%BF%A1%E5%BF%B5-%E6%84%BF%E6%9C%9B-%E6%84%8F%E5%9B%BE%E6%A8%A1%E5%9E%8B%E5%9C%A8%E5%AE%A4%E5%86%85%E7%A4%BE%E4%BA%A4%E6%9C%BA%E5%99%A8%E4%BA%BA%E4%B8%AD%E5%A2%9E%E5%8A%A0%E4%B8%BB%E5%8A%A8%E6%80%A7%E7%9A%84%E6%A1%88%E4%BE%8B%E7%A0%94%E7%A9%B6/2.jpg" alt="图2 系统概述"></p>
-<h6 id="BDI建模"><a href="#BDI建模" class="headerlink" title="BDI建模"></a>BDI建模</h6><p>&emsp;&emsp;问题的BDI建模应该能够有效地回答以下问题。</p>
-<ul>
-<li>当采取行动?只要机器人发现房间里有人，它就会工作。因此，一个有效的人的检测机制应该集成到机器人。必须采用有效的块来触发动作。</li>
-<li>采取什么行动？机器人的动作很大程度上取决于对人的检测。这个动作可以是一个简单的问候语传递给某人，也可以是传递给提供帮助或根本不采取任何行动的人。</li>
-<li>如何执行这些操作?基于对环境的一系列信念，机器人可以决定采取行动。在任何检测到人的情况下，机器人会利用它的文本到语音节点说出句子来问候或帮助人们。对于不被发现的人，机器人可以故意保持空闲或进入睡眠模式。</li>
-</ul>
-<p>&emsp;&emsp;机器人眼睛上安装的摄像头收集周围的知识。在实验中，只使用了摄像机的输入。来自OpenCV的人员检测块用于显式地定义系统设计的信念。此外，目标和行动被相应地定义，以实现主动行为的用例。机器人可能采取的行动仅限于语言。根据案例的BDI模型，一组信念、愿望和意图研究定义如下:</p>
-<p><strong>Belief</strong>: personDetected(“Yes”), personDetected(“No”) and personDetected(“Next”)</p>
-<p><strong>Desire</strong>: DoNothing(), GreetPeople() and OfferHelp()</p>
-<p><strong>Intentions</strong>: stayIdle(), speak()</p>
-<hr>
-<p>PROFETA框架可以通过以下步骤来实现行为建模:</p>
-<p>算法1 PROFETA框架实现。</p>
-<p>1:导入必要的PROFETA库</p>
-<p>2:在脚本中将信念和目标定义为类</p>
-<p>3:通过创建类并覆盖execute()方法来定义用户操作</p>
-<p>4:启动PROFETA引擎</p>
-<p>5:使用声明性语法定义规则</p>
-<p>6 .发动引擎</p>
-<hr>
-<p>&emsp;&emsp;此外，PROFETA框架还促进了传感器类的定义，传感器类本身可以根据环境添加或删除一组信念。这可以在PROFETA中通过声明一个子类Sensor、重写sense（）方法并通知PROFETA引擎程序中添加了一个新的传感器来完成。PROFETA使用陈述性语言来表达代理人的行为。代理行为的声明性语法描述如下：“Event/”Condition“ &gt;&gt; ”setofActions”</p>
-<p>&emsp;&emsp;在这种声明性语法中，事件可以是信念断言或撤回、目标完成或请求，甚至是目标失败中的任何一个。语法中的条件是指一组特定的知识库，而操作可以是目标完成请求、用户定义的操作集或添加或删除信仰。这种语法可以举例说明：</p>
-<p>+objectAt(“A”, “B”)/objectGot(“no”) » [moveTo(“A”,“B”), pickObject()]</p>
-<h6 id="使用OpenCV进行人身检测"><a href="#使用OpenCV进行人身检测" class="headerlink" title="使用OpenCV进行人身检测"></a>使用OpenCV进行人身检测</h6><p>&emsp;&emsp;对于人的检测，开源计算机视觉库（OpenCV）是一个免费提供的用于计算机视觉和机器学习的开源库。OpenCV中的库和算法直接用于基于HOG特征直方图和支持向量机分类器的人体检测实验。OpenCV算法的性能改进超出了本文的研究范围。ROS有自己的图像格式，用于通过订阅和发布在节点之间进行通信。此图像格式必须转换为OpenCV格式才能使用OpenCV库进行人员检测。CvBridge是ROS中的一个库，它促进了ROS图像到OpenCV图像格式的转换，反之亦然。CvBridge接口如图3所示。<img src="/2019/12/24/23/26/%E4%BD%BF%E7%94%A8%E4%BF%A1%E5%BF%B5-%E6%84%BF%E6%9C%9B-%E6%84%8F%E5%9B%BE%E6%A8%A1%E5%9E%8B%E5%9C%A8%E5%AE%A4%E5%86%85%E7%A4%BE%E4%BA%A4%E6%9C%BA%E5%99%A8%E4%BA%BA%E4%B8%AD%E5%A2%9E%E5%8A%A0%E4%B8%BB%E5%8A%A8%E6%80%A7%E7%9A%84%E6%A1%88%E4%BE%8B%E7%A0%94%E7%A9%B6/3.jpg" alt="图3 CvBridge 接口"></p>
-<h6 id="实验装置"><a href="#实验装置" class="headerlink" title="实验装置"></a>实验装置</h6><p>&emsp;&emsp;测试用例在Waldo中实现，工作分布在两台PC上。工作站PC在Intel i5-5300U处理器上安装了Ubuntu 16.04，而Waldo PC在Intel(R) Atom(TM)处理器上安装了相同的操作系统。Waldo的主动行为在PROFETA的BDI框架中得到了很好的实现。</p>
-<h5 id="结果与讨论"><a href="#结果与讨论" class="headerlink" title="结果与讨论"></a>结果与讨论</h5><p>&emsp;&emsp;在本节中，我们将验证所提出的系统设计，以将各种逻辑模块(如BDI模型和OpenCV)集成到ROS中，实现主动行为。使用定性方法验证了所提出框架的功能，并研究了模块化、灵活性和合理的工作分配等几个特性。此外,我们详细解释了相关的发现，并对逻辑OpenCV模块的结果进行了定量分析。</p>
-<h6 id="系统架构中的工作分配"><a href="#系统架构中的工作分配" class="headerlink" title="系统架构中的工作分配"></a>系统架构中的工作分配</h6><p>&emsp;&emsp;该框架的一个重要特点是合理分配机器人主动行为开发所需的工作。本研究使用PROFETA的BDI框架的一个覆盖层来实现ROS中的测试用例。OpenCV库中的一个模块进行图像处理。该系统设计将操作分配到两台PC上，即安装在机器人和工作站PC上的Waldo PC。测试实验使用了ROS的分布式工作架构，将Waldo PC从繁重的图像处理中解脱出来。人员检测和实用推理模块(BDI框架)安装在一个功能相对强大的工作站PC上。在Waldo PC中处理实际操作和不同ROS节点的管理。这些操作不是计算密集型的。因此，所提出的体系结构在开发主动性行为时支持合理的工作分配。因此，更高级的活动可以被认为是一个扩展，因为更多的计算密集型模块可以很容易地集成到机器人中，这要感谢它的架构。更强大的机器可以承担工作站PC的角色，而Waldo PC可以承担信息收集和效应器的轻角色。此外，该框架允许我们添加额外的计算设备，以考虑各种主动行为所需的不同工作负载。这些功能也使所提议的框架具有灵活性。</p>
-<h6 id="用测试用例验证提出的系统设计"><a href="#用测试用例验证提出的系统设计" class="headerlink" title="用测试用例验证提出的系统设计"></a>用测试用例验证提出的系统设计</h6><p>&emsp;&emsp;该系统设计的验证主要研究了在Waldo的主动性行为展示过程中是否实现了灵活性、模块化和合理的工作分配。为了验证所提出的系统设计，我们在ROS生态系统内外创建了几个分布式节点。每个ROS节点分别用于摄像机馈送、人员检测块和语音块。不同的ROS节点通过主题消息相互通信。Roscore管理节点之间的通信。根据需要，可以创建和删除节点来添加或删除功能。可以在提议的框架内的任何计算设备中创建节点，从而提供灵活性和模块化。最初，摄像机节点发布Waldo眼睛收集的图像提要。转换器节点通过CvBridge接口订阅摄像机节点的主题消息，并将ROS图像转换为OpenCV图像。然后节点发布转换后的图像。在工作站PC中有一个名为person detector的节点，它订阅转换后的图像消息。该节点执行OpenCV库的person检测模块。在工作站PC中有一个名为BDI engine的附加节点，它订阅由person检测器发布的关于人员检测的消息。BDI引擎执行所有必要的行为建模，以发布最终由机器人完成的动作。还有另一个节点listener订阅BDI引擎节点并发布机器人中执行器的消息以执行操作。订阅侦听器的语音节点使机器人说出句子以达到目的。在广泛分布的ROS生态系统中，不同节点之间的整个交互作用如图4所示。从图中可以看出，主动行为所需的不同工作负载分布在Waldo PC和Workstation PC上。这种合理的工作分配是建议的框架的优点之一，可以根据需求轻松地添加或删除计算设备。此外，在建议的框架中，可以创建额外的逻辑块/模块作为ROS生态系统中的新节点，以开发社交机器人的额外功能。在我们的研究中，我们创建了一个节点，用于在人员检测期间机器人头部的移动，以演示所提出的框架中的模块化。新创建的节点与person检测器节点通信以创建任何移动。<img src="/2019/12/24/23/26/%E4%BD%BF%E7%94%A8%E4%BF%A1%E5%BF%B5-%E6%84%BF%E6%9C%9B-%E6%84%8F%E5%9B%BE%E6%A8%A1%E5%9E%8B%E5%9C%A8%E5%AE%A4%E5%86%85%E7%A4%BE%E4%BA%A4%E6%9C%BA%E5%99%A8%E4%BA%BA%E4%B8%AD%E5%A2%9E%E5%8A%A0%E4%B8%BB%E5%8A%A8%E6%80%A7%E7%9A%84%E6%A1%88%E4%BE%8B%E7%A0%94%E7%A9%B6/4.jpg" alt="图4 机器人操作系统(ROS)生态系统中不同节点之间的交互作用"></p>
-<h6 id="性能分析"><a href="#性能分析" class="headerlink" title="性能分析"></a>性能分析</h6><p>&emsp;&emsp;为了进行性能分析和评估，Waldo保持在走廊的固定位置。 装有相机的机器人眼睛的高度约为162厘米。 重复进行测试，其中自然光和人造光均会影响照明条件。</p>
-<p>&emsp;&emsp;图5和图6分别表示未检测到人员和检测到人员的情况下BDI动作和由安装在机器人中的摄像机收集的图像馈送的执行情况。当在图像供稿中未检测到人时，BDI引擎会建立对环境的信念，并建立不向人打招呼的目标。因此，引擎选择NoTalk的动作来实现该目标，如图5a所示。同样，当检测到人员时，BDI引擎会通过在工作站PC上运行的人员检测模块来启用遇到人员的信念。基于这种信念，引擎必须设定一个目标，要么向人们打招呼，要么向人们提供额外的帮助。为了两者之间的区别，我们添加了跟踪遇到该人多长时间的逻辑操作，如图6a中的计数器所示。基于在图像馈送中检测到的计数器和人员的值，BDI引擎建立了两个不同的信念集，需要两个不同的目标。实现问候对象目标的问候动作在图6a中表示为交谈动作。执行帮助动作以实现在更长的时间内连续检测到人时向他人提供帮助的目的。<img src="/2019/12/24/23/26/%E4%BD%BF%E7%94%A8%E4%BF%A1%E5%BF%B5-%E6%84%BF%E6%9C%9B-%E6%84%8F%E5%9B%BE%E6%A8%A1%E5%9E%8B%E5%9C%A8%E5%AE%A4%E5%86%85%E7%A4%BE%E4%BA%A4%E6%9C%BA%E5%99%A8%E4%BA%BA%E4%B8%AD%E5%A2%9E%E5%8A%A0%E4%B8%BB%E5%8A%A8%E6%80%A7%E7%9A%84%E6%A1%88%E4%BE%8B%E7%A0%94%E7%A9%B6/5.jpg" alt="图5 案例:未检测到人员(a) BDI执行情况(b) Waldo眼睛采集的图像"><img src="/2019/12/24/23/26/%E4%BD%BF%E7%94%A8%E4%BF%A1%E5%BF%B5-%E6%84%BF%E6%9C%9B-%E6%84%8F%E5%9B%BE%E6%A8%A1%E5%9E%8B%E5%9C%A8%E5%AE%A4%E5%86%85%E7%A4%BE%E4%BA%A4%E6%9C%BA%E5%99%A8%E4%BA%BA%E4%B8%AD%E5%A2%9E%E5%8A%A0%E4%B8%BB%E5%8A%A8%E6%80%A7%E7%9A%84%E6%A1%88%E4%BE%8B%E7%A0%94%E7%A9%B6/6.jpg" alt="图6 案例：检测到人员（a）执行BDI和（b）Waldo的眼睛收集到的图像供稿。此外，我们在两个不同的场景中考虑了距机器人的不同距离，测试了整个系统的工作情况。 表2和表3给出了性能分析。"></p>
-<p>​                                                            表2.验证工作的距离考虑</p>
-<table>
-<thead>
-<tr>
-<th align="center">距离</th>
-<th align="center"></th>
-<th align="center">场景1</th>
-<th align="center"></th>
-<th align="center"></th>
-<th align="center">场景2</th>
-<th align="center"></th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">人与相机</td>
-<td align="center">准确</td>
-<td align="center">误报</td>
-<td align="center">漏报</td>
-<td align="center">准确</td>
-<td align="center">误报</td>
-<td align="center">漏报</td>
-</tr>
-<tr>
-<td align="center">&lt;2 m</td>
-<td align="center">253</td>
-<td align="center">160</td>
-<td align="center">187</td>
-<td align="center">175</td>
-<td align="center">160</td>
-<td align="center">265</td>
-</tr>
-<tr>
-<td align="center">2–10 m</td>
-<td align="center">401</td>
-<td align="center">87</td>
-<td align="center">112</td>
-<td align="center">354</td>
-<td align="center">114</td>
-<td align="center">132</td>
-</tr>
-</tbody></table>
-<p>​                                                            表3.准确性和召回率评估</p>
-<table>
-<thead>
-<tr>
-<th align="center">距离</th>
-<th align="center"></th>
-<th align="center">场景1</th>
-<th align="center"></th>
-<th align="center"></th>
-<th align="center">场景2</th>
-<th align="center"></th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">人与相机</td>
-<td align="center">精度</td>
-<td align="center">召回</td>
-<td align="center">F1 分数</td>
-<td align="center">准确</td>
-<td align="center">召回</td>
-<td align="center">F1 分数</td>
-</tr>
-<tr>
-<td align="center">&lt;2 m</td>
-<td align="center">0.612</td>
-<td align="center">0.575</td>
-<td align="center">0.593</td>
-<td align="center">0.52</td>
-<td align="center">0.398</td>
-<td align="center">0.451</td>
-</tr>
-<tr>
-<td align="center">2–10 m</td>
-<td align="center">0.822</td>
-<td align="center">0.782</td>
-<td align="center">0.801</td>
-<td align="center">0.756</td>
-<td align="center">0.728</td>
-<td align="center">0.742</td>
-</tr>
-</tbody></table>
-<p>&emsp;&emsp;整个系统的性能分析表明，机器人在2-10 m以上的区域表现较差。场景1的准确率和召回率分别为0.822和0.782，场景2的准确率和召回率分别为0.756和0.728。与场景1相比，场景2有更多的光照不一致。测试期间的漏报和准确（如图7和8所示）是由于物体移动引起的照明条件变化引起的。此外，这些负面因素是由几种光源（自然和人工）形成的人的阴影造成的。由于数据集分布不均，我们还针对每种情况计算了F1-Score。对于场景1，在2-10 m的区域中，最佳F1分数为0.801。 F1分数的高值（接近1）表明模块在检测到人时的效率，从而使机器人可以表现出主动的招呼行为并为被检测到的人提供帮助。与精度和召回率的分析相似，场景2的F1得分在&lt;2 m范围内最低，这突出说明了逻辑块在该位置执行的效率不高。此外，我们绘制了实验的精确召回曲线，如图9所示。该曲线还证实了这一发现，并确定了场景1（2-10 m区域）中模块的最佳性能，作为该曲线下的面积。情况是最高的（请参见图9）。模块的性能受多种因素影响，例如人造光，阴影，多种光源以及相机与人之间的距离。通过增强OpenCV逻辑块的性能，可以提高给定测试用例中系统设计的准确性。<img src="/2019/12/24/23/26/%E4%BD%BF%E7%94%A8%E4%BF%A1%E5%BF%B5-%E6%84%BF%E6%9C%9B-%E6%84%8F%E5%9B%BE%E6%A8%A1%E5%9E%8B%E5%9C%A8%E5%AE%A4%E5%86%85%E7%A4%BE%E4%BA%A4%E6%9C%BA%E5%99%A8%E4%BA%BA%E4%B8%AD%E5%A2%9E%E5%8A%A0%E4%B8%BB%E5%8A%A8%E6%80%A7%E7%9A%84%E6%A1%88%E4%BE%8B%E7%A0%94%E7%A9%B6/7.jpg" alt="图7 漏报"><img src="/2019/12/24/23/26/%E4%BD%BF%E7%94%A8%E4%BF%A1%E5%BF%B5-%E6%84%BF%E6%9C%9B-%E6%84%8F%E5%9B%BE%E6%A8%A1%E5%9E%8B%E5%9C%A8%E5%AE%A4%E5%86%85%E7%A4%BE%E4%BA%A4%E6%9C%BA%E5%99%A8%E4%BA%BA%E4%B8%AD%E5%A2%9E%E5%8A%A0%E4%B8%BB%E5%8A%A8%E6%80%A7%E7%9A%84%E6%A1%88%E4%BE%8B%E7%A0%94%E7%A9%B6/8.jpg" alt="图8 误报"><img src="/2019/12/24/23/26/%E4%BD%BF%E7%94%A8%E4%BF%A1%E5%BF%B5-%E6%84%BF%E6%9C%9B-%E6%84%8F%E5%9B%BE%E6%A8%A1%E5%9E%8B%E5%9C%A8%E5%AE%A4%E5%86%85%E7%A4%BE%E4%BA%A4%E6%9C%BA%E5%99%A8%E4%BA%BA%E4%B8%AD%E5%A2%9E%E5%8A%A0%E4%B8%BB%E5%8A%A8%E6%80%A7%E7%9A%84%E6%A1%88%E4%BE%8B%E7%A0%94%E7%A9%B6/9.jpg" alt="图9 精度-召回 曲线"></p>
-<h6 id="限制"><a href="#限制" class="headerlink" title="限制"></a>限制</h6><p>&emsp;&emsp;在这项研究中，不考虑没有人的全身的图像帧。由于摄像机放置在一定的高度上，头部的角度运动是有限的，所以摄像机无法覆盖小于一米的距离。因此，机器人前方不到2米的区域是一个盲点。这种盲点在人的检测方面表现不佳。此外，在约10 m的距离之外，人检测模块无法检测到人。至于系统设计，该架构仍然提供模块化和灵活性。整个系统的准确性在很大程度上取决于用于开发机器人主动行为的逻辑块。除了逻辑块的局限性之外，本研究更多地关注了所提出的框架的定性验证，其中研究了模块性、灵活性和合理的工作分布等特征。这项工作主要是在开发一个基本灵活的基础上，利用现有的和自由可用的工具来开发社会机器人中的主动行为。由于没有现成的可比较的体系结构和案例研究，本文不包括比较分析。此外，社交机器人的先进能力目前也未被考虑。这些研究的局限性将在未来得到加强。</p>
-<h5 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h5><p>&emsp;&emsp;最近，在商业空间（包括家庭）中，类人和类动物室内社交机器人的兴起，使得这些机器人的“类人行为”行为成为一种更友好的人机交互的必要条件。这种社交机器人的主动性为机器人增加了更多的效用。因此，在本文中，我们提出了一个在室内商业社交机器人中这种主动行为的验证用例，Waldo由行为模型框架PROFETA支持。我们明确地定义了具有灵活性、模块性和合理工作分布的基本系统体系结构，以将BDI框架集成到ROS的分布式生态系统中。在该体系结构中，多个ROS节点可以通过无线通信在多台机器上独立创建。我们演示了如何使用外部模块（如OpenCV库）以即插即用的方式增强室内机器人的能力。我们希望所提出的系统架构奠定了坚实的基础，以开发广泛的主动行为在室内社会机器人的行为和行为像一个人。通过在所提出的体系结构中添加各种逻辑模块，可以实现这种行为。</p>
-<p>&emsp;&emsp;通过机器人的基本动作验证了所提出的结构的有效性。目前正在进行初步工作，将人工智能的各个模块集成到所提出的体系结构中，以便在机器人中开发更多的智能动作。Waldo可以执行的操作的扩展也在进行中。未来的工作可以集中在通过使用机器人中多个传感器收集的数据，在人类推理范式BDI中建立更精确的信念。除了相机，激光雷达和Kinect传感器可以更好地代表环境的状态。在机器人的行为方面，进一步的工作可以集中在融合机器人的自主导航来实现基于不同信念的目标设置上。学习机制的加入，不断完善，可以看作是一个必不可少的延伸。</p>
-<p><strong>&emsp;&emsp;作者贡献</strong>：U.K.C.促成了项目概念化、文献综述、方法论、工具集成、测试、验证和实验。J.C. 协助项目开发、管理、概念化、方法、验证和监督。两位作者都对论文的撰写、评论和编辑做出了贡献。</p>
-<p><strong>&emsp;&emsp;资金</strong>：这个调查没有收到外部的资金。</p>
-<p><strong>&emsp;&emsp;致谢</strong>：作者感谢Orange Labs, Lannion的Home and Family Communication (HFC)团队所有成员在项目期间给予的帮助和支持。同时，作者也非常感谢在论文发表的各个阶段帮助我们提高论文质量的每一个人。</p>
-<p><strong>&emsp;&emsp;利益冲突</strong>:作者声明没有利益冲突。</p>
-<p>附录 A</p>
-<p>​                                                                        表A1 反应性和主动性行为</p>
-<table>
-<thead>
-<tr>
-<th align="center"></th>
-<th align="center">反应性</th>
-<th align="center">主动性</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">User</td>
-<td align="center">Could you  help me?</td>
-<td align="center"><strong>It seems like your computer</strong></td>
-</tr>
-<tr>
-<td align="center">Robot</td>
-<td align="center">Yes, What  is wrong?</td>
-<td align="center"><strong>is  not responding, let me know if I can do anything?</strong></td>
-</tr>
-<tr>
-<td align="center">User</td>
-<td align="center">It seems like my computer is not  responding</td>
-<td align="center">Could you  help me?</td>
-</tr>
-<tr>
-<td align="center">Robot</td>
-<td align="center">You should  end the process</td>
-<td align="center">You should  end the process</td>
-</tr>
-<tr>
-<td align="center"></td>
-<td align="center">by  pressing ALT+CTRL+DEL.</td>
-<td align="center">by  pressing ALT+CTRL+DEL.</td>
-</tr>
-<tr>
-<td align="center">User</td>
-<td align="center">Won’t that  restart my computer?</td>
-<td align="center">Won’t that  restart my computer?</td>
-</tr>
-<tr>
-<td align="center">Robot</td>
-<td align="center">Don’t  worry; it will just</td>
-<td align="center">Don’t  worry; it will just</td>
-</tr>
-<tr>
-<td align="center"></td>
-<td align="center">end the  process.</td>
-<td align="center">end the  process.</td>
-</tr>
-<tr>
-<td align="center">User</td>
-<td align="center">Hmm, it’s  not doing anything.</td>
-<td align="center">OK</td>
-</tr>
-<tr>
-<td align="center">Robot</td>
-<td align="center">Press  ALT+CTRL+DEL together.</td>
-<td align="center">Press  ALT+CTRL+DEL together.</td>
-</tr>
-<tr>
-<td align="center">User</td>
-<td align="center">Ok and  now?</td>
-<td align="center">Then you  should end the process.</td>
-</tr>
-<tr>
-<td align="center">Robot</td>
-<td align="center">Then you  should end the process.</td>
-<td align="center"><strong>Do you have a back-up?</strong></td>
-</tr>
-<tr>
-<td align="center">User</td>
-<td align="center">But then I  lost my work?</td>
-<td align="center">I’m not  sure.</td>
-</tr>
-<tr>
-<td align="center">Robot</td>
-<td align="center">Don’t  worry your computer makes a</td>
-<td align="center">Don’t  worry your computer makes a</td>
-</tr>
-<tr>
-<td align="center"></td>
-<td align="center">backup  every five minutes</td>
-<td align="center">backup  every five minutes</td>
-</tr>
-<tr>
-<td align="center">User</td>
-<td align="center">How can I  find a backup?</td>
-<td align="center">Where is  my backup?</td>
-</tr>
-<tr>
-<td align="center">Robot</td>
-<td align="center">You can  open your program</td>
-<td align="center">To find  your program, you can</td>
-</tr>
-<tr>
-<td align="center"></td>
-<td align="center">again and  select the file.</td>
-<td align="center">open your program again and  select the file. Try it!</td>
-</tr>
-</tbody></table>
-<h6 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h6><ol>
-<li><p>Fong, T.; Nourbakhsh, I.; Dautenhahn, K. A survey of socially interactive robots. <em>Robot. Auton. Syst.</em> <strong>2003</strong>, <em>42</em>, 143–166.</p>
-</li>
-<li><p>Campa, R. The rise of social robots: a review of the recent literature. <em>J. Evol. Technol.</em> <strong>2016</strong>, <em>26</em>, 106–113.</p>
-</li>
-<li><p>Dautenhahn, K. Socially intelligent robots: dimensions of human–robot interaction. <em>Philos. Trans. R. Soc. B Biol. Sci.</em> <strong>2007</strong>, <em>362</em>, 679–704.</p>
-</li>
-<li><p>Breazeal, C.L. <em>Designing Sociable Robots</em>; MIT Press: Cambridge, MA, USA, 2004.</p>
-</li>
-<li><p>Dautenhahn, K. The art of designing socially intelligent agents: Science, fiction, and the human in the loop.</p>
-</li>
-</ol>
-<p><em>Appl. Artif. Intell.</em> <strong>1998</strong>, <em>12</em>, 573–617.</p>
-<ol start="6">
-<li>Ferland, F.; Agrigoroaie, R.; Tapus, A. Assistive Humanoid Robots for the Elderly with Mild Cognitive</li>
-</ol>
-<p>Impairment. In <em>Humanoid Robotics: A Reference</em>; Springer: Berlin/Heidelberg, Germany, 2019; pp. 2377–2396.</p>
-<ol start="7">
-<li>Flandorfer, P. Population ageing and socially assistive robots for elderly persons: The importance of sociodemographic factors for user acceptance. <em>Int. J. Popul. Res.</em> <strong>2012</strong>, <em>2012</em>, 829835.</li>
-<li>Meghdari, A.; Shariati, A.; Alemi, M.; Vossoughi, G.R.; Eydi, A.; Ahmadi, E.; Mozafari, B.; Amoozandeh Nobaveh, A.; Tahami, R. Arash: A social robot buddy to support children with cancer in a hospital environment. <em>Proc. Inst. Mech. Eng. Part H J. Eng. Med.</em> <strong>2018</strong>, <em>232</em>, 605–618.</li>
-<li>Conti, D.; Di Nuovo, S.; Buono, S.; Di Nuovo, A. Robots in education and care of children with developmental disabilities: a study on acceptance by experienced and future professionals. <em>Int. J. Soc. Robot.</em> <strong>2017</strong>, <em>9</em>, 51–62. </li>
-<li>Belpaeme, T.; Kennedy, J.; Ramachandran, A.; Scassellati, B.; Tanaka, F. Social robots for education: A review.</li>
-</ol>
-<p><em>Sci. Robot.</em> <strong>2018</strong>, <em>3</em>, eaat5954.</p>
-<ol start="11">
-<li><p>Siciliano, B.; Khatib, O. <em>Springer Handbook of Robotics</em>; Springer: Berlin/Heidelberg, Germany, 2016.</p>
-</li>
-<li><p>Bartneck, C.; Forlizzi, J. A design-centred framework for social human-robot interaction. In Proceedings of the RO-MAN 2004. 13th IEEE International Workshop on Robot and Human Interactive Communication (IEEE Catalog No. 04TH8759), Kurashiki, Japan, 22–22 September 2004; pp. 591–594.</p>
-</li>
-<li><p>Kemper, N. Effects of Proactive Behavior and Physical Interaction with a Social Robot. Master’s Thesis, University of Amsterdam, Amsterdam, The Netherlands, 2009.</p>
-</li>
-<li><p>Quigley, M.; Conley, K.; Gerkey, B.; Faust, J.; Foote, T.; Leibs, J.; Wheeler, R.; Ng, A.Y. ROS: An open-source Robot Operating System. In Proceedings of the ICRA Workshop on Open Source Software, Kobe, Japan, 17 May 2009; Volume 3, p. 5.</p>
-</li>
-<li><p>Bratman, M. <em>Intention, Plans, and Practical Reason</em>; Harvard University Press Cambridge: Cambridge, MA, USA, 1987; Volume 10.</p>
-</li>
-<li><p>Myers, K.; Yorke-Smith, N. Proactive behavior of a personal assistive agent. In Proceedings of the AAMAS Workshop on Metareasoning in Agent-Based Systems, Honolulu, HI, USA, 14 May 2007; pp. 31–45.</p>
-</li>
-<li><p>Dignum, F.; Kinny, D.; Sonenberg, L. From desires, obligations and norms to goals. <em>Cogn. Sci. Q.</em> <strong>2002</strong>, <em>2</em>, 407–430.</p>
-</li>
-<li><p>Myers, K.L.; Yorke-Smith, N. A cognitive framework for delegation to an assistive user agent. In Proceedings of the AAAI 2005 Fall Symposium on Mixed-Initiative Problem-Solving Assistants, Arlington, Virginia, 4–6 November 2005; pp. 94–99.</p>
-</li>
-<li><p>Russell, S.; Jordan, H.; O’Hare, G.M.; Collier, R.W. Agent factory: A framework for prototyping logic-based AOP languages. In Proceedings of the German Conference on Multiagent System Technologies, Berlin, Germany, 6–7 October 2011; pp. 125–136.</p>
-</li>
-<li><p>Winikoff, M. JACKTM intelligent agents: An industrial strength platform. In <em>Multi-Agent Programming</em>; Springer: Berlin/Heidelberg, Germany, 2005; pp. 175–193.</p>
-</li>
-<li><p>Jedrzejowicz, P.; Wierzbowska, I. JADE-Based a-team environment. In Proceedings of the International Conference on Computational Science, Reading, UK, 28–31 May 2006; pp. 719–726.</p>
-</li>
-<li><p>Braubach, L.; Pokahr, A. The jadex project: Simulation. In <em>Multiagent Systems and Applications</em>; Springer: Berlin/Heidelberg, Germany, 2013; pp. 107–128.</p>
-</li>
-<li><p>Rao, A.S. AgentSpeak (L): BDI agents speak out in a logical computable language. In Proceedings of the European Workshop on Modelling Autonomous Agents in a Multi-Agent World, Eindhoven, The Netherlands, 22–25 January 1996; pp. 42–55.</p>
-</li>
-<li><p>Bordini, R.H.; Hübner, J.F.; Wooldridge, M. <em>Programming Multi-Agent Systems in AgentSpeak Using Jason</em>; John Wiley &amp; Sons: Hoboken, NJ, USA, 2007; Volume 8.</p>
-</li>
-<li><p>25.Finzi, A.; Orlandini, A. Human-Robot Interaction Through Mixed-Initiative Planning for Rescue and Search Rovers. In <em>AI*IA 2005: Advances in Artificial Intelligence</em>; Bandini, S., Manzoni, S., Eds.; Springer: Berlin/Heidelberg, Germany, 2005; pp. 483–494.</p>
-</li>
-<li><p>Adams, J.A.; Rani, P.; Sarkar, N. Mixed initiative interaction and robotic systems. In Proceedings of the AAAI Workshop on Supervisory Control of Learning and Adaptive Systems, San Jose, CA, USA, 25–26 July 2004; pp. 6–13.</p>
-</li>
-<li><p>27.Acosta, M.; Kang, D.; Choi, H.J. Robot with emotion for triggering mixed-initiative interaction planning. In Proceedings of the 2008 IEEE 8th International Conference on Computer and Information Technology Workshops, Sydney, Australia, 8–11 July 2008; pp. 98–103.</p>
-</li>
-<li><p>28.Satake, S.; Kanda, T.; Glas, D.F.; Imai, M.; Ishiguro, H.; Hagita, N. How to approach humans?: Strategies for social robots to initiate interaction. In Proceedings of the 4th ACM/IEEE International Conference on Human Robot Interaction, La Jolla, CA, USA, 9–13 March 2009; pp. 109–116.</p>
-</li>
-<li><p>Shi, C.; Shimada, M.; Kanda, T.; Ishiguro, H.; Hagita, N. Spatial Formation Model for Initiating Conversation. In Proceedings of the 7th Annual Robotics: Science and Systems Conference, Los Angeles, CA, USA, 16–20 October 2011; doi:10.15607/RSS.2011.VII.039.</p>
-</li>
-<li><p>Garrell, A.; Villamizar, M.; Moreno-Noguer, F.; Sanfeliu, A. Proactive behavior of an autonomous mobile robot for human-assisted learning. In Proceedings of the 2013 IEEE RO-MAN, Gyeongju, Korea, 26–29 August 2013; pp. 107–113.</p>
-</li>
-<li><p>Araiza-Illan, D.; Pipe, T.; Eder, K. Model-Based Testing, Using Belief-Desire-Intentions Agents, of Control Code for Robots in Collaborative Human-Robot Interactions. <em>arXiv</em> <strong>2016</strong>, arXiv:1603.00656.</p>
-</li>
-<li><p>Gottifredi, S.; Tucat, M.; Corbatta, D.; García, A.J.; Simari, G.R. A BDI architecture for high level robot deliberation. In Proceedings of the XIV Congreso Argentino de Ciencias de la Computación, Chilecito, Argentina, 8–12 August 2008.</p>
-</li>
-<li><p>Duffy, B.R.; Dragone, M.; O’Hare, G.M. Social robot architecture: A framework for explicit social interaction. In Proceedings of the Toward Social Mechanisms of Android Science: A CogSci 2005 Workshop, Stresa, Italy, 25–26 July 2005.</p>
-</li>
-<li><p>Pereira, D.; Oliveira, E.; Moreira, N.; Sarmento, L. Towards an architecture for emotional BDI agents. In Proceedings of the 2005 Portuguese Conference on Artificial Intelligence, Covilha, Portugal, 5–8 December 2005; pp. 40–46.</p>
-</li>
-<li><p>Immersive Robotics. Available online: <a href="http://immersive-robotics.com/">http://immersive-robotics.com/</a> (accessed on 12 February 2017).</p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>论文</category>
-      </categories>
-      <tags>
-        <tag>paper</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Java异步</title>
     <url>/2021/06/27/23/16/Java%E5%BC%82%E6%AD%A5/</url>
     <content><![CDATA[<p>Java异步执行测试。<span id="more"></span></p>
@@ -11808,7 +11370,191 @@ X-Pingback: http:&#x2F;&#x2F;man.linuxde.net&#x2F;xmlrpc.php<span aria-hidden="t
     <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"task executed"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="原生的CompletableFuture"><a href="#原生的CompletableFuture" class="headerlink" title="原生的CompletableFuture"></a>原生的CompletableFuture</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+<h3 id="原生的CompletableFuture"><a href="#原生的CompletableFuture" class="headerlink" title="原生的CompletableFuture"></a>原生的CompletableFuture</h3><p>从Java 8开始引入了<code>CompletableFuture</code>，它针对<code>Future</code>做了改进，可以传入回调对象，当异步任务完成或者发生异常时，自动调用回调对象的回调方法。</p>
+<p>示例一：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Main</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// 创建异步执行任务:</span>
+        <span class="token class-name">CompletableFuture</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Double</span><span class="token punctuation">></span></span> cf <span class="token operator">=</span> <span class="token class-name">CompletableFuture</span><span class="token punctuation">.</span><span class="token function">supplyAsync</span><span class="token punctuation">(</span><span class="token class-name">Main</span><span class="token operator">::</span><span class="token function">fetchPrice</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 如果执行成功:</span>
+        cf<span class="token punctuation">.</span><span class="token function">thenAccept</span><span class="token punctuation">(</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">&#123;</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"price: "</span> <span class="token operator">+</span> result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 如果执行异常:</span>
+        cf<span class="token punctuation">.</span><span class="token function">exceptionally</span><span class="token punctuation">(</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">&#123;</span>
+            e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 主线程不要立刻结束，否则CompletableFuture默认使用的线程池会立刻关闭:</span>
+        <span class="token class-name">Thread</span><span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">static</span> <span class="token class-name">Double</span> <span class="token function">fetchPrice</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
+            <span class="token class-name">Thread</span><span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">InterruptedException</span> e<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">0.3</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">RuntimeException</span><span class="token punctuation">(</span><span class="token string">"fetch price failed!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> <span class="token number">5</span> <span class="token operator">+</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">20</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>结果</p>
+<pre class="line-numbers language-none"><code class="language-none">price: 8.1129900214411<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>创建一个<code>CompletableFuture</code>是通过<code>CompletableFuture.supplyAsync()</code>实现的，它需要一个实现了<code>Supplier</code>接口的对象：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">Supplier</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">></span></span> <span class="token punctuation">&#123;</span>
+    <span class="token class-name">T</span> <span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>这里我们用lambda语法简化了一下，直接传入<code>Main::fetchPrice</code>，因为<code>Main.fetchPrice()</code>静态方法的签名符合<code>Supplier</code>接口的定义（除了方法名外）。</p>
+<p>紧接着，<code>CompletableFuture</code>已经被提交给默认的线程池执行了，我们需要定义的是<code>CompletableFuture</code>完成时和异常时需要回调的实例。完成时，<code>CompletableFuture</code>会调用<code>Consumer</code>对象：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">Consumer</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">></span></span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">void</span> <span class="token function">accept</span><span class="token punctuation">(</span><span class="token class-name">T</span> t<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>异常时，<code>CompletableFuture</code>会调用<code>Function</code>对象：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">Function</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">,</span> <span class="token class-name">R</span><span class="token punctuation">></span></span> <span class="token punctuation">&#123;</span>
+    <span class="token class-name">R</span> <span class="token function">apply</span><span class="token punctuation">(</span><span class="token class-name">T</span> t<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p><code>CompletableFuture</code>的优点是：</p>
+<ul>
+<li>异步任务结束时，会自动回调某个对象的方法；</li>
+<li>异步任务出错时，会自动回调某个对象的方法；</li>
+<li>主线程设置好回调后，不再关心异步任务的执行。</li>
+</ul>
+<p>如果只是实现了异步回调机制，我们还看不出<code>CompletableFuture</code>相比<code>Future</code>的优势。<code>CompletableFuture</code>更强大的功能是，多个<code>CompletableFuture</code>可以串行执行，例如，定义两个<code>CompletableFuture</code>，第一个<code>CompletableFuture</code>根据证券名称查询证券代码，第二个<code>CompletableFuture</code>根据证券代码查询证券价格，这两个<code>CompletableFuture</code>实现串行操作如下：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Main</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// 第一个任务:</span>
+        <span class="token class-name">CompletableFuture</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> cfQuery <span class="token operator">=</span> <span class="token class-name">CompletableFuture</span><span class="token punctuation">.</span><span class="token function">supplyAsync</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token function">queryCode</span><span class="token punctuation">(</span><span class="token string">"中国石油"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// cfQuery成功后继续执行下一个任务:</span>
+        <span class="token class-name">CompletableFuture</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Double</span><span class="token punctuation">></span></span> cfFetch <span class="token operator">=</span> cfQuery<span class="token punctuation">.</span><span class="token function">thenApplyAsync</span><span class="token punctuation">(</span><span class="token punctuation">(</span>code<span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token function">fetchPrice</span><span class="token punctuation">(</span>code<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// cfFetch成功后打印结果:</span>
+        cfFetch<span class="token punctuation">.</span><span class="token function">thenAccept</span><span class="token punctuation">(</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">&#123;</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"price: "</span> <span class="token operator">+</span> result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 主线程不要立刻结束，否则CompletableFuture默认使用的线程池会立刻关闭:</span>
+        <span class="token class-name">Thread</span><span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">2000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">static</span> <span class="token class-name">String</span> <span class="token function">queryCode</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
+            <span class="token class-name">Thread</span><span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">InterruptedException</span> e<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> <span class="token string">"601857"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">static</span> <span class="token class-name">Double</span> <span class="token function">fetchPrice</span><span class="token punctuation">(</span><span class="token class-name">String</span> code<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
+            <span class="token class-name">Thread</span><span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">InterruptedException</span> e<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> <span class="token number">5</span> <span class="token operator">+</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">20</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>除了串行执行外，多个<code>CompletableFuture</code>还可以并行执行。例如，我们考虑这样的场景：</p>
+<p>同时从新浪和网易查询证券代码，只要任意一个返回结果，就进行下一步查询价格，查询价格也同时从新浪和网易查询，只要任意一个返回结果，就完成操作：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Main</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// 两个CompletableFuture执行异步查询:</span>
+        <span class="token class-name">CompletableFuture</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> cfQueryFromSina <span class="token operator">=</span> <span class="token class-name">CompletableFuture</span><span class="token punctuation">.</span><span class="token function">supplyAsync</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token function">queryCode</span><span class="token punctuation">(</span><span class="token string">"中国石油"</span><span class="token punctuation">,</span> <span class="token string">"https://finance.sina.com.cn/code/"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">CompletableFuture</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> cfQueryFrom163 <span class="token operator">=</span> <span class="token class-name">CompletableFuture</span><span class="token punctuation">.</span><span class="token function">supplyAsync</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token function">queryCode</span><span class="token punctuation">(</span><span class="token string">"中国石油"</span><span class="token punctuation">,</span> <span class="token string">"https://money.163.com/code/"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// 用anyOf合并为一个新的CompletableFuture:</span>
+        <span class="token class-name">CompletableFuture</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Object</span><span class="token punctuation">></span></span> cfQuery <span class="token operator">=</span> <span class="token class-name">CompletableFuture</span><span class="token punctuation">.</span><span class="token function">anyOf</span><span class="token punctuation">(</span>cfQueryFromSina<span class="token punctuation">,</span> cfQueryFrom163<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// 两个CompletableFuture执行异步查询:</span>
+        <span class="token class-name">CompletableFuture</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Double</span><span class="token punctuation">></span></span> cfFetchFromSina <span class="token operator">=</span> cfQuery<span class="token punctuation">.</span><span class="token function">thenApplyAsync</span><span class="token punctuation">(</span><span class="token punctuation">(</span>code<span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token function">fetchPrice</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">)</span> code<span class="token punctuation">,</span> <span class="token string">"https://finance.sina.com.cn/price/"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">CompletableFuture</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Double</span><span class="token punctuation">></span></span> cfFetchFrom163 <span class="token operator">=</span> cfQuery<span class="token punctuation">.</span><span class="token function">thenApplyAsync</span><span class="token punctuation">(</span><span class="token punctuation">(</span>code<span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token function">fetchPrice</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">)</span> code<span class="token punctuation">,</span> <span class="token string">"https://money.163.com/price/"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// 用anyOf合并为一个新的CompletableFuture:</span>
+        <span class="token class-name">CompletableFuture</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Object</span><span class="token punctuation">></span></span> cfFetch <span class="token operator">=</span> <span class="token class-name">CompletableFuture</span><span class="token punctuation">.</span><span class="token function">anyOf</span><span class="token punctuation">(</span>cfFetchFromSina<span class="token punctuation">,</span> cfFetchFrom163<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// 最终结果:</span>
+        cfFetch<span class="token punctuation">.</span><span class="token function">thenAccept</span><span class="token punctuation">(</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">&#123;</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"price: "</span> <span class="token operator">+</span> result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 主线程不要立刻结束，否则CompletableFuture默认使用的线程池会立刻关闭:</span>
+        <span class="token class-name">Thread</span><span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">static</span> <span class="token class-name">String</span> <span class="token function">queryCode</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">,</span> <span class="token class-name">String</span> url<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"query code from "</span> <span class="token operator">+</span> url <span class="token operator">+</span> <span class="token string">"..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
+            <span class="token class-name">Thread</span><span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">long</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">InterruptedException</span> e<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> <span class="token string">"601857"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">static</span> <span class="token class-name">Double</span> <span class="token function">fetchPrice</span><span class="token punctuation">(</span><span class="token class-name">String</span> code<span class="token punctuation">,</span> <span class="token class-name">String</span> url<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"query price from "</span> <span class="token operator">+</span> url <span class="token operator">+</span> <span class="token string">"..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
+            <span class="token class-name">Thread</span><span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">long</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">InterruptedException</span> e<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> <span class="token number">5</span> <span class="token operator">+</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">20</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>上述逻辑实现的异步查询规则实际上是：</p>
+<pre class="line-numbers language-ascii" data-language="ascii"><code class="language-ascii">┌─────────────┐ ┌─────────────┐
+│ Query Code  │ │ Query Code  │
+│  from sina  │ │  from 163   │
+└─────────────┘ └─────────────┘
+       │               │
+       └───────┬───────┘
+               ▼
+        ┌─────────────┐
+        │    anyOf    │
+        └─────────────┘
+               │
+       ┌───────┴────────┐
+       ▼                ▼
+┌─────────────┐  ┌─────────────┐
+│ Query Price │  │ Query Price │
+│  from sina  │  │  from 163   │
+└─────────────┘  └─────────────┘
+       │                │
+       └────────┬───────┘
+                ▼
+         ┌─────────────┐
+         │    anyOf    │
+         └─────────────┘
+                │
+                ▼
+         ┌─────────────┐
+         │Display Price│
+         └─────────────┘<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>除了<code>anyOf()</code>可以实现“任意个<code>CompletableFuture</code>只要一个成功”，<code>allOf()</code>可以实现“所有<code>CompletableFuture</code>都必须成功”，这些组合操作可以实现非常复杂的异步流程控制。</p>
+<p>最后我们注意<code>CompletableFuture</code>的命名规则：</p>
+<ul>
+<li><code>xxx()</code>：表示该方法将继续在已有的线程中执行；</li>
+<li><code>xxxAsync()</code>：表示将异步在线程池中执行。</li>
+</ul>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
 <span class="token class-name">ExecutorService</span> executor <span class="token operator">=</span> <span class="token class-name">Executors</span><span class="token punctuation">.</span><span class="token function">newFixedThreadPool</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
     <span class="token class-name">CompletableFuture</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> future <span class="token operator">=</span> <span class="token class-name">CompletableFuture</span><span class="token punctuation">.</span><span class="token function">supplyAsync</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">&#123;</span>
@@ -12482,6 +12228,80 @@ map<span class="token punctuation">.</span><span class="token function">put</spa
     <span class="token keyword">return</span> sb<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数组转List的方式</title>
+    <url>/2021/09/05/16/31/%E6%95%B0%E7%BB%84%E8%BD%ACList%E7%9A%84%E6%96%B9%E5%BC%8F/</url>
+    <content><![CDATA[<p> 数组转换成List一般使用Arrays.asList，但是转换后的List只能查询、更改，不能增加和删除。还有其他几种方式转换，这里记录几种转换的差异。<span id="more"></span></p>
+<h4 id="常用方式"><a href="#常用方式" class="headerlink" title="常用方式"></a>常用方式</h4><p>通过 <code>Arrays.asList(strArray)</code> 方式将数组转换List后，不能对List增删，只能查询和修改，否则抛出异常。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">List</span> list <span class="token operator">=</span> <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span>strArray<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h5 id="增加操作"><a href="#增加操作" class="headerlink" title="增加操作"></a>增加操作</h5><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">testArrayCastToListError</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> strArray <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token class-name">List</span> list <span class="token operator">=</span> <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span>strArray<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//对转换后的list插入一条数据</span>
+    list<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>list<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h6 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h6><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Exception</span> in thread <span class="token string">"main"</span> <span class="token class-name"><span class="token namespace">java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span></span>UnsupportedOperationException</span>
+        at <span class="token class-name"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span>AbstractList</span><span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token class-name">AbstractList</span><span class="token punctuation">.</span>java<span class="token operator">:</span><span class="token number">148</span><span class="token punctuation">)</span>
+        at <span class="token class-name"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span>AbstractList</span><span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token class-name">AbstractList</span><span class="token punctuation">.</span>java<span class="token operator">:</span><span class="token number">108</span><span class="token punctuation">)</span>
+        at <span class="token class-name"><span class="token namespace">com<span class="token punctuation">.</span>darwin<span class="token punctuation">.</span>junit<span class="token punctuation">.</span></span>Calculator</span><span class="token punctuation">.</span><span class="token function">testArrayCastToList</span><span class="token punctuation">(</span><span class="token class-name">Calculator</span><span class="token punctuation">.</span>java<span class="token operator">:</span><span class="token number">19</span><span class="token punctuation">)</span>
+        at <span class="token class-name"><span class="token namespace">com<span class="token punctuation">.</span>darwin<span class="token punctuation">.</span>junit<span class="token punctuation">.</span></span>Calculator</span><span class="token punctuation">.</span><span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">Calculator</span><span class="token punctuation">.</span>java<span class="token operator">:</span><span class="token number">44</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h6 id="异常原因"><a href="#异常原因" class="headerlink" title="异常原因"></a>异常原因</h6><p><code>Arrays.asList(strArray)</code>返回值是<code>java.util.Arrays</code>类中一个私有静态内部类<code>java.util.Arrays.ArrayList</code>，它并非<code>java.util.ArrayList</code>类。<code>java.util.Arrays.ArrayList</code>类具有 set()，get()，contains()等方法，但是不具有添加<code>add()</code>或删除<code>remove()</code>方法,所以调用<code>add()</code>方法会报错。</p>
+<h4 id="转换返回值类型"><a href="#转换返回值类型" class="headerlink" title="转换返回值类型"></a>转换返回值类型</h4><p><code>Arrays.asList(strArray)</code>返回值是<code>java.util.Arrays</code>类中一个私有静态内部类<code>java.util.Arrays.ArrayList</code>，那么通过<code>java.util.ArrayList</code>的构造器，将<code>Arrays.asList(strArray)</code>的返回值由<code>java.util.Arrays.ArrayList</code>转为<code>java.util.ArrayList</code>，<code>java.util.ArrayList</code>可以对List进行增删改查。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> list <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span>strArray<span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h5 id="增加"><a href="#增加" class="headerlink" title="增加"></a>增加</h5><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">testArrayCastToListRight</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> strArray <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> list <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span>strArray<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">;</span>
+    list<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>list<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h6 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h6><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token punctuation">[</span><span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="工具类转换"><a href="#工具类转换" class="headerlink" title="工具类转换"></a>工具类转换</h4><p><code>Collections.addAll(arrayList, strArray)</code>转换，首先创建一个空List，再将数组元素放进去，这种方式大多数情况下是最快的。</p>
+<blockquote>
+<p>Adds all of the specified elements to the specified collection. Elements to be added may be specified individually or as an array. The behavior of this convenience method is identical to that of c.addAll(Arrays.asList(elements)), but this method is likely to run significantly faster under most implementations.</p>
+</blockquote>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span> <span class="token class-name">String</span><span class="token punctuation">></span></span> arrayList <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span><span class="token punctuation">(</span>strArray<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">Collections</span><span class="token punctuation">.</span><span class="token function">addAll</span><span class="token punctuation">(</span>arrayList<span class="token punctuation">,</span> strArray<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h5 id="增加-1"><a href="#增加-1" class="headerlink" title="增加"></a>增加</h5><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">testArrayCastToListEfficient</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> strArray <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span> <span class="token class-name">String</span><span class="token punctuation">></span></span> arrayList <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span><span class="token punctuation">(</span>strArray<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">Collections</span><span class="token punctuation">.</span><span class="token function">addAll</span><span class="token punctuation">(</span>arrayList<span class="token punctuation">,</span> strArray<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    arrayList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>arrayList<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">[null, null, 1]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="易错点"><a href="#易错点" class="headerlink" title="易错点"></a>易错点</h4><h5 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h5><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> intArray1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> list1 <span class="token operator">=</span> <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span>intArray1<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//此处报错！！！</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>报错原因：等号两边类型不一致，当然编译不通过。</p>
+<p>原因：只能用<code>Integer[]</code>转<code>List&lt;Integer&gt;</code>，即只能用基本数据类型的包装类型，才能直接转为<code>List</code>。</p>
+<h6 id="List源码："><a href="#List源码：" class="headerlink" title="List源码："></a>List源码：</h6><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">E</span><span class="token punctuation">></span></span> <span class="token keyword">extends</span> <span class="token class-name">Collection</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">E</span><span class="token punctuation">></span></span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h6 id="Arrays-asList-源码"><a href="#Arrays-asList-源码" class="headerlink" title="Arrays.asList()源码"></a>Arrays.asList()源码</h6><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">></span></span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">></span></span> <span class="token function">asList</span><span class="token punctuation">(</span><span class="token class-name">T</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> a<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	<span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>从上述源码中可以看出，<code>List</code>声明时，需要传递一个泛型<code>&lt;E&gt;</code>作为形参，<code>asList()</code>参数类型也是泛型中的通配类型<code>&lt;T&gt;</code>。Java中所有的泛型必须是引用类型。</li>
+<li>其他8种基本数据类型<code>byte、short、int、long、float、double、char</code>也都不是引用类型，所以8种基本数据类型都不能作为List的形参。但<code>String、数组、class、interface</code>是引用类型，都可以作为List的形参，所以存在<code>List&lt;Runnable&gt;</code>接口类型的集合、<code>List&lt;int[]&gt;</code>数组类型的集合、<code>List&lt;String&gt;</code>类的集合。但不存在<code>list&lt;byte&gt;</code>、<code>list&lt;short&gt;</code> 等基本类型的集合。</li>
+</ul>
 ]]></content>
       <categories>
         <category>技术</category>
