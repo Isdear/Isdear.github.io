@@ -2664,6 +2664,9 @@ CREATE TABLE salesinfo( salesid int not null,customerid int not null, primary ke
 <pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">SELECT * FROM books WHERE name ＞&#x3D; &quot;MySQL&quot; and name ＜&quot;MySQM&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>最后，应该注意避免在查询中让MySQL进行自动类型转换，因为转换过程也会使索引变得不起作用。</p>
+<h5 id="大数据量查询优化"><a href="#大数据量查询优化" class="headerlink" title="大数据量查询优化"></a>大数据量查询优化</h5><p>首先子查询获取ID，然后再获取字段全部信息，减少数据页访问次数</p>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select * from test a inner join (select id from test where val&#x3D;4 limit 300000,5) b on a.id&#x3D;b.id;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 ]]></content>
       <categories>
         <category>数据库</category>
@@ -12301,6 +12304,112 @@ map<span class="token punctuation">.</span><span class="token function">put</spa
 <ul>
 <li>从上述源码中可以看出，<code>List</code>声明时，需要传递一个泛型<code>&lt;E&gt;</code>作为形参，<code>asList()</code>参数类型也是泛型中的通配类型<code>&lt;T&gt;</code>。Java中所有的泛型必须是引用类型。</li>
 <li>其他8种基本数据类型<code>byte、short、int、long、float、double、char</code>也都不是引用类型，所以8种基本数据类型都不能作为List的形参。但<code>String、数组、class、interface</code>是引用类型，都可以作为List的形参，所以存在<code>List&lt;Runnable&gt;</code>接口类型的集合、<code>List&lt;int[]&gt;</code>数组类型的集合、<code>List&lt;String&gt;</code>类的集合。但不存在<code>list&lt;byte&gt;</code>、<code>list&lt;short&gt;</code> 等基本类型的集合。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ResponseBodyAdvice统一处理返回值/响应体</title>
+    <url>/2021/09/07/22/44/ResponseBodyAdvice%E7%BB%9F%E4%B8%80%E5%A4%84%E7%90%86%E8%BF%94%E5%9B%9E%E5%80%BC-%E5%93%8D%E5%BA%94%E4%BD%93/</url>
+    <content><![CDATA[<p>ResponseBodyAdvice的作用：拦截Controller方法的返回值，统一处理返回值/响应体，一般用来统一返回格式，加解密，签名等等。使用后不需要在每一个接口返回值写返回体，统一返回结果，减少重复代码。<span id="more"></span></p>
+<h4 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">ResponseBodyAdvice</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">></span></span> <span class="token punctuation">&#123;</span>
+  <span class="token comment">/**
+  * 是否支持advice功能
+  * true 支持，false 不支持
+  */</span>
+    <span class="token keyword">boolean</span> <span class="token function">supports</span><span class="token punctuation">(</span><span class="token class-name">MethodParameter</span> var1<span class="token punctuation">,</span> <span class="token class-name">Class</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span> <span class="token keyword">extends</span> <span class="token class-name">HttpMessageConverter</span><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">></span><span class="token punctuation">></span></span> var2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+   <span class="token comment">/**
+  * 对返回的数据进行处理
+  */</span>
+    <span class="token annotation punctuation">@Nullable</span>
+    <span class="token class-name">T</span> <span class="token function">beforeBodyWrite</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Nullable</span> <span class="token class-name">T</span> var1<span class="token punctuation">,</span> <span class="token class-name">MethodParameter</span> var2<span class="token punctuation">,</span> <span class="token class-name">MediaType</span> var3<span class="token punctuation">,</span> <span class="token class-name">Class</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span> <span class="token keyword">extends</span> <span class="token class-name">HttpMessageConverter</span><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">></span><span class="token punctuation">></span></span> var4<span class="token punctuation">,</span> <span class="token class-name">ServerHttpRequest</span> var5<span class="token punctuation">,</span> <span class="token class-name">ServerHttpResponse</span> var6<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h4><p>ResponseBodyAdvice 接口是在 Controller 执行 return 之后，在 response 返回给客户端之前，执行的对 response 的一些处理，可以实现对 response 数据的一些统一封装或者加密等操作。</p>
+<p>（1）supports —— 判断是否要执行beforeBodyWrite方法，true为执行，false不执行 —— 通过supports方法，我们可以选择哪些类或哪些方法要对response进行处理，其余的则不处理。</p>
+<p>（2）beforeBodyWrite —— 对 response 处理的具体执行方法。</p>
+<p>在supports中返回<code>true</code>，可以对所有返回值处理。</p>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><h5 id="Controller层代码"><a href="#Controller层代码" class="headerlink" title="Controller层代码"></a>Controller层代码</h5><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@RestController</span> <span class="token comment">//此注解包含@ResponseBody注解</span>
+<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/mp"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ResponseBodyAdviceController</span> <span class="token punctuation">&#123;</span>
+    <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"/hello"</span><span class="token punctuation">,</span> method <span class="token operator">=</span> <span class="token class-name">RequestMethod</span><span class="token punctuation">.</span>GET<span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token number">5</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span> 
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h5 id="ResponseBodyAdvice实现类"><a href="#ResponseBodyAdvice实现类" class="headerlink" title="ResponseBodyAdvice实现类"></a>ResponseBodyAdvice实现类</h5><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@RestControllerAdvice</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">RestResultWrapper</span> <span class="token keyword">implements</span> <span class="token class-name">ResponseBodyAdvice</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Object</span><span class="token punctuation">></span></span> <span class="token punctuation">&#123;</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">supports</span><span class="token punctuation">(</span><span class="token class-name">MethodParameter</span> returnType<span class="token punctuation">,</span> <span class="token class-name">Class</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span> <span class="token keyword">extends</span> <span class="token class-name">HttpMessageConverter</span><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">></span><span class="token punctuation">></span></span> converterType<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+ 
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">Object</span> <span class="token function">beforeBodyWrite</span><span class="token punctuation">(</span><span class="token class-name">Object</span> body<span class="token punctuation">,</span> <span class="token class-name">MethodParameter</span> returnType<span class="token punctuation">,</span> <span class="token class-name">MediaType</span> selectedContentType<span class="token punctuation">,</span> <span class="token class-name">Class</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span> <span class="token keyword">extends</span> <span class="token class-name">HttpMessageConverter</span><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">></span><span class="token punctuation">></span></span> selectedConverterType<span class="token punctuation">,</span> <span class="token class-name">ServerHttpRequest</span> request<span class="token punctuation">,</span>
+                                  <span class="token class-name">ServerHttpResponse</span> response<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+ 
+            <span class="token comment">//定义一个统一的返回类</span>
+            <span class="token class-name">RestResult</span> responseResult <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RestResult</span><span class="token punctuation">(</span> <span class="token string">"0"</span><span class="token punctuation">,</span> body<span class="token punctuation">,</span> <span class="token string">"success"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+             <span class="token comment">//如果handler处理类的返回类型是String（即控制层的返回值类型），为了保证一致性，这里需要将ResponseResult转回去</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>body <span class="token keyword">instanceof</span> <span class="token class-name">String</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token keyword">return</span> JSON<span class="token punctuation">.</span><span class="token function">toJSONString</span><span class="token punctuation">(</span>responseResult<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+           <span class="token comment">//封装后的数据返回到前端页面</span>
+            <span class="token keyword">return</span> <span class="token class-name">JSONObject</span><span class="token punctuation">.</span><span class="token function">toJSON</span><span class="token punctuation">(</span>responseResult<span class="token punctuation">)</span><span class="token punctuation">;</span>       
+    <span class="token punctuation">&#125;</span> 
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><code>@RestControllerAdvice</code>是<code>@RestController</code>注解的增强，可以实现三个方面的功能：</p>
+<ul>
+<li><ol>
+<li>全局异常处理</li>
+<li>全局数据绑定</li>
+<li>全局数据预处理</li>
+</ol>
+</li>
+<li><p>```java<br>  if(o instanceof String){</p>
+<pre><code>return objectMapper.writeValueAsString(ResultData.success(o));
+</code></pre>
+<p>  } </p>
+  <pre class="line-numbers language-none"><code class="language-none">
+* 如果Controller直接返回String的话，SpringBoot是直接返回，故我们需要手动转换成json。
+
+##### 公共返回类
+
+&#96;&#96;&#96;java
+&#x2F;&#x2F; 统一返回Rest风格的数据结构
+public class RestResult&lt;T&gt;  implements Serializable &#123;
+    private String code &#x3D; &quot;2000&quot;;
+    &#x2F;&#x2F; 成功时返回的数据，失败时返回具体的异常信息
+    private T data;
+    &#x2F;&#x2F; 请求失败返回的提示信息，给前端进行页面展示的信息
+    private String message ; 
+
+    public RestResult() &#123;
+    &#125;
+ 
+    @Override
+    public String toString() &#123;
+        return &quot;RestResult&#123;&quot; +
+                &quot;code&#x3D;&#39;&quot; + code + &#39;\&#39;&#39; +
+                &quot;, data&#x3D;&quot; + data +
+                &quot;, message&#x3D;&quot; + message +
+                &#39;&#125;&#39;;
+    &#125;
+ 
+    public RestResult(String code, T data, String message) &#123;
+        this.code &#x3D; code;
+        this.data &#x3D; data;
+        this.message &#x3D; message;
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ul>
 ]]></content>
       <categories>
