@@ -4977,4 +4977,59 @@
         <tag>java</tag>
       </tags>
   </entry>
+  <entry>
+    <title>java异常</title>
+    <url>/2022/05/03/java%E5%BC%82%E5%B8%B8/</url>
+    <content><![CDATA[<p>java中的异常分类及区别<span id="more"></span></p>
+<table>
+<thead>
+<tr>
+<th><strong>异常类</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>NullPointerException</td>
+<td>空指针异常</td>
+</tr>
+<tr>
+<td>ArrayIndexOutOfBoundsException</td>
+<td>数组越界访问异常</td>
+</tr>
+<tr>
+<td>IOException</td>
+<td>输入\输出异常</td>
+</tr>
+<tr>
+<td>NumberFormatException</td>
+<td>错误的类型转换异常</td>
+</tr>
+<tr>
+<td>ArrayStoreException</td>
+<td>当向数组存入错误类型数据时</td>
+</tr>
+<tr>
+<td>ClassNotFoundException</td>
+<td>试图访问一个根本不存在的类</td>
+</tr>
+<tr>
+<td>ArithmeticException</td>
+<td>除数为0的算术异常</td>
+</tr>
+</tbody></table>
+<h4 id="Error"><a href="#Error" class="headerlink" title="Error"></a>Error</h4><p>Error属于程序无法处理的错误，是JVM需要负担的责任，无法通过try-catch来进行捕获。例如，系统崩溃，内存不足，堆栈溢出等，编译器不会对这类错误进行检测，一旦这类错误发生，通常应用程序会被终止，仅靠应用程序本身无法恢复。</p>
+<p>比如StackOverFlowError；VirtualMachineError；OutofMemoryError；ThreadDeath</p>
+<h4 id="Exception"><a href="#Exception" class="headerlink" title="Exception"></a>Exception</h4><p>程序本身可以处理的异常，可以通过catch来进行捕获，通常遇到这种错误，应对其进行处理，使应用程序可以继续正常运行。</p>
+<p>Exception又可以分为运行时异常（RuntimeException，又叫非受检查异常unchecked Exception）和非运行时异常（又叫受检查异常checked Exception）。</p>
+<h5 id="checked-Exception"><a href="#checked-Exception" class="headerlink" title="checked Exception"></a>checked Exception</h5><p>就是在写代码的时候，需要写try catch的Exception，这种Exception一般不会影响主体程序，可以由程序员手动诊断修复异常。比如IOException；SQLException；ClassNotFoundException。</p>
+<h5 id="unchecked-Exception"><a href="#unchecked-Exception" class="headerlink" title="unchecked Exception"></a>unchecked Exception</h5><p>又称RunTimeException，这一类就是在代码处理了checked Exception之后，运行时候仍然会遇到的Exception。</p>
+<p>比如NullPointerException；ClassCastException；ArithmeticException；IllegalArgumentException；IndexOutOfBoundsException（包括ArrayIndexOutofBoundsExcpetion；StringIndexOutofBoundsExcpetion）；NumberFormatException。</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
 </search>
