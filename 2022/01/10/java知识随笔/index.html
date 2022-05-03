@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/memory.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/memory.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"strongth.top","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="java做题知识随笔">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java知识随笔">
+<meta property="og:url" content="http://strongth.top/2022/01/10/java%E7%9F%A5%E8%AF%86%E9%9A%8F%E7%AC%94/index.html">
+<meta property="og:site_name" content="记忆随笔">
+<meta property="og:description" content="java做题知识随笔">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://strongth.top/2022/01/10/java%E7%9F%A5%E8%AF%86%E9%9A%8F%E7%AC%94/JVM.png">
+<meta property="og:image" content="http://strongth.top/2022/01/10/java%E7%9F%A5%E8%AF%86%E9%9A%8F%E7%AC%94/modifer.png">
+<meta property="og:image" content="http://strongth.top/2022/01/10/java%E7%9F%A5%E8%AF%86%E9%9A%8F%E7%AC%94/loading.png">
+<meta property="article:published_time" content="2022-01-10T15:12:55.000Z">
+<meta property="article:modified_time" content="2022-01-10T15:12:55.000Z">
+<meta property="article:author" content="Kuang">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://strongth.top/2022/01/10/java%E7%9F%A5%E8%AF%86%E9%9A%8F%E7%AC%94/JVM.png">
+
+
+<link rel="canonical" href="http://strongth.top/2022/01/10/java%E7%9F%A5%E8%AF%86%E9%9A%8F%E7%AC%94/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://strongth.top/2022/01/10/java%E7%9F%A5%E8%AF%86%E9%9A%8F%E7%AC%94/","path":"2022/01/10/java知识随笔/","title":"java知识随笔"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>java知识随笔 | 记忆随笔</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">记忆随笔</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">悟已往之不谏，知来者之可追</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-首页"><a href="/" rel="section"><i class="home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-标签"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-类别"><a href="/categories/" rel="section"><i class="categories fa-fw"></i>类别</a></li>
+        <li class="menu-item menu-item-档案"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>档案</a></li>
+        <li class="menu-item menu-item-特效"><a href="/personality/" rel="section"><i class="about fa-fw"></i>特效</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8E%A5%E5%8F%A3%E4%B8%8E%E6%8A%BD%E8%B1%A1%E7%B1%BB"><span class="nav-number">1.</span> <span class="nav-text">接口与抽象类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%82%E5%B8%B8%E6%8D%95%E8%8E%B7"><span class="nav-number">2.</span> <span class="nav-text">异常捕获</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">表达式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Mybatis%E4%B8%AD%E7%9A%84-%E5%92%8C"><span class="nav-number">4.</span> <span class="nav-text">Mybatis中的#和$</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JVM%E7%9A%84%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6"><span class="nav-number">5.</span> <span class="nav-text">JVM的垃圾回收机制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E5%9F%9F"><span class="nav-number">6.</span> <span class="nav-text">静态域</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E8%BD%BD%E4%B8%8E%E9%87%8D%E5%86%99"><span class="nav-number">7.</span> <span class="nav-text">重载与重写</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95"><span class="nav-number">8.</span> <span class="nav-text">构造方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="nav-number">9.</span> <span class="nav-text">修饰符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84%E9%9B%86%E5%90%88%E5%AF%B9%E8%B1%A1"><span class="nav-number">10.</span> <span class="nav-text">线程安全的集合对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%9E%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84%E9%9B%86%E5%90%88%E5%AF%B9%E8%B1%A1"><span class="nav-number">11.</span> <span class="nav-text">非线程安全的集合对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E6%96%B9%E5%BC%8F"><span class="nav-number">12.</span> <span class="nav-text">创建对象方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#map%E5%88%86%E7%B1%BB"><span class="nav-number">13.</span> <span class="nav-text">map分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%85%AD%E5%8E%9F%E5%88%99%E4%B8%80%E6%B3%95%E5%88%99"><span class="nav-number">14.</span> <span class="nav-text">面向对象的六原则一法则</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99"><span class="nav-number">14.1.</span> <span class="nav-text">单一职责原则</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99"><span class="nav-number">14.2.</span> <span class="nav-text">开闭原则</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%9D%E8%B5%96%E5%80%92%E8%BD%AC%E5%8E%9F%E5%88%99"><span class="nav-number">14.3.</span> <span class="nav-text">依赖倒转原则</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8D%A2%E5%8E%9F%E5%88%99"><span class="nav-number">14.4.</span> <span class="nav-text">里氏替换原则</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E5%8E%9F%E5%88%99"><span class="nav-number">14.5.</span> <span class="nav-text">接口隔离原则</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%90%88%E6%88%90%E8%81%9A%E5%90%88%E5%A4%8D%E7%94%A8%E5%8E%9F%E5%88%99"><span class="nav-number">14.6.</span> <span class="nav-text">合成聚合复用原则</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BF%AA%E7%B1%B3%E7%89%B9%E6%B3%95%E5%88%99"><span class="nav-number">14.7.</span> <span class="nav-text">迪米特法则</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B"><span class="nav-number">15.</span> <span class="nav-text">类的加载过程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8A%A0%E8%BD%BD"><span class="nav-number">15.1.</span> <span class="nav-text">加载</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%AA%8C%E8%AF%81"><span class="nav-number">15.2.</span> <span class="nav-text">验证</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%87%86%E5%A4%87"><span class="nav-number">15.3.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E6%9E%90"><span class="nav-number">15.4.</span> <span class="nav-text">解析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">15.5.</span> <span class="nav-text">初始化</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Cookie%E5%92%8CSession%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">16.</span> <span class="nav-text">Cookie和Session的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6%E3%80%81%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%A8%A1%E5%9E%8B"><span class="nav-number">17.</span> <span class="nav-text">类加载机制、双亲委派模型</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Kuang"
+      src="/images/kenan.jpg">
+  <p class="site-author-name" itemprop="name">Kuang</p>
+  <div class="site-description" itemprop="description">个人博客</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">72</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Isdear" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Isdear" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:kuang8421@qq.com" title="E-Mail → mailto:kuang8421@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/269017831" title="B站 → https:&#x2F;&#x2F;space.bilibili.com&#x2F;269017831" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>B站</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/1906956615" title="QQ → 1906956615"><i class="fab fa-qq fa-fw"></i>QQ</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://strongth.top/2022/01/10/java%E7%9F%A5%E8%AF%86%E9%9A%8F%E7%AC%94/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/kenan.jpg">
+      <meta itemprop="name" content="Kuang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记忆随笔">
+      <meta itemprop="description" content="个人博客">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="java知识随笔 | 记忆随笔">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          java知识随笔
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-01-10 23:12:55" itemprop="dateCreated datePublished" datetime="2022-01-10T23:12:55+08:00">2022-01-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>7.3k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>13 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>java做题知识随笔<span id="more"></span></p>
+<h4 id="接口与抽象类"><a href="#接口与抽象类" class="headerlink" title="接口与抽象类"></a>接口与抽象类</h4><p>抽象类不能实例化。抽象类除了不能实例化对象之外，类的其它功能依然存在，成员变量、成员方法和构造方法的访问方式和普通类一样。由于不能实例化对象，所以抽象类必须被继承，才能被使用。父类包含了子类集合的常见的方法，但是由于父类本身是抽象的，所以不能使用这些方法。</p>
+<p>接口更多的是在系统架构设计方法发挥作用，主要用于定义模块之间的通信契约。而抽象类在代码实现方面发挥作用，可以实现代码的重用。</p>
+<p>接口与抽象类的区别：</p>
+<ol>
+<li><p>抽象类可以有构造方法，接口中不能有构造方法。 </p>
+</li>
+<li><p>抽象类中可以有普通成员变量，接口中没有普通成员变量 </p>
+</li>
+<li><p>抽象类中可以包含非抽象的普通方法，接口中的所有方法必须都是抽象的，不能有非抽象的普通方法。 </p>
+</li>
+<li><p>抽象类中的抽象方法的访问类型可以是public，protected和（默认类型,虽然 eclipse下不报错，但应该也不行），但接口中的抽象方法只能是public类型的，并且默认即为public abstract类型。 </p>
+</li>
+<li><p>抽象类中可以包含静态方法，接口中不能包含静态方法 </p>
+</li>
+<li><p>抽象类和接口中都可以包含静态成员变量，抽象类中的静态成员变量的访问类型可以任意，但接口中定义的变量只能是public static final类型，并且默认即为public static final类型。 </p>
+</li>
+<li><p>一个类可以实现多个接口，但只能继承一个抽象类。 </p>
+</li>
+<li><p>抽象方法不能含有方法体，且必须在抽象类中</p>
+</li>
+</ol>
+<h4 id="异常捕获"><a href="#异常捕获" class="headerlink" title="异常捕获"></a>异常捕获</h4><p>当程序执行到try{}语句中的return方法时，它会干这么一件事，将要返回的结果存储到一个临时栈中，然后程序不会立即返回，而是去执行finally{}中的程序。执行完之后，就会通知主程序“finally的程序执行完毕，可以请求返回了”，这时，就会将临时栈中的值取出来返回。</p>
+<p>try-catch、try-finally、try-catch-finally，但catch和finally语句不能同时省略！</p>
+<p>try-catch-finally块中，finally块在以下几种情况将不会执行。</p>
+<p>（1）finally块中发生了异常。</p>
+<p>（2）程序所在线程死亡。</p>
+<p>（3）在前面的代码中用了System.exit（）；</p>
+<p>（4）关闭了Cpu</p>
+<h4 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h4><p><strong>&amp;&amp; 和 || 为短路与和短路或</strong>。&amp;&amp; 若前面的表达式为false,整个逻辑表达式为false,所以后面的表达式无论true和false都无法影响整个表达式的逻辑结果，所以为了提高代码执行速率，这里后面的表达式就不会执行。同理， || 若前面表达式为true,则后面的表达式无需计算。**&amp; 和 | 为不短路与不短路或**。无论什么情况，前面的和后面的都要执行。</p>
+<h4 id="Mybatis中的-和"><a href="#Mybatis中的-和" class="headerlink" title="Mybatis中的#和$"></a>Mybatis中的#和$</h4><p><strong>PreparedStatement</strong>有预编译的过程，已经绑定sql，之后无论执行多少遍，都不会再去进行编译，执行速度要比statement 快，<strong>安全性高，可以防止SQL注入</strong>。而 statement 不同，如果执行多遍，则相应的就要编译多少遍sql。</p>
+<img src="/2022/01/10/java%E7%9F%A5%E8%AF%86%E9%9A%8F%E7%AC%94/JVM.png" class>
+
+<h4 id="JVM的垃圾回收机制"><a href="#JVM的垃圾回收机制" class="headerlink" title="JVM的垃圾回收机制"></a>JVM的垃圾回收机制</h4><p>关于JVM的垃圾回收机制：</p>
+<ul>
+<li><strong>垃圾回收在jvm中优先级相当相当低。</strong></li>
+<li><strong>垃圾收集器（GC）程序开发者只能推荐JVM进行回收，但何时回收，回收哪些，程序员不能控制。</strong></li>
+<li><strong>垃圾回收机制只是回收不再使用的JVM内存，如果程序有严重BUG，照样内存溢出。</strong></li>
+<li><strong>进入DEAD的线程，它还可以恢复，GC不会回收。</strong></li>
+</ul>
+<h4 id="静态域"><a href="#静态域" class="headerlink" title="静态域"></a>静态域</h4><p>静态域：分为静态变量，静态方法，静态块。这里面涉及到的是静态变量和静态块，当执行到静态域时，按照静态域的顺序加载，并且静态域只在类的第一次加载时执行。</p>
+<p>static修饰的成员属于类成员，父类变量或方法只能被子类同名变量或方法遮蔽，不能被继承覆盖</p>
+<p>静态成员变量或静态代码块&gt;main方法&gt;非静态成员变量或非静态代码块&gt;构造方法</p>
+<p>父类静态成员变量 父类静态代码块 子类静态成员变量 子类静态代码块 父类非静态成员变量，父类非静态代码块，父类构造函数，子类非静态成员变量，子类非静态代码块，子类构造函数</p>
+<p>子类的构造方法总是先调用父类的构造方法，如果子类的构造方法没有明显地指明使用父类的哪个构造方法，子类就调用父类不带参数的构造方法。</p>
+<p>而父类没有无参的构造函数，所以子类需要在自己的构造函数中显示的调用父类的构造函数。</p>
+<h4 id="重载与重写"><a href="#重载与重写" class="headerlink" title="重载与重写"></a>重载与重写</h4><p>方法重载，参数列表不相同，返回值类型可以不同；方法重写，遵循两同-两小-一大规则。两同：方法名和参数列表相同；两小：子类返回值类型小于等于父类的，异常抛出小于等于父类；一大：访问权限修饰符大于等于父类。</p>
+<p>字面量”+”拼接是在编译期间进行的，拼接后的字符串存放在字符串池中；而字符串引用的”+”拼接运算是在运行时进行的，新创建的字符串存放在堆中。</p>
+<h4 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h4><p>构造方法是一种特殊的方法，具有以下特点：</p>
+<p>（1）构造方法的方法名必须与类名相同。</p>
+<p>（2）构造方法没有返回类型，也不能定义为void，在方法名前面不声明方法类型。</p>
+<p>（3）构造方法的主要作用是完成对象的初始化工作，它能够把定义对象时的参数传给对象的域。</p>
+<p>（4）一个类可以定义多个构造方法，如果在定义类时没有定义构造方法，则编译系统会自动插入一个无参数的默认构造器，这个构造器不执行任何代码。</p>
+<p>（5）构造方法可以重载，，而且可以使用super()、this()相互调用，以参数的个数，类型，顺序区分。</p>
+<p>（6）每个构造器的默认第一行都是super()，但是一旦父类中没有无参构造，必须在子类的第一行显式的声明调用哪一个构造。</p>
+<h4 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h4><table>
+<thead>
+<tr>
+<th><strong>修饰符</strong></th>
+<th><strong>类</strong></th>
+<th>成员方法</th>
+<th><strong>构造方法</strong></th>
+<th><strong>成员变量</strong></th>
+<th align="center"><strong>局部变量</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>abstract（抽象的）</td>
+<td>√</td>
+<td>√</td>
+<td>－</td>
+<td>－</td>
+<td align="center">－</td>
+</tr>
+<tr>
+<td>static （静态的）</td>
+<td>－</td>
+<td>√</td>
+<td>－</td>
+<td>√</td>
+<td align="center">－</td>
+</tr>
+<tr>
+<td>public（公共的）</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td align="center">－</td>
+</tr>
+<tr>
+<td>protected（受保护的）</td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td align="center">－</td>
+</tr>
+<tr>
+<td>private（私有的）</td>
+<td>－</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td align="center">－</td>
+</tr>
+<tr>
+<td>synchronized（同步的）</td>
+<td>－</td>
+<td>√</td>
+<td>－</td>
+<td>－</td>
+<td align="center">－</td>
+</tr>
+<tr>
+<td>native（本地的）</td>
+<td>－</td>
+<td>√</td>
+<td>－</td>
+<td>－</td>
+<td align="center">－</td>
+</tr>
+<tr>
+<td>transient（暂时的）</td>
+<td>－</td>
+<td>－</td>
+<td>－</td>
+<td>√</td>
+<td align="center">－</td>
+</tr>
+<tr>
+<td>volatie（易失的）</td>
+<td>－</td>
+<td>－</td>
+<td>－</td>
+<td>√</td>
+<td align="center">－</td>
+</tr>
+<tr>
+<td>final（不要改变的）</td>
+<td>√</td>
+<td>√</td>
+<td>－</td>
+<td>√</td>
+<td align="center">√</td>
+</tr>
+</tbody></table>
+<img src="/2022/01/10/java%E7%9F%A5%E8%AF%86%E9%9A%8F%E7%AC%94/modifer.png" class>
+
+<h4 id="线程安全的集合对象"><a href="#线程安全的集合对象" class="headerlink" title="线程安全的集合对象"></a>线程安全的集合对象</h4><ul>
+<li><p>vector：就比arraylist多了个同步化机制（线程安全），因为效率较低，现在已经不太建议使用。在web应用中，特别是前台页面，往往效率（页面响应速度）是优先考虑的。</p>
+</li>
+<li><p>Stack：堆栈类，先进后出</p>
+</li>
+<li><p>hashtable：就比hashmap多了个线程安全</p>
+</li>
+<li><p>enumeration：枚举，相当于迭代器</p>
+</li>
+</ul>
+<h4 id="非线程安全的集合对象"><a href="#非线程安全的集合对象" class="headerlink" title="非线程安全的集合对象"></a>非线程安全的集合对象</h4><ul>
+<li>ArrayList</li>
+<li>LinkedList</li>
+<li>HashMap</li>
+<li>HashSet</li>
+<li>TreeMap</li>
+<li>TreeSet</li>
+<li>StringBulider</li>
+</ul>
+<h4 id="创建对象方式"><a href="#创建对象方式" class="headerlink" title="创建对象方式"></a>创建对象方式</h4><ol>
+<li><p>使用 new 关键字（最常用）： <code>ObjectName obj = new ObjectName();</code></p>
+</li>
+<li><p>使用反射的Class类的newInstance()方法：</p>
+<p> <code>ObjectName obj = ObjectName.class.newInstance();</code></p>
+</li>
+<li><p>使用反射的Constructor类的newInstance()方法：</p>
+<p> <code>ObjectName obj = ObjectName.class.getConstructor.newInstance();</code></p>
+</li>
+<li><p>使用对象克隆clone()方法： <code>ObjectName obj = obj.clone();</code></p>
+</li>
+<li><p>使用反序列化（ObjectInputStream）的readObject()方法：</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> (<span class="type">ObjectInputStream</span> <span class="variable">ois</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectInputStream</span>(<span class="keyword">new</span> <span class="title class_">FileInputStream</span>(FILE_NAME))) &#123; </span><br><span class="line"> 	<span class="type">ObjectName</span> <span class="variable">obj</span> <span class="operator">=</span> ois.readObject(); </span><br><span class="line">&#125;    </span><br></pre></td></tr></table></figure>
+
+<h4 id="map分类"><a href="#map分类" class="headerlink" title="map分类"></a>map分类</h4><p>java为数据结构中的映射定义了一个接口java.util.Map。它有四个实现类,分别是HashMap、HashTable、LinkedHashMap 和TreeMap。</p>
+<p>HashMap是无序存放的，key或value可以保存为null，非线程安全</p>
+<p>Hashtable是无序存放的，key不允许设置为null，线程安全</p>
+<p>ConcurrentHashMap是无序存放的，key或value可以保存为null，线程安全</p>
+<p>TreeMap是可以排序的Map集合，按集合中的key排序，key不允许有重复，非线程安全</p>
+<p>LinkedHashMap是HashMap的子类，保存了记录的插入顺序，遍历的时候比HashMap效率低，非线程安全</p>
+<p>Hashmap 根据键的HashCode值存储数据，根据键可以直接获取它的值，具有很快的访问速度，取得数据的顺序是完全随机的。 HashMap最多只允许一条记录的键为Null；允许多条记录的值为 Null；HashMap不支持线程的同步，。</p>
+<p>Hashtable与 HashMap类似,它继承自Dictionary类，不同的是:它不允许记录的键或者值为空;它支持线程的同步，即任一时刻只有一个线程能写Hashtable，因此也导致了 Hashtable在写入时会比较慢。</p>
+<p>LinkedHashMap 是HashMap的一个子类，保存了记录的插入顺序，在用Iterator遍历LinkedHashMap时，先得到的记录肯定是先插入的。也可以在构造时用带参数，按照应用次数排序。在遍历的时候会比HashMap慢，当HashMap容量很大，实际数据较少时，遍历起来可能会比 LinkedHashMap慢。因为LinkedHashMap的遍历速度只和实际数据有关，和容量无关，而HashMap的遍历速度和他的容量有关。</p>
+<p>TreeMap实现SortMap接口，能够把它保存的记录根据键排序,默认是按键值的升序排序，也可以指定排序的比较器，当用Iterator 遍历TreeMap时，得到的记录是排过序的。</p>
+<h4 id="面向对象的六原则一法则"><a href="#面向对象的六原则一法则" class="headerlink" title="面向对象的六原则一法则"></a>面向对象的六原则一法则</h4><h5 id="单一职责原则"><a href="#单一职责原则" class="headerlink" title="单一职责原则"></a>单一职责原则</h5><p>一个类只做它该做的事情。（单一职责原则想表达的就是”高内聚”，写代码最终极的原则只有六个字”高内聚、低耦合”，所谓的高内聚就是一个代码模块只完成一项功能，在面向对象中，如果只让一个类完成它该做的事，而不涉及与它无关的领域就是践行了高内聚的原则，这个类就只有单一职责。另一个是模块化，好的自行车是组装车，从减震叉、刹车到变速器，所有的部件都是可以拆卸和重新组装的，好的乒乓球拍也不是成品拍，一定是底板和胶皮可以拆分和自行组装的，一个好的软件系统，它里面的每个功能模块也应该是可以轻易的拿到其他系统中使用的，这样才能实现软件复用的目标。）</p>
+<h5 id="开闭原则"><a href="#开闭原则" class="headerlink" title="开闭原则"></a>开闭原则</h5><p>软件实体应当对扩展开放，对修改关闭。（在理想的状态下，当我们需要为一个软件系统增加新功能时，只需要从原来的系统派生出一些新类就可以，不需要修改原来的任何一行代码。要做到开闭有两个要点：①抽象是关键，一个系统中如果没有抽象类或接口系统就没有扩展点；②封装可变性，将系统中的各种可变因素封装到一个继承结构中，如果多个可变因素混杂在一起，系统将变得复杂而换乱，如果不清楚如何封装可变性，可以参考《设计模式精解》一书中对桥梁模式的讲解的章节。）</p>
+<h5 id="依赖倒转原则"><a href="#依赖倒转原则" class="headerlink" title="依赖倒转原则"></a>依赖倒转原则</h5><p>面向接口编程。（该原则说得直白和具体一些就是声明方法的参数类型、方法的返回类型、变量的引用类型时，尽可能使用抽象类型而不用具体类型，因为抽象类型可以被它的任何一个子类型所替代，请参考下面的里氏替换原则。）</p>
+<h5 id="里氏替换原则"><a href="#里氏替换原则" class="headerlink" title="里氏替换原则"></a>里氏替换原则</h5><p>任何时候都可以用子类型替换掉父类型。（关于里氏替换原则的描述，Barbara Liskov女士的描述比这个要复杂得多，但简单的说就是能用父类型的地方就一定能使用子类型。里氏替换原则可以检查继承关系是否合理，如果一个继承关系违背了里氏替换原则，那么这个继承关系一定是错误的，需要对代码进行重构。例如让猫继承狗，或者狗继承猫，又或者让正方形继承长方形都是错误的继承关系，因为你很容易找到违反里氏替换原则的场景。需要注意的是：子类一定是增加父类的能力而不是减少父类的能力，因为子类比父类的能力更多，把能力多的对象当成能力少的对象来用当然没有任何问题。）</p>
+<h5 id="接口隔离原则"><a href="#接口隔离原则" class="headerlink" title="接口隔离原则"></a>接口隔离原则</h5><p>接口要小而专，绝不能大而全。（臃肿的接口是对接口的污染，既然接口表示能力，那么一个接口只应该描述一种能力，接口也应该是高度内聚的。例如，琴棋书画就应该分别设计为四个接口，而不应设计成一个接口中的四个方法，因为如果设计成一个接口中的四个方法，那么这个接口很难用，毕竟琴棋书画四样都精通的人还是少数，而如果设计成四个接口，会几项就实现几个接口，这样的话每个接口被复用的可能性是很高的。Java中的接口代表能力、代表约定、代表角色，能否正确的使用接口一定是编程水平高低的重要标识。）</p>
+<h5 id="合成聚合复用原则"><a href="#合成聚合复用原则" class="headerlink" title="合成聚合复用原则"></a>合成聚合复用原则</h5><p>优先使用聚合或合成关系复用代码。（通过继承来复用代码是面向对象程序设计中被滥用得最多的东西，因为所有的教科书都无一例外的对继承进行了鼓吹从而误导了初学者，类与类之间简单的说有三种关系，Is-A关系、Has-A关系、Use-A关系，分别代表继承、关联和依赖。其中，关联关系根据其关联的强度又可以进一步划分为关联、聚合和合成，但说白了都是Has-A关系，合成聚合复用原则想表达的是优先考虑Has-A关系而不是Is-A关系复用代码，原因嘛可以自己从百度上找到一万个理由，需要说明的是，即使在Java的API中也有不少滥用继承的例子，例如Properties类继承了Hashtable类，Stack类继承了Vector类，这些继承明显就是错误的，更好的做法是在Properties类中放置一个Hashtable类型的成员并且将其键和值都设置为字符串来存储数据，而Stack类的设计也应该是在Stack类中放一个Vector对象来存储数据。记住：任何时候都不要继承工具类，工具是可以拥有并可以使用的，而不是拿来继承的。）</p>
+<h5 id="迪米特法则"><a href="#迪米特法则" class="headerlink" title="迪米特法则"></a>迪米特法则</h5><p>迪米特法则又叫最少知识原则，一个对象应当对其他对象有尽可能少的了解。再复杂的系统都可以为用户提供一个简单的门面，Java Web开发中作为前端控制器的Servlet或Filter不就是一个门面吗，浏览器对服务器的运作方式一无所知，但是通过前端控制器就能够根据你的请求得到相应的服务。调停者模式也可以举一个简单的例子来说明，例如一台计算机，CPU、内存、硬盘、显卡、声卡各种设备需要相互配合才能很好的工作，但是如果这些东西都直接连接到一起，计算机的布线将异常复杂，在这种情况下，主板作为一个调停者的身份出现，它将各个设备连接在一起而不需要每个设备之间直接交换数据，这样就减小了系统的耦合度和复杂度。</p>
+<h4 id="类的加载过程"><a href="#类的加载过程" class="headerlink" title="类的加载过程"></a>类的加载过程</h4><p>如下图所示，JVM类加载机制分为五个部分：加载，验证，准备，解析，初始化，下面我们就分别来看一下这五个过程。</p>
+<img src="/2022/01/10/java%E7%9F%A5%E8%AF%86%E9%9A%8F%E7%AC%94/loading.png" class>
+
+<h5 id="加载"><a href="#加载" class="headerlink" title="加载"></a>加载</h5><p>加载是类加载过程中的一个阶段，这个阶段会在内存中生成一个代表这个类的java.lang.Class对象，作为方法区这个类的各种数据的入口。注意这里不一定非得要从一个Class文件获取，这里既可以从ZIP包中读取（比如从jar包和war包中读取），也可以在运行时计算生成（动态代理），也可以由其它文件生成（比如将JSP文件转换成对应的Class类）。</p>
+<h5 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h5><p>这一阶段的主要目的是为了确保Class文件的字节流中包含的信息是否符合当前虚拟机的要求，并且不会危害虚拟机自身的安全。</p>
+<h5 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h5><p>准备阶段是正式为类变量分配内存并设置类变量的初始值阶段，即在方法区中分配这些变量所使用的内存空间。注意这里所说的初始值概念，比如一个类变量定义为： <code>public static int v = 8080;</code>实际上变量v在准备阶段过后的初始值为0而不是8080，将v赋值为8080的putstatic指令是程序被编译后，存放于类构造器方法之中。但是注意如果声明为：<code>public static final int v = 8080;</code>在编译阶段会为v生成ConstantValue属性，在准备阶段虚拟机会根据ConstantValue属性将v赋值为8080。</p>
+<h5 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h5><p>解析阶段是指虚拟机将常量池中的符号引用替换为直接引用的过程。符号引用就是class文件中的：<code>CONSTANT_Class_info</code>、<code>CONSTANT_Field_info</code>、<code>CONSTANT_Method_info</code>等类型的常量。</p>
+<h5 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h5><p>初始化阶段是类加载最后一个阶段，前面的类加载阶段之后，除了在加载阶段可以自定义类加载器以外，其它操作都由JVM主导。到了初始阶段，才开始真正执行类中定义的Java程序代码。</p>
+<p>初始化阶段是执行类构造器方法的过程。方法是由编译器自动收集类中的类变量的赋值操作和静态语句块中的语句合并而成的。虚拟机会保证方法执行之前，父类的方法已经执行完毕。p.s: 如果一个类中没有对静态变量赋值也没有静态语句块，那么编译器可以不为这个类生成()方法。</p>
+<p>注意以下几种情况不会执行类初始化：</p>
+<ul>
+<li><p>通过子类引用父类的静态字段，只会触发父类的初始化，而不会触发子类的初始化。</p>
+</li>
+<li><p>定义对象数组，不会触发该类的初始化。</p>
+</li>
+<li><p>常量在编译期间会存入调用类的常量池中，本质上并没有直接引用定义常量的类，不会触发定义常量所在的类。</p>
+</li>
+<li><p>通过类名获取Class对象，不会触发类的初始化。</p>
+</li>
+<li><p>通过Class.forName加载指定类时，如果指定参数initialize为false时，也不会触发类初始化，其实这个参数是告诉虚拟机，是否要对类进行初始化。</p>
+</li>
+<li><p>通过ClassLoader默认的loadClass方法，也不会触发初始化动作。</p>
+</li>
+</ul>
+<h4 id="Cookie和Session的区别"><a href="#Cookie和Session的区别" class="headerlink" title="Cookie和Session的区别"></a>Cookie和Session的区别</h4><p>1、cookie数据存放在客户的浏览器上，session数据放在服务器上。</p>
+<p>2、cookie不是很安全，别人可以分析存放在本地的COOKIE并进行COOKIE欺骗</p>
+<p>考虑到安全应当使用session。</p>
+<p>3、session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能，考虑到减轻服务器性能方面，应当使用COOKIE。</p>
+<p>4、单个cookie保存的数据不能超过4K，很多浏览器都限制一个站点最多保存20个cookie。</p>
+<h4 id="类加载机制、双亲委派模型"><a href="#类加载机制、双亲委派模型" class="headerlink" title="类加载机制、双亲委派模型"></a>类加载机制、双亲委派模型</h4><p>某个特定的类加载器在接到加载类的请求时，首先将加载任务委托给父类加载器，依次递归，如果父类加载器可以完成类加载任务，就成功返回；只有父类加载器无法完成此加载任务时，才自己去加载。</p>
+<p>双亲委派模型的好处：</p>
+<ul>
+<li><p>主要是为了安全性，避免用户自己编写的类动态替换 Java的一些核心类，比如 String。</p>
+</li>
+<li><p>同时也避免了类的重复加载，因为 JVM中区分不同类，不仅仅是根据类名，相同的 class文件被不同的 ClassLoader加载就是不同的两个类</p>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+      
+
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Kuang
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://strongth.top/2022/01/10/java%E7%9F%A5%E8%AF%86%E9%9A%8F%E7%AC%94/" title="java知识随笔">http://strongth.top/2022/01/10/java知识随笔/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/java/" rel="tag"><i class="fa fa-tag"></i> java</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/01/09/java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/" rel="prev" title="java内存模型">
+                  <i class="fa fa-chevron-left"></i> java内存模型
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/01/12/springAOP/" rel="next" title="springAOP">
+                  springAOP <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kuang</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">77k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">2:20</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        本站访客数<span id="busuanzi_value_site_uv"></span>人次
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        本站总访问量<span id="busuanzi_value_site_pv"></span>次
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

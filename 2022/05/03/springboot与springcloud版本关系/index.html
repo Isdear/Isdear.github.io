@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/memory.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/memory.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"strongth.top","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Spring启动报错org.springframework.boot.builder.SpringApplicationBuilder">
+<meta property="og:type" content="article">
+<meta property="og:title" content="springboot与springcloud版本关系">
+<meta property="og:url" content="http://strongth.top/2022/05/03/springboot%E4%B8%8Espringcloud%E7%89%88%E6%9C%AC%E5%85%B3%E7%B3%BB/index.html">
+<meta property="og:site_name" content="记忆随笔">
+<meta property="og:description" content="Spring启动报错org.springframework.boot.builder.SpringApplicationBuilder">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-05-03T08:22:48.000Z">
+<meta property="article:modified_time" content="2022-05-03T08:22:48.000Z">
+<meta property="article:author" content="Kuang">
+<meta property="article:tag" content="spring">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://strongth.top/2022/05/03/springboot%E4%B8%8Espringcloud%E7%89%88%E6%9C%AC%E5%85%B3%E7%B3%BB/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://strongth.top/2022/05/03/springboot%E4%B8%8Espringcloud%E7%89%88%E6%9C%AC%E5%85%B3%E7%B3%BB/","path":"2022/05/03/springboot与springcloud版本关系/","title":"springboot与springcloud版本关系"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>springboot与springcloud版本关系 | 记忆随笔</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">记忆随笔</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">悟已往之不谏，知来者之可追</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-首页"><a href="/" rel="section"><i class="home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-标签"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-类别"><a href="/categories/" rel="section"><i class="categories fa-fw"></i>类别</a></li>
+        <li class="menu-item menu-item-档案"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>档案</a></li>
+        <li class="menu-item menu-item-特效"><a href="/personality/" rel="section"><i class="about fa-fw"></i>特效</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Kuang"
+      src="/images/kenan.jpg">
+  <p class="site-author-name" itemprop="name">Kuang</p>
+  <div class="site-description" itemprop="description">个人博客</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">72</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Isdear" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Isdear" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:kuang8421@qq.com" title="E-Mail → mailto:kuang8421@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/269017831" title="B站 → https:&#x2F;&#x2F;space.bilibili.com&#x2F;269017831" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>B站</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/1906956615" title="QQ → 1906956615"><i class="fab fa-qq fa-fw"></i>QQ</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://strongth.top/2022/05/03/springboot%E4%B8%8Espringcloud%E7%89%88%E6%9C%AC%E5%85%B3%E7%B3%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/kenan.jpg">
+      <meta itemprop="name" content="Kuang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记忆随笔">
+      <meta itemprop="description" content="个人博客">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="springboot与springcloud版本关系 | 记忆随笔">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          springboot与springcloud版本关系
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-05-03 16:22:48" itemprop="dateCreated datePublished" datetime="2022-05-03T16:22:48+08:00">2022-05-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%A1%86%E6%9E%B6/" itemprop="url" rel="index"><span itemprop="name">框架</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>303</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>Spring启动报错org.springframework.boot.builder.SpringApplicationBuilder<span id="more"></span></p>
+<p>具体提示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.lang.NoSuchMethodError: org.springframework.boot.builder.SpringApplicationBuilder.&lt;in</span><br></pre></td></tr></table></figure>
+
+<p>启动报错的这个原因是SpringBoot的版本和SpringCloud的版本存在不同导致的报错，<br>调整对应版本，目前大版本对应如下：</p>
+<table>
+<thead>
+<tr>
+<th>Spring Boot</th>
+<th>Spring Cloud</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1.2.x</td>
+<td>Angel版本</td>
+</tr>
+<tr>
+<td>1.3.x</td>
+<td>Brixton版本</td>
+</tr>
+<tr>
+<td>1.4.x stripes</td>
+<td>Camden版本</td>
+</tr>
+<tr>
+<td>1.5.x</td>
+<td>Dalston版本、Edgware版本</td>
+</tr>
+<tr>
+<td>2.0.x</td>
+<td>Finchley版本</td>
+</tr>
+<tr>
+<td>2.1.x</td>
+<td>Greenwich.SR2</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>官网地址：<a target="_blank" rel="noopener" href="https://start.spring.io/actuator/info">https://start.spring.io/actuator/info</a></p>
+</blockquote>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;git&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;branch&quot;</span><span class="punctuation">:</span><span class="string">&quot;219a0df1dd0b1cf561e71affd4d41ed7515fe01a&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;commit&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span><span class="string">&quot;219a0df&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;time&quot;</span><span class="punctuation">:</span><span class="string">&quot;2020-11-15T07:21:11Z&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;build&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;version&quot;</span><span class="punctuation">:</span><span class="string">&quot;0.0.1-SNAPSHOT&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;artifact&quot;</span><span class="punctuation">:</span><span class="string">&quot;start-site&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;versions&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;spring-boot&quot;</span><span class="punctuation">:</span><span class="string">&quot;2.4.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;initializr&quot;</span><span class="punctuation">:</span><span class="string">&quot;0.10.0-SNAPSHOT&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;start.spring.io website&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;time&quot;</span><span class="punctuation">:</span><span class="string">&quot;2020-11-15T07:22:38.805Z&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;group&quot;</span><span class="punctuation">:</span><span class="string">&quot;io.spring.start&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;bom-ranges&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;azure&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;2.0.10&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.0.0.RELEASE and &lt;2.1.0.RELEASE&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;2.1.10&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.1.0.RELEASE and &lt;2.2.0.M1&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;2.2.4&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.2.0.M1 and &lt;2.3.0.M1&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;2.3.5&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.3.0.M1&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;codecentric-spring-boot-admin&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;2.0.6&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.0.0.M1 and &lt;2.1.0.M1&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;2.1.6&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.1.0.M1 and &lt;2.2.0.M1&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;2.2.4&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.2.0.M1 and &lt;2.3.0.M1&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;2.3.1&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.3.0.M1 and &lt;2.5.0-M1&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;solace-spring-boot&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;1.0.0&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.2.0.RELEASE and &lt;2.3.0.M1&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;1.1.0&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.3.0.M1&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;solace-spring-cloud&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;1.0.0&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.2.0.RELEASE and &lt;2.3.0.M1&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;1.1.1&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.3.0.M1&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;spring-cloud&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;Finchley.M2&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.0.0.M3 and &lt;2.0.0.M5&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;Finchley.M3&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.0.0.M5 and &lt;=2.0.0.M5&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;Finchley.M4&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.0.0.M6 and &lt;=2.0.0.M6&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;Finchley.M5&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.0.0.M7 and &lt;=2.0.0.M7&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;Finchley.M6&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.0.0.RC1 and &lt;=2.0.0.RC1&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;Finchley.M7&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.0.0.RC2 and &lt;=2.0.0.RC2&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;Finchley.M9&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.0.0.RELEASE and &lt;=2.0.0.RELEASE&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;Finchley.RC1&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.0.1.RELEASE and &lt;2.0.2.RELEASE&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;Finchley.RC2&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.0.2.RELEASE and &lt;2.0.3.RELEASE&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;Finchley.SR4&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.0.3.RELEASE and &lt;2.0.999.BUILD-SNAPSHOT&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;Finchley.BUILD-SNAPSHOT&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.0.999.BUILD-SNAPSHOT and &lt;2.1.0.M3&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;Greenwich.M1&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.1.0.M3 and &lt;2.1.0.RELEASE&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;Greenwich.SR6&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.1.0.RELEASE and &lt;2.1.999.BUILD-SNAPSHOT&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;Greenwich.BUILD-SNAPSHOT&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.1.999.BUILD-SNAPSHOT and &lt;2.2.0.M4&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;Hoxton.SR9&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.2.0.M4 and &lt;2.3.7.BUILD-SNAPSHOT&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;Hoxton.BUILD-SNAPSHOT&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.3.7.BUILD-SNAPSHOT and &lt;2.4.0.M1&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;2020.0.0-M3&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.4.0.M1 and &lt;=2.4.0.M1&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;2020.0.0-M4&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.4.0.M2 and &lt;=2.4.0-M3&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;2020.0.0-SNAPSHOT&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.4.0-M4&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;spring-cloud-alibaba&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;2.2.1.RELEASE&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.2.0.RELEASE and &lt;2.3.0.M1&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;spring-cloud-services&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;2.0.3.RELEASE&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.0.0.RELEASE and &lt;2.1.0.RELEASE&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;2.1.8.RELEASE&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.1.0.RELEASE and &lt;2.2.0.RELEASE&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;2.2.6.RELEASE&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.2.0.RELEASE and &lt;2.3.0.RELEASE&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;2.3.0.RELEASE&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.3.0.RELEASE and &lt;2.4.0-M1&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;spring-geode&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;1.2.11.RELEASE&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.2.0.M5 and &lt;2.3.0.M1&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;1.3.5.RELEASE&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.3.0.M1 and &lt;2.4.0-M1&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;1.4.0-RC1&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.4.0-M1&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;spring-statemachine&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;2.0.0.M4&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.0.0.RC1 and &lt;=2.0.0.RC1&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;2.0.0.M5&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.0.0.RC2 and &lt;=2.0.0.RC2&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;2.0.1.RELEASE&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.0.0.RELEASE&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;vaadin&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;10.0.17&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.0.0.M1 and &lt;2.1.0.M1&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;14.4.2&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.1.0.M1 and &lt;2.4.0-M1&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;wavefront&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;2.0.2&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.1.0.RELEASE and &lt;2.4.0-M1&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;2.1.0-SNAPSHOT&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.4.0-M1&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;dependency-ranges&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;okta&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;1.2.1&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.1.2.RELEASE and &lt;2.2.0.M1&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;1.4.0&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.2.0.M1 and &lt;2.4.0-M1&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;mybatis&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;2.0.1&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.0.0.RELEASE and &lt;2.1.0.RELEASE&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;2.1.4&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.1.0.RELEASE and &lt;2.5.0-M1&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;camel&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;2.22.4&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.0.0.M1 and &lt;2.1.0.M1&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;2.25.2&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.1.0.M1 and &lt;2.2.0.M1&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;3.3.0&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.2.0.M1 and &lt;2.3.0.M1&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;3.5.0&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.3.0.M1 and &lt;2.4.0-M1&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;open-service-broker&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;2.1.3.RELEASE&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.0.0.RELEASE and &lt;2.1.0.M1&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;3.0.4.RELEASE&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.1.0.M1 and &lt;2.2.0.M1&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;3.1.1.RELEASE&quot;</span><span class="punctuation">:</span><span class="string">&quot;Spring Boot &gt;=2.2.0.M1 and &lt;2.4.0-M1&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+      
+
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Kuang
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://strongth.top/2022/05/03/springboot%E4%B8%8Espringcloud%E7%89%88%E6%9C%AC%E5%85%B3%E7%B3%BB/" title="springboot与springcloud版本关系">http://strongth.top/2022/05/03/springboot与springcloud版本关系/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/spring/" rel="tag"><i class="fa fa-tag"></i> spring</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/05/03/curl%E8%B0%83%E7%94%A8%E5%90%8E%E5%8F%B0%E6%8E%A5%E5%8F%A3/" rel="prev" title="curl调用后台接口">
+                  <i class="fa fa-chevron-left"></i> curl调用后台接口
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/05/03/java%E8%AE%BE%E7%BD%AEExcel%E5%8D%95%E5%85%83%E6%A0%BC%E6%A0%BC%E5%BC%8F/" rel="next" title="java设置Excel单元格格式">
+                  java设置Excel单元格格式 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kuang</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">77k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">2:20</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        本站访客数<span id="busuanzi_value_site_uv"></span>人次
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        本站总访问量<span id="busuanzi_value_site_pv"></span>次
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

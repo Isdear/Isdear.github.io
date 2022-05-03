@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/memory.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/memory.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"strongth.top","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="over分析函数的使用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="分析函数over">
+<meta property="og:url" content="http://strongth.top/2022/05/02/%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/index.html">
+<meta property="og:site_name" content="记忆随笔">
+<meta property="og:description" content="over分析函数的使用">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://strongth.top/2022/05/02/%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/sql.jpg">
+<meta property="og:image" content="http://strongth.top/2022/05/02/%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/oracle.jpg">
+<meta property="og:image" content="http://strongth.top/2022/05/02/%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/lead.jpg">
+<meta property="og:image" content="http://strongth.top/2022/05/02/%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/first.jpg">
+<meta property="og:image" content="http://strongth.top/2022/05/02/%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/rows.jpg">
+<meta property="og:image" content="http://strongth.top/2022/05/02/%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/sum.jpg">
+<meta property="og:image" content="http://strongth.top/2022/05/02/%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/rows.jpg">
+<meta property="og:image" content="http://strongth.top/2022/05/02/%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/rows2.jpg">
+<meta property="og:image" content="http://strongth.top/2022/05/02/%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/1201638924.png">
+<meta property="og:image" content="http://strongth.top/2022/05/02/%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/540755-20170621140746882-1940488481.png">
+<meta property="og:image" content="http://strongth.top/2022/05/02/%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/540755-20170621140921382-538208257.png">
+<meta property="article:published_time" content="2022-05-02T15:58:33.000Z">
+<meta property="article:modified_time" content="2022-05-02T15:58:33.000Z">
+<meta property="article:author" content="Kuang">
+<meta property="article:tag" content="oracle">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://strongth.top/2022/05/02/%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/sql.jpg">
+
+
+<link rel="canonical" href="http://strongth.top/2022/05/02/%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://strongth.top/2022/05/02/%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/","path":"2022/05/02/分析函数over/","title":"分析函数over"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>分析函数over | 记忆随笔</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">记忆随笔</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">悟已往之不谏，知来者之可追</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-首页"><a href="/" rel="section"><i class="home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-标签"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-类别"><a href="/categories/" rel="section"><i class="categories fa-fw"></i>类别</a></li>
+        <li class="menu-item menu-item-档案"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>档案</a></li>
+        <li class="menu-item menu-item-特效"><a href="/personality/" rel="section"><i class="about fa-fw"></i>特效</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#over-%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">over()分析函数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#rank-x2F-dense-rank-over-partition-by-%E2%80%A6-order-by-%E2%80%A6"><span class="nav-number">1.1.</span> <span class="nav-text">rank()&#x2F;dense_rank over(partition by … order by …)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#min-x2F-max-over-partition-by-%E2%80%A6"><span class="nav-number">1.2.</span> <span class="nav-text">min()&#x2F;max() over(partition by …)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#lead-x2F-lag-over-partition-by-%E2%80%A6-order-by-%E2%80%A6-%E5%8F%96%E5%89%8D%E9%9D%A2-x2F-%E5%90%8E%E9%9D%A2%E7%AC%ACn%E8%A1%8C%E8%AE%B0%E5%BD%95"><span class="nav-number">1.3.</span> <span class="nav-text">lead()&#x2F;lag() over(partition by … order by …) 取前面&#x2F;后面第n行记录</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#FIRST-VALUE-x2F-LAST-VALUE-OVER-PARTITION-BY-%E2%80%A6-%E5%8F%96%E9%A6%96%E5%B0%BE%E8%AE%B0%E5%BD%95"><span class="nav-number">1.4.</span> <span class="nav-text">FIRST_VALUE&#x2F;LAST_VALUE() OVER(PARTITION BY …) 取首尾记录</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ROW-NUMBER-OVER-PARTITION-BY-ORDER-BY-%E6%8E%92%E5%BA%8F%EF%BC%88%E5%BA%94%E7%94%A8%EF%BC%9A%E5%88%86%E9%A1%B5%EF%BC%89"><span class="nav-number">1.5.</span> <span class="nav-text">ROW_NUMBER() OVER(PARTITION BY.. ORDER BY ..) 排序（应用：分页）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#sum-x2F-avg-x2F-count-over-partition-by"><span class="nav-number">1.6.</span> <span class="nav-text">sum&#x2F;avg&#x2F;count() over(partition by ..)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#rows-x2F-range-between-%E2%80%A6-preceding-and-%E2%80%A6-following-%E4%B8%8A%E4%B8%8B%E8%8C%83%E5%9B%B4%E5%86%85%E6%B1%82%E5%80%BC"><span class="nav-number">1.7.</span> <span class="nav-text">rows&#x2F;range between … preceding and … following 上下范围内求值</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Kuang"
+      src="/images/kenan.jpg">
+  <p class="site-author-name" itemprop="name">Kuang</p>
+  <div class="site-description" itemprop="description">个人博客</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">72</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Isdear" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Isdear" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:kuang8421@qq.com" title="E-Mail → mailto:kuang8421@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/269017831" title="B站 → https:&#x2F;&#x2F;space.bilibili.com&#x2F;269017831" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>B站</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/1906956615" title="QQ → 1906956615"><i class="fab fa-qq fa-fw"></i>QQ</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://strongth.top/2022/05/02/%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/kenan.jpg">
+      <meta itemprop="name" content="Kuang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记忆随笔">
+      <meta itemprop="description" content="个人博客">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="分析函数over | 记忆随笔">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          分析函数over
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-05-02 23:58:33" itemprop="dateCreated datePublished" datetime="2022-05-02T23:58:33+08:00">2022-05-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.5k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>over分析函数的使用<span id="more"></span></p>
+<h4 id="over-分析函数"><a href="#over-分析函数" class="headerlink" title="over()分析函数"></a>over()分析函数</h4><p>聚合函数（如sum()、max()等）可以计算基于组的某种聚合值，但是聚合函数对于某个组只能返回一行记录。若想对于某组返回多行记录，则需要使用分析函数。</p>
+<h5 id="rank-x2F-dense-rank-over-partition-by-…-order-by-…"><a href="#rank-x2F-dense-rank-over-partition-by-…-order-by-…" class="headerlink" title="rank()&#x2F;dense_rank over(partition by … order by …)"></a>rank()&#x2F;dense_rank over(partition by … order by …)</h5><p>说明：over()在什么条件之上;</p>
+<p>　　partition by 按哪个字段划分组；</p>
+<p>　　order by 按哪个字段排序；</p>
+<p>注意：</p>
+<p>　　（1）使用rank()&#x2F;dense_rank() 时，必须要带order by否则非法</p>
+<p>　　（2）rank()&#x2F;dense_rank()分级的区别：</p>
+<p>rank(): 跳跃排序，如果有两个第一级时，接下来就是第三级。</p>
+<p>dense_rank(): 连续排序，如果有两个第一级时，接下来仍然是第二级。</p>
+<p>示例：查询每个部门工资最高的员工信息</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> E.ENAME, E.JOB, E.SAL, E.DEPTNO</span><br><span class="line">  <span class="keyword">FROM</span> SCOTT.EMP E,</span><br><span class="line">       (<span class="keyword">SELECT</span> E.DEPTNO, <span class="built_in">MAX</span>(E.SAL) SAL <span class="keyword">FROM</span> SCOTT.EMP E <span class="keyword">GROUP</span> <span class="keyword">BY</span> E.DEPTNO) ME</span><br><span class="line"> <span class="keyword">WHERE</span> E.DEPTNO <span class="operator">=</span> ME.DEPTNO</span><br><span class="line">   <span class="keyword">AND</span> E.SAL <span class="operator">=</span> ME.SAL;</span><br></pre></td></tr></table></figure>
+
+<p>使用Over()函数：</p>
+<p>方法一：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> E.ENAME, E.JOB, E.SAL, E.DEPTNO</span><br><span class="line">  <span class="keyword">FROM</span> (<span class="keyword">SELECT</span> E.ENAME,</span><br><span class="line">               E.JOB,</span><br><span class="line">               E.SAL,</span><br><span class="line">               E.DEPTNO,</span><br><span class="line">               <span class="built_in">RANK</span>() <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO <span class="keyword">ORDER</span> <span class="keyword">BY</span> E.SAL <span class="keyword">DESC</span>) RANK  <span class="comment">--在按部门划分的基础上，工资从高到低分级，级别RANK从1开始依次递增</span></span><br><span class="line">          <span class="keyword">FROM</span> EMP E) E</span><br><span class="line"> <span class="keyword">WHERE</span> E.RANK <span class="operator">=</span> <span class="number">1</span> ;</span><br></pre></td></tr></table></figure>
+
+<p>方法二：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> E.ENAME, E.JOB, E.SAL, E.DEPTNO</span><br><span class="line"> <span class="keyword">FROM</span> (<span class="keyword">SELECT</span> E.ENAME,</span><br><span class="line">              E.JOB,</span><br><span class="line">              E.SAL,</span><br><span class="line">              E.DEPTNO,</span><br><span class="line">              <span class="built_in">DENSE_RANK</span>() <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO <span class="keyword">ORDER</span> <span class="keyword">BY</span> E.SAL <span class="keyword">DESC</span>) RANK</span><br><span class="line">         <span class="keyword">FROM</span> EMP E) E</span><br><span class="line"><span class="keyword">WHERE</span> E.RANK <span class="operator">=</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+<p>对比查询结果：左边的是用一般的方法查询结果，右边的是分析函数查询结果（两种方法结果相同）</p>
+<img src="/2022/05/02/%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/sql.jpg" class>
+
+<h5 id="min-x2F-max-over-partition-by-…"><a href="#min-x2F-max-over-partition-by-…" class="headerlink" title="min()&#x2F;max() over(partition by …)"></a>min()&#x2F;max() over(partition by …)</h5><p>查询员工信息的同时，查询员工工资与所在部门最低、最高工资的差额</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> E.ENAME,</span><br><span class="line">       E.JOB,</span><br><span class="line">       E.SAL,</span><br><span class="line">       E.DEPTNO,</span><br><span class="line">       E.SAL <span class="operator">-</span> ME.MIN_SAL DIFF_MIN_SAL,</span><br><span class="line">       ME.MAX_SAL <span class="operator">-</span> E.SAL DIFF_MAX_SAL</span><br><span class="line">  <span class="keyword">FROM</span> SCOTT.EMP E,</span><br><span class="line">       (<span class="keyword">SELECT</span> E.DEPTNO, <span class="built_in">MIN</span>(E.SAL) MIN_SAL, <span class="built_in">MAX</span>(E.SAL) MAX_SAL</span><br><span class="line">          <span class="keyword">FROM</span> SCOTT.EMP E</span><br><span class="line">         <span class="keyword">GROUP</span> <span class="keyword">BY</span> E.DEPTNO) ME</span><br><span class="line"> <span class="keyword">WHERE</span> E.DEPTNO <span class="operator">=</span> ME.DEPTNO</span><br><span class="line"> <span class="keyword">ORDER</span> <span class="keyword">BY</span> E.DEPTNO, E.SAL;</span><br></pre></td></tr></table></figure>
+
+<p>使用分析函数：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> E.ENAME,</span><br><span class="line">       E.JOB,</span><br><span class="line">       E.SAL,</span><br><span class="line">       E.DEPTNO,</span><br><span class="line">       <span class="built_in">MIN</span>(E.SAL) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO) MIN_SAL,</span><br><span class="line">       <span class="built_in">MAX</span>(E.SAL) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO) MAX_SAL,</span><br><span class="line">       NVL(E.SAL <span class="operator">-</span> <span class="built_in">MIN</span>(E.SAL) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO), <span class="number">0</span>) DIFF_MIN_SAL,</span><br><span class="line">       NVL(<span class="built_in">MAX</span>(E.SAL) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO) <span class="operator">-</span> E.SAL, <span class="number">0</span>) DIFF_MAX_SAL</span><br><span class="line">  <span class="keyword">FROM</span> EMP E;</span><br></pre></td></tr></table></figure>
+
+<p>注：这里没有排序条件，若加上order by 排序条件，</p>
+<p>MAX() OVER(PARTITION BY .. ORDER BY .. DESC) 排序规则只能为desc，否则不起作用，将查询到目前为止排序值最高字段的对应值<br>MIN() OVER(PARTITION BY .. ORDER BY .. ASC ) 排序规则只能为asc，否则不起作用，将查询到目前为止排序值最低的字段的对应值，</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> E.ENAME,</span><br><span class="line">       E.JOB,</span><br><span class="line">       E.SAL,</span><br><span class="line">       E.DEPTNO,</span><br><span class="line">       <span class="built_in">MIN</span>(E.SAL) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO) MIN_SAL01,</span><br><span class="line">       <span class="built_in">MAX</span>(E.SAL) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO) MAX_SAL01,</span><br><span class="line">       <span class="built_in">MIN</span>(E.SAL) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO <span class="keyword">ORDER</span> <span class="keyword">BY</span> E.SAL) MIN_SAL02,</span><br><span class="line">       <span class="built_in">MAX</span>(E.SAL) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO <span class="keyword">ORDER</span> <span class="keyword">BY</span> E.SAL) MAX_SAL02, <span class="comment">--不起作用</span></span><br><span class="line">       <span class="built_in">MIN</span>(E.SAL) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO <span class="keyword">ORDER</span> <span class="keyword">BY</span> E.SAL <span class="keyword">DESC</span>) MIN_SAL03, <span class="comment">--不起作用</span></span><br><span class="line">       <span class="built_in">MAX</span>(E.SAL) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO <span class="keyword">ORDER</span> <span class="keyword">BY</span> E.SAL <span class="keyword">DESC</span>) MAX_SAL03,</span><br><span class="line">       <span class="built_in">MIN</span>(E.SAL) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO <span class="keyword">ORDER</span> <span class="keyword">BY</span> E.SAL <span class="keyword">ASC</span>) MIN_SAL04,</span><br><span class="line">       <span class="built_in">MAX</span>(E.SAL) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO <span class="keyword">ORDER</span> <span class="keyword">BY</span> E.SAL <span class="keyword">ASC</span>) MAX_SAL04, <span class="comment">--不起作用</span></span><br><span class="line">       NVL(E.SAL <span class="operator">-</span> <span class="built_in">MIN</span>(E.SAL) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO), <span class="number">0</span>) DIFF_MIN_SAL,</span><br><span class="line">       NVL(<span class="built_in">MAX</span>(E.SAL) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO) <span class="operator">-</span> E.SAL, <span class="number">0</span>) DIFF_MAX_SAL</span><br><span class="line">  <span class="keyword">FROM</span> EMP E;</span><br></pre></td></tr></table></figure>
+
+<p>结果如下：</p>
+<img src="/2022/05/02/%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/oracle.jpg" class title="img">
+
+<h5 id="lead-x2F-lag-over-partition-by-…-order-by-…-取前面-x2F-后面第n行记录"><a href="#lead-x2F-lag-over-partition-by-…-order-by-…-取前面-x2F-后面第n行记录" class="headerlink" title="lead()&#x2F;lag() over(partition by … order by …) 取前面&#x2F;后面第n行记录"></a>lead()&#x2F;lag() over(partition by … order by …) 取前面&#x2F;后面第n行记录</h5><p>说明：</p>
+<p>lead(列名,n,m): 当前记录后面第n行记录的&lt;列名&gt;的值，没有则默认值为m；如果不带参数n,m，则查找当前记录后面第一行的记录&lt;列名&gt;的值，没有则默认值为null。<br>lag(列名,n,m): 当前记录前面第n行记录的&lt;列名&gt;的值，没有则默认值为m；如果不带参数n,m，则查找当前记录前面第一行的记录&lt;列名&gt;的值，没有则默认值为null。</p>
+<p>示例：查询个人工资与比自己高一位、第一位的工资的差额</p>
+<p>使用分析函数：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> E.ENAME,</span><br><span class="line">        E.JOB,</span><br><span class="line">        E.SAL,</span><br><span class="line">        E.DEPTNO,</span><br><span class="line">        <span class="built_in">LEAD</span>(E.SAL, <span class="number">1</span>, <span class="number">0</span>) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO <span class="keyword">ORDER</span> <span class="keyword">BY</span> E.SAL) LEAD_SAL, <span class="comment">--记录后面第n行记录</span></span><br><span class="line">        <span class="built_in">LAG</span>(E.SAL, <span class="number">1</span>, <span class="number">0</span>) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO <span class="keyword">ORDER</span> <span class="keyword">BY</span> E.SAL) LAG_SAL, <span class="comment">--记录前面第N行记录</span></span><br><span class="line">        NVL(<span class="built_in">LEAD</span>(E.SAL) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO <span class="keyword">ORDER</span> <span class="keyword">BY</span> E.SAL) <span class="operator">-</span> E.SAL,  </span><br><span class="line">            <span class="number">0</span>) DIFF_LEAD_SAL,</span><br><span class="line">        NVL(E.SAL <span class="operator">-</span> <span class="built_in">LEAD</span>(E.SAL) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO <span class="keyword">ORDER</span> <span class="keyword">BY</span> E.SAL),</span><br><span class="line">            <span class="number">0</span>) DIFF_LAG_SAL</span><br><span class="line">   <span class="keyword">FROM</span> EMP E;</span><br></pre></td></tr></table></figure>
+
+<p>查询结果：</p>
+<img src="/2022/05/02/%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/lead.jpg" class title="img">
+
+<h5 id="FIRST-VALUE-x2F-LAST-VALUE-OVER-PARTITION-BY-…-取首尾记录"><a href="#FIRST-VALUE-x2F-LAST-VALUE-OVER-PARTITION-BY-…-取首尾记录" class="headerlink" title="FIRST_VALUE&#x2F;LAST_VALUE() OVER(PARTITION BY …) 取首尾记录"></a>FIRST_VALUE&#x2F;LAST_VALUE() OVER(PARTITION BY …) 取首尾记录</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> E.EMPNO,</span><br><span class="line">        E.ENAME,</span><br><span class="line">        E.JOB,</span><br><span class="line">        E.MGR,</span><br><span class="line">        E.SAL,</span><br><span class="line">        E.DEPTNO,</span><br><span class="line">        <span class="built_in">FIRST_VALUE</span>(E.SAL) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO) FIRST_SAL,</span><br><span class="line">        <span class="built_in">LAST_VALUE</span>(E.SAL) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO) LAST_SAL</span><br><span class="line">   <span class="keyword">FROM</span> EMP E;</span><br></pre></td></tr></table></figure>
+
+<p>查询结果：</p>
+<img src="/2022/05/02/%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/first.jpg" class title="first">
+
+<h5 id="ROW-NUMBER-OVER-PARTITION-BY-ORDER-BY-排序（应用：分页）"><a href="#ROW-NUMBER-OVER-PARTITION-BY-ORDER-BY-排序（应用：分页）" class="headerlink" title="ROW_NUMBER() OVER(PARTITION BY.. ORDER BY ..) 排序（应用：分页）"></a>ROW_NUMBER() OVER(PARTITION BY.. ORDER BY ..) 排序（应用：分页）</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> E.ENAME, E.JOB, E.SAL, E.DEPTNO,E.ROW_NUM</span><br><span class="line">   <span class="keyword">FROM</span> (<span class="keyword">SELECT</span> E.ENAME,</span><br><span class="line">                E.JOB,</span><br><span class="line">                E.SAL,</span><br><span class="line">                E.DEPTNO,</span><br><span class="line">                <span class="built_in">ROW_NUMBER</span>() <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO <span class="keyword">ORDER</span> <span class="keyword">BY</span> E.SAL) ROW_NUM</span><br><span class="line">           <span class="keyword">FROM</span> EMP E) E</span><br><span class="line">  <span class="keyword">WHERE</span> E.ROW_NUM <span class="operator">&gt;</span> <span class="number">3</span>;</span><br></pre></td></tr></table></figure>
+
+<p>查询结果：</p>
+<img src="/2022/05/02/%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/rows.jpg" class title="img">
+
+<p>补充：</p>
+<p>类似分页的操作还可以用rownum、fetch(Oracle12C后的新特性)实现</p>
+<h5 id="sum-x2F-avg-x2F-count-over-partition-by"><a href="#sum-x2F-avg-x2F-count-over-partition-by" class="headerlink" title="sum&#x2F;avg&#x2F;count() over(partition by ..)"></a>sum&#x2F;avg&#x2F;count() over(partition by ..)</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> E.ENAME,</span><br><span class="line">       E.JOB,</span><br><span class="line">       E.SAL,</span><br><span class="line">       E.DEPTNO,</span><br><span class="line">       <span class="built_in">SUM</span>(E.SAL) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO) SUM_SAL,     <span class="comment">--统计某组中的总计值</span></span><br><span class="line">       <span class="built_in">AVG</span>(E.SAL) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO) AVG_SAL,     <span class="comment">--统计某组中的平均值</span></span><br><span class="line">       <span class="built_in">COUNT</span>(E.SAL) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO) COUNT_SAL  <span class="comment">--按某列分组，并统计该组中记录数量</span></span><br><span class="line">  <span class="keyword">FROM</span> EMP E;</span><br></pre></td></tr></table></figure>
+
+<p>查询结果：</p>
+<img src="/2022/05/02/%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/sum.jpg" class title="img">
+
+<p>示例2（全统计）：为数据集统计部门销售总和，全公司销售总和，部门销售均值，全公司销售均值</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> A.DEPT_ID,</span><br><span class="line">       A.SALE_DATE,</span><br><span class="line">       A.GOODS_TYPE,</span><br><span class="line">       A.SALE_CNT,</span><br><span class="line">       <span class="built_in">SUM</span>(A.SALE_CNT) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> A.DEPT_ID) DEPT_TOTAL, <span class="comment">--部门销售总和</span></span><br><span class="line">       <span class="built_in">SUM</span>(A.SALE_CNT) <span class="keyword">OVER</span>() CMP_TOTAL,  <span class="comment">--公司销售总额</span></span><br><span class="line">       <span class="built_in">AVG</span>(A.SALE_CNT) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> A.DEPT_ID) DEPT_AVG, <span class="comment">--部门销售均值</span></span><br><span class="line">       <span class="built_in">AVG</span>(A.SALE_CNT) <span class="keyword">OVER</span>() CMP_AVG  <span class="comment">--公司销售均值</span></span><br><span class="line">  <span class="keyword">FROM</span> LEARN_FUN_KEEP A;</span><br></pre></td></tr></table></figure>
+
+<h5 id="rows-x2F-range-between-…-preceding-and-…-following-上下范围内求值"><a href="#rows-x2F-range-between-…-preceding-and-…-following-上下范围内求值" class="headerlink" title="rows&#x2F;range between … preceding and … following 上下范围内求值"></a>rows&#x2F;range between … preceding and … following 上下范围内求值</h5><p>说明：unbounded：不受控制的，无限的<br>　　　preceding：在…之前<br>　　　following：在…之后</p>
+<p><strong>rows between … preceding and … following</strong></p>
+<p>示例1：显示各部门员工的工资，并附带显示该部门的最高工资</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> E.DEPTNO,</span><br><span class="line">       E.EMPNO,</span><br><span class="line">       E.ENAME,</span><br><span class="line">       E.SAL,</span><br><span class="line">       <span class="built_in">LAST_VALUE</span>(E.SAL) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO <span class="keyword">ORDER</span> <span class="keyword">BY</span> E.SAL <span class="keyword">ROWS</span>       <span class="comment">/*MAX(E.SAL) OVER(PARTITION BY E.DEPTNO ORDER BY E.SAL ROWS*/</span></span><br><span class="line">       <span class="comment">--unbounded preceding and unbouned following针对当前所有记录的前一条、后一条记录，也就是表中的所有记录</span></span><br><span class="line">       <span class="comment">--unbounded：不受控制的，无限的</span></span><br><span class="line">       <span class="comment">--preceding：在...之前</span></span><br><span class="line">       <span class="comment">--following：在...之后</span></span><br><span class="line">        <span class="keyword">BETWEEN</span> UNBOUNDED PRECEDING <span class="keyword">AND</span> UNBOUNDED FOLLOWING) MAX_SAL</span><br><span class="line">  <span class="keyword">FROM</span> EMP E;</span><br></pre></td></tr></table></figure>
+
+<p>结果如下：</p>
+<img src="/2022/05/02/%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/rows.jpg" class title="img">
+
+<p>写法二:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> E.DEPTNO,</span><br><span class="line">       E.EMPNO,</span><br><span class="line">       E.ENAME,</span><br><span class="line">       E.SAL,</span><br><span class="line">       <span class="built_in">MAX</span>(E.SAL) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> E.DEPTNO</span><br><span class="line">       <span class="comment">/*ORDER BY E.SAL*/</span>) MAX_SAL</span><br><span class="line">  <span class="keyword">FROM</span> EMP E;</span><br></pre></td></tr></table></figure>
+
+<p>示例2：对各部门进行分组，并附带显示第一行至当前行的汇总</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> EMPNO,</span><br><span class="line">       ENAME,</span><br><span class="line">       DEPTNO,</span><br><span class="line">       SAL,</span><br><span class="line">       <span class="comment">--注意ROWS BETWEEN unbounded preceding AND current row  是指第一行至当前行的汇总</span></span><br><span class="line">       <span class="built_in">SUM</span>(SAL) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> DEPTNO </span><br><span class="line">                     <span class="keyword">ORDER</span> <span class="keyword">BY</span> ENAME </span><br><span class="line">                     <span class="keyword">ROWS</span> <span class="keyword">BETWEEN</span> UNBOUNDED PRECEDING <span class="keyword">AND</span> <span class="keyword">CURRENT</span> <span class="type">ROW</span>) max_sal</span><br><span class="line">  <span class="keyword">FROM</span> SCOTT.EMP;</span><br></pre></td></tr></table></figure>
+
+<p>结果如下：</p>
+<img src="/2022/05/02/%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/rows2.jpg" class title="img">
+
+<p>示例3：当前行至最后一行的汇总</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> EMPNO,</span><br><span class="line">       ENAME,</span><br><span class="line">       DEPTNO,</span><br><span class="line">       SAL,</span><br><span class="line">       <span class="comment">--注意ROWS BETWEEN current row AND unbounded following 指当前行到最后一行的汇总</span></span><br><span class="line">       <span class="built_in">SUM</span>(SAL) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> DEPTNO </span><br><span class="line">                     <span class="keyword">ORDER</span> <span class="keyword">BY</span> ENAME </span><br><span class="line">                     <span class="keyword">ROWS</span> <span class="keyword">BETWEEN</span> <span class="keyword">CURRENT</span> <span class="type">ROW</span> <span class="keyword">AND</span> UNBOUNDED FOLLOWING) max_sal</span><br><span class="line">  <span class="keyword">FROM</span> SCOTT.EMP;</span><br></pre></td></tr></table></figure>
+
+<p>结果如下：</p>
+<img src="/2022/05/02/%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/1201638924.png" class title="img">
+
+<p>示例4：当前行的上一行(rownum-1)到当前行的汇总</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> EMPNO,</span><br><span class="line">       ENAME,</span><br><span class="line">       DEPTNO,</span><br><span class="line">       SAL,</span><br><span class="line">       <span class="comment">--注意ROWS BETWEEN 1 preceding AND current row 是指当前行的上一行(rownum-1)到当前行的汇总 </span></span><br><span class="line">       <span class="built_in">SUM</span>(SAL) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> DEPTNO </span><br><span class="line">                     <span class="keyword">ORDER</span> <span class="keyword">BY</span> ENAME <span class="keyword">ROWS</span> </span><br><span class="line">                     <span class="keyword">BETWEEN</span> <span class="number">1</span> PRECEDING <span class="keyword">AND</span> <span class="keyword">CURRENT</span> <span class="type">ROW</span>) max_sal</span><br><span class="line">  <span class="keyword">FROM</span> SCOTT.EMP;</span><br></pre></td></tr></table></figure>
+
+<p>结果如下：</p>
+<img src="/2022/05/02/%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/540755-20170621140746882-1940488481.png" class title="img">
+
+<p>示例5：当前行的上一行(rownum-1)到当前行的下两行(rownum+2)的汇总</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> EMPNO,</span><br><span class="line">       ENAME,</span><br><span class="line">       DEPTNO,</span><br><span class="line">       SAL,</span><br><span class="line">       <span class="comment">--注意ROWS BETWEEN 1 preceding AND 1 following 是指当前行的上一行(rownum-1)到当前行的下辆行(rownum+2)的汇总</span></span><br><span class="line">       <span class="built_in">SUM</span>(SAL) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> DEPTNO </span><br><span class="line">                     <span class="keyword">ORDER</span> <span class="keyword">BY</span> ENAME </span><br><span class="line">                     <span class="keyword">ROWS</span> <span class="keyword">BETWEEN</span> <span class="number">1</span> PRECEDING <span class="keyword">AND</span> <span class="number">2</span> FOLLOWING) max_sal</span><br><span class="line">  <span class="keyword">FROM</span> SCOTT.EMP;</span><br></pre></td></tr></table></figure>
+
+<p>结果如下：</p>
+<img src="/2022/05/02/%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/540755-20170621140921382-538208257.png" class title="img">
+
+    </div>
+
+    
+    
+    
+      
+
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Kuang
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://strongth.top/2022/05/02/%E5%88%86%E6%9E%90%E5%87%BD%E6%95%B0over/" title="分析函数over">http://strongth.top/2022/05/02/分析函数over/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/oracle/" rel="tag"><i class="fa fa-tag"></i> oracle</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/05/02/coalesce%E5%87%BD%E6%95%B0/" rel="prev" title="coalesce函数">
+                  <i class="fa fa-chevron-left"></i> coalesce函数
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/05/03/%E5%88%86%E7%BB%84%E6%8E%92%E5%BA%8F%E8%8E%B7%E5%8F%96%E6%AF%8F%E7%BB%84%E6%9C%80%E6%96%B0%E8%AE%B0%E5%BD%95/" rel="next" title="分组排序获取每组最新记录">
+                  分组排序获取每组最新记录 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kuang</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">77k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">2:20</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        本站访客数<span id="busuanzi_value_site_uv"></span>人次
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        本站总访问量<span id="busuanzi_value_site_pv"></span>次
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

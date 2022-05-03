@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/memory.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/memory.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"strongth.top","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Java通过POI创建表格文档写入数据。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java生成word表格文档">
+<meta property="og:url" content="http://strongth.top/2022/05/03/java%E7%94%9F%E6%88%90word%E8%A1%A8%E6%A0%BC%E6%96%87%E6%A1%A3/index.html">
+<meta property="og:site_name" content="记忆随笔">
+<meta property="og:description" content="Java通过POI创建表格文档写入数据。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-05-03T09:22:14.000Z">
+<meta property="article:modified_time" content="2022-05-03T09:22:14.000Z">
+<meta property="article:author" content="Kuang">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://strongth.top/2022/05/03/java%E7%94%9F%E6%88%90word%E8%A1%A8%E6%A0%BC%E6%96%87%E6%A1%A3/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://strongth.top/2022/05/03/java%E7%94%9F%E6%88%90word%E8%A1%A8%E6%A0%BC%E6%96%87%E6%A1%A3/","path":"2022/05/03/java生成word表格文档/","title":"java生成word表格文档"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>java生成word表格文档 | 记忆随笔</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">记忆随笔</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">悟已往之不谏，知来者之可追</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-首页"><a href="/" rel="section"><i class="home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-标签"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-类别"><a href="/categories/" rel="section"><i class="categories fa-fw"></i>类别</a></li>
+        <li class="menu-item menu-item-档案"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>档案</a></li>
+        <li class="menu-item menu-item-特效"><a href="/personality/" rel="section"><i class="about fa-fw"></i>特效</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%84%E5%BB%BA%E8%A1%A8%E6%A0%BC"><span class="nav-number">1.</span> <span class="nav-text">构建表格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%AA%E5%90%91%E9%A1%B5%E9%9D%A2"><span class="nav-number">2.</span> <span class="nav-text">横向页面</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%BC%E5%85%A5%E4%BE%9D%E8%B5%96"><span class="nav-number">2.1.</span> <span class="nav-text">导入依赖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A1%B5%E9%9D%A2%E6%A8%AA%E5%90%91"><span class="nav-number">2.2.</span> <span class="nav-text">页面横向</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E8%BE%B9%E6%A1%86"><span class="nav-number">3.</span> <span class="nav-text">设置边框</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E5%85%83%E6%A0%BC%E5%86%85%E6%B7%BB%E5%8A%A0%E6%AE%B5%E8%90%BD"><span class="nav-number">4.</span> <span class="nav-text">单元格内添加段落</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Kuang"
+      src="/images/kenan.jpg">
+  <p class="site-author-name" itemprop="name">Kuang</p>
+  <div class="site-description" itemprop="description">个人博客</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">72</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Isdear" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Isdear" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:kuang8421@qq.com" title="E-Mail → mailto:kuang8421@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/269017831" title="B站 → https:&#x2F;&#x2F;space.bilibili.com&#x2F;269017831" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>B站</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/1906956615" title="QQ → 1906956615"><i class="fab fa-qq fa-fw"></i>QQ</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://strongth.top/2022/05/03/java%E7%94%9F%E6%88%90word%E8%A1%A8%E6%A0%BC%E6%96%87%E6%A1%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/kenan.jpg">
+      <meta itemprop="name" content="Kuang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记忆随笔">
+      <meta itemprop="description" content="个人博客">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="java生成word表格文档 | 记忆随笔">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          java生成word表格文档
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-05-03 17:22:14" itemprop="dateCreated datePublished" datetime="2022-05-03T17:22:14+08:00">2022-05-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>233</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>Java通过POI创建表格文档写入数据。<span id="more"></span></p>
+<h3 id="构建表格"><a href="#构建表格" class="headerlink" title="构建表格"></a>构建表格</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">XWPFTable</span> <span class="variable">xwpfT</span> <span class="operator">=</span> xwpfd.createTable(<span class="number">10</span>, <span class="number">2</span>);</span><br><span class="line">xwpfT.setWidthType(TableWidthType.AUTO);</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; <span class="number">2</span>; j++) &#123;</span><br><span class="line">    	xwpfT.getRow(i).getCell(j).setText(<span class="string">&quot;第&quot;</span> + i + <span class="string">&quot;行&quot;</span> + <span class="string">&quot;第&quot;</span> + j + <span class="string">&quot;列&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">xwpfd.setTable(<span class="number">0</span>, xwpfT);</span><br></pre></td></tr></table></figure>
+
+<p>通过带有参数的函数创建一个表格，如果没有参数，默认创建一行一列的表格。</p>
+<p>设置表格列的宽度，<code>setWidthType()</code>是根据内容自动扩展，<code>setWidth()</code>直接数值表示宽度。</p>
+<p>获取对应的行和列输入内容。在表格指定位置新增一行<code>insertNewTableRow()</code>，<code>addRow()</code>在最后一行增加一行。</p>
+<p>最后将表格加入文档中。</p>
+<h3 id="横向页面"><a href="#横向页面" class="headerlink" title="横向页面"></a>横向页面</h3><h4 id="导入依赖"><a href="#导入依赖" class="headerlink" title="导入依赖"></a>导入依赖</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.poi<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>ooxml-schemas<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.4<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="页面横向"><a href="#页面横向" class="headerlink" title="页面横向"></a>页面横向</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">XWPFDocument</span> <span class="variable">xwpfd</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">XWPFDocument</span>();</span><br><span class="line"><span class="type">CTDocument1</span> <span class="variable">document1</span> <span class="operator">=</span> xwpfd.getDocument();</span><br><span class="line"><span class="type">CTBody</span> <span class="variable">body</span> <span class="operator">=</span> document1.getBody();</span><br><span class="line"><span class="keyword">if</span> (!body.isSetSectPr())&#123;</span><br><span class="line">	body.addNewSectPr();</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">CTSectPr</span> <span class="variable">sectPr</span> <span class="operator">=</span> body.getSectPr();</span><br><span class="line"><span class="keyword">if</span> (!sectPr.isSetPgSz())&#123;</span><br><span class="line">	sectPr.addNewPgSz();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//设置页面大小（默认A4）</span></span><br><span class="line"><span class="type">CTPageSz</span> <span class="variable">pageSz</span> <span class="operator">=</span> sectPr.getPgSz();</span><br><span class="line">pageSz.setW(BigInteger.valueOf(<span class="number">16840</span>));</span><br><span class="line">pageSz.setH(BigInteger.valueOf(<span class="number">11907</span>));</span><br><span class="line">pageSz.setOrient(STPageOrientation.LANDSCAPE);</span><br></pre></td></tr></table></figure>
+
+<p>如果有jar包报错，降低poi的jar包版本即可。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.poi<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>poi<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.1.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.poi<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>poi-ooxml<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.1.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="设置边框"><a href="#设置边框" class="headerlink" title="设置边框"></a>设置边框</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">CTTblBorders</span> <span class="variable">borders</span> <span class="operator">=</span> table.getCTTbl().getTblPr().addNewTblBorders();</span><br><span class="line"><span class="type">CTBorder</span> <span class="variable">hBorder</span> <span class="operator">=</span> borders.addNewInsideH();</span><br><span class="line">hBorder.setVal(STBorder.Enum.forString(<span class="string">&quot;single&quot;</span>));  <span class="comment">// 线条类型</span></span><br><span class="line">hBorder.setSz(<span class="keyword">new</span> <span class="title class_">BigInteger</span>(<span class="string">&quot;1&quot;</span>)); <span class="comment">// 线条大小</span></span><br><span class="line">hBorder.setColor(<span class="string">&quot;000000&quot;</span>); <span class="comment">// 设置颜色</span></span><br><span class="line"></span><br><span class="line"><span class="type">CTBorder</span> <span class="variable">vBorder</span> <span class="operator">=</span> borders.addNewInsideV();</span><br><span class="line">vBorder.setVal(STBorder.Enum.forString(<span class="string">&quot;single&quot;</span>));</span><br><span class="line">vBorder.setSz(<span class="keyword">new</span> <span class="title class_">BigInteger</span>(<span class="string">&quot;1&quot;</span>));</span><br><span class="line">vBorder.setColor(<span class="string">&quot;000000&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="type">CTBorder</span> <span class="variable">lBorder</span> <span class="operator">=</span> borders.addNewLeft();</span><br><span class="line">lBorder.setVal(STBorder.Enum.forString(<span class="string">&quot;single&quot;</span>));</span><br><span class="line">lBorder.setSz(<span class="keyword">new</span> <span class="title class_">BigInteger</span>(<span class="string">&quot;1&quot;</span>));</span><br><span class="line">lBorder.setColor(<span class="string">&quot;000000&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="type">CTBorder</span> <span class="variable">rBorder</span> <span class="operator">=</span> borders.addNewRight();</span><br><span class="line">rBorder.setVal(STBorder.Enum.forString(<span class="string">&quot;single&quot;</span>));</span><br><span class="line">rBorder.setSz(<span class="keyword">new</span> <span class="title class_">BigInteger</span>(<span class="string">&quot;1&quot;</span>));</span><br><span class="line">rBorder.setColor(<span class="string">&quot;000000&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="type">CTBorder</span> <span class="variable">tBorder</span> <span class="operator">=</span> borders.addNewTop();</span><br><span class="line">tBorder.setVal(STBorder.Enum.forString(<span class="string">&quot;single&quot;</span>));</span><br><span class="line">tBorder.setSz(<span class="keyword">new</span> <span class="title class_">BigInteger</span>(<span class="string">&quot;1&quot;</span>));</span><br><span class="line">tBorder.setColor(<span class="string">&quot;000000&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="type">CTBorder</span> <span class="variable">bBorder</span> <span class="operator">=</span> borders.addNewBottom();</span><br><span class="line">bBorder.setVal(STBorder.Enum.forString(<span class="string">&quot;single&quot;</span>));</span><br><span class="line">bBorder.setSz(<span class="keyword">new</span> <span class="title class_">BigInteger</span>(<span class="string">&quot;1&quot;</span>));</span><br><span class="line">bBorder.setColor(<span class="string">&quot;000000&quot;</span>);</span><br><span class="line"></span><br><span class="line">table.createRow(); <span class="comment">// 增加一行</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="单元格内添加段落"><a href="#单元格内添加段落" class="headerlink" title="单元格内添加段落"></a>单元格内添加段落</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">XWPFTable</span> <span class="variable">xwpfT</span> <span class="operator">=</span> xwpfd.createTable(<span class="number">2</span>, <span class="number">9</span>);</span><br><span class="line">xwpfT.setTableAlignment(TableRowAlign.CENTER);</span><br><span class="line">xwpfT.setWidthType(TableWidthType.AUTO);</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">2</span>; i++) &#123;</span><br><span class="line">    <span class="type">XWPFTableRow</span> <span class="variable">row</span> <span class="operator">=</span> xwpfT.getRow(i);</span><br><span class="line">    row.setHeight(<span class="number">1300</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; <span class="number">9</span>; j++) &#123;</span><br><span class="line">        <span class="type">XWPFTableCell</span> <span class="variable">xwpfTableCell</span> <span class="operator">=</span> xwpfT.getRow(i).getCell(j);</span><br><span class="line">        xwpfTableCell.setWidthType(TableWidthType.AUTO);</span><br><span class="line">        xwpfTableCell.setVerticalAlignment(XWPFTableCell.XWPFVertAlign.CENTER);</span><br><span class="line">        xwpfTableCell.removeParagraph(<span class="number">0</span>);</span><br><span class="line">        <span class="type">XWPFParagraph</span> <span class="variable">xwpfParagraph1</span> <span class="operator">=</span> xwpfTableCell.addParagraph();</span><br><span class="line">        xwpfParagraph1.setAlignment(ParagraphAlignment.CENTER);</span><br><span class="line">        <span class="type">XWPFRun</span> <span class="variable">xwpfRun5</span> <span class="operator">=</span> xwpfParagraph1.createRun();</span><br><span class="line">        xwpfRun5.setFontFamily(<span class="string">&quot;宋体&quot;</span>);<span class="comment">//字体</span></span><br><span class="line">        xwpfRun5.setFontSize(<span class="number">12</span>);<span class="comment">//字体大小</span></span><br><span class="line">        xwpfRun5.setColor(<span class="string">&quot;FF0000&quot;</span>);</span><br><span class="line">        xwpfRun5.setText(<span class="string">&quot;第&quot;</span> + i + <span class="string">&quot;行&quot;</span> + <span class="string">&quot;第&quot;</span> + j + <span class="string">&quot;列&quot;</span>);</span><br><span class="line">        xwpfTableCell.setParagraph(xwpfParagraph1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+      
+
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Kuang
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://strongth.top/2022/05/03/java%E7%94%9F%E6%88%90word%E8%A1%A8%E6%A0%BC%E6%96%87%E6%A1%A3/" title="java生成word表格文档">http://strongth.top/2022/05/03/java生成word表格文档/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/java/" rel="tag"><i class="fa fa-tag"></i> java</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/05/03/java%E7%94%9F%E6%88%90docx%E6%A8%A1%E6%9D%BF/" rel="prev" title="java生成docx模板">
+                  <i class="fa fa-chevron-left"></i> java生成docx模板
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/05/03/office%E6%89%80%E6%9C%89%E5%90%8E%E7%BC%80%E5%AF%B9%E5%BA%94%E7%9A%84content-type/" rel="next" title="office所有后缀对应的content-type">
+                  office所有后缀对应的content-type <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kuang</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">77k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">2:20</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        本站访客数<span id="busuanzi_value_site_uv"></span>人次
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        本站总访问量<span id="busuanzi_value_site_pv"></span>次
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>
