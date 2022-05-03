@@ -2631,7 +2631,7 @@
   <entry>
     <title>java字符串模糊匹配</title>
     <url>/2022/05/03/java%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%A8%A1%E7%B3%8A%E5%8C%B9%E9%85%8D/</url>
-    <content><![CDATA[<p>java中使用字符串模糊查询，可以调用方法也可以使用正则表达式。现在介绍三种解决方案。</p>
+    <content><![CDATA[<p>java中使用字符串模糊查询，可以调用方法也可以使用正则表达式。现在介绍三种解决方案。<span id="more"></span></p>
 <h5 id="indexOf"><a href="#indexOf" class="headerlink" title="indexOf"></a>indexOf</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">indexOf</span><span class="params">( String str)</span></span><br></pre></td></tr></table></figure>
 
 <p> 返回指定子字符串在此字符串中第一次出现处的索引。返回的整数是</p>
@@ -4962,6 +4962,19 @@
       </categories>
       <tags>
         <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo上传文件失败</title>
+    <url>/2022/05/03/hexo%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E5%A4%B1%E8%B4%A5/</url>
+    <content><![CDATA[<p>hexo部署的时候文件过大，导致失败，删除后仍然失败。<span id="more"></span></p>
+<h4 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h4><p>直接删除<code>.deploy_git</code>目录，然后<code>hexo clean</code>、<code>hexo g -d</code>，正常部署成功。</p>
+]]></content>
+      <categories>
+        <category>博客</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
       </tags>
   </entry>
 </search>
