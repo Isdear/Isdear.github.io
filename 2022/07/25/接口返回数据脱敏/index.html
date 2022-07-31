@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/memory.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/memory.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"strongth.top","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="接口返回的隐私数据脱敏">
+<meta property="og:type" content="article">
+<meta property="og:title" content="接口返回数据脱敏">
+<meta property="og:url" content="http://strongth.top/2022/07/25/%E6%8E%A5%E5%8F%A3%E8%BF%94%E5%9B%9E%E6%95%B0%E6%8D%AE%E8%84%B1%E6%95%8F/index.html">
+<meta property="og:site_name" content="记忆随笔">
+<meta property="og:description" content="接口返回的隐私数据脱敏">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-07-25T15:50:23.000Z">
+<meta property="article:modified_time" content="2022-07-25T15:50:23.000Z">
+<meta property="article:author" content="Kuang">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://strongth.top/2022/07/25/%E6%8E%A5%E5%8F%A3%E8%BF%94%E5%9B%9E%E6%95%B0%E6%8D%AE%E8%84%B1%E6%95%8F/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://strongth.top/2022/07/25/%E6%8E%A5%E5%8F%A3%E8%BF%94%E5%9B%9E%E6%95%B0%E6%8D%AE%E8%84%B1%E6%95%8F/","path":"2022/07/25/接口返回数据脱敏/","title":"接口返回数据脱敏"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>接口返回数据脱敏 | 记忆随笔</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">记忆随笔</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">悟已往之不谏，知来者之可追</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-首页"><a href="/" rel="section"><i class="home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-标签"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-类别"><a href="/categories/" rel="section"><i class="categories fa-fw"></i>类别</a></li>
+        <li class="menu-item menu-item-档案"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>档案</a></li>
+        <li class="menu-item menu-item-特效"><a href="/personality/" rel="section"><i class="about fa-fw"></i>特效</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">实现方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BB%A3%E7%A0%81"><span class="nav-number">2.</span> <span class="nav-text">自定义代码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE%E6%B3%A8%E8%A7%A3"><span class="nav-number">2.1.</span> <span class="nav-text">自定义数据注解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89Serializer"><span class="nav-number">2.2.</span> <span class="nav-text">自定义Serializer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89AnnotationIntrospector%EF%BC%8C%E9%80%82%E9%85%8D%E6%88%91%E4%BB%AC%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%A8%E8%A7%A3%E8%BF%94%E5%9B%9E%E7%9B%B8%E5%BA%94%E7%9A%84Serializer"><span class="nav-number">2.3.</span> <span class="nav-text">自定义AnnotationIntrospector，适配我们自定义注解返回相应的Serializer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A6%86%E7%9B%96ObjectMapper"><span class="nav-number">2.4.</span> <span class="nav-text">覆盖ObjectMapper</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%94%E5%9B%9E%E5%AF%B9%E8%B1%A1%E5%8A%A0%E4%B8%8A%E6%B3%A8%E8%A7%A3"><span class="nav-number">2.5.</span> <span class="nav-text">返回对象加上注解</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Kuang"
+      src="/images/kenan.jpg">
+  <p class="site-author-name" itemprop="name">Kuang</p>
+  <div class="site-description" itemprop="description">个人博客</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">80</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Isdear" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Isdear" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:kuang8421@qq.com" title="E-Mail → mailto:kuang8421@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/269017831" title="B站 → https:&#x2F;&#x2F;space.bilibili.com&#x2F;269017831" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>B站</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/1906956615" title="QQ → 1906956615"><i class="fab fa-qq fa-fw"></i>QQ</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://strongth.top/2022/07/25/%E6%8E%A5%E5%8F%A3%E8%BF%94%E5%9B%9E%E6%95%B0%E6%8D%AE%E8%84%B1%E6%95%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/kenan.jpg">
+      <meta itemprop="name" content="Kuang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记忆随笔">
+      <meta itemprop="description" content="个人博客">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="接口返回数据脱敏 | 记忆随笔">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          接口返回数据脱敏
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-07-25 23:50:23" itemprop="dateCreated datePublished" datetime="2022-07-25T23:50:23+08:00">2022-07-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>137</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>接口返回的隐私数据脱敏<span id="more"></span></p>
+<h3 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h3><p>通过自定义注解，在脱敏的字段加上，并指定脱敏操作。</p>
+<h3 id="自定义代码"><a href="#自定义代码" class="headerlink" title="自定义代码"></a>自定义代码</h3><h4 id="自定义数据注解"><a href="#自定义数据注解" class="headerlink" title="自定义数据注解"></a>自定义数据注解</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target(&#123;ElementType.FIELD, ElementType.TYPE&#125;)</span></span><br><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span></span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> DataMasking &#123;</span><br><span class="line">    DataMaskingFunc <span class="title function_">maskFunc</span><span class="params">()</span> <span class="keyword">default</span> DataMaskingFunc.NO_MASK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="自定义Serializer"><a href="#自定义Serializer" class="headerlink" title="自定义Serializer"></a>自定义Serializer</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">DataMaskingOperation</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="type">String</span> <span class="variable">MASK_CHAR</span> <span class="operator">=</span> <span class="string">&quot;*&quot;</span>;</span><br><span class="line">    </span><br><span class="line">    String <span class="title function_">mask</span><span class="params">(String content, String maskChar)</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> <span class="title class_">DataMaskingFunc</span> &#123;</span><br><span class="line"></span><br><span class="line">     <span class="comment">/**</span></span><br><span class="line"><span class="comment">     *  脱敏转换器</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">     NO_MASK((str, maskChar) -&gt; &#123;</span><br><span class="line">        <span class="keyword">return</span> str;</span><br><span class="line">     &#125;),</span><br><span class="line">     ALL_MASK((str, maskChar) -&gt; &#123;</span><br><span class="line">        <span class="keyword">if</span> (StringUtils.hasLength(str)) &#123;</span><br><span class="line">            <span class="type">StringBuilder</span> <span class="variable">sb</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; str.length(); i++) &#123;</span><br><span class="line">                sb.append(StringUtils.hasLength(maskChar) ? maskChar : DataMaskingOperation.MASK_CHAR);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> sb.toString();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> str;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> DataMaskingOperation operation;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">DataMaskingFunc</span><span class="params">(DataMaskingOperation operation)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.operation = operation;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> DataMaskingOperation <span class="title function_">operation</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.operation;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">class</span> <span class="title class_">DataMaskingSerializer</span> <span class="keyword">extends</span> <span class="title class_">StdScalarSerializer</span>&lt;Object&gt; &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> DataMaskingOperation operation;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">DataMaskingSerializer</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>(String.class, <span class="literal">false</span>);</span><br><span class="line">        <span class="built_in">this</span>.operation = <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">DataMaskingSerializer</span><span class="params">(DataMaskingOperation operation)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>(String.class, <span class="literal">false</span>);</span><br><span class="line">        <span class="built_in">this</span>.operation = operation;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isEmpty</span><span class="params">(SerializerProvider prov, Object value)</span> &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> (String)value;</span><br><span class="line">        <span class="keyword">return</span> str.isEmpty();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">serialize</span><span class="params">(Object value, JsonGenerator gen, SerializerProvider provider)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="keyword">if</span> (Objects.isNull(operation)) &#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">content</span> <span class="operator">=</span> DataMaskingFunc.ALL_MASK.operation().mask((String) value, <span class="literal">null</span>);</span><br><span class="line">            gen.writeString(content);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">content</span> <span class="operator">=</span> operation.mask((String) value, <span class="literal">null</span>);</span><br><span class="line">            gen.writeString(content);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title function_">serializeWithType</span><span class="params">(Object value, JsonGenerator gen, SerializerProvider provider, TypeSerializer typeSer)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="built_in">this</span>.serialize(value, gen, provider);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> JsonNode <span class="title function_">getSchema</span><span class="params">(SerializerProvider provider, Type typeHint)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.createSchemaNode(<span class="string">&quot;string&quot;</span>, <span class="literal">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">acceptJsonFormatVisitor</span><span class="params">(JsonFormatVisitorWrapper visitor, JavaType typeHint)</span> <span class="keyword">throws</span> JsonMappingException &#123;</span><br><span class="line">        <span class="built_in">this</span>.visitStringFormat(visitor, typeHint);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="自定义AnnotationIntrospector，适配我们自定义注解返回相应的Serializer"><a href="#自定义AnnotationIntrospector，适配我们自定义注解返回相应的Serializer" class="headerlink" title="自定义AnnotationIntrospector，适配我们自定义注解返回相应的Serializer"></a>自定义AnnotationIntrospector，适配我们自定义注解返回相应的Serializer</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DataMaskingAnnotationIntrospector</span> <span class="keyword">extends</span> <span class="title class_">NopAnnotationIntrospector</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Object <span class="title function_">findSerializer</span><span class="params">(Annotated am)</span> &#123;</span><br><span class="line">        <span class="type">DataMasking</span> <span class="variable">annotation</span> <span class="operator">=</span> am.getAnnotation(DataMasking.class);</span><br><span class="line">        <span class="keyword">if</span> (annotation != <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">DataMaskingSerializer</span>(annotation.maskFunc().operation());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="覆盖ObjectMapper"><a href="#覆盖ObjectMapper" class="headerlink" title="覆盖ObjectMapper"></a>覆盖ObjectMapper</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration(</span></span><br><span class="line"><span class="meta">        proxyBeanMethods = false</span></span><br><span class="line"><span class="meta">)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DataMaskConfiguration</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Configuration(</span></span><br><span class="line"><span class="meta">            proxyBeanMethods = false</span></span><br><span class="line"><span class="meta">    )</span></span><br><span class="line">    <span class="meta">@ConditionalOnClass(&#123;Jackson2ObjectMapperBuilder.class&#125;)</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">JacksonObjectMapperConfiguration</span> &#123;</span><br><span class="line">        JacksonObjectMapperConfiguration() &#123;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Bean</span></span><br><span class="line">        <span class="meta">@Primary</span></span><br><span class="line">        ObjectMapper <span class="title function_">jacksonObjectMapper</span><span class="params">(Jackson2ObjectMapperBuilder builder)</span> &#123;</span><br><span class="line">            <span class="type">ObjectMapper</span> <span class="variable">objectMapper</span> <span class="operator">=</span> builder.createXmlMapper(<span class="literal">false</span>).build();</span><br><span class="line">            <span class="type">AnnotationIntrospector</span> <span class="variable">ai</span> <span class="operator">=</span> objectMapper.getSerializationConfig().getAnnotationIntrospector();</span><br><span class="line">            <span class="type">AnnotationIntrospector</span> <span class="variable">newAi</span> <span class="operator">=</span> AnnotationIntrospectorPair.pair(ai, <span class="keyword">new</span> <span class="title class_">DataMaskingAnnotationIntrospector</span>());</span><br><span class="line">            objectMapper.setAnnotationIntrospector(newAi);</span><br><span class="line">            <span class="keyword">return</span> objectMapper;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="返回对象加上注解"><a href="#返回对象加上注解" class="headerlink" title="返回对象加上注解"></a>返回对象加上注解</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">User</span> <span class="keyword">implements</span> <span class="title class_">Serializable</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 主键ID</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> Long id;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 姓名</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@DataMasking(maskFunc = DataMaskingFunc.ALL_MASK)</span></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 年龄</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> Integer age;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 邮箱</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@DataMasking(maskFunc = DataMaskingFunc.ALL_MASK)</span></span><br><span class="line">    <span class="keyword">private</span> String email;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+      
+
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Kuang
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://strongth.top/2022/07/25/%E6%8E%A5%E5%8F%A3%E8%BF%94%E5%9B%9E%E6%95%B0%E6%8D%AE%E8%84%B1%E6%95%8F/" title="接口返回数据脱敏">http://strongth.top/2022/07/25/接口返回数据脱敏/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/java/" rel="tag"><i class="fa fa-tag"></i> java</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/07/20/%E7%BA%BF%E7%A8%8B%E4%BC%91%E7%9C%A0%E6%96%B9%E5%BC%8F/" rel="prev" title="线程休眠方式">
+                  <i class="fa fa-chevron-left"></i> 线程休眠方式
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/07/31/%E8%AF%B7%E6%B1%82%E6%8E%A5%E5%8F%A3%E5%90%8C%E6%97%B6%E6%94%AF%E6%8C%81%E8%A1%A8%E5%8D%95%E3%80%81json/" rel="next" title="请求接口同时支持表单、json">
+                  请求接口同时支持表单、json <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kuang</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">80k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">2:25</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        本站访客数<span id="busuanzi_value_site_uv"></span>人次
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        本站总访问量<span id="busuanzi_value_site_pv"></span>次
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Poweredby <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a>  | Theme <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>
