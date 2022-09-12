@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/memory.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/memory.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"strongth.top","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="基于Spring Boot实现HTTPS方式请求下客户端与服务端进行单向认证与双向认证的实例">
+<meta property="og:type" content="article">
+<meta property="og:title" content="springboot客户端与服务端实现https单向认证和双向认证">
+<meta property="og:url" content="http://strongth.top/2022/08/26/springboot%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%8E%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%AE%9E%E7%8E%B0https%E5%8D%95%E5%90%91%E8%AE%A4%E8%AF%81%E5%92%8C%E5%8F%8C%E5%90%91%E8%AE%A4%E8%AF%81/index.html">
+<meta property="og:site_name" content="记忆随笔">
+<meta property="og:description" content="基于Spring Boot实现HTTPS方式请求下客户端与服务端进行单向认证与双向认证的实例">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://strongth.top/2022/08/26/springboot%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%8E%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%AE%9E%E7%8E%B0https%E5%8D%95%E5%90%91%E8%AE%A4%E8%AF%81%E5%92%8C%E5%8F%8C%E5%90%91%E8%AE%A4%E8%AF%81/70ac8bc6b773e64f0099e150710c91a3_watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMwMzQyMjM=,size_16,color_FFFFFF,t_70.png">
+<meta property="article:published_time" content="2022-08-25T16:12:26.000Z">
+<meta property="article:modified_time" content="2022-08-25T16:12:26.000Z">
+<meta property="article:author" content="Kuang">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://strongth.top/2022/08/26/springboot%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%8E%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%AE%9E%E7%8E%B0https%E5%8D%95%E5%90%91%E8%AE%A4%E8%AF%81%E5%92%8C%E5%8F%8C%E5%90%91%E8%AE%A4%E8%AF%81/70ac8bc6b773e64f0099e150710c91a3_watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMwMzQyMjM=,size_16,color_FFFFFF,t_70.png">
+
+
+<link rel="canonical" href="http://strongth.top/2022/08/26/springboot%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%8E%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%AE%9E%E7%8E%B0https%E5%8D%95%E5%90%91%E8%AE%A4%E8%AF%81%E5%92%8C%E5%8F%8C%E5%90%91%E8%AE%A4%E8%AF%81/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://strongth.top/2022/08/26/springboot%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%8E%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%AE%9E%E7%8E%B0https%E5%8D%95%E5%90%91%E8%AE%A4%E8%AF%81%E5%92%8C%E5%8F%8C%E5%90%91%E8%AE%A4%E8%AF%81/","path":"2022/08/26/springboot客户端与服务端实现https单向认证和双向认证/","title":"springboot客户端与服务端实现https单向认证和双向认证"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>springboot客户端与服务端实现https单向认证和双向认证 | 记忆随笔</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">记忆随笔</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">悟已往之不谏，知来者之可追</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-首页"><a href="/" rel="section"><i class="home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-标签"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-类别"><a href="/categories/" rel="section"><i class="categories fa-fw"></i>类别</a></li>
+        <li class="menu-item menu-item-档案"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>档案</a></li>
+        <li class="menu-item menu-item-特效"><a href="/personality/" rel="section"><i class="about fa-fw"></i>特效</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%81%E4%B9%A6"><span class="nav-number">1.</span> <span class="nav-text">证书</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF"><span class="nav-number">1.1.</span> <span class="nav-text">服务端</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="nav-number">1.2.</span> <span class="nav-text">客户端</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AF%BC%E5%85%A5%E5%8F%8C%E6%96%B9%E7%B3%BB%E7%BB%9F%E7%9A%84jre%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83%E7%9A%84cacerts%E8%AF%81%E4%B9%A6%E5%BA%93"><span class="nav-number">1.3.</span> <span class="nav-text">导入双方系统的jre运行环境的cacerts证书库</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%95%E5%90%91%E8%AE%A4%E8%AF%81"><span class="nav-number">2.</span> <span class="nav-text">单向认证</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%8C%E5%90%91%E8%AE%A4%E8%AF%81"><span class="nav-number">3.</span> <span class="nav-text">双向认证</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Kuang"
+      src="/images/kenan.jpg">
+  <p class="site-author-name" itemprop="name">Kuang</p>
+  <div class="site-description" itemprop="description">个人博客</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">87</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Isdear" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Isdear" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:kuang8421@qq.com" title="E-Mail → mailto:kuang8421@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/269017831" title="B站 → https:&#x2F;&#x2F;space.bilibili.com&#x2F;269017831" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>B站</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/1906956615" title="QQ → 1906956615"><i class="fab fa-qq fa-fw"></i>QQ</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://strongth.top/2022/08/26/springboot%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%8E%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%AE%9E%E7%8E%B0https%E5%8D%95%E5%90%91%E8%AE%A4%E8%AF%81%E5%92%8C%E5%8F%8C%E5%90%91%E8%AE%A4%E8%AF%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/kenan.jpg">
+      <meta itemprop="name" content="Kuang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记忆随笔">
+      <meta itemprop="description" content="个人博客">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="springboot客户端与服务端实现https单向认证和双向认证 | 记忆随笔">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          springboot客户端与服务端实现https单向认证和双向认证
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-08-26 00:12:26" itemprop="dateCreated datePublished" datetime="2022-08-26T00:12:26+08:00">2022-08-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/springboot/" itemprop="url" rel="index"><span itemprop="name">springboot</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>493</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>基于Spring Boot实现HTTPS方式请求下客户端与服务端进行单向认证与双向认证的实例<span id="more"></span></p>
+<h4 id="证书"><a href="#证书" class="headerlink" title="证书"></a>证书</h4><p>首先准备服务端和客户端的证书。</p>
+<h5 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h5><p>如果是云服务器，服务端可直接由提供商生成，否则执行下面的代码生成</p>
+<p>1、生成服务端sslServer.p12文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keytool -genkey -v -alias sslServer -keyalg RSA -storetype PKCS12 -keystore E:\learning-demo\sslServer.p12</span><br></pre></td></tr></table></figure>
+
+<p>2、导出服务端公钥sslServer.cer 文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keytool -keystore E:\learning-demo\sslServer.p12 -export -alias sslServer -file E:\learning-demo\sslServer.cer</span><br></pre></td></tr></table></figure>
+
+<p>在生成过程中，需要注意的一点是，第一步中“您的名字与姓氏是什么”应该填服务器的ip或对应系统的域名，这样在后面代码中校验证书就能直接通过，若填写的不一致，则需要在代码中默认允许校验自己通过。</p>
+<h5 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h5><p>1、生成客户端sslClient.p12文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keytool -genkey -v -alias sslClient -keyalg RSA -storetype PKCS12 -keystore E:\learning-demo\sslClient.p12</span><br></pre></td></tr></table></figure>
+
+<p>2、导出客户端公钥sslClient.cer 文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keytool -keystore E:\learning-demo\sslClient.p12 -export -alias sslClient -file E:\learning-demo\sslClient.cer</span><br></pre></td></tr></table></figure>
+
+<h5 id="导入双方系统的jre运行环境的cacerts证书库"><a href="#导入双方系统的jre运行环境的cacerts证书库" class="headerlink" title="导入双方系统的jre运行环境的cacerts证书库"></a>导入双方系统的jre运行环境的cacerts证书库</h5><p>将Client端和Server端的公钥文件（.cer文件）导入双方系统的jre运行环境的cacerts证书库（双向认证需要操作此步骤）<br>将客户端公钥导入的服务端jdk信任库</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keytool -import -alias sslClient -file E:\learning-demo\sslClient.cer -keystore D:\jdk\jre\lib\security\cacerts –v</span><br></pre></td></tr></table></figure>
+
+<p>将服务端公钥导入到客户端的jdk信任库</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keytool -import -alias sslServer -file E:\learning-demo\sslServer.cer -keystore D:\jdk\jre\lib\security\cacerts –v</span><br></pre></td></tr></table></figure>
+
+<p>将客户端公钥导入到服务端Server.p12证书库</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keytool -import -alias sslClient -v -file E:\learning-demo\sslClient.cer -keystore D:\jdk\sslServer.p12</span><br></pre></td></tr></table></figure>
+
+<h4 id="单向认证"><a href="#单向认证" class="headerlink" title="单向认证"></a>单向认证</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server.ssl.key-store</span>=<span class="string">classpath:sslServer.p12</span></span><br><span class="line"><span class="attr">server.ssl.key-store-password</span>=<span class="string">123456</span></span><br><span class="line"><span class="attr">server.ssl.key-alias</span>=<span class="string">sslServer</span></span><br><span class="line"><span class="attr">server.ssl.keyStoreType</span>=<span class="string">JKS</span></span><br></pre></td></tr></table></figure>
+
+<p>随便访问项目中的一个接口，如果页面出现下面的提示信息，则表示单向认证开启成功。</p>
+<img src="/2022/08/26/springboot%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%8E%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%AE%9E%E7%8E%B0https%E5%8D%95%E5%90%91%E8%AE%A4%E8%AF%81%E5%92%8C%E5%8F%8C%E5%90%91%E8%AE%A4%E8%AF%81/70ac8bc6b773e64f0099e150710c91a3_watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMwMzQyMjM=,size_16,color_FFFFFF,t_70.png" class>
+
+
+
+<h4 id="双向认证"><a href="#双向认证" class="headerlink" title="双向认证"></a>双向认证</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server.ssl.trust-store-password</span>=<span class="string">123456</span></span><br><span class="line"><span class="attr">server.ssl.client-auth</span>=<span class="string">need</span></span><br><span class="line"><span class="attr">server.ssl.trust-store-type</span>=<span class="string">JKS</span></span><br><span class="line"><span class="attr">server.ssl.trust-store-provider</span>=<span class="string">SUN</span></span><br></pre></td></tr></table></figure>
+
+<p>客户端代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="type">String</span> <span class="variable">TEST_URL</span> <span class="operator">=</span> <span class="string">&quot;https://127.0.0.1:7090/server/ssl&quot;</span>;</span><br><span class="line"> </span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">getHKVesselTrip</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">  <span class="comment">// 客户端证书类型</span></span><br><span class="line">  <span class="type">KeyStore</span> <span class="variable">clientStore</span> <span class="operator">=</span> KeyStore.getInstance(<span class="string">&quot;PKCS12&quot;</span>);</span><br><span class="line">  <span class="comment">// 加载客户端证书，即自己的私钥</span></span><br><span class="line">  clientStore</span><br><span class="line">      .load(<span class="keyword">new</span> <span class="title class_">FileInputStream</span>(<span class="string">&quot;E:\\learning-demo\\sslClient.p12&quot;</span>),</span><br><span class="line">          <span class="string">&quot;123456&quot;</span>.toCharArray());</span><br><span class="line">  <span class="comment">// 创建密钥管理工厂实例</span></span><br><span class="line">  <span class="type">KeyManagerFactory</span> <span class="variable">kmf</span> <span class="operator">=</span> KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());</span><br><span class="line">  <span class="comment">// 初始化客户端密钥库</span></span><br><span class="line">  kmf.init(clientStore, <span class="string">&quot;123456&quot;</span>.toCharArray());</span><br><span class="line">  KeyManager[] kms = kmf.getKeyManagers();</span><br><span class="line">  <span class="comment">// 创建信任库管理工厂实例</span></span><br><span class="line">  <span class="type">TrustManagerFactory</span> <span class="variable">tmf</span> <span class="operator">=</span> TrustManagerFactory</span><br><span class="line">      .getInstance(TrustManagerFactory.getDefaultAlgorithm());</span><br><span class="line">  <span class="comment">// 信任库类型</span></span><br><span class="line">  <span class="type">KeyStore</span> <span class="variable">trustStore</span> <span class="operator">=</span> KeyStore.getInstance(<span class="string">&quot;JKS&quot;</span>);</span><br><span class="line">  <span class="comment">// 加载信任库，即服务端公钥</span></span><br><span class="line">  trustStore.load(<span class="keyword">new</span> <span class="title class_">FileInputStream</span>(<span class="string">&quot;D:\\jdk\\jre\\lib\\security\\cacerts&quot;</span>),</span><br><span class="line">      <span class="string">&quot;changeit&quot;</span>.toCharArray());</span><br><span class="line">  <span class="comment">// 初始化信任库</span></span><br><span class="line">  tmf.init(trustStore);</span><br><span class="line">  TrustManager[] tms = tmf.getTrustManagers();</span><br><span class="line">  <span class="comment">// 建立TLS连接</span></span><br><span class="line">  <span class="type">SSLContext</span> <span class="variable">sslContext</span> <span class="operator">=</span> SSLContext.getInstance(<span class="string">&quot;TLS&quot;</span>);</span><br><span class="line">  <span class="comment">// 初始化SSLContext</span></span><br><span class="line">  sslContext.init(kms, tms, <span class="keyword">new</span> <span class="title class_">SecureRandom</span>());</span><br><span class="line">  <span class="type">SSLConnectionSocketFactory</span> <span class="variable">sslsf</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SSLConnectionSocketFactory</span>(sslContext,</span><br><span class="line">      SSLConnectionSocketFactory.BROWSER_COMPATIBLE_HOSTNAME_VERIFIER);</span><br><span class="line">  <span class="type">CloseableHttpClient</span> <span class="variable">httpclient</span> <span class="operator">=</span> HttpClients.custom().setSSLSocketFactory(sslsf).build();</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="type">HttpGet</span> <span class="variable">httpget</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HttpGet</span>(TEST_URL);</span><br><span class="line">    System.out.println(<span class="string">&quot;executing request&quot;</span> + httpget.getRequestLine());</span><br><span class="line">    <span class="type">CloseableHttpResponse</span> <span class="variable">response</span> <span class="operator">=</span> httpclient.execute(httpget);</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="type">HttpEntity</span> <span class="variable">entity</span> <span class="operator">=</span> response.getEntity();</span><br><span class="line">      <span class="keyword">if</span> (entity != <span class="literal">null</span>) &#123;</span><br><span class="line">        System.out.println(EntityUtils.toString(entity));</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">      response.close();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">    httpclient.close();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+      
+
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Kuang
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://strongth.top/2022/08/26/springboot%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%8E%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%AE%9E%E7%8E%B0https%E5%8D%95%E5%90%91%E8%AE%A4%E8%AF%81%E5%92%8C%E5%8F%8C%E5%90%91%E8%AE%A4%E8%AF%81/" title="springboot客户端与服务端实现https单向认证和双向认证">http://strongth.top/2022/08/26/springboot客户端与服务端实现https单向认证和双向认证/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/java/" rel="tag"><i class="fa fa-tag"></i> java</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/08/17/Target%E6%B3%A8%E8%A7%A3/" rel="prev" title="Target注解">
+                  <i class="fa fa-chevron-left"></i> Target注解
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/08/29/RabbitMQ%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" rel="next" title="RabbitMQ学习记录">
+                  RabbitMQ学习记录 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kuang</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">85k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">2:34</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        本站访客数<span id="busuanzi_value_site_uv"></span>人次
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        本站总访问量<span id="busuanzi_value_site_pv"></span>次
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Poweredby <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a>  | Theme <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

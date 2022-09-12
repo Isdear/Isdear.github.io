@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/memory.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/memory.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"strongth.top","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="MQ相关概念什么是MQMQ(message queue)，本质是队列，FIFO先入先出，只不过队列中存放的是message。还是一种跨进程的通信机制，用于上下游传递消息。在互联网架构中，MQ是一种非常常见的上下游“逻辑解耦+物理解耦”的消息通信服务。使用了MQ之后，消息发送上游只需要依赖MQ，不用依赖其他服务。 为什么要用MQ流量消峰在正常情况下，如果订单系统最多只能处理一万条数据。但是在高峰的时">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RabbitMQ学习记录">
+<meta property="og:url" content="http://strongth.top/2022/08/29/RabbitMQ%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/index.html">
+<meta property="og:site_name" content="记忆随笔">
+<meta property="og:description" content="MQ相关概念什么是MQMQ(message queue)，本质是队列，FIFO先入先出，只不过队列中存放的是message。还是一种跨进程的通信机制，用于上下游传递消息。在互联网架构中，MQ是一种非常常见的上下游“逻辑解耦+物理解耦”的消息通信服务。使用了MQ之后，消息发送上游只需要依赖MQ，不用依赖其他服务。 为什么要用MQ流量消峰在正常情况下，如果订单系统最多只能处理一万条数据。但是在高峰的时">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-08-29T13:56:25.000Z">
+<meta property="article:modified_time" content="2022-08-29T13:56:25.000Z">
+<meta property="article:author" content="Kuang">
+<meta property="article:tag" content="RabbitMQ">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://strongth.top/2022/08/29/RabbitMQ%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://strongth.top/2022/08/29/RabbitMQ%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/","path":"2022/08/29/RabbitMQ学习记录/","title":"RabbitMQ学习记录"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>RabbitMQ学习记录 | 记忆随笔</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">记忆随笔</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">悟已往之不谏，知来者之可追</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-首页"><a href="/" rel="section"><i class="home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-标签"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-类别"><a href="/categories/" rel="section"><i class="categories fa-fw"></i>类别</a></li>
+        <li class="menu-item menu-item-档案"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>档案</a></li>
+        <li class="menu-item menu-item-特效"><a href="/personality/" rel="section"><i class="about fa-fw"></i>特效</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MQ%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">MQ相关概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFMQ"><span class="nav-number">1.1.</span> <span class="nav-text">什么是MQ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%94%A8MQ"><span class="nav-number">1.2.</span> <span class="nav-text">为什么要用MQ</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%81%E9%87%8F%E6%B6%88%E5%B3%B0"><span class="nav-number">1.2.1.</span> <span class="nav-text">流量消峰</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E8%A7%A3%E8%80%A6"><span class="nav-number">1.2.2.</span> <span class="nav-text">应用解耦</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86"><span class="nav-number">1.2.3.</span> <span class="nav-text">异步处理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RabbitMQ%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.3.</span> <span class="nav-text">RabbitMQ介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%98%E7%82%B9"><span class="nav-number">1.3.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%BA%E7%82%B9"><span class="nav-number">1.3.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MQ%E7%9A%84%E9%80%89%E6%8B%A9"><span class="nav-number">1.4.</span> <span class="nav-text">MQ的选择</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Kafka"><span class="nav-number">1.4.1.</span> <span class="nav-text">Kafka</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RocketMQ"><span class="nav-number">1.4.2.</span> <span class="nav-text">RocketMQ</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RabbitMQ"><span class="nav-number">1.4.3.</span> <span class="nav-text">RabbitMQ</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RabbitMQ-1"><span class="nav-number">2.</span> <span class="nav-text">RabbitMQ</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5"><span class="nav-number">2.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E5%A4%A7%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5"><span class="nav-number">2.2.</span> <span class="nav-text">四大核心概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RabbitMQ%E6%A0%B8%E5%BF%83%E9%83%A8%E9%83%A8%E5%88%86"><span class="nav-number">2.3.</span> <span class="nav-text">RabbitMQ核心部部分</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Kuang"
+      src="/images/kenan.jpg">
+  <p class="site-author-name" itemprop="name">Kuang</p>
+  <div class="site-description" itemprop="description">个人博客</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">87</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Isdear" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Isdear" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:kuang8421@qq.com" title="E-Mail → mailto:kuang8421@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/269017831" title="B站 → https:&#x2F;&#x2F;space.bilibili.com&#x2F;269017831" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>B站</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/1906956615" title="QQ → 1906956615"><i class="fab fa-qq fa-fw"></i>QQ</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://strongth.top/2022/08/29/RabbitMQ%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/kenan.jpg">
+      <meta itemprop="name" content="Kuang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记忆随笔">
+      <meta itemprop="description" content="个人博客">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="RabbitMQ学习记录 | 记忆随笔">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          RabbitMQ学习记录
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-08-29 21:56:25" itemprop="dateCreated datePublished" datetime="2022-08-29T21:56:25+08:00">2022-08-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" itemprop="url" rel="index"><span itemprop="name">消息队列</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.7k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="MQ相关概念"><a href="#MQ相关概念" class="headerlink" title="MQ相关概念"></a>MQ相关概念</h2><h3 id="什么是MQ"><a href="#什么是MQ" class="headerlink" title="什么是MQ"></a>什么是MQ</h3><p>MQ(message queue)，本质是队列，FIFO先入先出，只不过队列中存放的是message。还是一种跨进程的通信机制，用于上下游传递消息。在互联网架构中，MQ是一种非常常见的上下游“逻辑解耦+物理解耦”的消息通信服务。使用了MQ之后，消息发送上游只需要依赖MQ，不用依赖其他服务。</p>
+<h3 id="为什么要用MQ"><a href="#为什么要用MQ" class="headerlink" title="为什么要用MQ"></a>为什么要用MQ</h3><h4 id="流量消峰"><a href="#流量消峰" class="headerlink" title="流量消峰"></a>流量消峰</h4><p>在正常情况下，如果订单系统最多只能处理一万条数据。但是在高峰的时候，如果有两万条数据，订单系统处理不了，可能导致下单失败。如果使用消息队列作为缓冲，部分订单先放到队列里，用户虽然等待时间长，但是能够正常下单使用。</p>
+<h4 id="应用解耦"><a href="#应用解耦" class="headerlink" title="应用解耦"></a>应用解耦</h4><p>在大型项目中包含多个系统，部分系统是耦合的，这个数据处理完之后交由另一个系统处理，如果另一个系统发生故障，就会导致数据异常。如果采用消息队列模式，就算系统发生故障，等待系统恢复后也可以数据正常，提升系统的可用性。</p>
+<h4 id="异步处理"><a href="#异步处理" class="headerlink" title="异步处理"></a>异步处理</h4><p>有些服务之间调用时异步的，例如A调用B，B需要花费很长时间执行，但是A需要B什么时候可以执行完。以前一般有两种方式，A过一段时间去调用B的查询API查询，或者A提供一个callback api，B执行完之后调用API通知A服务。这两种方式都不是很优雅，使用消息总线，可以很方便解决这个问题，A调用B服务后，只需要监听B处理完成的消息，当B处理完之后，会发送消息给MQ，MQ会将此消息转发给A服务。这样A服务既不用循环调用B的查询API，也不用提供callback api。同样B服务也不用做这些操作。A服务还能及时的得到异步处理成功的消息。</p>
+<h3 id="RabbitMQ介绍"><a href="#RabbitMQ介绍" class="headerlink" title="RabbitMQ介绍"></a>RabbitMQ介绍</h3><p>2007年发布，是一个在AMQP(高级消息队列协议)基础上完成的，可复用的企业消息系统，是当前最主流的消息中间件之一。</p>
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><p>由于erlang语言的高并发特性，性能较好；吞吐量到万级，MQ功能比较完备、健壮、稳定、易用、跨平台、支持多种语言，如Python、Ruby、.NET、Java、C、PHP、JMS、ActionScript、XMPP、STOMP等，支持AJAX文档齐全；开源提供的管理界面非常棒，用起来很好用，社区活跃高；更新频率相当高。<a target="_blank" rel="noopener" href="https://www.rabbitmq.com/new.html">https://www.rabbitmq.com/new.html</a></p>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><p>商业版需要收费，学习成本较高</p>
+<h3 id="MQ的选择"><a href="#MQ的选择" class="headerlink" title="MQ的选择"></a>MQ的选择</h3><h4 id="Kafka"><a href="#Kafka" class="headerlink" title="Kafka"></a>Kafka</h4><p>Kafka主要特点是基于Pull的模式来处理消息消费，追求高吞吐量，一开始的目的就是用于日志收集和传输，适合产生大量数据的互联网服务的数据收集业务。大型公司建议可以选用，如果有日志采集功能，肯定是首选Kafka了。</p>
+<h4 id="RocketMQ"><a href="#RocketMQ" class="headerlink" title="RocketMQ"></a>RocketMQ</h4><p>天生为金融互联网领域而生，对于可靠性要求很高的场景，尤其是电商里面的订单扣款，以及业务消峰，在大量交易涌入时，后端可能无法及时处理的情况。RocketMQ在稳定性上可能更是值得信赖，这些业务场景在阿里双11已经经历了多次考验，如果你的业务有上述并发场景，建议选择RocketMQ。</p>
+<h4 id="RabbitMQ"><a href="#RabbitMQ" class="headerlink" title="RabbitMQ"></a>RabbitMQ</h4><p>结合erlang语言本身的并发优势，性能好时效性微秒级，社区活跃度也比较高，管理界面用起来十分方便，如果你的数据量没有那么大，中小型公司选择功能比较完备的鄂RabbitMQ。</p>
+<h2 id="RabbitMQ-1"><a href="#RabbitMQ-1" class="headerlink" title="RabbitMQ"></a>RabbitMQ</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>RabbitMQ是一个消息中间件：它接收、存储并转发消息。</p>
+<h3 id="四大核心概念"><a href="#四大核心概念" class="headerlink" title="四大核心概念"></a>四大核心概念</h3><ul>
+<li>生产者：产生数据发送消息的程序是生产者</li>
+<li>交换机：交换机是RabbitMQ非常重要的一个部件，一方面它接收来自生产者的消息，另一方面他将消息推送到队列中。交换机必须确切知道如何处理它接收到的消息，是将这些消息推送到特定队列还是推送到多队列，亦或者是把消息丢弃，这个得有交换机类型决定</li>
+<li>队列：队列是RabbitMQ内部使用的一种数据结果，尽管消息流经RabbitMQ和应用程序，但它们只能存储在队列中。队列仅受主机的内存和磁盘限制的约束，本质是一个大的消息缓存区。许多生产者可以将消息发送到一个队列，许多消费者可以尝试从一个队列接收数据。这就是我们使用队列的方式</li>
+<li>消费者：消费与接收具有相似的含义。消费者大多时候是一个等待接收消息的程序。请注意生产者、消费者和消息中间件很多时候并不在同一机器上。同一个应用程序既可以是生产者又可以是消费者。</li>
+</ul>
+<h3 id="RabbitMQ核心部部分"><a href="#RabbitMQ核心部部分" class="headerlink" title="RabbitMQ核心部部分"></a>RabbitMQ核心部部分</h3>
+    </div>
+
+    
+    
+    
+      
+
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Kuang
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://strongth.top/2022/08/29/RabbitMQ%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" title="RabbitMQ学习记录">http://strongth.top/2022/08/29/RabbitMQ学习记录/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/RabbitMQ/" rel="tag"><i class="fa fa-tag"></i> RabbitMQ</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/08/26/springboot%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%8E%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%AE%9E%E7%8E%B0https%E5%8D%95%E5%90%91%E8%AE%A4%E8%AF%81%E5%92%8C%E5%8F%8C%E5%90%91%E8%AE%A4%E8%AF%81/" rel="prev" title="springboot客户端与服务端实现https单向认证和双向认证">
+                  <i class="fa fa-chevron-left"></i> springboot客户端与服务端实现https单向认证和双向认证
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/09/12/Test/" rel="next" title="Test">
+                  Test <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kuang</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">85k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">2:34</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        本站访客数<span id="busuanzi_value_site_uv"></span>人次
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        本站总访问量<span id="busuanzi_value_site_pv"></span>次
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Poweredby <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a>  | Theme <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>
