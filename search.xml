@@ -5563,4 +5563,18 @@
         <tag>java</tag>
       </tags>
   </entry>
+  <entry>
+    <title>推送代码出现443端口连接超时</title>
+    <url>/2022/09/18/%E6%8E%A8%E9%80%81%E4%BB%A3%E7%A0%81%E5%87%BA%E7%8E%B0443%E7%AB%AF%E5%8F%A3%E8%BF%9E%E6%8E%A5%E8%B6%85%E6%97%B6/</url>
+    <content><![CDATA[<p>在推送代码到github时出现Failed to connect to github.com port 443:connection timed out错误<span id="more"></span></p>
+<h4 id="取消代理"><a href="#取消代理" class="headerlink" title="取消代理"></a>取消代理</h4><p>git config –global –unset http.proxy</p>
+<p>git config –global –unset https.proxy</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>github</tag>
+      </tags>
+  </entry>
 </search>
