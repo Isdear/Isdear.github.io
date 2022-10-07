@@ -15,10 +15,12 @@
 
 
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"strongth.top","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"strongth.top","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"default"},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="MQ相关概念什么是MQMQ(message queue)，本质是队列，FIFO先入先出，只不过队列中存放的是message。还是一种跨进程的通信机制，用于上下游传递消息。在互联网架构中，MQ是一种非常常见的上下游“逻辑解耦+物理解耦”的消息通信服务。使用了MQ之后，消息发送上游只需要依赖MQ，不用依赖其他服务。">
 <meta property="og:type" content="article">
@@ -27,11 +29,19 @@
 <meta property="og:site_name" content="记忆随笔">
 <meta property="og:description" content="MQ相关概念什么是MQMQ(message queue)，本质是队列，FIFO先入先出，只不过队列中存放的是message。还是一种跨进程的通信机制，用于上下游传递消息。在互联网架构中，MQ是一种非常常见的上下游“逻辑解耦+物理解耦”的消息通信服务。使用了MQ之后，消息发送上游只需要依赖MQ，不用依赖其他服务。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://strongth.top/2022/08/29/RabbitMQ%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/python-one.png">
+<meta property="og:image" content="http://strongth.top/2022/08/29/RabbitMQ%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/python-two.png">
+<meta property="og:image" content="http://strongth.top/2022/08/29/RabbitMQ%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/python-three.png">
+<meta property="og:image" content="http://strongth.top/2022/08/29/RabbitMQ%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/python-four.png">
+<meta property="og:image" content="http://strongth.top/2022/08/29/RabbitMQ%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/python-five.png">
+<meta property="og:image" content="http://strongth.top/2022/08/29/RabbitMQ%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/python-six.png">
+<meta property="og:image" content="http://strongth.top/2022/08/29/RabbitMQ%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/360%E6%88%AA%E5%9B%BE20220925233939867.jpg">
 <meta property="article:published_time" content="2022-08-29T13:56:25.000Z">
 <meta property="article:modified_time" content="2022-08-29T13:56:25.000Z">
 <meta property="article:author" content="Kuang">
 <meta property="article:tag" content="RabbitMQ">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://strongth.top/2022/08/29/RabbitMQ%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/python-one.png">
 
 
 <link rel="canonical" href="http://strongth.top/2022/08/29/RabbitMQ%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">
@@ -43,6 +53,7 @@
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>RabbitMQ学习记录 | 记忆随笔</title>
   
+
 
 
 
@@ -87,12 +98,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu">
-        <li class="menu-item menu-item-首页"><a href="/" rel="section"><i class="home fa-fw"></i>首页</a></li>
-        <li class="menu-item menu-item-标签"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a></li>
-        <li class="menu-item menu-item-类别"><a href="/categories/" rel="section"><i class="categories fa-fw"></i>类别</a></li>
-        <li class="menu-item menu-item-档案"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>档案</a></li>
-        <li class="menu-item menu-item-关于"><a href="/about/" rel="section"><i class="about fa-fw"></i>关于</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-首页"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-标签"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-类别"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>类别</a></li><li class="menu-item menu-item-档案"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>档案</a></li><li class="menu-item menu-item-关于"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-收藏"><a href="/docs/" rel="section"><i class="fa fa-sharp fa-solid fa-star fa-fw"></i>收藏</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -149,7 +155,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MQ%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">MQ相关概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFMQ"><span class="nav-number">1.1.</span> <span class="nav-text">什么是MQ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%94%A8MQ"><span class="nav-number">1.2.</span> <span class="nav-text">为什么要用MQ</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%81%E9%87%8F%E6%B6%88%E5%B3%B0"><span class="nav-number">1.2.1.</span> <span class="nav-text">流量消峰</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E8%A7%A3%E8%80%A6"><span class="nav-number">1.2.2.</span> <span class="nav-text">应用解耦</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86"><span class="nav-number">1.2.3.</span> <span class="nav-text">异步处理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RabbitMQ%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.3.</span> <span class="nav-text">RabbitMQ介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%98%E7%82%B9"><span class="nav-number">1.3.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%BA%E7%82%B9"><span class="nav-number">1.3.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MQ%E7%9A%84%E9%80%89%E6%8B%A9"><span class="nav-number">1.4.</span> <span class="nav-text">MQ的选择</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Kafka"><span class="nav-number">1.4.1.</span> <span class="nav-text">Kafka</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RocketMQ"><span class="nav-number">1.4.2.</span> <span class="nav-text">RocketMQ</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RabbitMQ"><span class="nav-number">1.4.3.</span> <span class="nav-text">RabbitMQ</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RabbitMQ-1"><span class="nav-number">2.</span> <span class="nav-text">RabbitMQ</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5"><span class="nav-number">2.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E5%A4%A7%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5"><span class="nav-number">2.2.</span> <span class="nav-text">四大核心概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RabbitMQ%E6%A0%B8%E5%BF%83%E9%83%A8%E9%83%A8%E5%88%86"><span class="nav-number">2.3.</span> <span class="nav-text">RabbitMQ核心部部分</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MQ%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">MQ相关概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFMQ"><span class="nav-number">1.1.</span> <span class="nav-text">什么是MQ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%94%A8MQ"><span class="nav-number">1.2.</span> <span class="nav-text">为什么要用MQ</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%81%E9%87%8F%E6%B6%88%E5%B3%B0"><span class="nav-number">1.2.1.</span> <span class="nav-text">流量消峰</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E8%A7%A3%E8%80%A6"><span class="nav-number">1.2.2.</span> <span class="nav-text">应用解耦</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86"><span class="nav-number">1.2.3.</span> <span class="nav-text">异步处理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RabbitMQ%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.3.</span> <span class="nav-text">RabbitMQ介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%98%E7%82%B9"><span class="nav-number">1.3.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%BA%E7%82%B9"><span class="nav-number">1.3.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MQ%E7%9A%84%E9%80%89%E6%8B%A9"><span class="nav-number">1.4.</span> <span class="nav-text">MQ的选择</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Kafka"><span class="nav-number">1.4.1.</span> <span class="nav-text">Kafka</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RocketMQ"><span class="nav-number">1.4.2.</span> <span class="nav-text">RocketMQ</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RabbitMQ"><span class="nav-number">1.4.3.</span> <span class="nav-text">RabbitMQ</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RabbitMQ-1"><span class="nav-number">2.</span> <span class="nav-text">RabbitMQ</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5"><span class="nav-number">2.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E5%A4%A7%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5"><span class="nav-number">2.2.</span> <span class="nav-text">四大核心概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RabbitMQ%E6%A0%B8%E5%BF%83%E9%83%A8%E9%83%A8%E5%88%86"><span class="nav-number">2.3.</span> <span class="nav-text">RabbitMQ核心部部分</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Hello-World"><span class="nav-number">2.3.1.</span> <span class="nav-text">Hello World!</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Work-queues"><span class="nav-number">2.3.2.</span> <span class="nav-text">Work queues</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Publish-x2F-Subscribe"><span class="nav-number">2.3.3.</span> <span class="nav-text">Publish&#x2F;Subscribe</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Routing"><span class="nav-number">2.3.4.</span> <span class="nav-text">Routing</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Topics"><span class="nav-number">2.3.5.</span> <span class="nav-text">Topics</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RPC"><span class="nav-number">2.3.6.</span> <span class="nav-text">RPC</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Publsher-Confirms"><span class="nav-number">2.3.7.</span> <span class="nav-text">Publsher Confirms</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%84%E4%B8%AA%E5%90%8D%E8%AF%8D%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.4.</span> <span class="nav-text">各个名词介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97"><span class="nav-number">2.5.</span> <span class="nav-text">安装指南</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">2.5.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">2.5.2.</span> <span class="nav-text">常用命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E6%96%B0%E8%B4%A6%E6%88%B7"><span class="nav-number">2.5.3.</span> <span class="nav-text">添加新账户</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E8%B4%A6%E5%8F%B7"><span class="nav-number">2.5.3.1.</span> <span class="nav-text">创建账号</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E7%94%A8%E6%88%B7%E8%A7%92%E8%89%B2"><span class="nav-number">2.5.3.2.</span> <span class="nav-text">设置用户角色</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90"><span class="nav-number">2.5.3.3.</span> <span class="nav-text">设置用户权限</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BD%93%E5%89%8D%E7%94%A8%E6%88%B7%E5%92%8C%E8%A7%92%E8%89%B2"><span class="nav-number">2.5.3.4.</span> <span class="nav-text">当前用户和角色</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hello-World-1"><span class="nav-number">3.</span> <span class="nav-text">Hello World</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%9D%E8%B5%96"><span class="nav-number">3.1.</span> <span class="nav-text">依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B6%88%E6%81%AF%E7%94%9F%E4%BA%A7%E8%80%85"><span class="nav-number">3.2.</span> <span class="nav-text">消息生产者</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B6%88%E6%81%AF%E6%B6%88%E8%B4%B9%E8%80%85"><span class="nav-number">3.3.</span> <span class="nav-text">消息消费者</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -164,7 +170,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">87</span>
+          <span class="site-state-item-count">89</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -182,16 +188,16 @@
 </div>
   <div class="links-of-author site-overview-item animated">
       <span class="links-of-author-item">
-        <a href="https://github.com/Isdear" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Isdear" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <a href="https://github.com/Isdear" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Isdear" rel="noopener" target="_blank"><i class="fa-brands fa-github fa-fw"></i>&nbsp;&nbsp;GitHub</a>
       </span>
       <span class="links-of-author-item">
-        <a href="mailto:kuang8421@qq.com" title="E-Mail → mailto:kuang8421@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        <a href="mailto:kuang8421@qq.com" title="E-Mail → mailto:kuang8421@qq.com" rel="noopener" target="_blank"><i class="fa-solid fa-envelope fa-fw"></i>&nbsp;&nbsp;E-Mail</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://space.bilibili.com/269017831" title="B站 → https:&#x2F;&#x2F;space.bilibili.com&#x2F;269017831" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>B站</a>
+        <a href="https://space.bilibili.com/269017831" title="B站 → https:&#x2F;&#x2F;space.bilibili.com&#x2F;269017831" rel="noopener" target="_blank"><i class="fa-brands fa-youtube fa-fw"></i>&nbsp;&nbsp;B站</a>
       </span>
       <span class="links-of-author-item">
-        <a href="/1906956615" title="QQ → 1906956615"><i class="fab fa-qq fa-fw"></i>QQ</a>
+        <a href="/1906956615" title="QQ → 1906956615"><i class="fa-brands fa-qq fa-fw"></i>&nbsp;&nbsp;QQ</a>
       </span>
   </div>
 
@@ -241,7 +247,7 @@
       <meta itemprop="name" content="记忆随笔">
       <meta itemprop="description" content="个人博客">
     </span>
-    
+
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="name" content="RabbitMQ学习记录 | 记忆随笔">
       <meta itemprop="description" content="">
@@ -285,14 +291,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>1.7k</span>
+      <span>3.1k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>3 分钟</span>
+      <span>6 分钟</span>
     </span>
 </div>
 
@@ -320,7 +326,80 @@
 <li>队列：队列是RabbitMQ内部使用的一种数据结果，尽管消息流经RabbitMQ和应用程序，但它们只能存储在队列中。队列仅受主机的内存和磁盘限制的约束，本质是一个大的消息缓存区。许多生产者可以将消息发送到一个队列，许多消费者可以尝试从一个队列接收数据。这就是我们使用队列的方式</li>
 <li>消费者：消费与接收具有相似的含义。消费者大多时候是一个等待接收消息的程序。请注意生产者、消费者和消息中间件很多时候并不在同一机器上。同一个应用程序既可以是生产者又可以是消费者。</li>
 </ul>
-<h3 id="RabbitMQ核心部部分"><a href="#RabbitMQ核心部部分" class="headerlink" title="RabbitMQ核心部部分"></a>RabbitMQ核心部部分</h3>
+<h3 id="RabbitMQ核心部部分"><a href="#RabbitMQ核心部部分" class="headerlink" title="RabbitMQ核心部部分"></a>RabbitMQ核心部部分</h3><h4 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World!"></a>Hello World!</h4><p>The simplest thing that does <em>something</em></p>
+<img src="/2022/08/29/RabbitMQ%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/python-one.png" class title="img">
+
+<h4 id="Work-queues"><a href="#Work-queues" class="headerlink" title="Work queues"></a>Work queues</h4><p>Distributing tasks among workers (the <a target="_blank" rel="noopener" href="http://www.enterpriseintegrationpatterns.com/patterns/messaging/CompetingConsumers.html">competing consumers pattern</a>)</p>
+<img src="/2022/08/29/RabbitMQ%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/python-two.png" class title="img">
+
+<h4 id="Publish-x2F-Subscribe"><a href="#Publish-x2F-Subscribe" class="headerlink" title="Publish&#x2F;Subscribe"></a>Publish&#x2F;Subscribe</h4><p>Sending messages to many consumers at once</p>
+<img src="/2022/08/29/RabbitMQ%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/python-three.png" class title="img">
+
+<h4 id="Routing"><a href="#Routing" class="headerlink" title="Routing"></a>Routing</h4><p>Receiving messages selectively</p>
+<img src="/2022/08/29/RabbitMQ%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/python-four.png" class title="img">
+
+<h4 id="Topics"><a href="#Topics" class="headerlink" title="Topics"></a>Topics</h4><p>Receiving messages based on a pattern (topics)</p>
+<img src="/2022/08/29/RabbitMQ%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/python-five.png" class title="img">
+
+<h4 id="RPC"><a href="#RPC" class="headerlink" title="RPC"></a>RPC</h4><p><a target="_blank" rel="noopener" href="http://www.enterpriseintegrationpatterns.com/patterns/messaging/RequestReply.html">Request&#x2F;reply pattern</a> example</p>
+<img src="/2022/08/29/RabbitMQ%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/python-six.png" class title="img">
+
+<h4 id="Publsher-Confirms"><a href="#Publsher-Confirms" class="headerlink" title="Publsher Confirms"></a>Publsher Confirms</h4><p>Reliable publishing with publisher confirms</p>
+<h3 id="各个名词介绍"><a href="#各个名词介绍" class="headerlink" title="各个名词介绍"></a>各个名词介绍</h3><img src="/2022/08/29/RabbitMQ%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/360%E6%88%AA%E5%9B%BE20220925233939867.jpg" class>
+
+<p><strong>Broker</strong>：接收和分发消息的应用，RabbitMQ Server就是Message Broker。</p>
+<p><strong>Virtual host</strong>：出于多租户和安全因素设计的，把AMQP的基本组件划分到一个虚拟的分组中，类似与网络中的namesapce概念，当多个不同的用户使用同一个RabbitMQ server提供的服务时，可以划分出多个vhost，每个用户在自己的vhost创建exchange&#x2F;queue等。</p>
+<p><strong>Connection</strong>：publisher&#x2F;consumer和broker之间的TCP连接。</p>
+<p><strong>Channel</strong>：如果每次访问RabbitMQ都建立一个Connection，在消息量大的时候建立TCP Connection的开销是巨大的，效率也较低。Channel是在Connection内部建立的逻辑连接，如果应用程序支持多线程，通常每个Thread创建单独的Channel通信，AMQP method包含了Channel id帮助客户端和message broker识别Channel，所以Channel之间是完全隔离的。Channel作为轻量级Connection极大减少了操作系统建立TCP Connection的开销。</p>
+<p><strong>Exchange</strong>：message到达broker的第一站，根据分发规则，匹配查询表中的routing key，分发消息到queue中去。常用的类型有：direct</p>
+<p>(point-to-point),topic(pulish-subscribe)和fanout(multicast)</p>
+<p><strong>Queue</strong>：消息最终被送到这里等待consumer取走</p>
+<p><strong>Binding</strong>：exchange和queue之间的虚拟连接，binding中可以包含routing key，Binding信息被保存到exchange中的查询表中，用于message的分发依据</p>
+<h3 id="安装指南"><a href="#安装指南" class="headerlink" title="安装指南"></a>安装指南</h3><p><a target="_blank" rel="noopener" href="https://www.rabbitmq.com/download.html">https://www.rabbitmq.com/download.html</a></p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><ul>
+<li><p>安装Rabbit之前首先安装erlang语言。</p>
+</li>
+<li><p>查看当前系统命令<code>uname -a</code></p>
+</li>
+<li><p>依次安装文件</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh erlang-21.3-1.el7.x86_64.rpm</span><br><span class="line">yum install socat -y</span><br><span class="line">rpm -ivh rabbitmq-server-3.8.8-1.el7.noarch.rpm</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><ul>
+<li><p>添加开机启动RabbitMQ服务</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chkconfig rabbitmq-server on</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动服务</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/sbin/service rabbitmq-server start</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看服务状态</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/sbin/service rabbitmq-server status</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>停止服务</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/sbin/service rabbitmq-server stop</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>开启web管理插件</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rabbitmq-plugins enable rabbitmq_managerment</span><br></pre></td></tr></table></figure>
+
+<p>  用默认账号密码(guest&#x2F;guest)访问地址<code>http://ip:port</code></p>
+</li>
+<li><p>关闭防火墙</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop firewalld</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="添加新账户"><a href="#添加新账户" class="headerlink" title="添加新账户"></a>添加新账户</h4><h5 id="创建账号"><a href="#创建账号" class="headerlink" title="创建账号"></a>创建账号</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rabbitmq add_user admin 123</span><br></pre></td></tr></table></figure>
+
+<h5 id="设置用户角色"><a href="#设置用户角色" class="headerlink" title="设置用户角色"></a>设置用户角色</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rabbitmqctl set_user_tags admin administrator</span><br></pre></td></tr></table></figure>
+
+<h5 id="设置用户权限"><a href="#设置用户权限" class="headerlink" title="设置用户权限"></a>设置用户权限</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set_permissions [-p &lt;vhostpath&gt;] &lt;user&gt; &lt;conf&gt; &lt;write&gt; &lt;read&gt;</span><br><span class="line">rabbitmqctl set_permissions -p &quot;/&quot; admin &quot;.*&quot; &quot;.*&quot; &quot;.*&quot;</span><br></pre></td></tr></table></figure>
+
+<p>用户user_admin 具有&#x2F;vhost1这个virtual host中所有资源的配置、写、读权限</p>
+<h5 id="当前用户和角色"><a href="#当前用户和角色" class="headerlink" title="当前用户和角色"></a>当前用户和角色</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rabbitmqctl list_users</span><br></pre></td></tr></table></figure>
+
+<p>再次利用admin账户登录</p>
+<h2 id="Hello-World-1"><a href="#Hello-World-1" class="headerlink" title="Hello World"></a>Hello World</h2><h3 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.rabbitmq<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>amqp-client<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.16.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>commons-io<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>commons-io<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.11.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="消息生产者"><a href="#消息生产者" class="headerlink" title="消息生产者"></a>消息生产者</h3><h3 id="消息消费者"><a href="#消息消费者" class="headerlink" title="消息消费者"></a>消息消费者</h3>
     </div>
 
     
@@ -395,14 +474,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">85k</span>
+    <span title="站点总字数">88k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:34</span>
+    <span title="站点阅读时长">2:39</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -411,7 +490,7 @@
         <i class="fa fa-user"></i>
       </span>
       <span class="site-uv" title="总访客量">
-        本站访客数<span id="busuanzi_value_site_uv"></span>人次
+        <span id="busuanzi_value_site_uv"></span>
       </span>
     </span>
     <span class="post-meta-item" id="busuanzi_container_site_pv">
@@ -419,27 +498,28 @@
         <i class="fa fa-eye"></i>
       </span>
       <span class="site-pv" title="总访问量">
-        本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        <span id="busuanzi_value_site_pv"></span>
       </span>
     </span>
 </div>
-  <div class="powered-by">Poweredby <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a>  | Theme <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 
+  <div class="powered-by">Poweredby <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 
   </div>
 
     </div>
   </footer>
 
   
-  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
 
   
-<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
 
 
 
+  <script src="/js/third-party/pace.js"></script>
 
   
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
@@ -449,7 +529,7 @@
 
   
 
-  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
 <script src="/js/third-party/math/mathjax.js"></script>
 
 
