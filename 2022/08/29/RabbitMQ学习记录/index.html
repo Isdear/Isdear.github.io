@@ -22,12 +22,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"strongth.top","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"default"},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="MQ相关概念什么是MQMQ(message queue)，本质是队列，FIFO先入先出，只不过队列中存放的是message。还是一种跨进程的通信机制，用于上下游传递消息。在互联网架构中，MQ是一种非常常见的上下游“逻辑解耦+物理解耦”的消息通信服务。使用了MQ之后，消息发送上游只需要依赖MQ，不用依赖其他服务。">
+    <meta name="description" content="RabbitMQ中间件">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RabbitMQ学习记录">
 <meta property="og:url" content="http://strongth.top/2022/08/29/RabbitMQ%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/index.html">
 <meta property="og:site_name" content="记忆随笔">
-<meta property="og:description" content="MQ相关概念什么是MQMQ(message queue)，本质是队列，FIFO先入先出，只不过队列中存放的是message。还是一种跨进程的通信机制，用于上下游传递消息。在互联网架构中，MQ是一种非常常见的上下游“逻辑解耦+物理解耦”的消息通信服务。使用了MQ之后，消息发送上游只需要依赖MQ，不用依赖其他服务。">
+<meta property="og:description" content="RabbitMQ中间件">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://strongth.top/2022/08/29/RabbitMQ%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/python-one.png">
 <meta property="og:image" content="http://strongth.top/2022/08/29/RabbitMQ%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/python-two.png">
@@ -170,7 +170,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">89</span>
+          <span class="site-state-item-count">90</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -309,7 +309,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="MQ相关概念"><a href="#MQ相关概念" class="headerlink" title="MQ相关概念"></a>MQ相关概念</h2><h3 id="什么是MQ"><a href="#什么是MQ" class="headerlink" title="什么是MQ"></a>什么是MQ</h3><p>MQ(message queue)，本质是队列，FIFO先入先出，只不过队列中存放的是message。还是一种跨进程的通信机制，用于上下游传递消息。在互联网架构中，MQ是一种非常常见的上下游“逻辑解耦+物理解耦”的消息通信服务。使用了MQ之后，消息发送上游只需要依赖MQ，不用依赖其他服务。<span id="more"></span></p>
+        <p>RabbitMQ中间件<span id="more"></span></p>
+<h2 id="MQ相关概念"><a href="#MQ相关概念" class="headerlink" title="MQ相关概念"></a>MQ相关概念</h2><h3 id="什么是MQ"><a href="#什么是MQ" class="headerlink" title="什么是MQ"></a>什么是MQ</h3><p>MQ(message queue)，本质是队列，FIFO先入先出，只不过队列中存放的是message。还是一种跨进程的通信机制，用于上下游传递消息。在互联网架构中，MQ是一种非常常见的上下游“逻辑解耦+物理解耦”的消息通信服务。使用了MQ之后，消息发送上游只需要依赖MQ，不用依赖其他服务。</p>
 <h3 id="为什么要用MQ"><a href="#为什么要用MQ" class="headerlink" title="为什么要用MQ"></a>为什么要用MQ</h3><h4 id="流量消峰"><a href="#流量消峰" class="headerlink" title="流量消峰"></a>流量消峰</h4><p>在正常情况下，如果订单系统最多只能处理一万条数据。但是在高峰的时候，如果有两万条数据，订单系统处理不了，可能导致下单失败。如果使用消息队列作为缓冲，部分订单先放到队列里，用户虽然等待时间长，但是能够正常下单使用。</p>
 <h4 id="应用解耦"><a href="#应用解耦" class="headerlink" title="应用解耦"></a>应用解耦</h4><p>在大型项目中包含多个系统，部分系统是耦合的，这个数据处理完之后交由另一个系统处理，如果另一个系统发生故障，就会导致数据异常。如果采用消息队列模式，就算系统发生故障，等待系统恢复后也可以数据正常，提升系统的可用性。</p>
 <h4 id="异步处理"><a href="#异步处理" class="headerlink" title="异步处理"></a>异步处理</h4><p>有些服务之间调用时异步的，例如A调用B，B需要花费很长时间执行，但是A需要B什么时候可以执行完。以前一般有两种方式，A过一段时间去调用B的查询API查询，或者A提供一个callback api，B执行完之后调用API通知A服务。这两种方式都不是很优雅，使用消息总线，可以很方便解决这个问题，A调用B服务后，只需要监听B处理完成的消息，当B处理完之后，会发送消息给MQ，MQ会将此消息转发给A服务。这样A服务既不用循环调用B的查询API，也不用提供callback api。同样B服务也不用做这些操作。A服务还能及时的得到异步处理成功的消息。</p>
