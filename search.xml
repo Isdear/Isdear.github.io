@@ -5955,6 +5955,33 @@
 <li>缓存大小：要缓存的最大样式表数。零禁用缓存。</li>
 <li>上次访问后缓存生存时间：上次访问后样式表在缓存中保留多长时间。</li>
 </ul>
+<h4 id="AttributesToCSV"><a href="#AttributesToCSV" class="headerlink" title="AttributesToCSV"></a>AttributesToCSV</h4><p>根据输入的流文件属性生成CSV文件。生成的 CSV 可以写入新生成的属性名为“CSVAttributes”的属性，也可以作为内容写入流文件。如果属性值包含逗号、换行符或双引号，则属性值将使用双引号进行转义。属性值中的任何双引号字符都使用另一个双引号进行转义。</p>
+<h5 id="关键属性-14"><a href="#关键属性-14" class="headerlink" title="关键属性"></a>关键属性</h5><ul>
+<li>属性列表：要包含在生成的 CSV 中的属性的逗号分隔列表。如果此值留空，则将包括所有现有属性。此属性列表区分大小写并支持包含逗号的属性名称。如果未找到列表中指定的属性，它将根据“空值”属性以空字符串或 null 发送到生成的 CSV。如果在此列表中指定了核心属性并且“包含核心属性”属性为 false，则将包含核心属性。</li>
+<li>属性正则表达式：将根据流文件属性评估以选择匹配属性的正则表达式。此属性可以与属性列表属性结合使用。最终输出将包含在 ATTRIBUTE_LIST 和 ATTRIBUTE_REGEX 中找到的匹配项组合。</li>
+<li>目标：包含流文件属性、流文件内容。控制 CSV 值是作为新的流文件属性“CSVData”写入还是写入流文件内容。</li>
+<li>包括核心属性：确定每个流文件中包含的 FlowFile org.apache.nifi.flowfile.attributes.CoreAttributes 是否应包含在生成的最终 CSV 值中。核心属性将添加到 CSVData 和 CSVSchema 字符串的末尾。属性列表属性会覆盖此设置。</li>
+<li>空值：如果为true，则结果 CSV 中的不存在或空属性将为“null”。如果为 false，则会在 CSV 中放置一个空字符串。</li>
+<li>包含Schema：如果为 true，则架构（属性名称）也将转换为 CSV 字符串，该字符串将应用于名为“CSVSchema”的新属性或应用于内容中的第一行，具体取决于 DESTINATION 属性设置。</li>
+</ul>
+<h4 id="AttributesToJSON"><a href="#AttributesToJSON" class="headerlink" title="AttributesToJSON"></a>AttributesToJSON</h4><p>根据输入的流文件生成JSON。得到的JSON既可以写入新属性 JSONAttributes，也可以作为内容写入流文件。</p>
+<h5 id="关键属性-15"><a href="#关键属性-15" class="headerlink" title="关键属性"></a>关键属性</h5><ul>
+<li>属性列表：要包含在生成的 JSON 中的属性的逗号分隔列表。如果此值留空，则将包括所有现有属性。此属性列表区分大小写并支持包含逗号的属性名称。如果未找到列表中指定的属性，它将根据“空值”属性以空字符串或 null 发送到生成的 JSON 。如果在此列表中指定了核心属性并且“包含核心属性”属性为 false，则将包含核心属性。</li>
+<li>属性正则表达式：将根据流文件属性评估以选择匹配属性的正则表达式。此属性可以与属性列表属性结合使用。最终输出将包含在 ATTRIBUTE_LIST 和 ATTRIBUTE_REGEX 中找到的匹配项组合。</li>
+<li>目标：包含流文件属性、流文件内容。控制 JSON值是作为新的流文件属性“JSONAttributes”写入还是写入流文件内容。</li>
+<li>包括核心属性：确定每个流文件中包含的 FlowFile org.apache.nifi.flowfile.attributes.CoreAttributes 是否应包含在生成的最终 JSON 值中。</li>
+<li>空值：如果为true，则结果 JSON中的不存在或空属性将为“null”。如果为 false，则会在 JSON中放置一个空字符串。</li>
+</ul>
+<h4 id="CountText"><a href="#CountText" class="headerlink" title="CountText"></a>CountText</h4><p>计算传入文本的各种指标。请求的结果将被记录为属性。生成的流文件不会修改其内容。</p>
+<h5 id="关键属性-16"><a href="#关键属性-16" class="headerlink" title="关键属性"></a>关键属性</h5><ul>
+<li>计数行数：如果启用，将计算传入文本中存在的行数。</li>
+<li>计数非空行数：如果启用，将计算传入文本中包含非空白字符的行数。</li>
+<li>计数字数：如果启用，将计算传入文本中存在的单词数（由空格限制的字母数字字符组）。除非 ‘Split Words on Symbols’ 为真，否则通用逻辑分隔符 [_-.] 不会绑定单词。</li>
+<li>计数字符数：如果启用，将计算传入文本中存在的字符数（包括空格和符号，但不包括换行符和回车符）。</li>
+<li>通过符号拆分后的词：如果启用，字数统计将识别由常用逻辑分隔符 [ _ - 分隔的字符串。] 作为独立词（例如，符号上的拆分词 &#x3D; 4 个词）。</li>
+<li>字符编码</li>
+<li>实时调用：如果为 true，则计数器将立即更新，而不考虑 ProcessSession 是提交还是回滚；否则，仅当提交 ProcessSession 时计数器才会增加。</li>
+</ul>
 <h4 id="数据库操作示例"><a href="#数据库操作示例" class="headerlink" title="数据库操作示例"></a>数据库操作示例</h4><img src="/2022/10/11/ApacheNiFi%E5%A4%84%E7%90%86%E5%99%A8/image-20221012104042536.png" class title="image-20221012104042536">
 
 <h4 id="记录数据库处理器操作示例"><a href="#记录数据库处理器操作示例" class="headerlink" title="记录数据库处理器操作示例"></a>记录数据库处理器操作示例</h4><img src="/2022/10/11/ApacheNiFi%E5%A4%84%E7%90%86%E5%99%A8/image-20221012113851707.png" class title="image-20221012113851707">
@@ -6000,8 +6027,20 @@
 
 <h5 id="替换结果"><a href="#替换结果" class="headerlink" title="替换结果"></a>替换结果</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">id,name,star,level</span><br><span class="line">1,search,2,star</span><br><span class="line">2,nalaka,1,star</span><br><span class="line">3,abc,3,star</span><br></pre></td></tr></table></figure>
 
+<h4 id="属性生成CSV数据"><a href="#属性生成CSV数据" class="headerlink" title="属性生成CSV数据"></a>属性生成CSV数据</h4><img src="/2022/10/11/ApacheNiFi%E5%A4%84%E7%90%86%E5%99%A8/image-20221013235939186.png" class title="image-20221013235939186">
+
+<h4 id="属性生成JSON数据"><a href="#属性生成JSON数据" class="headerlink" title="属性生成JSON数据"></a>属性生成JSON数据</h4><img src="/2022/10/11/ApacheNiFi%E5%A4%84%E7%90%86%E5%99%A8/image-20221014000008237.png" class title="image-20221014000008237">
+
+<h4 id="统计文本示例"><a href="#统计文本示例" class="headerlink" title="统计文本示例"></a>统计文本示例</h4><img src="/2022/10/11/ApacheNiFi%E5%A4%84%E7%90%86%E5%99%A8/image-20221014001036243.png" class title="image-20221014001036243">
+
+<h5 id="流文件文本"><a href="#流文件文本" class="headerlink" title="流文件文本"></a>流文件文本</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-----BEGIN OPENSSH PRIVATE KEY-----</span><br><span class="line">b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAABlwAAAAdzc2gtcn</span><br><span class="line">NhAAAAAwEAAQAAAYEAyBZglE7CMW3M8tYIkHFh62UIvYpo99ZV1OBM06WFUo9450rOnsrm</span><br><span class="line">yI4e/SgvKvy0CRT44ZcRPoY5DmXcAKfytizblhjfdXSWGuZm2JfzO86bl/iELY3VmS/o28</span><br><span class="line">tZ5/GuZ9akSjVLQuzqI0IPsMHisjxUATO4zSPR1UqT2KXmAMKayX8DPREJrqRCnZycBPuV</span><br><span class="line">LmsRMaZDuMse3Do/Nbn+JDCxdoPjjVRPr7CBR0rrctejUzF9jTrabr4OaUxrgfy1KhMBpG</span><br><span class="line">N3K5MHe4VTmhZ6oaaCw6JgxmWB+5fWtHAHzjWjNxzfXyb4pacIgZOf7mjorvfSVTXvZ5FD</span><br><span class="line">tLzLr5DoR/rfQxQP/cOGa5fv/RPe1FhPdrLtiW50fLzHfGWfB8qyJtH/LBFEOMdU0Ym26a</span><br><span class="line">dw+DZJe6kTrWF49rdq1bpaL0S4p8fmVCh8OAaTFiD2V3ejniQRXwnibVH0VJcp/PGiyVKL</span><br><span class="line">GUzY8B7AkFL7Zxk8m6o3HOcHAUG38BrIjgnVpjNFAAAFiNJ2K1vSditbAAAAB3NzaC1yc2</span><br><span class="line">EAAAGBAMgWYJROwjFtzPLWCJBxYetlCL2KaPfWVdTgTNOlhVKPeOdKzp7K5siOHv0oLyr8</span><br><span class="line">tAkU+OGXET6GOQ5l3ACn8rYs25YY33V0lhrmZtiX8zvOm5f4hC2N1Zkv6NvLWefxrmfWpE</span><br><span class="line">o1S0Ls6iNCD7DB4rI8VAEzuM0j0dVKk9il5gDCmsl/Az0RCa6kQp2cnAT7lS5rETGmQ7jL</span><br><span class="line">Htw6PzW5/iQwsXaD441UT6+wgUdK63LXo1MxfY062m6+DmlMa4H8tSoTAaRjdyuTB3uFU5</span><br><span class="line">oWeqGmgsOiYMZlgfuX1rRwB841ozcc318m+KWnCIGTn+5o6K730lU172eRQ7S8y6+Q6Ef6</span><br><span class="line">30MUD/3DhmuX7/0T3tRYT3ay7YludHy8x3xlnwfKsibR/ywRRDjHVNGJtumncPg2SXupE6</span><br><span class="line">1hePa3atW6Wi9EuKfH5lQofDgGkxYg9ld3o54kEV8J4m1R9FSXKfzxoslSixlM2PAewJBS</span><br><span class="line">+2cZPJuqNxznBwFBt/AayI4J1aYzRQAAAAMBAAEAAAGAUgBxxnZcuftBEojLa788HUgEBA</span><br><span class="line">I0sNXjyWG/usHMWSC5sTkEYynO2YT9iE0uv5RfiJVSxsmt5I0H1zHBr3clTqoluGcrNaz5</span><br><span class="line">U773iW8E3Y74T5knOrA1SRnMej/l8dwn2SCrpkofNSd5ccfCPHPJn7h/yRpUc6Zpedudqh</span><br><span class="line">2bnNYkr83hGubfq/Zf4s5rVtNwuVxh6JI2kQaV+DXa7/7w/A4EvQiieqqCGgPhh8FZq3Ba</span><br><span class="line">3F6dEQN8wAQeTeNm8BgLwdaoO4f9N0yWM/zcU0iUrWL1BeoFLi4hsejhAtL4QEn+lJTgcL</span><br><span class="line">+AiksWB0jevtDFj1ec5oEGhNlh/QE53JgY7EX5/B1RNT6ncwH69AVqLE7vxwUJdYeq3U5a</span><br><span class="line">GFCm0tXfmxMQ4TbiVdH3k5yawLU9ZijqPi6JQMw4rzB+h+OB02aHMQmtHvEu6lu64PZnSG</span><br><span class="line">BUizq3hDDgt9raklIeIlweO4rm+/IH+H73tKX524xECiDmqbtdmWlmniqSKQZUV4gFAAAA</span><br><span class="line">wQCqQnmgO90HKxpLAxHeP6cBX+8bXOsbnB4d3+C+zZMjYAonjEK1aZH2jVVR0SzyZFgYXb</span><br><span class="line">OvCO39gaM0wunsfkrTxQO8P4d0NawtkebT0Txxk+uYzJsF33xMKxxWMhLcOZbnvpahGaeE</span><br><span class="line">XWGyVs5jRU9FuBt/mgW8djrOA2H2+fGlL7D1/v42m8FHZuhoWJlDRfbqilroJJWkSpvkGX</span><br><span class="line">iP3w+9Enln9BOKC1E3qql8iwy5z4eslBVj6jQ513QntG13DO4AAADBAOLLZterI0Pmiqmn</span><br><span class="line">b1ZIp5nC+X4b2xbfvhNsL8uSqVqEt1SqzpP+GyIJYrWTn+DRBdGxbVW450Vc9z66Ykw4fp</span><br><span class="line">92yj4NkqBDRNbpFXjNBboWdWXSy06AGp/OHg4Uo9V1HlpZPZ8XfuyX5i+6h0rBRy5+TdYU</span><br><span class="line">ETN0s+Uf8K2OUL1HSC0Yv4HQ9qAul3qjwECgGIYx9cMWfhk7VDUisiw452l7Xb26E/qmUa</span><br><span class="line">0dI8FJsytXWg1FGmmeDE1dEAa8GRwvGwAAAMEA4dqJsHUuthWkIXig7Nd62RMkFFgCP2m0</span><br><span class="line">2N4MnGe5VHlRPAQVkBNvr/pTlhUoyHydGqBDLhPwnwbMSl0fNUCqWldvbDemGyLcwLt+Dd</span><br><span class="line">GcnD5TDlxtHxRboGWvMOPKM4nBuvdGPf4N9QnCxyuMySa1N4Z5S+Kx3gSB76ii15qcmWX7</span><br><span class="line">aTSC73KLWEh6XdG2i0eLvvC83o+ZvBGlZsoyhL7dSjGazntj1wJWxvGTH1yTJbkd59u6ZL</span><br><span class="line">Hcuc4QVZV+am0fAAAAEGt1YW5nODQyMUBxcS5jb20BAg==</span><br><span class="line">-----END OPENSSH PRIVATE KEY-----</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h5 id="统计配置"><a href="#统计配置" class="headerlink" title="统计配置"></a>统计配置</h5><img src="/2022/10/11/ApacheNiFi%E5%A4%84%E7%90%86%E5%99%A8/image-20221014001125177.png" class title="image-20221014001125177">
+
+<h5 id="输出结果属性"><a href="#输出结果属性" class="headerlink" title="输出结果属性"></a>输出结果属性</h5><img src="/2022/10/11/ApacheNiFi%E5%A4%84%E7%90%86%E5%99%A8/image-20221014001155656.png" class title="image-20221014001155656">
+
 <h3 id="服务"><a href="#服务" class="headerlink" title="服务"></a>服务</h3><h4 id="Database-Connection-Pooling-Service"><a href="#Database-Connection-Pooling-Service" class="headerlink" title="Database Connection Pooling Service"></a>Database Connection Pooling Service</h4><p>数据库连接池服务</p>
-<h5 id="关键属性-14"><a href="#关键属性-14" class="headerlink" title="关键属性"></a>关键属性</h5><ul>
+<h5 id="关键属性-17"><a href="#关键属性-17" class="headerlink" title="关键属性"></a>关键属性</h5><ul>
 <li><p>数据库连接URL：jdbc:mysql:&#x2F;&#x2F;localhost:3306&#x2F;nifi</p>
 </li>
 <li><p>数据库驱动名称：com.mysql.cj.jdbc.Driver</p>
