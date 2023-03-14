@@ -4095,9 +4095,34 @@
 <h5 id="多列排序"><a href="#多列排序" class="headerlink" title="多列排序"></a>多列排序</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">drop table if exists user_profile;</span><br><span class="line">CREATE TABLE `user_profile` (</span><br><span class="line">`id` int NOT NULL,</span><br><span class="line">`device_id` int NOT NULL,</span><br><span class="line">`gender` varchar(14) NOT NULL,</span><br><span class="line">`age` int ,</span><br><span class="line">`university` varchar(32) NOT NULL,</span><br><span class="line">`gpa` float);</span><br><span class="line">INSERT INTO user_profile VALUES(1,2138,&#x27;male&#x27;,21,&#x27;北京大学&#x27;,3.4);</span><br><span class="line">INSERT INTO user_profile VALUES(2,3214,&#x27;male&#x27;,23,&#x27;复旦大学&#x27;,4.0);</span><br><span class="line">INSERT INTO user_profile VALUES(3,6543,&#x27;female&#x27;,20,&#x27;北京大学&#x27;,3.2);</span><br><span class="line">INSERT INTO user_profile VALUES(4,2315,&#x27;female&#x27;,23,&#x27;浙江大学&#x27;,3.6);</span><br><span class="line">INSERT INTO user_profile VALUES(5,5432,&#x27;male&#x27;,25,&#x27;山东大学&#x27;,3.8);</span><br><span class="line">INSERT INTO user_profile VALUES(6,2131,&#x27;male&#x27;,28,&#x27;北京师范大学&#x27;,3.3);</span><br></pre></td></tr></table></figure>
 
 <p>现在运营想要取出用户信息表中所有的明细数据，并先按照gpa、年龄降序排序输出</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select device_id,gpa,age from user_profile order by gpa desc, age desc</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> device_id,gpa,age <span class="keyword">from</span> user_profile <span class="keyword">order</span> <span class="keyword">by</span> gpa <span class="keyword">desc</span>, age <span class="keyword">desc</span></span><br></pre></td></tr></table></figure>
 
 <p>DESC 关键字只应用到直接位于其前面的列名，在上例中，t同时对gpa和 age 列指定 DESC 。因此，gpa列以降序排序，age 列也以降序排序e 列（在每个价格内）仍然按标准的升序排序。在多个列上降序排序 如果想在多个列上进行降序排序，必须对每个列指定 DESC 关键字。</p>
+<h5 id="时间间隔"><a href="#时间间隔" class="headerlink" title="时间间隔"></a>时间间隔</h5><p>当前具体的日期和时间</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> now ()</span><br></pre></td></tr></table></figure>
+
+<p>当前日期</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> curdate ()</span><br></pre></td></tr></table></figure>
+
+<p>当前时间</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> curtime()</span><br></pre></td></tr></table></figure>
+
+<p>加某个时间间隔函数</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">date_add()</span><br><span class="line"><span class="keyword">select</span> date_add(now(), <span class="type">interval</span> <span class="number">1</span> <span class="keyword">year</span>);    <span class="operator">/</span><span class="operator">/</span>加<span class="number">1</span>年</span><br><span class="line"><span class="keyword">select</span> date_add(now(), <span class="type">interval</span> <span class="number">1</span> <span class="keyword">month</span>);    <span class="operator">/</span><span class="operator">/</span>加<span class="number">1</span>月</span><br></pre></td></tr></table></figure>
+
+<p>减某个时间间隔函数</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">date_sub()</span><br><span class="line"><span class="keyword">select</span> date_sub(now(), <span class="type">interval</span> <span class="number">1</span> <span class="keyword">year</span>);    <span class="operator">/</span><span class="operator">/</span>减<span class="number">1</span>年</span><br><span class="line"><span class="keyword">select</span> date_sub(now(), <span class="type">interval</span> <span class="number">1</span> <span class="keyword">month</span>);    <span class="operator">/</span><span class="operator">/</span>减<span class="number">1</span>月</span><br></pre></td></tr></table></figure>
+
+<p><strong>quarter:季，week:周，day:天，hour:小时，minute:分钟，second:秒，microsecond:毫秒</strong></p>
+<h5 id="日期相减"><a href="#日期相减" class="headerlink" title="日期相减"></a>日期相减</h5><p>datediff(date1,date2)：两个日期相减，date1减去date2得到相减之后的天数</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> datediff(<span class="string">&#x27;2022-11-01&#x27;</span>, <span class="string">&#x27;2022-01-01&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<img src="/2021/12/18/mysql%E5%87%BD%E6%95%B0/image-20221104105805275.png" class title="image-20221104105805275">
+
+<p>timediff(time1,time2)：两个时间相减 time1减time2，返回差值。</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> timediff(<span class="string">&#x27;2022-11-03 12:30:00&#x27;</span>, <span class="string">&#x27;2022-11 12:29:30&#x27;</span>);</span><br><span class="line"><span class="keyword">select</span> timediff(<span class="string">&#x27;12:30:00&#x27;</span>, <span class="string">&#x27;12:29:30&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<img src="/2021/12/18/mysql%E5%87%BD%E6%95%B0/image-20221104105823855.png" class title="image-20221104105823855">
 ]]></content>
       <categories>
         <category>数据库</category>
@@ -6090,8 +6115,117 @@
       </tags>
   </entry>
   <entry>
-    <title>test</title>
-    <url>/2022/10/14/test/</url>
-    <content><![CDATA[]]></content>
+    <title>Linux查看系统信息常用命令</title>
+    <url>/2023/02/26/Linux%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E4%BF%A1%E6%81%AF%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<p>常用的查看系统信息的命令<span id="more"></span></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">uname -a # 查看内核/操作系统/CPU信息的linux系统信息  </span><br><span class="line">head -n l /etc/issue # 查看操作系统版本  </span><br><span class="line">cat /proc/cpuinfo # 查看CPU信息  </span><br><span class="line">hostname # 查看计算机名的linux系统信息命令  </span><br><span class="line">lspci -tv # 列出所有PCI设备   </span><br><span class="line">lsusb -tv # 列出所有USB设备的linux系统信息命令  </span><br><span class="line">lsmod # 列出加载的内核模块   </span><br><span class="line">env # 查看环境变量资源  </span><br><span class="line">free -m # 查看内存使用量和交换区使用量   </span><br><span class="line">df -h # 查看各分区使用情况  </span><br><span class="line">du -sh # 查看指定目录的大小   </span><br><span class="line">grep MemTotal /proc/meminfo # 查看内存总量  </span><br><span class="line">grep MemFree /proc/meminfo # 查看空闲内存量   </span><br><span class="line">uptime # 查看系统运行时间、用户数、负载  </span><br><span class="line">cat /proc/loadavg # 查看系统负载磁盘和分区   </span><br><span class="line">mount | column -t # 查看挂接的分区状态  </span><br><span class="line">fdisk -l # 查看所有分区   </span><br><span class="line">swapon -s # 查看所有交换分区  </span><br><span class="line">hdparm -i /dev/hda # 查看磁盘参数(仅适用于IDE设备)   </span><br><span class="line">dmesg | grep IDE # 查看启动时IDE设备检测状况网络  </span><br><span class="line">ifconfig # 查看所有网络接口的属性   </span><br><span class="line">iptables -L # 查看防火墙设置  </span><br><span class="line">route -n # 查看路由表   </span><br><span class="line">netstat -lntp # 查看所有监听端口  </span><br><span class="line">netstat -antp # 查看所有已经建立的连接   </span><br><span class="line">netstat -s # 查看网络统计信息进程  </span><br><span class="line">ps -ef # 查看所有进程   </span><br><span class="line">top # 实时显示进程状态用户  </span><br><span class="line">w # 查看活动用户   </span><br><span class="line">id # 查看指定用户信息  </span><br><span class="line">last # 查看用户登录日志   </span><br><span class="line">cut -d: -f1 /etc/passwd # 查看系统所有用户  </span><br><span class="line">cut -d: -f1 /etc/group # 查看系统所有组   </span><br><span class="line">crontab -l # 查看当前用户的计划任务服务  </span><br><span class="line">chkconfig –list # 列出所有系统服务   </span><br><span class="line">chkconfig –list | grep on # 列出所有启动的系统服务程序  </span><br><span class="line">rpm -qa # 查看所有安装的软件包   </span><br><span class="line">cat /proc/cpuinfo ：查看CPU相关参数的linux系统命令  </span><br><span class="line">cat /proc/partitions ：查看linux硬盘和分区信息的系统信息命令   </span><br><span class="line">cat /proc/meminfo ：查看linux系统内存信息的linux系统命令  </span><br><span class="line">cat /proc/version ：查看版本，类似uname -r   </span><br><span class="line">cat /proc/ioports ：查看设备io端口  </span><br><span class="line">cat /proc/interrupts ：查看中断   </span><br><span class="line">cat /proc/pci ：查看pci设备的信息  </span><br><span class="line">cat /proc/swaps ：查看所有swap分区的信息  </span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>WSL开放端口</title>
+    <url>/2023/03/14/WSL%E5%BC%80%E6%94%BE%E7%AB%AF%E5%8F%A3/</url>
+    <content><![CDATA[<p>WSL开放外部电脑访问端口<span id="more"></span></p>
+<p>以管理员权限运行Windows PowerShell</p>
+<h3 id="开放端口"><a href="#开放端口" class="headerlink" title="开放端口"></a>开放端口</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">netsh interface portproxy add v4tov4 listenport=宿主机windows平台监听端口 listenaddress=0.0.0.0 connectport=wsl2平台监听端口 connectaddress=wsl2平台ip protocol=tcp;</span><br><span class="line"></span><br><span class="line">netsh interface portproxy add v4tov4 listenport=5236 listenaddress=0.0.0.0 connectport=5236 connectaddress=172.21.55.35 protocol=tcp;</span><br></pre></td></tr></table></figure>
+
+<p><strong>如果不成功，在windows系统需要配置下入站规则</strong></p>
+<h3 id="查看端口转发状态"><a href="#查看端口转发状态" class="headerlink" title="查看端口转发状态"></a>查看端口转发状态</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">netsh interface portproxy show all</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除端口"><a href="#删除端口" class="headerlink" title="删除端口"></a>删除端口</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">netsh interface portproxy delete v4tov4 listenport=宿主机windows平台监听端口 listenaddress=0.0.0.0</span><br><span class="line"></span><br><span class="line">netsh interface portproxy delete v4tov4 listenport=80 listenaddress=0.0.0.0</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>windows</category>
+      </categories>
+      <tags>
+        <tag>wsl</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Windows11安装安卓子系统</title>
+    <url>/2022/10/15/Windows11%E5%AE%89%E8%A3%85%E5%AE%89%E5%8D%93%E5%AD%90%E7%B3%BB%E7%BB%9F/</url>
+    <content><![CDATA[<p>Windows11安装安卓子系统<span id="more"></span>之后，由于没有Google Play服务，所以不支持运行需要Goolge Play服务的应用，我手动安卓GMS也还是不行，安装Google Play Store之后打不开。</p>
+<p><a href="https://zhuanlan.zhihu.com/p/424959704">安装教程</a></p>
+<p><a href="https://www.jianeryi.com/1346.html">应用安装工具教程</a></p>
+<p><a href="https://store.rg-adguard.net/">安卓子系统离线下载</a></p>
+<p><a href="https://www.likecs.com/show-510541.html?sc=3100">安装应用程序依赖包</a></p>
+]]></content>
+      <categories>
+        <category>Windows</category>
+      </categories>
+      <tags>
+        <tag>安卓</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>maven打包到本地仓库</title>
+    <url>/2023/02/27/maven%E6%89%93%E5%8C%85%E5%88%B0%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93/</url>
+    <content><![CDATA[<p>maven添加到系统环境变量，进入jar包目录文件夹，打开命令行窗口，执行install命令。<span id="more"></span></p>
+<h3 id="添加系统变量"><a href="#添加系统变量" class="headerlink" title="添加系统变量"></a>添加系统变量</h3><p>maven的bin目录添加到环境变量里的Path下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">D:\apache-maven-3.6.1\bin</span><br></pre></td></tr></table></figure>
+
+<h3 id="install命令"><a href="#install命令" class="headerlink" title="install命令"></a>install命令</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mvn install:install-file -Dfile=jar包的位置 -DgroupId=依赖里写的groupId -DartifactId=依赖里写的artifactId -Dversion=上面的version -Dpackaging=jar</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>maven</category>
+      </categories>
+      <tags>
+        <tag>maven</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>zookeeper学习</title>
+    <url>/2022/10/17/zookeeper%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<p>Zookeeper学习记录。<span id="more"></span></p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>zookeeper是一个为分布式应用程序提供的一个分布式开源协调服务框架。是Google的Chubby的一个开源实现，是Hadoop和Hbase的重要组件。主要用于解决分布式集群中应用系统的一致性问题。</p>
+<p>提供了基于类似Unix系统的目录节点树方式的数据存储。</p>
+<p>可用于维护和监控存储的数据的状态的变化，通过监控这些数据状态的变化，从而达到基于数据的集群管理。</p>
+<p>提供了一组原语（机器指令），提供了java和c语言的接口。</p>
+<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ul>
+<li><p>分布式集群，一个领号者(Leader),多个跟随者(follower)</p>
+</li>
+<li><p>集群中只要有半数以上的节点存活，Zookeeper集群就能正常服务。</p>
+</li>
+<li><p>全局数据一致性：每个server保存一份相同的数据副本，client无论连接到那个server,数据都是一致的。</p>
+</li>
+<li><p>更新请求按顺序进行：来自同一个client的更新请求按其发送顺序依次执行</p>
+</li>
+<li><p>数据更新的原子性：一次数据的更新要么成功，要么失败</p>
+</li>
+<li><p>数据的实时性：在一定时间范围内，client能读到最新数据。</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>大数据</category>
+      </categories>
+      <tags>
+        <tag>zookeeper</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>oracle连接方式</title>
+    <url>/2023/02/15/oracle%E8%BF%9E%E6%8E%A5%E6%96%B9%E5%BC%8F/</url>
+    <content><![CDATA[<p>Oracle JDBC连接一共有三种方式，分别是：SERVICE_NAME、SID和TNSName。</p>
+<p>1.SERVICE_NAME方式：<code>jdbc:oracle:thin:@//&lt;host&gt;:&lt;port&gt;/&lt;SERVICE_NAME&gt;  </code></p>
+<p>2.SID连接方式：<code>jdbc:oracle:thin:@&lt;host&gt;:&lt;port&gt;:&lt;SID&gt; </code><br>                    或：<code>jdbc:oracle:thin:@&lt;host&gt;:&lt;port&gt;/&lt;SID&gt;</code></p>
+<p>3.TNSName连接方式：<code>jdbc:oracle:thin:@&lt;TNSName&gt;</code></p>
+<p>SERVICE_NAME和SID的比较：<br>        SID是对内的，是实例级别的一个名字，用来内部之间称呼用。<br>        SERVICE_NAME是对外的，是数据库级别的一个名字，用来告诉外面的人，我数据库叫”SERVICE_NAME”。</p>
+<p>访问数据库的过程：<br>      要想访问数据库，必须把数据库文件加载进实例中。SID即INSTANCE_NAME是用来唯一标示实例的。SERVICE_NAME是oracle8i新引进的，8i之前，一个数据库只能由一个实例对应，但是随着高性能的需求，并行技术的使用，一个数据库可以由多个实例对应了，比较典型的应用如RAC。为了充分利用所有实例，并且令客户端连接配置简单，ORACLE提出了SERVICE_NAME的概念，该参数直接对应数据库，而不是某个实例。自此Oracle JDBC连接多使用SERVICE_NAME方式连接，逐渐替代SID方式连接。</p>
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>oracle</tag>
+      </tags>
   </entry>
 </search>
