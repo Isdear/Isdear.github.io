@@ -1329,9 +1329,18 @@
 <p>两者都可以写在字段和setter方法上。两者如果都写在字段上，那么就不需要再写setter方法。</p>
 <p>2、不同点</p>
 <p>（1）@Autowired</p>
-<p>@Autowired为Spring提供的注解，只按照byType注入。默认情况下它要求依赖对象必须存在，如果允许null值，可以设置它的required属性为false。如果我们想使用按照名称（byName）来装配，可以结合@Qualifier注解一起使用。</p>
+<p>@Autowired为Spring提供的注解，默认按照type注入。</p>
+<p>默认情况下它要求依赖对象必须存在，如果允许null值，可以设置它的required属性为false。</p>
+<p>@Autowired按照type查找，如果该类型的bean不唯一，则抛出异常；</p>
+<p>如果我们想使用按照name注入，可以结合@Qualifier注解一起使用。<code>@Autowired()@Qualifier(&quot;baseDao&quot;)</code></p>
 <p>（2）@Resource</p>
-<p>@Resource默认按照ByName自动注入，由J2EE提供。@Resource有两个重要的属性：name和type，而Spring将@Resource注解的name属性解析为bean的名字，而type属性则解析为bean的类型。所以，如果使用name属性，则使用byName的自动注入策略，而使用type属性时则使用byType自动注入策略。如果既不制定name也不制定type属性，这时将通过反射机制使用byName自动注入策略。</p>
+<p>@Resource不允许找不到bean的情况。</p>
+<p>@Resource默认按照name自动注入，由JDK提供。<code>@Resource(name = &quot;baseDao&quot;)</code></p>
+<p>@Resource有两个重要的属性：name和type</p>
+<p>指定name和type：通过name找到唯一的bean，找不到抛出异常；如果type和字段类型不一致，也会抛出异常</p>
+<p>指定name：通过name找到唯一的bean，找不到抛出异常</p>
+<p>指定type：通过tpye找到唯一的bean，如果不唯一，则抛出异常：NoUniqueBeanDefinitionException</p>
+<p>都不指定：通过name作为key去查找，找到则赋值；找不到则再通过字段类型去查找，如果不唯一，则抛出异常：NoUniqueBeanDefinitionException</p>
 <h6 id="Spring的事务管理类型"><a href="#Spring的事务管理类型" class="headerlink" title="Spring的事务管理类型"></a>Spring的事务管理类型</h6><p>Spring支持编程式事务管理和声明式事务管理。许多Spring框架的用户选择声明式事务管理，因为这种方式和应用程序的关联较少，因此更加符合轻量级容器的概念。声明式事务管理要优于编程式事务管理，尽管在灵活性方面它弱于编程式事务管理，因为编程式事务允许你通过代码控制业务。</p>
 <p>事务分为全局事务和局部事务。全局事务由应用服务器管理，需要底层服务器JTA支持（如WebLogic、WildFly等）。局部事务和底层采用的持久化方案有关，例如使用JDBC进行持久化时，需要使用Connection对象来操作事务；而采用Hibernate进行持久化时，需要使用Session对象来操作事务。</p>
 <p>这些事务的父接口都是PlatformTransactionManager。Spring的事务管理机制是一种典型的策略模式，PlatformTransactionManager代表事务管理接口，该接口定义了三个方法，该接口并不知道底层如何管理事务，但是它的实现类必须提供getTransaction()方法（开启事务）、commit()方法（提交事务）、rollback()方法（回滚事务）的多态实现，这样就可以用不同的实现类代表不同的事务管理策略。使用JTA全局事务策略时，需要底层应用服务器支持，而不同的应用服务器所提供的JTA全局事务可能存在细节上的差异，因此实际配置全局事务管理器是可能需要使用JtaTransactionManager的子类，如：WebLogicJtaTransactionManager（Oracle的WebLogic服务器提供）、UowJtaTransactionManager（IBM的WebSphere服务器提供）等。</p>
@@ -3258,12 +3267,12 @@
 </tr>
 </tbody></table>
 <h4 id="Error"><a href="#Error" class="headerlink" title="Error"></a>Error</h4><p>Error属于程序无法处理的错误，是JVM需要负担的责任，无法通过try-catch来进行捕获。例如，系统崩溃，内存不足，堆栈溢出等，编译器不会对这类错误进行检测，一旦这类错误发生，通常应用程序会被终止，仅靠应用程序本身无法恢复。</p>
-<p>比如StackOverFlowError；VirtualMachineError；OutofMemoryError；ThreadDeath</p>
+<p>比如<code>StackOverFlowError</code>、<code>VirtualMachineError</code>、<code>OutofMemoryError</code>、<code>ThreadDeath</code>。</p>
 <h4 id="Exception"><a href="#Exception" class="headerlink" title="Exception"></a>Exception</h4><p>程序本身可以处理的异常，可以通过catch来进行捕获，通常遇到这种错误，应对其进行处理，使应用程序可以继续正常运行。</p>
-<p>Exception又可以分为运行时异常（RuntimeException，又叫非受检查异常unchecked Exception）和非运行时异常（又叫受检查异常checked Exception）。</p>
-<h5 id="checked-Exception"><a href="#checked-Exception" class="headerlink" title="checked Exception"></a>checked Exception</h5><p>就是在写代码的时候，需要写try catch的Exception，这种Exception一般不会影响主体程序，可以由程序员手动诊断修复异常。比如IOException；SQLException；ClassNotFoundException。</p>
-<h5 id="unchecked-Exception"><a href="#unchecked-Exception" class="headerlink" title="unchecked Exception"></a>unchecked Exception</h5><p>又称RunTimeException，这一类就是在代码处理了checked Exception之后，运行时候仍然会遇到的Exception。</p>
-<p>比如NullPointerException；ClassCastException；ArithmeticException；IllegalArgumentException；IndexOutOfBoundsException（包括ArrayIndexOutofBoundsExcpetion；StringIndexOutofBoundsExcpetion）；NumberFormatException。</p>
+<p>Exception又可以分为运行时异常（<code>RuntimeException</code>，又叫非受检查异常unchecked Exception）和非运行时异常（又叫受检查异常checked Exception）。</p>
+<h5 id="checked-Exception"><a href="#checked-Exception" class="headerlink" title="checked Exception"></a>checked Exception</h5><p>就是在写代码的时候，需要写try catch的Exception，这种Exception一般不会影响主体程序，可以由程序员手动诊断修复异常。比如<code>IOException</code>、<code>SQLException</code>、<code>ClassNotFoundException</code>。</p>
+<h5 id="unchecked-Exception"><a href="#unchecked-Exception" class="headerlink" title="unchecked Exception"></a>unchecked Exception</h5><p>又称<code>RunTimeException</code>，这一类就是在代码处理了checked Exception之后，运行时候仍然会遇到的Exception。</p>
+<p>比如<code>NullPointerException</code>、<code>ClassCastException</code>、<code>ArithmeticException</code>、<code>IllegalArgumentException</code>、<code>IndexOutOfBoundsException</code>（包括<code>ArrayIndexOutofBoundsExcpetion</code>；<code>StringIndexOutofBoundsExcpetion</code>）、<code>NumberFormatException</code>。</p>
 ]]></content>
       <categories>
         <category>技术</category>
@@ -3308,23 +3317,22 @@
 <p>接口更多的是在系统架构设计方法发挥作用，主要用于定义模块之间的通信契约。而抽象类在代码实现方面发挥作用，可以实现代码的重用。</p>
 <p>接口与抽象类的区别：</p>
 <ol>
-<li><p>抽象类可以有构造方法，接口中不能有构造方法。 </p>
-</li>
-<li><p>抽象类中可以有普通成员变量，接口中没有普通成员变量 </p>
-</li>
-<li><p>抽象类中可以包含非抽象的普通方法，接口中的所有方法必须都是抽象的，不能有非抽象的普通方法。 </p>
-</li>
-<li><p>抽象类中的抽象方法的访问类型可以是public，protected和（默认类型,虽然 eclipse下不报错，但应该也不行），但接口中的抽象方法只能是public类型的，并且默认即为public abstract类型。 </p>
-</li>
-<li><p>抽象类中可以包含静态方法，接口中不能包含静态方法 </p>
-</li>
-<li><p>抽象类和接口中都可以包含静态成员变量，抽象类中的静态成员变量的访问类型可以任意，但接口中定义的变量只能是public static final类型，并且默认即为public static final类型。 </p>
-</li>
-<li><p>一个类可以实现多个接口，但只能继承一个抽象类。 </p>
-</li>
-<li><p>抽象方法不能含有方法体，且必须在抽象类中</p>
-</li>
+<li>抽象类可以有构造方法，接口中不能有构造方法。 </li>
+<li>抽象类中可以有普通成员变量，接口中没有普通成员变量 </li>
+<li>抽象类中可以包含非抽象的普通方法，接口中的所有方法必须都是抽象的，不能有非抽象的普通方法。 </li>
+<li>抽象类中的抽象方法的访问类型可以是public，protected和（默认类型,虽然 eclipse下不报错，但应该也不行），但接口中的抽象方法只能是public类型的，并且默认即为public abstract类型。 </li>
+<li>抽象类中可以包含静态方法，接口中不能包含静态方法 </li>
+<li>抽象类和接口中都可以包含静态成员变量，抽象类中的静态成员变量的访问类型可以任意，但接口中定义的变量只能是public static final类型，并且默认即为public static final类型。 </li>
+<li>一个类可以实现多个接口，但只能继承一个抽象类。 </li>
+<li>抽象方法不能含有方法体，且必须在抽象类中</li>
 </ol>
+<h5 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h5><p>例如，模板方法设计模式是抽象类的一个典型应用，假设某个项目的所有Servlet类都要用相同的方式进行权限判断、记录访问日志和处理异常，那么就可以定义一个抽象的基类，让所有的Servlet都继承这个抽象基类，在抽象基类的service方法中完成权限判断、记录访问日志和处理异常的代码，在各个子类中只是完成各自的业务逻辑代码，伪代码如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">BaseServlet</span> <span class="keyword">extends</span> <span class="title class_">HttpServlet</span> &#123;</span><br><span class="line"> </span><br><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment"> * serialVersionUID属性概述</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"> <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">long</span> <span class="variable">serialVersionUID</span> <span class="operator">=</span> <span class="number">1L</span>;</span><br><span class="line"> </span><br><span class="line"> <span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title function_">service</span><span class="params">(HttpServletRequest request,</span></span><br><span class="line"><span class="params">         HttpServletResponse response)</span> <span class="keyword">throws</span> IOException, ServletException &#123;</span><br><span class="line">         <span class="comment">// 记录访问日志</span></span><br><span class="line">         <span class="comment">// 进行权限判断</span></span><br><span class="line">         <span class="keyword">if</span> (<span class="literal">true</span>)<span class="comment">// if条件里写的是“具有权限”</span></span><br><span class="line">         &#123;</span><br><span class="line">             <span class="keyword">try</span> &#123;</span><br><span class="line">                 doService(request, response);</span><br><span class="line">             &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                 <span class="comment">// 记录异常信息</span></span><br><span class="line">             &#125;</span><br><span class="line">         &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">protected</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title function_">doService</span><span class="params">(HttpServletRequest request,</span></span><br><span class="line"><span class="params"> HttpServletResponse response)</span> <span class="keyword">throws</span> IOException, ServletException;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>实现类如下： </p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyServlet</span> <span class="keyword">extends</span> <span class="title class_">BaseServlet</span>&#123;</span><br><span class="line"> </span><br><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment"> * serialVersionUID属性概述</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"> <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">long</span> <span class="variable">serialVersionUID</span> <span class="operator">=</span> <span class="number">1L</span>;</span><br><span class="line"> </span><br><span class="line"> <span class="meta">@Override</span></span><br><span class="line"> <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">doService</span><span class="params">(HttpServletRequest request,</span></span><br><span class="line"><span class="params"> HttpServletResponse response)</span> <span class="keyword">throws</span> IOException, ServletException &#123;</span><br><span class="line"> <span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">  </span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>父类方法中间的某段代码不确定，留给子类干，就用模板方法设计模式。</p>
 <h4 id="异常捕获"><a href="#异常捕获" class="headerlink" title="异常捕获"></a>异常捕获</h4><p>当程序执行到try{}语句中的return方法时，它会干这么一件事，将要返回的结果存储到一个临时栈中，然后程序不会立即返回，而是去执行finally{}中的程序。执行完之后，就会通知主程序“finally的程序执行完毕，可以请求返回了”，这时，就会将临时栈中的值取出来返回。</p>
 <p>try-catch、try-finally、try-catch-finally，但catch和finally语句不能同时省略！</p>
 <p>try-catch-finally块中，finally块在以下几种情况将不会执行。</p>
@@ -5751,6 +5759,12 @@
 <li>安装网络工具 yum -y install net-tools</li>
 <li>字符终端处理库 yum -y install ncurses</li>
 </ul>
+<h3 id="systemd"><a href="#systemd" class="headerlink" title="systemd"></a>systemd</h3><p>若要启用 systemd，请使用<code>sudo</code>管理员权限在文本编辑器中打开文件<code>wsl.conf</code>，并将以下行添加到<code>/etc/wsl.conf</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[boot]</span><br><span class="line">systemd=<span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>然后，需要使用 PowerShell 关闭 WSL  <code>wsl --shutdown</code> 来重启 WSL 实例。 重启后，系统运行。 </p>
+<p>可以使用以下命令进行确认： <code>systemctl list-unit-files --type=service</code>这将显示服务的状态。</p>
+<h3 id="WSL官方文档"><a href="#WSL官方文档" class="headerlink" title="WSL官方文档"></a>WSL官方文档</h3><p><a href="https://learn.microsoft.com/zh-cn/windows/wsl/">https://learn.microsoft.com/zh-cn/windows/wsl/</a></p>
 ]]></content>
       <categories>
         <category>操作系统</category>
@@ -6135,7 +6149,7 @@
 <p>以管理员权限运行Windows PowerShell</p>
 <h3 id="开放端口"><a href="#开放端口" class="headerlink" title="开放端口"></a>开放端口</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">netsh interface portproxy add v4tov4 listenport=宿主机windows平台监听端口 listenaddress=0.0.0.0 connectport=wsl2平台监听端口 connectaddress=wsl2平台ip protocol=tcp;</span><br><span class="line"></span><br><span class="line">netsh interface portproxy add v4tov4 listenport=5236 listenaddress=0.0.0.0 connectport=5236 connectaddress=172.21.55.35 protocol=tcp;</span><br></pre></td></tr></table></figure>
 
-<p><strong>如果不成功，在windows系统需要配置下入站规则</strong></p>
+<p><strong>如果不成功，在windows系统防火墙配置入站规则，开放宿主机windows平台监听端口</strong></p>
 <h3 id="查看端口转发状态"><a href="#查看端口转发状态" class="headerlink" title="查看端口转发状态"></a>查看端口转发状态</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">netsh interface portproxy show all</span><br></pre></td></tr></table></figure>
 
 <h3 id="删除端口"><a href="#删除端口" class="headerlink" title="删除端口"></a>删除端口</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">netsh interface portproxy delete v4tov4 listenport=宿主机windows平台监听端口 listenaddress=0.0.0.0</span><br><span class="line"></span><br><span class="line">netsh interface portproxy delete v4tov4 listenport=80 listenaddress=0.0.0.0</span><br></pre></td></tr></table></figure>
@@ -6226,6 +6240,156 @@
       </categories>
       <tags>
         <tag>oracle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>常用数据类型取值范围</title>
+    <url>/2023/04/02/%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%96%E5%80%BC%E8%8C%83%E5%9B%B4/</url>
+    <content><![CDATA[<p>常用数据类型取值范围<span id="more"></span></p>
+<table>
+<thead>
+<tr>
+<th><strong>类型</strong></th>
+<th><strong>默认值</strong></th>
+<th><strong>存储（字节）</strong></th>
+<th><strong>最小取值</strong></th>
+<th><strong>最大取值</strong></th>
+<th><strong>示例</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>字节型</td>
+<td>0</td>
+<td>1</td>
+<td>-2^7</td>
+<td>2^7-1</td>
+<td>byte b&#x3D;10;</td>
+</tr>
+<tr>
+<td>字符型</td>
+<td>‘\u0000’</td>
+<td>2</td>
+<td>0</td>
+<td>2^16-1</td>
+<td>char c&#x3D;’c’;</td>
+</tr>
+<tr>
+<td>short</td>
+<td>0</td>
+<td>2</td>
+<td>-2^15</td>
+<td>2^15-1</td>
+<td>short s&#x3D;10;</td>
+</tr>
+<tr>
+<td>int</td>
+<td>0</td>
+<td>4</td>
+<td>-2^31</td>
+<td>2^63-1</td>
+<td>int i&#x3D;10;</td>
+</tr>
+<tr>
+<td>long</td>
+<td>0</td>
+<td>8</td>
+<td>-2^63</td>
+<td>2^63-1</td>
+<td>long o&#x3D;10L;</td>
+</tr>
+<tr>
+<td>float</td>
+<td>0.0f</td>
+<td>4</td>
+<td>-2^31</td>
+<td>2^31-1</td>
+<td>float f&#x3D;10.0F;</td>
+</tr>
+<tr>
+<td>double</td>
+<td>0.0d</td>
+<td>8</td>
+<td>-2^63</td>
+<td>2^63-1</td>
+<td>double d&#x3D;10.0;</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>false</td>
+<td>1</td>
+<td>true</td>
+<td>false</td>
+<td>boolean flag&#x3D;true;</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Spring事务隔离级别</title>
+    <url>/2023/04/02/Spring%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/</url>
+    <content><![CDATA[<p>Spring通过枚举类型Propagation定义了7种事务隔离级别对事务隔离级别提供了支持<span id="more"></span></p>
+<ul>
+<li>REQUIRED：支持当前事务，如果当前没有事务，就新建一个事务。这是最常见的选择。</li>
+<li>SUPPORTS：支持当前事务，如果当前没有事务，就以非事务方式执行。</li>
+<li>MANDATORY：支持当前事务，如果当前没有事务，就抛出异常。</li>
+<li>REQUIRES_NEW：新建事务，如果当前存在事务，把当前事务挂起。 </li>
+<li>NOT_SUPPORTED：以非事务方式执行操作，如果当前存在事务，就把当前事务挂起。 </li>
+<li>NEVER：以非事务方式执行，如果当前存在事务，则抛出异常。</li>
+<li>NESTED：支持当前事务，如果当前事务存在，则执行一个嵌套事务，如果当前没有事务，就新建一个事务。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>spring</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>实体类注解</title>
+    <url>/2023/04/02/%E5%AE%9E%E4%BD%93%E7%B1%BB%E6%B3%A8%E8%A7%A3/</url>
+    <content><![CDATA[<p> 实体类的链式访问注解<span id="more"></span></p>
+<p><strong>@Accessors(chain&#x3D;true)</strong></p>
+<p>链式访问，该注解设置chain&#x3D;true，生成setter方法返回this（<strong>也就是返回的是对象</strong>），代替了默认的返回void。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.user;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"><span class="keyword">import</span> lombok.experimental.Accessors;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@Accessors(chain = true)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">User</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> Integer id;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> Integer age;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">//开起chain=true后可以使用链式的set</span></span><br><span class="line">        <span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">User</span>().setAge(<span class="number">30</span>).setName(<span class="string">&quot;user&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>@Accessors(fluent &#x3D; true)</strong></p>
+<p>与chain&#x3D;true类似，区别在于getter和setter不带set和get前缀。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.user;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"><span class="keyword">import</span> lombok.experimental.Accessors;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@Accessors(fluent = true)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">User</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> Integer id;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> Integer age;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">//fluent=true开启后默认chain=true，故这里也可以使用链式set</span></span><br><span class="line">        <span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">User</span>().age(<span class="number">30</span>).name(<span class="string">&quot;user&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>@Accessors(prefix &#x3D; “f”)</strong></p>
+<p>set方法忽略指定的前缀。不推荐这样去命名。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.user;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"><span class="keyword">import</span> lombok.experimental.Accessors;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@Accessors(prefix = &quot;f&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">User</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">String</span> <span class="variable">fName</span> <span class="operator">=</span> <span class="string">&quot;Hello, World!&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">User</span>();</span><br><span class="line">        user.setName(<span class="string">&quot;user&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>TCP三次握手协议</title>
+    <url>/2023/04/02/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%8D%8F%E8%AE%AE/</url>
+    <content><![CDATA[<p>tcp的三次握手协议 <span id="more"></span></p>
+<h3 id="第一次握手"><a href="#第一次握手" class="headerlink" title="第一次握手"></a>第一次握手</h3><p>（客户端发送 SYN 报文给服务器，服务器接收该报文）：客户端什么都不能确认；服务器确认了对方发送正常，自己接收正常</p>
+<h3 id="第二次握手"><a href="#第二次握手" class="headerlink" title="第二次握手"></a>第二次握手</h3><p>（服务器响应 SYN 报文给客户端，客户端接收该报文）：客户端确认了：自己发送、接收正常，对方发送、接收正常；服务器确认了：对方发送正常，自己接收正常</p>
+<h3 id="第三次握手"><a href="#第三次握手" class="headerlink" title="第三次握手"></a>第三次握手</h3><p>（客户端发送 ACK 报文给服务器）：客户端确认了：自己发送、接收正常，对方发送、接收正常； 服务器确认了：自己发送、接收正常，对方发送、接收正常</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>tcp</tag>
       </tags>
   </entry>
 </search>
