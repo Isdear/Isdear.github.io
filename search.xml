@@ -6392,4 +6392,31 @@
         <tag>tcp</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Elasticsearch的API操作</title>
+    <url>/2023/06/30/Elasticsearch%E7%9A%84API%E6%93%8D%E4%BD%9C/</url>
+    <content><![CDATA[<p>Elasticsearch常用API</p>
+<p>官方文档：<a href="https://www.elastic.co/cn/elasticsearch/">Elasticsearch：官方分布式搜索和分析引擎 | Elastic</a></p>
+<h3 id="查看索引列表"><a href="#查看索引列表" class="headerlink" title="查看索引列表"></a>查看索引列表</h3><figure class="highlight http"><table><tr><td class="code"><pre><span class="line">http://localhost:9200/_cat/indices?v&amp;pretty</span><br></pre></td></tr></table></figure>
+
+<p>运行上述命令后，将会显示一个包含所有索引的表格，其中列出了索引名称、文档数量、主分片数量、副本分片数量等信息。</p>
+<h3 id="查询索引结构信息"><a href="#查询索引结构信息" class="headerlink" title="查询索引结构信息"></a>查询索引结构信息</h3><figure class="highlight http"><table><tr><td class="code"><pre><span class="line">GET http://localhost:9200/indexName?pretty</span><br></pre></td></tr></table></figure>
+
+<h3 id="查询索引所有文档数据"><a href="#查询索引所有文档数据" class="headerlink" title="查询索引所有文档数据"></a>查询索引所有文档数据</h3><figure class="highlight http"><table><tr><td class="code"><pre><span class="line">GET http://localhost:9200/indexName/_search</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除索引"><a href="#删除索引" class="headerlink" title="删除索引"></a>删除索引</h3><figure class="highlight http"><table><tr><td class="code"><pre><span class="line">DELETE http://localhost:9200/indexName</span><br></pre></td></tr></table></figure>
+
+<p>返回结果为</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;acknowledged&quot;</span><span class="punctuation">:</span> <span class="keyword">true</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+
+<p>即删除成功</p>
+]]></content>
+      <categories>
+        <category>API</category>
+      </categories>
+      <tags>
+        <tag>Elasticsearch</tag>
+      </tags>
+  </entry>
 </search>
