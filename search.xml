@@ -6396,7 +6396,7 @@
     <title>Elasticsearch的API操作</title>
     <url>/2023/06/30/Elasticsearch%E7%9A%84API%E6%93%8D%E4%BD%9C/</url>
     <content><![CDATA[<p>Elasticsearch常用API</p>
-<p>官方文档：<a href="https://www.elastic.co/cn/elasticsearch/">Elasticsearch：官方分布式搜索和分析引擎 | Elastic</a></p>
+<p>官方文档：<a href="https://www.elastic.co/cn/elasticsearch/">Elasticsearch：官方分布式搜索和分析引擎 | Elastic</a><span id="more"></span></p>
 <h3 id="查看索引列表"><a href="#查看索引列表" class="headerlink" title="查看索引列表"></a>查看索引列表</h3><figure class="highlight http"><table><tr><td class="code"><pre><span class="line">http://localhost:9200/_cat/indices?v&amp;pretty</span><br></pre></td></tr></table></figure>
 
 <p>运行上述命令后，将会显示一个包含所有索引的表格，其中列出了索引名称、文档数量、主分片数量、副本分片数量等信息。</p>
