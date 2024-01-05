@@ -2762,9 +2762,27 @@
 <p><code>-P</code>将容器内部使用的网络端口映射到我们使用的主机上。</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-p 主机IP:8080:8080</span><br></pre></td></tr></table></figure>
 
-<h6 id="查看web应用程序日志"><a href="#查看web应用程序日志" class="headerlink" title="查看web应用程序日志"></a>查看web应用程序日志</h6><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker logs -f 容器ID</span><br></pre></td></tr></table></figure>
+<h6 id="查看web应用程序日志"><a href="#查看web应用程序日志" class="headerlink" title="查看web应用程序日志"></a>查看web应用程序日志</h6><p><strong>docker logs 参数 容器名&#x2F;容器id</strong></p>
+<ul>
+<li>–details 显示提供给日志的其他详细信息</li>
+<li>–follow , -f 实时跟踪日志输出</li>
+<li>–since 显示自某个timestamp之后的日志大于等于某个时间，或相对时间，如1h 就是1h）</li>
+<li>–tail , -n all 从日志末尾显示的行数，默认值为all 全部</li>
+<li>–timestamps , -t 日志每行显示日志时间戳</li>
+<li>–until 显示自某个timestamp之前的日志小于等于某个时间，或相对时间，如30m（即30分钟）</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker logs -t -n 5 容器名/容器id</span><br></pre></td></tr></table></figure>
+
+<p>显示时间戳</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker logs --tail=10 --since 1h 容器名/容器id</span><br></pre></td></tr></table></figure>
+
+<p>查询最近1小时的日志最新10行日志</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker logs -f 容器名/容器id</span><br></pre></td></tr></table></figure>
 
 <p><code>-f</code>：让<code>docker logs</code>像使用<code>tail -f</code>一样来输出容器内部的标准输出。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker logs -f --tail=1000 容器名/容器id</span><br></pre></td></tr></table></figure>
+
+<p>实时显示最新1000行日志</p>
 <h5 id="Docker镜像使用"><a href="#Docker镜像使用" class="headerlink" title="Docker镜像使用"></a>Docker镜像使用</h5><h6 id="镜像列表"><a href="#镜像列表" class="headerlink" title="镜像列表"></a>镜像列表</h6><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
 
 <p>列出本地主机上的镜像。</p>
@@ -2864,7 +2882,7 @@
 <p>如上，以 <strong>&amp;&amp;</strong> 符号连接命令，这样执行后，只会创建 1 层镜像。</p>
 <h6 id="开始构建镜像"><a href="#开始构建镜像" class="headerlink" title="开始构建镜像"></a>开始构建镜像</h6><p>以下示例，通过目录下的 Dockerfile 构建一个 nginx:test（镜像名称:镜像标签）。</p>
 <p><strong>注</strong>：最后的 <strong>.</strong> 代表本次执行的上下文路径.</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker build -t nginx:test .</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker build -t nginx:test .</span><br></pre></td></tr></table></figure>
 
 <p>使用<code>docker images</code>查看镜像是否建立成功。</p>
 <h6 id="指令详解"><a href="#指令详解" class="headerlink" title="指令详解"></a>指令详解</h6><ol>
@@ -6400,11 +6418,11 @@
 <h3 id="查看索引列表"><a href="#查看索引列表" class="headerlink" title="查看索引列表"></a>查看索引列表</h3><figure class="highlight http"><table><tr><td class="code"><pre><span class="line">http://localhost:9200/_cat/indices?v&amp;pretty</span><br></pre></td></tr></table></figure>
 
 <p>运行上述命令后，将会显示一个包含所有索引的表格，其中列出了索引名称、文档数量、主分片数量、副本分片数量等信息。</p>
-<h3 id="查询索引结构信息"><a href="#查询索引结构信息" class="headerlink" title="查询索引结构信息"></a>查询索引结构信息</h3><figure class="highlight http"><table><tr><td class="code"><pre><span class="line">GET http://localhost:9200/indexName?pretty</span><br></pre></td></tr></table></figure>
+<h3 id="查询索引结构信息"><a href="#查询索引结构信息" class="headerlink" title="查询索引结构信息"></a>查询索引结构信息</h3><figure class="highlight http"><table><tr><td class="code"><pre><span class="line">GET http://localhost:9200/索引名?pretty</span><br></pre></td></tr></table></figure>
 
-<h3 id="查询索引所有文档数据"><a href="#查询索引所有文档数据" class="headerlink" title="查询索引所有文档数据"></a>查询索引所有文档数据</h3><figure class="highlight http"><table><tr><td class="code"><pre><span class="line">GET http://localhost:9200/indexName/_search</span><br></pre></td></tr></table></figure>
+<h3 id="查询索引所有文档数据"><a href="#查询索引所有文档数据" class="headerlink" title="查询索引所有文档数据"></a>查询索引所有文档数据</h3><figure class="highlight http"><table><tr><td class="code"><pre><span class="line">GET http://localhost:9200/索引名/_search</span><br></pre></td></tr></table></figure>
 
-<h3 id="删除索引"><a href="#删除索引" class="headerlink" title="删除索引"></a>删除索引</h3><figure class="highlight http"><table><tr><td class="code"><pre><span class="line">DELETE http://localhost:9200/indexName</span><br></pre></td></tr></table></figure>
+<h3 id="删除索引"><a href="#删除索引" class="headerlink" title="删除索引"></a>删除索引</h3><figure class="highlight http"><table><tr><td class="code"><pre><span class="line">DELETE http://localhost:9200/索引名</span><br></pre></td></tr></table></figure>
 
 <p>返回结果为</p>
 <figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;acknowledged&quot;</span><span class="punctuation">:</span> <span class="keyword">true</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
@@ -6412,6 +6430,10 @@
 
 <p>即删除成功</p>
 <h3 id="分词逻辑"><a href="#分词逻辑" class="headerlink" title="分词逻辑"></a>分词逻辑</h3><figure class="highlight http"><table><tr><td class="code"><pre><span class="line">GET http://localhost:9200/_analyze</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  &quot;analyzer&quot; : &quot;standard&quot;,</span><br><span class="line">  &quot;text&quot; : &quot;this is a test&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="查询最早时间"><a href="#查询最早时间" class="headerlink" title="查询最早时间"></a>查询最早时间</h3><figure class="highlight http"><table><tr><td class="code"><pre><span class="line">GET /索引名/_search</span><br><span class="line">&#123;</span><br><span class="line">  &quot;size&quot;: 0,</span><br><span class="line">  &quot;aggregations&quot;: &#123;</span><br><span class="line">    &quot;min_date&quot;: &#123;</span><br><span class="line">      &quot;min&quot;: &#123;</span><br><span class="line">        &quot;field&quot;: &quot;date_field&quot;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
 
 <h3 id="重建索引"><a href="#重建索引" class="headerlink" title="重建索引"></a>重建索引</h3><h4 id="原索引修改别名"><a href="#原索引修改别名" class="headerlink" title="原索引修改别名"></a>原索引修改别名</h4><figure class="highlight http"><table><tr><td class="code"><pre><span class="line">curl --location --request POST &#x27;http://localhost:9200/_aliases&#x27; \</span><br><span class="line">--header &#x27;User-Agent: Apifox/1.0.0 (https://apifox.com)&#x27; \</span><br><span class="line">--header &#x27;Content-Type: application/json&#x27; \</span><br><span class="line">--data-raw &#x27;&#123;</span><br><span class="line">    &quot;actions&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;add&quot;: &#123;</span><br><span class="line">                &quot;index&quot;: &quot;原索引名&quot;,</span><br><span class="line">                &quot;alias&quot;: &quot;原索引别名&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;&#x27;</span><br></pre></td></tr></table></figure>
 
@@ -6423,12 +6445,32 @@
 
 <h4 id="删除旧索引"><a href="#删除旧索引" class="headerlink" title="删除旧索引"></a>删除旧索引</h4><figure class="highlight http"><table><tr><td class="code"><pre><span class="line">curl --location --request DELETE &#x27;http://localhost:9200/旧索引名&#x27; \</span><br><span class="line">--header &#x27;User-Agent: Apifox/1.0.0 (https://apifox.com)&#x27;</span><br></pre></td></tr></table></figure>
 
+<h4 id="删除索引别名"><a href="#删除索引别名" class="headerlink" title="删除索引别名"></a>删除索引别名</h4><figure class="highlight http"><table><tr><td class="code"><pre><span class="line">curl --location --request DELETE &#x27;http://39.98.35.72:30011/_aliases?index=索引名别名&#x27; \</span><br><span class="line">--header &#x27;User-Agent: Apifox/1.0.0 (https://apifox.com)&#x27; \</span><br><span class="line">--header &#x27;Content-Type: application/json&#x27;</span><br></pre></td></tr></table></figure>
+
 ]]></content>
       <categories>
         <category>API</category>
       </categories>
       <tags>
         <tag>Elasticsearch</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>mybatis打印执行sql</title>
+    <url>/2023/11/08/mybatis%E6%89%93%E5%8D%B0%E6%89%A7%E8%A1%8Csql/</url>
+    <content><![CDATA[<p>mybatis打印实际执行的sql语句<span id="more"></span></p>
+<p>在yml文件中配置</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">mybatis:</span></span><br><span class="line">  <span class="attr">configuration:</span></span><br><span class="line">    <span class="attr">log-impl:</span> <span class="string">org.apache.ibatis.logging.stdout.StdOutImpl</span></span><br></pre></td></tr></table></figure>
+
+<p>配置生效的前提是依赖中已经引用mybatis依赖</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.ibatis<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>版本<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.ibatis<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>版本<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>框架</category>
+      </categories>
+      <tags>
+        <tag>mysql</tag>
       </tags>
   </entry>
 </search>

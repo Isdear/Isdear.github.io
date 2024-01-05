@@ -162,7 +162,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">102</span>
+          <span class="site-state-item-count">103</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -283,14 +283,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>2.9k</span>
+      <span>3.2k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>5 分钟</span>
+      <span>6 分钟</span>
     </span>
 </div>
 
@@ -346,9 +346,27 @@
 <p><code>-P</code>将容器内部使用的网络端口映射到我们使用的主机上。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-p 主机IP:8080:8080</span><br></pre></td></tr></table></figure>
 
-<h6 id="查看web应用程序日志"><a href="#查看web应用程序日志" class="headerlink" title="查看web应用程序日志"></a>查看web应用程序日志</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs -f 容器ID</span><br></pre></td></tr></table></figure>
+<h6 id="查看web应用程序日志"><a href="#查看web应用程序日志" class="headerlink" title="查看web应用程序日志"></a>查看web应用程序日志</h6><p><strong>docker logs 参数 容器名&#x2F;容器id</strong></p>
+<ul>
+<li>–details 显示提供给日志的其他详细信息</li>
+<li>–follow , -f 实时跟踪日志输出</li>
+<li>–since 显示自某个timestamp之后的日志大于等于某个时间，或相对时间，如1h 就是1h）</li>
+<li>–tail , -n all 从日志末尾显示的行数，默认值为all 全部</li>
+<li>–timestamps , -t 日志每行显示日志时间戳</li>
+<li>–until 显示自某个timestamp之前的日志小于等于某个时间，或相对时间，如30m（即30分钟）</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs -t -n 5 容器名/容器id</span><br></pre></td></tr></table></figure>
+
+<p>显示时间戳</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs --tail=10 --since 1h 容器名/容器id</span><br></pre></td></tr></table></figure>
+
+<p>查询最近1小时的日志最新10行日志</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs -f 容器名/容器id</span><br></pre></td></tr></table></figure>
 
 <p><code>-f</code>：让<code>docker logs</code>像使用<code>tail -f</code>一样来输出容器内部的标准输出。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs -f --tail=1000 容器名/容器id</span><br></pre></td></tr></table></figure>
+
+<p>实时显示最新1000行日志</p>
 <h5 id="Docker镜像使用"><a href="#Docker镜像使用" class="headerlink" title="Docker镜像使用"></a>Docker镜像使用</h5><h6 id="镜像列表"><a href="#镜像列表" class="headerlink" title="镜像列表"></a>镜像列表</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
 
 <p>列出本地主机上的镜像。</p>
@@ -448,7 +466,7 @@
 <p>如上，以 <strong>&amp;&amp;</strong> 符号连接命令，这样执行后，只会创建 1 层镜像。</p>
 <h6 id="开始构建镜像"><a href="#开始构建镜像" class="headerlink" title="开始构建镜像"></a>开始构建镜像</h6><p>以下示例，通过目录下的 Dockerfile 构建一个 nginx:test（镜像名称:镜像标签）。</p>
 <p><strong>注</strong>：最后的 <strong>.</strong> 代表本次执行的上下文路径.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t nginx:test .</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t nginx:test .</span><br></pre></td></tr></table></figure>
 
 <p>使用<code>docker images</code>查看镜像是否建立成功。</p>
 <h6 id="指令详解"><a href="#指令详解" class="headerlink" title="指令详解"></a>指令详解</h6><ol>
@@ -546,7 +564,7 @@
 
 <div class="copyright">
   &copy; 2019 – 
-  <span itemprop="copyrightYear">2023</span>
+  <span itemprop="copyrightYear">2024</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
