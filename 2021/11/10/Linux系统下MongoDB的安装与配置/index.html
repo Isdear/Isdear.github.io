@@ -147,7 +147,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85MongoDB%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.</span> <span class="nav-text">一键安装MongoDB数据库</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%AA%8C%E8%AF%81%E8%B6%85%E7%BA%A7%E7%AE%A1%E7%90%86%E5%91%98%E8%B4%A6%E6%88%B7"><span class="nav-number">2.</span> <span class="nav-text">验证超级管理员账户</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E6%96%B0%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B9%B6%E9%85%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">创建新数据库并配置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#MongoDB%E5%8F%82%E6%95%B0%E9%85%8D%E7%BD%AE"><span class="nav-number">4.</span> <span class="nav-text">MongoDB参数配置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF%E5%8A%A8"><span class="nav-number">5.</span> <span class="nav-text">开机自启动</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85MongoDB%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.</span> <span class="nav-text">一键安装MongoDB数据库</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%AA%8C%E8%AF%81%E8%B6%85%E7%BA%A7%E7%AE%A1%E7%90%86%E5%91%98%E8%B4%A6%E6%88%B7"><span class="nav-number">2.</span> <span class="nav-text">验证超级管理员账户</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E6%96%B0%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B9%B6%E9%85%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">创建新数据库并配置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#MongoDB%E5%8F%82%E6%95%B0%E9%85%8D%E7%BD%AE"><span class="nav-number">4.</span> <span class="nav-text">MongoDB参数配置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%89%8B%E5%8A%A8%E5%90%AF%E5%8A%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">5.</span> <span class="nav-text">手动启动命令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF%E5%8A%A8"><span class="nav-number">6.</span> <span class="nav-text">开机自启动</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -162,13 +162,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">104</span>
+          <span class="site-state-item-count">106</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-count">24</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -317,6 +317,10 @@
 <p>username和password分别对应自己设定的账户和密码，db后的集合名一定要和use的名称一致。每创建一个数据库都要进行授权，否则无法访问。</p>
 <h5 id="MongoDB参数配置"><a href="#MongoDB参数配置" class="headerlink" title="MongoDB参数配置"></a>MongoDB参数配置</h5><p>进入到&#x2F;usr&#x2F;local&#x2F;mongodb文件夹，创建data、log目录和mongo.conf文件，用来存储数据及日志文件，其中log目录下创建mongodb.log文件。mongodb.conf文件内用vim写入下列命令：</p>
 <figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">port</span>=<span class="string">27017 #端口</span></span><br><span class="line"><span class="attr">dbpath</span>= <span class="string">/programs/mongodb/data #数据库存文件存放目录</span></span><br><span class="line"><span class="attr">logpath</span>= <span class="string">/programs/mongodb/log/mongodb.log #日志文件存放路径</span></span><br><span class="line"><span class="attr">logappend</span>=<span class="string">true #使用追加的方式写日志</span></span><br><span class="line"><span class="attr">fork</span>=<span class="string">true #以守护进程的方式运行，创建服务器进程</span></span><br><span class="line"><span class="attr">maxConns</span>=<span class="string">100 #最大同时连接数</span></span><br><span class="line"><span class="attr">auth</span>=<span class="string">true #启用验证</span></span><br><span class="line"><span class="attr">journal</span>=<span class="string">true #每次写入会记录一条操作日志（通过journal可以重新构造出写入的数据）。</span></span><br><span class="line"><span class="comment">#即使宕机，启动时wiredtiger会先将数据恢复到最近一次的checkpoint点，然后重放后续的journal日志来恢复。</span></span><br><span class="line"><span class="attr">storageEngine</span>=<span class="string">wiredTiger  #存储引擎有mmapv1、wiretiger、mongorocks</span></span><br><span class="line"><span class="attr">bind_ip</span> = <span class="string">0.0.0.0  #这样就可外部访问了，例如从win10中去连虚拟机中的MongoDB</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="手动启动命令"><a href="#手动启动命令" class="headerlink" title="手动启动命令"></a>手动启动命令</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongod --dbpath /var/lib/mongo --logpath /var/log/mongodb/mongod.log --fork</span><br></pre></td></tr></table></figure>
+
+
 
 <h5 id="开机自启动"><a href="#开机自启动" class="headerlink" title="开机自启动"></a>开机自启动</h5><p>输入下列命令便可以直接在&#x2F;etc&#x2F;rc.local文件中写入mongodb services用于开机自启动：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;/usr/local/mongodb/bin/mongod --dbpath=/usr/local/mongodb/data -logpath=/usr/local/mongodb/log -logappend --auth --port=27017&quot; &gt;&gt; /etc/rc.local</span><br></pre></td></tr></table></figure>
@@ -541,7 +545,7 @@
 
 <div class="copyright">
   &copy; 2019 – 
-  <span itemprop="copyrightYear">2024</span>
+  <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -560,7 +564,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">3:05</span>
+    <span title="站点阅读时长">3:06</span>
   </span>
 </div>
 <div class="busuanzi-count">

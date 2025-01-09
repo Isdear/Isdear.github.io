@@ -162,13 +162,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">104</span>
+          <span class="site-state-item-count">106</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-count">24</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -283,7 +283,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>2.6k</span>
+      <span>2.5k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -302,7 +302,7 @@
     
     <div class="post-body" itemprop="articleBody">
         <p>主要介绍常用的正则表达式处理函数。<span id="more"></span></p>
-<h6 id="正则表达式模式"><a href="#正则表达式模式" class="headerlink" title="正则表达式模式"></a>正则表达式模式</h6><p>  字母和数字代表它们自身，标点符号只有被转义时才匹配自身，反斜杠本身需要使用反斜杠转义。</p>
+<h6 id="正则表达式模式"><a href="#正则表达式模式" class="headerlink" title="正则表达式模式"></a>正则表达式模式</h6><p>字母和数字代表它们自身，标点符号只有被转义时才匹配自身，反斜杠本身需要使用反斜杠转义。</p>
 <table>
 <thead>
 <tr>
@@ -384,7 +384,7 @@
 </tr>
 <tr>
 <td>(?#…)</td>
-<td>注释。</td>
+<td>注释</td>
 </tr>
 <tr>
 <td>(?&#x3D; re)</td>
@@ -447,8 +447,8 @@
 <td>匹配非单词边界。’er\B’ 能匹配 “verb” 中的 ‘er’，但不能匹配 “never” 中的 ‘er’。</td>
 </tr>
 <tr>
-<td>\n, \t, 等。</td>
-<td>匹配一个换行符。匹配一个制表符, 等。</td>
+<td>\n, \t</td>
+<td>匹配一个换行符。匹配一个制表符,</td>
 </tr>
 <tr>
 <td>\1…\9</td>
@@ -492,20 +492,15 @@
 <td>该标志通过给予你更灵活的格式以便你将正则表达式写得更易于理解。</td>
 </tr>
 </tbody></table>
-<h6 id="正则表达式对象"><a href="#正则表达式对象" class="headerlink" title="正则表达式对象"></a>正则表达式对象</h6><ol>
+<h6 id="正则表达式对象"><a href="#正则表达式对象" class="headerlink" title="正则表达式对象"></a>正则表达式对象</h6><ul>
 <li><p>re.RegexObject</p>
-<p> re.compile()返回RegexObject对象。</p>
+<p>  re.compile()返回RegexObject对象。</p>
 </li>
 <li><p>re.MatchObject</p>
-<p> group()返回被RE匹配的字符串</p>
-<ul>
-<li>start()返回匹配开始的位置</li>
-<li>end()返回匹配结束的位置</li>
-<li>span()返回一个元组包含匹配(开始，结束)的位置</li>
-</ul>
 </li>
-</ol>
-<h6 id="re-match函数"><a href="#re-match函数" class="headerlink" title="re.match函数"></a>re.match函数</h6><p>  re.match尝试从字符串的起始位置匹配一个模式，如果不是起始位置匹配成功的话，match()就返回none。</p>
+</ul>
+<p>​        group()返回被RE匹配的字符串</p>
+<h6 id="re-match函数"><a href="#re-match函数" class="headerlink" title="re.match函数"></a>re.match函数</h6><p>re.match尝试从字符串的起始位置匹配一个模式，如果不是起始位置匹配成功的话，match()就返回none。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">re.match(pattern, string, flag=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
 
 <table>
@@ -530,7 +525,7 @@
 </tbody></table>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="built_in">print</span>(re.match(<span class="string">&#x27;www&#x27;</span>, <span class="string">&#x27;www.runoob.com&#x27;</span>).span())  <span class="comment"># 在起始位置匹配</span></span><br><span class="line"><span class="built_in">print</span>(re.match(<span class="string">&#x27;com&#x27;</span>, <span class="string">&#x27;www.runoob.com&#x27;</span>))         <span class="comment"># 不在起始位置匹配</span></span><br><span class="line">(<span class="number">0</span>,<span class="number">3</span>)</span><br><span class="line"><span class="literal">None</span></span><br></pre></td></tr></table></figure>
 
-<p>  使用group(num) 或 groups()可以匹配对象函数来获取匹配表达式</p>
+<p>使用group(num) 或 groups()可以匹配对象函数来获取匹配表达式</p>
 <table>
 <thead>
 <tr>
@@ -549,13 +544,13 @@
 </tbody></table>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"> </span><br><span class="line">line = <span class="string">&quot;Cats are smarter than dogs&quot;</span></span><br><span class="line"><span class="comment"># .* 表示任意匹配除换行符（\n、\r）之外的任何单个或多个字符</span></span><br><span class="line">matchObj = re.match( <span class="string">r&#x27;(.*) are (.*?) .*&#x27;</span>, line, re.M|re.I)</span><br><span class="line"> </span><br><span class="line"><span class="keyword">if</span> matchObj:</span><br><span class="line">   <span class="built_in">print</span> (<span class="string">&quot;matchObj.group() : &quot;</span>, matchObj.group())</span><br><span class="line">   <span class="built_in">print</span> (<span class="string">&quot;matchObj.group(1) : &quot;</span>, matchObj.group(<span class="number">1</span>))</span><br><span class="line">   <span class="built_in">print</span> (<span class="string">&quot;matchObj.group(2) : &quot;</span>, matchObj.group(<span class="number">2</span>))</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">   <span class="built_in">print</span> (<span class="string">&quot;No match!!&quot;</span>)</span><br><span class="line">matchObj.group() :  Cats are smarter than dogs</span><br><span class="line">matchObj.group(<span class="number">1</span>) :  Cats</span><br><span class="line">matchObj.group(<span class="number">2</span>) :  smarter</span><br></pre></td></tr></table></figure>
 
-<h6 id="re-search方法"><a href="#re-search方法" class="headerlink" title="re.search方法"></a>re.search方法</h6><p>  re.search扫描整个字符串并返回第一个成功的匹配，否则返回None。</p>
+<h6 id="re-search方法"><a href="#re-search方法" class="headerlink" title="re.search方法"></a>re.search方法</h6><p>re.search扫描整个字符串并返回第一个成功的匹配，否则返回None。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">re.search(pattern, string, flags=<span class="number">0</span>)</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"> </span><br><span class="line"><span class="built_in">print</span>(re.search(<span class="string">&#x27;www&#x27;</span>, <span class="string">&#x27;www.runoob.com&#x27;</span>).span())  <span class="comment"># 在起始位置匹配</span></span><br><span class="line"><span class="built_in">print</span>(re.search(<span class="string">&#x27;com&#x27;</span>, <span class="string">&#x27;www.runoob.com&#x27;</span>).span())         <span class="comment"># 不在起始位置匹配</span></span><br><span class="line">(<span class="number">0</span>, <span class="number">3</span>)</span><br><span class="line">(<span class="number">11</span>, <span class="number">14</span>)</span><br></pre></td></tr></table></figure>
 
-<h6 id="re-match与re-search的区别"><a href="#re-match与re-search的区别" class="headerlink" title="re.match与re.search的区别"></a>re.match与re.search的区别</h6><p>  re.match 只匹配字符串的开始，如果字符串开始不符合正则表达式，则匹配失败，函数返回 None，而 re.search 匹配整个字符串，直到找到一个匹配。</p>
+<h6 id="re-match与re-search的区别"><a href="#re-match与re-search的区别" class="headerlink" title="re.match与re.search的区别"></a>re.match与re.search的区别</h6><p>re.match 只匹配字符串的开始，如果字符串开始不符合正则表达式，则匹配失败，函数返回 None，而 re.search 匹配整个字符串，直到找到一个匹配。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"> </span><br><span class="line">line = <span class="string">&quot;Cats are smarter than dogs&quot;</span></span><br><span class="line"> </span><br><span class="line">matchObj = re.match( <span class="string">r&#x27;dogs&#x27;</span>, line, re.M|re.I)</span><br><span class="line"><span class="keyword">if</span> matchObj:</span><br><span class="line">   <span class="built_in">print</span> (<span class="string">&quot;match --&gt; matchObj.group() : &quot;</span>, matchObj.group())</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">   <span class="built_in">print</span> (<span class="string">&quot;No match!!&quot;</span>)</span><br><span class="line"> </span><br><span class="line">matchObj = re.search( <span class="string">r&#x27;dogs&#x27;</span>, line, re.M|re.I)</span><br><span class="line"><span class="keyword">if</span> matchObj:</span><br><span class="line">   <span class="built_in">print</span> (<span class="string">&quot;search --&gt; matchObj.group() : &quot;</span>, matchObj.group())</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">   <span class="built_in">print</span> (<span class="string">&quot;No match!!&quot;</span>)</span><br><span class="line">No match!!</span><br><span class="line">search --&gt; matchObj.group() :  dogs</span><br></pre></td></tr></table></figure>
 
-<h6 id="re-sub函数"><a href="#re-sub函数" class="headerlink" title="re.sub函数"></a>re.sub函数</h6><p>  re.sub用于替换字符串中匹配项。</p>
+<h6 id="re-sub函数"><a href="#re-sub函数" class="headerlink" title="re.sub函数"></a>re.sub函数</h6><p>re.sub用于替换字符串中匹配项。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">re.sub(pattern, repl, string, count=<span class="number">0</span>, flags=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
 
 <ul>
@@ -570,13 +565,12 @@
 <p>repl参数也可以是一个函数</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 将匹配的数字乘于 2</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">double</span>(<span class="params">matched</span>):</span><br><span class="line">    value = <span class="built_in">int</span>(matched.group(<span class="string">&#x27;value&#x27;</span>))</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">str</span>(value * <span class="number">2</span>)</span><br><span class="line"> </span><br><span class="line">s = <span class="string">&#x27;A23G4HFD567&#x27;</span></span><br><span class="line"><span class="comment"># ?P&lt;value&gt;的意思是命名一个名字为value的组，匹配规则符合后面的/d+</span></span><br><span class="line"><span class="built_in">print</span>(re.sub(<span class="string">&#x27;(?P&lt;value&gt;\d+)&#x27;</span>, double, s))</span><br><span class="line">A46G8HFD1134</span><br></pre></td></tr></table></figure>
 
-<h6 id="complie函数"><a href="#complie函数" class="headerlink" title="complie函数"></a>complie函数</h6><p>  compile 函数用于编译正则表达式，生成一个正则表达式 (Pattern) 对象，供 match() 和 search() 这两个函数使用。</p>
+<h6 id="complie函数"><a href="#complie函数" class="headerlink" title="complie函数"></a>complie函数</h6><p>compile 函数用于编译正则表达式，生成一个正则表达式 (Pattern) 对象，供 match() 和 search() 这两个函数使用。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">re.<span class="built_in">compile</span>(pattern, flags)</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>pattern : 一个字符串形式的正则表达式</li>
 <li>flags 可选，表示匹配模式，比如忽略大小写，多行模式等，具体参数为：</li>
-<li><ul>
 <li>re.I 忽略大小写<ul>
 <li>re.L 表示特殊字符集 \w, \W, \b, \B, \s, \S 依赖于当前环境</li>
 <li>re.M 多行模式</li>
@@ -586,11 +580,9 @@
 </ul>
 </li>
 </ul>
-</li>
-</ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;<span class="keyword">import</span> re</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>pattern = re.<span class="built_in">compile</span>(<span class="string">r&#x27;\d+&#x27;</span>)                    <span class="comment"># 用于匹配至少一个数字</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m = pattern.match(<span class="string">&#x27;one12twothree34four&#x27;</span>)        <span class="comment"># 查找头部，没有匹配</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>( m )</span><br><span class="line"><span class="literal">None</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m = pattern.match(<span class="string">&#x27;one12twothree34four&#x27;</span>, <span class="number">2</span>, <span class="number">10</span>) <span class="comment"># 从&#x27;e&#x27;的位置开始匹配，没有匹配</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>( m )</span><br><span class="line"><span class="literal">None</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m = pattern.match(<span class="string">&#x27;one12twothree34four&#x27;</span>, <span class="number">3</span>, <span class="number">10</span>) <span class="comment"># 从&#x27;1&#x27;的位置开始匹配，正好匹配</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>( m )                                        <span class="comment"># 返回一个 Match 对象</span></span><br><span class="line">&lt;_sre.SRE_Match <span class="built_in">object</span> at <span class="number">0x10a42aac0</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m.group(<span class="number">0</span>)   <span class="comment"># 可省略 0</span></span><br><span class="line"><span class="string">&#x27;12&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m.start(<span class="number">0</span>)   <span class="comment"># 可省略 0</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m.end(<span class="number">0</span>)     <span class="comment"># 可省略 0</span></span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m.span(<span class="number">0</span>)    <span class="comment"># 可省略 0</span></span><br><span class="line">(<span class="number">3</span>, <span class="number">5</span>)</span><br></pre></td></tr></table></figure>
 
-<h6 id="re-findall"><a href="#re-findall" class="headerlink" title="re.findall"></a>re.findall</h6><p>  在字符串中找到正则表达式所匹配的所有子串，并返回一个列表，如果没有找到匹配的，则返回空列表。</p>
+<h6 id="re-findall"><a href="#re-findall" class="headerlink" title="re.findall"></a>re.findall</h6><p>在字符串中找到正则表达式所匹配的所有子串，并返回一个列表，如果没有找到匹配的，则返回空列表。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">re.findall(string, pos, endpos)</span><br></pre></td></tr></table></figure>
 
 <ul>
@@ -600,10 +592,10 @@
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"> </span><br><span class="line">pattern = re.<span class="built_in">compile</span>(<span class="string">r&#x27;\d+&#x27;</span>)   <span class="comment"># 查找数字</span></span><br><span class="line">result1 = pattern.findall(<span class="string">&#x27;runoob 123 google 456&#x27;</span>)</span><br><span class="line">result2 = pattern.findall(<span class="string">&#x27;run88oob123google456&#x27;</span>, <span class="number">0</span>, <span class="number">10</span>)</span><br><span class="line"> </span><br><span class="line"><span class="built_in">print</span>(result1)</span><br><span class="line"><span class="built_in">print</span>(result2)</span><br><span class="line">[<span class="string">&#x27;123&#x27;</span>, <span class="string">&#x27;456&#x27;</span>]</span><br><span class="line">[<span class="string">&#x27;88&#x27;</span>, <span class="string">&#x27;12&#x27;</span>]</span><br></pre></td></tr></table></figure>
 
-<h6 id="re-finditer"><a href="#re-finditer" class="headerlink" title="re.finditer"></a>re.finditer</h6><p>  和 findall 类似，在字符串中找到正则表达式所匹配的所有子串，并把它们作为一个迭代器返回。</p>
+<h6 id="re-finditer"><a href="#re-finditer" class="headerlink" title="re.finditer"></a>re.finditer</h6><p>和 findall 类似，在字符串中找到正则表达式所匹配的所有子串，并把它们作为一个迭代器返回。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">re.finditer(pattern, string, flags=<span class="number">0</span>)</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"> </span><br><span class="line">it = re.finditer(<span class="string">r&quot;\d+&quot;</span>,<span class="string">&quot;12a32bc43jf3&quot;</span>) </span><br><span class="line"><span class="keyword">for</span> match <span class="keyword">in</span> it: </span><br><span class="line">    <span class="built_in">print</span> (match.group() )</span><br><span class="line"><span class="number">12</span> </span><br><span class="line"><span class="number">32</span> </span><br><span class="line"><span class="number">43</span> </span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
 
-<h6 id="re-split"><a href="#re-split" class="headerlink" title="re.split"></a>re.split</h6><p>  split 方法按照能够匹配的子串将字符串分割后返回列表。</p>
+<h6 id="re-split"><a href="#re-split" class="headerlink" title="re.split"></a>re.split</h6><p>split 方法按照能够匹配的子串将字符串分割后返回列表。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">re.split(pattern, string, maxsplit=<span class="number">0</span>, flags=<span class="number">0</span>)</span><br><span class="line">&gt;&gt;&gt;<span class="keyword">import</span> re</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>re.split(<span class="string">&#x27;\W+&#x27;</span>, <span class="string">&#x27;runoob, runoob, runoob.&#x27;</span>)</span><br><span class="line">[<span class="string">&#x27;runoob&#x27;</span>, <span class="string">&#x27;runoob&#x27;</span>, <span class="string">&#x27;runoob&#x27;</span>, <span class="string">&#x27;&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>re.split(<span class="string">&#x27;(\W+)&#x27;</span>, <span class="string">&#x27; runoob, runoob, runoob.&#x27;</span>) </span><br><span class="line">[<span class="string">&#x27;&#x27;</span>, <span class="string">&#x27; &#x27;</span>, <span class="string">&#x27;runoob&#x27;</span>, <span class="string">&#x27;, &#x27;</span>, <span class="string">&#x27;runoob&#x27;</span>, <span class="string">&#x27;, &#x27;</span>, <span class="string">&#x27;runoob&#x27;</span>, <span class="string">&#x27;.&#x27;</span>, <span class="string">&#x27;&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>re.split(<span class="string">&#x27;\W+&#x27;</span>, <span class="string">&#x27; runoob, runoob, runoob.&#x27;</span>, <span class="number">1</span>) </span><br><span class="line">[<span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;runoob, runoob, runoob.&#x27;</span>]</span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>re.split(<span class="string">&#x27;a*&#x27;</span>, <span class="string">&#x27;hello world&#x27;</span>)   <span class="comment"># 对于一个找不到匹配的字符串而言，split 不会对其作出分割</span></span><br><span class="line">[<span class="string">&#x27;hello world&#x27;</span>]</span><br></pre></td></tr></table></figure>
 
     </div>
@@ -668,7 +660,7 @@
 
 <div class="copyright">
   &copy; 2019 – 
-  <span itemprop="copyrightYear">2024</span>
+  <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -687,7 +679,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">3:05</span>
+    <span title="站点阅读时长">3:06</span>
   </span>
 </div>
 <div class="busuanzi-count">
